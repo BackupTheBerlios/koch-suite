@@ -1,4 +1,4 @@
-### $Id: README,v 1.38 2001/08/06 19:07:23 lestinsky Exp $
+### $Id: README,v 1.39 2001/08/31 17:39:06 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -6,6 +6,8 @@ Koch-Suite
 Michael Lestinsky <michael@lestinsky.de>, Juli 2001
 Die Datei LICENSE enthält die Lizenz, unter der dieses Paket als ganzes
 oder einzelne Dateien hieraus verwendet werden dürfen.
+
+Eine detaillierte Installationsanleitung steht in der Datei INSTALL.
 
 
 Was ist das hier ueberhaupt?
@@ -39,7 +41,7 @@ Als Plattformen sind getestet:
  - OpenBSD/i386
  - FreeBSD/i386
 
-Neu in der Version 0.5 ist der Support fuer PostgreSQL-Datenbanken.
+Seit Version 0.5 existiert Support fuer PostgreSQL-Datenbanken.
 Auf alle Fälle ist auch PHP4 mit Support fuer die verwendete Datenbank
 notwendig. 
 Diese Skripten sind unter PHP-4.0.5 geschrieben und getestet worden, 
@@ -48,20 +50,15 @@ Fuer die Console-Tools muss PHP ausserdem als Standalone-Version (alias
 CGI-Version) vorhanden sein.
 
 Der LaTeX-Export greift auf das Paket 'floatflt' zurück. Bei Bedarf siehe
-bitte im CTAN-Archiv nach.
+bitte im CTAN-Archiv nach. Um PostScript oder PDF-Dateien zu erzeugen wird
+dvips (aus der TeTeX-Distribution) und Ghostscript benötigt.
 
 Ausserdem ist eine aktuelle Version von PEAR notwendig. Bei PHP-4.0.6 ist
 PEAR hinreichend aktuell, wer ein älteres PHP hat muss mindestens sein 
-PEAR updaten. Dazu:
+mindestens PEAR updaten. 
 
- - Wechsel in das Verzeichnis, in dem die PEAR-Files landen sollen:
-   # cd /usr/local/lib
- - Logge dich am CVS-Repository ein (Passwort "phpfi"):
-   # cvs -d :pserver:cvsread@cvs.php.net:/repository login
- - Erzeuge eine lokale Kopie von PEAR
-   # cvs -d :pserver:cvsread@cvs.php.net:/repository co php4/pear
- - Erweitere include_path in der php.ini so dass dieser
-   /usr/local/lib/php4/pear beinhaltet.
+Siehe auch Documentation/PHP.txt zu weiteren Details zum Thema PEAR und
+PHP.
 
 
 Status:
@@ -79,131 +76,7 @@ Bisher existiert/funktioniert:
  - Multilingualization. Liefere die Webseite in der Sprache aus, in der
    sie angefordert werden (Browser-Vorgabe "Accept-Language").
    Sprachmodule lassen sich sehr einfach erstellen.
-
-
-PHP4-Installation:
-------------------
-
-Um PHP4 entsprechend zu kompilieren, packt man die Quellen aus und 
-ruft im PHP-Quell-Verzeichnis "configure" mit folgenden Optionen auf: 
-
-(Stand-Alone Interpreter:)
-
- $ ./configure  --with-mysql=/path/to/mysql --enable-force-cgi-redirect
-      bzw:      --with-pgsql=/path/to/pgsql
-
-(Apache-Modul:)
-
- $ ./configure  --with-apxs=/path/to/apxs --with-mysql=/path/to/mysql
-      bzw:                                --with-pgsql=/path/to/pgsql
-
-Danach baut und installiert man PHP mittels:
-
- $ make && make install
-
-aus dem PHP-Quell-Verzeichnis heraus. In der Regel funktioniert dies
-ohne größere Probleme.
-
-Ausführlichere Informationen zu PHP, der Installation und eine Sprach-
-referenz finden sich unter http://www.php.net
-
-
-PHP4-Konfiguration:
--------------------
-
-Ok, es ist nicht schön, dies vorauszusetzen. Mir ist es auch erst
-aufgefallen, nachdem ich darüber gestolpert bin. Derzeit ist aber die
-Konfiguration von PHP mit folgenden Werten erforderlich.
-
-  [snip]
-    magic_quotes_gpc      = On
-    magic_quotes_runtime  = Off
-    magic_quotes_sybase   = Off
-    register_argc_argv    = On 
-  [snap]
-
-
-Installation:
--------------
-
-Folgende Anleitung nimmt an, dass man vollen Shellzugriff auf den Rechner
-hat, auf dem die Koch-Suite installiert werden soll. Siehe gegebenenfalls
-in Documentation/FAQ.txt nach, wenn dies nicht ganz zutrifft.
-
- $ tar -xvzf kochsuite-*.tar.gz
-   Dieses Paket auspacken, wenn es nicht bereits geschehen ist.
-
- $ vi config
-   Anpassen der Konfigurationsvariablen, speziell der Pfade und der
-   Parameter fuer den Datenbank-Zugriff.
-
-   DB_TYPE bestimmt das verwendete DBMS.  "mysql" fuer MySQL, "pgsql" fuer
-   PostgreSQL.  Eine Uebersicht der unterstuetzen DBMS findet man im Dokument
-   STATUS im PEAR/DB Verzeichnis (<prefix>/share/php/DB).
-
- $ make
-
- $ sudo make install
-   oder:
-   $ su root
-   $ make install
-
-Um die User, Passwort und Datenbank anzulegen:
-
-PostgreSQL:
-  Zum Erzeugen der PostgreSQL-Datenbank bietet sich an:
-
-  Als PostgreSQL-Superuser (oder Benutzer mit CREATE DATABASE Rechten):
-  $ psql -c "CREATE DATABASE dbkoch" template1 bzw.
-  $ psql -U<username> -c "CREATE DATABASE dbkoch" template1
-
-  Dann als normalsterblicher User (bzw. als der Benutzer, von dem spaeter
-  die Requests kommen):
-  $ psql [-U<username>] dbkoch <init_db.pgsql
-
-MySQL:
-  Zum Anlegen der Datenbank und des Users:
-
-  Als MySQL-Superuser (root) eine MySQL-Shell aufrufen::
-  $ mysql -h DBSERVER -u root -p mysql
-
-  und folgende Kommandos ausfuehren lassen:
-  CREATE DATABASE DBkoch;
-  GRANT ALL PRIVILEGES ON DBkoch TO USER@HOST IDENTIFIED BY 'PASSWORD';
-  FLUSH PRIVILEGES;
-
-  Wobei DBSERVER durch den Namen des Datenbank-Servers, USER durch den
-  Namen des zu schaffenden Accounts (etwa 'kochsuite'), PASSWORD dessen
-  Passwort und HOST der Name des Rechners ist, auf dem die PHP-Skripte 
-  dann laufen werden.
-
-  $ mysql -h DBSERVER -u USER -pPASSWORD DBkoch < init_db.mysql 
-
-  alle notwendigen Komandos ausführen lassen (wobei USER, PASSWORD und 
-  DBSERVER mit den jew. Zugangsdaten zur Datenbank ersetzt werden müssen). 
-
-
-Updating:
----------
-
-Es gab ein paar Aenderungen, die notwendig waren um den PostgreSQL-Support 
-einzubinden. Am einfachsten ist es von der Datenbank ein Backup zu machen, 
-mittels (dem alten!!!)
-
- $ rezept -mm "" > all.mm 
-
-oder falls bereits eine Version ab 0.5 installiert ist:
-
- $ rezept -mm -relaxed "" > all.mm
-
-den gesamten Inhalt im Mealmaster-Format zu speichern, alle Tabellen aus 
-der Datenbank zu loeschen und mit dem Inhalt aus init_db.??sql neu 
-anzulegen. Anschliessend die neue Version der Koch-Suite installieren und 
-mit dem dann neuen 
-
- $ mmimport < all.mm
-
-die Daten wieder in die Datenbank importieren.
+ - eine eigene Userverwaltung
 
 
 Todo/'Roadmap':
@@ -211,7 +84,7 @@ Todo/'Roadmap':
 
  - Dokumentation schreiben,
  - vorhandene Rezepte kommentieren,
- - Zugriffskontrolle für die Datenbank/Authentifizierung des Users
+ - Bequemere Zugriffskontroll-Steuerung
  - RezKonv-Exportfilter.
 
 
