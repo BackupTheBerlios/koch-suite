@@ -34,7 +34,7 @@
   <li><a href="http://developer.berlios.de/projects/koch-suite/">Koch-Suite at Berlios</a></li>
   <li><a href="http://developer.berlios.de/cvs/?group_id=144">CVS repository details</a></li>
   <li><a href="http://developer.berlios.de/survey/survey.php?group_id=144&amp;survey_id=4">Survey: Which Userinterface?</a></li>
-  <li>Do you like the Koch-Suite? Say <a href="http://www.amazon.de/exec/obidos/wishlist/38UW4J3AT8UMH/ref=wl_em_to">thank you</a>. :-)</li>
+  <li>Do you like the Koch-Suite? Say <a href="http://www.amazon.de/exec/obidos/wishlist/38UW4J3AT8UMH">thank you</a>. :-)</li>
 </ul>
 
 <address>
@@ -47,7 +47,7 @@
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2004 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: links.html.en,v 1.1 2004/04/11 12:15:24 lestinsky Exp $
+$Id: links.html.en,v 1.2 2004/12/14 22:01:32 lestinsky Exp $
 </address>
 </body>
 </html>
