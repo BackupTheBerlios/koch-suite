@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: lang.raw,v 1.13 2002/05/20 15:03:47 lestinsky Exp $
+   * $Id: lang.raw,v 1.14 2002/05/26 11:02:02 lestinsky Exp $
    * Guess prefered language for the web-interface.
    *
    * Copyright (c) 2001
@@ -141,10 +141,10 @@
   if ($KS_ENV == "web") {
     session_register('lang_override');
     if (isset($_GET['lang_override']))
-      $USER_S['lang_override'] = $_GET['lang_override'];
+      $_SESSION['lang_override'] = $_GET['lang_override'];
 
-    if (!empty($USER_S['lang_override'])) 
-      read_lang_file($USER_S['lang_override']);
+    if (!empty($_SESSION['lang_override'])) 
+      read_lang_file($_SESSION['lang_override']);
   }
 
   setlocale(LC_ALL, $DEFAULT_LOCALE);
