@@ -45,14 +45,14 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: search.raw,v 1.10 2001/09/24 21:20:23 lestinsky Exp $ -->
+  <!-- $Id: search.raw,v 1.11 2001/10/03 21:08:21 lestinsky Exp $ -->
 </head>
 
 <body>
 <a name="top"></a>
 <h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
 
-<table border=0 cellpadding=3 cellspacing=1>
+<table border="0" cellpadding="3" cellspacing="0">
 <tr>
   <td valign="top">
     <? include "./menue.inc"; ?>
