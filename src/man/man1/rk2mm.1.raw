@@ -1,13 +1,13 @@
-.\" $Id: mmimport.1.raw,v 1.5 2001/02/05 01:08:47 michael Exp $
+.\" $Id: rk2mm.1.raw,v 1.1 2001/02/05 01:08:47 michael Exp $
 .\" Koch-Suite Reference
 .\" See File LICENSE in the top level source-directory for the license
 .\" of this document.
 .Dd February 5, 2000
-.Dt mmimport 1 
+.Dt rk2mm 1 
 .Os Koch-Suite
 .Sh NAME
-.Nm mmimport
-.Nd import Mealmaster- and REZKONV-recipes.
+.Nm rk2mm
+.Nd convert REZKONV-recipes into Meal-Master-recipes.
 .Sh SYNOPSIS
 .Nm 
 .Op Fl t | Fl -test
@@ -15,17 +15,7 @@
 .Nm
 reads recipes from 
 .Em STDIN ,
-parses them and imports them into the database. The recipes may be in
-REZKONV- or Meal-Master-format.
-.Pp
-Optional paramters are:
-.Bl -tag -width "LITTLETOLONG"
-.It Fl t Fl -test
-test the parser.
-Do not import the recipe, but rather reformat it into plain ascii.
-Output goes to
-.Em STDOUT .
-.El
+parses them and exports them in Meal-Master-format. 
 .\" The following requests should be uncommented and used where appropriate.
 .\" This next request is for sections 2 and 3 function return values only.
 .\" .Sh RETURN VALUES
@@ -40,8 +30,8 @@ Output goes to
 .\" .Sh ERRORS
 .Sh SEE ALSO
 .Xr mmexport 1
+.Xr mmimport 1
 .Xr rezept2latex 1
-.Xr rk2mm 1
 .\" .Xr foobar 1
 .\" .Sh STANDARDS
 .\" .Sh HISTORY
