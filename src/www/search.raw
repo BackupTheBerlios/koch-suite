@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -30,7 +30,6 @@
   require_once "<%%PHP_LIBS%%>/setup.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
-  require "<%%PHP_LIBS%%>/nocache.inc";
   include "<%%PHP_LIBS%%>/auth.inc";
 
   auth(READ);
@@ -48,7 +47,7 @@
     $count = count($r);
     for ($i = 0; $i < $count; $i++) {
       $j = $i + 1;
-      echo "<tr><td><input type=\"checkbox\" name=\"mark[]\" value=\"$i\"></td>" .
+      echo "<tr><td><input type=\"checkbox\" name=\"tag[]\" value=\"$i\"></td>" .
                "<td>$j</td>" .
                "<td><a href=\"rezept.php?result_id=" . $i . "\">" . 
                htmlentities($r[$i]["title"]) . "</a></td></tr>\n";
@@ -56,16 +55,17 @@
   }
 
   session_register("searchresult");    // Cache search recipes
-  session_register("marked_recipes");  // Enable "marking" pages for
+  session_register("tagged_recipes");  // Enable "tagging" pages for
                                        // further operations
   session_register("operate_on");      // Set marker an which buffer we
                                        // are working.
-  session_register("last_page");       // cache last page.
   $searchresult   =& $_SESSION['searchresult'];
-  $marked_recipes =& $_SESSION['marked_recipes'];
+  $tagged_recipes =& $_SESSION['tagged_recipes'];
   $_SESSION['operate_on'] = false;
 
   $all_result     = array();
+
+  if (empty($tagged_recipes)) $tagged_recipes = array();
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -78,7 +78,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: search.raw,v 1.24 2002/08/24 09:49:54 lestinsky Exp $ -->
+  <!-- $Id: search.raw,v 1.25 2002/08/31 17:56:21 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
     <!--
@@ -106,48 +106,52 @@
       if (isset($_POST["where"]))      $where = $_POST["where"];
       if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
 
-      if (isset($_POST['mark_submit'])) {
-        /* Mark this recipes for further operations */
+      if (isset($_POST['tag_submit'])) {
+        /* Tag this recipes for further operations */
 
-        $marked_recipes = array();
-
-        foreach ($_POST['mark'] as $do_mark) {
-          if ($searchresult[$do_mark]) {
-            $nomark = false;
-            foreach ($marked_recipes as $cmp) {
-              if ($cmp['id'] == $searchresult[$do_mark]['id'])
-                $nomark = true;
+        foreach ($_POST['tag'] as $do_tag) {
+          if ($searchresult[$do_tag]) {
+            $notag = false;
+            foreach ($tagged_recipes as $cmp) {
+              if ($cmp['id'] == $searchresult[$do_tag]['id'])
+                $notag = true;
             }
-            if (! $nomark) 
-              $marked_recipes[] = $searchresult[$do_mark];
+            if (! $notag) 
+              $tagged_recipes[] = $searchresult[$do_tag];
           }
         }
-      } else if (isset($_POST['unmark_submit'])) {
-        foreach ($_POST['mark'] as $do_unmark) {
-          if (isset($marked_recipes[$do_unmark]))
-            array_splice($marked_recipes, $do_unmark, 1);
+      } else if (isset($_POST['untag_submit'])) {
+        foreach ($_POST['tag'] as $do_untag) {
+          if (isset($tagged_recipes[$do_untag]))
+            array_splice($tagged_recipes, $do_untag, 1);
         }
+      } else if (isset($_POST['untag_all'])) {
+        $tagged_recipes = array();
+      } else if (isset($_POST['tag_all'])) {
+        $tagged_recipes = array_merge($searchresult, $tagged_recipes);
       }
 
-      if (isset($_GET['showmarked'])) {
-        // Display all the marked recipes
+      if (isset($_GET['showtagged'])) {
+        // Display all the tagged recipes
 
-        $_SESSION['operate_on'] = "marked_recipes";
+        $_SESSION['operate_on'] = "tagged";
+        include "<%%WEB_PREFIX%%>/actions.inc";
         ?>
-        <h2><?php echo $Lang['Mark']['Show']['Title']; ?></h2>
+        <h2><?php echo $Lang['Tag']['Show']['Title']; ?></h2>
 
         <?php
-        if (count($marked_recipes) != 0) {
+        if (count($tagged_recipes) != 0) {
           ?>
           <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
           <table border=0>
           <?php
-          $searchresult = $marked_recipes;
-          print_count($marked_recipes);
-          print_titles($marked_recipes);
+          $searchresult = $tagged_recipes;
+          print_count($tagged_recipes);
+          print_titles($tagged_recipes);
           ?>
           </table>
-          <input type="submit" name="unmark_submit" value="<?php echo $Lang['Unmark']['Do'] ?>">
+          <input type="submit" name="untag_submit" value="<?php echo $Lang['Untag']['Do'] ?>">
+          <input type="submit" name="untag_all" value="<?php echo $Lang['Untag']['All'] ?>">
           </form>
           <?php
         } else {
@@ -159,6 +163,7 @@
         // Perform a search and display the results
 
         $_SESSION['operate_on'] = 'searchresult';
+        include "<%%WEB_PREFIX%%>/actions.inc";
         ?>
         <h2><? echo $Lang['Search']['Result']; ?>:
           <? 
@@ -190,7 +195,8 @@
           $searchresult = $all_result;
           ?>
           </table>
-          <input type="submit" name="mark_submit" value="<?php echo $Lang['Mark']['Do'] ?>">
+          <input type="submit" name="tag_submit" value="<?php echo $Lang['Tag']['Do'] ?>">
+          <input type="submit" name="tag_all" value="<?php echo $Lang['Tag']['All'] ?>">
           </form>
           <?php
         } else {
@@ -258,9 +264,9 @@
       <a class="prop" href="<? echo "$PHP_SELF?all=y"; ?>">Y</a>
       <a class="prop" href="<? echo "$PHP_SELF?all=z"; ?>">Z</a>
     </p>
-    <?php if (count($marked_recipes) > 0) { ?>
+    <?php if (count($tagged_recipes) > 0) { ?>
     <p>
-        [<a href="<?php echo "$PHP_SELF?showmarked=1"; ?>"><?php echo $Lang['Mark']['Show']['Do']; ?></a>]
+        [<a href="<?php echo "$PHP_SELF?showtagged=1"; ?>"><?php echo $Lang['Tag']['Show']['Do']; ?></a>]
     </p>
     <?php } ?>
 

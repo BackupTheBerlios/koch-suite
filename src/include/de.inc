@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.41 2002/08/19 18:13:11 lestinsky Exp $
+   * $Id: de.inc,v 1.42 2002/08/31 17:56:21 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -37,10 +37,12 @@
   $Lang['Next']                 = "N&auml;chstes";
   $Lang['Previous']             = "Vorheriges";
   $Lang['Apply']		= '&Uuml;bernehmen';
-  $Lang['Mark']['Do']		= 'Vormerken';
-  $Lang['Mark']['Show']['Do']	= 'Vorgemerkte Rezepte anzeigen';
-  $Lang['Mark']['Show']['Title']= 'Vorgemerkte Rezepte';
-  $Lang['Unmark']['Do']		= 'Von Vorgemerkten streichen';
+  $Lang['Tag']['Do']		= 'Vormerken';
+  $Lang['Tag']['All']		= 'Alle Vormerken';
+  $Lang['Tag']['Show']['Do']	= 'Vorgemerkte Rezepte anzeigen';
+  $Lang['Tag']['Show']['Title']= 'Vorgemerkte Rezepte';
+  $Lang['Untag']['Do']		= 'Vormerkungen aufheben';
+  $Lang['Untag']['All']	= 'Alle Vormerkungen aufheben';
 
 
   $Lang['Mainmenu']['Title']		= "Hauptmen&uuml;";

@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.45 2002/08/19 18:13:11 lestinsky Exp $
+   * $Id: en.inc,v 1.46 2002/08/31 17:56:21 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -38,10 +38,12 @@
   $Lang['Next']			= "Next";
   $Lang['Previous']		= "Previous";
   $Lang['Apply']		= 'Apply';
-  $Lang['Mark']['Do']		= 'Remember';
-  $Lang['Mark']['Show']['Do']	= 'Show remembered recipes';
-  $Lang['Mark']['Show']['Title']= 'Remembered recipes';
-  $Lang['Unmark']['Do']         = 'Remove from remembered';
+  $Lang['Tag']['Do']		= 'Tag';
+  $Lang['Tag']['All']		= 'Tag all';
+  $Lang['Tag']['Show']['Do']	= 'Show tagged recipes';
+  $Lang['Tag']['Show']['Title']	= 'Tagged recipes';
+  $Lang['Untag']['Do']		= 'Untag';
+  $Lang['Untag']['All']		= 'Untag all';
 
 
   $Lang['Mainmenu']['Title']		= "Mainmenu";
