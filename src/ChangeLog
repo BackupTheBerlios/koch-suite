@@ -1,3 +1,12 @@
+2004-02-05  Michael Lestinsky  <michael@lestinsky.de>
+
+  * www/delete.raw 1.25, www/rezept.raw 1.38:
+  somehow artificially force this variable to an integer type
+
+  * man/man1/rezept.1.raw 1.11: Document Rezkonv export.
+
+  * commands/init_db.raw 1.8: Fix table generation
+
 2003-08-11  Michael Lestinsky  <michael@lestinsky.de>
 
   * www/header.raw 1.5:
