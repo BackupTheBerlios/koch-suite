@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.21 2001/04/23 09:23:29 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.22 2001/05/10 23:53:38 michael Exp $ -->
 </head>
 
 <body>
@@ -18,14 +18,12 @@
 <table border=0>
 <tr>
   <td valign="top">
-    <?
-      require "./menue.inc";
-    ?>
+<? require "./menue.inc"; ?>
   </td>
-  <td width="90%">
+  <td>
     <h2>Informationen zur Koch-Suite</h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.21 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.22 $ -->
 
     <h3>Homepage</h3>
     <p>
