@@ -40,10 +40,11 @@ distclean: clean
 	rm -f ChangeLog
 
 ChangeLog: CVS/Entries
-	rcs2log \
+	rcs2log -l 70 -i 2 -t 4 -v \
 	-u "bus	Michael Bussmann	bus@mb-net.net" \
 	-u "lestinsky	Michael Lestinsky	michael@lestinsky.de" \
-	-u "michael	Michael Lestinsky	michael@lestinsky.de" >$@
+	-u "michael	Michael Lestinsky	michael@lestinsky.de" | \
+	sed -e 's:/cvsroot/koch-suite/::g' > $@
 
 install-temp-for-remote: install-includes install-www
 
