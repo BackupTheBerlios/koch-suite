@@ -7,9 +7,10 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
 
   <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
 
   <title>Definierte Kategorien</title>
-  <!-- $Id: kategorien.raw,v 1.3 2001/01/13 13:56:57 michael Exp $ -->
+  <!-- $Id: kategorien.raw,v 1.4 2001/01/25 00:19:05 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -52,7 +53,7 @@ Kategorie, um den Wert in das Formularfeld zu übertragen.
       if ($maxsel == 1) {
         echo "<tr><td><a href=\"index.php?suchen=1&target=$target&begr=$kategorie\" onClick=\"eintragen('" . $kategorie . "');\">$kategorie</a></td></tr>\n";
       } else {
-        echo "<tr><td><a href=\"$PHP_SELF?target=$target\" onClick=\"eintragen('" . $kategorie . "');\">$kategorie</a></td></tr>\n";
+        echo "<tr><td><a name=\"$kategorie\" href=\"$PHP_SELF?target=$target#$kategorie\" onClick=\"eintragen('" . $kategorie . "');\">$kategorie</a></td></tr>\n";
       }
     }
   ?>
