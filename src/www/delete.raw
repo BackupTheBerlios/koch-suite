@@ -4,6 +4,9 @@
    * (c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
    */
 
+  include "<%%PHP_LIBS%%>/config.inc";
+  include "<%%PHP_LIBS%%>/functions.inc";
+
   $mid     = $HTTP_GET_VARS["mid"];
   $confirm = $HTTP_GET_VARS["confirm"];
 ?>
@@ -18,7 +21,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.4 2001/06/01 22:43:20 michael Exp $ -->
+  <!-- $Id: delete.raw,v 1.5 2001/06/01 22:44:48 michael Exp $ -->
 </head>
 
 <body>
@@ -33,8 +36,6 @@
   <td>
     <!-- Rechts: Ausgabe -->
     <?
-      include "<%%PHP_LIBS%%>/functions.inc";
-
       if ($confirm != 'y') {
         echo "<h1>Rezept l&ouml;schen?</h1>\n";
         echo format_recipe_html(get_menu_by_mid($mid));
