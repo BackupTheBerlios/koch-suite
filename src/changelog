@@ -1,7 +1,10 @@
-### $Id: changelog,v 1.31 2001/05/15 20:11:25 michael Exp $
+### $Id: changelog,v 1.32 2001/05/16 00:23:04 michael Exp $
 
 2001-05-15: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
         Suche nach Kategorie repariert.
+	M17N. Werte "Accept-Language:"-Header aus und liefere sofern
+        vorhanden die entsprechende Sprach-Version.
+        0.5-pre2
 
 2001-05-11: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Fix für Probleme bei überlangen 'Wörtern' (z.B. URLs)
