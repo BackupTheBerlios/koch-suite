@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.7 2001/06/06 11:08:23 michael Exp $
+   * $Id: en.inc,v 1.8 2001/06/13 14:44:08 michael Exp $
    *
    * Define English text-constants.
    *
@@ -31,6 +31,7 @@
   $Lang['Delete']		= "Delete";
   $Lang['PrintVers']		= "Printable version";
   $Lang['Close']		= "Close";
+  $Lang['Edit']                 = "Edit";
 
   $Lang['Mainmenu']['Title']		= "Mainmenu";
   $Lang['Mainmenu']['PlsChoose']	= "Please choose from the mainmenu";
@@ -48,9 +49,17 @@
   $Lang['Recipe']['Edit']	= "Edit recipe";
   $Lang['Recipe']['Delete']	= "Delete recipe";
   $Lang['Recipe']['Deleted']    = "Recipe deleted";
+  $Lang['Recipe']['Insert']     = "Insert recipe into the database";
+  $Lang['Recipe']['Inserted']   = "Recipe deleted.";
 
   $Lang['AllRecipes']		= "All recipes";
   $Lang['CatChoose']		= "Category-chooser";
+
+  $Lang['Aliases']['DefDescr']  = "enter space-separated alias-list.";
+
+  /*
+   * Infos:
+   */
 
   $Lang['Homepage']['Title']	= 'Homepage';
   $Lang['Homepage']['Text'][0]	= <<<EOT
@@ -145,7 +154,7 @@ EOT;
 EOT;
 
   $Lang['Helptext']['WWW']['Title']	= "Web-Frontend";
-  $Lang['Helptext']['WWW']['part'][0]['Title']	= "Such-Interface";
+  $Lang['Helptext']['WWW']['part'][0]['Title']	= "Search-Interface";
   $Lang['Helptext']['WWW']['part'][0]['Text']	= <<<EOT
         You can search the database for terms in
           <ul>

@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: de.inc,v 1.7 2001/06/06 11:08:23 michael Exp $
+   * $Id: de.inc,v 1.8 2001/06/13 14:44:07 michael Exp $
    *
    * Define German text-constants.
    *
@@ -49,6 +49,8 @@
   $Lang['Recipe']['Edit']	= "Rezept bearbeiten";
   $Lang['Recipe']['Delete']	= 'Rezept l&ouml;schen';
   $Lang['Recipe']['Deleted']    = "Rezept gel&auml;scht";
+  $Lang['Recipe']['Insert']     = "Rezept in die Datenbank aufnehmen";
+  $Lang['Recipe']['Inserted']   = "Rezept eingef&uuml;gt.";
 
   $Lang['AllRecipes']		= "Alle Rezepte";
   $Lang['CatChoose']		= "Kategorie-Auswahl";

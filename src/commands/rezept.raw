@@ -1,15 +1,24 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* $Id: rezept.raw,v 1.9 2001/06/10 22:33:44 michael Exp $
+  /* $Id: rezept.raw,v 1.10 2001/06/13 14:44:24 michael Exp $
    * Export a recipe in different formats.
    */
 
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
+  require "<%%PHP_LIBS%%>/lang.inc";
 
   $stdout = fopen("php://stdout", "w");
   $stderr = fopen("php://stderr", "w");
 
+  /* If register_argc_argv is turned off: turn it on. Sorry, we have to do
+   * it here. 
+   */
+
+  if (! ini_set("register_argc_argv", "On")) {
+    echo "can't set register_argc_argv. Fixme\n";
+    exit();
+  }
   /*
    * In case register_globals is turned off in php.ini, we need to get
    * those Variables manually 

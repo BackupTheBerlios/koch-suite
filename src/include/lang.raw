@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: lang.raw,v 1.2 2001/05/30 19:52:14 michael Exp $
+   * $Id: lang.raw,v 1.3 2001/06/13 14:43:52 michael Exp $
    *
    * Guess prefered language for the web-interface.
    *
@@ -8,26 +8,95 @@
    * (C) 2001 Michael Lestinsky. 
    */
 
-  require "<%%PHP_LIBS%%>/$DEFAULT_LANG.inc";
 
-  $accept_langs = explode(",", getenv("HTTP_ACCEPT_LANGUAGE"));
+  function read_best_language($lang) {
+    /* Try to get the best match for the selected language. */
 
-  $i = 0;
-  while ($lang = $accept_langs[$i]) {
-    $l = trim(preg_replace("/(.*)?(;(.*))/" , "\\1", $lang));
+    /* strip of trailing encoding, since we don't care about that for   
+     * the moment. I.e.: de_DE.ISO-8859-1 -> de_DE
+     */
 
-    /* we don't need to read it twice: */
-    if ($l == $DEFAULT_LANG) {
-      break;
-    } else {
-      $lang_file = "<%%PHP_LIBS%%>/" . $l . ".inc";
+    $L = preg_replace("/(.*)(\.(.*))/" , "\\1", $lang);
 
-      /* If the language exists: */
-      if (file_exists($lang_file) and is_readable($lang_file)) {
-        require($lang_file);
-        break;
+    if (!read_lang_file($L)) {
+
+      /* If this doesn't exist:
+       * cut away the "_DE"-part and try again
+       */
+      $L = preg_replace("/(([a-zA-Z]{2})(_[a-zA-Z]{2}))/", "\\2", $L);
+
+      if (!read_lang_file($L)) {
+        /* Sorry, no such language */
+        write_log("Sorry, no such language: $L");
+        return false;
+      } else {
+        return true;
       }
+
+    } else {
+      return true;
     }
-    $i++;
+  }
+
+
+  function read_lang_file($lang) {
+    /* read the language-file for the specified language 
+     * return false on error.
+     */
+    global $Lang;
+    $lang_file = "<%%PHP_LIBS%%>/$lang.inc";
+ 
+    if (file_exists($lang_file) and is_readable($lang_file)) {
+      require($lang_file);
+      write_log("Matched language: $lang ($lang_file)");
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  /*
+   * Start:
+   */
+
+
+  /* Read the default language-file (default: de) */
+  read_lang_file($DEFAULT_LANG);
+
+  if ($tmp = getenv("HTTP_ACCEPT_LANGUAGE")) {
+    $accept_langs = explode(",", $tmp);
+  }
+  if (count($accept_langs) == 0) {
+    /* Seems we are running from the commandline. 
+     * therefore read environment-variables.
+     */
+
+    if ($L = getenv("LC_MESSAGES")) {
+      /* LC_MESSAGES environment */
+      read_best_language($L);
+    } else if ($L = getenv("LANG")) {
+      /* LANG environment as fallback */
+      read_best_language($L);
+    } 
+
+  } else {
+    /* We were started from a webpage and therefore
+     * respect rather HTTP_ACCEPT_LANGUAGE 
+     * which contains the value of the Accept-Language HTTP-Header 
+     */
+
+    $i = 0;
+    while ($lang = $accept_langs[$i]) {
+      $l = trim(preg_replace("/(.*)?(;(.*))/" , "\\1", $lang));
+
+      /* we don't need to read it twice: */
+      if ($l == $DEFAULT_LANG) {
+        break;
+      } else {
+        read_lang_file($l);
+      }
+      $i++;
+    }
   }
 ?>

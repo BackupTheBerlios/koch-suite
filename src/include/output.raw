@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.23 2001/05/30 19:51:54 michael Exp $
+   * $Id: output.raw,v 1.24 2001/06/13 14:43:40 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -10,10 +10,14 @@
   function format_recipe(&$rezept) {
     /* return a String, which contains the plain-text-formatted recipe */
 
-    $str  = "     Titel: " . $rezept["title"] . "\n".
-            "Kategorien: " . implode(", " , $rezept["category"]) . "\n";
+    global $Lang;
 
-    $str .= " Portionen: " . $rezept["yield"] . "\n\n";
+    $str  = pad_left($Lang['Title'], ' ', 11) . ": " . 
+               $rezept["title"] . "\n".
+            pad_left($Lang['Cat'], ' ', 11) . ": " . 
+               implode(", " , $rezept["category"]) . "\n";
+    $str .= pad_left($Lang['Yield'], ' ', 11) . ": " . 
+               $rezept["yield"] . "\n\n";
 
     /* Zutaten: */
 

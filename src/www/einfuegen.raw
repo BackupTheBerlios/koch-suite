@@ -208,10 +208,10 @@ $Lang['Units'] . "</a></td>\n";
 
   if (isset($submit)) {
     if(isset($mid) and $mid != 0) {
-      echo "<p>Altes Rezept gelöscht</p>\n";
+      echo "<p>" . $Lang['Recipe']['Deleted'] . "</p>\n";
       delete_menue($mid);
     }
-    echo "<p>Neues Rezept eingefügt</p>\n";
+    echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
     write_db($r);
   } elseif (isset($more_zutaten)) {
     // Do nothing.
@@ -229,12 +229,12 @@ $Lang['Units'] . "</a></td>\n";
 <head>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <title>Koch-Suite - Rezept einf&uuml;gen</title>
+  <title><?php echo $Lang['Recipe']['Insert']; ?></title>
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.18 2001/06/06 11:06:22 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.19 2001/06/13 14:43:27 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -265,7 +265,7 @@ $Lang['Units'] . "</a></td>\n";
     <!-- Rechts: Ausgabe -->
   <?
   ?>
-    <h2>Rezept in die Datenbank aufnehmen</h2>
+    <h2><?php echo $Lang['Recipe']['Insert']; ?></h2>
 
     <form action="<? echo $target ?>" method="post">
 
