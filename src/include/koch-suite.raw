@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: koch-suite.raw,v 1.7 2002/02/12 18:37:13 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.8 2002/04/09 14:36:03 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
@@ -84,7 +84,7 @@
   /* Extend the include-path to $PEAR, or PEAR-Modules won't work 
    * correctly. */
   $path = ini_get("include_path");
-  if (! ini_set("include_path", "$path:$PEAR"))
+  if (! ini_set("include_path", "$PEAR:$path"))
     die ("Can't setup include-path correctly.\n");
 
   if (! set_magic_quotes_runtime(0))
