@@ -8,12 +8,12 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.13 2001/03/11 14:59:23 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.14 2001/03/15 13:13:52 michael Exp $ -->
 </head>
 
 <body>
 <a name="top"></a>
-<h1><img src="pics/title.gif" alt="WWW-Kochbuch"></h1>
+<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
 
 <table border=0>
 <tr>
@@ -24,6 +24,8 @@
   </td>
   <td width="90%">
     <h2>Informationen zur Koch-Suite</h2>
+
+    <!-- Installierte Version: $Name:  $ -->
 
     <h3>Hilfe:</h3>
     <p class="top">
