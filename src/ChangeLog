@@ -1,3 +1,8 @@
+2002-10-02  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/commands/rezept.raw 1.22:
+  sync with changes in exec_search
+
 2002-09-30  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/einfuegen.raw 1.45, src/www/search.raw 1.31:
