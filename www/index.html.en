@@ -152,17 +152,12 @@ You can subscribe/unsubscribe to this mailinglist via
 
 <h2>Links</h2>
 <ul>
-<ul>
   <li><a href="http://trident.mcs.kent.edu/~dwatson/cookbook.html">Cookbook</a>,
       a recipe managment software for KDE.</li>
   <li><a hreh="http://home.CameloT.de/thomas/">Mampf</a>, a somewhat older
       recipe managment software for Unix. Written in Tcl/Tk, uses mSQL.</li>
   <li><a href="http://mango.sourceforge.net">Mango</a>. Written in C++,
       uses Qt.</li>
-</ul>
-
-  <li><a href="http://mango.sourceforge.net">Mango</a>, another
-recipe management system for Unix-like operating systems</li>
 </ul>
 
 <address>
@@ -175,7 +170,7 @@ recipe management system for Unix-like operating systems</li>
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.en,v 1.8 2002/10/22 11:45:25 lestinsky Exp $
+$Id: index.html.en,v 1.9 2002/10/23 09:07:05 lestinsky Exp $
 </address>
 </body>
 </html>
