@@ -28,7 +28,7 @@
    */
 
   /**
-   * $Id: einfuegen.raw,v 1.49 2003/01/10 23:26:31 lestinsky Exp $
+   * $Id: einfuegen.raw,v 1.50 2003/03/12 12:43:10 lestinsky Exp $
    * Insert new and edit exiting recipes.
    *
    * @package WWW
@@ -46,6 +46,7 @@
   $page_title = $Lang['Insert'];
 
   $scale = 1;
+  $error = "";
   $new_cat = true;
   $meta = array();
   $r = false;
@@ -253,7 +254,6 @@
     } 
 
     if ($r == false) {
-
       /* We were invoked as empty form */
 
       if (!isset($zutaten) or !is_array($zutaten)) {
@@ -317,7 +317,8 @@
 
         if ($line != '') {
           $line = trim($line); // Remove whitespaces
-          if (preg_match("/^((\d* ){0,1}[\d\/\.,]*) +(.*)$/", $line, $bar)) {
+
+          if (preg_match("/^((\d* ){0,1}[\d\/\.,]*) *(.*)$/", $line, $bar)) {
             // Wenn die Zeile mit einer Mengenangabe beginnt...
 	    if ($bar[1] != 0) {
 	      $quant = fraction_to_real($bar[1]);
@@ -349,10 +350,15 @@
       $y++;
     }
 
-    // Formatiere Zeilenbrueche in das System wie wir es brauchen um.
+    // Reformat lines to a system we like.
     if (isset($anweisung)) {
+      // New paragraphs:
       $anweisung = preg_replace('/((\r)?\n\s*){2,}/m', ' <p> ', $anweisung);
+
+      // force a linebreak infront of lines starting with a colon:
       $anweisung = preg_replace('/(\r)?\n:/m', ' <br> :', $anweisung);
+
+      // remove every other linebreak.
       $anweisung = preg_replace('/(\r)?\n/m', ' ', $anweisung);
     }
 
@@ -367,6 +373,12 @@
     if (!empty($source)) {
       $meta['Source'] = trim($source);
     } 
+
+    if (strlen($kategorie) == 0) 
+      $error .= "Notice: you've submitted a recipe without a category entry\n";
+    
+    if (strlen($portionen) == 0)
+      $error .= "Notice: you haven't set the yield for this recipe.\n";
 
     $r = array ('title'     => (isset($titel)     ? trim($titel) : '') , 
                 'yield'     => (isset($portionen) ? trim($portionen) : ''),
@@ -390,6 +402,10 @@
       echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
       $mid = write_db($r, 0, $new_cat);
     }
+  }
+
+  if (strlen($error) > 0) {
+    echo $error;
   }
 
   include "<%%WEB_PREFIX%%>/actions.inc";
