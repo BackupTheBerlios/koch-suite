@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.44 2002/09/16 20:51:11 lestinsky Exp $
+   * $Id: de.inc,v 1.45 2002/09/29 20:35:38 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -67,6 +67,7 @@
   $Lang['Recipe']['Insert']     = "Rezept in die Datenbank aufnehmen";
   $Lang['Recipe']['Inserted']   = "Rezept eingef&uuml;gt.";
 
+  $Lang['Auth']['Login']	= 'Anmelden';
   $Lang['Auth']['LoggedInAs']   = "Angemeldet als";
   $Lang['Auth']['Logout']       = "Abmelden";
   $Lang['Auth']['NoLogin']      = "Nicht angemeldet";
@@ -255,7 +256,7 @@ EOT;
 
   $Lang['pattern']['Source_ingr'] = "/(Quelle|\bRef(erenz)?\b|Erfass(t|er))/i";
   $Lang['pattern']['Source']	= "(Quelle|Ref)";
-  $Lang['pattern']['Recorder']	= "(Erfasser)";
+  $Lang['pattern']['Recorder']	= "(Erfasst|Erfasser)";
   $Lang['pattern']['Date']	= "(Datum|Erfasst am)";
 
   $Lang['Locale']	= "de_DE.ISO8859-1";
