@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.40 2002/06/22 16:14:02 lestinsky Exp $
+   * $Id: en.inc,v 1.41 2002/07/21 02:43:53 vondo Exp $
    *
    * Define English text-constants.
    *
@@ -70,10 +70,10 @@
   $Lang['Admin']['NewUser']['Username'] = 'Username';
   $Lang['Admin']['NewUser']['Realname'] = 'Real name';
   $Lang['Admin']['NewUser']['EMail']    = 'EMail address';
-  $Lang['Admin']['NewUser']['Usertype'] = 'Userclass';
+  $Lang['Admin']['NewUser']['Usertype'] = 'User class';
   $Lang['Admin']['ErrMsg']['EmptyFields']       = 'Please fill out all fields';
   $Lang['Admin']['ErrMsg']['InvalidMail']       = 'The email address is invalid.';
-  $Lang['Admin']['ErrMsg']['UserExists']        = 'This username does already exist.';
+  $Lang['Admin']['ErrMsg']['UserExists']        = 'This username already exists.';
   $Lang['Admin']['ErrMsg']['UserLocked']	= 'The account is already locked.';
   $Lang['Admin']['ErrMsg']['UserDoesntExist']	= 'This username is invalid/unknown.';
   $Lang['Admin']['UserClass']['Read']	= 'Read Only';
@@ -93,7 +93,7 @@
   $Lang['Settings']['Password']['changed']      = "Password changed.";
 
   $Lang['AllRecipes']		= "All recipes";
-  $Lang['CatChoose']		= "Category-chooser";
+  $Lang['CatChoose']		= "Category chooser";
 
   $Lang['Aliases']['DefDescr']  = "enter space separated alias list.";
 
@@ -114,18 +114,18 @@ EOT;
    * Infos:
    */
 
-  $Lang['Infos']['Title']        = "Information about the " . KOCHSUITE;
+  $Lang['Infos']['Title']        = "Information about " . KOCHSUITE;
 
   $Lang['Homepage']['Title']	= 'Homepage';
   $Lang['Homepage']['Text'][0]	= <<<EOT
       <a href="http://koch-suite.berlios.de/">http://koch-suite.berlios.de/</a>:
-      Up-to-date information about this project and the currently newest
-      releases of the 
+      Up-to-date information about this project and the newest
+      releases of 
 EOT;
   $Lang['Homepage']['Text'][0] .= KOCHSUITE . " may be found here";
 
   $Lang['Version']['Title']             = 'Version';
-  $Lang['Version']['Text']['Pre']       = "Installed is " . KOCHSUITE;
+  $Lang['Version']['Text']['Pre']       = "Installed version is " . KOCHSUITE;
   $Lang['Version']['Text']['Post']      = "";
 
   $Lang['Requirements']['Title']	= 'Requirements';
@@ -143,9 +143,9 @@ EOT;
   $Lang['Requirements']['OSes'][3]	= 'OpenBSD 3.1';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
-      You will need PHP compiled with MySQL/PostgreSQL support as standalone
+      You will need PHP compiled with MySQL/PostgreSQL support as a standalone
       interpreter for the command line tools. For the web interface you need
-      PHP installed as CGI or Apache module.
+      PHP installed as a CGI or Apache module.
 EOT;
 
   $Lang['License']['Title']	= "License";
@@ -159,10 +159,11 @@ EOT;
 
   $Lang['Helptext']['General']	= <<<EOT
     <p class="top">
-      This program package consists of those three major parts: 
+      This program package consists of three major parts: 
       a big library containing all the converting and output functions,
-      (more or less as trivial wrappers to this library) a few 
-      command-line tools and the webfrontend.
+      a few 
+      command-line tools (more or less as trivial wrappers to this library)  
+      and the web frontend.
     <p>
 EOT;
 
@@ -181,9 +182,9 @@ EOT;
   $Lang['Helptext']['CL']['Title']	= "Command-Line-Tools";
   $Lang['Helptext']['CL']['commands'][0]['Name'] = "mmimport";
   $Lang['Helptext']['CL']['commands'][0]['Text'] = <<<EOT
-          Import recipes. The input will be expected from standard input
+          Import recipes. The input is expected from standard input
           (STDIN).
-          The recipes will be extracted from surrounding text and may be
+          The recipes are extracted from surrounding text and may be
           in Meal-Master or 
           <a href="http://home.t-online.de/home/ufetzer/">REZKONV</a> format.
           See also <code>mmimport(1)</code>
@@ -196,12 +197,12 @@ EOT;
           See <code>rezept(1)</code>.
 EOT;
 
-  $Lang['Helptext']['WWW']['Title']	= "Web-Frontend";
+  $Lang['Helptext']['WWW']['Title']	= "Web Frontend";
   $Lang['Helptext']['WWW']['part'][0]['Title']	= "Search-Interface";
   $Lang['Helptext']['WWW']['part'][0]['Text']	= <<<EOT
         You can search the database for terms in
           <ul>
-            <li>the menu-titles</li>
+            <li>the recipe titles</li>
             <li>the categories</li>
             <li>the ingredient list</li>
           </ul>
@@ -211,15 +212,15 @@ EOT;
         choose from "Search in" where to search for that term and click 
         the "Start Search" button.
         Since version <i>0.5</i> you can combine several terms by "AND"
-        (uppercase!). So we can finally search for 
+        (uppercase!), so we can finally search for 
         <code>Muffins AND Choc</code>
 EOT;
   $Lang['Helptext']['WWW']['part'][1]['Title']  = "Recording and Editing Interface";
   $Lang['Helptext']['WWW']['part'][1]['Text']   = <<<EOT
         This interface allows you to edit saved recipes or record new
-        ones. Numbers must use &raquo;<code>.</code>&laquo; (dot) as decimal seperator.
+        ones. Numbers must use &raquo;<code>.</code>&laquo; (dot) as the decimal seperator.
         Units should be valid 
-        <a href="units.php" target="units" onclick="units();">Mealmaster,
+        <a href="units.php" target="units" onclick="units();">Mealmaster or
         RezKonv units or defined aliases</a> and must be seperated by a space
         character from the quantity.
 EOT;
