@@ -3,7 +3,7 @@
 # This file contains the substitution-rules for "sed"
 
 # Space-separated list of all "raw" php-files.
-PHP_FILES_UNCONF=	config functions output
+PHP_FILES_UNCONF=	config.inc functions.inc output.inc
 SUBDIRS=		
 
 CONF_FILE=		../config.sed
@@ -13,10 +13,10 @@ all: build
 
 build: ${PHP_FILES_UNCONF}
 
-${PHP_FILES_UNCONF}: ${PHP_FILES_UNCONF:C,$,.raw}
-	sed -f ${CONF_FILE} ${@}.raw > ${@}.inc
+${PHP_FILES_UNCONF}: ${PHP_FILES_UNCONF:C,.inc$,.raw,}
+	sed -f ${CONF_FILE} ${@:C,.inc$,.raw,} > ${@}
 
-${PHP_FILES_UNCONF:C,$,.raw}:
+${PHP_FILES_UNCONF:C,.inc$,.raw,}:
 
 subdir:
 	@(for i in ${SUBDIRS} ; do\
@@ -28,9 +28,7 @@ subdir:
 
 clean:
 	@#make subdir TRGT=clean
-	rm -f *.php
-	rm -f *.inc
-	rm -f *.gen
+	rm -f ${PHP_FILES_UNCONF}
 
 distclean:
 
