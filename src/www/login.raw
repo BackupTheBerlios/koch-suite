@@ -47,5 +47,5 @@
   // On Successful login goto:
   $goto = "index.php";
 
-  auth_loginform("index.php");
+  auth_loginform();
 ?>
