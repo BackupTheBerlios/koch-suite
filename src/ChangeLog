@@ -1,3 +1,17 @@
+2003-03-12  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/admin.raw 1.14:
+  Readjust regular expression to handle the new 4-character tlds as well,
+  Submitted by mela via BTS
+
+  * src/www/einfuegen.raw 1.50: Add some checks
+
+  * src/www/actions.raw 1.12, src/www/mmprint.raw 1.25, src/commands/rezept.raw 1.25:
+  Add RezKonv export
+
+  * src/include/output.raw 1.51:
+  Add RezKonv export and some rangechecking
+
 2003-02-14  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/functions.raw 1.91:
