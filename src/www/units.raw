@@ -13,7 +13,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: units.raw,v 1.4 2001/06/20 18:33:29 michael Exp $ -->
+  <!-- $Id: units.raw,v 1.5 2001/06/26 22:11:34 michael Exp $ -->
   <style class="text/css">
   <!--
     .dark  { background-color:#c0c0d5; font-family:Helvetica,Arial; }
@@ -25,7 +25,7 @@
 
 <body>
 <a name="top"></a>
-<h1><? echo $Lang['UnitInfo']; ?></h1>
+<h1><? echo $Lang['UnitInfo']['Title']; ?></h1>
 
 <form>
 <input type="button" value="<? echo $Lang['Close']; ?>" onClick="window.close()">
@@ -90,9 +90,9 @@
 
 <dl>
   <dt>MM:</dt>
-    <dd>Einheit im Meal-Master Format.</dd>
+    <dd><?php echo $Lang['UnitInfo']['MMText']; ?></dd>
   <dt>RK:</dt>
-    <dd>Einheit im RezKonv-Format.</dd>
+    <dd><?php echo $Lang['UnitInfo']['RKText']; ?></dd>
 </dl>
 
 <form>
