@@ -1,0 +1,46 @@
+### $Id: FAQ.txt,v 1.1 2001/05/08 19:49:01 michael Exp $
+
+FAQ - Frequently Asked Questions
+================================
+
+Fragen:
+-------
+
+1. Ich möchte die Koch-Suite bei meinem Provider installieren, bei dem
+   ich nur FTP- und WWW-Zugang habe.
+
+
+Antworten:
+----------
+
+1. Ich möchte die Koch-Suite bei meinem Provider installieren, bei dem 
+   ich nur FTP- und WWW-Zugang habe.
+
+Ich habe dieses Szenario selbst noch nie durchgespielt. Ich würde aber so
+damit beginnen:
+
+i)   Erzeuge ein temporäres Verzeichnis /my/temp/dir
+ii)  Editiere die Datei ``./config'' so:
+
+     PHP_LIBS        =./include
+     SCRIPT_PREFIX   =./commands
+     WEB_PREFIX      =./
+
+iii) Führe diese Kommandos aus:
+
+     make
+     make install-temp-for-remote DESTDIR=/my/temp/dir
+
+iv)  Verschiebe den Inhalt des Verzeichnisses /my/temp/dir per FTP zu
+     deinem Provider. (Vermutlich am besten in ein eigenes Unterverzeichnis)
+v)   Beachte: in $PHP_LIBS liegt die Datei config.inc, darin sind die
+     Zugangsdaten zu deiner Datenbank enthalten. Dieses Verzeichnis muss also
+     gesondert geschützt werden. (z.B. via .htaccess den Zugriff darauf
+     verweigern. Wie das geht ist in genug einschlägigen Dokumenten erklärt.)
+
+Bitte beachte, dass ich dies selbst noch nie getestet habe. Eigentlich
+müsste es aber so funktionieren. Wenn nicht, dann schicke mir bitte
+dringend Feedback.
+
+
+(c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
