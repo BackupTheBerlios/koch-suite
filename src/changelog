@@ -1,4 +1,9 @@
-### $Id: changelog,v 1.12 2001/01/15 10:06:08 michael Exp $
+### $Id: changelog,v 1.13 2001/01/18 00:48:39 michael Exp $
+
+2001-01-18: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Rezept-Einfüge-Interface ist funktionsfähig. :-)
+	Es wird nun auch als Editier-Interface für existierende Rezepte
+	verwendet.
 
 2001-01-15: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Rezept-Einfüge-Interface nimmt Formen an. Es geschieht noch kein
