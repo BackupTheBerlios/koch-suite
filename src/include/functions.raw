@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.2 2000/11/04 01:11:40 michael Exp $
+   * $Id: functions.raw,v 1.3 2000/11/12 01:13:39 michael Exp $
    */
 
   include "<%%PHP_LIBS%%>/config.inc";
@@ -244,4 +244,78 @@
     return $str;
   }
 
+
+  function get_menu_by_mid ($mid) {
+    /* Contruct the menu-array */
+
+    $req = "select * from MENUE where ID = '$mid'";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    $r = mysql_fetch_array($result);
+
+    return array("title" => $r["TITEL"],
+                 "yield" => $r["PORTIONEN"],
+                 "category" => get_category_by_mid($mid),
+                 "zutaten" => get_recipe_by_mid($mid),
+                 "anleitung" => get_instructions_by_mid($mid));
+  }
+
+
+  function get_recipe_by_mid ($mid) {
+    /* */
+    $a = array();
+
+    $req = "select * from REZEPT where MENUE_ID = '$mid'";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    while ($r = mysql_fetch_array($result)) {
+      $a = array_push($a, array("title" => $r["TITEL"],
+                                "ingredients" => get_ingr_by_rid($r["ID"])));
+    }
+    return $a;
+  }
+
+
+  function get_ingr_by_rid ($rid) {
+    /* return an array with all the ingredients, belonging to an "Rezept" */
+    $a = array();
+
+    $req = "select * from ZUTATEN where REZEPT_ID = '$rid'";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    while($r = mysql_fetch_array($result)) {
+      $a = array_push("quant" => $r["MENGE"],
+                      "unit"  => $r["EINHEIT"],
+                      "ingred" => $r["TEXT"]);
+    }
+    return $a;
+  }
+
+
+  function get_category_by_mid ($mid) {
+    $a = array();
+
+    $req = "select * from KAT where MENUE_ID = '$mid'";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    while ($r = mysql_fetch_array($result)) {
+      $req_1 = "select * from KATEGORIE where ID = " . $r["KATEGORIE_ID"];
+      $res_1 = mysql_db_query($GLOBALS["DB_NAME"], $req_1);
+
+      $f = mysql_fetch_array($res_1);
+
+      $a = array_push($a, $f["TEXT"]);
+    }
+    return $a;
+  }
+
+
+  function get_instructions_by_mid($mid) {
+    $req = "select * from ANWEISUNG where MENUE_ID = '$mid'";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    $f = mysql_fetch_array($result);
+
+    return $f["TEXT"];
+  }
 ?>
