@@ -393,6 +393,14 @@
 
   include "<%%WEB_PREFIX%%>/actions.inc";
   ?>
+  <script language="JavaScript1.2">
+    <!--
+      function kat() {
+        foo = "kategorien.php?target=begriff&maxsel=1";
+        window.open(foo, 'kat', 'width=300,height=400,screenX=700,screenY=300, scrollbars=yes');
+      }
+    //-->
+  </script>
 
   <h2><?php echo $Lang['Recipe']['Insert']; ?></h2>
 

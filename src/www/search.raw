@@ -104,10 +104,8 @@
 
     $_SESSION['operate_on'] = 'searchresult';
     include "<%%WEB_PREFIX%%>/actions.inc";
-    ?>
-    <h2><? echo $Lang['Search']['Result']; ?>:</h2>
+    echo "<h2>". $Lang['Search']['Result'] .":</h2>\n";
 
-    <?php
     if (count($$_SESSION['operate_on'])) {
       ?>
       <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
@@ -135,9 +133,7 @@
 
     $_SESSION['operate_on'] = 'tagged_recipes';
     include "<%%WEB_PREFIX%%>/actions.inc";
-    ?>
-    <h2><?php echo $Lang['Tag']['Show']['Title']; ?></h2>
-    <?php
+    echo "<h2>". $Lang['Tag']['Show']['Title'] ."</h2>n";
     if (count($$_SESSION['operate_on'])) {
       ?>
       <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
@@ -176,12 +172,9 @@
 
     /* Do the search */
     if (empty($where)) $where[] = 'title';
-    foreach ($where as $search_in) {
-      $m = exec_search((isset($_POST["begriff"]) ? $_POST['begriff'] : ''), 
-                       $search_in, 
-                       (isset($_GET["all"]) ? $_GET["all"] : ''));
-      $all_result = KS_array_merge($all_result, $m);
-    }
+    $all_result = exec_search((isset($_POST["begriff"]) ? $_POST['begriff'] : ''), 
+                     $where, 
+                     (isset($_GET["all"]) ? $_GET["all"] : ''));
 
     if (count($all_result)) {
       ?>
@@ -208,6 +201,16 @@
   }
 ?>
 <h2><? echo $Lang['Search']['Search']; ?></h2>
+<script language="JavaScript1.2">
+  <!--
+    function kat() {
+      foo = "kategorien.php?target=begriff&maxsel=1";
+      window.open(foo, 'kat', 'width=300,height=400,screenX=700,screenY=300, scrollbars=yes');
+      document.searchform.elements[2].checked = true;
+    }
+  //-->
+</script>
+
 
 <form name="searchform" action="<? echo $PHP_SELF; ?>" method="post">
   <table border=0>
