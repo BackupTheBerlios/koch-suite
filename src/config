@@ -1,4 +1,4 @@
-# $Id: config,v 1.24 2002/11/06 17:44:16 lestinsky Exp $
+# $Id: config,v 1.25 2002/11/27 18:34:04 lestinsky Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 # All variables will be are referenced by ${VARNAME}. Expansion takes
@@ -55,3 +55,6 @@ DB_USER		=kochsuite
 DB_PASSWORD	=
 
 DB_NAME		=DBkoch
+
+# If you are using MySQL, you can set the tabletype for new tables.
+MYSQL_TABLE_TYPE	=MyISAM
