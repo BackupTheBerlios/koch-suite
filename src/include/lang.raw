@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: lang.raw,v 1.4 2001/06/21 14:11:05 michael Exp $
+   * $Id: lang.raw,v 1.5 2001/06/23 00:25:18 michael Exp $
    *
    * Guess prefered language for the web-interface.
    *
@@ -94,7 +94,8 @@
       if ($l == $DEFAULT_LANG) {
         break;
       } else {
-        read_lang_file($l);
+        read_best_language($l);
+        break;
       }
       $i++;
     }
