@@ -1,3 +1,19 @@
+2002-08-11  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/de.inc 1.36.2.2: And another fix.
+
+  * src/include/de.inc 1.39:
+  test for word boundaries, or /Ref/ might match more than it should.
+
+  * src/include/de.inc 1.36.2.1, src/include/en.inc 1.41.2.1, src/include/parser.raw 1.2.2.1:
+  Pull in changes from current
+
+  * src/include/de.inc 1.38:
+  Use the same naming convention for all patterns. Improve the pattern.
+
+  * src/include/parser.raw 1.3, src/include/en.inc 1.43:
+  Use the same naming convention for all patterns.
+
 2002-08-10  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/configure 1.24, src/man/Makefile.raw 1.12, src/man/man1/Makefile.raw 1.1:
