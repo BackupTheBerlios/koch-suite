@@ -1,3 +1,38 @@
+2002-02-18  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/edit_alias.raw 1.10:
+  Move variable-names to PHP4.1.*-style
+
+  * src/www/search.raw 1.15:
+  Always show the search-form
+
+  * src/commands/ks_passwd.raw 1.4, src/commands/mmimport.raw 1.25, src/commands/rezept.raw 1.18, src/include/functions.raw 1.70:
+  Use single qoutes, where possible, since they are parsed faster.
+
+  * src/include/output.raw 1.41:
+  Some formatting issues
+
+  * src/include/pwcrypt.raw 1.2:
+  Make better random strings.
+
+2002-02-12  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/auth.raw 1.9, src/www/settings.raw 1.2:
+  Simplify the authentication scheme slightly. Please review this code.
+
+  * src/www/einfuegen.raw 1.33:
+  start moving to php4.1.*'s new variables for POST, GET, ... data
+
+  * src/include/lang.raw 1.12:
+  This should finally work in both, the web interface and the command line
+
+  * src/include/koch-suite.raw 1.7:
+  No magic Quotes. We'll do it ourself.
+
+2002-02-10  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/search.raw 1.14: little fix
+
 2002-01-15  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/Makefile.raw 1.20.2.1:
@@ -17,7 +52,7 @@
 
   * src/www/rezept.raw 1.23: fix recent changes.
 
-2002-01-01  Eric Vaandering at BerliOS  <vondo@hornet.berlios.de>
+2002-01-01  Eric Vaandering at BerliOS  <vondo@sheep.berlios.de>
 
   * src/include/en.inc 1.29: Minor English nits
 
