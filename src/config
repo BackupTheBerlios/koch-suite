@@ -1,10 +1,10 @@
-# $Id: config,v 1.21 2001/12/24 14:14:42 lestinsky Exp $
+# $Id: config,v 1.22 2002/04/02 21:56:31 lestinsky Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 # All variables will be are referenced by ${VARNAME}. Expansion takes
 # place immediately while reading every line.
 
-# Where is the php-Binary?
+# Where is the php-cgi-Binary?
 PHP		=/usr/local/bin/php4
 PHP_OPTS	=-q
 
