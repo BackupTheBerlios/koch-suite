@@ -1,6 +1,6 @@
 # MySQL dump 8.13
 #
-# $Id: init_db.mysql,v 1.8 2002/04/14 18:25:13 lestinsky Exp $
+# $Id: init_db.mysql,v 1.9 2002/05/12 11:29:26 lestinsky Exp $
 #
 # Host: localhost    Database: DBkoch
 #--------------------------------------------------------
@@ -244,6 +244,7 @@ CREATE TABLE usertable (
   usertype int(11) default NULL,
   password varchar(255) default NULL,
   email    varchar(255) default NULL,
+  realname varchar(255) default NULL,
   PRIMARY KEY  (username)
 ) TYPE=MyISAM;
 
