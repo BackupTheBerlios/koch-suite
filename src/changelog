@@ -1,5 +1,9 @@
-### $Id: changelog,v 1.41 2001/07/25 10:53:53 michael Exp $
+### $Id: changelog,v 1.42 2001/08/06 21:30:48 lestinsky Exp $
 
+2001-08-06: Michael Lestinsky <michael@lestinsky.de>
+	Update of Localized files (de.inc, en.inc)
+	Use a new class "File" for TempFile-Handling.
+	
 2001-07-23: Michael Lestinsky <michael@lestinsky.de>
 	New function for pre-parsing (still somewhat incomplete)
 	Dupe-Detection. Requires new database-format, 
