@@ -1,3 +1,32 @@
+2002-05-26  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/search.raw 1.18:
+  enable searching by metadata
+
+  * src/include/Makefile.raw 1.29:
+  build parser.inc
+
+  * src/commands/mmimport.raw 1.28:
+  require parser.inc
+
+  * src/include/functions.raw 1.77:
+  New get_menu_by_meta, remove the parser from here
+
+  * src/include/parser.raw 1.1:
+  back out the parser here, as it is needed by mmimport only
+
+  * src/include/output.raw 1.44:
+  print nonempty fields only
+
+  * src/include/de.inc 1.34, src/include/en.inc 1.38:
+  rather place the patterns here, since they are language-specific
+
+  * src/Documentation/Programmers.txt 1.14, src/README 1.49, src/INSTALL 1.9:
+  Update
+
+  * src/include/lang.raw 1.14:
+  Fix authentication problem
+
 2002-05-24  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/auth.raw 1.15:
