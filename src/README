@@ -1,4 +1,4 @@
-### $Id: README,v 1.24 2001/04/17 11:09:20 michael Exp $
+### $Id: README,v 1.25 2001/05/08 20:02:23 michael Exp $
 
 Koch-Suite
 ==========
@@ -86,6 +86,10 @@ Konfiguration von PHP mit folgenden Werten erforderlich.
 Installation:
 -------------
 
+Folgende Anleitung nimmt an, dass du vollen Shellzugriff auf den Rechner
+hast, auf dem die Koch-Suite installiert werden soll. Siehe gegebenenfalls
+in Documentation/FAQ.txt nach, wenn dies bei dir nicht ganz zutrifft.
+
  - tar -xvzf kochsuite-*.tar.gz
    Dieses Paket auspacken, wenn es nicht bereits geschehen ist.
 
@@ -99,9 +103,12 @@ Installation:
 
 Zum Import der Datenstruktur kann mit einem
 
- $ mysql DBkoch < init_db.sql 
+ $ mysql -uUSER -pPASSWORD -hHOST DBkoch < init_db.sql 
 
-alle notwendigen Komandos ausführen lassen.
+alle notwendigen Komandos ausführen lassen (wobei USER, PASSWORD und HOST mit
+den jew. Zugangsdaten zur Datenbank ersetzt werden müssen). Wie die
+Datenbank selbst angelegt wird, oder ein Datenbank-Benutzer, steht im
+MySQL-Manual unter http://www.mysql.com sehr gut beschrieben.
 
 
 Updating:
@@ -128,11 +135,15 @@ Todo/'Roadmap':
  - vorhandene Rezepte kommentieren,
  - Zugriffskontrolle für die Datenbank/Authentifizierung des Users
  - RezKonv-Exportfilter,
+ - Multilingualization (m17n)
 
 
 Bekannte Bugs:
 --------------
 
+ - Original Meal-Master hat eine Beschränkung auf 100 Zeilen pro Rezept.
+   Dieses Limit wird von der Koch-Suite ignoriert. Beim Ueberschreiten
+   erfolgt keine Warnung.
  - Deutsch-Englischer Mischmasch in Kommentaren,...
  - Import von Rezepten mit einer alternativen Darstellung der
    Rezept-Header ("      H    Für die Sauce"). Header werden als solche
