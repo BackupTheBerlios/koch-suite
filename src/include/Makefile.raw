@@ -24,9 +24,9 @@ subdir:
 
 clean:
 	@#make subdir TRGT=clean
-	rm -rf *.php
-	rm -rf *.inc
-	rm -rf *.gen
+	rm -f *.php
+	rm -f *.inc
+	rm -f *.gen
 
 distclean:
 
