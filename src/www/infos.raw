@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.9 2001/01/25 00:18:10 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.10 2001/02/05 01:26:44 michael Exp $ -->
 </head>
 
 <body>
@@ -43,10 +43,16 @@
           Die Ausgabe geschieht auf der Standard-Ausgabe.</dd>
       <dt><code>mmimport</code></dt>
           <dd><i>Import von Rezepten.</i> Der Input wird auf dem
-          Standard-Eingabe-Kanal erwartet.</dd>
+          Standard-Eingabe-Kanal erwartet. Die Rezepte werden dabei aus
+          umgebendem Text extrahiert und k&ouml;nnen sowohl im Meal-Master- 
+          oder im 
+          <a href="http://home.t-online.de/home/ufetzer/">REZKONV</a>-Format 
+          sein.</dd>
       <dt><code>rezept2latex</code></dt>
           <dd><i>LaTeX</i>-Export von Rezepten. Rezepte werden als
           <i>LaTeX</i>-Source ausgegeben.</dd>
+      <dt><code>rk2mm</code></dt>
+          <dd>Konvertiere REZKONV- in Meal-Master-Rezepte.</dd>
     </dl>
 
     <h4>Web-Frontend</h4>
@@ -64,12 +70,13 @@
         unter <i>Suchen in</i> das passende Suchfeld und klickt auf
         <i>Suchen</i>.
         </dd>
-      <dt>Eingabe-Interface:</dt>
+      <dt>Eingabe- und Editier-Interface:</dt>
         <dd>Rezepte k&ouml;nnen mit diesem Interface erfasst und editiert
         werden. Zahlenangaben in der Zutatenliste muessen mit 
         &quot;<code>.</code>&quot
         als Dezimaltrenner angegeben werden. Die Einheiten-Angaben haben
-        g&uuml;ltige Mealmaster-Einheiten zu sein. 
+        g&uuml;ltige Mealmaster-Einheiten zu sein und m&uuml;ssen durch
+        ein Leerzeichen von der Mengenangabe getrennt werden. 
         </dd>
     </dl>
 
@@ -93,7 +100,8 @@
     </ul>
     <p>
       Für die Kommandozeilen-Tools ist PHP mit MySQL-Unterstützung als
-      Standalone-Interpreter notwendig.
+      Standalone-Interpreter notwendig. Für das Web-Interface muss PHP als
+      CGI oder als Apache-Modul installiert sein.
     </p>
 
     <h3>Feedback, Support</h3>
