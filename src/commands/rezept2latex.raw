@@ -1,0 +1,68 @@
+#!<%%PHP%%> <%%PHP_OPTS%%>
+<?
+  /* $Id: rezept2latex.raw,v 1.1 2000/11/29 18:34:55 michael Exp $
+   *
+   * Export a recipe as Latex-source.
+   */
+
+  require "<%%PHP_LIBS%%>/functions.inc";
+
+  $stdout = fopen("php://stdout", "w");
+  $stderr = fopen("php://stderr", "w");
+
+  $ver = 0.1;
+
+  $helptext  = "rezept2latex $ver\n" ;
+  $helptext .= "Invoke as:\n";
+  $helptext .= "\tmmexport [-h] [-f filename] \"searchstring\"\n";
+  $helptext .= "\t-h\tPrint this help-text and exit\n";
+  $helptext .= "\t-f\tSpecify a filename where output goes to, otherwise\n";
+  $helptext .= "\t\tto STDOUT. On multiple matches append an 2-digit\n";
+  $helptext .= "\t\tcounter to filename\n";
+  $helptext .= "\t\"searchstring\"\tSearch for this string in the database.\n";
+
+  if ($argc == 1) {
+    /* No search-string */
+
+    fputs ($stderr, $helptext);
+  } else {
+    for ($i=1 ; $i < count($argv) ; $i++) {
+      /* parse the command-line */
+
+      if ($argv[$i] == '-f') {
+        $filename = $argv[++$i];
+      } else if ($argv[$i] == '-h') { #Help
+        fputs ($stderr, $helptext);
+        return;
+      } else {
+        $search = $argv[$i];
+      }
+    }
+    $name = "%" . $search . "%";
+
+    chdir($PWD);
+
+    $result = get_mid_by_name($name);
+    if (count($result) >= 2) {
+      $counter = 0;
+      foreach ($result as $menu) {
+        $filename_ = "./" . $filename . "." . sprintf("%02d", $counter);
+        $fp = fopen($filename_, "w");
+        fputs($fp, latex_export(get_menu_by_mid($menu["id"])));
+        fclose ($fp);
+        $counter++;
+      }
+    } else if (count($result) == 1) {
+      $menu = $result[0];
+      $fp = fopen($filename, "w");
+      fputs($fp, latex_export(get_menu_by_mid($menu["id"])));
+      fclose ($fp);
+    } else {
+      fputs ($stderr, "Nothing found\n");
+    }
+  }
+
+  fclose ($stdout);
+  fclose ($stderr);
+
+?>
