@@ -35,7 +35,7 @@
    * @module einfuegen
    */
 
-  require_once "<%%ETC_PREFIX%%>/koch-suite.inc";
+  require_once "<%%PHP_LIBS%%>/setup.inc";
   require_once "<%%PHP_LIBS%%>/functions.inc";
   require_once "<%%PHP_LIBS%%>/lang.inc";
   require_once "<%%PHP_LIBS%%>/nocache.inc";
@@ -45,6 +45,7 @@
 
   $scale = 1;
   $new_cat = true;
+  $meta = array();
 
   /*
    * read the proper values submitted via form
@@ -59,6 +60,9 @@
   if (isset($_POST["ztitle"]))    $ztitle    = $_POST["ztitle"];
   if (isset($_POST["more_zutaten"])) $more_zutaten = $_POST["more_zutaten"];
   if (isset($_POST["submit"]))       $submit = $_POST["submit"];
+  if (isset($_POST['recorder']))  $recorder  = $_POST['recorder'];
+  if (isset($_POST['date']))      $date      = $_POST['date'];
+  if (isset($_POST['source']))    $source    = $_POST['source'];
   if (isset($_SERVER["PHP_SELF"]))   $PHP_SELF = $_SERVER["PHP_SELF"];
 
   $target = $PHP_SELF;
@@ -162,6 +166,34 @@
                  $anleitung . "</textarea></td>\n";
     $str .= "</tr>\n";
 
+    // Meta-Daten:
+    if (isset($rezept['meta']['Recorder'])) {
+      $str .= "<tr>\n" .
+                "<td>" . $Lang['Recorder'] . ":</td>\n";
+      $str .= "<td><input type=\"text\" name=\"recorder\" value=\"".
+                     htmlentities($rezept['meta']['Recorder']) .
+                     "\" size=\"60\"></td>\n";
+      $str .= "</tr>\n"; 
+    }
+
+    if (isset($rezept['meta']['Date'])) {
+      $str .= "<tr>\n" .
+                "<td>" . $Lang['Date'] . ":</td>\n";
+      $str .= "<td><input type=\"text\" name=\"date\" value=\"".
+                     htmlentities($rezept['meta']['Date']) .
+                     "\" size=\"60\"></td>\n";
+      $str .= "</tr>\n";
+    }
+
+    if (isset($rezept['meta']['Source'])) {
+      $str .= "<tr>\n" .
+                "<td>" . $Lang['Source'] . ":</td>\n";
+      $str .= "<td><input type=\"text\" name=\"source\" value=\"".
+                     htmlentities($rezept['meta']['Source']) .
+                     "\" size=\"60\"></td>\n";
+      $str .= "</tr>\n";
+    }
+
     $str .= "</table>\n";
 
     return $str;
@@ -236,10 +268,8 @@
       $ingred = '';
     }
 
-    // if ($ztitle[$y] != '' and count($ingredients) != 0) {
-      array_push ($zutat, array("title"       => $ztitle[$y], 
-                                "ingredients" => $ingredients));
-    // }
+    array_push ($zutat, array("title"       => $ztitle[$y], 
+                              "ingredients" => $ingredients));
     $y++;
   }
 
@@ -250,11 +280,30 @@
     $anweisung = preg_replace('/(\r)?\n/m', ' ', $anweisung);
   }
 
+  if (!empty($recorder)) {
+    $meta['Recorder'] = trim($recorder);
+  } else {
+    if (!isset($mid)) $meta['Recorder'] = $USER_S['realname'];
+  }
+
+  if (!empty($date)) {
+    $meta['Date'] = trim($date);
+  } else {
+    if (!isset($mid)) $meta['Date'] = strftime("%x");
+  }
+
+  if (!empty($source)) {
+    $meta['Source'] = trim($source);
+  } else {
+    if (!isset($mid)) $meta['Source'] = '';
+  }
+
   $r = array ('title'     => (isset($titel)     ? trim($titel) : '') , 
               'yield'     => (isset($portionen) ? trim($portionen) : ''),
               'category'  => (isset($kategorie) ? split(',[ ]*', $kategorie) : ''),
               'zutaten'   => $zutat,
-              'anleitung' => (isset($anweisung) ? $anweisung : '') );
+              'anleitung' => (isset($anweisung) ? $anweisung : ''),
+              'meta'      => $meta );
 
   $r["hash"] = recipe_hash($r);
 ?>
@@ -271,7 +320,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.35 2002/05/11 12:21:33 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.36 2002/05/20 15:07:35 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--

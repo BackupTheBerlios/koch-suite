@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.41 2002/02/18 17:34:38 lestinsky Exp $
+   * $Id: output.raw,v 1.42 2002/05/20 15:07:35 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -76,6 +76,29 @@
       $str .= $line . "\n";
     }
 
+    $newline = true;    
+
+    if (isset($rezept['meta']) and count($rezept['meta']) >0) {
+      $str .= "\n";
+ 
+      foreach ($rezept['meta'] as $fieldname => $fieldvalue) {
+ 
+        $firstline = true;
+
+        if (strlen($fieldvalue) < 55) {
+          $str .= sprintf("%11s: ", $Lang[$fieldname]) . $fieldvalue . "\n";
+        } else {
+          foreach(length_adjust($fieldvalue, 55) as $line) {
+            if ($firstline) {
+              $str .= sprintf("%11s: ", $Lang[$fieldname]) .": ". $line . "\n";
+              $firstline = false;
+            } else {
+              $str .= "           : " . $line . "\n";
+            }
+          }
+        }
+      }
+    }
     return $str;
   }
 
@@ -130,13 +153,20 @@
     $str .= "  </td></tr>\n";
  
     $str .= "  <tr><td colspan=\"2\">\n";
-    $instr = preg_replace("/(\r)?\n(\r)?\n?/", "<br>\n", htmlentities($rezept["anleitung"]));
+    $instr = preg_replace("/(\r)?\n(\r)?\n?/", "<br>\n",
+               htmlentities($rezept["anleitung"]));
     foreach (length_adjust($instr, 65) as $line) {
       $line = preg_replace("/&lt;(p|br)&gt;/", "<\\1>", $line);
 
       $str .= "    " . $line . "\n";
     }
     $str .= "  </td></tr>\n";
+
+    foreach ($rezept['meta'] as $fieldname => $fieldvalue) {
+      $str .= "<tr><td>" . htmlentities($Lang[$fieldname]) . "</td>" .
+                  "<td>" . htmlentities($fieldvalue) . "</td></tr>\n";
+    }
+
     $str .= "</table>\n";
 
     return $str;
@@ -274,6 +304,17 @@
       $line = preg_replace ('/^:/', "\n", $line);
       $str .= $line . "\n";
     }
+
+    if (isset($rezept['meta'])) {
+      $str .="\n";
+   
+      foreach ($rezept['meta'] as $fieldname => $fieldvalue) {
+        $firstline = true;
+        $str .= "\\textbf{" . ltx_string($Lang[$fieldname])  . "}: " .
+                  ltx_string($fieldvalue) . "\\\\\n";   
+      }
+    }
+
     $str .= "\\fussy\n";
     $str .= "\\newpage\n";
     return $str;
@@ -351,7 +392,7 @@
 
   function mmexport (&$rezept, $strict = true) {
     /* return a Meal-Master-formatted string. */
-    global $tool;
+    global $tool, $Lang;
     $i = 0;
     $header = "MMMMM-----Koch-Suite (" . KOCHSUITE_VER . ") Export nach Meal-Master-----\n";
     $footer = "MMMMM";
@@ -369,9 +410,30 @@
     foreach ($a as $line) {
       $str .= stripslashes($line) . "\n";
     }
-    $str .= "\n$footer\n";
 
-    return $str;
+    if (isset($rezept['meta']) and count($rezept['meta']) >0) {
+      $str .= "\n";
+
+      foreach ($rezept['meta'] as $fieldname => $fieldvalue) {
+        $firstline = true;
+        if (strlen($fieldvalue) < 55) {
+          $str .= sprintf(":%-15s: ", $Lang[$fieldname]) . $fieldvalue .  "\n";
+        } else {
+          foreach(length_adjust($fieldvalue, 55) as $line) {
+            if ($firstline) {
+              $str .= sprintf(":%-15s: ", $Lang[$fieldname]) . $line . "\n";
+              $firstline = false;
+            } else {
+              $str .= ":               : " . $line . "\n";
+            }
+          }
+        }
+      }
+    }
+
+    $str .= "\n$footer\n";
+    
+    return $str;   
   }
 
 

@@ -29,14 +29,14 @@
    */
 
   /*
-   * $Id: mmimport.raw,v 1.26 2002/05/11 12:23:28 lestinsky Exp $
+   * $Id: mmimport.raw,v 1.27 2002/05/20 15:07:35 lestinsky Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
    * See the bundled file "LICENCE" for the licence of this script.
    */
 
-  require "<%%ETC_PREFIX%%>/koch-suite.inc";
+  require_once "<%%PHP_LIBS%%>/setup.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/file.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
@@ -52,18 +52,28 @@
   $opt_cat = false;
 
   $new_cat = false; // Ignore unknown categories by default.
+  $ignore_unknown_mmext = false; // Ignore optional fields, that are 
+                                 // unknown to our database format.
   
   $help = <<<EOD
-Usage: $argv[0] [-t|--test [-mm]] [-c category,[cat...]]] [-h|--help]
+Usage: $argv[0] [-t | --test [-mm]] [-c cat,cat,...] [-C | --import-new-cat]
+              [-h | --help]
 
-     -t --test     Test the parser.  Do not import the recipe, but rather re­
-                   format it into plain ascii.  Output goes to STDOUT.
+     -t --test   test the parser.  Do not import the recipe, but rather refor-
+                 mat it into plain ascii.  Output goes to STDOUT.
 
-     -mm           Reformat parser output to Meal-Master format. 
-     
-     -c cat,...	   Add comma separated categories to the recipe.
+     -mm         Reformat parser output to Meal-Master format. This makes
+                 sense only in conjunction with --test
 
-     --help        display this help and exit
+     -c cat,cat,...
+                 Add these category-entries to the recipe.
+
+     -C --import-new-cat
+                 Don"t ignore categories which are unknown to the
+database.
+                 This is disabled by default.
+
+     -h --help   Show usage and exit.
 
 EOD;
   
@@ -97,6 +107,12 @@ EOD;
         case '-C':
 	case '--import-new-cat':
              $new_cat = true;
+             break;
+
+        case '-i':
+        case '--ignore-unknown-mmext':
+             $ignore_unknown_mmext = true;
+             break;
 
         default:
               fputs($stderr, "$argv[0]: ignoring invalid option -- " . preg_replace('/^-*/', '', $argv[$i]) . "\n");
@@ -128,9 +144,9 @@ EOD;
     /* Is the line the start of a new recipe? */
     if (eregi("(-{5}|M{5}).*Meal-Master.*", $line)) { 
       /* parse the recipe */
-      $rezept =& parse_recipe($tempfile, RECIPE_MM);
+      $rezept =& parse_recipe($tempfile, $ignore_unknown_mmext, RECIPE_MM);
     } else if (eregi("(={10}).*REZKONV.*", $line)) {
-      $rezept =& parse_recipe($tempfile, RECIPE_RK);
+      $rezept =& parse_recipe($tempfile, $ignore_unknown_mmext, RECIPE_RK);
     }
 
     if (isset($rezept)) {
