@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.29 2003/01/10 23:26:31 lestinsky Exp $
+  /* $Id: print.raw,v 1.30 2003/02/11 11:21:19 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    *
@@ -43,9 +43,6 @@
                                        // further operations
   session_register("operate_on");      // Set marker an which buffer we
                                        // are working.
-  $searchresult   =& $_SESSION['searchresult'];
-  $tagged_recipes =& $_SESSION['tagged_recipes'];
-
   $bulk = false;
 
   if (isset($_GET["mid"])) {
