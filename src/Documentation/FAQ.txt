@@ -1,4 +1,4 @@
-### $Id: FAQ.txt,v 1.1 2001/05/08 19:49:01 michael Exp $
+### $Id: FAQ.txt,v 1.2 2001/06/06 10:08:05 michael Exp $
 
 FAQ - Frequently Asked Questions
 ================================
@@ -37,6 +37,10 @@ v)   Beachte: in $PHP_LIBS liegt die Datei config.inc, darin sind die
      Zugangsdaten zu deiner Datenbank enthalten. Dieses Verzeichnis muss also
      gesondert geschützt werden. (z.B. via .htaccess den Zugriff darauf
      verweigern. Wie das geht ist in genug einschlägigen Dokumenten erklärt.)
+vi)  Beachte auch: Die Koch-Suite führt derzeit überhaupt keine
+     User-Authentifizierung durch. Das heisst, dass jeder vollen Schreib- 
+     und Lese-Zugriff auf die entsprechende Datenbank hat.
+     Dies wird sich in späteren Versionen aber gewiss ändern.
 
 Bitte beachte, dass ich dies selbst noch nie getestet habe. Eigentlich
 müsste es aber so funktionieren. Wenn nicht, dann schicke mir bitte
