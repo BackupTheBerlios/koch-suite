@@ -1,4 +1,8 @@
-### $Id: changelog,v 1.17 2001/02/17 17:08:02 michael Exp $
+### $Id: changelog,v 1.18 2001/02/21 11:37:47 michael Exp $
+
+2001-02-21: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Abfangen von Konfigurations-Einstellungen (magic_quotes_gpc) von
+	PHP.
 
 2001-02-17: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Prüfe Einheiten in Rezepten auf Aliase.
