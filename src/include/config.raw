@@ -2,13 +2,13 @@
 
   /* Cetral configuration-file for the koch-suite
    * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
-   * $Id: config.inc,v 1.1 2000/10/26 01:20:25 michael Exp $
+   * $Id: config.raw,v 1.1 2000/11/04 00:07:10 michael Exp $
    */
 
-  $DB_SERVER   = "magrathea";
-  $DB_USER     = "";
-  $DB_PASSWORD = "";
-  $DB_NAME     = "DBkoch";
+  $DB_SERVER   = "<%%DB_SERVER%%>";
+  $DB_USER     = "<%%DB_USER%%>";
+  $DB_PASSWORD = "<%%DB_PASSWORD%%>";
+  $DB_NAME     = "<%%DB_NAME%%>";
 
   /* Connect to the Database */
   mysql_pconnect($DB_SERVER, $DB_USER, $DB_PASSWORD);

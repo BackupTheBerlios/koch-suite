@@ -1,0 +1,34 @@
+# Space-separated list of all "raw" php-files.
+PHP_FILES_UNCONF=	""
+
+SUBDIRS=		""
+
+all:
+	@#make subdir TRGT=all
+	@#(for i in ${PHP_FILES_UNCONF}; do\
+	echo "$$i.raw --> $$i.inc"; \
+	cat $$i.raw | sed -f ${CONF_FILE} > $$i.inc;\
+	done)
+
+subdir:
+	@(for i in ${SUBDIRS} ; do\
+	echo "====> ${THISDIR}/$$i";\
+	cd $$i; \
+	${MAKE} ${TRGT} CONF_FILE=${CONF_FILE} THISDIR=${THISDIR}/$$i; \
+	echo "<==== ${THISDIR}";\
+	done )
+
+clean:
+	@#make subdir TRGT=clean
+	rm -rf *.php
+	rm -rf *.inc
+	rm -rf *.gen
+
+distclean:
+
+install:
+	( [-d <%%WEB_PREFIX%%> ] || \
+	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%WEB_PREFIX%%> )
+	( for i in ${PHP_FILES_UNDEF} ; do \
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i.inc <%%WEB_PREFIX%%>; \
+	done )

@@ -1,0 +1,31 @@
+# $Id: config,v 1.1 2000/11/04 00:07:09 michael Exp $
+# Central Configuration-File for the "Koch-Suite"
+# Lines starting with a "#" are comments, empty lines are omitted.
+
+# Where is the php-Binary?
+PHP		=/usr/local/bin/php4
+PHP_OPTS	=-q
+
+# Where to place general "include"-Files:
+PHP_LIBS 	=/usr/local/lib/koch-suite
+
+# Where to install the executables:
+SCRIPT_PREFIX   =/usr/local/bin
+
+# Where to place the "Web"-Documents for this Interface:
+WEB_PREFIX	=/var/www/koch-suite
+
+# And the Documentation goes there:
+DOC_PREFIX      =/usr/local/share/doc/koch-suite
+
+# User and Group, who will own the files, typically something like "root"
+# or "wheel";
+
+OWNER		=root
+GROUP		=root
+
+# -- DB-Definitions --
+DB_SERVER	=magrathea
+DB_USER		=root
+DB_PASSWORD	=
+DB_NAME		=DBkoch

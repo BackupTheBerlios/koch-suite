@@ -1,10 +1,10 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.inc,v 1.6 2000/11/01 13:23:17 michael Exp $
+   * $Id: functions.raw,v 1.1 2000/11/04 00:07:10 michael Exp $
    */
 
-  include "./include/config.inc";
+  include "<%%PHP_LIBS%%>";
 
   /* --- Functions --- */
 
@@ -67,10 +67,11 @@
         } else {
           /* Ok, treat the Rest as "instruction" */
           $instruction .= trim($line) . "\n";
-
+          
         }
       }
     }
+    $instructions = trim($instructions);
 
     return array("title" => $title,
                  "category" => $categories,
@@ -148,24 +149,70 @@
   }
 
 
-
   function write_db ($rezept) {
-    /* Write a recipe into the database. For the Layout of the Database
+    /* Write a recipe into the database. For the layout of the database
      * see Documentation/init_db.sql
      */
 
-   global $DB_NAME;
+    global $DB_NAME;
 
-   $req = "insert into MENUE values ( " .
+    $req = "insert into MENUE values ( " .
           "  0, " .
-          "  '$yield', " .
-          "  '$title', " .
+          "  '" . addslashes($rezept["yield"]) . "', " .
+          "  '" . addslashes($rezept["title"]) . "' " .
           "  ) ";
     $result = mysql_db_query($DB_NAME, $req);
     $mid = mysql_insert_id();
 
-  }
+    foreach ($rezept["zutaten"] as $z) {
+      $req = "insert into REZEPT values ( " .
+             "  0, " .
+             "  '$mid', " .
+             "  '" . addslashes($z["title"]) . "' " .
+             " ) ";
+      $result = mysql_db_query($DB_NAME, $req);
+      $rid = mysql_insert_id();
 
+      foreach ($z["ingredients"] as $i) {
+        $req = "insert into ZUTATEN values ( " .
+               "  0, " .
+               "  '" . addslashes($i["quant"]) . "', " .
+               "  '" . addslashes($i["unit"])  . "', " .
+               "  '" . addslashes($i["ingred"]) ."', " .
+               "  '$rid' ".
+               " ) ";
+        $result = mysql_db_query($DB_NAME, $req);
+      }
+    }
+    $req = "insert into ANWEISUNG values ( " .
+           "  0, " .
+           "  '" . addslashes($rezept["anleitung"]) . "', " .
+           "  '$mid' " .
+           " ) ";
+    $result = mysql_db_query($DB_NAME, $req);
+
+    foreach ($rezept["category"] as $cat) {
+      $req = "select * from KATEGORIE where TEXT = '$cat'";
+      $result = mysql_db_query($DB_NAME, $req);
+      if ($r = mysql_fetch_array($result)) {
+        $cid = $r["ID"];
+      } else {
+        $req = "insert into KATEGORIE values ( " .
+               "  0, " .
+               "  '" . addslashes($cat) . "' " .
+               " ) ";
+        $result = mysql_db_query($DB_NAME, $req);
+        $cid = mysql_insert_id();
+      }
+
+      $req = "insert into KAT values ( " .
+             "  0, " . 
+             "  '$cid', " .
+             "  '$mid'  " .
+             " ) ";
+      $result = mysql_db_query($DB_NAME, $req);
+    }
+  }
 
 
   function pad_left($str, $pad, $length) {

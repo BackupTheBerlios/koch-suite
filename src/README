@@ -1,4 +1,4 @@
-### $Id: README,v 1.4 2000/11/01 13:19:41 michael Exp $
+### $Id: README,v 1.5 2000/11/04 00:07:09 michael Exp $
 
 Koch-Suite
 ==========
@@ -7,11 +7,13 @@ Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
 Die Datei LICENCE enthält die Lizenz, unter der dieses Paket als ganzes
 oder einzelne Dateien hieraus verwendet werden dürfen.
 
+
 Was ist das hier ueberhaupt?
 ----------------------------
 
 Eine Sammlung von Skripten fuer die Rezeptverwaltung. Angefangen von
 Mealmaster-Importfiltern (http://www.mealmaster.com), bis ...
+
 
 Voraussetzungen:
 ----------------
@@ -24,50 +26,42 @@ sind unter PHP-4.0.3.pl1 geschrieben und getestet worden. PHP muss als
 Stand-Alone-Interpreter vorhanden sein, als Apache-Modul funktionieren
 die Konsolen-Tools nicht.
 
+
 Installation:
 -------------
 
-Wenn du dieses Dokument liest, dann hast du wahrscheinlich schon den
-Tar-Ball ausgepackt. Andernfalls mittels
+ - tar -xvzf kochsuite-1.0.tar.gz
+   Dieses Paket auspacken, wenn es nicht bereits geschehen ist.
 
-  tar -xvzf kochsuite-1.0.tar.gz
+ - vi config
+   Anpassen der Konfigurationsvariablen
 
-auspacken. Du findest dann einige Ausfuehrbare Skripte vor. In diesen
-ueberpruefst du den Pfad zum PHP-Interpreter. Gib bei den Konsolen-Tools
-auch das Flag "-q" mit an, damit PHP keine HTTP-Header erzeugt.
-Kopiere alle ausfuehrbaren Tools an eine sympatische Stelle, z.B. 
-/usr/local/bin. 
-Passe include/config.inc an die lokalen Anforderungen an.
-Kopiere das Verzeichnis include/ nach irgendwo.
+ - make
 
-Wenn du einen Rezept-Server betreiben willst: in der Datei 
-"Documentation/init-db.sql" sind SQL-Kommandos enthalten, die die 
-notwendigen Datenstrukturen erzeugen. 
-Vorher benötigt man aber eine Datenbank auf dem Server, die kann man mit
+ - make install
+   als Root.
 
-  echo "create database DBkoch" | mysql 
-
-bequem anlegen.
 Zum Import der Datenstruktur kann mit einem
 
   mysql DBkoch < init-db.sql 
 
-alle notwendigen Komandos ausführen lassen.
+alle notwendigen Komandos ausführen lassen. init-db.sql liegt im
+Documentation-Verzeichnis.
+
 
 Todo:
 -----
 
-Noch sehr viel:
- - Makefile schreiben,
- - On-the-Fly-Konfiguration erzeugen,
  - Dokumentation schreiben,
  - Web-Frontends,
  - Suchfunktionen,
+
 
 Bugs:
 -----
 
 gibt es sicherlich auch eine Menge.
+
 
 Feedback:
 ---------
