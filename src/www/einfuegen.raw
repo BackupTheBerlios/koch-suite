@@ -38,7 +38,6 @@
   require_once "<%%PHP_LIBS%%>/setup.inc";
   require_once "<%%PHP_LIBS%%>/functions.inc";
   require_once "<%%PHP_LIBS%%>/lang.inc";
-  require_once "<%%PHP_LIBS%%>/nocache.inc";
   require_once "<%%PHP_LIBS%%>/auth.inc";
 
   auth(WRITE);
@@ -385,7 +384,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.41 2002/08/18 13:56:25 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.42 2002/08/31 17:51:25 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -419,9 +418,12 @@
       if(isset($mid) and $mid != 0) {
         echo "<p>" . $Lang['Recipe']['Deleted'] . "</p>\n";
         delete_menue($mid);
+        echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
+        $mid = write_db($r, $mid, $new_cat);
+      } else {
+        echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
+        $mid = write_db($r, 0, $new_cat);
       }
-      echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
-      $mid = write_db($r, $new_cat);
     }
 
     include "<%%WEB_PREFIX%%>/actions.inc";
