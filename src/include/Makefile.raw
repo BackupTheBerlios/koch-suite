@@ -1,0 +1,38 @@
+#!/usr/bin/make
+
+# This file contains the substitution-rules for "sed"
+
+# Space-separated list of all "raw" php-files.
+PHP_FILES_UNCONF=	config functions
+
+SUBDIRS=		""
+
+all:
+	@#make subdir TRGT=all
+	@(for i in ${PHP_FILES_UNCONF}; do\
+	echo "$$i.raw --> $$i.inc"; \
+	cat $$i.raw | sed -f ${CONF_FILE} > $$i.inc;\
+	done)
+
+subdir:
+	@(for i in ${SUBDIRS} ; do\
+	echo "====> ${THISDIR}/$$i";\
+	cd $$i; \
+	${MAKE} ${TRGT} CONF_FILE=${CONF_FILE} THISDIR=${THISDIR}/$$i; \
+	echo "<==== ${THISDIR}";\
+	done )
+
+clean:
+	@#make subdir TRGT=clean
+	rm -rf *.php
+	rm -rf *.inc
+	rm -rf *.gen
+
+distclean:
+
+install:
+	( [-d <%%PHP_LIBS%%> ] || \
+	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%PHP_LIBS%%> )
+	( for i in ${PHP_FILES_UNDEF} ; do \
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i.inc <%%PHP_LIBS%%>; \
+	done )
