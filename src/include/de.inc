@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.20 2001/10/13 13:46:40 lestinsky Exp $
+   * $Id: de.inc,v 1.21 2001/10/15 11:48:41 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -47,7 +47,7 @@
 
   $Lang['Recipe']['Edit']	= "Rezept bearbeiten";
   $Lang['Recipe']['Delete']	= 'Rezept l&ouml;schen';
-  $Lang['Recipe']['Deleted']    = "Rezept gel&auml;scht";
+  $Lang['Recipe']['Deleted']    = "Rezept gel&ouml;scht";
   $Lang['Recipe']['Insert']     = "Rezept in die Datenbank aufnehmen";
   $Lang['Recipe']['Inserted']   = "Rezept eingef&uuml;gt.";
 
