@@ -1,4 +1,4 @@
-### $Id: README,v 1.26 2001/05/08 20:08:31 michael Exp $
+### $Id: README,v 1.27 2001/05/16 00:25:16 michael Exp $
 
 Koch-Suite
 ==========
@@ -48,6 +48,9 @@ Bisher existiert/funktioniert:
  - Exportfunktionen nach Latex, Plain-Text und Mealmaster-Format, und HTML
  - ein paar Prototyp-Webseiten, die elementare Suchfunktionen in der
    Datenbank und ein Rezept-Erfassungsinterface implementieren.
+ - Multilingualization. Liefere die Webseite in der Sprache aus, in der
+   sie angefordert werden (Browser-Vorgabe "Accept-Language").
+   Sprachmodule lassen sich sehr einfach erstellen.
 
 
 PHP4-Installation:
