@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: de.inc,v 1.3 2001/05/22 00:15:53 michael Exp $
+   * $Id: de.inc,v 1.4 2001/05/30 19:52:43 michael Exp $
    *
    * Define German text-constants.
    *
@@ -81,14 +81,14 @@ EOT;
       CGI oder als Apache-Modul installiert sein.
 EOT;
 
-  $Lang['Language']['Title']	= "Spracheinstellung:";
+  $Lang['Language']['Title']	= "Spracheinstellung";
   $Lang['Language']['Text'][0]	= <<<EOT
       Seit Version 0.5 ist die Koch-Suite mehrsprachig. Um eine andere
       Sprache auszuw&auml;hlen, stellt man im Browser einfach die
       gew&uuml;nschte Sprache ein (z.B. Mozilla: Edit -> Preferences ->
       Navigator -> Languages). Wenn die gew&uuml;nschte Sprache existiert,
       werden die Seiten in dieser Sprache ausgegeben. Andernfalls wird auf
-      die Standard-Sprache (Deutsch) zur&uuml;ckgegriffen.
+      die Standard-Sprache (Deutsch "de") zur&uuml;ckgegriffen.
 EOT;
 
   $Lang['License']['Title']	= "Lizenz";

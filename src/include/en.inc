@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.3 2001/05/22 00:15:52 michael Exp $
+   * $Id: en.inc,v 1.4 2001/05/30 19:52:43 michael Exp $
    *
    * Define English text-constants.
    *
@@ -76,25 +76,25 @@ EOT;
   $Lang['Requirements']['OSes'][2]	= 'OpenBSD 2.8';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
-      Für die Kommandozeilen-Tools ist PHP mit MySQL-Unterstützung als
-      Standalone-Interpreter notwendig. Für das Web-Interface muss PHP als
-      CGI oder als Apache-Modul installiert sein.
+      You will need PHP compiled with MySQL-support as standalone
+      interpreter for the commandline-tools. For the webinterface you need
+      PHP installed as CGI or Apache-module.
 EOT;
 
-  $Lang['Language']['Title']	= "Spracheinstellung:";
+  $Lang['Language']['Title']	= "Language Setting";
   $Lang['Language']['Text'][0]	= <<<EOT
-      Seit Version 0.5 ist die Koch-Suite mehrsprachig. Um eine andere
-      Sprache auszuw&auml;hlen, stellt man im Browser einfach die
-      gew&uuml;nschte Sprache ein (z.B. Mozilla: Edit -> Preferences ->
-      Navigator -> Languages). Wenn die gew&uuml;nschte Sprache existiert,
-      werden die Seiten in dieser Sprache ausgegeben. Andernfalls wird auf
-      die Standard-Sprache (Deutsch) zur&uuml;ckgegriffen.
+      The Koch-Suite is multilingual starting with release 0.5.
+      To choose another lanuage, adjust your browser (i.e. Mozilla: Edit
+      -> Preferences -> Navigator -> Languages).
+      If the language you specified does exist you will see all following
+      pages in the requested language. Otherwise the default language
+      (German "de") will be used.
 EOT;
 
   $Lang['License']['Title']	= "Lizenz";
   $Lang['License']['Pre'][0]	= <<<EOT
-      Das gesamte Paket der Koch-Suite steht unter einer BSD-artigen
-      Lizenz.
+      The entire Koch-Suite-package is released unter the terms under the
+      terms of a BSD-style license.
 EOT;
 
   $Lang['License']['Post'][0]	= "";
@@ -141,47 +141,41 @@ EOT;
   $Lang['Helptext']['WWW']['Title']	= "Web-Frontend";
   $Lang['Helptext']['WWW']['part'][0]['Title']	= "Such-Interface";
   $Lang['Helptext']['WWW']['part'][0]['Text']	= <<<EOT
-        Die Datenbank kann nach Stichwörtern in
+        You can search the database for terms in
           <ul>
-            <li>den Men&uuml;-Titeln</li>
-            <li>den Kategorien der Rezepte</li>
-            <li>der Zutatenliste</li>
+            <li>the menu-titles</li>
+            <li>the categories</li>
+            <li>the ingredient list</li>
           </ul>
-        durchsucht werden. Es wird eine Liste an Rezepten zur Auswahl
-        angezeigt, die den gew&uuml;nschten Suchbegriff beinhalten. Dazu
-        gibt man im Suchinterface den Suchbegriff in das Formular ein, wählt
-        unter <i>Suchen in</i> das passende Suchfeld und klickt auf
-        <i>Suche starten</i>. <br>
-        Seit Version <i>0.5</i> ist auch die Verknüpfung von mehreren
-        Suchbegriffen durch <code>AND</code> möglich.
-        Damit lässt sich jetzt z.B. nach <code>Schoko AND Muffins</code>
-        suchen.
+        The result is a list of all recipes containing the specified term
+        in the chosen field.
+        Choose "Search" from the mainmenu, enter the term into the form,
+        choose from "Search in" where to search for that term an click 
+        onto the "Start Search"-button.
+        Since version <i>0.5</i> you can combine several terms by "AND"
+        (uppercase!). So we can finally search for 
+        <code>Muffins AND Choc</code>
 EOT;
-  $Lang['Helptext']['WWW']['part'][1]['Title']  = "Eingabe- und Editier-Interface";
+  $Lang['Helptext']['WWW']['part'][1]['Title']  = "Recording- and Editing-Interface";
   $Lang['Helptext']['WWW']['part'][1]['Text']   = <<<EOT
-        Rezepte k&ouml;nnen mit diesem Interface erfasst und editiert
-        werden. Zahlenangaben in der Zutatenliste muessen mit
-        &quot;<code>.</code>&quot (Punkt)
-        als Dezimaltrenner angegeben werden. Die Einheiten-Angaben
-        m&uuml;ssen g&uuml;ltige
+        This interface allows you to edit saved recipes or record new
+        ones. Numbers must use <code>.</code> (dot) as decimal seperator.
+        Units should be valid 
         <a href="units.php" target="units" onclick="units();">Mealmaster-,
-        RezKonv-Einheiten oder ein dazu definierter Alias</a>
-        sein und m&uuml;ssen durch ein Leerzeichen von der Mengenangabe
-        getrennt werden.
+        RezKonv-units or defined aliases and must be seperated by a space
+        character from the quantity.
 EOT;
 
   $Lang['Helptext']['Feedback']['Title']	= "Feedback";
   $Lang['Helptext']['Feedback']['Text'][0]	= <<<EOT
-      Für die User und Entwickler existiert eine Mailingliste,
-      <i>koch-suite@zaphod.rhein-neckar.de</i>. Diese Mailingliste
-      ist &ouml;ffentlich. Es darf aber nur an diese Liste schreiben, wer
-      sie auch aboniert (&quot;subscribe&quot;) hat.
+      We have a mailinglist for users and developers,
+      <i>koch-suite@zaphod.rhein-neckar.de</i>. This mailinglist is
+      public. Only subscribed addresses are alowed to write there.
 EOT;
   $Lang['Helptext']['Feedback']['Text'][1]      = <<<EOT
-      Um sich auf der Mailingliste zu subscriben schickt man eine EMail an
-      <i>koch-suite-request@zaphod.rhein-neckar.de</i> mit
-      folgendem Subject/Betreff: &raquo;<code>subscribe</code>&laquo;.
-      (Nat&uuml;rlich ohne die Quotes darum!)
+      To subscribe to this mailinglist send a mail to
+      <i>koch-suite-request@zaphod.rhein-neckar.de</i>, subject:
+      &raquo;<code>subscribe</code>&laquo;. (Of course without the quotes!)
 EOT;
 
 ?>
