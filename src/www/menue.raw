@@ -1,8 +1,8 @@
-<!-- $Id: menue.raw,v 1.19 2002/05/20 15:03:47 lestinsky Exp $ -->
+<!-- $Id: menue.raw,v 1.20 2002/07/03 16:26:46 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
 <?php
-  $blue_dot = '<img src="pics/blue_dot.gif" align="bottom" alt="" border=0>';
-  $info_dot = '<img src="pics/info_dot.gif" align="bottom" alt="" border=0>';
+  $blue_dot = '<img src="pics/blue_dot.gif" align="bottom" alt="*" border=0>';
+  $info_dot = '<img src="pics/info_dot.gif" align="bottom" alt="*" border=0>';
 ?>
 <table border=0 cellspacing=0 cellpadding=0>
   <tr class="border" align="top">
