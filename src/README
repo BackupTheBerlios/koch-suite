@@ -1,4 +1,4 @@
-### $Id: README,v 1.44 2002/04/08 15:12:41 lestinsky Exp $
+### $Id: README,v 1.45 2002/04/14 18:21:41 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -107,9 +107,9 @@ koch-suite-devel@lists.berlios.de
 Known Bugs:
 -----------
 
- - Original Meal-Master has a limit of 100 lines per recipe.
-   The Koch-Suite ignores this limit. You will receive no warning, when you
-   reach this limit.
+ - Original Meal-Master has a limit of 100 lines per recipe. Which is IMO
+   braindead.  The Koch-Suite ignores this limit. You will receive no 
+   warning, when you reach this limit.
  - German-English Mischmasch in comments,...
  - Import of recipes with the alternative method to declare
    recipe-headers. (E.g. ("      H    For the sauce"). These headers won't

@@ -1,4 +1,4 @@
-### $Id: FAQ.txt,v 1.5 2002/04/08 15:12:14 lestinsky Exp $
+### $Id: FAQ.txt,v 1.6 2002/04/14 18:21:03 lestinsky Exp $
 
 FAQ - Frequently Asked Questions
 ================================
@@ -23,10 +23,11 @@ Answers:
 I never tried this setting myself. I would start with the following
 steps:
 
-i)   create a temporary directory /my/tmp/dir
+i)   create a temporary directory, such as /my/tmp/dir,
 ii)  Edit ``./config'' and set:
   
      PHP_LIBS        =./include
+     ETC_PREFIX      =./include
      SCRIPT_PREFIX   =./commands
      WEB_PREFIX      =./
 	  
@@ -36,21 +37,21 @@ iii) execute the following commands:
      make install-temp-for-remote DESTDIR=/my/temp/dir
 
 iv)  Move the contents of /my/temp/dir to a subdirectory on your
-     webspace via FTP
-v)   Notice that $PHP_LIBS/koch-suite.inc contains your access data to the
+     webspace via FTP,
+v)   Notice that $ETC_PREFIX/koch-suite.inc contains your access data to the
      database. You have to protect this directory (i.e. deny access via
-     .htaccess). See the relevant documentation for information on how
-     to do this. Of course it's allways better to place koch-suite.inc
-     somewhere outside your DocumentRoot
+     .htaccess). See the relevant documentation for your webserver for 
+     instrutctions on how to do this. Of course it's allways better to 
+     place koch-suite.inc somewhere completly outside your DocumentRoot.
 
 Please note that I never tried this myself. It should rather work. If not,
-please send feedback to me.
+please send me feedback.
 
 
 2. I get an error message about 'DB.php' not being found.
 
 'DB.php' is part of PHP's PEAR-modules. Normally, these should be
-installed (If they aren't follow the instructions in PHP.txt). Search 
+installed (if they aren't follow the instructions in PHP.txt). Search 
 for DB.php using 'find' or 'locate' and adjust the variable `PEAR' 
 in ../config to the path of this file (or if you have the Koch-Suite 
 already installed, adjust it in `koch-suite.inc').
@@ -62,14 +63,16 @@ There are several ways:
 
   i)   implement it yourself and send us the patch,
   ii)  send us a detailed description, what you are missing, and ask
-       us to implement it.
-  iii) use another software which implenets $FEATURE.
+       us to implement it. (Donations might readjust the priority on our
+       todo list :-))
+  iii) use another software which implements $FEATURE.
 
 There are also some things which probably will never be done, because we
-lack time, don't see the use of $FEATURE or would be to hard to do the 
-right way. Some of them are:
+lack time, don't see any use for them or would be to hard to do the 
+"right way[tm]". Some of them are:
 
   i)   shopping lists
+  ii)  menu editors
 
 Don't ask for these.
 
