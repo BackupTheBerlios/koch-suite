@@ -1,10 +1,10 @@
-### $Id: FAQ.txt,v 1.8 2002/06/25 20:12:55 lestinsky Exp $
+### $Id: FAQ.txt,v 1.9 2002/09/15 14:30:26 lestinsky Exp $
 
 FAQ - Frequently Asked Questions
-================================
+
 
 Questions:
-~~~~~~~~~~
+==========
 
 1. How can I install Koch-Suite having only FTP and HTTP access
    to my webspace?
@@ -17,12 +17,12 @@ Questions:
 
 
 Answers:
-~~~~~~~~
+========
 
-1. How can I install Koch-Suite having only FTP and HTTP access
-   to my webspace?
+1. How can I install Koch-Suite having only FTP and HTTP access to my webspace?
+-------------------------------------------------------------------------------
 
-I never tried this setting myself. I would start with the following
+I never tried this setting myself, but I would start with the following
 steps:
 
 i)   create a temporary directory, such as /my/tmp/dir,
@@ -32,7 +32,7 @@ ii)  Edit ``./config'' and set:
      ETC_PREFIX      =./include
      SCRIPT_PREFIX   =./commands
      WEB_PREFIX      =./
-	  
+
 iii) execute the following commands:
 
      make
@@ -43,7 +43,7 @@ iv)  Move the contents of /my/temp/dir to a subdirectory on your
 v)   Notice that $ETC_PREFIX/koch-suite.inc contains your access data to the
      database. You have to protect this directory (i.e. deny access via
      .htaccess). See the relevant documentation for your webserver for 
-     instrutctions on how to do this. Of course it's allways better to 
+     instructions on how to do this. Of course it's allways better to 
      place koch-suite.inc somewhere completly outside your DocumentRoot.
 
 Please note that I never tried this myself. It should rather work. If not,
@@ -51,6 +51,7 @@ please send me feedback.
 
 
 2. I get an error message about 'DB.php' not being found.
+---------------------------------------------------------
 
 'DB.php' is part of PHP's PEAR-modules. Normally, these should be
 installed (if they aren't follow the instructions in PHP.txt). Search 
@@ -60,6 +61,7 @@ already installed, adjust it in `koch-suite.inc').
 
 
 3. The Koch-Suite is quite good, but I'm missing $FEATURE.
+----------------------------------------------------------
 
 There are several ways:
 
@@ -70,7 +72,7 @@ There are several ways:
   iii) use another software which implements $FEATURE.
 
 There are also some things which probably will never be done, because we
-lack time, don't see any use for them or would be to hard to do the 
+lack time, don't see any use for them or they would be to hard to do the 
 "right way[tm]". Some of them are:
 
   i)   shopping lists
@@ -80,10 +82,32 @@ Don't ask for these.
 
 
 4. What about MS Windows(tm).
+-----------------------------
 
 Noone ever tried it. Or at least no one succeeded with it. You'll need a
 Bourne shell, sed, awk, make and other unix stuff, installing the Cygnus
 distribution might help. But as I don't use Windows(tm) you're on your
 own, sorry.
+
+Maybe this helps you, too:
+
+| From: Ric Burlet <muggles@yourthroat.net>
+| Date: Sun, 4 Aug 2002 09:44:50 -0700 (PDT)
+|
+| > Wait a moment, are you telling me the Koch-Suite runs on a Windows System?
+| > I'm getting lots of emails of users asking "how do I do the installation
+| > on my Windows machine" and my answer is usually "Install Linux, I don't
+| > know, I've got no Windows."
+| >
+| > Would you mind to send me a brief summary how you installed the Koch-Suite
+| > on your Windows?
+|
+| Ok,
+| 
+| The only thing that really won't work is the install script
+| I first installed on my linux box, then copied the www folder over to
+| WIN/htdocs/koch-suite.. and started hacking the paths :) I imagine one
+| could edit/rename the raw files, but I saw this as a faster option for me.
+| *everything* is self contained in one dir with this hack, even PEAR.
 
 Copyright (c) 2002 Michael Lestinsky <michael@lestinsky.de>
