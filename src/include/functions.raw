@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.86 2002/10/14 20:07:37 lestinsky Exp $
+   * $Id: functions.raw,v 1.87 2002/11/27 18:31:58 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -136,8 +136,16 @@
     $result=$db->query($query);
 
     if (DB::isError($result)) {
-      write_log('SQL error: ' . $result->getMessage());
-      die('SQL error: ' . $result->getMessage());
+      if ($GLOBALS['TRANSACTIONAL']) {
+        write_log('SQL error:' . $result->getMessage());
+        write_log('Rolling back.');
+        $q = "ROLLBACK";
+        DB_query($q);
+        return false;
+      } else {
+        write_log('SQL error: ' . $result->getMessage());
+        die('SQL error: ' . $result->getMessage());
+      }
     }
 
     if ($result === DB_OK) {
@@ -538,11 +546,13 @@
    * Write a recipe into the database. 
    * For the layout of the database see Documentation/init_db.sql
    * @param  array $rezept Array containing the recipe
-   * @return void 
+   * @return int	   Message-ID on success, -1 on error.
    */
   function write_db ($rezept, $new_mid, $new_cat_flag) {
 
     global $db;
+
+    if ($GLOBALS['TRANSACTIONAL']) DB_query('BEGIN');
 
     if ($new_mid == 0) 
       $mid=$db->nextID("MENUESEQ");
@@ -556,6 +566,7 @@
           "  '" . addslashes($rezept["hash"])  . "'  " .
           "  ) ";
     $result = DB_query($req);
+    if (! $result) return -1;
 
     foreach ($rezept["zutaten"] as $z) {
       if (isset($z['ingredients'][0]['ingred'])) {
@@ -566,6 +577,7 @@
                "  '" . addslashes($z["title"]) . "' " .
                " ) ";
         $result = DB_query($req);
+        if (! $result) return -1;
 
         foreach ($z["ingredients"] as $i) {
           $zid = $db->nextID("ZUTATENSEQ");
@@ -577,6 +589,7 @@
                  "  '$rid' ".
                  " ) ";
           $result = DB_query($req);
+          if (! $result) return -1;
         }
       }
     }
@@ -585,6 +598,7 @@
            "  '$mid' " .
            " ) ";
     $result = DB_query($req);
+    if (! $result) return -1;
 
     foreach ($rezept["category"] as $cat) {
       $req = "select id,text from KATEGORIE where TEXT = '$cat'";
@@ -600,6 +614,7 @@
                  "  '" . addslashes($cat) . "' " .
                  " ) ";
           $result = DB_query($req);
+          if (! $result) return -1;
         } else $GLOBALS['notice'] .= "$cat unknown, Ignoring.\n";
       }
 
@@ -607,6 +622,7 @@
         $kid = $db->nextID("KATSEQ");
         $req = "insert into KAT values ($kid,$cid,$mid)";
         $result = DB_query($req);
+        if (! $result) return -1;
       }
     }
 
@@ -624,10 +640,12 @@
                " '$fieldvalue' ".
                ")";
         $result = DB_query($req);
+        if (! $result) return -1;
       }
     }
 
-    // return the menu-id.
+    // Close transaction and return the menu-id.
+    if ($GLOBALS['TRANSACTIONAL']) DB_query('COMMIT');
     return $mid;
   }
 
