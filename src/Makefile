@@ -36,8 +36,8 @@ clean:
 distclean: clean
 	@make subdir TRGT=distclean DIRS="${SUBDIRS}"
 	@(for i in ${SUBDIRS}; do \
-	echo "rm $${i}/Makefile" ; \
-	rm $${i}/Makefile ; \
+	echo "rm -f $${i}/Makefile" ; \
+	rm -f $${i}/Makefile ; \
 	done)
 
 install-man:

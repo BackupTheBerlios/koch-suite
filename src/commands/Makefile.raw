@@ -26,8 +26,8 @@ subdir:
 clean:
 	@#make subdir TRGT=clean
 	-@( for i in "${PHP_FILES_UNCONF}" ; do \
-	echo "rm $${i}"; \
-	rm $${i}; \
+	echo "rm -f $${i}"; \
+	rm -f $${i}; \
 	done)
 
 distclean:

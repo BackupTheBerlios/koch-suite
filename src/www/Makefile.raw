@@ -1,4 +1,4 @@
-# $Id: Makefile.raw,v 1.11 2001/01/15 10:05:44 michael Exp $
+# $Id: Makefile.raw,v 1.12 2001/02/07 19:08:14 michael Exp $
 # Space-separated list of all "raw" php-files.
 PHP_FILES=		delete einfuegen index infos rezept print mmprint \
 			kategorien
@@ -36,8 +36,8 @@ clean:
 distclean:
 	@make subdir TRGT=distclean
 	@( for i in ${SUBDIRS}; do \
-	echo "rm $${i}/Makefile" ; \
-	rm $${i}/Makefile; \
+	echo "rm -f $${i}/Makefile" ; \
+	rm -f $${i}/Makefile; \
 	done)
 
 install:

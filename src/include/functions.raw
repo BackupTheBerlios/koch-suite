@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.20 2001/02/07 18:35:28 michael Exp $
+   * $Id: functions.raw,v 1.21 2001/02/07 19:08:13 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -269,7 +269,9 @@
       $rawunit = trim($foo[2]);
       $text = trim($foo[3]);
 
-      $req = "select ABBREV from EINHEITEN where RK_ABBREV = '$rawunit'";
+      $req = "select ABBREV from EINHEITEN " .
+             " where RK_ABBREV = '$rawunit'" .
+             "   and MMUSE = 'J' ";
       $res = mysql_db_query($GLOBALS["DB_NAME"], $req);
 
       if ($res != 0 and $mmunit = mysql_fetch_row($res)) {
