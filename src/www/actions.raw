@@ -16,10 +16,14 @@
       if (isset($mid))
         echo "[<a href=\"print.php?mid=$mid&scale=$scale\">" . $Lang['PrintVers'] . "</a>]\n";
 
-      if (isset($mid))
+      if (isset($result_id))
+        echo "[<a href=\"mmprint.php?result_id=$result_id&scale=$scale\">Meal-Master-Format</a>]\n";
+      else if (isset($mid))
         echo "[<a href=\"mmprint.php?mid=$mid&scale=$scale\">Meal-Master-Format</a>]\n";
   
-      if (isset($mid))
+      if (isset($result_id))
+        echo "[<a href=\"rezept.php?result_id=$result_id&scale=$scale\">" . $Lang['NormalVers'] . "</a>]\n";
+      else if (isset($mid))
         echo "[<a href=\"rezept.php?mid=$mid&scale=$scale\">" . $Lang['NormalVers'] .  "</a>]\n";
     }
   ?>
@@ -64,7 +68,7 @@
           ?>
           </div>
         </td>
-        <td style="text-align:center;" width="33%">
+        <td style="text-align:center;" width="34%">
           <div class="small">
             <?php
             if (isset($_SESSION['operate_on']) and
