@@ -4,39 +4,50 @@
 CONF_FILE=	config.sed
 
 # Space-separated list of all subdirectories, where we should proceed to
-SUBDIRS=	include commands www
+COMMAND_SUBDIR=	commands
+WWW_SUBDIR=	www
+INC_SUBDIR=	include
+SUBDIRS=	${INC_SUBDIR} ${COMMAND_SUBDIR} ${WWW_SUBDIR}
 
 THISDIR=	.
 
 all: config
-	@make subdir TRGT=all
+	@make subdir TRGT=all DIRS="${SUBDIRS}"
 
 config:
 	./configure
 
 subdir:
-	@(for i in ${SUBDIRS}; do \
+	@(for i in ${DIRS}; do \
 	echo "====> ${THISDIR}/$$i";\
 	cd ${THISDIR}/$$i; \
 	${MAKE} THISDIR=${THISDIR}/$${i} CONF_FILE=../${CONF_FILE} ${TRGT};\
 	cd .. ; \
-	echo "<==== ${THISDIR}";\
+	echo "<==== ${THISDIR}/$${i}";\
 	done)
 	
 clean:
-	@make subdir TRGT=clean
+	@make subdir TRGT=clean DIRS=${SUBDIRS}
 	rm -f *.php
 	rm -f *.gen
 	rm -f config.sed
 
 distclean: clean
-	@make subdir TRGT=distclean
+	@make subdir TRGT=distclean DIRS=${SUBDIRS}
 	@(for i in ${SUBDIRS}; do \
 	echo "rm $${i}/Makefile" ; \
 	rm $${i}/Makefile ; \
 	done)
 
-install:
-	@make subdir TRGT=install
+install-command:
+	@make subdir TRGT=install DIRS=${COMMAND_SUBDIR}
+
+install-includes:
+	@make subdir TRGT=install DIRS=${INC_SUBDIR}
+
+install-www:
+	@make subdir TRGT=install DIRS=${WWW_SUBDIR}
+
+install: install-includes install-command install-www
 
 .PHONY: distclean clean subdir all config
