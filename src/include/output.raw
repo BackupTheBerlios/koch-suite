@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.9 2001/01/07 19:20:19 michael Exp $
+   * $Id: output.raw,v 1.10 2001/01/07 20:14:22 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -201,7 +201,8 @@
         if ($a[$i] == '<p>' or $a[$i] == '<br>') {
           $wordlen = 0;
         } else {
-          $wordlen = strlen($a[$i]);
+          $wordlen = strlen($a[$i]) + 1;
+          /* String-Length + prefixed Space-character! */
         }
         if ((strlen($foo) + $wordlen) <= $len) {
           if (preg_match("/<(br|p)>/", $a[$i], $bla)) {
