@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.20 2001/10/18 21:36:35 bus Exp $
+# $Id: configure,v 1.21 2001/10/25 09:32:41 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -163,9 +163,10 @@ done
 if [ -n "${install}" -a "${stupid_install}" != "1" ] ; then
     echo "Found - ${install}"
     add_conf "INSTALL" ${install}
-elif [ "${stupid_install}" = 1 ]; then
-    add_conf "INSTALL" "${THISDIR}/install.sh"
-    echo "Using ./install.sh"
+else
+    # We could not find a good "install" or it was to stupid.
+    add_conf "INSTALL" "${THISDIR}/install-sh"
+    echo "Using ./install-sh"
 fi
 
 

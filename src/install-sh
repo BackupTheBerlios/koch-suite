@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: install.sh,v 1.2 2001/10/22 12:26:53 lestinsky Exp $
+# $Id: install-sh,v 1.1 2001/10/25 09:32:41 lestinsky Exp $
 #
 # This install-script tries to be as BSD-install compatible as possible
 # And is used, if your operating-system doesn't support a suitable one.
