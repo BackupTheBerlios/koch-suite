@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.18 2002/08/18 13:56:25 lestinsky Exp $
+   * $Id: kategorien.raw,v 1.19 2002/08/24 09:50:24 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW
@@ -51,6 +51,11 @@
   if (isset($_GET["target"]))    $target = $_GET["target"];
   if (isset($_GET["kategorie"])) $kategorie = $_GET["kategorie"];
   if (isset($_GET["maxsel"]))    $maxsel = $_GET["maxsel"];
+  if (isset($_GET["formname"])) {
+    $formname = $_GET["formname"]; 
+  } else {
+    $formname = "forms[0]";
+  }
   if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -70,13 +75,13 @@
   <!--
     function eintragen ( name ) {
       <? if ($maxsel != 1) { ?>
-      if ( opener.document.forms[0].<? echo $target ?>.value == '' ) {
-        opener.document.forms[0].<? echo $target ?>.value = name;
+      if ( opener.document.<?php echo $formname ?>.<? echo $target ?>.value == '' ) {
+        opener.document.<?php echo $formname ?>.<? echo $target ?>.value = name;
       } else {
-        opener.document.forms[0].<? echo $target ?>.value += ', ' + name;
+        opener.document.<?php echo $formname ?>.<? echo $target ?>.value += ', ' + name;
       }
       <? } else { ?>
-      opener.document.forms[0].<? echo $target ?>.value = name;
+      opener.document.<?php echo $formname ?>.<? echo $target ?>.value = name;
       window.close();
       <? } ?>
     }
