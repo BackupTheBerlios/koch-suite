@@ -1,4 +1,4 @@
-### $Id: INSTALL,v 1.14 2002/09/26 08:56:15 bus Exp $
+### $Id: INSTALL,v 1.15 2002/10/09 11:07:18 bus Exp $
 
 Koch-Suite Installation Instructions
 ====================================
@@ -45,19 +45,21 @@ you want the Koch-Suite installed on. Please take a look at
                            # write access to.)
    $ make install
 
-To create a DBMS-user -password and -database:
+To create a DBMS-user, -password and -database:
 
 PostgreSQL:
-  To create a PostgreSQL database:
+  To create the database and the PostgreSQL-user:
 
-  As PostgreSQl-Superuser (or user with "CREATE DATABASE" permissions):
-  $ psql -c "CREATE DATABASE dbkoch" template1 
-  or
-  $ psql -U<username> -c "CREATE DATABASE dbkoch" template1
+  Invoke a PostgreSQL-shell as PostgreSQL-Superuser (postgres) (or a user
+  with permission to CREATE DATABASE and CREATE USER)
 
-  Then as regular user (or the username, you will use to to perform the
-  requests, later):
-  $ psql [-U<username>] dbkoch <init_db.pgsql
+  $ psql [-h DBSERVER] template1
+
+  type these commands:
+
+  CREATE USER <USER> [PASSWORD '<PASSWORD'] NOCREATEDB NOCREATEUSER;
+  CREATE DATABASE dbkoch;
+  \q
 
 MySQL:
   To create the database and the MySQL-user:
@@ -71,20 +73,20 @@ MySQL:
   GRANT ALL PRIVILEGES ON DBkoch.* TO USER@HOST IDENTIFIED BY 'PASSWORD';
   FLUSH PRIVILEGES;
 
-  Replace DBSERVER with the hostname of your database server, USER with
-  the name of the account you want to create , PASSWORD respectively and
-  HOST with the hostname where the Koch-Suite will be installed. (Please
-  note: in MySQL `localhost' and the FQDN of the same computer are not the
-  same!)
-  USERNAME, PASSWORD and HOST need to be the same as you typed in the file
-  config for DB_USER, DB_PASSWORD and DB_SERVER.
+For all DBMS:
+Replace DBSERVER with the hostname of your database server, USER with
+the name of the account you want to create , PASSWORD respectively and
+HOST with the hostname where the Koch-Suite will be installed. (Please
+note: in MySQL `localhost' and the FQDN of the same computer are not the
+same!)
+USERNAME, PASSWORD and HOST need to be the same as you typed in the file
+config for DB_USER, DB_PASSWORD and DB_SERVER.
 
-  Drop back to your normal system shell and perform
+Now you need to create the tables for Koch-Suite.  While still in the
+installation root directory, type
 
-  $ mysql -h DBSERVER -u USER -pPASSWORD DBkoch < init_db.mysql 
+  commands/init_db
 
-  to initialize the database. Replace DBSERVER, USER and PASSWORD
-  respectively with the accounts values you just created above.
 
 To create Koch-Suite users:
 
@@ -142,10 +144,10 @@ Or if you have a (post) 0.5 already installed:
 
  $ rezept -mm -relaxed "" > all.mm
 
-into the file `all.mm' in (relaxed) Mealmaster format. Delete all tables
-and recreate them with `init_db.??sql' from this release as described above. 
-Install the new Koch-Suite release and re-import the recipes afterwards
-with the new `mmimport'
+into the file `all.mm' in (relaxed) Mealmaster format.  Now delete all tables
+or simply drop and create the database and recreate the tables with
+`commands/init_db' from this release as described above.  Install the new
+Koch-Suite release and re-import the recipes afterwards with the new `mmimport'
 
  $ mmimport -C < all.mm
 
