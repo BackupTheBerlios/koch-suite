@@ -1,3 +1,12 @@
+2002-05-17  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/login.raw 1.2: remove bogus
+
+  * src/include/auth.raw 1.13: Small fix
+
+  * src/include/de.inc 1.32, src/include/en.inc 1.36, src/include/es.inc 1.3:
+  Update: We test it on OpenBSD 3.1 now.
+
 2002-05-14  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/README 1.47: Update todo list
