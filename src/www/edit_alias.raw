@@ -30,7 +30,7 @@
   /**
    * Alias-Editor
    *
-   * $Id: edit_alias.raw,v 1.9 2001/11/19 21:08:18 lestinsky Exp $
+   * $Id: edit_alias.raw,v 1.10 2002/02/18 17:40:10 lestinsky Exp $
    * Edit the alias-list for a given unit.
    * @package WWW
    * @modulegroup Edit
@@ -49,16 +49,16 @@
   $fwd   = '';
 
   /* Parse arguments */
-  $unit = $HTTP_GET_VARS["unit"];
-  if (empty($HTTP_POST_VARS["ALIASES"])) {
+  $unit = $_GET["unit"];
+  if (empty($_POST["ALIASES"])) {
     $aliases = get_unit_aliases($unit);
   } else {
-    $FORM_ALIASES = $HTTP_POST_VARS["ALIASES"];
+    $FORM_ALIASES = $_POST["ALIASES"];
     $aliases = split(",* +", $FORM_ALIASES);
   }
-  if (isset($HTTP_SERVER_VARS["PHP_SELF"])) 
-    $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
-  if (isset($HTTP_POST_VARS["SUBMIT"])) {
+  if (isset($_SERVER["PHP_SELF"])) 
+    $PHP_SELF = $_SERVER["PHP_SELF"];
+  if (isset($_POST["SUBMIT"])) {
     if (delete_unit_alias($unit)) {
       foreach ($aliases as $alias) {
         if (($r = mk_unit_alias($unit, $alias)) >= 0) {
@@ -84,7 +84,7 @@
   <?php echo $fwd; ?>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: edit_alias.raw,v 1.9 2001/11/19 21:08:18 lestinsky Exp $ -->
+  <!-- $Id: edit_alias.raw,v 1.10 2002/02/18 17:40:10 lestinsky Exp $ -->
   <style class="text/css">
   <!--
     .dark  { background-color:#c0c0d5; font-family:Helvetica,Arial; }
@@ -96,6 +96,10 @@
 
 <body>
 <h1><?php echo $Lang["Edit"] . ': ' . $unit; ?></h1>
+
+<p>
+[<a href="units.php"><? echo $Lang['Close'] ?></a>]
+</p>
 
 <p>
 <?php
