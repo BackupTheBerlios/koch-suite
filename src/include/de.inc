@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.13 2001/07/01 20:01:26 michael Exp $
+   * $Id: de.inc,v 1.14 2001/08/06 17:57:47 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -57,8 +57,8 @@
 
   $Lang['Category']['Title']    = "Definierte Kategorien";
   $Lang['Category']['Help']     = <<<EOT
-      Geben sie bis zu 5 Kategorien an. Klicken sie auf die gewünschte
-      Kategorie, um den Wert in das Formularfeld zu übertragen.
+      Geben sie bis zu 5 Kategorien an. Klicken sie auf die gew&uuml;nschte
+      Kategorie, um den Wert in das Formularfeld zu &uuml;bertragen.
 EOT;
 
   $Lang['UnitInfo']['Title']    = "Einheiten-Infos";
@@ -87,8 +87,8 @@ EOT;
   $Lang['Requirements']['Text'][0]	= 'Vorausgesetzte Software:';
 
   $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 und 3.23 getestet) oder PostgreSQL ( 7.0.3 getestet),';
-  $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version 4), mit MySQL- oder PostgreSQL-Unterstützung,';
-  $Lang['Requirements']['Software'][2]	= 'ein Webserver, der von PHP unterstützt wird. (z.B. <a href="http://www.apache.org">Apache</a>)';
+  $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version 4), mit MySQL- oder PostgreSQL-Unterst&uuml;tzung und einem aktuellen PEAR,';
+  $Lang['Requirements']['Software'][2]	= 'ein Webserver, der von PHP unterst&uuml;tzt wird. (z.B. <a href="http://www.apache.org">Apache</a>)';
 
   $Lang['Requirements']['Text'][1]	= 'Getestete Betriebssysteme (alphabet. Reihenfolge):';
 
@@ -97,9 +97,10 @@ EOT;
   $Lang['Requirements']['OSes'][2]	= 'OpenBSD 2.9';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
-      Für die Kommandozeilen-Tools ist PHP mit MySQL-Unterstützung als
-      Standalone-Interpreter notwendig. Für das Web-Interface muss PHP als
-      CGI oder als Apache-Modul installiert sein.
+      F&uuml;r die Kommandozeilen-Tools ist PHP mit MySQL-/PostgreSQL-
+      Unterst&uuml;tzung als Standalone-Interpreter notwendig. 
+      F&uuml;r das Web-Interface muss PHP als CGI oder als Apache-Modul 
+      installiert sein.
 EOT;
 
   $Lang['Language']['Title']	= "Spracheinstellung";
@@ -161,7 +162,7 @@ EOT;
   $Lang['Helptext']['WWW']['Title']	= "Web-Frontend";
   $Lang['Helptext']['WWW']['part'][0]['Title']	= "Such-Interface";
   $Lang['Helptext']['WWW']['part'][0]['Text']	= <<<EOT
-        Die Datenbank kann nach Stichwörtern in
+        Die Datenbank kann nach Stichw&ouml;rtern in
           <ul>
             <li>den Men&uuml;-Titeln</li>
             <li>den Kategorien der Rezepte</li>
@@ -169,12 +170,12 @@ EOT;
           </ul>
         durchsucht werden. Es wird eine Liste an Rezepten zur Auswahl
         angezeigt, die den gew&uuml;nschten Suchbegriff beinhalten. Dazu
-        gibt man im Suchinterface den Suchbegriff in das Formular ein, wählt
+        gibt man im Suchinterface den Suchbegriff in das Formular ein, w&auml;hlt
         unter <i>Suchen in</i> das passende Suchfeld und klickt auf
         <i>Suche starten</i>. <br>
-        Seit Version <i>0.5</i> ist auch die Verknüpfung von mehreren
-        Suchbegriffen durch <code>AND</code> möglich.
-        Damit lässt sich jetzt z.B. nach <code>Schoko AND Muffins</code>
+        Seit Version <i>0.5</i> ist auch die Verkn&uuml;pfung von mehreren
+        Suchbegriffen durch <code>AND</code> m&ouml;glich.
+        Damit l&auml;sst sich jetzt z.B. nach <code>Schoko AND Muffins</code>
         suchen.
 EOT;
   $Lang['Helptext']['WWW']['part'][1]['Title']  = "Eingabe- und Editier-Interface";
@@ -192,17 +193,12 @@ EOT;
 
   $Lang['Helptext']['Feedback']['Title']	= "Feedback";
   $Lang['Helptext']['Feedback']['Text'][0]	= <<<EOT
-      Für die User und Entwickler existiert eine Mailingliste,
-      <i>koch-suite@magrathea.rhein-neckar.de</i>. Diese Mailingliste
+      F&uuml;r die User und Entwickler existiert eine Mailingliste,
+      <i>koch-suite-devel@lists.berlios.de</i>. Diese Mailingliste
       ist &ouml;ffentlich, es darf aber nur an diese Liste schreiben, wer
       sie auch aboniert (&quot;subscribe&quot;) hat (notwendig, um Spam zu
-      verhindern).
-EOT;
-  $Lang['Helptext']['Feedback']['Text'][1]      = <<<EOT
-      Um sich auf der Mailingliste zu subscriben schickt man eine EMail an
-      <i>koch-suite-request@magrathea.rhein-neckar.de</i> mit
-      folgendem Subject/Betreff: &raquo;<code>subscribe</code>&laquo;.
-      (Nat&uuml;rlich ohne die Quotes darum!)
+      verhindern). Details dazu stehen 
+      <a href="http://lists.berlios.de/mailman/listinfo/koch-suite-devel">hier</a>.
 EOT;
 
 ?>

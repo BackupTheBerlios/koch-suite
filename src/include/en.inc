@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.16 2001/07/25 12:46:53 michael Exp $
+   * $Id: en.inc,v 1.17 2001/08/06 17:57:47 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -88,7 +88,7 @@ EOT;
   $Lang['Requirements']['Text'][0]	= 'Required Software:';
 
   $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 and 3.23 tested) or PostgreSQL (7.0.3 tested)';
-  $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version 4), with MySQL- or PostgreSQL-support,';
+  $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version >= 4.0.4), with MySQL- or PostgreSQL-support and a current PEAR,';
   $Lang['Requirements']['Software'][2]	= 'a Webserver which is supported by PHP (i.e. <a href="http://www.apache.org">Apache</a>)';
 
   $Lang['Requirements']['Text'][1]	= 'Tested Operating Systems (alphabetical Order):';
@@ -98,7 +98,7 @@ EOT;
   $Lang['Requirements']['OSes'][2]	= 'OpenBSD 2.9';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
-      You will need PHP compiled with MySQL-support as standalone
+      You will need PHP compiled with MySQL-/PostgreSQL-support as standalone
       interpreter for the commandline-tools. For the webinterface you need
       PHP installed as CGI or Apache-module.
 EOT;
@@ -189,14 +189,11 @@ EOT;
   $Lang['Helptext']['Feedback']['Title']	= "Feedback";
   $Lang['Helptext']['Feedback']['Text'][0]	= <<<EOT
       We have a mailinglist for users and developers,
-      <i>koch-suite@magrathea.rhein-neckar.de</i>. This mailinglist is
+      <i>koch-suite-devel@lists.berlios.de</i>. This mailinglist is
       public, but only subscribed addresses are allowed to write there (to
-      suppress spam).
-EOT;
-  $Lang['Helptext']['Feedback']['Text'][1]      = <<<EOT
-      To subscribe to this mailinglist send a mail to
-      <i>koch-suite-request@magrathea.rhein-neckar.de</i>, subject:
-      &raquo;<code>subscribe</code>&laquo;. (Of course without the quotes!)
+      suppress spam). Please see 
+      <a href="http://lists.berlios.de/mailman/listinfo/koch-suite-devel">this page</a> 
+      for details.
 EOT;
 
 ?>
