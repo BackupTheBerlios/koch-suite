@@ -1,4 +1,4 @@
-### $Id: README,v 1.25 2001/05/08 20:02:23 michael Exp $
+### $Id: README,v 1.26 2001/05/08 20:08:31 michael Exp $
 
 Koch-Suite
 ==========
@@ -86,15 +86,15 @@ Konfiguration von PHP mit folgenden Werten erforderlich.
 Installation:
 -------------
 
-Folgende Anleitung nimmt an, dass du vollen Shellzugriff auf den Rechner
-hast, auf dem die Koch-Suite installiert werden soll. Siehe gegebenenfalls
-in Documentation/FAQ.txt nach, wenn dies bei dir nicht ganz zutrifft.
+Folgende Anleitung nimmt an, dass man vollen Shellzugriff auf den Rechner
+hat, auf dem die Koch-Suite installiert werden soll. Siehe gegebenenfalls
+in Documentation/FAQ.txt nach, wenn dies nicht ganz zutrifft.
 
  - tar -xvzf kochsuite-*.tar.gz
    Dieses Paket auspacken, wenn es nicht bereits geschehen ist.
 
  - vi config
-   Anpassen der Konfigurationsvariablen
+   Anpassen der Konfigurationsvariablen, speziell der Pfade
 
  - make
 
