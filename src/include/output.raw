@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.3 2000/11/19 18:20:38 michael Exp $
+   * $Id: output.raw,v 1.4 2000/11/24 23:23:28 michael Exp $
    */
 
   require "<%%PHP_LIBS%%>/functions.inc";
@@ -30,11 +30,11 @@
     $str .= "     Yield: " . $rezept["yield"] . " Portionen\n"; 
 
     $str .= print_ingred($rezept["zutaten"]);
-    $a = length_adjust($rezept["anleitung"], 74); 
+    $a = length_adjust($rezept["anleitung"], 78); 
     foreach ($a as $line) {
       $str .= $line . "\n";
     }
-    $str .= "$footer\n";
+    $str .= "\n$footer\n";
 
     return $str;
   }
@@ -53,16 +53,30 @@
 
   function length_adjust ($str, $len) {
     /* Adjust the String-Length. return an array */
-    $i = 0;
     $bar = array();
     $foo = "";
 
     if (strlen($str) > $len) {
+      $str = preg_replace("/\n:/", " <br> :", $str);
+      $str = preg_replace("/\n\n/", " <p> ", $str);
+      $str = preg_replace("/\n/", " ", $str);
       /* Ingredient-line to long */
       $a = explode(" ", $str);
+      $i = 0;
       while (isset($a[$i])) {
         if ((strlen($foo) + strlen($a[$i])) < $len) {
-          $foo .= ereg_replace("\n", " ", $a[$i++]) . " ";
+          if (preg_match("/\n/", $a[$i])) {
+            $foo .= preg_replace("/\n/", " ", $a[$i++]) . " ";
+          } else if (preg_match("/<(br|p)>/", $a[$i], $bla)) {
+            $i++;
+            array_push($bar, $foo);
+            if ($bla[1] == 'p') {
+              array_push($bar, "");
+            }
+            $foo = "";
+          } else {
+            $foo .= $a[$i++] . " ";
+          }
         } else {
           array_push($bar, $foo);
           $foo = "";

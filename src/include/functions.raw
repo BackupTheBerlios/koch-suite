@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.7 2000/11/15 20:49:05 michael Exp $
+   * $Id: functions.raw,v 1.8 2000/11/24 23:23:26 michael Exp $
    */
 
   include "<%%PHP_LIBS%%>/config.inc";
@@ -72,7 +72,10 @@
           /* Ok, treat the rest as "instruction"
            * skip empty lines 
            */
-          if (! preg_match("/^\s*$/", $line)) {
+          if ($seen_instructions != 1 and preg_match("/^\s*$/", $line)) {
+            $seen_instructions = 0;
+          } else {
+            $seen_instructions = 1;
             $instruction .= trim($line) . "\n";
           }
         }
@@ -159,12 +162,12 @@
   function format_recipe_html ($rezept) {
     /* return a string, which contains the html-formatted recipe */
    
-    $str = "<h2>" . $rezept["title"] . "</h2>\n";
+    $str = "<h2>" . htmlentities($rezept["title"]) . "</h2>\n";
     $str .= "<table border=\"0\">\n";
 
     $str .= "<tr><td><b>Kategorie</b>:</td><td width=\"90%\">";
     foreach($rezept["category"] as $cat) {
-      $str .= "$cat ";
+      $str .= htmlentities($cat) . " " ;
     }
     $str .= "</td></tr>\n"; 
 
@@ -174,7 +177,9 @@
 
     $str .= "<table border=\"0\" width=\"100%\">\n";
     foreach ($rezept["zutaten"] as $z) {
-      $str .= "<tr><td colspan=3><b>" . $z["title"] . "</b></td></tr>\n";
+      $str .= "<tr><td colspan=3><b>" . 
+                      htmlentities($z["title"]) . 
+                      "</b></td></tr>\n";
 
       foreach ($z["ingredients"] as $j) {
 
@@ -183,9 +188,10 @@
         if ($quant == 0)
           $quant = '';
         $unit = nice_unit($j["unit"]);
+        $ingred = preg_replace("/^-* */", "", $j["ingred"]);
         $str .= "<tr><td width=\"10%\" align=\"right\">" . $quant . "</td>" .
                     "<td width=\"10%\">" . $unit . "</td>" .
-                    "<td>" . $j["ingred"] . "</td>" .
+                    "<td>" . htmlentities($ingred) . "</td>" .
                 "</tr>\n";
       }
 
@@ -194,7 +200,7 @@
     $str .= "</td></tr>\n";
   
     $str .= "<tr><td colspan=2 style=\"font-family:Helvetica\">";
-    $str .= preg_replace("/(\r)?\n(\r)?\n?/", "\n<br>", $rezept["anleitung"]);
+    $str .= preg_replace("/(\r)?\n(\r)?\n?/", "\n<br>", htmlentities($rezept["anleitung"]));
     $str .= "</td></tr>\n"; 
     $str .= "</table>\n"; 
 

@@ -1,4 +1,4 @@
-<!-- $Id: menue.raw,v 1.3 2000/11/21 01:57:16 michael Exp $ -->
+<!-- $Id: menue.raw,v 1.4 2000/11/24 23:23:29 michael Exp $ -->
 <!-- Links: Programm-Menue -->
 <table border=0 cellspacing=0 cellpadding=1>
   <tr style="background-color:#b0b0b0;" align="top">
@@ -7,8 +7,8 @@
         <tr>
           <td style="background-color:#f0f0f0" class="menu">
             <img src="pics/white.gif" align="top" alt=""><a href="index.php?suchen=1">Suchen</a><br>
-            <img src="pics/white.gif" align="top" alt=""><a href="">Einf&uuml;gen</a></br>
-                <img src="pics/white.gif" align="top" alt=""><a href="infos.php">Infos</a></br>
+            <img src="pics/white.gif" align="top" alt=""><a href="">Einf&uuml;gen</a><br>
+                <img src="pics/white.gif" align="top" alt=""><a href="infos.php">Infos</a><br>
           </td>
         </tr>
       </table>
