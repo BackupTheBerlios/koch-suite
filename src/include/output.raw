@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.11 2001/01/12 01:08:23 michael Exp $
+   * $Id: output.raw,v 1.12 2001/01/18 00:43:59 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -75,9 +75,9 @@
         $unit = nice_unit($j["unit"]);
         $ingred = preg_replace("/^(-*|;*) */", "", $j["ingred"]);
         $str .= "      ";
-        $str .= "<tr><td width=\"10%\" align=\"right\">" . $quant . "</td>" .
-                    "<td width=\"10%\">" . $unit . "</td>" .
-                    "<td>" . htmlentities($ingred) . "</td>" .
+        $str .= "<tr><td align=\"right\">" . $quant . "</td>" .
+                    "<td>" . $unit . "</td>" .
+                    "<td width=\"90%\">" . htmlentities($ingred) . "</td>" .
                 "</tr>\n";
       }
 
@@ -85,7 +85,7 @@
     $str .= "    </table>\n";
     $str .= "  </td></tr>\n";
  
-    $str .= "  <tr><td colspan=2 style=\"font-family:Helvetica\">\n";
+    $str .= "  <tr><td colspan=\"2\">\n";
     $instr = preg_replace("/(\r)?\n(\r)?\n?/", "<br>\n", htmlentities($rezept["anleitung"]));
     foreach (length_adjust($instr, 65) as $line) {
       $line = preg_replace("/&lt;(p|br)&gt;/", "<\\1>", $line);
