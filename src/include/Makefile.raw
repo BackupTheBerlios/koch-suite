@@ -47,4 +47,8 @@ install-lib: build
 install-etc: build
 	( [ -d "${DESTDIR}/<%%ETC_PREFIX%%>" ] || \
 	<%%INSTALL%%> -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%ETC_PREFIX%%> )
-	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${KS_CONFIG} ${DESTDIR}/<%%ETC_PREFIX%%>
+	@(if [ -f "${DESTDIR}/<%%ETC_PREFIX%%>/${KS_CONFIG}" ] ; then \
+	echo "${DESTDIR}/<%%ETC_PREFIX%%>/${KS_CONFIG} exists. Leaving untouched."; \
+	else \
+	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${KS_CONFIG} ${DESTDIR}/<%%ETC_PREFIX%%>; \
+	fi )
