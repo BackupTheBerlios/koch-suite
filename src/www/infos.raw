@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.10 2001/02/05 01:26:44 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.11 2001/03/03 12:08:29 michael Exp $ -->
 </head>
 
 <body>
@@ -92,9 +92,10 @@
     </ol>
 
     <p>
-      Getestete Betriebssysteme:
+      Getestete Betriebssysteme (alphabet. Reihenfolge):
     </p>
     <ul>
+      <li>FreeBSD 4.2</li>
       <li>Linux (Debian 2.2)</li>
       <li>OpenBSD 2.8</li>
     </ul>
