@@ -1,6 +1,6 @@
 # MySQL dump 7.1
 #
-# $Id: init_db.sql,v 1.3 2000/11/21 01:57:15 michael Exp $
+# $Id: init_db.sql,v 1.4 2000/12/15 00:21:25 michael Exp $
 #
 # Please see the MySQL-Documentation for further details about MySQL and
 # it's implementation of SQL available at http://www.mysql.org.
@@ -97,7 +97,7 @@ CREATE TABLE KATEGORIE (
 #
 CREATE TABLE MENUE (
   ID int(11) DEFAULT '0' NOT NULL auto_increment,
-  PORTIONEN smallint(6),
+  PORTIONEN varchar(255),
   TITEL varchar(255),
   PRIMARY KEY (ID)
 );
