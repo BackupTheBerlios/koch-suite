@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: koch-suite.raw,v 1.4 2001/10/22 12:27:33 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.5 2001/10/31 15:47:09 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
@@ -22,11 +22,9 @@
    * Section II: Setup the Koch-Suite
    * ================================ */
 
-  /*
-   * Shall we be in debug-mode? Answer "yes" or "no".
-   * If yes: all SQL-Queries and a little more will be logged in
-   * /tmp/koch-suite-debug. This will include passwords...
-   */
+  // Shall we be in debug-mode? Answer "yes" or "no".
+  // If yes: all SQL-Queries and a little more will be logged in
+  // /tmp/koch-suite-debug. This will include passwords...
 
   $DEBUG = "yes";                             // Mind security, disable this.
   error_reporting(E_ALL);
@@ -42,14 +40,14 @@
 
   /* Authentication: */
 
-  // Where to authenticate the user? 
-  // at the moment auth_by_db is the only one. But this might be extendet
-  // to LDAP, file,... easily.
+  // What to authenticate the user against? 
+  // At the moment "auth_by_db" is the only supported mechanism. 
+  // But this might be extendet to LDAP, file,... easily.
   $AUTH_STYLE = "auth_by_db";
 
   // What level of authentication do we want? ALL, READ, WRITE or NONE?
-  // Operations of this level or a higher level will require
-  // authentication.
+  // Operations of this level or a higher level will require 
+  // user authentication.
   $AUTH_LEVEL = READ;  // Capitals and no quotes, these are constants!
 
 
@@ -94,7 +92,7 @@
 
   $DB_STYLE    = $DB_DSN["phptype"];
 
-  /* Do the connect */
+  /* Do the Database-connect */
   write_log("Connecting to " . serialize($DB_DSN));
   $db=DB::connect($DB_DSN);
 

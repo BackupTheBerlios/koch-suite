@@ -1,4 +1,4 @@
-### $Id: INSTALL,v 1.6 2001/10/18 11:50:27 lestinsky Exp $
+### $Id: INSTALL,v 1.7 2001/10/31 15:46:34 lestinsky Exp $
 
 Koch-Suite Installation Instructions
 ====================================
@@ -20,7 +20,7 @@ Installation:
 
 The following instructions assume you've got shell access to the computer
 you want the Koch-Suite installed on. Please take a look at
-`Documentation/FAQ.txt' if this doesn't apply in your case.
+`Documentation/FAQ.txt' if this is not the case.
 
  $ tar -xvzf kochsuite-*.tar.gz
    Unpack the sources, if this didn't already happen.
@@ -86,25 +86,27 @@ MySQL:
 To create Koch-Suite users:
 
 The Koch-Suite has it's own user managment. This is represented by the table
-`usertable' in the database. This will be the usernames and passwords,
-you will use to access the webfrontend later. 
-To create the users, use the command
+`usertable' in the database. It will contain the usernames and passwords,
+which are allowed to access the webfrontend (depending on your setting of
+$AUTH_LEVEL in your `koch-suite.inc').
+The usernames and passwords need to be created first. Use the command
 
   $ ks_passwd PASSWORD
 
-of course you should replace PASSWORD properly. This will echo the
+of course you should adjust PASSWORD properly. This will echo the
 encrypted password and an example SQL-string you can use to insert the
 values into your database. Invoke your MySQL-Shell again:
 
   $ mysql -u USER -p -h DBSERVER DBkoch
 
-and execute the SQL-command (replace "USERNAME" again).
+and execute the SQL-command (replace "USERNAME" again). The usermanagment
+will change in later versions.
 
 Please note: the crypt()-function used to encrypt the Passwords is
 strongly operating system dependant. Especially the Windows(TM)-
-Implementation differs from Unix(TM)'s crypt(). This means, you 
+Implementation differs from most Un*x crypt(). This means, you 
 can't install the Koch-Suite on a Windows AND on Unix-System and use
-the same database. This behaviour is client-independent, using a
+the _same_ database. This behaviour is client-independent, using a
 Windows client (such as IE) and a Unix Server is completly OK!
 MD5-Passwords will be used if your crypt() supports MD5 hashes, 
 otherwise the fallback is DES encryption. This is done transparently.
