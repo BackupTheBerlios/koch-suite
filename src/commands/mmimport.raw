@@ -2,12 +2,11 @@
 <?
 
   /*
-   * $Id: mmimport.raw,v 1.9 2001/02/08 01:40:15 michael Exp $
+   * $Id: mmimport.raw,v 1.10 2001/02/21 11:37:39 michael Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
-   * Import mealmaster-formated recipes to the "Koch-Suite".
+   * Import mealmaster-formated recipes into the "Koch-Suite".
    *
-   * Please see the bundled file "LICENCE" for the licence of this
-   * script.
+   * See the bundled file "LICENCE" for the licence of this script.
    */
 
   require "<%%PHP_LIBS%%>/functions.inc";

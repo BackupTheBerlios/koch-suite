@@ -1,7 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* $Id: rezept2latex.raw,v 1.5 2001/01/12 01:05:10 michael Exp $
-   *
+  /* $Id: rezept2latex.raw,v 1.6 2001/02/21 11:37:39 michael Exp $
    * Export a recipe as Latex-source.
    */
 
