@@ -1,16 +1,16 @@
 # MySQL dump 7.1
 #
-# $Id: init_db.sql,v 1.6 2001/04/17 11:09:34 michael Exp $
+# $Id: init_db.sql,v 1.7 2001/06/10 22:22:59 michael Exp $
 #
 # Host: magrathea    Database: DBkoch
 #--------------------------------------------------------
-# Server version	3.22.32
+# Server version	3.23.36
 
 #
 # Table structure for table 'ANWEISUNG'
 #
 CREATE TABLE ANWEISUNG (
-  ID int(11) DEFAULT '0' NOT NULL auto_increment,
+  ID int(11) NOT NULL auto_increment,
   TEXT longtext,
   MENUE_ID int(11) DEFAULT '0' NOT NULL,
   PRIMARY KEY (ID),
@@ -21,7 +21,7 @@ CREATE TABLE ANWEISUNG (
 # Table structure for table 'EINHEITEN'
 #
 CREATE TABLE EINHEITEN (
-  ID int(11) DEFAULT '0' NOT NULL auto_increment,
+  ID int(11) NOT NULL auto_increment,
   ABBREV char(2),
   TEXT varchar(15),
   DESCR varchar(255),
@@ -30,61 +30,6 @@ CREATE TABLE EINHEITEN (
   RK_ABBREV varchar(11),
   MMUSE enum('J','N'),
   PRIMARY KEY (ID)
-);
-
-#
-# Table structure for table 'KAT'
-#
-CREATE TABLE KAT (
-  ID int(11) DEFAULT '0' NOT NULL auto_increment,
-  KATEGORIE_ID int(11),
-  MENUE_ID int(11) DEFAULT '0' NOT NULL,
-  PRIMARY KEY (ID),
-  KEY MENUE_ID (MENUE_ID)
-);
-
-#
-# Table structure for table 'KATEGORIE'
-#
-CREATE TABLE KATEGORIE (
-  ID int(11) DEFAULT '0' NOT NULL auto_increment,
-  TEXT varchar(255),
-  PRIMARY KEY (ID)
-);
-
-#
-# Table structure for table 'MENUE'
-#
-CREATE TABLE MENUE (
-  ID int(11) DEFAULT '0' NOT NULL auto_increment,
-  PORTIONEN varchar(255),
-  TITEL varchar(255) DEFAULT '' NOT NULL,
-  PRIMARY KEY (ID),
-  KEY TITEL (TITEL(30))
-);
-
-#
-# Table structure for table 'REZEPT'
-#
-CREATE TABLE REZEPT (
-  ID int(11) DEFAULT '0' NOT NULL auto_increment,
-  MENUE_ID int(11) DEFAULT '0' NOT NULL,
-  TITEL varchar(255),
-  PRIMARY KEY (ID),
-  KEY MENUE_ID (MENUE_ID)
-);
-
-#
-# Table structure for table 'ZUTATEN'
-#
-CREATE TABLE ZUTATEN (
-  ID int(11) DEFAULT '0' NOT NULL auto_increment,
-  MENGE float(5,3),
-  EINHEIT char(2),
-  TEXT varchar(255),
-  REZEPT_ID int(11) DEFAULT '0' NOT NULL,
-  PRIMARY KEY (ID),
-  KEY REZEPT_ID (REZEPT_ID)
 );
 
 #
@@ -126,17 +71,11 @@ INSERT INTO EINHEITEN VALUES (32,'kg','Kg','Kilogramm',1000.000,24,'Kilo','J');
 INSERT INTO EINHEITEN VALUES (33,'fl','fl. Unze','fluid ounce',30.000,26,'fl','J');
 INSERT INTO EINHEITEN VALUES (34,'','','',0.000,0,'','J');
 
-# MySQL dump 7.1
-#
-# Host: magrathea    Database: DBkoch
-#--------------------------------------------------------
-# Server version	3.22.32
-
 #
 # Table structure for table 'EINHEITEN_ALIAS'
 #
 CREATE TABLE EINHEITEN_ALIAS (
-  ID int(11) DEFAULT '0' NOT NULL auto_increment,
+  ID int(11) NOT NULL auto_increment,
   EID int(11) DEFAULT '0' NOT NULL,
   TEXT varchar(15) DEFAULT '' NOT NULL,
   PRIMARY KEY (ID),
@@ -160,4 +99,63 @@ INSERT INTO EINHEITEN_ALIAS VALUES (10,32,'Kilo');
 INSERT INTO EINHEITEN_ALIAS VALUES (15,1,'Stueck');
 INSERT INTO EINHEITEN_ALIAS VALUES (14,1,'Stück');
 INSERT INTO EINHEITEN_ALIAS VALUES (13,17,'EL');
+INSERT INTO EINHEITEN_ALIAS VALUES (21,29,'Deziliter');
+
+#
+# Table structure for table 'KAT'
+#
+CREATE TABLE KAT (
+  ID int(11) NOT NULL auto_increment,
+  KATEGORIE_ID int(11),
+  MENUE_ID int(11) DEFAULT '0' NOT NULL,
+  PRIMARY KEY (ID),
+  KEY MENUE_ID (MENUE_ID),
+  KEY KATEGORIE_ID (KATEGORIE_ID)
+);
+
+#
+# Table structure for table 'KATEGORIE'
+#
+CREATE TABLE KATEGORIE (
+  ID int(11) NOT NULL auto_increment,
+  TEXT varchar(255),
+  PRIMARY KEY (ID),
+  KEY TEXT (TEXT)
+);
+
+#
+# Table structure for table 'MENUE'
+#
+CREATE TABLE MENUE (
+  ID int(11) NOT NULL auto_increment,
+  PORTIONEN varchar(255),
+  TITEL varchar(255) DEFAULT '' NOT NULL,
+  PRIMARY KEY (ID),
+  KEY TITEL (TITEL(30))
+);
+
+#
+# Table structure for table 'REZEPT'
+#
+CREATE TABLE REZEPT (
+  ID int(11) NOT NULL auto_increment,
+  MENUE_ID int(11) DEFAULT '0' NOT NULL,
+  TITEL varchar(255),
+  PRIMARY KEY (ID),
+  KEY MENUE_ID (MENUE_ID)
+);
+
+#
+# Table structure for table 'ZUTATEN'
+#
+CREATE TABLE ZUTATEN (
+  ID int(11) NOT NULL auto_increment,
+  MENGE float(5,3),
+  EINHEIT char(2),
+  TEXT varchar(255),
+  REZEPT_ID int(11) DEFAULT '0' NOT NULL,
+  PRIMARY KEY (ID),
+  KEY TEXT (TEXT),
+  KEY REZEPT_ID (REZEPT_ID)
+);
 
