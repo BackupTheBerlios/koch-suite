@@ -1,4 +1,10 @@
-### $Id: changelog,v 1.35 2001/06/06 11:13:10 michael Exp $
+### $Id: changelog,v 1.36 2001/06/10 22:34:00 michael Exp $
+
+2001-06-10: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Die ganzen Suchfunktionen wurden deutlich optimiert.
+	Neue Meta-Suchfunktion: 'exec_search()' - ersetze die Gülle aus
+        0.5-pre1 und folgende.
+	Neue Datenbank-Indizes.
 
 2001-06-06: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Einheiten-Aliase lassen sich nun editieren.
