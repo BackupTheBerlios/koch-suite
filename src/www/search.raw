@@ -107,13 +107,13 @@
     include "<%%WEB_PREFIX%%>/actions.inc";
     echo "<h2>". $Lang['Search']['Result'] .":</h2>\n";
 
-    if (count($$_SESSION['operate_on'])) {
+    if (count( $_SESSION[$_SESSION['operate_on']] )) {
       ?>
       <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
       <table border=0>
       <?php
-      print_count($$_SESSION['operate_on']);
-      print_titles($$_SESSION['operate_on']);
+      print_count($_SESSION[$_SESSION['operate_on']]);
+      print_titles($_SESSION[$_SESSION['operate_on']]);
       ?>
       </table>
       <input type="submit" class="button" name="tag_submit"
@@ -135,13 +135,13 @@
     $_SESSION['operate_on'] = 'tagged_recipes';
     include "<%%WEB_PREFIX%%>/actions.inc";
     echo "<h2>". $Lang['Tag']['Show']['Title'] ."</h2>\n";
-    if (count($$_SESSION['operate_on'])) {
+    if (count($_SESSION[$_SESSION['operate_on']])) {
       ?>
       <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
       <table border=0>
       <?php
-      print_count($$_SESSION['operate_on']);
-      print_titles($$_SESSION['operate_on']);
+      print_count($_SESSION[$_SESSION['operate_on']]);
+      print_titles($_SESSION[$_SESSION['operate_on']]);
       ?>
       </table>
       <input type="submit" class="button" name="untag_submit"
