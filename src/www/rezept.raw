@@ -36,8 +36,12 @@
 
   session_register("searchresult");
 
-  $result_id = $_GET["result_id"];
-  $mid = $_SESSION["searchresult"][$result_id]["id"];
+  if (isset($_GET["mid"])) 
+    $mid = $_GET["mid"];
+  else {
+    $result_id = $_GET["result_id"];
+    $mid = $_SESSION["searchresult"][$result_id]["id"];
+  }
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -49,7 +53,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.22 2001/12/31 15:56:36 lestinsky Exp $ -->
+  <!-- $Id: rezept.raw,v 1.23 2002/01/02 21:28:21 lestinsky Exp $ -->
 </head>
 
 <body>
