@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Koch-Suite</title>
+  <!-- $Id: units.raw,v 1.1 2001/03/27 21:39:16 michael Exp $ -->
+</head>
+
+<body>
+<a name="top"></a>
+<h1>Einheiten-Infos:</h1>
+
+<form>
+<input type="button" value="Schlie&szlig;en" onClick="window.close()">
+</form>
+
+<center>
+<table border="0" cellspacing="0" cellpadding="1">
+  <tr>
+    <td style="background-color:#9090b0;">
+      <table border="0" cellspacing="1" cellpadding="3">
+<?
+
+  include "<%%PHP_LIBS%%>/functions.inc";
+
+  $units = get_units();
+
+  function td ($str) {
+    if ($str != "") {
+      return "<td style=\"background-color:#e9e9f0;\">" . $str . "</td>";
+    } else {
+      return "<td style=\"background-color:#e9e9f0;\">&nbsp;</td>";
+    }
+  }
+
+  function th ($str) {
+    return "<td style=\"background-color:#c0c0d5; font-family:Helvetica,Arial;\">" . $str . "</td>";
+  }
+
+  echo "<tr>" .
+	 th("MM") .
+	 th("RK") .
+         th("Text") . 
+	 th("Beschreibung") . 
+	 th("Aliase") . 
+	 "</tr>\n";
+
+  foreach ($units as $u) {
+    $vals = $u["unit"];
+    $aliases = $u["aliases"];
+
+    echo "<tr>" . 
+	   td($vals["ABBREV"]) .
+	   td($vals["RK_ABBREV"]) .
+	   td($vals["TEXT"]) . 
+	   td($vals["DESCR"]) . 
+	   td(implode($aliases, " ")) .
+	   "</tr>\n";
+  }
+
+?>
+      </table>
+    </td>
+  </tr>
+</table>
+</center>
+
+<dl>
+  <dt>MM:</dt>
+    <dd>Einheit im Meal-Master Format.</dd>
+  <dt>RK:</dt>
+    <dd>Einheit im RezKonv-Format.</dd>
+</dl>
+
+<form>
+  <input type="button" value="Schlie&szlig;en" onClick="window.close()">
+</form>
+
+<hr noshade>
+&copy; Michael Lestinsky 
+&lt;<a
+href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.
+de</a>&gt; 
+2001.
+</body>
+</html>
+
