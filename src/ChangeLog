@@ -1,3 +1,19 @@
+2003-05-19  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/output.raw 1.52:
+  I don't remember, why I did this, but it doesn't seem to break anything. >:-}
+
+  * src/include/defines.raw 1.16:
+  Tag it as beta. No new features will be added until we have a final release
+
+  * src/README 1.59: Slight update
+
+  * src/commands/init_db.raw 1.6:
+  Fix some wrong units, sorry
+
+  * src/include/parser.raw 1.7:
+  (probably) fix error reported in http://lists.berlios.de/pipermail/koch-suite-devel/2003q2/000157.html
+
 2003-03-12  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/admin.raw 1.14:
