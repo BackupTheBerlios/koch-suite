@@ -1,6 +1,7 @@
-# $Id: Makefile.raw,v 1.10 2000/12/08 23:55:22 michael Exp $
+# $Id: Makefile.raw,v 1.11 2001/01/15 10:05:44 michael Exp $
 # Space-separated list of all "raw" php-files.
-PHP_FILES=		index rezept print mmprint infos einfuegen kategorien
+PHP_FILES=		delete einfuegen index infos rezept print mmprint \
+			kategorien
 INC_FILES=		menue such
 
 # Files to install unmangled (dont forget the filename-suffix here!)
