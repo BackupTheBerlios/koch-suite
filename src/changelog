@@ -1,4 +1,9 @@
-### $Id: changelog,v 1.34 2001/06/01 23:03:31 michael Exp $
+### $Id: changelog,v 1.35 2001/06/06 11:13:10 michael Exp $
+
+2001-06-06: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Einheiten-Aliase lassen sich nun editieren.
+	Fixed Einfuege-Interface.
+	0.5-pre4
 
 2001-06-02: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	M17N, PHP-Konfiguration abfangen (register_globals)
