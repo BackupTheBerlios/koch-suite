@@ -1,6 +1,6 @@
 # MySQL dump 7.1
 #
-# $Id: init_db.sql,v 1.5 2001/02/05 01:38:25 michael Exp $
+# $Id: init_db.sql,v 1.6 2001/02/05 09:10:48 michael Exp $
 #
 # Host: magrathea    Database: DBkoch
 #--------------------------------------------------------
@@ -98,9 +98,9 @@ INSERT INTO EINHEITEN VALUES (10,'ct','Karton','',NULL,NULL,'Karton');
 INSERT INTO EINHEITEN VALUES (11,'bn','Bund','',NULL,NULL,'Bund');
 INSERT INTO EINHEITEN VALUES (12,'sl','Scheibe','',NULL,NULL,'Scheib.');
 INSERT INTO EINHEITEN VALUES (13,'ea','','',NULL,NULL,NULL);
-INSERT INTO EINHEITEN VALUES (14,'t','Teel.','',NULL,NULL,'Essl.');
+INSERT INTO EINHEITEN VALUES (14,'t','Teel.','',NULL,NULL,NULL);
 INSERT INTO EINHEITEN VALUES (15,'ts','Teel.','',NULL,NULL,'Teel.');
-INSERT INTO EINHEITEN VALUES (16,'T','Essl.','',NULL,NULL,'Essl.');
+INSERT INTO EINHEITEN VALUES (16,'T','Essl.','',NULL,NULL,NULL);
 INSERT INTO EINHEITEN VALUES (17,'tb','Essl.','',NULL,NULL,'Essl.');
 INSERT INTO EINHEITEN VALUES (18,'c','Tasse','ca. 250 ml',250.000,20,'Tasse/n');
 INSERT INTO EINHEITEN VALUES (19,'pt','Pint','ca. 1/2 Liter',500.000,20,'pt');
@@ -111,7 +111,7 @@ INSERT INTO EINHEITEN VALUES (23,'oz','Unze','',30.000,24,'oz');
 INSERT INTO EINHEITEN VALUES (24,'g','g','',0.000,0,'Gramm');
 INSERT INTO EINHEITEN VALUES (25,'lb','Engl. Pfund','Englisches Pfund',450.000,24,'lb');
 INSERT INTO EINHEITEN VALUES (26,'ml','ml','',0.000,0,'ml');
-INSERT INTO EINHEITEN VALUES (27,'cb','ml','',0.000,0,'ml');
+INSERT INTO EINHEITEN VALUES (27,'cb','ml','',0.000,0,NULL);
 INSERT INTO EINHEITEN VALUES (28,'cl','Centiliter','',10.000,26,'cl');
 INSERT INTO EINHEITEN VALUES (29,'dl','Deziliter','',100.000,26,'dl');
 INSERT INTO EINHEITEN VALUES (30,'cg','Zentigramm','',0.010,24,'cg');
