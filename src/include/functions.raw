@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.13 2000/12/16 01:36:50 michael Exp $
+   * $Id: functions.raw,v 1.14 2001/01/07 19:24:38 michael Exp $
    */
 
   require "<%%PHP_LIBS%%>/config.inc";
@@ -91,7 +91,7 @@
     }
 
     /* Strip leading and trailing <p>- and <br>-tags */
-    $search = array("/^(<(p|br)>\s*)*/", "/(<(p|br)>\s*)*$/");
+    $search = array("/^(<(p|br)>\s*)*/", "/\s*(<(p|br)>\s*)*$/");
     $replace = array("", "");
     $instruction =  preg_replace($search, $replace, $instruction);
 
