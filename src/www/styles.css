@@ -1,8 +1,11 @@
-/* $Id: styles.css,v 1.5 2001/03/15 13:01:26 michael Exp $ */
+/* $Id: styles.css,v 1.6 2001/03/17 17:43:29 michael Exp $ */
 body	    { background-color:#ffffff; }
 h1,h2,h3,h4 { font-family:Verdana,Lucida; }
-.menu	    { font-family:Helvetica,Arial; }
 a,b	    { font-family:Helvetica,Arial; }
 a:link      { color:#000463; }
 a:visited   { color:#000463; }
 a:active    { color:#111473; }
+code,i      { color:#000463; }
+.menu	    { font-family:Helvetica,Arial; }
+.prop       { font-family:Courier; }
+.small      { font-size:small; }
