@@ -1,3 +1,11 @@
+2004-04-10  Michael Lestinsky  <michael@lestinsky.de>
+
+  * include/koch-suite.raw 1.25, include/output.raw 1.56, www/print.raw 1.33:
+  Enable definition of a custom papersize as suggested by Jan Dreyer
+  You can specify your documentstyle options yourself now from
+  /etc/koch-suite.inc via LTX_DOCSTYLE_OPTION = "a4paper" or any other
+  legal optional parameter ("a5paper,10pt", "letter", ...).
+
 2004-03-31  Michael Lestinsky  <michael@lestinsky.de>
 
   * include/functions.raw 1.94: Bugfixing, reported by Jan Dreyer
