@@ -29,7 +29,7 @@
    */
 
   /**
-   * $Id: init_db.raw,v 1.3 2003/01/10 23:35:34 lestinsky Exp $
+   * $Id: init_db.raw,v 1.4 2003/01/11 17:02:25 bus Exp $
    * Initializes database, creates necessary tables and fills them with
    * default contents
    *
@@ -325,15 +325,15 @@
 
     $sql = "
         CREATE TABLE category_alias (
-          kid int(11) NOT NULL default '0',
+          kid integer NOT NULL default '0',
           text varchar(255) default NULL,
         );";
     exec_or_die($sql);
 
     $sql = "
         CREATE TABLE rating (
-          menu_id int(11) NOT NULL default '0',
-          vote int(1) default NULL,
+          menu_id integer NOT NULL default '0',
+          vote integer default NULL,
         )";
     exec_or_die("END");
   }
