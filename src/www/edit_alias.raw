@@ -30,7 +30,7 @@
   /**
    * Alias-Editor
    *
-   * $Id: edit_alias.raw,v 1.8 2001/09/24 21:20:23 lestinsky Exp $
+   * $Id: edit_alias.raw,v 1.9 2001/11/19 21:08:18 lestinsky Exp $
    * Edit the alias-list for a given unit.
    * @package WWW
    * @modulegroup Edit
@@ -45,12 +45,15 @@
 
   auth(WRITE);
 
+  $error = '';
+  $fwd   = '';
 
   /* Parse arguments */
   $unit = $HTTP_GET_VARS["unit"];
-  if (! $FORM_ALIASES = $HTTP_POST_VARS["ALIASES"]) {
+  if (empty($HTTP_POST_VARS["ALIASES"])) {
     $aliases = get_unit_aliases($unit);
   } else {
+    $FORM_ALIASES = $HTTP_POST_VARS["ALIASES"];
     $aliases = split(",* +", $FORM_ALIASES);
   }
   if (isset($HTTP_SERVER_VARS["PHP_SELF"])) 
@@ -81,7 +84,7 @@
   <?php echo $fwd; ?>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: edit_alias.raw,v 1.8 2001/09/24 21:20:23 lestinsky Exp $ -->
+  <!-- $Id: edit_alias.raw,v 1.9 2001/11/19 21:08:18 lestinsky Exp $ -->
   <style class="text/css">
   <!--
     .dark  { background-color:#c0c0d5; font-family:Helvetica,Arial; }
@@ -92,7 +95,7 @@
 </head>
 
 <body>
-<h1><?php echo $Lang["Edit"] . ": " . $unit; ?></h1>
+<h1><?php echo $Lang["Edit"] . ': ' . $unit; ?></h1>
 
 <p>
 <?php
