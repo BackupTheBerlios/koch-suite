@@ -1,3 +1,8 @@
+2005-02-05  Michael Bussmann  <bus@mb-net.net>
+
+  * commands/init_db.raw 1.12:
+  Replaced float/real with decimal data type
+
 2005-01-12  Michael Lestinsky  <michael@lestinsky.de>
 
   * Documentation/FAQ.txt 1.12:
