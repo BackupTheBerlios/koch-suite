@@ -1,4 +1,4 @@
-### $Id: INSTALL,v 1.15 2002/10/09 11:07:18 bus Exp $
+### $Id: INSTALL,v 1.16 2003/01/10 12:58:18 lestinsky Exp $
 
 Koch-Suite Installation Instructions
 ====================================
@@ -140,7 +140,7 @@ best to dump all the data with (the old!) `rezept'
 
  $ rezept -mm "" > all.mm 
 
-Or if you have a (post) 0.5 already installed:
+Or if you have 0.5 or any later version already installed:
 
  $ rezept -mm -relaxed "" > all.mm
 
