@@ -1,6 +1,8 @@
-# $Id: config,v 1.18 2001/09/24 21:20:23 lestinsky Exp $
+# $Id: config,v 1.19 2001/10/15 07:29:30 lestinsky Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
+# All variables will be are referenced by ${VARNAME}. Expansion takes
+# place while reading the lines.
 
 # Where is the php-Binary?
 PHP		=/usr/local/bin/php4
@@ -10,21 +12,24 @@ PHP_OPTS	=-q
 # Remember: you need a post-4.0.6-PEAR repository.
 PEAR		=/usr/local/lib/php4
 
+# Where to install the all of this?
+PREFIX		=/usr/local
+
 # Where to place general "include"-Files:
-PHP_LIBS 	=/usr/local/lib/koch-suite
+PHP_LIBS 	=${PREFIX}/lib/koch-suite
 
 # Configurationfile koch-suite.inc goes here:
-ETC_PREFIX	=/usr/local/etc
+ETC_PREFIX	=${PREFIX}/etc
 
 # Where to install the executables:
-SCRIPT_PREFIX   =/usr/local/bin
+SCRIPT_PREFIX   =${PREFIX}/bin
 
 # Where to place the "Web"-Documents for this Interface:
 WEB_PREFIX	=/var/www/koch-suite
 
 # And the Documentation goes there:
-MAN_PREFIX	=/usr/local/man
-DOC_PREFIX	=/usr/local/share/doc/koch-suite
+MAN_PREFIX	=${PREFIX}/man
+DOC_PREFIX	=${PREFIX}/share/doc/koch-suite
 
 # User and Group, who will own the files, typically something like "root"
 # or "wheel"; consult your local /etc/passwd and /etc group for more info.
