@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.53 2001/07/24 19:50:13 michael Exp $
+   * $Id: functions.raw,v 1.54 2001/07/25 10:48:41 michael Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -900,7 +900,7 @@
 
 
   /**
-   * Normalize read recipes.
+   * Read and normalize recipes.
    *
    * @param int $in_fh Input-Filehandle
    * @return int $out_fh Filehandle for the normalized recipe
