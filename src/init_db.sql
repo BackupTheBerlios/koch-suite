@@ -1,6 +1,6 @@
 # MySQL dump 7.1
 #
-# $Id: init_db.sql,v 1.5 2001/02/17 17:03:14 michael Exp $
+# $Id: init_db.sql,v 1.6 2001/04/17 11:09:34 michael Exp $
 #
 # Host: magrathea    Database: DBkoch
 #--------------------------------------------------------
@@ -99,7 +99,7 @@ INSERT INTO EINHEITEN VALUES (5,'cn','Dose','',NULL,NULL,'Dose/n','J');
 INSERT INTO EINHEITEN VALUES (6,'pk','Packung','',NULL,NULL,'Pack.','J');
 INSERT INTO EINHEITEN VALUES (7,'pn','Prise','engl: pinch',NULL,NULL,'Prise/n','J');
 INSERT INTO EINHEITEN VALUES (8,'dr','Tropfen','',NULL,NULL,'Tropfen','J');
-INSERT INTO EINHEITEN VALUES (9,'ds','Spur','Schuss',NULL,NULL,'Schuss','J');
+INSERT INTO EINHEITEN VALUES (9,'ds','Schuss','Schuss',NULL,NULL,'Schuss','J');
 INSERT INTO EINHEITEN VALUES (10,'ct','Karton','',NULL,NULL,'Karton','J');
 INSERT INTO EINHEITEN VALUES (11,'bn','Bund','',NULL,NULL,'Bund','J');
 INSERT INTO EINHEITEN VALUES (12,'sl','Scheibe','',NULL,NULL,'Scheib.','J');
