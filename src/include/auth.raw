@@ -2,7 +2,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.22 2003/01/20 20:30:31 lestinsky Exp $
+   * $Id: auth.raw,v 1.23 2005/01/02 02:31:41 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -11,7 +11,7 @@
    * @module auth.inc
    * @copyright Michael Lestinsky <michael@lestinsky.de>
    *
-   * Copyright (c) 2003
+   * Copyright (c) 2005
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@
    * @return bool
    */
   function auth ($level = READ) {
-    global $USER_S, $FORM_USERNAME, $FORM_PASSWORD;
+    global $theme, $USER_S, $FORM_USERNAME, $FORM_PASSWORD;
 
     /* do we want authentication? Test the global settings. Operations of
      * the level $GLOBALS["AUTH_LEVEL"] or higher require the user to be
@@ -120,7 +120,7 @@
    * @return array $user
    */
   function verify_authdata ($username, $password) {
-    global $Lang;
+    global $theme, $Lang;
 
     if (!empty($username) and !empty($password)) {
       $password = addslashes($password);
