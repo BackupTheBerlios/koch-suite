@@ -1,5 +1,5 @@
 <?php
-  /* Copyright (c) 2002
+  /* Copyright (c) 2003
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,8 @@
       echo "<tr><td><input type=\"checkbox\" class=\"check\" name=\"tag[]\" value=\"$i\"></td>" .
                "<td>$j</td>" .
                "<td><a href=\"rezept.php?result_id=" . $i . "\">" . 
-               htmlentities($r[$i]["title"]) . "</a></td></tr>\n";
+                      htmlentities($r[$i]["title"]) . "</a> " . 
+                    sucks_or_rocks_meter(get_rating($r[$i]['id'])) . "</td></tr>\n";
     }
   }
 
