@@ -1,8 +1,8 @@
-<!-- $Id: such.raw,v 1.10 2001/05/08 21:29:10 michael Exp $ -->
+<!-- $Id: such.raw,v 1.11 2001/05/16 00:21:26 michael Exp $ -->
 <?
   if (empty($begriff) and empty($all)) {
 ?>
-    <h2>Suchen</h2>
+    <h2><? echo $Lang['Search']['Search']; ?></h2>
     <script language="JavaScript1.2">
       <!--
         function kat() {
@@ -16,25 +16,25 @@
     <form action="<? echo "$PHP_SELF?suchen=1"; ?>" method="post">
       <table border=0>
         <tr>
-          <td>Suchen nach:</td>
+          <td><? echo $Lang['Search']['For']; ?></td>
           <td><input type="text" name="begriff" value="<? echo $begr ?>">
         </tr>
         <tr>
-          <td>Suchen in:</td>
+          <td><? echo $Lang['Search']['In']; ?></td>
           <td><select name="where">
-                <option value="title">Menue-Titel</option>
-                <option value="cat" <? if ($begr != '') echo 'selected' ?>>Kategorie</option>
-                <option value="ingred">Zutat</option>
+                <option value="title"><? echo $Lang['Search']['Menutitle']; ?></option>
+                <option value="cat" <? if ($begr != '') echo 'selected' ?>><? echo $Lang['Search']['Categories']; ?></option>
+                <option value="ingred"><? echo $Lang['Search']['Ingredients']; ?></option>
               </select>
           </td>
         </tr>
       </table>
-    <input type="submit" value="Suche starten">
-    <input type="reset" value="L&ouml;schen">
+    <input type="submit" value="<? echo $Lang['Search']['Go']; ?>">
+    <input type="reset" value="<? echo $Lang['Delete']; ?>">
     </form>
     <p>
-      [<a href="<? echo "$PHP_SELF?suchen=1&all=1"; ?>">Alle Rezepte anzeigen</a>]
-      [<a href="kategorien.php?target=begriff&maxsel=1" target="kat" onClick="kat();">Kategorie-Auswahl</a>]
+      [<a href="<? echo "$PHP_SELF?suchen=1&all=1"; ?>"><? echo $Lang['AllRecipes']; ?></a>]
+      [<a href="kategorien.php?target=begriff&maxsel=1" target="kat" onClick="kat();"><? echo $Lang['CatChoose']; ?></a>]
       <br>
       <a class="prop" href="<? echo "$PHP_SELF?suchen=1&all=a"; ?>">A</a>
       <a class="prop" href="<? echo "$PHP_SELF?suchen=1&all=b"; ?>">B</a>
@@ -66,12 +66,13 @@
 
 <?
   } else {
-    include "<%%PHP_LIBS%%>/functions.inc";
 ?>
-    <h2>Suchergebnis 
-      <? if (empty($all)) { ?> 
-        &quot;<? echo $begriff; ?>&quot;
-      <? } ?> 
+    <h2><? echo $Lang['Search']['Result']; ?>:
+      <? 
+         if (empty($all)) { 
+           echo $begriff;
+         } 
+      ?> 
     </h2>
 
     <table border=0>
@@ -107,7 +108,7 @@
       if ($m = get_mid_by_cat($begriff)) {
         print_titles($m);
       } else {
-        echo "<tr><td>Kein Treffer.</td></tr>\n";
+        echo "<tr><td>" . $Lang['Search']['NoResult']. "</td></tr>\n";
       }
     }
 ?>

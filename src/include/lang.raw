@@ -1,0 +1,33 @@
+<?
+  /*
+   * $Id: lang.raw,v 1.1 2001/05/16 00:21:26 michael Exp $
+   *
+   * Guess prefered language for the web-interface.
+   *
+   * This file is subject to the license as included in ../LICENSE
+   * (C) 2001 Michael Lestinsky. 
+   */
+
+  require "<%%PHP_LIBS%%>/$DEFAULT_LANG.inc";
+
+  $accept_langs = explode(",", getenv("HTTP_ACCEPT_LANGUAGE"));
+
+  $i = 0;
+  while ($lang = $accept_langs[$i]) {
+    $l = trim(preg_replace("/(.*)(_.*)?(;(.*))/" , "\\1", $lang));
+
+    /* we don't need to read it twice: */
+    if ($l == $DEFAULT_LANG) {
+      break;
+    } else {
+      $lang_file = "<%%PHP_LIBS%%>/" . $l . ".inc";
+
+      /* If the language exists: */
+      if (file_exists($lang_file) and is_readable($lang_file)) {
+        require($lang_file);
+        break;
+      }
+    }
+    $i++;
+  }
+?>

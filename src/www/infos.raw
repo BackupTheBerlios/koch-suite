@@ -1,3 +1,8 @@
+<?
+  require "<%%PHP_LIBS%%>/config.inc";
+  require "<%%PHP_LIBS%%>/functions.inc";
+  require "<%%PHP_LIBS%%>/lang.inc";
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
     "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
@@ -8,7 +13,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.22 2001/05/10 23:53:38 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.23 2001/05/16 00:21:26 michael Exp $ -->
 </head>
 
 <body>
@@ -20,63 +25,23 @@
   <td valign="top">
 <? require "./menue.inc"; ?>
   </td>
-  <td>
+  <td width="90%">
     <h2>Informationen zur Koch-Suite</h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.22 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.23 $ -->
 
-    <h3>Homepage</h3>
-    <p>
-      <a href="http://milliways.ma.choin.net/~michael/koch-suite/">http://milliways.ma.choin.net/~michael/koch-suite/</a>:
-      Aktuelle Informationen rund um dieses Projekt und die jeweils
-      neusten Versionen der <i>Koch-Suite</i> finden sich dort.
-    </p>
+    <? echo $Lang['Homepage']; ?>
 
-    <h3>Voraussetzungen:</h3>
-    <p>
-      Vorausgesetzte Software:
-    </p>
-    <ol>
-      <li><a href="http://www.mysql.org">MySQL</a> (3.22 und 3.23
-          getestet),</li>
-      <li><a href="http://www.php.net">PHP</a> (Version 4), mit 
-          MySQL-Unterstützung,</li>
-      <li>ein Webserver, der PHP unterstützt. (z.B. <a
-          href="http://www.apache.org">Apache</a>)</li>
-    </ol>
+    <? echo $Lang['Reqirements']; ?>
 
-    <p>
-      Getestete Betriebssysteme (alphabet. Reihenfolge):
-    </p>
-    <ul>
-      <li>FreeBSD 4.2</li>
-      <li>Linux (Debian 2.2)</li>
-      <li>OpenBSD 2.8</li>
-    </ul>
-    <p>
-      Für die Kommandozeilen-Tools ist PHP mit MySQL-Unterstützung als
-      Standalone-Interpreter notwendig. Für das Web-Interface muss PHP als
-      CGI oder als Apache-Modul installiert sein.
-    </p>
+    <? echo $Lang['Language']; ?>
 
-    <h3>A note to the English readers:</h3>
-    <p>
-      Sorry, at the moment the web-frontend to the Koch-Suite is available 
-      in german only. If you would like to translate this documents, 
-      contact me at <i>michael@zaphod.rhein-neckar.de</i>. 
-      <a href="http://www.apache.org">Apache's</a>
-      Content-Negotiation-capabilities would be the preferred way to provide
-      a multilingual version of the <em>Koch-Suite</em>.
-    </p>
+    <? echo $Lang['License1']; ?>
+<pre>
+<? require "./LICENSE"; ?>
+</pre>
+    <? echo $Lang['License2']; ?>
 
-    <h3>Lizenz:</h3>
-    <p>
-      Das gesamte Paket der Koch-Suite steht unter einer BSD-artigen
-      Lizenz:
-        <pre>
-<? require LICENSE ?>
-        </pre>
-    </p>
   </td>
 </tr>
 </table>

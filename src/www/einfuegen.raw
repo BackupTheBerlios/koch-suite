@@ -1,4 +1,8 @@
 <?
+  require "<%%PHP_LIBS%%>/config.inc";
+  require "<%%PHP_LIBS%%>/functions.inc";
+  require "<%%PHP_LIBS%%>/lang.inc";
+
   /* einfuegen.php - Rezepte einfuegen und bearbeiten.
    * Diese Datei unterliegt der in der Datei LICENSE beigefügten Lizenz
    * (c) Januar 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -8,8 +12,6 @@
   if (isset($mid)) {
     $target .= "?mid=$mid";
   }
-
-  require "<%%PHP_LIBS%%>/functions.inc";
 
   function make_zutaten ($ingr) {
     foreach ($ingr as $i) {
@@ -28,19 +30,21 @@
     /* Erzeuge ein HTML-Formular, dass mit den Werten aus $rezept
      * gefüllt ist.
      */
+ 
+    global $Lang;
 
     $str  = "<table border=\"0\">\n";
 
     // Rezept-Titel:
     $str .= "<tr>\n";
-    $str .= "<td>Titel:</td>\n";
+    $str .= "<td>" . $Lang['Title'] . ":</td>\n";
     $str .= "<td><input type=\"text\" name=\"titel\" value=\"" .
                    $rezept["title"] . "\" size=\"60\"></td>\n"; 
     $str .= "</tr>\n";
  
     // Portionen:
     $str .= "<tr>\n";
-    $str .= "<td>Portionen:</td>\n";
+    $str .= "<td>" . $Lang['Yield'] . ":</td>\n";
     $str .= "<td><input type=\"text\" name=\"portionen\" value=\"" .
                    $rezept["yield"] . "\" size=\"60\"></td>\n";
     $str .= "</tr>\n";
@@ -48,7 +52,7 @@
     // Kategorie:
     $str .= "<tr>\n";
     $str .= "<td><a href=\"kategorien.php?target=kategorie&maxsel=5\"" .
-                 "target=\"kat\" onClick=\"kat();\">Kategorien</a>:</td>\n";
+                 "target=\"kat\" onClick=\"kat();\">" . $Lang['Cat'] . "</a>:</td>\n";
     $str .= "<td><input type=\"text\" name=\"kategorie\" value=\"" .
                  implode(", ", $rezept["category"]) . 
                  "\" size=\"60\"></td>\n";
@@ -59,11 +63,12 @@
     foreach($rezept["zutaten"] as $z) {
       $str .= "<tr>\n";
       if ($z["title"] == 'Zutaten:') {
-        $str .= "<td>Zutaten:" .
+        $str .= "<td>" . $Lang['Ingred'] . ":" .
                 "<input type=\"hidden\" name=\"ztitle[0]\"" .
                        "value=\"" . $z["title"] . "\">" .
                 "<br><a href=\"units.php\" target=\"units\" ".
-                     " onClick=\"units();\" style=\"font-size:small;\">Einheiten</a></td>\n";
+                     " onClick=\"units();\" style=\"font-size:small;\">" .
+$Lang['Units'] . "</a></td>\n";
       } else {
         $str .= "<td>&nbsp;</td>\n";
         $str .= "<td><input type=\"text\" " .
@@ -87,7 +92,7 @@
     $anleitung = preg_replace("/\s*(&lt;|<)br(>|&gt;)\s*/", "\n", $anleitung);
 
     $str .= "<tr>\n";
-    $str .= "<td>Zubereitung:</td>\n";
+    $str .= "<td>" . $Lang['Preparation'] . ":</td>\n";
     $str .= "<td><textarea cols=\"60\" rows=\"10\" " .
                  "name=\"anweisung\" wrap=\"virtual\">" . 
                  $anleitung . "</textarea></td>\n";
@@ -211,7 +216,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.13 2001/04/05 11:19:00 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.14 2001/05/16 00:21:26 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -250,9 +255,9 @@
       echo make_form(&$r);
   ?>     
 
-    <input type="submit" name="submit" value="&Auml;nderungen &uuml;bernehmen">
-    <input type="submit" name="more_zutaten" value="Weitere Zutatenliste">
-    <input type="reset" value="Formular L&ouml;schen">
+    <input type="submit" name="submit" value="<? echo $Lang['FormApply']; ?>">
+    <input type="submit" name="more_zutaten" value="<? echo $Lang['FormMoreIngr']; ?>">
+    <input type="reset" value="<? echo $Lang['FormReset']; ?>">
     </form>
 
   </td>

@@ -1,7 +1,8 @@
 # This file contains the substitution-rules for "sed"
 
 # Space-separated list of all "raw" php-files.
-PHP_FILES_UNCONF=	config.inc functions.inc output.inc
+PHP_FILES_UNCONF=	config.inc functions.inc lang.inc output.inc
+ADDITIONAL=		de.inc en.inc
 SUBDIRS=		
 
 CONF_FILE=		../config.sed
@@ -32,3 +33,4 @@ install: build
 	( [ -d "${DESTDIR}/<%%PHP_LIBS%%>" ] || \
 	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%PHP_LIBS%%> )
 	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${PHP_FILES_UNCONF} ${DESTDIR}/<%%PHP_LIBS%%>
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${ADDITIONAL} ${DESTDIR}/<%%PHP_LIBS%%>
