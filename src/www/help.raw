@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.4 2001/03/27 21:38:58 michael Exp $ -->
+  <!-- $Id: help.raw,v 1.5 2001/04/20 11:20:59 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -32,13 +32,13 @@
     ?>
   </td>
   <td width="90%">
-    <!-- Installierte Version: $Name:  $ $Revision: 1.4 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.5 $ -->
 
     <h2>Hilfe:</h2>
     <p class="top">
       Dieses Programmpaket besteht aus drei wesentlichen Komponenten:
       einer groﬂen Bibliothek, die alle Konvertierungs- und
-      Ausgabe-Funktionen bereitstellt , (mehr oder weniger als triviale
+      Ausgabe-Funktionen bereitstellt, (mehr oder weniger als triviale
       Wrapper um die Bibliothek) den Kommandozeilen-Tools und dem Web-Frontend.
     <p>
 
@@ -46,19 +46,20 @@
     <dl>
       <dt><code>mmimport</code></dt>
           <dd><i>Import von Rezepten.</i> Der Input wird auf dem
-          Standard-Eingabe-Kanal erwartet. Die Rezepte werden dabei aus
-          umgebendem Text extrahiert und k&ouml;nnen sowohl im Meal-Master- 
-          als auch im 
+          Standard-Eingabe-Kanal (<code>STDIN</code>) erwartet. 
+          Die Rezepte werden dabei aus umgebendem Text extrahiert 
+          und k&ouml;nnen sowohl im Meal-Master- als auch im 
           <a href="http://home.t-online.de/home/ufetzer/">REZKONV</a>-Format 
           sein.
           Siehe auch <code>mmimport(1)</code></dd>
       <dt><code>rezept</code></dt>
           <dd>Suche Rezepte in der Datenbank und gebe sie als
-          Latex-Source, im Meal-Master-Format oder als lesbaren Text aus.
+          Latex-Source, im Meal-Master-Format oder als lesbaren Text in
+          eine Datei oder auf die Standard-Ausgabe aus.
           Siehe <code>rezept(1)</code>.
       <dt><code>rk2mm</code></dt>
-          <dd>Konvertiere REZKONV- in Meal-Master-Rezepte.</dd>
-          Siehe <code>rk2mm(1)</code>.
+          <dd>Konvertiere REZKONV- in Meal-Master-Rezepte.
+          Siehe <code>rk2mm(1)</code>.</dd>
     </dl>
 
     <h3>Web-Frontend</h3>
