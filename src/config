@@ -1,4 +1,4 @@
-# $Id: config,v 1.19 2001/10/15 07:29:30 lestinsky Exp $
+# $Id: config,v 1.20 2001/10/31 15:47:31 lestinsky Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 # All variables will be are referenced by ${VARNAME}. Expansion takes
@@ -32,7 +32,7 @@ MAN_PREFIX	=${PREFIX}/man
 DOC_PREFIX	=${PREFIX}/share/doc/koch-suite
 
 # User and Group, who will own the files, typically something like "root"
-# or "wheel"; consult your local /etc/passwd and /etc group for more info.
+# or "wheel"; consult your local /etc/passwd and /etc/group for more info.
 # Remember: Only Root may chown/chgrp to users/groups he isn't a member of!
 
 OWNER		=root
