@@ -1,4 +1,4 @@
-### $Id: INSTALL,v 1.4 2001/10/02 13:32:50 bus Exp $
+### $Id: INSTALL,v 1.5 2001/10/03 21:13:48 lestinsky Exp $
 
 Koch-Suite Installation Instructions
 ====================================
@@ -83,10 +83,10 @@ MySQL:
 
 To create Koch-Suite users:
 
-The Koch-Suite has an own user managment. This is represented by the table
+The Koch-Suite has it's own user managment. This is represented by the table
 `usertable' in the database. This will be the usernames and passwords,
 you will use to access the webfrontend later. 
-To create the users therein, use the command
+To create the users, use the command
 
   $ ks_passwd PASSWORD
 
