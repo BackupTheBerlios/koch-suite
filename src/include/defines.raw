@@ -1,0 +1,30 @@
+<?
+  /*
+   * $Id: defines.raw,v 1.1 2001/07/01 20:50:41 michael Exp $
+   *
+   * Define some constants here:
+   */
+
+  define("KOCHSUITE", "<i>Koch-Suite</i>");
+  define("KOCHSUITE_VER", "0.5-pre8");
+
+  define("DB_MYSQL", "mysql");
+  define("DB_PGSQL", "pgsql");
+
+  define("DEBUG_FILE", "/tmp/koch-suite-debug");
+
+  define("DEFAULT_LANG", "de");
+
+  /* Recipe-modes */
+  define("RECIPE_MM", 0);
+  define("RECIPE_RK", 1);
+
+  /* Recipe-slang */
+  define("MM_STRICT", true);
+  define("MM_VIOLATE", false);
+
+  /* File-permissions */
+  define("PERM_WORLDWRITEABLE", 0666);
+  define("PERM_WORLDREADABLE", 0644);
+  define("PERM_PRIVATE", 0600);
+?>
