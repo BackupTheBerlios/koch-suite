@@ -31,7 +31,6 @@ clean:
 	@make subdir TRGT=clean DIRS="${SUBDIRS}"
 	rm -f *.php
 	rm -f *.gen
-	rm -f config.sed
 
 distclean: clean
 	@make subdir TRGT=distclean DIRS="${SUBDIRS}"
@@ -39,6 +38,7 @@ distclean: clean
 	echo "rm -f $${i}/Makefile" ; \
 	rm -f $${i}/Makefile ; \
 	done)
+	rm -f config.sed
 
 install-man:
 	@make subdir TRGT=install DIRS="${MAN_SUBDIR}"
