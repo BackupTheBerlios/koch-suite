@@ -1,4 +1,4 @@
-.\" $Id: rezept.1.raw,v 1.8 2002/03/31 23:23:13 lestinsky Exp $
+.\" $Id: rezept.1.raw,v 1.9 2002/05/20 15:05:13 lestinsky Exp $
 .\"
 .\" Copyright (c) 2002
 .\"      Michael Lestinsky. All rights reserved.
@@ -106,22 +106,20 @@ in the ingredient-lists.
 .El
 .\" .Sh RETURN VALUES
 .\" This next request is for sections 1, 6, 7 & 8 only
-.Sh ENVIRONMENT
-The following environment variables affect the execution of
-.Nm rezept :
-.Bl -tag -width "TOLONG"
-.It Ev LC_MESSAGES
-.It Ev LANG
-If the recipe-format allows localization of the output,
-the values of these environment variables are honored.
-If
-.Ev LC_MESSAGES 
-is set, and the defined language exists use that,
-otherwise try
-.Ev LANG .
-If that fails to, use the default language,
+.Sh ENVIRONMENT  
+To choose the language of the output set
+.Ev KS_LANG . 
+The default locale settings,
+.Ev LC_MESSAGES
+and
+.Ev LANG
+are used as fallback in that order.
+If that fails, too,
+use the default language,
 which may be set in
 .Pa <%%ETC_PREFIX%%>/koch-suite.inc .
+This doesn't translate the recipes, of course,
+but it affects the representation of i.e. the units.
 .Sh FILES
 .Bl -tag -width <%%ETC_PREFIX%%>/koch-suite.inc -compact
 .It Pa <%%ETC_PREFIX%%>/koch-suite.inc

@@ -1,4 +1,4 @@
-### $Id: Programmers.txt,v 1.12 2002/04/02 21:53:56 lestinsky Exp $
+### $Id: Programmers.txt,v 1.13 2002/05/20 15:08:08 lestinsky Exp $
 
 Programmers Documentation
 =========================
@@ -127,14 +127,11 @@ structured as shown below. Sorry for the german terms.
      |                                     |----> "quant"
      |                                     |----> "unit"
      |                                     `----> "ingred"
-     `----> "anweisung"
-
-In the future this will be suplemented by:
-
+     |----> "anweisung"
      `----> "meta"
-               |----> "erfasser"
-               |----> "datum"
-               `----> "quelle"
+               |----> "Recorder"
+               |----> "Date"
+               `----> "Source"
 
 [*]:  The title of the complete recipe
 [**]: The title of the respective ingredients-sublist. I.e. "For the sauce".
@@ -169,8 +166,6 @@ And in the `config' file
 
 5. Authentication
 -----------------
-
-(Please note: this isn't fully implemented yet.)
 
 The Authentication-scheme is designed as hierarchical structure, with
 different kinds of authentication-levels. The users should be classified

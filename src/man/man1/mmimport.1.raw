@@ -1,4 +1,4 @@
-.\" $Id: mmimport.1.raw,v 1.10 2002/05/14 11:17:49 lestinsky Exp $
+.\" $Id: mmimport.1.raw,v 1.11 2002/05/20 15:05:13 lestinsky Exp $
 .\" Koch-Suite Reference
 .\"
 .\" Copyright (c) 2001
@@ -70,7 +70,18 @@ Show usage and exit.
 .\" This next request is for sections 2 and 3 function return values only.
 .\" .Sh RETURN VALUES
 .\" This next request is for sections 1, 6, 7 & 8 only
-.\" .Sh ENVIRONMENT
+.Sh ENVIRONMENT
+To choose the language of the output set
+.Ev KS_LANG .
+The default locale settings,
+.Ev LC_MESSAGES
+and
+.Ev LANG
+are used as fallback in that order.
+If those fail, too,
+use the default,
+which may be set in
+.Pa <%%ETC_PREFIX%%>/koch-suite.inc .
 .Sh FILES
 .Bl -tag -width <%%ETC_PREFIX%%>/koch-suite.inc -compact
 .It Pa <%%ETC_PREFIX%%>/koch-suite.inc
@@ -82,7 +93,7 @@ To import a recipe from a file invoke
 .Nm
 this way:
 .Pp
-.Dl $ mmimport --test -mm < file.mm
+.Dl $ mmimport -mm < file.mm
 .\" This next request is for sections 1, 6, 7 & 8 only
 .\"     (command return values (to shell) and fprintf/stderr type diagnostics)
 .\" .Sh DIAGNOSTICS
