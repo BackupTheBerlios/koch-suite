@@ -1,3 +1,7 @@
+2002-01-01  Eric Vaandering at BerliOS  <vondo@hornet.berlios.de>
+
+  * src/include/en.inc 1.29: Minor English nits
+
 2001-12-31  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/de.inc 1.25, src/include/en.inc 1.28, src/www/actions.raw 1.2, src/www/pics/left.gif 1.1, src/www/pics/right.gif 1.1, src/www/print.raw 1.15, src/www/rezept.raw 1.22, src/www/search.raw 1.13:
