@@ -1,5 +1,5 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
-<?
+<?php
   /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -29,7 +29,7 @@
    */
 
   /*
-   * $Id: mmimport.raw,v 1.30 2002/08/31 17:49:42 lestinsky Exp $
+   * $Id: mmimport.raw,v 1.31 2002/11/27 18:28:48 lestinsky Exp $
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
    * See the bundled file "LICENCE" for the licence of this script.

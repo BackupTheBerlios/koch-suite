@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -46,7 +46,7 @@
   $page_title = $Lang['Pastebox']['Title'];
   include "<%%WEB_PREFIX%%>/header.inc";
 ?>
-<h2><? echo $Lang['Pastebox']['Title']; ?></h2>
+<h2><?php echo $Lang['Pastebox']['Title']; ?></h2>
 
 <p>
   <?php echo $Lang['Pastebox']['Text']; ?>
@@ -54,8 +54,8 @@
 
 <form method="post" action="einfuegen.php">
 <textarea name="pasted" cols="80" rows="20" wrap="physical"></textarea>
-<input type="submit" class="button" value="<? echo $Lang['FormApply']; ?>">
-<input type="reset" class="button" value="<? echo $Lang['FormReset']; ?>">
+<input type="submit" class="button" value="<?php echo $Lang['FormApply']; ?>">
+<input type="reset" class="button" value="<?php echo $Lang['FormReset']; ?>">
 </form>
 
 <?php

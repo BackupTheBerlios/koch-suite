@@ -1,4 +1,4 @@
-<!-- $Id: menue.raw,v 1.21 2002/09/17 22:43:34 lestinsky Exp $ -->
+<!-- $Id: menue.raw,v 1.22 2002/11/27 18:27:26 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
 <?php
   $blue_dot = '<img src="pics/blue_dot.gif" align="bottom" alt="*" border=0>';
@@ -9,7 +9,7 @@
     <td>
       <table border="0" cellspacing="2" cellpadding="2">
         <tr style="font-size:small;">
-          <td style="background-color:#c0c0d5" class="menu"><? echo $Lang["Mainmenu"]["Title"]; ?></td>
+          <td style="background-color:#c0c0d5" class="menu"><?php echo $Lang["Mainmenu"]["Title"]; ?></td>
         </tr>
         <tr>
           <td class="menu">
@@ -18,19 +18,19 @@
             <table border="0" cellspacing="1" cellpadding="1" class="menu">
             <tr>
               <td><img src="pics/lupe.gif" align="bottom" alt="*" border=0></td>
-              <td><a href="search.php"><? echo $Lang['Search']['Search']; ?></a></td>
+              <td><a href="search.php"><?php echo $Lang['Search']['Search']; ?></a></td>
             </tr>
             <tr>
               <td><img src="pics/write.gif" align="bottom" alt="*" border=0></td>
-              <td><a href="einfuegen.php"><? echo $Lang['Insert']; ?></a></td>
+              <td><a href="einfuegen.php"><?php echo $Lang['Insert']; ?></a></td>
             </tr>
             <tr>
               <td><img src="pics/help_dot.gif" align="bottom" alt="*" border=0></td>
-              <td><a href="help.php"><? echo $Lang['Help']; ?></a></td>
+              <td><a href="help.php"><?php echo $Lang['Help']; ?></a></td>
             </tr>
             <tr>
               <td><?php echo $blue_dot; ?></td>
-              <td><a href="infos.php"><? echo $Lang['Info']; ?></a></td>
+              <td><a href="infos.php"><?php echo $Lang['Info']; ?></a></td>
             </tr>
             <tr><td colspan="2">&nbsp;</td></tr>
 

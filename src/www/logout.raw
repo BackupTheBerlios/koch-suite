@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -50,9 +50,9 @@
   include "<%%WEB_PREFIX%%>/header.inc";
 
 ?>
-<h2><? echo $Lang['Mainmenu']['Title']; ?></h2>
+<h2><?php echo $Lang['Mainmenu']['Title']; ?></h2>
 
-<p><? echo $Lang["Mainmenu"]["PlsChoose"]; ?></p>
+<p><?php echo $Lang["Mainmenu"]["PlsChoose"]; ?></p>
 
 <?php
   $authorname = "Michael Lestinsky";

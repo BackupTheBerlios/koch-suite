@@ -1,5 +1,5 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
-<?
+<?php
   /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -28,7 +28,7 @@
    * SUCH DAMAGE.
    */
 
-  /* $Id: rezept.raw,v 1.22 2002/10/02 22:39:58 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.23 2002/11/27 18:28:48 lestinsky Exp $
    * Export a recipe in different formats.
    */
 

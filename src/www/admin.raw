@@ -166,7 +166,7 @@
     </td>
   </tr>
   </table>
-  <input type="submit" class="button" name="newuser_submit" value="<? echo $Lang['FormApply']; ?>">
+  <input type="submit" class="button" name="newuser_submit" value="<?php echo $Lang['FormApply']; ?>">
 </form>
 
 <h3><?php echo $Lang['Admin']['LockAccount']['Title']; ?></h3>
@@ -177,7 +177,7 @@
     <td><input type="text" class="textfield" name="username"></td>
   </tr>
   </table>
-  <input type="submit" class="button" name="lockuser_submit" value="<? echo $Lang['Admin']['LockAccount']['Lock']; ?>">
+  <input type="submit" class="button" name="lockuser_submit" value="<?php echo $Lang['Admin']['LockAccount']['Lock']; ?>">
 </form>
 
 <?php

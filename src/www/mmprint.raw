@@ -1,5 +1,5 @@
 <?php
-  /* $Id: mmprint.raw,v 1.21 2002/09/23 21:48:14 lestinsky Exp $
+  /* $Id: mmprint.raw,v 1.22 2002/11/27 18:27:26 lestinsky Exp $
    *
    * Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
@@ -88,7 +88,7 @@
 ?>
 
 <pre>
-<?
+<?php
   if (isset($error)) 
     echo $error;
   else {

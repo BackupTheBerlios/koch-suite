@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -97,7 +97,7 @@
   </tr>
   </table>
   <input type="submit" name="passwd_submit" class="button"
-         value="<? echo $Lang['FormApply']; ?>">
+         value="<?php echo $Lang['FormApply']; ?>">
 </form>
 
 <?php

@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -40,11 +40,11 @@
 
 ?>
 <a name="top"></a>
-<h1><? echo $Lang['UnitInfo']['Title']; ?></h1>
+<h1><?php echo $Lang['UnitInfo']['Title']; ?></h1>
 
 <form>
 <input type="button" class="button" onClick="window.close()"
-       value="<? echo $Lang['Close']; ?>">
+       value="<?php echo $Lang['Close']; ?>">
 </form>
 
 <center>
@@ -52,7 +52,7 @@
   <tr>
     <td style="background-color:#9090b0;">
       <table border="0" cellspacing="1" cellpadding="3">
-<?
+<?php
   $units = get_units();
 
   function td ($str) {
@@ -113,7 +113,7 @@
 
 <form>
   <input type="button" class="button" onClick="window.close()"
-         value="<? echo $Lang['Close']; ?>">
+         value="<?php echo $Lang['Close']; ?>">
 </form>
 
 <?php

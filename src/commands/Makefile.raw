@@ -10,12 +10,16 @@ CONF_FILE=		../config.sed
 all: build
 	@#${MAKE} subdir TRGT=all
 
-build: ${PHP_FILES} init_db
+build: ${PHP_FILES} init_db init_db2
 
 ${PHP_FILES}: ${PHP_FILES:%=%.raw}
 	sed -f ${CONF_FILE} ${@}.raw > ${@}
 
 init_db: init_db.raw
+	sed -f ${CONF_FILE} ${@}.raw > ${@}
+	<%%chmod%%> +x ${@}
+
+init_db2: init_db2.raw
 	sed -f ${CONF_FILE} ${@}.raw > ${@}
 	<%%chmod%%> +x ${@}
 

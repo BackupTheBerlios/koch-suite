@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -28,7 +28,7 @@
    */
 
   /**
-   * $Id: einfuegen.raw,v 1.47 2002/11/06 17:45:38 lestinsky Exp $
+   * $Id: einfuegen.raw,v 1.48 2002/11/27 18:27:26 lestinsky Exp $
    * Insert new and edit exiting recipes.
    *
    * @package WWW
@@ -413,17 +413,17 @@
   <p>
   <div class="small">[<a href="pastebox.php"><?php echo $Lang['Pastebox']['Title'] ?></a>]</div>
   </p>
-  <form action="<? echo $target ?>" method="post">
+  <form action="<?php echo $target ?>" method="post">
 
   <?php
       echo make_form($r);
   ?>     
 
   <input type="submit" class="button" name="submit"
-         value="<? echo $Lang['FormApply']; ?>">
+         value="<?php echo $Lang['FormApply']; ?>">
   <input type="submit" class="button" name="more_zutaten"
-         value="<? echo $Lang['FormMoreIngr']; ?>">
-  <input type="reset" class="button" value="<? echo $Lang['FormReset']; ?>">
+         value="<?php echo $Lang['FormMoreIngr']; ?>">
+  <input type="reset" class="button" value="<?php echo $Lang['FormReset']; ?>">
   </form>
 
 <?php

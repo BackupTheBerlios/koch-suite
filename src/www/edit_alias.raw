@@ -30,7 +30,7 @@
   /**
    * Alias-Editor
    *
-   * $Id: edit_alias.raw,v 1.17 2002/09/23 21:48:57 lestinsky Exp $
+   * $Id: edit_alias.raw,v 1.18 2002/11/27 18:27:26 lestinsky Exp $
    * Edit the alias-list for a given unit.
    * @package WWW
    * @modulegroup Edit
@@ -80,7 +80,7 @@
 <h1><?php echo $Lang["Edit"] . ': ' . $unit; ?></h1>
 
 <p>
-[<a href="units.php"><? echo $Lang['Close'] ?></a>]
+[<a href="units.php"><?php echo $Lang['Close'] ?></a>]
 </p>
 
 <p>

@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.23 2002/11/06 17:43:06 lestinsky Exp $
+   * $Id: kategorien.raw,v 1.24 2002/11/27 18:27:26 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW
@@ -66,16 +66,16 @@
   <script language="JavaScript1.2">
   <!--
     function eintragen ( name ) {
-      <? if ($maxsel != 1) { ?>
-      if ( opener.document.<?php echo $formname ?>.<? echo $target ?>.value == '' ) {
-        opener.document.<?php echo $formname ?>.<? echo $target ?>.value = name;
+      <?php if ($maxsel != 1) { ?>
+      if ( opener.document.<?php echo $formname ?>.<?php echo $target ?>.value == '' ) {
+        opener.document.<?php echo $formname ?>.<?php echo $target ?>.value = name;
       } else {
-        opener.document.<?php echo $formname ?>.<? echo $target ?>.value += ', ' + name;
+        opener.document.<?php echo $formname ?>.<?php echo $target ?>.value += ', ' + name;
       }
-      <? } else { ?>
-      opener.document.<?php echo $formname ?>.<? echo $target ?>.value = name;
+      <?php } else { ?>
+      opener.document.<?php echo $formname ?>.<?php echo $target ?>.value = name;
       window.close();
-      <? } ?>
+      <?php } ?>
     }
   //-->
   </script>

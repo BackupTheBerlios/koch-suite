@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -50,7 +50,7 @@
 ?>
 <h2><?php echo $Lang['Infos']['Title']; ?></h2>
 
-<!-- Installierte Version: $Name:  $ $Revision: 1.38 $ -->
+<!-- Installierte Version: $Name:  $ $Revision: 1.39 $ -->
 
 <h3><?php echo $Lang["Version"]["Title"]; ?></h3>
 <p>
@@ -59,51 +59,51 @@
         echo " " . $Lang["Version"]["Text"]["Post"]; ?>.
 </p>
 
-<h3><? echo $Lang['Homepage']['Title']; ?></h3>
-  <?
+<h3><?php echo $Lang['Homepage']['Title']; ?></h3>
+  <?php
      foreach ($Lang['Homepage']['Text'] as $text) {
        echo "<p>" . $text . "</p>";
      };    
   ?>
 
 
-<h3><? echo $Lang['Requirements']['Title']; ?></h3>
+<h3><?php echo $Lang['Requirements']['Title']; ?></h3>
 <p>
-  <? echo $Lang['Requirements']['Text'][0] ?>
+  <?php echo $Lang['Requirements']['Text'][0] ?>
 </p>
 <ol>
-  <?
+  <?php
      foreach ($Lang['Requirements']['Software'] as $text) {
        echo "<li>" . $text . "</li>\n";
      };
   ?>
 </ol>
 <p>
-  <? echo $Lang['Requirements']['Text'][1] ?>
+  <?php echo $Lang['Requirements']['Text'][1] ?>
 </p>
 <ul>
-  <?
+  <?php
      foreach ($Lang['Requirements']['OSes'] as $text) {
        echo "<li>" . $text . "</li>\n";
      };
   ?>
 </ul>
 <p>
-  <? echo $Lang['Requirements']['Text'][2] ?>
+  <?php echo $Lang['Requirements']['Text'][2] ?>
 </p>
 
-<h3><? echo $Lang['License']['Title']; ?></h3>
-  <?
+<h3><?php echo $Lang['License']['Title']; ?></h3>
+  <?php
      foreach ($Lang['License']['Pre'] as $text) {
        echo "<p>" . $text . "</p>";
      };    
   ?>
 
 <pre>
-<? require "<%%WEB_PREFIX%%>/LICENSE"; ?>
+<?php require "<%%WEB_PREFIX%%>/LICENSE"; ?>
 </pre>
 
-  <?
+  <?php
      foreach ($Lang['License']['Post'] as $text) {
        echo "<p>" . $text . "</p>";
      };    

@@ -160,15 +160,15 @@
     $_SESSION['operate_on'] = 'searchresult';
     include "<%%WEB_PREFIX%%>/actions.inc";
     ?>
-    <h2><? echo $Lang['Search']['Result']; ?>:
-      <? 
+    <h2><?php echo $Lang['Search']['Result']; ?>:
+      <?php
          if (empty($_GET["all"])) { 
            echo $_POST["begriff"];
          } 
       ?> 
     </h2>
 
-    <?
+    <?php
 
     /* Do the search */
     if (empty($where)) $where[] = 'title';
@@ -200,7 +200,7 @@
     }
   }
 ?>
-<h2><? echo $Lang['Search']['Search']; ?></h2>
+<h2><?php echo $Lang['Search']['Search']; ?></h2>
 <script language="JavaScript1.2">
   <!--
     function kat() {
@@ -212,25 +212,25 @@
 </script>
 
 
-<form name="searchform" action="<? echo $PHP_SELF; ?>" method="post">
+<form name="searchform" action="<?php echo $PHP_SELF; ?>" method="post">
   <table border=0>
     <tr>
-      <td><? echo $Lang['Search']['For']; ?></td>
-      <td><input class="textfield" type="text" name="begriff" <? if (isset($_POST['begriff'])) echo "value=\"" . $_POST['begriff'] ."\""; ?>>
+      <td><?php echo $Lang['Search']['For']; ?></td>
+      <td><input class="textfield" type="text" name="begriff" <?php if (isset($_POST['begriff'])) echo "value=\"" . $_POST['begriff'] ."\""; ?>>
     </tr>
     <tr>
-      <td><? echo $Lang['Search']['In']; ?></td>
+      <td><?php echo $Lang['Search']['In']; ?></td>
       <td><table border="0">
             <tr>
               <td valign="top">
-                <input type="checkbox" class="check" name="where[]" value="title"> <? echo $Lang['Search']['Menutitle']; ?><br>
-                <input type="checkbox" class="check" name="where[]" value="cat"> <? echo $Lang['Search']['Categories']; ?><br>
-                <input type="checkbox" class="check" name="where[]" value="ingred"> <? echo $Lang['Search']['Ingredients']; ?>
+                <input type="checkbox" class="check" name="where[]" value="title"> <?php echo $Lang['Search']['Menutitle']; ?><br>
+                <input type="checkbox" class="check" name="where[]" value="cat"> <?php echo $Lang['Search']['Categories']; ?><br>
+                <input type="checkbox" class="check" name="where[]" value="ingred"> <?php echo $Lang['Search']['Ingredients']; ?>
               </td>
               <td valign="top">
-                <input type="checkbox" class="check" name="where[]" value="instructions"> <? echo $Lang['Instructions']; ?><br>
-                <input type="checkbox" class="check" name="where[]" value="Source"> <? echo $Lang['Source']; ?><br>
-                <input type="checkbox" class="check" name="where[]" value="Recorder"> <? echo $Lang['Recorder']; ?>
+                <input type="checkbox" class="check" name="where[]" value="instructions"> <?php echo $Lang['Instructions']; ?><br>
+                <input type="checkbox" class="check" name="where[]" value="Source"> <?php echo $Lang['Source']; ?><br>
+                <input type="checkbox" class="check" name="where[]" value="Recorder"> <?php echo $Lang['Recorder']; ?>
               </td>
             </tr>
           </table>
@@ -238,40 +238,40 @@
     </tr>
   </table>
 <input type="submit" class="button"
-       value="<? echo $Lang['Search']['Go']; ?>">
+       value="<?php echo $Lang['Search']['Go']; ?>">
 <input type="reset" class="button"
-       value="<? echo $Lang['Delete']; ?>">
+       value="<?php echo $Lang['Delete']; ?>">
 </form>
 <p>
-  [<a href="<? echo "$PHP_SELF?all=1"; ?>"><? echo $Lang['AllRecipes']; ?></a>]
-  [<a href="kategorien.php?target=begriff&maxsel=1&formname=searchform" target="kat" onClick="kat();"><? echo $Lang['CatChoose']; ?></a>]
+  [<a href="<?php echo "$PHP_SELF?all=1"; ?>"><?php echo $Lang['AllRecipes']; ?></a>]
+  [<a href="kategorien.php?target=begriff&maxsel=1&formname=searchform" target="kat" onClick="kat();"><?php echo $Lang['CatChoose']; ?></a>]
   <br>
-  <a class="prop" href="<? echo "$PHP_SELF?all=a"; ?>">A</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=b"; ?>">B</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=c"; ?>">C</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=d"; ?>">D</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=e"; ?>">E</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=f"; ?>">F</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=g"; ?>">G</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=h"; ?>">H</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=i"; ?>">I</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=j"; ?>">J</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=k"; ?>">K</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=l"; ?>">L</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=m"; ?>">M</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=n"; ?>">N</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=o"; ?>">O</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=p"; ?>">P</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=q"; ?>">Q</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=r"; ?>">R</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=s"; ?>">S</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=t"; ?>">T</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=u"; ?>">U</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=v"; ?>">V</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=w"; ?>">W</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=x"; ?>">X</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=y"; ?>">Y</a>
-  <a class="prop" href="<? echo "$PHP_SELF?all=z"; ?>">Z</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=a"; ?>">A</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=b"; ?>">B</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=c"; ?>">C</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=d"; ?>">D</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=e"; ?>">E</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=f"; ?>">F</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=g"; ?>">G</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=h"; ?>">H</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=i"; ?>">I</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=j"; ?>">J</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=k"; ?>">K</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=l"; ?>">L</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=m"; ?>">M</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=n"; ?>">N</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=o"; ?>">O</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=p"; ?>">P</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=q"; ?>">Q</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=r"; ?>">R</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=s"; ?>">S</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=t"; ?>">T</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=u"; ?>">U</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=v"; ?>">V</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=w"; ?>">W</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=x"; ?>">X</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=y"; ?>">Y</a>
+  <a class="prop" href="<?php echo "$PHP_SELF?all=z"; ?>">Z</a>
 </p>
 <?php if (count($tagged_recipes) > 0) { ?>
 <p>

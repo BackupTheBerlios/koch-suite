@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.26 2002/09/23 21:48:57 lestinsky Exp $
+  /* $Id: print.raw,v 1.27 2002/11/27 18:27:26 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    *
@@ -108,7 +108,7 @@
     <h1>Error</h1>
     <p>
       An runtime-error occured. Please consult your logfile for details.<br>
-      <div class="warn"><? echo "$error" ?></div>
+      <div class="warn"><?php echo "$error" ?></div>
     </p>
     <?php
 
