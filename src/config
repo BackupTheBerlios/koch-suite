@@ -1,4 +1,4 @@
-# $Id: config,v 1.9 2001/01/18 00:46:29 michael Exp $
+# $Id: config,v 1.10 2001/06/01 22:33:49 michael Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 
@@ -28,6 +28,6 @@ GROUP		=0
 
 # -- DB-Definitions --
 DB_SERVER	=magrathea
-DB_USER		=
+DB_USER		=kochsuite
 DB_PASSWORD	=
 DB_NAME		=DBkoch
