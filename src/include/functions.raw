@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.41 2001/06/10 22:16:46 michael Exp $
+   * $Id: functions.raw,v 1.42 2001/06/10 22:33:12 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -75,7 +75,7 @@
   }
 
 
-  function exec_search ($str, $where, $param) {
+  function exec_search ($str, $where, $param = '') {
     /* Actually parse what and where to search for and then
      * perform the proper searches.
      */
@@ -103,7 +103,7 @@
           } else if (ereg("[a-z]", $param)) {
             $result = get_mid_by_name("$param", 1);
           } else {
-            $result = get_mid_by_name("%$this%");
+            $result = get_mid_by_name("$this");
           }
           break;
         case 'cat':
