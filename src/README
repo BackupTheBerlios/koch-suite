@@ -1,14 +1,14 @@
-### $Id: README,v 1.3 2000/10/26 01:32:30 michael Exp $
+### $Id: README,v 1.4 2000/11/01 13:19:41 michael Exp $
 
 Koch-Suite
 ==========
 
 Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
-Siehe die Datei LICENCE, welche für alle in diesem Paket enthaltenen
-Dateien gültig ist.
+Die Datei LICENCE enthält die Lizenz, unter der dieses Paket als ganzes
+oder einzelne Dateien hieraus verwendet werden dürfen.
 
-Was ist das ueberhaupt?
------------------------
+Was ist das hier ueberhaupt?
+----------------------------
 
 Eine Sammlung von Skripten fuer die Rezeptverwaltung. Angefangen von
 Mealmaster-Importfiltern (http://www.mealmaster.com), bis ...
@@ -40,20 +40,27 @@ Kopiere alle ausfuehrbaren Tools an eine sympatische Stelle, z.B.
 Passe include/config.inc an die lokalen Anforderungen an.
 Kopiere das Verzeichnis include/ nach irgendwo.
 
-Wenn du einen Rezept-Server betreiben willst: in der Datei init-db.sql
-sind SQL-Kommandos enthalten, die die notwendigen Datenstrukturen erzeugen.
-Man kann diese bequem mit einem
+Wenn du einen Rezept-Server betreiben willst: in der Datei 
+"Documentation/init-db.sql" sind SQL-Kommandos enthalten, die die 
+notwendigen Datenstrukturen erzeugen. 
+Vorher benötigt man aber eine Datenbank auf dem Server, die kann man mit
+
+  echo "create database DBkoch" | mysql 
+
+bequem anlegen.
+Zum Import der Datenstruktur kann mit einem
 
   mysql DBkoch < init-db.sql 
 
-in die eigene Datenbank uebernehmen.
+alle notwendigen Komandos ausführen lassen.
 
 Todo:
 -----
 
-Noch sehr viel.
+Noch sehr viel:
  - Makefile schreiben,
  - On-the-Fly-Konfiguration erzeugen,
+ - Dokumentation schreiben,
  - Web-Frontends,
  - Suchfunktionen,
 
@@ -66,5 +73,5 @@ Feedback:
 ---------
 
 Bitte schickt mir Feedback. Am besten per EMail an meine oben angegebene
-Adresse. Ich nehme gerne auch Patches an.
+Adresse. Ich nehme gerne auch Patches oder Wünsche für Features an.
 

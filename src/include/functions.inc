@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.inc,v 1.4 2000/11/01 12:54:20 michael Exp $
+   * $Id: functions.inc,v 1.5 2000/11/01 13:19:43 michael Exp $
    */
 
   include "./include/config.inc";
@@ -145,6 +145,17 @@
     $str .= $rezept["anleitung"]; 
 
     return $str . "\n";
+  }
+
+
+
+  function write_db ($rezept) {
+    /* Write a recipe into the database. For the Layout of the Database
+     * see Documentation/init_db.sql
+     */
+
+    
+
   }
 
 
