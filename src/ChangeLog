@@ -1,3 +1,7 @@
+2004-12-06  Michael Bussmann  <bus@mb-net.net>
+
+  * commands/init_db.raw 1.10: init_db now creates required sequences
+
 2004-12-05  Michael Bussmann  <bus@mb-net.net>
 
   * commands/init_db.raw 1.9:
