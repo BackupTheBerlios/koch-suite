@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.12 2001/03/03 12:32:13 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.13 2001/03/11 14:59:23 michael Exp $ -->
 </head>
 
 <body>
@@ -35,12 +35,6 @@
 
     <h4>Kommandozeilen-Tools</h4>
     <dl>
-      <dt><code>mmexport</code></dt>
-          <dd><i>Export von Rezepten aus der Datenbank</i> im
-          <a href="http://home1.gte.net/welliver/">Meal-Master</a>-Format.
-          Als Parameter wird ein Suchstring übergeben, nachdem in der
-          Rezept-Datenbank in den Menu-Titeln gesucht wird.
-          Die Ausgabe geschieht auf der Standard-Ausgabe.</dd>
       <dt><code>mmimport</code></dt>
           <dd><i>Import von Rezepten.</i> Der Input wird auf dem
           Standard-Eingabe-Kanal erwartet. Die Rezepte werden dabei aus
@@ -48,9 +42,9 @@
           als auch im 
           <a href="http://home.t-online.de/home/ufetzer/">REZKONV</a>-Format 
           sein.</dd>
-      <dt><code>rezept2latex</code></dt>
-          <dd><i>LaTeX</i>-Export von Rezepten. Rezepte werden als
-          <i>LaTeX</i>-Source ausgegeben.</dd>
+      <dt><code>rezept</code></dt>
+          <dd>Suche Rezepte in der Datenbank und gebe sie als
+          Latex-Source, im Meal-Master-Format oder als lesbaren Text aus.
       <dt><code>rk2mm</code></dt>
           <dd>Konvertiere REZKONV- in Meal-Master-Rezepte.</dd>
     </dl>
