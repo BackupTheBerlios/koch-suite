@@ -29,7 +29,7 @@
    */
 
   /**
-   * $Id: init_db.raw,v 1.8 2004/02/05 11:37:45 lestinsky Exp $
+   * $Id: init_db.raw,v 1.9 2004/12/05 08:42:25 bus Exp $
    * Initializes database, creates necessary tables and fills them with
    * default contents
    *
@@ -274,7 +274,7 @@
 	  ID integer NOT NULL PRIMARY KEY,
 	  PORTIONEN varchar(255),
 	  TITEL varchar(255) DEFAULT '' NOT NULL,
- 	  HASH varchar(255),
+ 	  HASH varchar(255)
 	);";
     exec_or_die($sql);
 
