@@ -1,5 +1,5 @@
 <?php
-  /* $Id: mmprint.raw,v 1.25 2003/03/12 12:42:03 lestinsky Exp $
+  /* $Id: mmprint.raw,v 1.26 2003/08/11 20:14:13 lestinsky Exp $
    *
    * Copyright (c) 2003
    *      Michael Lestinsky. All rights reserved.
@@ -45,51 +45,39 @@
                                        // are working.
 
   $bulk   = false;
-  $format = RECIPE_MM;
-  $export_function = "mmexport";
+    $format = RECIPE_MM;
+    $export_function = "mmexport";
 
-  if (isset($_GET['format'])) {
-    if ($_GET['format'] == "rk") {
-      $format = RECIPE_RK;
-      $export_function = "rkexport";
-    } else if ($_GET['format'] == "mm") {
-      $format = RECIPE_MM;
-      $export_function = "mmexport";
-    }
+  get_and_check_int_variable   ($_GET, "mid");
+  get_and_check_int_variable   ($_GET, "result_id");
+  get_and_check_float_variable ($_GET, "scale");
+  get_and_check_string_variable($_GET, 'format');
+  if (!isset($mid)) {
+    if (isset($result_id)) {
+      while (($result_id+1) > count($_SESSION['searchresult']))
+        $result_id--;
+      $mid = $_SESSION['searchresult'][$result_id]['id'];
+    } else if (isset($_SESSION['operate_on'])) {
+      $bulk = true;
+    } else die ("Aehm?");
   }
-  if (isset($_GET["mid"])) {
-    $mid = $_GET["mid"];
-    if (is_numeric($mid)) {
-      $ok = true;
-    } else {
-      $error = "Illegal value for mid";
-      $ok = false;
-    }
-  } elseif (isset($_GET["result_id"])) {
-    $result_id = $_GET["result_id"];
-    while (($result_id+1) > count($_SESSION['searchresult']))
-      $result_id--;
-    if (is_numeric($result_id)) {
-      $mid = $_SESSION["searchresult"][$result_id]["id"];
-      $ok = true;
-    } else {
-      $error = "Illegal value for result_id";
-      $ok = false;
-    }
-  } elseif (isset($_SESSION['operate_on'])) {
-    $bulk = true;
-  } else {
-    /* Sorry, wrong parameters. */
-    $error = "Wrong parameter list.";
-    $ok = false;
-  }
-
-  if (isset($_GET["scale"])) {
-    $scale = $_GET["scale"];
-    if (! is_numeric($scale))
-      $error = "scale: illegal value";
-  } else {
+  if (!isset($scale))
     $scale = 1;
+
+  if (isset($format)) {
+    switch ((string) $format) {
+      case "rk":
+        $format = RECIPE_RK;
+        $export_function = "rkexport";
+        break;
+      case "mm":
+      default:
+        $format = RECIPE_MM;
+        $export_function = "mmexport";
+    }
+    write_log("Format: $format");
+  } else {
+    // Undefined, use defaults then.
   }
 
   include "<%%WEB_PREFIX%%>/header.inc";

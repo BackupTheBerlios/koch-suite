@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.31 2003/07/30 07:54:57 lestinsky Exp $
+  /* $Id: print.raw,v 1.32 2003/08/11 20:14:13 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    *
@@ -45,32 +45,20 @@
                                        // are working.
   $bulk = false;
 
-  if (isset($_GET["mid"])) {
-    $mid = intval($_GET["mid"]);
-    if (!is_long($mid)) $error = "Illegal value for mid";
-  } elseif (isset($_GET["result_id"])) {
-    $result_id = intval($_GET["result_id"]);
-    if (is_numeric($result_id)) {
-      $mid = $_SESSION["searchresult"][$result_id]["id"];
-      $ok = true;
-    } else {
-      $error = "Illegal value for result_id";
-      $ok = false;
-    }
-  } elseif (isset($_SESSION['operate_on'])) {
-    $bulk = true;
-  } else {
-    $error = "Wrong parameter list";
-  } 
 
-  if (isset($_GET["scale"])) {
-    $scale = $_GET["scale"];
-    if (! is_numeric($scale))
-      $error = "scale: illegal value";
-  } else {
-    $scale = 1;
+  get_and_check_int_variable   ($_GET, "mid");
+  get_and_check_int_variable   ($_GET, "result_id");
+  get_and_check_float_variable ($_GET, "scale");
+  if (!isset($mid)) {
+    if (isset($result_id)) {
+      $mid = $_SESSION['searchresult'][$result_id]['id'];
+    } else if (isset($_SESSION['operate_on'])) {
+      $bulk = true;
+    } else die ("Aehm?");
   }
-
+  if (!isset($scale))
+    $scale = 1;
+  
 
   function latex_file ($text) {
     $filename = tempnam($GLOBALS["KS_TMPDIR"], "KOCHSUITE");
@@ -126,6 +114,7 @@
   switch ($format) {
     case "html":
 
+      $style      = "background:#ffffff";
       $page_title = $Lang['PrintVers'];
       $no_tabular = true;
   
@@ -141,7 +130,8 @@
 
       $authorname = "Michael Lestinsky";
       $authormail = "michael@lestinsky.de";
-      include "<%%WEB_PREFIX%%>/footer.inc";
+      db_disconnect();
+      // include "<%%WEB_PREFIX%%>/footer.inc";
       exit;
 
     case "latex":
