@@ -42,6 +42,8 @@
 
   session_register('searchresult');
 
+  $page_title = $Lang['Delete'];
+
   auth(WRITE);
 
   if (isset($_GET["confirm"])) $confirm = $_GET["confirm"];
@@ -71,61 +73,32 @@
   }
 
   $scale = 1;
-?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
+  include "<%%WEB_PREFIX%%>/header.inc";
 
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <title>Koch-Suite</title>
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.22 2002/08/31 17:56:21 lestinsky Exp $ -->
-</head>
+  if (isset($confirm) and $confirm == 'y') {
+    delete_menue ($mid);
+    echo "<h1>" . $Lang["Recipe"]["Deleted"] . "</h1>\n";
 
-<body>
-<a name="top"></a>
-<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
+    if (isset($result_id)) {
+      array_splice($_SESSION['searchresult'], $result_id, 1);
 
-<table border="0" cellpadding="3" cellspacing="0">
-<tr>
-  <td valign="top">
-    <? include "<%%WEB_PREFIX%%>/menue.inc"; ?>
-  </td>
-  <td>
-    <!-- Rechts: Ausgabe -->
-    <?
-      if (isset($confirm) and $confirm == 'y') {
-        delete_menue ($mid);
-        echo "<h1>" . $Lang["Recipe"]["Deleted"] . "</h1>\n";
-
-        if (isset($result_id)) {
-          array_splice($_SESSION['searchresult'], $result_id, 1);
-
-          if ($_SESSION['operate_on'] == "tagged_recipes") {
-            array_splice($_SESSION['tagged_recipes'], $result_id, 1);
-          }
-        }
-
-      } else {
-        echo "<h1>" . $Lang["Recipe"]["Delete"] ."?</h1>\n";
-        echo format_recipe_html(get_menu_by_mid($mid, $scale));
-        if (isset($result_id))
-          echo "[<a href=\"$PHP_SELF?result_id=$result_id&confirm=y\">" . 
-                  $Lang["Delete"] . "</a>]\n";
-        else
-          echo "[<a href=\"$PHP_SELF?mid=$mid&confirm=y\">" . 
-                  $Lang["Delete"] . "</a>]\n";
+      if ($_SESSION['operate_on'] == "tagged_recipes") {
+        array_splice($_SESSION['tagged_recipes'], $result_id, 1);
       }
-    ?>
-  </td>
-</tr>
-</table>
+    }
 
-<?php
+  } else {
+    echo "<h1>" . $Lang["Recipe"]["Delete"] ."?</h1>\n";
+    echo format_recipe_html(get_menu_by_mid($mid, $scale));
+    if (isset($result_id))
+      echo "[<a href=\"$PHP_SELF?result_id=$result_id&confirm=y\">" . 
+              $Lang["Delete"] . "</a>]\n";
+    else
+      echo "[<a href=\"$PHP_SELF?mid=$mid&confirm=y\">" . 
+              $Lang["Delete"] . "</a>]\n";
+  }
+
   $authorname = "Michael Lestinsky";
   $authormail = "michael@lestinsky.de";
   include "<%%WEB_PREFIX%%>/footer.inc";

@@ -42,40 +42,17 @@
   include "<%%PHP_LIBS%%>/auth.inc";
 
   auth(ALL);
+
+  $page_title = '';
+  include "<%%WEB_PREFIX%%>/header.inc";
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
 
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Koch-Suite</title>
-  <!-- $Id: index.raw,v 1.27 2002/08/31 17:51:25 lestinsky Exp $ -->
-</head>
-
-<body>
-<a name="top"></a>
-<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
-
-<table border="0" cellpadding="3" cellspacing="0">
-<tr>
-  <td valign="top">
-    <? include "<%%WEB_PREFIX%%>/menue.inc"; ?>
-  </td>
-  <td valign="top">
     <h2><? echo $Lang['Mainmenu']['Title']; ?></h2>
 
     <p><? echo $Lang['Mainmenu']['PlsChoose']; ?></p>
-  </td>
-</tr>
-</table>
 
 <?php
   $authorname = "Michael Lestinsky";
   $authormail = "michael@lestinsky.de";
   include "<%%WEB_PREFIX%%>/footer.inc";
 ?>
-

@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.20 2002/09/01 22:42:12 lestinsky Exp $
+   * $Id: kategorien.raw,v 1.21 2002/09/23 21:48:57 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW
@@ -45,6 +45,9 @@
 
   auth(READ);
 
+  $page_title = $Lang['Cat'];
+  $no_tabular = true;
+
   $target    = false;
   $maxsel    = false;
   $kategorie = false;
@@ -57,20 +60,9 @@
     $formname = "forms[0]";
   }
   if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
+
+  include "<%%WEB_PREFIX%%>/header.inc";
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
-
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
-
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-
-  <title><?php echo $Lang['Category']['Title']; ?></title>
-
   <script language="JavaScript1.2">
   <!--
     function eintragen ( name ) {
@@ -87,10 +79,6 @@
     }
   //-->
   </script>
-
-</head>
-
-<body>
 <a name="top"><h2><?php echo $Lang['CatChoose']; ?></h2></a>
 
 <p>

@@ -34,6 +34,8 @@
 
   auth(READ);
 
+  $page_title = $Lang['Search']['Search'];
+
   function  print_count(&$r) {
     global $Lang;
 
@@ -67,251 +69,212 @@
 
   if (empty($tagged_recipes)) $tagged_recipes = array();
 
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
+  include "<%%WEB_PREFIX%%>/header.inc";
 
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Koch-Suite</title>
-  <!-- $Id: search.raw,v 1.29 2002/09/16 20:51:15 lestinsky Exp $ -->
+  if (isset($_POST["where"]))      $where = $_POST["where"];
+  if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
 
-  <script language="JavaScript1.2">
-    <!--
-      function kat() {
-        foo = "kategorien.php?target=begriff&amp;maxsel=1&amp;formname=searchform";
-        window.open(foo, 'kat', 'width=300,height=400,screenX=700,screenY=300, scrollbars=yes');
-        document.searchform.elements[2].checked = true;
+  if (isset($_POST['tag_submit']) and isset($_POST['tag'])) {
+    /* Tag this recipes for further operations */
+
+    foreach ($_POST['tag'] as $do_tag) {
+      if ($searchresult[$do_tag]) {
+        $notag = false;
+        foreach ($tagged_recipes as $cmp) {
+          if ($cmp['id'] == $searchresult[$do_tag]['id'])
+            $notag = true;
+        }
+        if (! $notag) 
+          $tagged_recipes[] = $searchresult[$do_tag];
       }
-    //-->
-  </script>
-</head>
+    }
+  } else if (isset($_POST['untag_submit']) and isset($_POST['tag'])) {
+    foreach ($_POST['tag'] as $do_untag) {
+      if (isset($tagged_recipes[$do_untag]))
+        array_splice($tagged_recipes, $do_untag, 1);
+    }
+  } else if (isset($_POST['untag_all'])) {
+    $tagged_recipes = array();
+  } else if (isset($_POST['tag_all']) and $GLOBAL_OPS) {
+    $tagged_recipes = KS_array_merge($searchresult, $tagged_recipes);
+  }
 
-<body>
-<a name="top"></a>
-<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
+  if (isset($_GET['showresult'])) {
+    // Display the last searchresult again.
 
-<table border="0" cellpadding="3" cellspacing="0">
-<tr>
-  <td valign="top">
-    <? include "<%%WEB_PREFIX%%>/menue.inc"; ?>
-  </td>
-  <td>
+    $_SESSION['operate_on'] = 'searchresult';
+    include "<%%WEB_PREFIX%%>/actions.inc";
+    ?>
+    <h2><? echo $Lang['Search']['Result']; ?>:</h2>
+
+    <?php
+    if (count($$_SESSION['operate_on'])) {
+      ?>
+      <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
+      <table border=0>
+      <?php
+      print_count($$_SESSION['operate_on']);
+      print_titles($$_SESSION['operate_on']);
+      ?>
+      </table>
+      <input type="submit" class="button" name="tag_submit"
+             value="<?php echo $Lang['Tag']['Do'] ?>">
+      <?php if ($GLOBAL_OPS) { ?>
+      <input type="submit" class="button" name="tag_all"
+             value="<?php echo $Lang['Tag']['All'] ?>">
+      <?php } ?>
+      </form>
+      <?php
+    } else {
+      echo $Lang['Search']['NoResult']. "\n";
+    }
+
+
+  } else if (isset($_GET['showtagged'])) {
+    // Display all the tagged recipes
+
+    $_SESSION['operate_on'] = 'tagged_recipes';
+    include "<%%WEB_PREFIX%%>/actions.inc";
+    ?>
+    <h2><?php echo $Lang['Tag']['Show']['Title']; ?></h2>
+    <?php
+    if (count($$_SESSION['operate_on'])) {
+      ?>
+      <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
+      <table border=0>
+      <?php
+      print_count($$_SESSION['operate_on']);
+      print_titles($$_SESSION['operate_on']);
+      ?>
+      </table>
+      <input type="submit" class="button" name="untag_submit"
+             value="<?php echo $Lang['Untag']['Do'] ?>">
+      <input type="submit" class="button" name="untag_all"
+             value="<?php echo $Lang['Untag']['All'] ?>">
+      </form>
+      <?php
+    } else {
+      echo $Lang['Search']['NoResult']. "\n";
+    }
+
+
+  } else if (!empty($_POST["begriff"]) or !empty($_GET["all"])) {
+    // Perform a search and display the results
+
+    $_SESSION['operate_on'] = 'searchresult';
+    include "<%%WEB_PREFIX%%>/actions.inc";
+    ?>
+    <h2><? echo $Lang['Search']['Result']; ?>:
+      <? 
+         if (empty($_GET["all"])) { 
+           echo $_POST["begriff"];
+         } 
+      ?> 
+    </h2>
 
     <?
-      if (isset($_POST["where"]))      $where = $_POST["where"];
-      if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
 
-      if (isset($_POST['tag_submit']) and isset($_POST['tag'])) {
-        /* Tag this recipes for further operations */
+    /* Do the search */
+    if (empty($where)) $where[] = 'title';
+    foreach ($where as $search_in) {
+      $m = exec_search((isset($_POST["begriff"]) ? $_POST['begriff'] : ''), 
+                       $search_in, 
+                       (isset($_GET["all"]) ? $_GET["all"] : ''));
+      $all_result = KS_array_merge($all_result, $m);
+    }
 
-        foreach ($_POST['tag'] as $do_tag) {
-          if ($searchresult[$do_tag]) {
-            $notag = false;
-            foreach ($tagged_recipes as $cmp) {
-              if ($cmp['id'] == $searchresult[$do_tag]['id'])
-                $notag = true;
-            }
-            if (! $notag) 
-              $tagged_recipes[] = $searchresult[$do_tag];
-          }
-        }
-      } else if (isset($_POST['untag_submit']) and isset($_POST['tag'])) {
-        foreach ($_POST['tag'] as $do_untag) {
-          if (isset($tagged_recipes[$do_untag]))
-            array_splice($tagged_recipes, $do_untag, 1);
-        }
-      } else if (isset($_POST['untag_all'])) {
-        $tagged_recipes = array();
-      } else if (isset($_POST['tag_all']) and $GLOBAL_OPS) {
-        $tagged_recipes = KS_array_merge($searchresult, $tagged_recipes);
-      }
-
-      if (isset($_GET['showresult'])) {
-        // Display the last searchresult again.
-
-        $_SESSION['operate_on'] = 'searchresult';
-        include "<%%WEB_PREFIX%%>/actions.inc";
-        ?>
-        <h2><? echo $Lang['Search']['Result']; ?>:</h2>
-
-        <?php
-        if (count($$_SESSION['operate_on'])) {
-          ?>
-          <form method="post" action="<?php echo $_SERVER['REQUEST_URI'];
-?>">
-          <table border=0>
-          <?php
-          print_count($$_SESSION['operate_on']);
-          print_titles($$_SESSION['operate_on']);
-          ?>
-          </table>
-          <input type="submit" class="button" name="tag_submit"
-                 value="<?php echo $Lang['Tag']['Do'] ?>">
-          <?php if ($GLOBAL_OPS) { ?>
-          <input type="submit" class="button" name="tag_all"
-                 value="<?php echo $Lang['Tag']['All'] ?>">
-          <?php } ?>
-          </form>
-          <?php
-        } else {
-          echo $Lang['Search']['NoResult']. "\n";
-        }
-
-
-      } else if (isset($_GET['showtagged'])) {
-        // Display all the tagged recipes
-
-        $_SESSION['operate_on'] = 'tagged_recipes';
-        include "<%%WEB_PREFIX%%>/actions.inc";
-        ?>
-        <h2><?php echo $Lang['Tag']['Show']['Title']; ?></h2>
-        <?php
-        if (count($$_SESSION['operate_on'])) {
-          ?>
-          <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
-          <table border=0>
-          <?php
-          print_count($$_SESSION['operate_on']);
-          print_titles($$_SESSION['operate_on']);
-          ?>
-          </table>
-          <input type="submit" class="button" name="untag_submit"
-                 value="<?php echo $Lang['Untag']['Do'] ?>">
-          <input type="submit" class="button" name="untag_all"
-                 value="<?php echo $Lang['Untag']['All'] ?>">
-          </form>
-          <?php
-        } else {
-          echo $Lang['Search']['NoResult']. "\n";
-        }
-
-
-      } else if (!empty($_POST["begriff"]) or !empty($_GET["all"])) {
-        // Perform a search and display the results
-
-        $_SESSION['operate_on'] = 'searchresult';
-        include "<%%WEB_PREFIX%%>/actions.inc";
-        ?>
-        <h2><? echo $Lang['Search']['Result']; ?>:
-          <? 
-             if (empty($_GET["all"])) { 
-               echo $_POST["begriff"];
-             } 
-          ?> 
-        </h2>
-
-        <?
-
-        /* Do the search */
-        if (empty($where)) $where[] = 'title';
-        foreach ($where as $search_in) {
-          $m = exec_search((isset($_POST["begriff"]) ? $_POST['begriff'] : ''), 
-                           $search_in, 
-                           (isset($_GET["all"]) ? $_GET["all"] : ''));
-          $all_result = KS_array_merge($all_result, $m);
-        }
-
-        if (count($all_result)) {
-          ?>
-          <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
-          <table border=0>
-          <?php
-          reset($all_result);
-          print_count($all_result);
-          print_titles($all_result);
-          $searchresult = $all_result;
-          ?>
-          </table>
-          <input type="submit" class="button" name="tag_submit"
-                 value="<?php echo $Lang['Tag']['Do'] ?>">
-          <?php if ($GLOBAL_OPS) { ?>
-          <input type="submit" class="button" name="tag_all"
-                 value="<?php echo $Lang['Tag']['All'] ?>">
-          <?php } ?>
-          </form>
-          <?php
-        } else {
-          echo $Lang['Search']['NoResult']. "\n";
-        }
-      }
-    ?>
-    <h2><? echo $Lang['Search']['Search']; ?></h2>
-   
-    <form name="searchform" action="<? echo $PHP_SELF; ?>" method="post">
+    if (count($all_result)) {
+      ?>
+      <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
       <table border=0>
-        <tr>
-          <td><? echo $Lang['Search']['For']; ?></td>
-          <td><input class="textfield" type="text" name="begriff" <? if (isset($_POST['begriff'])) echo "value=\"" . $_POST['begriff'] ."\""; ?>>
-        </tr>
-        <tr>
-          <td><? echo $Lang['Search']['In']; ?></td>
-          <td><table border="0">
-                <tr>
-                  <td valign="top">
-                    <input type="checkbox" class="check" name="where[]" value="title"> <? echo $Lang['Search']['Menutitle']; ?><br>
-                    <input type="checkbox" class="check" name="where[]" value="cat"> <? echo $Lang['Search']['Categories']; ?><br>
-                    <input type="checkbox" class="check" name="where[]" value="ingred"> <? echo $Lang['Search']['Ingredients']; ?>
-                  </td>
-                  <td valign="top">
-                    <input type="checkbox" class="check" name="where[]" value="instructions"> <? echo $Lang['Instructions']; ?><br>
-                    <input type="checkbox" class="check" name="where[]" value="Source"> <? echo $Lang['Source']; ?><br>
-                    <input type="checkbox" class="check" name="where[]" value="Recorder"> <? echo $Lang['Recorder']; ?>
-                  </td>
-                </tr>
-              </table>
-          </td>
-        </tr>
+      <?php
+      reset($all_result);
+      print_count($all_result);
+      print_titles($all_result);
+      $searchresult = $all_result;
+      ?>
       </table>
-    <input type="submit" class="button"
-           value="<? echo $Lang['Search']['Go']; ?>">
-    <input type="reset" class="button"
-           value="<? echo $Lang['Delete']; ?>">
-    </form>
-    <p>
-      [<a href="<? echo "$PHP_SELF?all=1"; ?>"><? echo $Lang['AllRecipes']; ?></a>]
-      [<a href="kategorien.php?target=begriff&maxsel=1&formname=searchform" target="kat" onClick="kat();"><? echo $Lang['CatChoose']; ?></a>]
-      <br>
-      <a class="prop" href="<? echo "$PHP_SELF?all=a"; ?>">A</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=b"; ?>">B</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=c"; ?>">C</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=d"; ?>">D</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=e"; ?>">E</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=f"; ?>">F</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=g"; ?>">G</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=h"; ?>">H</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=i"; ?>">I</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=j"; ?>">J</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=k"; ?>">K</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=l"; ?>">L</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=m"; ?>">M</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=n"; ?>">N</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=o"; ?>">O</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=p"; ?>">P</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=q"; ?>">Q</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=r"; ?>">R</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=s"; ?>">S</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=t"; ?>">T</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=u"; ?>">U</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=v"; ?>">V</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=w"; ?>">W</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=x"; ?>">X</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=y"; ?>">Y</a>
-      <a class="prop" href="<? echo "$PHP_SELF?all=z"; ?>">Z</a>
-    </p>
-    <?php if (count($tagged_recipes) > 0) { ?>
-    <p>
-        [<a href="<?php echo "$PHP_SELF?showtagged=1"; ?>"><?php echo $Lang['Tag']['Show']['Do']; ?></a>]
-    </p>
-    <?php } ?>
+      <input type="submit" class="button" name="tag_submit"
+             value="<?php echo $Lang['Tag']['Do'] ?>">
+      <?php if ($GLOBAL_OPS) { ?>
+      <input type="submit" class="button" name="tag_all"
+             value="<?php echo $Lang['Tag']['All'] ?>">
+      <?php } ?>
+      </form>
+      <?php
+    } else {
+      echo $Lang['Search']['NoResult']. "\n";
+    }
+  }
+?>
+<h2><? echo $Lang['Search']['Search']; ?></h2>
 
-  </td>
-</tr>
-</table>
+<form name="searchform" action="<? echo $PHP_SELF; ?>" method="post">
+  <table border=0>
+    <tr>
+      <td><? echo $Lang['Search']['For']; ?></td>
+      <td><input class="textfield" type="text" name="begriff" <? if (isset($_POST['begriff'])) echo "value=\"" . $_POST['begriff'] ."\""; ?>>
+    </tr>
+    <tr>
+      <td><? echo $Lang['Search']['In']; ?></td>
+      <td><table border="0">
+            <tr>
+              <td valign="top">
+                <input type="checkbox" class="check" name="where[]" value="title"> <? echo $Lang['Search']['Menutitle']; ?><br>
+                <input type="checkbox" class="check" name="where[]" value="cat"> <? echo $Lang['Search']['Categories']; ?><br>
+                <input type="checkbox" class="check" name="where[]" value="ingred"> <? echo $Lang['Search']['Ingredients']; ?>
+              </td>
+              <td valign="top">
+                <input type="checkbox" class="check" name="where[]" value="instructions"> <? echo $Lang['Instructions']; ?><br>
+                <input type="checkbox" class="check" name="where[]" value="Source"> <? echo $Lang['Source']; ?><br>
+                <input type="checkbox" class="check" name="where[]" value="Recorder"> <? echo $Lang['Recorder']; ?>
+              </td>
+            </tr>
+          </table>
+      </td>
+    </tr>
+  </table>
+<input type="submit" class="button"
+       value="<? echo $Lang['Search']['Go']; ?>">
+<input type="reset" class="button"
+       value="<? echo $Lang['Delete']; ?>">
+</form>
+<p>
+  [<a href="<? echo "$PHP_SELF?all=1"; ?>"><? echo $Lang['AllRecipes']; ?></a>]
+  [<a href="kategorien.php?target=begriff&maxsel=1&formname=searchform" target="kat" onClick="kat();"><? echo $Lang['CatChoose']; ?></a>]
+  <br>
+  <a class="prop" href="<? echo "$PHP_SELF?all=a"; ?>">A</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=b"; ?>">B</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=c"; ?>">C</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=d"; ?>">D</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=e"; ?>">E</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=f"; ?>">F</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=g"; ?>">G</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=h"; ?>">H</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=i"; ?>">I</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=j"; ?>">J</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=k"; ?>">K</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=l"; ?>">L</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=m"; ?>">M</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=n"; ?>">N</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=o"; ?>">O</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=p"; ?>">P</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=q"; ?>">Q</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=r"; ?>">R</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=s"; ?>">S</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=t"; ?>">T</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=u"; ?>">U</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=v"; ?>">V</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=w"; ?>">W</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=x"; ?>">X</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=y"; ?>">Y</a>
+  <a class="prop" href="<? echo "$PHP_SELF?all=z"; ?>">Z</a>
+</p>
+<?php if (count($tagged_recipes) > 0) { ?>
+<p>
+    [<a href="<?php echo "$PHP_SELF?showtagged=1"; ?>"><?php echo $Lang['Tag']['Show']['Do']; ?></a>]
+</p>
+<?php } ?>
 
 <?php
   $authorname = "Michael Lestinsky";

@@ -42,44 +42,21 @@
   include "<%%PHP_LIBS%%>/auth.inc";
 
   auth(WRITE);
+
+  $page_title = $Lang['Pastebox']['Title'];
+  include "<%%WEB_PREFIX%%>/header.inc";
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
+<h2><? echo $Lang['Pastebox']['Title']; ?></h2>
 
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Koch-Suite</title>
-  <!-- $Id: pastebox.raw,v 1.5 2002/09/01 22:42:12 lestinsky Exp $ -->
-</head>
+<p>
+  <?php echo $Lang['Pastebox']['Text']; ?>
+</p>
 
-<body>
-<a name="top"></a>
-<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
-
-<table border="0" cellpadding="3" cellspacing="0">
-<tr>
-  <td valign="top">
-    <? include "<%%WEB_PREFIX%%>/menue.inc"; ?>
-  </td>
-  <td valign="top">
-    <h2><? echo $Lang['Pastebox']['Title']; ?></h2>
-
-    <p>
-      <?php echo $Lang['Pastebox']['Text']; ?>
-    </p>
-
-    <form method="post" action="einfuegen.php">
-    <textarea name="pasted" cols="80" rows="20" wrap="physical"></textarea>
-    <input type="submit" class="button" value="<? echo $Lang['FormApply']; ?>">
-    <input type="reset" class="button" value="<? echo $Lang['FormReset']; ?>">
-    </form>
-  </td>
-</tr>
-</table>
+<form method="post" action="einfuegen.php">
+<textarea name="pasted" cols="80" rows="20" wrap="physical"></textarea>
+<input type="submit" class="button" value="<? echo $Lang['FormApply']; ?>">
+<input type="reset" class="button" value="<? echo $Lang['FormReset']; ?>">
+</form>
 
 <?php
   $authorname = "Michael Lestinsky";

@@ -34,28 +34,11 @@
 
   auth(READ);
 
+  $page_title = $Lang['Units'];
+  $no_tabular = true;
+  include "<%%WEB_PREFIX%%>/header.inc";
+
 ?>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
-
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Koch-Suite</title>
-  <!-- $Id: units.raw,v 1.14 2002/09/01 22:42:12 lestinsky Exp $ -->
-  <style class="text/css">
-  <!--
-    .dark  { background-color:#c0c0d5; font-family:Helvetica,Arial; }
-    .light { background-color:#e9e9f0; }
-    .small { font-size:small; }
-  //-->
-  </style>
-</head>
-
-<body>
 <a name="top"></a>
 <h1><? echo $Lang['UnitInfo']['Title']; ?></h1>
 
@@ -74,14 +57,14 @@
 
   function td ($str) {
     if ($str != "") {
-      return "<td class=\"light\">" . $str . "</td>";
+      return "<td class=\"menu\">" . $str . "</td>";
     } else {
-      return "<td class=\"light\">&nbsp;</td>";
+      return "<td class=\"menu\">&nbsp;</td>";
     }
   }
 
   function th ($str) {
-    return "<td class=\"dark\">" . $str . "</td>";
+    return "<td style=\"background-color:#c0c0d5\">" . $str . "</td>";
   }
 
   function edit_alias ($unit) {

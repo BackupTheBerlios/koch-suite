@@ -30,7 +30,7 @@
   /**
    * Alias-Editor
    *
-   * $Id: edit_alias.raw,v 1.16 2002/09/01 22:42:12 lestinsky Exp $
+   * $Id: edit_alias.raw,v 1.17 2002/09/23 21:48:57 lestinsky Exp $
    * Edit the alias-list for a given unit.
    * @package WWW
    * @modulegroup Edit
@@ -43,6 +43,9 @@
   include "<%%PHP_LIBS%%>/auth.inc";
 
   auth(WRITE);
+
+  $page_title = $Lang['Alias'];
+  $no_tabular = true;
 
   $error = '';
   $fwd   = '';
@@ -71,29 +74,9 @@
     }
   }
 
+  include "<%%WEB_PREFIX%%>/header.inc";
+
 ?>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
-
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <?php echo $fwd; ?>
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Koch-Suite</title>
-  <!-- $Id: edit_alias.raw,v 1.16 2002/09/01 22:42:12 lestinsky Exp $ -->
-  <style class="text/css">
-  <!--
-    .dark  { background-color:#c0c0d5; font-family:Helvetica,Arial; }
-    .light { background-color:#e9e9f0; }
-    .small { font-size:small; }
-  //-->
-  </style>
-</head>
-
-<body>
 <h1><?php echo $Lang["Edit"] . ': ' . $unit; ?></h1>
 
 <p>

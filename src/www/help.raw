@@ -41,86 +41,52 @@
 
   auth(ALL);
 
+  $page_title = $Lang['Help'];
+  include "<%%WEB_PREFIX%%>/header.inc";
+
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
 
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
-  <title><?php echo $Lang['Help']; ?></title>
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.20 2002/08/18 13:56:25 lestinsky Exp $ -->
+<!-- Installierte Version: $Name:  $ $Revision: 1.21 $ -->
 
-  <script language="JavaScript1.2">
-  <!--
-    function units() {
-      foo = "units.php";
-      window.open(foo, 'units', 'width=500,height=500,scrollbars=yes');
+<h2><?php echo $Lang['Help']; ?></h2>
+
+<p>
+  <?php echo $Lang['Helptext']['General']; ?>
+</p>
+
+<h3><?php echo $Lang['Helptext']['CL']['Title']; ?></h3>
+<dl>
+  <?php
+    foreach ($Lang['Helptext']['CL']['commands'] as $c) {
+      echo "<dt><code>" . $c['Name'] . "</code></dt>\n";
+      echo "<dd>" . $c['Text'] . "</dd>\n";
     }
-  //-->
-  </script>
-</head>
+  ?>
+</dl>
 
-<body>
-<a name="top"></a>
-<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
+<h3><?php echo $Lang['Helptext']['WWW']['Title']; ?></h3>
+<dl>
+  <?php
+    foreach ($Lang['Helptext']['WWW']['part'] as $c) {
+      echo "<dt>" . $c['Title'] . "</dt>\n";
+      echo "<dd>" . $c['Text'] . "</dd>\n";
+    }
+  ?>
+</dl>
 
-<table border=0>
-<tr>
-  <td valign="top">
-    <?php
-      require "<%%WEB_PREFIX%%>/menue.inc";
-    ?>
-  </td>
-  <td>
-    <!-- Installierte Version: $Name:  $ $Revision: 1.20 $ -->
+<h3><?php echo $Lang['Language']['Title']; ?></h3>
+  <?php
+     foreach ($Lang['Language']['Text'] as $text) {
+       echo "<p>" . $text . "</p>";
+     };
+  ?>
 
-    <h2><?php echo $Lang['Help']; ?></h2>
-    
-    <p>
-      <?php echo $Lang['Helptext']['General']; ?>
-    </p>
-
-    <h3><?php echo $Lang['Helptext']['CL']['Title']; ?></h3>
-    <dl>
-      <?php
-        foreach ($Lang['Helptext']['CL']['commands'] as $c) {
-          echo "<dt><code>" . $c['Name'] . "</code></dt>\n";
-          echo "<dd>" . $c['Text'] . "</dd>\n";
-        }
-      ?>
-    </dl>
-
-    <h3><?php echo $Lang['Helptext']['WWW']['Title']; ?></h3>
-    <dl>
-      <?php
-        foreach ($Lang['Helptext']['WWW']['part'] as $c) {
-          echo "<dt>" . $c['Title'] . "</dt>\n";
-          echo "<dd>" . $c['Text'] . "</dd>\n";
-        }
-      ?>
-    </dl>
-
-    <h3><?php echo $Lang['Language']['Title']; ?></h3>
-      <?php
-         foreach ($Lang['Language']['Text'] as $text) {
-           echo "<p>" . $text . "</p>";
-         };
-      ?>
-
-    <h3><?php echo $Lang['Helptext']['Feedback']['Title']; ?></h3>
-      <?php
-        foreach($Lang['Helptext']['Feedback']['Text'] as $text) {
-          echo "<p>" . $text . "</p>"; 
-        }
-      ?>
-
-  </td>
-</tr>
-</table>
+<h3><?php echo $Lang['Helptext']['Feedback']['Title']; ?></h3>
+  <?php
+    foreach($Lang['Helptext']['Feedback']['Text'] as $text) {
+      echo "<p>" . $text . "</p>"; 
+    }
+  ?>
 
 <?php
   $authorname = "Michael Lestinsky";

@@ -45,6 +45,8 @@
 
   auth(ADMIN);
 
+  $page_title = $Lang['Admin']['Title'];
+
   /* Create a new users account */
   if (isset($_POST["newuser_submit"])) {
     if (!empty($_POST['username']) and 
@@ -128,79 +130,55 @@
     } else $msg = $Lang['Admin']['ErrMsg']['EmptyFields'];
   }
 
+  include "<%%WEB_PREFIX%%>/header.inc";
+
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
+<h2><?php echo $Lang['Admin']['Title']; ?></h2>
+<?php 
+  if (!empty($msg)) { 
+    echo "<p><div class=\"warn\">$msg</div></p>";
+  }
+?>
 
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Koch-Suite</title>
-  <!-- $Id: admin.raw,v 1.9 2002/09/01 22:42:12 lestinsky Exp $ -->
-</head>
+<h3><?php echo $Lang['Admin']['NewUser']['Title']; ?></h3>
+<form name="newuser_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+  <table border="0">
+  <tr>
+    <td><?php echo $Lang['Admin']['NewUser']['Username']; ?></td>
+    <td><input type="text" class="textfield" name="username"></td>
+  </tr>
+  <tr>
+    <td><?php echo $Lang['Admin']['NewUser']['Realname']; ?></td>
+    <td><input type="text" class="textfield" name="realname"></td>
+  </tr>
+  <tr>
+    <td><?php echo $Lang['Admin']['NewUser']['EMail']; ?></td>
+    <td><input type="text" class="textfield" name="email"></td>
+  </tr>
+  <tr>
+    <td><?php echo $Lang['Admin']['NewUser']['Usertype']; ?></td>
+    <td><select name="usertype">
+           <option value="<?php echo READ ?>"><?php echo $Lang['Admin']['UserClass']['Read'] ?></option>
+           <option value="<?php echo WRITE ?>"><?php echo $Lang['Admin']['UserClass']['Write'] ?></option>
+           <option value="<?php echo MODERATOR ?>"><?php echo $Lang['Admin']['UserClass']['Moderate'] ?></option>
+           <option value="<?php echo ADMIN ?>"><?php echo $Lang['Admin']['UserClass']['Admin'] ?></option>
+        </select>
+    </td>
+  </tr>
+  </table>
+  <input type="submit" class="button" name="newuser_submit" value="<? echo $Lang['FormApply']; ?>">
+</form>
 
-<body>
-<a name="top"></a>
-<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
-
-<table border="0" cellpadding="3" cellspacing="0">
-<tr>
-  <td valign="top">
-    <? include "<%%WEB_PREFIX%%>/menue.inc"; ?>
-  </td>
-  <td valign="top">
-    <h2><?php echo $Lang['Admin']['Title']; ?></h2>
-    <?php 
-      if (!empty($msg)) { 
-        echo "<p><div class=\"warn\">$msg</div></p>";
-      }
-    ?>
-
-    <h3><?php echo $Lang['Admin']['NewUser']['Title']; ?></h3>
-    <form name="newuser_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-      <table border="0">
-      <tr>
-        <td><?php echo $Lang['Admin']['NewUser']['Username']; ?></td>
-        <td><input type="text" class="textfield" name="username"></td>
-      </tr>
-      <tr>
-        <td><?php echo $Lang['Admin']['NewUser']['Realname']; ?></td>
-        <td><input type="text" class="textfield" name="realname"></td>
-      </tr>
-      <tr>
-        <td><?php echo $Lang['Admin']['NewUser']['EMail']; ?></td>
-        <td><input type="text" class="textfield" name="email"></td>
-      </tr>
-      <tr>
-        <td><?php echo $Lang['Admin']['NewUser']['Usertype']; ?></td>
-        <td><select name="usertype">
-               <option value="<?php echo READ ?>"><?php echo $Lang['Admin']['UserClass']['Read'] ?></option>
-               <option value="<?php echo WRITE ?>"><?php echo $Lang['Admin']['UserClass']['Write'] ?></option>
-               <option value="<?php echo MODERATOR ?>"><?php echo $Lang['Admin']['UserClass']['Moderate'] ?></option>
-               <option value="<?php echo ADMIN ?>"><?php echo $Lang['Admin']['UserClass']['Admin'] ?></option>
-            </select>
-        </td>
-      </tr>
-      </table>
-      <input type="submit" class="button" name="newuser_submit" value="<? echo $Lang['FormApply']; ?>">
-    </form>
-
-    <h3><?php echo $Lang['Admin']['LockAccount']['Title']; ?></h3>
-    <form name="lockuser_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-      <table border="0">
-      <tr>
-        <td><?php echo $Lang['Admin']['LockAccount']['Username']; ?></td>
-        <td><input type="text" class="textfield" name="username"></td>
-      </tr>
-      </table>
-      <input type="submit" class="button" name="lockuser_submit" value="<? echo $Lang['Admin']['LockAccount']['Lock']; ?>">
-    </form>
-  </td>
-</tr>
-</table>
+<h3><?php echo $Lang['Admin']['LockAccount']['Title']; ?></h3>
+<form name="lockuser_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+  <table border="0">
+  <tr>
+    <td><?php echo $Lang['Admin']['LockAccount']['Username']; ?></td>
+    <td><input type="text" class="textfield" name="username"></td>
+  </tr>
+  </table>
+  <input type="submit" class="button" name="lockuser_submit" value="<? echo $Lang['Admin']['LockAccount']['Lock']; ?>">
+</form>
 
 <?php
   $authorname = "Michael Lestinsky";

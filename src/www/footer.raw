@@ -1,3 +1,9 @@
+<?php if (!isset($no_tabular)) { ?>
+  </td>
+</tr>
+</table>
+<?php } ?>
+
 <address>
   &copy; 2002 <?php echo $authorname ?> &lt;<?php echo $authormail ?>&gt;
 </address>

@@ -44,94 +44,70 @@
 
   auth(ALL);
 
+  $page_title = $Lang['Info'];
+
+  include "<%%WEB_PREFIX%%>/header.inc";
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
+<h2><?php echo $Lang['Infos']['Title']; ?></h2>
 
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
-  <title><? echo $Lang['Info']; ?></title>
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.37 2002/08/18 13:56:25 lestinsky Exp $ -->
-</head>
+<!-- Installierte Version: $Name:  $ $Revision: 1.38 $ -->
 
-<body>
-<a name="top"></a>
-<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
+<h3><?php echo $Lang["Version"]["Title"]; ?></h3>
+<p>
+  <?php echo $Lang["Version"]["Text"]["Pre"] . " ";
+        echo KOCHSUITE_VER;
+        echo " " . $Lang["Version"]["Text"]["Post"]; ?>.
+</p>
 
-<table border=0>
-<tr>
-  <td valign="top">
-<? require "<%%WEB_PREFIX%%>/menue.inc"; ?>
-  </td>
-  <td>
-    <h2><?php echo $Lang['Infos']['Title']; ?></h2>
-
-    <!-- Installierte Version: $Name:  $ $Revision: 1.37 $ -->
-
-    <h3><?php echo $Lang["Version"]["Title"]; ?></h3>
-    <p>
-      <?php echo $Lang["Version"]["Text"]["Pre"] . " ";
-            echo KOCHSUITE_VER;
-            echo " " . $Lang["Version"]["Text"]["Post"]; ?>.
-    </p>
-
-    <h3><? echo $Lang['Homepage']['Title']; ?></h3>
-      <?
-         foreach ($Lang['Homepage']['Text'] as $text) {
-           echo "<p>" . $text . "</p>";
-         };    
-      ?>
+<h3><? echo $Lang['Homepage']['Title']; ?></h3>
+  <?
+     foreach ($Lang['Homepage']['Text'] as $text) {
+       echo "<p>" . $text . "</p>";
+     };    
+  ?>
 
 
-    <h3><? echo $Lang['Requirements']['Title']; ?></h3>
-    <p>
-      <? echo $Lang['Requirements']['Text'][0] ?>
-    </p>
-    <ol>
-      <?
-         foreach ($Lang['Requirements']['Software'] as $text) {
-           echo "<li>" . $text . "</li>\n";
-         };
-      ?>
-    </ol>
-    <p>
-      <? echo $Lang['Requirements']['Text'][1] ?>
-    </p>
-    <ul>
-      <?
-         foreach ($Lang['Requirements']['OSes'] as $text) {
-           echo "<li>" . $text . "</li>\n";
-         };
-      ?>
-    </ul>
-    <p>
-      <? echo $Lang['Requirements']['Text'][2] ?>
-    </p>
+<h3><? echo $Lang['Requirements']['Title']; ?></h3>
+<p>
+  <? echo $Lang['Requirements']['Text'][0] ?>
+</p>
+<ol>
+  <?
+     foreach ($Lang['Requirements']['Software'] as $text) {
+       echo "<li>" . $text . "</li>\n";
+     };
+  ?>
+</ol>
+<p>
+  <? echo $Lang['Requirements']['Text'][1] ?>
+</p>
+<ul>
+  <?
+     foreach ($Lang['Requirements']['OSes'] as $text) {
+       echo "<li>" . $text . "</li>\n";
+     };
+  ?>
+</ul>
+<p>
+  <? echo $Lang['Requirements']['Text'][2] ?>
+</p>
 
-    <h3><? echo $Lang['License']['Title']; ?></h3>
-      <?
-         foreach ($Lang['License']['Pre'] as $text) {
-           echo "<p>" . $text . "</p>";
-         };    
-      ?>
+<h3><? echo $Lang['License']['Title']; ?></h3>
+  <?
+     foreach ($Lang['License']['Pre'] as $text) {
+       echo "<p>" . $text . "</p>";
+     };    
+  ?>
 
 <pre>
 <? require "<%%WEB_PREFIX%%>/LICENSE"; ?>
 </pre>
 
-      <?
-         foreach ($Lang['License']['Post'] as $text) {
-           echo "<p>" . $text . "</p>";
-         };    
-      ?>
-
-  </td>
-</tr>
-</table>
+  <?
+     foreach ($Lang['License']['Post'] as $text) {
+       echo "<p>" . $text . "</p>";
+     };    
+  ?>
 
 <?php
   $authorname = "Michael Lestinsky";

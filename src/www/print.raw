@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.25 2002/08/31 17:54:13 lestinsky Exp $
+  /* $Id: print.raw,v 1.26 2002/09/23 21:48:57 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    *
@@ -101,29 +101,22 @@
 
 
   function error_message ($error = "") {
+    $page_title = "Error";
+    include "<%%WEB_PREFIX%%>/header.inc";
+
     ?>
-    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-        "http://www.w3.org/TR/REC-html40/loose.dtd">
-    <html>
-
-    <head>
-      <link rel="stylesheet" type="text/css" href="styles.css" />
-      <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
-      <meta http-equiv="Content-Style-Type" content="text/css">
-
-      <title>Koch-Suite</title>
-      <!-- $Id: print.raw,v 1.25 2002/08/31 17:54:13 lestinsky Exp $ -->
-    </head>
-    <body>
     <h1>Error</h1>
     <p>
       An runtime-error occured. Please consult your logfile for details.<br>
-      <div style="color:red;"><? echo "$error" ?></div>
+      <div class="warn"><? echo "$error" ?></div>
     </p>
-    </body>
-    </html>
-    <?
-    exit();
+    <?php
+
+    $authorname = "Michael Lestinsky";
+    $authormail = "michael@lestinsky.de";
+    include "<%%WEB_PREFIX%%>/footer.inc";
+    break;
+
   }
 
   if (isset($error)) error_message($error);
@@ -135,37 +128,25 @@
 
   switch ($format) {
     case "html":
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
 
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
-  <meta http-equiv="Content-Style-Type" content="text/css">
+      $page_title = $Lang['PrintVers'];
+      $no_tabular = true;
+  
+      include "<%%WEB_PREFIX%%>/header.inc";
 
-  <title>Koch-Suite</title>
-  <!-- $Id: print.raw,v 1.25 2002/08/31 17:54:13 lestinsky Exp $ -->
-</head>
+      if ($bulk) {
+        $recipe = "";
+        foreach($_SESSION[$_SESSION['operate_on']] as $result) {
+          echo format_recipe_html(get_menu_by_mid($result['id'], 1));
+        }
+      } else  
+        echo format_recipe_html(get_menu_by_mid($mid, $scale));
 
-<body>
-<?php
-  if ($bulk) {
-    $recipe = "";
-    foreach($_SESSION[$_SESSION['operate_on']] as $result) {
-      echo format_recipe_html(get_menu_by_mid($result['id'], 1));
-    }
-  } else  
-    echo format_recipe_html(get_menu_by_mid($mid, $scale));
-
-  $authorname = "Michael Lestinsky";
-  $authormail = "michael@lestinsky.de";
-  include "<%%WEB_PREFIX%%>/footer.inc";
-?>
-
-<?
+      $authorname = "Michael Lestinsky";
+      $authormail = "michael@lestinsky.de";
+      include "<%%WEB_PREFIX%%>/footer.inc";
       break;
+
     case "latex":
       if ($bulk) {
         $recipe = "";
@@ -186,6 +167,7 @@
       } else error_message();
 
       break;
+
     case "ps":
       if ($bulk) {
         $recipe = "";
@@ -206,6 +188,7 @@
       } else error_message();
 
       break;
+
     case "pdf":
       if ($bulk) {
         $recipe = "";
@@ -231,6 +214,7 @@
       } else error_message();
 
       break;
+
     default:
       error_message ("Configuration-Error: Unsupported format.\n");
   }

@@ -42,6 +42,8 @@
 
   auth(WRITE);
 
+  $page_title = $Lang['Insert'];
+
   $scale = 1;
   $new_cat = true;
   $meta = array();
@@ -374,86 +376,41 @@
 
     $r["hash"] = recipe_hash($r);
   }
-?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
+  include "<%%WEB_PREFIX%%>/header.inc";
 
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <title><?php echo $Lang['Recipe']['Insert']; ?></title>
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.43 2002/09/01 22:42:12 lestinsky Exp $ -->
-
-  <script language="JavaScript1.2">
-  <!--
-    function kat() {
-      foo = "kategorien.php?target=kategorie&maxsel=5";
-      window.open(foo, 'kat', 'width=300,height=400,scrollbars=yes');
+  if (isset($submit)) {
+    if(isset($mid) and $mid != 0) {
+      echo "<p>" . $Lang['Recipe']['Deleted'] . "</p>\n";
+      delete_menue($mid);
+      echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
+      $mid = write_db($r, $mid, $new_cat);
+    } else {
+      echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
+      $mid = write_db($r, 0, $new_cat);
     }
+  }
 
-    function units() {
-      foo = "units.php";
-      window.open(foo, 'units', 'width=500,height=500,scrollbars=yes');
-    }
-  //-->
-  </script>
+  include "<%%WEB_PREFIX%%>/actions.inc";
+  ?>
 
-</head>
+  <h2><?php echo $Lang['Recipe']['Insert']; ?></h2>
 
-<body>
-<a name="top"></a>
-<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
-
-<table border="0" cellpadding="3" cellspacing="0">
-<tr>
-  <td valign="top">
-    <? include "<%%WEB_PREFIX%%>/menue.inc"; ?>
-  </td>
-  <td>
-    <!-- Rechts: Ausgabe -->
-    <?
-    if (isset($submit)) {
-      if(isset($mid) and $mid != 0) {
-        echo "<p>" . $Lang['Recipe']['Deleted'] . "</p>\n";
-        delete_menue($mid);
-        echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
-        $mid = write_db($r, $mid, $new_cat);
-      } else {
-        echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
-        $mid = write_db($r, 0, $new_cat);
-      }
-    }
-
-    include "<%%WEB_PREFIX%%>/actions.inc";
-    ?>
-
-    <h2><?php echo $Lang['Recipe']['Insert']; ?></h2>
-
-    <p>
-    <div class="small">[<a href="pastebox.php"><?php echo $Lang['Pastebox']['Title'] ?></a>]</div>
-    </p>
-    <form action="<? echo $target ?>" method="post">
+  <p>
+  <div class="small">[<a href="pastebox.php"><?php echo $Lang['Pastebox']['Title'] ?></a>]</div>
+  </p>
+  <form action="<? echo $target ?>" method="post">
 
   <?php
       echo make_form($r);
   ?>     
 
-    <input type="submit" class="button" name="submit"
-           value="<? echo $Lang['FormApply']; ?>">
-    <input type="submit" class="button" name="more_zutaten"
-           value="<? echo $Lang['FormMoreIngr']; ?>">
-    <input type="reset" class="button" value="<? echo $Lang['FormReset']; ?>">
-    </form>
-
-  </td>
-</tr>
-</table>
+  <input type="submit" class="button" name="submit"
+         value="<? echo $Lang['FormApply']; ?>">
+  <input type="submit" class="button" name="more_zutaten"
+         value="<? echo $Lang['FormMoreIngr']; ?>">
+  <input type="reset" class="button" value="<? echo $Lang['FormReset']; ?>">
+  </form>
 
 <?php
   $authorname = "Michael Lestinsky";
