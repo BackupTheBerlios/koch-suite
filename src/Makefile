@@ -37,6 +37,10 @@ distclean: clean
 	rm -f $${i}/Makefile ; \
 	done)
 	rm -f config.sed
+	rm -f ChangeLog
+
+ChangeLog: CVS/Entries
+	rcs2log >$@
 
 install-temp-for-remote: install-includes install-www
 

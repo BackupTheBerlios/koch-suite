@@ -1,0 +1,1543 @@
+2001-09-30  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/include/config.raw: byebye
+
+2001-09-30  Michael Bussmann  <bus@ruf098>
+
+	* /cvsroot/koch-suite/src/include/koch-suite.raw:
+	Added koch-suite.raw to CVS repo (former config.raw)
+
+2001-09-30  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/include/auth.raw:
+	Workaroung to close Bug-ID 48.
+
+	Please note, that this is not a Koch-Suite bug but an PHP-Bug. Verified to
+	work on PHP 4.0.7RC3
+
+2001-09-24  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/configure, /cvsroot/koch-suite/src/include/auth.raw:
+	Fix a problem, which arises on FreeBSDs /bin/sh.
+
+	* /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/commands/rezept.raw, /cvsroot/koch-suite/src/config, /cvsroot/koch-suite/src/include/Makefile.raw, /cvsroot/koch-suite/src/include/auth.raw, /cvsroot/koch-suite/src/www/delete.raw, /cvsroot/koch-suite/src/www/edit_alias.raw, /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/index.raw, /cvsroot/koch-suite/src/www/infos.raw, /cvsroot/koch-suite/src/www/kategorien.raw, /cvsroot/koch-suite/src/www/mmprint.raw, /cvsroot/koch-suite/src/www/print.raw, /cvsroot/koch-suite/src/www/rezept.raw, /cvsroot/koch-suite/src/www/search.raw, /cvsroot/koch-suite/src/www/units.raw:
+	Renamed include/config.inc to koch-suite.inc and placed it into
+	<%%ETC_PREFIX%%> instead of <%%PHP_LIBS%%>.
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	rk2mm has gone away.
+
+2001-09-23  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/include/output.raw: formating PHPDoc-Headers.
+
+	* /cvsroot/koch-suite/src/changelog: sync
+
+	* /cvsroot/koch-suite/src/config: where is PEAR?
+
+	* /cvsroot/koch-suite/src/Documentation/PHP.txt, /cvsroot/koch-suite/src/README, /cvsroot/koch-suite/src/Documentation/Programmers.txt:
+	Blabla
+
+	* /cvsroot/koch-suite/src/commands/rk2mm.raw: byebye
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw: rk2mm -> /dev/null.
+
+	* /cvsroot/koch-suite/src/include/config.raw: Set the path to PEAR.
+	array_intersect must not be used, as we thought. See  #11893 in the
+	PHP bug-database
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	PHP-Guys say, I cannot use array_intersect this way. See Bug-ID  #11893
+	in the PHP bugtracking system
+
+2001-09-16  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/include/defines.raw: Beta.
+
+2001-09-09  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: update
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc, /cvsroot/koch-suite/src/www/search.raw:
+	Display the total number of Hits.
+
+2001-09-06  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: Update.
+
+2001-09-06  Michael Bussmann  <bus@ruf098>
+
+	* /cvsroot/koch-suite/src/include/auth.raw, /cvsroot/koch-suite/src/INSTALL, /cvsroot/koch-suite/src/commands/ks_passwd.raw, /cvsroot/koch-suite/src/init_db.mysql, /cvsroot/koch-suite/src/init_db.pgsql:
+	Table "user" renamed to "usertable"
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	Added link to PostgreSQL site
+
+2001-09-03  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw:
+	Refer to these variables only if they are set.
+
+	* /cvsroot/koch-suite/src/configure: Make this work on OpenBSD
+
+2001-08-31  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/Documentation/PHP.txt, /cvsroot/koch-suite/src/INSTALL:
+	Formerly known as README
+
+	* /cvsroot/koch-suite/src/README: split this into several documents
+
+	* /cvsroot/koch-suite/src/init_db.mysql, /cvsroot/koch-suite/src/init_db.pgsql:
+	Sync
+
+	* /cvsroot/koch-suite/src/Documentation/Programmers.txt: Update
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw: +ks_passwd
+
+	* /cvsroot/koch-suite/src/commands/ks_passwd.raw:
+	generate encrypted passwords
+
+	* /cvsroot/koch-suite/src/include/functions.raw: Style
+
+	* /cvsroot/koch-suite/src/include/lang.raw: typo
+
+	* /cvsroot/koch-suite/src/include/loginform.raw:
+	say the same in english
+
+	* /cvsroot/koch-suite/src/www/menue.raw: no-wrap
+
+	* /cvsroot/koch-suite/src/include/Makefile.raw:
+	+auth.inc +loginform.inc
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw: cleanup
+
+	* /cvsroot/koch-suite/src/include/config.raw, /cvsroot/koch-suite/src/include/defines.raw:
+	Add some Auth-related constants
+
+	* /cvsroot/koch-suite/src/www/delete.raw, /cvsroot/koch-suite/src/www/edit_alias.raw, /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/index.raw, /cvsroot/koch-suite/src/www/infos.raw, /cvsroot/koch-suite/src/www/kategorien.raw, /cvsroot/koch-suite/src/www/mmprint.raw, /cvsroot/koch-suite/src/www/print.raw, /cvsroot/koch-suite/src/www/rezept.raw, /cvsroot/koch-suite/src/www/search.raw, /cvsroot/koch-suite/src/www/units.raw:
+	Use auth
+
+	* /cvsroot/koch-suite/src/include/auth.raw, /cvsroot/koch-suite/src/include/loginform.raw:
+	Add some framework for user-authentication.
+
+2001-08-16  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/include/Makefile.raw: +nocache.raw
+
+	* /cvsroot/koch-suite/src/include/nocache.raw:
+	deactivate the browser-cache, for it is evil.
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw, /cvsroot/koch-suite/src/commands/rk2mm.raw:
+	Cleanup
+
+	* /cvsroot/koch-suite/src/include/config.raw:
+	raise error_reporting; Set
+
+	* /cvsroot/koch-suite/src/include/debug.raw: Fix
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/include/lang.raw, /cvsroot/koch-suite/src/include/output.raw, /cvsroot/koch-suite/src/www/delete.raw, /cvsroot/koch-suite/src/www/edit_alias.raw, /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/www/infos.raw, /cvsroot/koch-suite/src/www/kategorien.raw, /cvsroot/koch-suite/src/www/print.raw, /cvsroot/koch-suite/src/www/search.raw:
+	Cleanup
+
+2001-08-12  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/include/en.inc: Typo
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	compare case-insensitive
+
+	* /cvsroot/koch-suite/src/include/output.raw: LaTeX: be '\sloppy'.
+
+2001-08-11  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	replace "<" and ">" by proper Latex-Entities
+	Replace empty ingredient-list-titles by $Lang["Ingred"]
+
+	* /cvsroot/koch-suite/src/configure, /cvsroot/koch-suite/src/www/print.raw, /cvsroot/koch-suite/src/include/config.raw:
+	Don't use 'cat'.
+
+	* /cvsroot/koch-suite/src/configure: check for latex, dvips, gs
+
+	* /cvsroot/koch-suite/src/include/debug.raw:
+	create the file with proper permissions, if it doesn't exist.
+
+	* /cvsroot/koch-suite/src/www/print.raw:
+	support other "printable" types than html only.
+
+	* /cvsroot/koch-suite/src/include/config.raw:
+	set the default 'printable' format
+
+	* /cvsroot/koch-suite/src/include/functions.raw: Which format is
+	 a) wished
+	 b) all required tools to create this format are available
+
+	* /cvsroot/koch-suite/src/include/defines.raw:
+	Define some constants for different mime-types
+
+2001-08-07  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: sync
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Pull in fix from -current: Don't sort empty results.
+
+2001-08-06  lestinsky  <lestinsky@ruf098>
+
+	* /cvsroot/koch-suite/src/include/file.raw: PHPDoc'ify
+	Use $this->buffer after fixing functions.raw
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	pass $file by reference
+
+	* /cvsroot/koch-suite/src/changelog: sync
+
+	* /cvsroot/koch-suite/src/include/file.raw: sigh. :-\
+
+	* /cvsroot/koch-suite/src/README: updating from >= 0.5
+
+	* /cvsroot/koch-suite/src/include/en.inc:
+	pull in translation-fix from current
+
+	* /cvsroot/koch-suite/src/changelog: sync
+
+	* /cvsroot/koch-suite/src/commands/rk2mm.raw: Pull in fix from -current
+
+	* /cvsroot/koch-suite/src/configure:
+	Use config.my instead of config when exists
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/commands/rk2mm.raw:
+	Use class "File"
+
+	* /cvsroot/koch-suite/src/include/Makefile.raw: +file.inc
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	better
+
+	* /cvsroot/koch-suite/src/include/functions.raw: Use Class File
+
+	* /cvsroot/koch-suite/src/include/file.raw: Class for TempFile-Creation
+
+2001-08-01  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	DB_ilike() von Michael Bussmann
+
+2001-07-26  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/init_db.pgsql, /cvsroot/koch-suite/src/init_db.mysql:
+	Changes by MB
+
+2001-07-25  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/en.inc:
+	Wrong. Reported by Michael Bussmann.
+
+	* /cvsroot/koch-suite/src/config: again.
+
+	* /cvsroot/koch-suite/src/changelog: sync
+
+	* /cvsroot/koch-suite/src/init_db.pgsql: oops. Comma.
+
+	* /cvsroot/koch-suite/src/init_db.pgsql: +HASH in table MENUE
+
+	* /cvsroot/koch-suite/src/README: better language
+
+	* /cvsroot/koch-suite/src/include/functions.raw: better comment
+
+2001-07-24  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/init_db.mysql: +HASH
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw:
+	read_normalize() the recipes and recipe_dupe()-check them.
+	Accept only unique hashes.
+
+	* /cvsroot/koch-suite/src/commands/rk2mm.raw:
+	rather use "read_normalize()" to preparse the recipe.
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	provide functions for dupe-detection and hash-generation
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw: calculate the hash.
+
+2001-07-17  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Sort functions a little alphabetically
+	new function: read_normalize
+	  reads input from a filehandle, normalizes it and returns a filehandle onto
+	  a temporary file.
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw: s/<TAB>/<Space>/g
+
+2001-07-10  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/config.raw: Oops. remove unused code.
+
+	* /cvsroot/koch-suite/src/config, /cvsroot/koch-suite/src/include/config.raw, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/include/output.raw:
+	rather use DB_casecomp()
+
+	* /cvsroot/koch-suite/src/Documentation/FAQ.txt: PEAR-Problems?
+
+	* /cvsroot/koch-suite/src/README:
+	better. From Michael Bussmann <bus@fgan.de>
+
+2001-07-04  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.raw: Sort alphabetically
+
+2001-07-03  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/en.inc: merge from 1.15
+
+	* /cvsroot/koch-suite/src/include/en.inc: Typo
+
+2001-07-02  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/defines.raw: 0.5 -> 0.6-alpha
+
+	* /cvsroot/koch-suite/src/changelog: merge from 0.5.0
+
+	* /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/include/defines.raw:
+	0.5-Release
+
+2001-07-01  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/defines.raw:
+	define global constants here.
+
+	* /cvsroot/koch-suite/src/configure, /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/commands/rk2mm.raw, /cvsroot/koch-suite/src/commands/rezept.raw:
+	Add License
+
+	* /cvsroot/koch-suite/src/include/Makefile.raw: +defines.inc
+
+	* /cvsroot/koch-suite/src/include/config.raw:
+	move constants to include/defines.inc
+
+	* /cvsroot/koch-suite/src/include/debug.raw:
+	+require_once "<%%PHP_LIBS%%>/defines.inc";
+
+	* /cvsroot/koch-suite/src/man/man1/mmimport.1.raw, /cvsroot/koch-suite/src/man/man1/rezept.1.raw, /cvsroot/koch-suite/src/man/man1/rk2mm.1.raw, /cvsroot/koch-suite/src/www/delete.raw, /cvsroot/koch-suite/src/www/edit_alias.raw, /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/index.raw, /cvsroot/koch-suite/src/www/infos.raw, /cvsroot/koch-suite/src/www/kategorien.raw, /cvsroot/koch-suite/src/www/mmprint.raw, /cvsroot/koch-suite/src/www/print.raw, /cvsroot/koch-suite/src/www/rezept.raw, /cvsroot/koch-suite/src/www/search.raw, /cvsroot/koch-suite/src/www/units.raw:
+	Add License
+
+	* /cvsroot/koch-suite/src/include/debug.raw: +License-text
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	Better
+
+	* /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/include/lang.raw, /cvsroot/koch-suite/src/include/output.raw:
+	+License-text
+
+	* /cvsroot/koch-suite/src/include/en.inc: typo
+
+2001-06-27  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: Update.
+
+	* /cvsroot/koch-suite/src/config: lang.
+
+	* /cvsroot/koch-suite/src/configure:
+	sed is not necessary here. awk knows what do do.
+
+	* /cvsroot/koch-suite/src/init_db.pgsql: $Id$-Tag
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	 is global not Local. DB_OK is 0 and therefore false, return true rather.
+
+	* /cvsroot/koch-suite/src/include/output.raw:  is global not Local.
+
+	* /cvsroot/koch-suite/src/www/delete.raw, /cvsroot/koch-suite/src/www/edit_alias.raw, /cvsroot/koch-suite/src/www/einfuegen.raw:
+	Oops
+
+	* /cvsroot/koch-suite/src/www/kategorien.raw: Oops.
+
+2001-06-26  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw:
+	use RECIPE_MM/RECIPE_RK rather.
+
+	* /cvsroot/koch-suite/src/include/config.raw, /cvsroot/koch-suite/src/include/functions.raw:
+	2 new Constants:
+	   * RECIPE_MM
+	   * RECIPE_RK
+	to identify the format internally, while parsing recipes.
+
+	* /cvsroot/koch-suite/src/www/search.raw: Forgot thisone.
+
+	* /cvsroot/koch-suite/src/Documentation/Programmers.txt: PHPDoc
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw:
+	dirty workaround. Yes I am lazy.
+
+	* /cvsroot/koch-suite/src/include/config.raw: Cleanup, better Code
+
+	* /cvsroot/koch-suite/src/include/debug.raw: PHPDoc'ify
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	more
+
+	* /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/include/output.raw, /cvsroot/koch-suite/src/www/delete.raw, /cvsroot/koch-suite/src/www/edit_alias.raw, /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/index.raw:
+	PHPDoc'ify
+
+	* /cvsroot/koch-suite/src/www/infos.raw: PHPDoc'ify, M17N
+
+	* /cvsroot/koch-suite/src/www/kategorien.raw: PHPDoc'ify
+
+	* /cvsroot/koch-suite/src/www/units.raw: M17N
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	s/zaphod/magrathea/
+
+	* /cvsroot/koch-suite/src/include/debug.raw: PHPDoc'ify
+
+2001-06-25  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/README: How to create the databases
+
+	* /cvsroot/koch-suite/src/configure:
+	call translate_raw() instead of sed.
+
+	* /cvsroot/koch-suite/src/config: s:space:tab:
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	new Homepage.
+
+2001-06-23  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/README: update.
+
+	* /cvsroot/koch-suite/src/changelog: update
+
+	* /cvsroot/koch-suite/src/Documentation/Programmers.txt: more.
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw: $helptext = <<<EOT
+	...
+	EOT;
+
+	New flags:
+	 -t for Consistency with -c and -i
+	 -relaxed in -mm-Queries
+
+	* /cvsroot/koch-suite/src/include/config.raw: defines.
+
+	* /cvsroot/koch-suite/src/include/output.raw: Style, Comments, Braces.
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	new.
+
+	* /cvsroot/koch-suite/src/include/lang.raw: oops
+
+	* /cvsroot/koch-suite/src/include/output.raw: Code-Cleanup
+	M17N
+	mmexport: new opt. parameter "strict"
+
+	* /cvsroot/koch-suite/src/man/man1/rezept.1.raw: language.
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw: better.
+
+	* /cvsroot/koch-suite/src/www/kategorien.raw: M17N
+
+	* /cvsroot/koch-suite/src/www/print.raw: style
+
+2001-06-21  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.raw: fix.
+
+	* /cvsroot/koch-suite/src/README: nicer.
+
+	* /cvsroot/koch-suite/src/include/debug.raw, /cvsroot/koch-suite/src/include/lang.raw:
+	sync with config.raw
+
+	* /cvsroot/koch-suite/src/include/config.raw:
+	define() sth., require_once instead of include, require_once DB.php (PEAR)
+
+	* /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/include/output.raw:
+	Fuck MySQL
+
+	* /cvsroot/koch-suite/src/Documentation/Overview.txt: better.
+
+	* /cvsroot/koch-suite/src/Documentation/User.txt: Read Manpages.
+
+	* /cvsroot/koch-suite/src/Documentation/Programmers.txt: More.
+
+2001-06-20  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/config, /cvsroot/koch-suite/src/include/config.raw:
+	Leichter zu verstehen fuer die User.
+	DB::parseDSN muss so die DSN nicht als String selbst zerpfluecken,
+	sondern bekomt ihn schon fertig vorgekaut.
+
+	* /cvsroot/koch-suite/src/include/config.raw, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/include/output.raw, /cvsroot/koch-suite/src/www/delete.raw, /cvsroot/koch-suite/src/www/edit_alias.raw, /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/index.raw, /cvsroot/koch-suite/src/www/infos.raw, /cvsroot/koch-suite/src/www/kategorien.raw, /cvsroot/koch-suite/src/www/mmprint.raw, /cvsroot/koch-suite/src/www/print.raw, /cvsroot/koch-suite/src/www/rezept.raw, /cvsroot/koch-suite/src/www/search.raw, /cvsroot/koch-suite/src/www/units.raw, /cvsroot/koch-suite/src/config, /cvsroot/koch-suite/src/configure, /cvsroot/koch-suite/src/init_db.mysql, /cvsroot/koch-suite/src/init_db.pgsql, /cvsroot/koch-suite/src/init_db.sql:
+	Michael Bussmann <bus@fgan.de> hat mir einen gewaltigen Patch geschickt.
+	Verwende PEAR statt mysql_*()
+	PostgreSQL-Support.
+
+	* /cvsroot/koch-suite/src/changelog: sync, Michael Bussmann's Patch.
+
+	* /cvsroot/koch-suite/src/README: Updating, MB-Patches,...
+
+2001-06-13  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw: undo broken commit.
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw, /cvsroot/koch-suite/src/include/en.inc, /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/lang.raw, /cvsroot/koch-suite/src/include/output.raw, /cvsroot/koch-suite/src/www/einfuegen.raw:
+	m17n
+
+2001-06-10  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: update.
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw:
+	sync mit include/functions.raw
+
+	* /cvsroot/koch-suite/src/include/functions.raw: no '%' here.
+
+	* /cvsroot/koch-suite/src/include/config.raw: 0.5-pre5
+
+	* /cvsroot/koch-suite/src/init_db.sql: New keys.
+
+	* /cvsroot/koch-suite/src/www/search.raw:
+	sync with include/functions.raw
+
+	* /cvsroot/koch-suite/src/include/functions.raw: This is better now.
+	Strongly reduce SQL-Query-numbers,
+	new function: exec_search: split searchstring, call the proper
+	search-functions, merge the results according to the grammer.
+
+2001-06-07  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/README: No more register_globals-Reqirements.
+
+	* /cvsroot/koch-suite/src/README: update.
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/commands/rezept.raw, /cvsroot/koch-suite/src/commands/rk2mm.raw:
+	retrieve $argv and $argc manually if unset.
+
+2001-06-06  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/output.raw: Fix long word bug.
+
+	* /cvsroot/koch-suite/src/changelog: update
+
+	* /cvsroot/koch-suite/src/www/edit_alias.raw: Initial Alias-Editor.
+
+	* /cvsroot/koch-suite/src/include/config.raw: 0.5-pre4
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	More.
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Ooph, to much to list it all. Main part:
+	create, edit and delete unit-aliases.
+
+	* /cvsroot/koch-suite/src/www/Makefile.raw: +edit_alias.php
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw:
+	Oops, we need thisone, too.
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Print Version.
+
+	* /cvsroot/koch-suite/src/www/units.raw: Style, invoke alias-editor.
+
+	* /cvsroot/koch-suite/src/Documentation/FAQ.txt: noauth.
+
+2001-06-01  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: sync
+
+	* /cvsroot/koch-suite/src/www/delete.raw, /cvsroot/koch-suite/src/www/mmprint.raw, /cvsroot/koch-suite/src/www/print.raw:
+	+config.inc
+	+$HTTP_*_VARS
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	+ $Lang['Recipe']['Deleted']
+
+	* /cvsroot/koch-suite/src/www/delete.raw: +config.inc
+
+	* /cvsroot/koch-suite/src/www/delete.raw: HTTP_*_VARS
+
+	* /cvsroot/koch-suite/src/README: comment recent work.
+
+	* /cvsroot/koch-suite/src/include/config.raw: 0.5-pre3
+
+	* /cvsroot/koch-suite/src/config:
+	Setze Default-DB-User auf "kochsuite".
+
+	* /cvsroot/koch-suite/src/include/de.inc: Sprache
+
+	* /cvsroot/koch-suite/src/include/en.inc: more translation
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw:
+	read variables from $HTTP_*_VARS
+
+	* /cvsroot/koch-suite/src/www/help.raw:
+	s/<?/<?php/. Will do this in all other files, too, in future.
+	Language-Settings.
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Language-Settings -> help.raw.
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/commands/rezept.raw, /cvsroot/koch-suite/src/commands/rk2mm.raw:
+	require config.inc, da dies nun nicht mehr automatisch aus functions.inc
+	heraus geschieht.
+
+	* /cvsroot/koch-suite/src/www/index.raw:
+	Suchfunktion nicht mehr via require einbinden.
+
+	* /cvsroot/koch-suite/src/www/search.raw:
+	s/suchen=1//, da dies nun offensichtlich ist.
+
+	* /cvsroot/koch-suite/src/www/kategorien.raw:
+	Extract values from HTTP_*_VARS,
+	include/require reorganized.
+
+2001-05-30  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/menue.raw: s/suchen.php/search.php/
+
+	* /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/www/search.raw, /cvsroot/koch-suite/src/www/such.raw:
+	This way is better.
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	Better.
+
+	* /cvsroot/koch-suite/src/include/lang.raw: Fix regexp.
+
+	* /cvsroot/koch-suite/src/include/output.raw: Pass by reference
+
+	* /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/commands/rk2mm.raw:
+	Pass by Reference.
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw:
+	Hole $PWD per getenv() aus dem Environment.
+
+	* /cvsroot/koch-suite/src/include/Makefile.raw: Typo
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	functions.inc depends on config.inc, but other scripts do so, too.
+	Therefore read config.inc from the script instead and not from here.
+
+	* /cvsroot/koch-suite/src/www/mmprint.raw: werte HTTP_GET_VARS aus
+
+	* /cvsroot/koch-suite/src/www/rezept.raw: Typo
+
+	* /cvsroot/koch-suite/src/www/such.raw:
+	werte lieber HTTP_(POST|GET)_VAR
+
+	* /cvsroot/koch-suite/src/include/config.raw: +Debugging.
+
+	* /cvsroot/koch-suite/src/include/functions.raw: write_log -> debug.inc
+
+	* /cvsroot/koch-suite/src/include/Makefile.raw, /cvsroot/koch-suite/src/include/debug.raw:
+	Debugging.
+
+	* /cvsroot/koch-suite/src/README:
+	Scheisse, warum ist mir das nicht frueher eingefallen.
+
+2001-05-23  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw:
+	Pass Varibale by Reference (for speed's and size's sake ;-)
+	Don't print an unset variable.
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw: Reference-Fix
+
+	* /cvsroot/koch-suite/src/www/rezept.raw:
+	retrieve $mid from $HTTP_GET_VARS
+
+	* /cvsroot/koch-suite/src/www/such.raw: use HTTP_POST_VARS.
+
+	* /cvsroot/koch-suite/src/www/index.raw: rather use $HTTP_GET_VARS
+
+2001-05-22  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Erzwinge nicht "Zutaten" als Zutatenlisten-Überschrift. Lasse statt dessen
+	den Titel leer.
+
+	* /cvsroot/koch-suite/src/changelog: Sync
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	Improved m17n
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Sort searchresult alphabetically.
+
+	* /cvsroot/koch-suite/src/include/output.raw: m17n
+
+	* /cvsroot/koch-suite/src/man/man1/rezept.1.raw: update.
+
+2001-05-21  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/infos.raw:
+	Verbessertes m17n
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw:
+	Behandle die einzelnen Zutatenlisten etwas intelligenter.
+
+2001-05-16  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc:
+	Typos.
+
+	* /cvsroot/koch-suite/src/README: Hinweis auf M17N
+
+	* /cvsroot/koch-suite/src/changelog: update
+
+	* /cvsroot/koch-suite/src/include/Makefile.raw, /cvsroot/koch-suite/src/include/config.raw, /cvsroot/koch-suite/src/include/de.inc, /cvsroot/koch-suite/src/include/en.inc, /cvsroot/koch-suite/src/include/lang.raw, /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/index.raw, /cvsroot/koch-suite/src/www/infos.raw, /cvsroot/koch-suite/src/www/menue.raw, /cvsroot/koch-suite/src/www/rezept.raw, /cvsroot/koch-suite/src/www/such.raw, /cvsroot/koch-suite/src/www/units.raw:
+	m17n
+
+2001-05-15  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: update
+
+	* /cvsroot/koch-suite/src/include/functions.raw: - Bugfixing.
+	- Neue Debugging-Funktion write_log($str): Schreibe $str formatiert und mit
+	  Datumsstempel nach $DEBUG_FILE
+
+	* /cvsroot/koch-suite/src/include/config.raw: $DEBUG_FILE
+
+2001-05-13  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/configure: Language.
+
+2001-05-10  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: update
+
+	* /cvsroot/koch-suite/src/Makefile: s/make/${MAKE}/
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw:
+	Werte Versionsnummer der Koch-Suite aus.
+
+	* /cvsroot/koch-suite/src/include/config.raw: Versionsnummer.
+
+	* /cvsroot/koch-suite/src/include/output.raw: Kommentare,
+	Fix für Long-word-bug: Wörter die länger als die erlaubte Zeilenlänge
+	waren haben eine Endlosschleife verursacht.
+
+	* /cvsroot/koch-suite/src/www/index.raw: Tabellen-Optionen
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Tabellen-Optionen.
+
+	* /cvsroot/koch-suite/src/www/menue.raw: s/ /&nbsp;/
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/include/Makefile.raw, /cvsroot/koch-suite/src/man/Makefile.raw, /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/www/pics/Makefile.raw:
+	s/make/${MAKE}/
+
+	* /cvsroot/koch-suite/src/configure: Improved dependecy-checks.
+	Cleanup
+
+2001-05-08  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: sync
+
+	* /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/such.raw, /cvsroot/koch-suite/src/include/functions.raw:
+	Erweiterte Suche. Suche ist nun nach mehreren Begriffen moeglich,
+	Verknuepfung durch "AND".
+
+	* /cvsroot/koch-suite/src/README: s/du/man/
+
+	* /cvsroot/koch-suite/src/Makefile: Oops, falsches File commited.
+
+	* /cvsroot/koch-suite/src/README:
+	Hinweis auf FAQ und esoterische Situationen.
+
+	* /cvsroot/koch-suite/src/changelog: sync
+
+	* /cvsroot/koch-suite/src/man/Makefile.raw, /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/include/Makefile.raw, /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/www/pics/Makefile.raw, /cvsroot/koch-suite/src/Makefile:
+	+DESTDIR-Handling.
+
+	* /cvsroot/koch-suite/src/Documentation/FAQ.txt: FAQ.
+
+2001-04-23  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: sync
+
+	* /cvsroot/koch-suite/src/www/infos.raw:
+	Content-Negotiation als Ansatz für Mehrsprachige Seiten.
+
+	* /cvsroot/koch-suite/src/www/help.raw: rk2mm ist ein Filter.
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Fix Problems importing Mealmaster 8.06-recipes.
+
+2001-04-20  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/help.raw:
+	Kommasetzung, HTML-Tags korrigiert
+	Standard-Eingabe-Kanal = STDIN
+
+2001-04-17  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: update
+
+	* /cvsroot/koch-suite/src/init_db.sql: Spur != Schuss
+
+	* /cvsroot/koch-suite/src/README: Sync, 0.4, Kommentare.
+
+2001-04-05  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: sync
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw:
+	Üblen Bug gefixt: bei Zutaten-Zeilen nach diesem Muster:
+	Rum oder Whisky
+	wurde immmer das erste Wort abgeschnitten. PCRE war kaputt.
+
+2001-03-30  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/README, /cvsroot/koch-suite/src/www/infos.raw:
+	Fix grammer.
+
+2001-03-27  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: update.
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Extrahiere Einheiten und Informationen dazu aus der Datenbank
+
+	* /cvsroot/koch-suite/src/www/styles.css: Style-Modifikationen.
+
+	* /cvsroot/koch-suite/src/www/Makefile.raw: +units.php
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Link auf die Homepage
+
+	* /cvsroot/koch-suite/src/www/units.raw:
+	Gebe Einheiten und Infos dazu aus
+
+	* /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/einfuegen.raw:
+	Link auf units.php
+
+2001-03-18  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/include/functions.raw:
+	Ersetze "-- bla" und "-bla" durch "-- bla"
+
+	* /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/infos.raw:
+	Minor fixes.
+
+	* /cvsroot/koch-suite/src/man/man1/rezept.1.raw:
+	Suche nach Zutaten und Kategorien
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw:
+	Suche nach Zutaten oder Kategorien
+
+2001-03-17  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: update
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Funktion zum zerlegen und umrechnen von Brüchen in Realzahlen.
+
+	* /cvsroot/koch-suite/src/www/Makefile.raw: +LICENSE
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw:
+	Neue Funktion zum zerlegen der Mengenangaben. Nun werden auch Brüche
+	korrekt dargestellt.
+
+	* /cvsroot/koch-suite/src/www/help.raw: Style,
+	+Feedback
+
+	* /cvsroot/koch-suite/src/www/infos.raw: +Lizenz,
+	+Note to teh english readers.
+
+	* /cvsroot/koch-suite/src/www/rezept.raw:
+	"Untermenue" nach oben. Sieht man dann besser.
+
+	* /cvsroot/koch-suite/src/www/styles.css: style
+
+	* /cvsroot/koch-suite/src/www/such.raw: style.
+
+	* /cvsroot/koch-suite/src/www/help.raw, /cvsroot/koch-suite/src/www/infos.raw, /cvsroot/koch-suite/src/www/menue.raw, /cvsroot/koch-suite/src/www/Makefile.raw:
+	Separate Help from Infos.
+
+2001-03-15  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/delete.raw, /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/www/index.raw, /cvsroot/koch-suite/src/www/rezept.raw:
+	WWW-Kochbuch -> Koch-Suite
+
+	* /cvsroot/koch-suite/src/README: Credits to Leo Caspari
+
+	* /cvsroot/koch-suite/src/www/infos.raw: $Revision $
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Versions-Info
+
+	* /cvsroot/koch-suite/src/www/menue.raw:
+	Leerzeichen zwischen blue_dot.fig und nebenstehendem Text.
+	Blauer Punkt ausserhalb des Anchors.
+
+	* /cvsroot/koch-suite/src/www/menue.raw: Neue Farben.
+
+	* /cvsroot/koch-suite/src/www/rezept.raw:
+	Stelle NAV-Elemente in der selben Tebellen-Zelle dar, wie das Rezept
+	selbst.
+
+	* /cvsroot/koch-suite/src/www/styles.css:
+	a:link, a:visited, a:active Farben an title.gif angepasst.
+
+	* /cvsroot/koch-suite/src/www/pics/Makefile.raw: blue_dot.gif
+
+	* /cvsroot/koch-suite/src/www/pics/blue_dot.gif: Etwas kleiner.
+
+	* /cvsroot/koch-suite/src/www/index.raw: Copyright 2001
+
+	* /cvsroot/koch-suite/src/www/pics/blue_dot.gif: Blauer Punkt.
+
+	* /cvsroot/koch-suite/src/www/pics/title.gif:
+	Mir gefällt der Titel so besser.
+
+2001-03-14  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/man/man1/mmimport.1.raw:
+	Dokumentiere Leo's Patch.
+
+	* /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/README, /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/commands/rezept.raw:
+	Pull in Leo Caspari's <lcc@gmx.net> patches and some fixes to them.
+
+	* /cvsroot/koch-suite/src/include/config.raw:
+	Ist mysql_pconnect erlaubt?
+
+2001-03-12  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/include/output.raw:
+	"\r" -> ""
+	Rezept-Listen-Titel: "\n" -> ""
+
+2001-03-11  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: Update.
+
+	* /cvsroot/koch-suite/src/LICENSE: Copyright-Update.
+
+	* /cvsroot/koch-suite/src/Documentation/Overview.txt, /cvsroot/koch-suite/src/Documentation/User.txt:
+	Update. rezept2latex + mmexport -> rezept.
+
+	* /cvsroot/koch-suite/src/README: Update.
+
+	* /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/include/output.raw:
+	Improve Latex-Export.
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw: Helptext incomplete.
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw: mmexport -> /dev/null
+
+	* /cvsroot/koch-suite/src/www/infos.raw:
+	rezept2latex + mmexport -> rezept.
+
+	* /cvsroot/koch-suite/src/commands/mmexport.raw: byebye.
+
+	* /cvsroot/koch-suite/src/man/Makefile.raw, /cvsroot/koch-suite/src/man/man1/mmexport.1.raw, /cvsroot/koch-suite/src/man/man1/mmimport.1.raw, /cvsroot/koch-suite/src/man/man1/rezept.1.raw, /cvsroot/koch-suite/src/man/man1/rezept2latex.1.raw, /cvsroot/koch-suite/src/man/man1/rk2mm.1.raw:
+	rezept2latex -> /dev/null
+	mmexport -> /dev/null
+	Instead use rezept.
+
+	* /cvsroot/koch-suite/src/commands/rezept2latex.raw: Byebye.
+	  substituted by rezept.raw
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw: rezept.raw
+
+	* /cvsroot/koch-suite/src/commands/rezept.raw:
+	New interface for recipe-queries.
+
+2001-03-03  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/commands/rk2mm.raw:
+	unified Parser-Konstruct for MM- and RK-recipes.
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Grammer
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Add FreeBSD.
+
+	* /cvsroot/koch-suite/src/README: Hint: -> CTAN wegen floatflt
+	Formatierung.
+
+2001-02-21  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: update.
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/commands/rezept2latex.raw, /cvsroot/koch-suite/src/commands/rk2mm.raw:
+	comments.
+
+	* /cvsroot/koch-suite/src/commands/mmexport.raw: Comment,
+	Ver++
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw:
+	Catch Config-settings (magic_quotes_gpc).
+
+	* /cvsroot/koch-suite/src/include/functions.raw: addslashes.
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	Verschoenere die Formatierung der Rezept-Header: Konstante Laenge.
+
+2001-02-17  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: update
+
+	* /cvsroot/koch-suite/src/Makefile: .PHONY geändert.
+
+	* /cvsroot/koch-suite/src/init_db.sql: Aliasliste für Einheiten.
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Check Alias-List for units.
+
+2001-02-16  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/man/Makefile.raw, /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/Makefile, /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/include/Makefile.raw:
+	Makefile-tuning.
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw: Force a little bit more.
+
+2001-02-15  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/Makefile: foo
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/include/Makefile.raw, /cvsroot/koch-suite/src/www/Makefile.raw:
+	More makefile improvemnts
+
+	* /cvsroot/koch-suite/src/include/Makefile.raw: Makefile Improvement.
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/man/Makefile.raw, /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/www/pics/Makefile.raw:
+	Makefile-Improvement.
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw:
+	Force reload. But this doesn't work properly. Why? Dunno.
+
+	* /cvsroot/koch-suite/src/include/Makefile.raw, /cvsroot/koch-suite/src/Makefile:
+	Makefile-Improvement.
+
+2001-02-10  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/init_db.sql:
+	Add suitable keys to the tables and thus increase search- and
+	read-operations.
+
+2001-02-08  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: pre3.
+
+	* /cvsroot/koch-suite/src/README, /cvsroot/koch-suite/src/changelog:
+	Sync mit dem Code
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/commands/rk2mm.raw:
+	s/\r//
+	Damit koennen jetzt DOS-Files gelesen werde, ohne dass der Parser einem um
+	die Ohren fliegt.
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Prügel ein bischen 'brain' in den Parser.
+
+2001-02-07  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/README: Update
+
+	* /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/include/Makefile.raw:
+	rm -rf -> rm -f
+
+	* /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/Makefile, /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/include/functions.raw:
+	rm * -> rm -f *
+	Um Fehlermeldungen zu unterdrücken wenn das File nicht existiert.
+
+	* /cvsroot/koch-suite/src/Documentation/init_db.sql, /cvsroot/koch-suite/src/init_db.sql:
+	./Documentation/init_db.sql -> ./init_db.sql
+
+	* /cvsroot/koch-suite/src/Documentation/Overview.txt, /cvsroot/koch-suite/src/Documentation/User.txt:
+	Sync mit dem Code.
+
+	* /cvsroot/koch-suite/src/changelog: update
+
+	* /cvsroot/koch-suite/src/README, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/www/einfuegen.raw:
+	Fixing a few bugs.
+
+2001-02-05  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/Documentation/init_db.sql:
+	Ooops, RK auf MM falsch abgebildet.
+
+	* /cvsroot/koch-suite/src/Documentation/init_db.sql: Neues DB-Format.
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Update.
+
+	* /cvsroot/koch-suite/src/README: update
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw:
+	Parse also REZKONV-recipes.
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	use the power of implode()
+
+	* /cvsroot/koch-suite/src/include/functions.raw: Parse REZKONV-Recipes.
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/commands/rk2mm.raw, /cvsroot/koch-suite/src/man/Makefile.raw, /cvsroot/koch-suite/src/man/man1/mmimport.1.raw, /cvsroot/koch-suite/src/man/man1/rk2mm.1.raw:
+	Add rk2mm(1)
+
+	* /cvsroot/koch-suite/src/man/man1/mmimport.1.raw: Update.
+
+2001-01-31  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	Strip slashes and replace "'" by "\dq".
+
+	* /cvsroot/koch-suite/src/include/output.raw: Strip slashes.
+
+2001-01-25  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	preg_match statt strcmp. Warum auch immer, es schien nicht zu
+	funktionieren.
+
+	* /cvsroot/koch-suite/src/man/man1/tkrezept.1.raw, /cvsroot/koch-suite/src/man/Makefile.raw, /cvsroot/koch-suite/src/man/man1/mmimport.1.raw:
+	tkrezept is obsolete -> kill it.
+
+	* /cvsroot/koch-suite/src/www/rezept.raw: <meta .*>
+	Style
+
+	* /cvsroot/koch-suite/src/www/print.raw, /cvsroot/koch-suite/src/www/mmprint.raw:
+	<meta .*>
+
+	* /cvsroot/koch-suite/src/www/menue.raw: HTML-Style
+
+	* /cvsroot/koch-suite/src/www/kategorien.raw: <meta .*>
+	Add an anchor for in-file-links.
+
+	* /cvsroot/koch-suite/src/www/infos.raw: <meta .*>
+	Style
+
+	* /cvsroot/koch-suite/src/www/index.raw: <meta .*>
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw: typo in Handler.
+
+	* /cvsroot/koch-suite/src/www/delete.raw: <meta .*>
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	do a strcmp rather then a "==".
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Strip slashes when reading from DB.
+
+2001-01-18  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: Sync mit der Realität.
+
+	* /cvsroot/koch-suite/src/www/infos.raw:
+	Interface einfuegen.php funktioniert nun.
+
+	* /cvsroot/koch-suite/src/www/index.raw: Formatierung
+
+	* /cvsroot/koch-suite/src/config: tkrezept -> /dev/null
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/commands/tkrezept.raw:
+	tkrezept was no good.
+
+	* /cvsroot/koch-suite/src/include/output.raw: HTML-Formatierung
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Rueckgabewert der Suchfunktion -> false wenn kein Hit.
+
+	* /cvsroot/koch-suite/src/Documentation/Overview.txt: Foo
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/www/rezept.raw:
+	Einfuege- und Editier-Interface
+
+	* /cvsroot/koch-suite/src/www/such.raw: Aenderung des Rueckgabewertes.
+
+	* /cvsroot/koch-suite/src/README: Einfuege-Interface
+
+2001-01-15  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/changelog:
+	Einfüge-Interface.
+
+	* /cvsroot/koch-suite/src/www/Makefile.raw:
+	Loeschfunktion, Alphabet. Sortierung
+
+	* /cvsroot/koch-suite/src/www/rezept.raw: Lösch-funktion eingebunden
+
+	* /cvsroot/koch-suite/src/README: PHP-Conf
+
+	* /cvsroot/koch-suite/src/www/such.raw: Lynxification
+
+2001-01-13  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/kategorien.raw: Lynxification
+
+2001-01-12  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/www/delete.raw:
+	Löschfunktion.
+
+	* /cvsroot/koch-suite/src/www/rezept.raw: HTML-Cleanup
+
+	* /cvsroot/koch-suite/src/www/index.raw: html-cleanup
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	Latex an HTML Code-Cleanup
+
+	* /cvsroot/koch-suite/src/changelog: Updates
+
+	* /cvsroot/koch-suite/src/commands/rezept2latex.raw:
+	Bugfix: Wenn es nur ein einziges Rezept auf die QUery gab, dann wurde es
+	nicht korrekt angezeigt.
+
+	* /cvsroot/koch-suite/src/www/mmprint.raw: Keyword-Fix
+
+2001-01-09  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw: Ignore case
+
+2001-01-08  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/infos.raw: s/davor/darum/
+
+2001-01-07  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/infos.raw: MM-Homepage-Update.
+
+	* /cvsroot/koch-suite/src/commands/tkrezept.raw:
+	Perl + Optionen als Config-Option
+
+	* /cvsroot/koch-suite/src/man/man1/mmexport.1.raw, /cvsroot/koch-suite/src/man/man1/mmimport.1.raw, /cvsroot/koch-suite/src/man/man1/rezept2latex.1.raw, /cvsroot/koch-suite/src/man/man1/tkrezept.1.raw:
+	Style
+
+	* /cvsroot/koch-suite/src/config: Perl
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	Diesmal scheint es auch wirklich zu funktionieren.
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	catch whitespaces in Regexp
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	Sieht so aus, als sei endlich der Doppel-Newline-Bug gefixt.
+
+2000-12-27  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/man/Makefile.raw, /cvsroot/koch-suite/src/man/man1/tkrezept.1.raw:
+	Manpage für tkrezept
+
+	* /cvsroot/koch-suite/src/changelog: tkrezept
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/commands/tkrezept.raw:
+	Include tkrezept
+
+	* /cvsroot/koch-suite/src/README: todo
+
+2000-12-20  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/menue.raw: Schoeneres Menue.
+
+	* /cvsroot/koch-suite/src/configure:
+	Oops missed that one. Generate Makefile in ./man
+
+	* /cvsroot/koch-suite/src/Makefile, /cvsroot/koch-suite/src/config, /cvsroot/koch-suite/src/man/Makefile.raw:
+	Generate and install Manpages.
+
+	* /cvsroot/koch-suite/src/man/man1/mmexport.1, /cvsroot/koch-suite/src/man/man1/mmexport.1.raw, /cvsroot/koch-suite/src/man/man1/mmimport.1, /cvsroot/koch-suite/src/man/man1/mmimport.1.raw, /cvsroot/koch-suite/src/man/man1/rezept2latex.1, /cvsroot/koch-suite/src/man/man1/rezept2latex.1.raw:
+	$i -> $i.raw
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Alphabetische Reihenfolge.
+
+	* /cvsroot/koch-suite/src/commands/rezept2latex.raw:
+	Fix Bug: wenn kein Dateiname angegeben wurde, wurden leere Files erzeugt.
+
+	* /cvsroot/koch-suite/src/man/man1/mmexport.1, /cvsroot/koch-suite/src/man/man1/mmimport.1, /cvsroot/koch-suite/src/man/man1/rezept2latex.1:
+	System-Dokumentation.
+
+2000-12-18  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/pics/title.gif: Schönerer Titel.
+
+2000-12-16  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/output.raw, /cvsroot/koch-suite/src/www/mmprint.raw, /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/include/functions.raw:
+	Verändertes Datenbankformat. Rückwärstkompatibel. Entferne "\n", ersetze
+	Leerzeilen durch Platzhalter.
+
+	* /cvsroot/koch-suite/src/commands/mmexport.raw: Versionsincrement
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw: Comment
+
+2000-12-15  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: Release 0.2
+
+	* /cvsroot/koch-suite/src/LICENCE: LICENCE -> LICENSE
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw:
+	kategorie.php nun von mehreren Quellen aus benutzbar, daher weitere
+	Parameter-Übergabe an das Skript.
+	HTML-Formatierung.
+
+	* /cvsroot/koch-suite/src/LICENSE: LICENCE -> LICENSE
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Oops, das war eine Lüge.
+
+	* /cvsroot/koch-suite/src/Documentation/Programmers.txt: verbose++
+
+	* /cvsroot/koch-suite/src/Documentation/User.txt: rezept2latex
+
+	* /cvsroot/koch-suite/src/Documentation/init_db.sql:
+	Leicht geändertes Datenbankformat. Änderung ist rückwärts kompatibel
+	zu älteren Versionen
+
+	* /cvsroot/koch-suite/src/Documentation/Overview.txt:
+	Hinzugef.: Beschreibung von include/
+
+2000-12-14  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Neue Funktion: get_mid_by_cat ($cat)
+	Suche nach Menues mit Kategorie $cat und liefere ein Array a =
+	array(array("id" => $mid, "title" => $title))
+
+	* /cvsroot/koch-suite/src/www/such.raw: Suche innerhalb der Kategorien.
+
+	* /cvsroot/koch-suite/src/www/kategorien.raw:
+	Erwarte als Parameter das den Feldnamen, in den geschrieben werden
+	soll. Wenn Maximal-Anzahl der Einträge = 1, dann schließe Fenster nach
+	Auswahl.
+
+	* /cvsroot/koch-suite/src/www/index.raw: Intrinsic Script-Language
+
+	* /cvsroot/koch-suite/src/commands/rezept2latex.raw:
+	Versionsnummer 0.1 -> 0.1.1
+
+	* /cvsroot/koch-suite/src/www/infos.raw: Mailingliste.
+
+2000-12-13  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/changelog: Update
+
+	* /cvsroot/koch-suite/src/commands/rezept2latex.raw:
+	Hilfetext bei fehlenden Kommandozeilen-Parametern optimiert.
+
+2000-12-09  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/config: Add some comments
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw:
+	Breche nicht ab, wenn die Dateien bereits geloescht sind.
+
+2000-12-08  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/Makefile: ??
+
+	* /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/commands/Makefile.raw:
+	.PHONY
+
+	* /cvsroot/koch-suite/src/Makefile, /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/config:
+	Aufteilen der Installtargets in install-command, install-includes und
+	install-www. 'make install' führt alle 3 separaten Targets aus.
+
+2000-12-06  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Suche Rezepte auch anhand ihrer Kategorie
+
+	* /cvsroot/koch-suite/src/www/einfuegen.raw, /cvsroot/koch-suite/src/www/kategorien.raw, /cvsroot/koch-suite/src/www/menue.raw:
+	Einbau eines vorerst noch non-op Rezept-Einfüge-Interface.
+
+	* /cvsroot/koch-suite/src/www/Makefile.raw:
+	Korrektur des Outputs durch "echo".
+
+	* /cvsroot/koch-suite/src/Makefile:
+	Teile das install-Target auf in install-command, install-includes und
+	install-www. So muss nicht auf jedem Rechner der ganze Satz
+	installiert werden.
+
+2000-11-29  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	Breite des Anweisungs-Textes auf 74 reduziert
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw:
+	Commandline-Flag '-t' oder '--test' schaltet in einen
+	Test-Only-Mode. Das Rezept wird geparst aber nicht in die Datenbank
+	übertragen.
+
+	* /cvsroot/koch-suite/src/commands/mmexport.raw, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/include/output.raw, /cvsroot/koch-suite/src/www/mmprint.raw:
+	Versions-Ausgabe Modifiziert.
+
+	* /cvsroot/koch-suite/src/README: Sektion Updating
+
+	* /cvsroot/koch-suite/src/commands/mmexport.raw:
+	Berücksichtige den Code-Cleanup der Include-Dateien.
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw:
+	rezept2latex hinzugefügt.
+
+	* /cvsroot/koch-suite/src/commands/rezept2latex.raw:
+	Export von Rezepten im Latex-Source.
+
+	* /cvsroot/koch-suite/src/Documentation/Overview.txt:
+	neues Kommando: rezept2latex
+
+	* /cvsroot/koch-suite/src/Documentation/User.txt:
+	Neues Kommando: rezept2latex
+
+	* /cvsroot/koch-suite/src/changelog: Foo
+
+	* /cvsroot/koch-suite/src/README: Ergänzung der Bug-Liste.
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	Code-Cleanup: Ausgabe-Funtionen von functions.raw hierher verschoben.
+	mmexport: Leerzeilen bleiben Leerzeilen bei der Ausgabe.
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Code-Cleanup: Ausgabe-Funktionen nach output.raw verschoben
+
+	* /cvsroot/koch-suite/src/www/print.raw, /cvsroot/koch-suite/src/www/rezept.raw, /cvsroot/koch-suite/src/www/such.raw, /cvsroot/koch-suite/src/www/mmprint.raw:
+	u != o
+
+2000-11-24  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/such.raw, /cvsroot/koch-suite/src/www/menue.raw, /cvsroot/koch-suite/src/include/output.raw, /cvsroot/koch-suite/src/include/functions.raw:
+	Improved mmexport-functions.
+	Convert special characters to their html-entities.
+
+2000-11-22  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/index.raw: Typo
+
+2000-11-21  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/www/menue.raw, /cvsroot/koch-suite/src/www/mmprint.raw, /cvsroot/koch-suite/src/www/print.raw, /cvsroot/koch-suite/src/www/rezept.raw, /cvsroot/koch-suite/src/www/styles.css, /cvsroot/koch-suite/src/www/such.raw, /cvsroot/koch-suite/src/Documentation/Overview.txt, /cvsroot/koch-suite/src/Documentation/init_db.sql, /cvsroot/koch-suite/src/README, /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/commands/mmexport.raw, /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/www/index.raw, /cvsroot/koch-suite/src/www/infos.raw:
+	Added several Comments, missing cvs-keywords.
+	Sync'd Documentation
+
+2000-11-19  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/output.raw:
+	Fehler im Export-Format gefixt.
+
+2000-11-16  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/commands/mmexport.raw:
+	Print an error, if no searchstring is specified.
+
+	* /cvsroot/koch-suite/src/Documentation/User.txt: Doku zu mmexport
+
+	* /cvsroot/koch-suite/src/include/output.raw, /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/www/infos.raw, /cvsroot/koch-suite/src/www/menue.raw, /cvsroot/koch-suite/src/www/rezept.raw, /cvsroot/koch-suite/src/www/styles.css:
+	Info-Seite himnzugefügt.
+	Stylesheet-Änderungen
+
+2000-11-15  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/commands/mmexport.raw, /cvsroot/koch-suite/src/include/Makefile.raw, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/include/output.raw, /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/www/mmprint.raw, /cvsroot/koch-suite/src/www/rezept.raw:
+	Mealmaster-Export-Funktion hinzugefügt.
+	Schönheitskorrekturen.
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Bug beseitigt: Subrezept-Header die ein "-" im Namen haben, werden nun
+	korrekt geparst.
+
+2000-11-13  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/Documentation/User.txt: User-Dokumentation
+
+	* /cvsroot/koch-suite/src/Documentation/Overview.txt:
+	*** empty log message ***
+
+	* /cvsroot/koch-suite/src/Documentation/init_db.sql:
+	Einheiten berücksichtigen
+
+	* /cvsroot/koch-suite/src/www/such.raw, /cvsroot/koch-suite/src/include/functions.raw:
+	Improving the output.
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/include/config.raw, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/www/index.raw, /cvsroot/koch-suite/src/www/menue.inc, /cvsroot/koch-suite/src/www/menue.raw, /cvsroot/koch-suite/src/www/print.raw, /cvsroot/koch-suite/src/www/rezept.raw, /cvsroot/koch-suite/src/www/styles.css, /cvsroot/koch-suite/src/www/such.inc, /cvsroot/koch-suite/src/www/such.raw, /cvsroot/koch-suite/src/README:
+	Ausgabe-funktionen erweitert.
+
+2000-11-12  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/Documentation/examples/slrn.sl:
+	Example-Usage: Slrn
+
+	* /cvsroot/koch-suite/src/README: bla
+
+	* /cvsroot/koch-suite/src/Makefile, /cvsroot/koch-suite/src/configure, /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/www/index.raw, /cvsroot/koch-suite/src/www/menue.inc, /cvsroot/koch-suite/src/www/pics/Makefile.raw, /cvsroot/koch-suite/src/www/pics/title.gif, /cvsroot/koch-suite/src/www/pics/white.gif, /cvsroot/koch-suite/src/www/styles.css, /cvsroot/koch-suite/src/www/such.inc:
+	Next step towards a more complete version
+
+	* /cvsroot/koch-suite/src/include/functions.raw:
+	Funktionen um Rezepte aus der Datenbank wieder auszulesen.
+
+	* /cvsroot/koch-suite/src/Documentation/Programmers.txt:
+	Programmierer-Dokumentation,
+	 -> verwendete Datentypen
+	 -> more to come.
+
+2000-11-04  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/README:
+	Instructions for building PHP as needed for this Project added.
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/config:
+	Finally the installed mmimport does work also.
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/include/Makefile.raw, /cvsroot/koch-suite/src/www/Makefile.raw:
+	The Quotes were wrong.
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/config, /cvsroot/koch-suite/src/include/Makefile.raw, /cvsroot/koch-suite/src/www/Makefile.raw:
+	Some Bugs in the "make install" fixed.
+
+	* /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/Makefile, /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/config:
+	Added Install-Target
+	Minor changes for portability. Tested on OpenBSD and Linux.
+
+	* /cvsroot/koch-suite/src/Makefile: foo
+
+	* /cvsroot/koch-suite/src/include/Makefile.raw:
+	Oops, forgot that one to add to the Repository.
+
+	* /cvsroot/koch-suite/src/commands/Makefile.raw, /cvsroot/koch-suite/src/commands/mmimport.raw, /cvsroot/koch-suite/src/include/config.inc, /cvsroot/koch-suite/src/include/config.raw, /cvsroot/koch-suite/src/include/functions.inc, /cvsroot/koch-suite/src/include/functions.raw, /cvsroot/koch-suite/src/www/Makefile.raw, /cvsroot/koch-suite/src/Documentation/Overview.txt, /cvsroot/koch-suite/src/Makefile, /cvsroot/koch-suite/src/README, /cvsroot/koch-suite/src/changelog, /cvsroot/koch-suite/src/config, /cvsroot/koch-suite/src/configure, /cvsroot/koch-suite/src/mmimport:
+	Created a Makefile for convenience
+
+	Added a file named "config". configure parses it and creates Makefiles
+	and sed-scripts out of it's content.
+
+	New Installation-Method:
+
+	 - vi config
+
+	 - make
+
+	 - make install
+	     as "root"
+
+	Directory-Cleanup
+
+2000-11-01  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.inc: Foo
+
+	* /cvsroot/koch-suite/src/include/functions.inc, /cvsroot/koch-suite/src/README:
+	bla
+
+	* /cvsroot/koch-suite/src/Documentation/init_db.sql, /cvsroot/koch-suite/src/init_db.sql:
+	Created a "Documentation"-directory for the documentation of this
+	suite and some notes about the database-layout.
+
+	* /cvsroot/koch-suite/src/include/functions.inc, /cvsroot/koch-suite/src/mmimport:
+	fixed a problem with importing Recipes, that have no empty line
+	between a ingredient-line and a header for additional ingredients.
+
+2000-10-31  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.inc: Regex-Changes
+
+2000-10-26  michael  <michael@ruf098>
+
+	* /cvsroot/koch-suite/src/include/functions.inc:
+	Einige Import-Fehler wurden gefixt.
+
+	* /cvsroot/koch-suite/src/README:
+	SQL-Infos zu den Installationsanweisungen.
+
+	* /cvsroot/koch-suite/src/LICENCE: foo
+
+	* /cvsroot/koch-suite/src/README: Update der Installations-Anweisungen
+
+	* /cvsroot/koch-suite/src/LICENCE, /cvsroot/koch-suite/src/README, /cvsroot/koch-suite/src/include/config.inc, /cvsroot/koch-suite/src/include/functions.inc, /cvsroot/koch-suite/src/init_db.sql, /cvsroot/koch-suite/src/mmimport:
+	Alpha-Version der Koch-Suite, einem einfachen Rezeptverwaltungs-System.
+
+	* /cvsroot/koch-suite/src/LICENCE, /cvsroot/koch-suite/src/README, /cvsroot/koch-suite/src/include/config.inc, /cvsroot/koch-suite/src/include/functions.inc, /cvsroot/koch-suite/src/init_db.sql, /cvsroot/koch-suite/src/mmimport:
+	New file.
+
