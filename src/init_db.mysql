@@ -1,6 +1,6 @@
 # MySQL dump 7.1
 #
-# $Id: init_db.mysql,v 1.1 2001/06/20 18:33:28 michael Exp $
+# $Id: init_db.mysql,v 1.2 2001/07/24 19:52:49 michael Exp $
 #
 # Host: magrathea    Database: DBkoch
 #--------------------------------------------------------
@@ -128,8 +128,10 @@ CREATE TABLE MENUE (
   ID int(11) NOT NULL,
   PORTIONEN varchar(255),
   TITEL varchar(255) DEFAULT '' NOT NULL,
+  HASH varchar(255),
   PRIMARY KEY (ID),
-  KEY TITEL (TITEL(30))
+  KEY TITEL (TITEL(50)),
+  KEY HASH (HASH(50))
 );
 
 #
