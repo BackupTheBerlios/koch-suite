@@ -4,7 +4,7 @@
 KS_CONFIG=		koch-suite.inc
 PHP_FILES_UNCONF=	functions.inc lang.inc output.inc \
 			debug.inc defines.inc file.inc nocache.inc \
-			auth.inc loginform.inc pwcrypt.inc
+			auth.inc access_denied.inc loginform.inc pwcrypt.inc
 ADDITIONAL=		de.inc en.inc es.inc
 SUBDIRS=		
 
@@ -48,7 +48,7 @@ install-etc: build
 	( [ -d "${DESTDIR}/<%%ETC_PREFIX%%>" ] || \
 	<%%INSTALL%%> -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%ETC_PREFIX%%> )
 	@(if [ -f "${DESTDIR}/<%%ETC_PREFIX%%>/${KS_CONFIG}" ] ; then \
-	echo "${DESTDIR}/<%%ETC_PREFIX%%>/${KS_CONFIG} exists. Leaving untouched."; \
+	echo "*** ${DESTDIR}/<%%ETC_PREFIX%%>/${KS_CONFIG} exists. Leaving untouched."; \
 	else \
 	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${KS_CONFIG} ${DESTDIR}/<%%ETC_PREFIX%%>; \
 	fi )
