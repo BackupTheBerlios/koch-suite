@@ -52,4 +52,4 @@ install-www:
 
 install: ${CONF_FILE} install-includes install-command install-www install-man
 
-.PHONY: ${CONF_FILE} subdir clean distclean install
+.PHONY: subdir clean distclean
