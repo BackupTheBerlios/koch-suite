@@ -2,7 +2,7 @@
   /** 
    * Functions for the "Koch-Suite"
    *
-   * $Id: parser.raw,v 1.7 2003/05/19 16:02:45 lestinsky Exp $
+   * $Id: parser.raw,v 1.8 2004/03/31 19:24:33 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -72,9 +72,19 @@
   function getmeta (&$file) {
 
     $temp = '';
+    $got_first_line = false;
 
     while ($line = $file->ReadLine()) {
-      if (preg_match("/(\s){11,}-+\s*(.*)/", $line, $match)) {
+      if (! $got_first_line && 
+          preg_match("/(\s){11,}-*\s*(.*)/", $line, $match)) {
+        /* Allow the first line of the meta infos to not start with
+         * one or more minuses. */
+        $got_first_line = true;
+
+        $temp .= $match[2] . ' ';
+      } else if (preg_match("/(\s){11,}-+\s*(.*)/", $line, $match)) {
+        /* Succeding lines must start with one or more minuses at the
+         * beginning of the ingredient text. */
         $temp .= $match[2] . ' ';
       } else {
         /* No meta-line here. Wind back for one line. */

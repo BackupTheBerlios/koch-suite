@@ -28,7 +28,7 @@
    */
 
   /**
-   * $Id: einfuegen.raw,v 1.51 2003/08/11 20:16:44 lestinsky Exp $
+   * $Id: einfuegen.raw,v 1.52 2004/03/31 19:24:33 lestinsky Exp $
    * Insert new and edit exiting recipes.
    *
    * @package WWW
@@ -74,6 +74,19 @@
   if (isset($mid) and $mid != 0) {
     $target .= "?mid=$mid";
   }
+
+  /**
+   * Check for magic_quotes_gpc and do the right thing.
+   *
+   * @param string $str
+   * @return string
+   */
+  function gpc_stripslashes ($str) {
+    if (get_cfg_var('magic_quotes_gpc') == 1)
+      return stripslashes ($str);
+    else return $str;
+  }
+
 
   /**
    * Generate ingredient-lines
@@ -294,12 +307,9 @@
     $zutat = array();
     $y = 0;
 
-    // Catch Configuration-settings:
-    if (get_cfg_var('magic_quotes_gpc') == 1) {
-      if (isset($titel))     $titel = stripslashes($titel);
-      if (isset($portionen)) $portionen = stripslashes($portionen);
-      if (isset($anweisung)) $anweisung = stripslashes($anweisung);
-    }
+    $titel = gpc_stripslashes($titel);
+    $portionen = gpc_stripslashes($portionen);
+    $anweisung = gpc_stripslashes($anweisung);
 
     foreach ($zutaten as $z) {
       /* $zutaten ist ein Array, dass aus einzelnen Zutatenlisten
@@ -311,9 +321,10 @@
       foreach (split("[\r]?\n", trim($z)) as $line) {
         // Jede Zutatenliste wird in ihre einzelnen Zeilen aufgespalten
   
-        if (get_cfg_var('magic_quotes_gpc') == 1) {
-          $line = stripslashes($line);
-        }
+        $line = gpc_stripslashes($line);
+        $quant  = '';
+        $unit   = '';
+        $ingred = '';
 
         if ($line != '') {
           $line = trim($line); // Remove whitespaces
@@ -329,10 +340,8 @@
             }
             $ingred = implode(" ", $a);
           } else {
-            // Einheiten ohne Mengenangabe machen keinen Sinn 
-            // -> alles in den Zutatentext.
-            $quant  = '';
-            $unit   = '';
+            // Usage of units without quantity don't make a lot of sense.
+            // -> put everything into the ingredient text.
             $ingred = trim($line);
           }
           array_push ($ingredients, array ('quant'  => $quant,
@@ -340,9 +349,6 @@
                                            'ingred' => $ingred));
         }
 
-        $quant  = '';
-        $unit   = '';
-        $ingred = '';
       }
 
       array_push ($zutat, array("title"       => $ztitle[$y], 
@@ -361,19 +367,20 @@
       // remove every other linebreak.
       $anweisung = preg_replace('/(\r)?\n/m', ' ', $anweisung);
     }
+    $anweisung = gpc_stripslashes($anweisung);
 
     if (!empty($recorder))
-      $meta['Recorder'] = trim($recorder);
+      $meta['Recorder'] = gpc_stripslashes(trim($recorder));
     else
       $meta['Recorder'] = '';
 
     if (!empty($date))
-      $meta['Date'] = trim($date);
+      $meta['Date'] = gpc_stripslashes(trim($date));
     else
       $meta['Date'] = '';
 
     if (!empty($source))
-      $meta['Source'] = trim($source);
+      $meta['Source'] = gpc_stripslashes(trim($source));
     else
       $meta['Source'] = '';
 
