@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.inc,v 1.2 2000/10/26 17:00:11 michael Exp $
+   * $Id: functions.inc,v 1.3 2000/10/31 00:17:38 michael Exp $
    */
 
   include "./include/config.inc";
@@ -15,11 +15,11 @@
      * return a rather complex 4-dimensional array, 
      * read the source to understand it's format
      */
-    $bar                 = 0;
-    $zutaten             = array();
-    $instruction         = "";
-    $zutaten_header      = "/^(-{5}|M{5})-*([a-zA-Z0-9!?: \.\*]*)[-=@]*$/";
-    $rezept_ende         = "/^(-{5}|M{5})[@-]*$/";
+    $bar            = 0;
+    $zutaten        = array();
+    $instruction    = "";
+    $zutaten_header = "/^(-{5}|M{5})-*([a-z0-9äöüß!\?:\. \*]*)[-=@]*$/i";
+    $rezept_ende    = "/^(-{5}|M{5})[@-]*$/";
 
     while ($line = fgets($fd, 1024)) {
       if (preg_match($rezept_ende, $line)) {
@@ -47,8 +47,12 @@
           $yield = trim($foo[2]);
           $seen_yield = 1;
 
-        } else if (preg_match("/^$/", $line) and $seen_ingr == 0) {
+        } else if (preg_match("/^ *$/", $line) and $seen_ingr == 0) {
           # Skip this line
+
+        } else if (preg_match($zutaten_header, $line, $foo)) {
+          $j = array("title" => strtoupper($foo[2]), "ingredients" => getingr($fd));
+          array_push ($zutaten, $j);
           $seen_ingr = 1;
 
         } else if ($seen_title == 1 and 
@@ -60,13 +64,10 @@
           array_push ($zutaten, $j);
           $seen_ingr = 1;
 
-        } else if (preg_match($zutaten_header, $line, $foo)) {
-          $j = array("title" => $foo[2], "ingredients" => getingr($fd));
-          array_push ($zutaten, $j);
-
         } else {
-          /* Ok, treat the Rest as "instructions" */
+          /* Ok, treat the Rest as "instruction" */
           $instruction .= trim($line) . "\n";
+
         }
       }
     }
@@ -81,7 +82,7 @@
 
   function parse_ingredient($line) {
     /* parse each line */
-    if (ereg("([ 0-9\.]{7}) (..) ([a-zA-Z0-9 \/\(\)-;:]*)", $line, $foo)) {
+    if (ereg("([ 0-9\.\/]{7}) (..) ([a-zA-Züöä0-9 \/\(\)-;:]*)", $line, $foo)) {
       return array("quant"  => trim($foo[1]), 
                    "unit"   => trim($foo[2]), 
                    "ingred" => trim($foo[3]));
@@ -99,8 +100,8 @@
     $a = array();
 
     while ($line = fgets($fd, 1024)) {
-      if (preg_match("/^\s*$/", $line))
-        break;
+      #if (preg_match("/^\s*$/", $line))
+      #  break;
       if (($b = parse_ingredient($line)) != 0) {
         array_push ($a, $b);
       } else {
