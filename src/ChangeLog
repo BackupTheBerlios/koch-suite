@@ -1,3 +1,14 @@
+2002-08-24  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/functions.raw 1.81:
+  Log error and return false if using undefined search area
+
+  * src/www/kategorien.raw 1.19: Sync
+
+  * src/www/search.raw 1.24:
+  Inspirations by Heiner Otterstedt <heiner@otterstedt.de
+  allow using more than one search area, e.g. in menu titles and ingredients...
+
 2002-08-19  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/output.raw 1.47: Format header
