@@ -3,39 +3,22 @@
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.16 2001/06/26 23:47:24 michael Exp $
+   * $Id: config.raw,v 1.17 2001/07/01 20:49:19 michael Exp $
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
 
   require_once 'DB.php';
   require_once '<%%PHP_LIBS%%>/debug.inc';
+  require_once '<%%PHP_LIBS%%>/defines.inc';
 
   /*
    * Shall we debug? Answer "yes" or "no".
+   * If yes: create a world-writable file /tmp/koch-suite-debug for
+   * debugging output.
    */
 
   $DEBUG = "yes";
-
-  /*
-   * Some Constants:
-   */
-
-  define("KOCHSUITE", "<i>Koch-Suite</i>");
-  define("KOCHSUITE_VER", "0.5-pre7");
-
-  define("DB_MYSQL", "mysql");
-  define("DB_PGSQL", "pgsql");
-
-  define("DEBUG_FILE", "/tmp/koch-suite-debug");
-
-  define("DEFAULT_LANG", "de");
-
-  define("MM_STRICT", true);
-  define("MM_VIOLATE", false);
-
-  define("RECIPE_MM", 0);
-  define("RECIPE_RK", 1);
 
   /*
    * What about the Database?
@@ -53,7 +36,7 @@
   $DB_STYLE    = $DB_DSN["phptype"];
 
   /* Do the connect */
-  write_log("Connecting to " . serialize($DB_DSN));
+  if ($DEBUG == "yes") write_log("Connecting to " . serialize($DB_DSN));
   $db=DB::connect($DB_DSN);
 
   if (DB::isError($db)) {
