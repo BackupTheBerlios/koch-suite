@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.53 2003/01/10 23:31:53 lestinsky Exp $
+   * $Id: en.inc,v 1.54 2003/01/20 20:29:25 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -28,6 +28,8 @@
   $Lang['Instructions']		= 'Instructions';
   $Lang['Rating']		= 'Rating';
   $Lang['Vote']['Submit']	= 'Rate this recipe';
+  $Lang['Contact']		= 'Contact';
+  $Lang['TotalRecipes']		= 'Total number of recipes';
 
   $Lang['FormApply']		= "Apply";
   $Lang['FormMoreIngr']		= "Additional ingredient list";
@@ -105,7 +107,7 @@
 
   $Lang['Pastebox']['Title']            = 'Pastebox';
   $Lang['Pastebox']['Text']             = <<<EOT
-     Paste single preformatted recipes in Meal-Master or RezKonv-Format here.
+     Paste single preformatted recipes in Meal-Master- or RezKonv-format below.
 EOT;
 
   $Lang['AllRecipes']		= "All recipes";
