@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.36 2001/09/23 11:15:38 lestinsky Exp $
+   * $Id: output.raw,v 1.37 2001/10/01 16:04:51 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -357,15 +357,7 @@
     $str .= "     Title: " . $rezept["title"] . "\n"; 
 
     $cat_a = $rezept["category"];
-    $str .= "Categories: "; 
-    while (isset($cat_a[$i])) {
-      if ($i != 0) {
-        $str  .= ", ";
-      }
-      $str .= $cat_a[$i];
-      $i++;
-    }
-    $str .= "\n";
+    $str .= "Categories: " . implode(", ", $cat_a) . "\n";
 
     $str .= "     Yield: " . $rezept["yield"] . "\n"; 
 
