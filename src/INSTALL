@@ -1,4 +1,4 @@
-### $Id: INSTALL,v 1.7 2001/10/31 15:46:34 lestinsky Exp $
+### $Id: INSTALL,v 1.8 2001/12/31 11:51:52 lestinsky Exp $
 
 Koch-Suite Installation Instructions
 ====================================
@@ -9,7 +9,7 @@ every single file from it may be distributed.
 
 If you want to update from an older version of this package, see below.
 
-The following instructions asume that all requirements (see `README') are 
+The following instructions assume that all requirements (see `README') are 
 fulfilled. You can find some operating system specific notes at the end of
 this document.
 
@@ -76,7 +76,7 @@ MySQL:
   note: in MySQL `localhost' and the FQDN of the same computer are not the
   same!)
 
-  Drop back to your normal systems shell and perform
+  Drop back to your normal system shell and perform
 
   $ mysql -h DBSERVER -u USER -pPASSWORD DBkoch < init_db.mysql 
 
@@ -85,7 +85,7 @@ MySQL:
 
 To create Koch-Suite users:
 
-The Koch-Suite has it's own user managment. This is represented by the table
+The Koch-Suite has it's own user management. This is represented by the table
 `usertable' in the database. It will contain the usernames and passwords,
 which are allowed to access the webfrontend (depending on your setting of
 $AUTH_LEVEL in your `koch-suite.inc').
@@ -95,20 +95,20 @@ The usernames and passwords need to be created first. Use the command
 
 of course you should adjust PASSWORD properly. This will echo the
 encrypted password and an example SQL-string you can use to insert the
-values into your database. Invoke your MySQL-Shell again:
+values into your database. Invoke your MySQL Shell again:
 
   $ mysql -u USER -p -h DBSERVER DBkoch
 
 and execute the SQL-command (replace "USERNAME" again). The usermanagment
 will change in later versions.
 
-Please note: the crypt()-function used to encrypt the Passwords is
-strongly operating system dependant. Especially the Windows(TM)-
-Implementation differs from most Un*x crypt(). This means, you 
-can't install the Koch-Suite on a Windows AND on Unix-System and use
-the _same_ database. This behaviour is client-independent, using a
-Windows client (such as IE) and a Unix Server is completly OK!
-MD5-Passwords will be used if your crypt() supports MD5 hashes, 
+Please note: the crypt() function used to encrypt the Passwords is
+strongly operating system dependent. Especially the Windows(TM) 
+implementation differs from most Un*x crypt(). This means you 
+can't install the Koch-Suite on a Windows AND on Unix System and use
+the _same_ database. This behavior is client independent, using a
+Windows client (such as IE) and a Unix Server is completely OK!
+MD5 passwords will be used if your crypt() supports MD5 hashes, 
 otherwise the fallback is DES encryption. This is done transparently.
 
 
@@ -116,8 +116,8 @@ otherwise the fallback is DES encryption. This is done transparently.
 Updating:
 ---------
 
-A few changes to the database structure were neccessary to add
-PostgreSQL-Support. Therefore the old and the new database formats aren't
+A few changes to the database structure were necessary to add
+PostgreSQL support. Therefore the old and the new database formats aren't
 compatible. If you want to preserve all stored recipes it is probably the
 best to dump all the data with (the old!) `rezept'
 
@@ -127,9 +127,9 @@ Or if you have a (post) 0.5 already installed:
 
  $ rezept -mm -relaxed "" > all.mm
 
-into the file `all.mm' in (relaxed) Mealmaster-format. Delete all tables
+into the file `all.mm' in (relaxed) Mealmaster format. Delete all tables
 and recreate them with `init_db.??sql' from this release as described above. 
-Install the new Koch-Suite release and reimport the recipes afterwards
+Install the new Koch-Suite release and re-import the recipes afterwards
 with the new `mmimport'
 
  $ mmimport < all.mm

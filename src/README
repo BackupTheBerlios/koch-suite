@@ -1,4 +1,4 @@
-### $Id: README,v 1.41 2001/10/08 10:46:19 lestinsky Exp $
+### $Id: README,v 1.42 2001/12/31 11:51:52 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -15,19 +15,19 @@ What is this?
 
 Short: a suite of scripts for recipe managment, starting with import
 filters for recipes in `Meal-Master'-format (http://home1.gte.net/welliver/), 
-as well as some console-tools for exporting into several formats (Plain
-Text, MM, LaTeX,...) and finally a complete webinterface.
+as well as some console tools for exporting into several formats (Plain
+Text, MM, LaTeX,...) and finally a complete web interface.
 
-The goal of the development is to create a system, which complies to the
-Un*x-philosophy and makes reuse of code i.e. from a shellskript as simple
-as possible. The three main parts, the library, the webinterface and the
-console-tools, are different aspects of the same entity.
+The goal of the development is to create a system, which complies with the
+Un*x-philosophy and makes reuse of code i.e. from a shell script as simple
+as possible. The three main parts, the library, the web interface and the
+console tools, are different aspects of the same entity.
 
 
 Requirements:
 -------------
 
-To run the webinterface you'll need a running HTTP-daemon (i.e. Apache,
+To run the web interface you'll need a running HTTP-daemon (i.e. Apache,
 http://httpd.apache.org), PHP4 and a DBMS supported by this package.
 
 The Koch-Suite was tested on:
@@ -37,41 +37,41 @@ The Koch-Suite was tested on:
 
 In any case you will need PHP4 with support for the used DBMS (please see
 Documentation/PHP.txt for details).
-This scripts where written and tested with PHP-4.0.5 and later, versions
-older than PHP-4.0.4 definitely won't work. For the console-tools you have
+These scripts were written and tested with PHP-4.0.5 and later, versions
+older than PHP-4.0.4 definitely won't work. For the console tools you have
 to install the standalone (a.k.a. cgi-version).
 
-The LaTeX-export uses the `floatflt'-package, which may be found on your
-nearest CTAN-archive. To create Postscript you need dvips (which is part
-of the TeTeX-distribution). To create PDF documents, you need Ghostscript.
+The LaTeX export uses the `floatflt' package, which may be found on your
+nearest CTAN archive. To create Postscript you need dvips (which is part
+of the TeTeX distribution). To create PDF documents, you need Ghostscript.
 The installation will probe for them and will fall back to the best
 possible format if one of those tools is missing. You can manipulate this
 behaviour from ETC_PREFIX/koch-suite.inc after the installation.
 
-Further you need a (pretty) current PEAR distribution (later than 4.0.6).
+You also need a (pretty) current PEAR distribution (later than 4.0.6).
 You can update PEAR without updating PHP or use a seperate PEAR installation.
-Adjust the path in the `./config'-file propperly.
+Adjust the path in the `./config' file propperly.
 
-More informations about PEAR may be found in `Documentation/PHP.txt'.
+More information about PEAR may be found in `Documentation/PHP.txt'.
 
 Status:
 -------
 
 The project is quite usable, though it's not finished. The import, export 
-and search-functions to the database work very well.
+and search functions to the database work very well.
 
 At the moment we have:
- - a tool for database-import of recipes in Meal-Master- or RezKonv-format,
- - export-functions to LaTeX, plain text, Meal-Master-format and HTML,
- - a few prototype-webpages, to implement some fundamental searchfunctions
+ - a tool for database import of recipes in Meal-Master or RezKonv format,
+ - export functions to LaTeX, plain text, Meal-Master format and HTML,
+ - a few prototype webpages, to implement some fundamental search functions
    to the database and for recipe recording.
- - Multilingualization. Show all pages in the language requested by the
-   client. This affects Browsers (`Accept-Language'-header in
-   HTTP-requests) and the console-tools (`LC_MESSAGE'- and `LANG'-environment
+ - Internationalization. Show all pages in the language requested by the
+   client. This affects Browsers (`Accept-Language' header in
+   HTTP-requests) and the console tools (`LC_MESSAGE'  and `LANG' -environment
    variables, LC_MESSAGE has the higher priority)
-   The language-modules may be easily created and the interfaces can
+   The language modules may be easily created and the interfaces can
    adapted to other languages very simple.
- - a user-managment
+ - user managment
 
 You can see the changes to older versions in the file `ChangeLog'.
 
@@ -81,7 +81,7 @@ Todo/'Roadmap':
 
  - write documentation,
  - create the possibility to annotate existing recipes,
- - a more comfortable access-control,
+ - a more comfortable access control,
  - RezKonv export.
 
 
@@ -94,8 +94,8 @@ Known Bugs:
  - German-English Mischmasch in comments,...
  - Import of recipes with the alternative method to declare
    recipe-headers. (E.g. ("      H    For the sauce"). These headers won't
-   be recognised as such and are treated as part of the installation
-   instructions therefore. But this kind of headers seems not to be used
+   be recognized as such and are treated as part of the installation
+   instructions. But this kind of header seems not to be used
    any longer.
 
 
@@ -113,8 +113,8 @@ If you don't like my code: I never said that I've got talent. ;-)
 Thanks to:
 ----------
 
-o  Michael Bussmann for the PEARification of the database-requests 
-   and the PostgreSQL-support,
-o  Leo Caspari for feedback, error-corrections and extensions,
+o  Michael Bussmann for the PEARification of the database requests 
+   and the PostgreSQL support,
+o  Leo Caspari for feedback, error corrections and extensions,
 o  Ulli Fetzer and Ilka Spiess their comments and support while creating
-   the Meal-Master- and RezKonv-filters.
+   the Meal-Master and RezKonv filters.
