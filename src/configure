@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.10 2001/08/06 18:06:13 lestinsky Exp $
+# $Id: configure,v 1.11 2001/08/11 07:32:46 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -53,6 +53,20 @@ check_prereq () {
     fi
 }
 
+check_opt () {
+    # Check for optional tools an add their path to the config.sed
+    echo -n "Checking for '$1': ... "
+    req=$(which "$1")
+    if [ -n "${req}" ] ; then
+        # Found.
+        echo "Found - $req"
+        echo "s:<%%$1%%>:${req}:" >> ${CONF_FILE}
+    else 
+        echo "Not Found!"
+        echo "s:<%%$1%%>:none:" >> ${CONF_FILE}
+    fi
+}
+
 make_makefiles () {
     # Generate Makefiles in Directory $1
     ( 
@@ -68,6 +82,8 @@ translate_raw () {
     sed -f ${THISDIR}/${CONF_FILE} $1.raw > $1
 }
 
+##########
+
 # Let's see if we can find all required tools:
 TOOLS="sed awk"
 for foo in ${TOOLS} ; do 
@@ -80,6 +96,12 @@ grep -Ev "^#" ${CONF_RAW} | grep -Ev "^$" | \
   tr '=' ' ' | sed "s|:|\\\:|g" |\
   awk '{print "s:<%%"$1"%%>:"$2":" }' > ${CONF_FILE}
 echo "Done."
+
+# Let's check for some 'nice-to-have' tools
+TOOLS="latex dvips gs cat"
+for foo in ${TOOLS} ; do
+  check_opt ${foo}
+done
 
 # Create the Makefiles
 SUBDIRS="include www www/pics commands man"
