@@ -39,7 +39,7 @@
   function  print_count(&$r) {
     global $Lang;
 
-    echo "<tr><td colspan=\"3\">" . count($r) . " " .
+    echo "<tr><td></td><td colspan=\"3\">" . count($r) . " " .
                    $Lang['Search']['Hits'] . 
              "</td></tr>\n";
     return true;
@@ -49,11 +49,13 @@
     $count = count($r);
     for ($i = 0; $i < $count; $i++) {
       $j = $i + 1;
-      echo "<tr><td><input type=\"checkbox\" class=\"check\" name=\"tag[]\" value=\"$i\"></td>" .
+      echo "<tr><td align=\"right\">" . 
+                   sucks_or_rocks_meter($r[$i]['rating']) . 
+               "</td>" .
+               "<td><input type=\"checkbox\" class=\"check\" name=\"tag[]\" value=\"$i\"></td>" .
                "<td>$j</td>" .
                "<td><a href=\"rezept.php?result_id=" . $i . "\">" . 
-                      htmlentities($r[$i]["title"]) . "</a> " . 
-                      sucks_or_rocks_meter($r[$i]['rating']) . "</td></tr>\n";
+                      htmlentities($r[$i]["title"]) . "</a></td></tr>\n";
     }
   }
 
