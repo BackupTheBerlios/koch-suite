@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.48 2002/09/16 20:51:15 lestinsky Exp $
+   * $Id: en.inc,v 1.49 2002/09/29 20:35:16 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -68,6 +68,7 @@
   $Lang['Recipe']['Insert']     = "Insert recipe into the database";
   $Lang['Recipe']['Inserted']   = "Recipe inserted.";
 
+  $Lang['Auth']['Login']	= 'Login';
   $Lang['Auth']['LoggedInAs']   = 'Logged in as';
   $Lang['Auth']['Logout']       = 'Logout';
   $Lang['Auth']['NoLogin']      = 'Not logged in';
