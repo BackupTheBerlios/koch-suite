@@ -1,4 +1,4 @@
-<?
+<?php
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
@@ -10,10 +10,10 @@
 <head>
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
-  <title><? echo $Lang['Help']; ?></title>
+  <title><?php echo $Lang['Help']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.9 2001/05/21 23:59:53 michael Exp $ -->
+  <!-- $Id: help.raw,v 1.10 2001/06/01 22:31:36 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -32,22 +32,22 @@
 <table border=0>
 <tr>
   <td valign="top">
-    <?
+    <?php
       require "./menue.inc";
     ?>
   </td>
   <td width="90%">
-    <!-- Installierte Version: $Name:  $ $Revision: 1.9 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.10 $ -->
 
-    <h2><? echo $Lang['Help']; ?></h2>
+    <h2><?php echo $Lang['Help']; ?></h2>
     
     <p>
-      <? echo $Lang['Helptext']['General']; ?>
+      <?php echo $Lang['Helptext']['General']; ?>
     </p>
 
-    <h3><? echo $Lang['Helptext']['CL']['Title']; ?></h3>
+    <h3><?php echo $Lang['Helptext']['CL']['Title']; ?></h3>
     <dl>
-      <?
+      <?php
         foreach ($Lang['Helptext']['CL']['commands'] as $c) {
           echo "<dt><code>" . $c['Name'] . "</code></dt>\n";
           echo "<dd>" . $c['Text'] . "</dd>\n";
@@ -55,9 +55,9 @@
       ?>
     </dl>
 
-    <h3><? echo $Lang['Helptext']['WWW']['Title']; ?></h3>
+    <h3><?php echo $Lang['Helptext']['WWW']['Title']; ?></h3>
     <dl>
-      <?
+      <?php
         foreach ($Lang['Helptext']['WWW']['part'] as $c) {
           echo "<dt>" . $c['Title'] . "</dt>\n";
           echo "<dd>" . $c['Text'] . "</dd>\n";
@@ -65,8 +65,15 @@
       ?>
     </dl>
 
-    <h3><? echo $Lang['Helptext']['Feedback']['Title']; ?></h3>
-      <?
+    <h3><?php echo $Lang['Language']['Title']; ?></h3>
+      <?php
+         foreach ($Lang['Language']['Text'] as $text) {
+           echo "<p>" . $text . "</p>";
+         };
+      ?>
+
+    <h3><?php echo $Lang['Helptext']['Feedback']['Title']; ?></h3>
+      <?php
         foreach($Lang['Helptext']['Feedback']['Text'] as $text) {
           echo "<p>" . $text . "</p>"; 
         }
