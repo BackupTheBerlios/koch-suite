@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.26 2001/06/21 14:08:28 michael Exp $
+   * $Id: output.raw,v 1.27 2001/06/23 00:24:54 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -132,12 +132,28 @@
      * into proper Latex-substitutes.
      */
 
+    /* Replace some characters with special meanings in latex. */
+    $str = strtr($str, array(
+                               "_"  => "\\_ ",
+                               "&"  => "\\& ",
+                               "%"  => "\\% ",
+                               "#"  => "\\# ",
+                               "{"  => "\\{ ",
+                               "}"  => "\\} ",
+                               "$"  => "\\$ ", 
+                               "\"" => "\\dq ", 
+                               "^"  => "\\textasciicircum ",
+                               "|"  => "\\textbar ",
+                               "~"  => "\\textasciitilde "
+                            )
+                );
+
+    /* Old:
     #$str = preg_replace("/\\\/", "\\textbackslash ", $str);
-    $str = preg_replace("/[\"]/", "\\dq ", $str);
-    $str = preg_replace("/([_\&%#\{\}\$])/", "\\\\1", $str);
     $str = preg_replace("/\^/", "\\textasciicircum ", $str);
     $str = preg_replace("/~/", "\\textasciitilde ", $str);
     $str = preg_replace("/\|/", "\\textbar ", $str);
+    */
 
     return $str;
   }
@@ -145,6 +161,7 @@
 
   function latex_export (&$rezept) {
     /* Export a recipe in LaTeX-format */
+    global $Lang;
 
     $c = 0;
 
@@ -154,8 +171,8 @@
 
     $str .= "\\begin{table}[H]\n";
     $str .= "\\begin{tabular}{rl}\n";
-    $str .= "\\textbf{Portionen:} & " . ltx_string($rezept["yield"]) . "\\\\\n";
-    $str .= "\\textbf{Kategorie:} & ";
+    $str .= "\\textbf{" . $Lang['Yield'] . ":} & " . ltx_string($rezept["yield"]) . "\\\\\n";
+    $str .= "\\textbf{" . $Lang['Cat'] . ":} & ";
     foreach ($rezept["category"] as $cat) {
       $str .= ltx_string($cat) . " ";
     }
@@ -212,71 +229,61 @@
     $bar = array();
     $foo = "";
 
-    if (strlen($str) > $len) {
+    /* Split up into single words: */
+    $a = explode(" ", $str);
+    $i = 0;
 
-      /* This is for historical reasons. Before 0.2 all instructions were
-       * added with all Newlines included. Since 0.2 they get stripped
-       * away and replaced by <p> and <br>. 
-       * >>>>> Historical
-       */
-      $str = preg_replace("/\n:/", "\n <br> :", $str);
-      $str = preg_replace("/\n\n/", " <p> ", $str);
-      $str = preg_replace("/\n/", " ", $str);
-      /* <<<<< Historical */
+    /* For each word: */
+    while (isset($a[$i])) {
 
-      /* Ingredient-line to long */
-      $a = explode(" ", $str);
-      $i = 0;
-      while (isset($a[$i])) {
-        if (preg_match("/<(p|br)>/", $a[$i])) {
-          $wordlen = 0;
-        } else {
-          $wordlen = strlen($a[$i]) + 1;
-          /* String-Length + prefixed Space-character! */
-        }
-        if ((strlen($foo) + $wordlen) <= $len) {
-          if (preg_match("/<(br|p)>/", $a[$i], $bla)) {
-            /* If we have some linebreak: */
-            $i++;
-            array_push($bar, $foo);
-            if ($bla[1] == 'p') {
-              array_push($bar, "");
-            }
-            $foo = "";
+      /* Is it a linebreak? They have a stringlength of 0 */
+      if (preg_match("/<(p|br)>/", $a[$i])) {
+        $wordlen = 0;
+      } else {
+        $wordlen = strlen($a[$i]) + 1;
+        /* String-Length + prefixed Space-character! */
+      }
 
-          } elseif ($a[$i] == ' ') {
-            /* Just skip 'words' if they are 'space-character' */
-            $i++; 
-
-          } else {
-            /* Apend an whitespace and the word to the current line. */
-            $foo .= ((strlen($foo) == 0) ? "" : " ") . $a[$i];
-            $i++;
-          }
-        } else if ($wordlen >= $len) {
-          /* Oops, by some accident we have a word here, 
-           * which itself is longer then the allowed line-lenght.
-           */
-          array_push($bar, $foo);
-          $foo = $a[$i];
+      if ((strlen($foo) + $wordlen) <= $len) {
+        if (preg_match("/<(br|p)>/", $a[$i], $bla)) {
+          /* If we have some linebreak: */
           $i++;
-        } else {
           array_push($bar, $foo);
+          if ($bla[1] == 'p') {
+            array_push($bar, "");
+          }
           $foo = "";
+
+        } elseif ($a[$i] == ' ') {
+          /* Just skip 'words' if they are 'space-character' */
+          $i++; 
+
+        } else {
+          /* Apend an whitespace and the word to the current line. */
+          $foo .= ((strlen($foo) == 0) ? "" : " ") . $a[$i];
+          $i++;
         }
-      }
-      if ($foo != "") {
+      } else if ($wordlen >= $len) {
+        /* Oops, by some accident we have a word here, 
+         * which itself is longer then the allowed line-lenght.
+         */
         array_push($bar, $foo);
+        $foo = $a[$i];
+        $i++;
+      } else {
+        /* Max linelength reached. */
+        array_push($bar, $foo);
+        $foo = "";
       }
-    } else {
-      /* ingredient-line ok */
-      array_push($bar, $str);
+    }
+    if ($foo != "") {
+      array_push($bar, $foo);
     }
     return $bar;
   }
 
 
-  function mmexport (&$rezept) {
+  function mmexport (&$rezept, $strict = true) {
     /* return a Meal-Master-formatted string. */
     global $kochsuite_ver, $tool;
     $i = 0;
@@ -299,7 +306,7 @@
 
     $str .= "     Yield: " . $rezept["yield"] . "\n"; 
 
-    $str .= print_ingred($rezept["zutaten"]) . "\n";
+    $str .= print_ingred($rezept["zutaten"], $strict) . "\n";
     $a = length_adjust($rezept["anleitung"], 72); 
     foreach ($a as $line) {
       $str .= stripslashes($line) . "\n";
@@ -377,7 +384,7 @@
   }
 
 
-  function print_ingred ($r) {
+  function print_ingred ($r, $strict = true) {
     $i = 0;
     foreach ($r as $z) {
       /* Print a mealmaster-Subheader for subrecipes: */
@@ -392,7 +399,11 @@
 
         $quant = nice_quant($j["quant"]);
 
-        $a = length_adjust($j["ingred"], 28);
+        if ($strict == true)
+           $a = length_adjust($j["ingred"], 28);
+        else 
+           $a = length_adjust($j["ingred"], 65);
+    
         $rline = pad_left($quant," ", 7) . " " .
                  pad_right($j["unit"]  , " ", 2) . " " .
                  $a[$u++] . "\n";
