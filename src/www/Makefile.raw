@@ -1,4 +1,4 @@
-# $Id: Makefile.raw,v 1.9 2000/12/06 17:55:48 michael Exp $
+# $Id: Makefile.raw,v 1.10 2000/12/08 23:55:22 michael Exp $
 # Space-separated list of all "raw" php-files.
 PHP_FILES=		index rezept print mmprint infos einfuegen kategorien
 INC_FILES=		menue such
@@ -56,3 +56,5 @@ install:
 	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i} <%%WEB_PREFIX%%> ; \
 	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i} <%%WEB_PREFIX%%>" ; \
 	done )
+
+.PHONY: all subdir clean distclean install
