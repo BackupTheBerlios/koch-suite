@@ -1,8 +1,9 @@
-### $Id: changelog,v 1.15 2001/02/08 01:45:00 michael Exp $
+### $Id: changelog,v 1.16 2001/02/08 02:13:26 michael Exp $
 
 2001-02-08: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Prügel wenigstens ein klitze kleines Bischen Hirn in den Parser
 	DOS-Files können nun ohne weiteres importiert werden.
+	Prerelase 3 von 0.3
 
 2001-02-07: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Einfüge-Interface versteht jetzt auch RK-Einheiten.
