@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: koch-suite.raw,v 1.15 2002/08/18 13:52:46 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.16 2002/09/03 21:20:27 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -12,12 +12,17 @@
   /* Pear: */
   $PEAR = '<%%PEAR%%>';
 
+  /* Global Ops */
+  $GLOBAL_OPS = false;		// Enable global operations on search result.
+				// WARNING, enabling this could generate heavy
+				// load for your webserver and database.
+
 
   // Shall we be in debug-mode? Answer "yes" or "no".
   // If yes: all SQL-Queries and a little more will be logged in
   // /tmp/koch-suite-debug. This will include passwords...
-  $DEBUG = "yes";          // Mind security, disable this. Especially 
-                           // when in PHPs safe mode.
+  $DEBUG = "no";		// Mind security, disable this. Especially 
+				// when in PHPs safe mode.
   error_reporting(E_ALL);
 
 

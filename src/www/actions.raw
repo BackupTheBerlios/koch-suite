@@ -3,18 +3,25 @@
   <td style="text-align:left;">
   <div class="small">
   <?php
-    if (isset($mid))
-      echo "[<a href=\"print.php?mid=$mid&scale=$scale\">" . $Lang['PrintVers'] . "</a>]\n";
-    elseif(isset($_SESSION['operate_on']))
-      echo "[<a href=\"print.php\">" . $Lang['PrintVers'] ."</a>]\n";
+    if (isset($_SESSION['operate_on']) and !isset($mid) and !isset($result_id)
+        and ($GLOBAL_OPS or ($_SESSION['operate_on'] != 'searchresult'))) {
 
-    if (isset($mid))
-      echo "[<a href=\"mmprint.php?mid=$mid&scale=$scale\">Meal-Master-Format</a>]\n";
-    elseif (isset($_SESSION['operate_on']))
+      // We are working on a big bunch of data
+
+      echo "[<a href=\"print.php\">" . $Lang['PrintVers'] ."</a>]\n";
       echo "[<a href=\"mmprint.php\">Meal-Master-Format</a>]\n";
 
-    if (isset($mid))
-      echo "[<a href=\"rezept.php?mid=$mid&scale=$scale\">" . $Lang['NormalVers'] .  "</a>]\n";
+    } else {
+
+      if (isset($mid))
+        echo "[<a href=\"print.php?mid=$mid&scale=$scale\">" . $Lang['PrintVers'] . "</a>]\n";
+  
+      if (isset($mid))
+        echo "[<a href=\"mmprint.php?mid=$mid&scale=$scale\">Meal-Master-Format</a>]\n";
+  
+      if (isset($mid))
+        echo "[<a href=\"rezept.php?mid=$mid&scale=$scale\">" . $Lang['NormalVers'] .  "</a>]\n";
+    }
   ?>
   </div>
   </td>
@@ -36,7 +43,7 @@
   </td>
 </tr>
 <?php 
-  if (isset($_SESSION["searchresult"]) and isset($result_id)) {
+  if (isset($_SESSION[$_SESSION['operate_on']]) and isset($result_id)) {
     if (($total = count($_SESSION["searchresult"])) > 1) { 
       $prev = $result_id - 1;
       $next = $result_id + 1;
