@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* Copyright (c) 2001
+  /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -29,8 +29,7 @@
    */
 
   /*
-   * $Id: mmimport.raw,v 1.28 2002/05/26 22:15:59 lestinsky Exp $
-   * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
+   * $Id: mmimport.raw,v 1.29 2002/06/11 18:43:47 lestinsky Exp $
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
    * See the bundled file "LICENCE" for the licence of this script.

@@ -1,9 +1,9 @@
-### $Id: PHP.txt,v 1.4 2002/04/08 15:11:37 lestinsky Exp $
+### $Id: PHP.txt,v 1.5 2002/06/11 18:43:47 lestinsky Exp $
 
 Koch-Suite and PHP
 ==================
 
-Michael Lestinsky <michael@lestinsky.de>, July 2001
+(c) 2002 Michael Lestinsky <michael@lestinsky.de>
 Please see the file `LICENSE' for the license terms, under which you may
 use, modify and distribute this package or single parts of it.
 

@@ -1,5 +1,5 @@
 <?php
-  /* Copyright (c) 2001
+  /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
   <title><?php echo $Lang['Help']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.17 2002/05/20 15:01:38 lestinsky Exp $ -->
+  <!-- $Id: help.raw,v 1.18 2002/06/11 18:43:47 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -76,7 +76,7 @@
     ?>
   </td>
   <td>
-    <!-- Installierte Version: $Name:  $ $Revision: 1.17 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.18 $ -->
 
     <h2><?php echo $Lang['Help']; ?></h2>
     
@@ -123,7 +123,7 @@
 </table>
 
 <hr noshade>
-&copy; 2001 Michael Lestinsky 
+&copy; 2002 Michael Lestinsky 
 &lt;<a href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.de</a>&gt;.
 
 </body>

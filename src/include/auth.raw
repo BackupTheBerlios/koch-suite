@@ -2,7 +2,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.15 2002/05/24 22:19:54 lestinsky Exp $
+   * $Id: auth.raw,v 1.16 2002/06/11 18:43:47 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -11,7 +11,7 @@
    * @module auth.inc
    * @copyright Michael Lestinsky <michael@lestinsky.de>
    *
-   * Copyright (c) 2001
+   * Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without

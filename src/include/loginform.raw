@@ -1,5 +1,5 @@
 <?php
-  /* $Id: loginform.raw,v 1.4 2002/04/14 18:18:46 lestinsky Exp $ */
+  /* $Id: loginform.raw,v 1.5 2002/06/11 18:43:47 lestinsky Exp $ */
   if (!isset($goto)) $goto = $_SERVER["REQUEST_URI"];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -12,7 +12,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: loginform.raw,v 1.4 2002/04/14 18:18:46 lestinsky Exp $ -->
+  <!-- $Id: loginform.raw,v 1.5 2002/06/11 18:43:47 lestinsky Exp $ -->
 </head>
 <body>
 <a name="top"></a>
@@ -37,7 +37,7 @@
 </form>
 
 <hr noshade>
-&copy; 2001 Michael Lestinsky
+&copy; 2002 Michael Lestinsky
 &lt;<a href="mailto:michael@lestinsky.de">michael@lestinsky.de</a>&gt;.
 </body>
 </html>

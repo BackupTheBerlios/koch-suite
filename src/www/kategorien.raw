@@ -1,5 +1,5 @@
 <?php
-  /* Copyright (c) 2001
+  /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.15 2002/05/20 15:01:38 lestinsky Exp $
+   * $Id: kategorien.raw,v 1.16 2002/06/11 18:43:47 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW

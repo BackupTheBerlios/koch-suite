@@ -1,5 +1,5 @@
 <?
-  /* Copyright (c) 2001
+  /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -354,7 +354,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.37 2002/05/22 21:41:32 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.38 2002/06/11 18:43:47 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -414,7 +414,7 @@
 </table>
 
 <hr noshade>
-&copy; 2001 Michael Lestinsky 
+&copy; 2002 Michael Lestinsky 
 &lt;<a href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.de</a>&gt;.
 
 </body>

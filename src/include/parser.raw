@@ -2,8 +2,7 @@
   /** 
    * Functions for the "Koch-Suite"
    *
-   * $Id: parser.raw,v 1.1 2002/05/26 22:14:26 lestinsky Exp $
-   * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
+   * $Id: parser.raw,v 1.2 2002/06/11 18:43:47 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -12,7 +11,7 @@
    * @module functions.inc
    * @copyright Michael Lestinsky <michael@lestinsky.de>
    *
-   * Copyright (c) 2001
+   * Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without

@@ -1,5 +1,5 @@
 <?php
-  /* Copyright (c) 2001
+  /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -29,8 +29,6 @@
 
   /**
    * Delete an entry from the database.
-   *
-   * (c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
    *
    * @package WWW
    * @modulegroup Edit
@@ -62,7 +60,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.16 2002/05/20 15:01:38 lestinsky Exp $ -->
+  <!-- $Id: delete.raw,v 1.17 2002/06/11 18:43:47 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -93,11 +91,10 @@
 
 <hr noshade>
 
-&copy; Michael Lestinsky
+&copy; 2002 Michael Lestinsky
 &lt;<a
 href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.
-de</a>&gt;
-Januar 2001.
+de</a>&gt;.
 
 </body>
 </html>

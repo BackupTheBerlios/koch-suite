@@ -1,11 +1,11 @@
 <?
   /*
-   * $Id: es.inc,v 1.3 2002/05/17 11:26:04 lestinsky Exp $
+   * $Id: es.inc,v 1.4 2002/06/11 18:43:47 lestinsky Exp $
    *
    * Define Spanish text-constants.
    *
    * This file is subject to the license as included in ../LICENSE
-   * (c) 2001 Michael Lestinsky
+   * (c) 2002 Michael Lestinsky
    *
    * Spanish language file by Rodolfo González <rodolfo_gonzalez@hotmail.com>
    *

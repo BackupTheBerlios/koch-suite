@@ -1,4 +1,4 @@
-### $Id: FAQ.txt,v 1.6 2002/04/14 18:21:03 lestinsky Exp $
+### $Id: FAQ.txt,v 1.7 2002/06/11 18:43:47 lestinsky Exp $
 
 FAQ - Frequently Asked Questions
 ================================
@@ -77,4 +77,4 @@ lack time, don't see any use for them or would be to hard to do the
 Don't ask for these.
 
 
-(c) 2001 Michael Lestinsky <michael@lestinsky.de>
+Copyright (c) 2002 Michael Lestinsky <michael@lestinsky.de>
