@@ -1,4 +1,4 @@
-### $Id: README,v 1.6 2000/11/04 01:30:26 michael Exp $
+### $Id: README,v 1.7 2000/11/12 01:17:50 michael Exp $
 
 Koch-Suite
 ==========
@@ -53,7 +53,7 @@ referenz finden sich unter http://www.php.net
 Installation:
 -------------
 
- - tar -xvzf kochsuite-1.0.tar.gz
+ - tar -xvzf kochsuite-0.1.tar.gz
    Dieses Paket auspacken, wenn es nicht bereits geschehen ist.
 
  - vi config
