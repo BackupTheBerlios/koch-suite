@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?php
-  /* Copyright (c) 2002
+  /* Copyright (c) 2003
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,7 @@
    */
 
   /**
-   * $Id: init_db2.raw,v 1.1 2002/11/27 18:41:13 lestinsky Exp $
+   * $Id: init_db2.raw,v 1.2 2003/01/10 23:36:11 lestinsky Exp $
    * Initializes database, creates necessary tables and fills them with
    * default contents
    *
@@ -126,7 +126,11 @@
 
                   'category_alias' => array('table_def' => array("kid  integer NOT NULL DEFAULT '0'",
                                                                 "text varchar(255) NOT NULL default ''"),
-                                            'index' => array('text'))
+                                            'index' => array('text')),
+
+                  'rating'    => array('table_def' => array("menu_id    int(11) NOT NULL default '0'",
+							    "vote       int(1) default NULL"),
+				       'index' => array('menu_id', 'vote'))
             );
 
 
