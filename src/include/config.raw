@@ -1,21 +1,21 @@
 <?
   /*
+   * $Id: config.raw,v 1.24 2001/09/23 11:11:22 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.23 2001/08/31 12:43:02 lestinsky Exp $
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
 
-  require_once 'DB.php';
+  require_once '<%%PEAR%%>/DB.php';
   require_once '<%%PHP_LIBS%%>/debug.inc';
   require_once '<%%PHP_LIBS%%>/defines.inc';
 
   /*
-   * Shall we debug? Answer "yes" or "no".
-   * If yes: create a world-writable file /tmp/koch-suite-debug for
-   * debugging output.
+   * Shall we be in debug-mode? Answer "yes" or "no".
+   * If yes: all SQL-Queries and a little more will be logged in
+   * /tmp/koch-suite-debug. This will include passwords...
    */
 
   $DEBUG = "yes";
@@ -33,7 +33,8 @@
   /* Authentication: */
 
   // Where to authenticate the user? 
-  // at the moment auth_by_db is the only one.
+  // at the moment auth_by_db is the only one. But this might be extendet
+  // to LDAP, file,... easily.
   $AUTH_STYLE = "auth_by_db";
 
   // What level of authentication do we want? ALL, READ, WRITE or NONE?
@@ -76,16 +77,4 @@
 
   /* Return associative arrays per default */
   $db->setFetchMode(DB_FETCHMODE_ASSOC);
-
-
-  /* Catch "special" Bugs in some PHP-versions */
-  switch (phpversion()) {
-    case "4.0.6":
-    case "4.0.5":
-      $BROKEN_ARRAY_INTERSECT = true;
-      break;
-    default:
-      $BROKEN_ARRAY_INTERSECT = false;
-      break;
-  }
 ?>
