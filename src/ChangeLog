@@ -1,3 +1,19 @@
+2003-02-11  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/units.raw 1.18: fix style
+
+  * src/www/edit_cat.raw 1.4:
+  allow turning a category into an alias for another category. In this category will be moved into the new one
+
+  * src/www/mmprint.raw 1.24, src/www/print.raw 1.30:
+  Remove unused variables
+
+  * src/include/functions.raw 1.90:
+  new function: get_category_id()
+
+  * src/include/de.inc 1.51, src/include/en.inc 1.56:
+  Add some recomendations about the usage of categories
+
 2003-02-09  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/commands/Makefile.raw 1.25, src/include/Makefile.raw 1.31, src/man/man1/Makefile.raw 1.2, src/www/Makefile.raw 1.36:
