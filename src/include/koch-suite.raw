@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: koch-suite.raw,v 1.13 2002/06/11 18:39:59 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.14 2002/06/25 20:13:44 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -16,8 +16,8 @@
   // Shall we be in debug-mode? Answer "yes" or "no".
   // If yes: all SQL-Queries and a little more will be logged in
   // /tmp/koch-suite-debug. This will include passwords...
-
-  $DEBUG = "yes";                             // Mind security, disable this.
+  $DEBUG = "yes";          // Mind security, disable this. Especially 
+                           // when in PHPs safe mode.
   error_reporting(E_ALL);
 
 
