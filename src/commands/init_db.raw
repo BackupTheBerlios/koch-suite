@@ -1,0 +1,518 @@
+#!<%%PHP%%> <%%PHP_OPTS%%>
+<?php
+  /* Copyright (c) 2002
+   *      Michael Lestinsky. All rights reserved.
+   *
+   * Redistribution and use in source and binary forms, with or without
+   * modification, are permitted provided that the following conditions
+   * are met:
+   * 1. Redistributions of source code must retain the above copyright
+   *    notice, this list of conditions and the following disclaimer.
+   * 2. Redistributions in binary form must reproduce the above copyright
+   *    notice, this list of conditions and the following disclaimer in the
+   *    documentation and/or other materials provided with the distribution.
+   * 3. All advertising materials mentioning features or use of this software
+   *    must display the following acknowledgement:
+   *      This product includes software developed by Michael Lestinsky.
+   *
+   * THIS SOFTWARE IS PROVIDED BY MICHAEL LESTINSKY ``AS IS\'\' AND
+   * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   * ARE DISCLAIMED.  IN NO EVENT SHALL MICHAEL LESTINSKY BE LIABLE
+   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+   * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+   * SUCH DAMAGE.
+   */
+
+  /**
+   * $Id: init_db.raw,v 1.1 2002/09/27 11:45:28 bus Exp $
+   * Initializes database, creates necessary tables and fills them with
+   * default contents
+   *
+   * @author Michael Bussmann <bus@mb-net.net>
+   *
+   */
+
+  require_once "<%%PHP_LIBS%%>/setup.inc";
+  require "<%%PHP_LIBS%%>/functions.inc";
+
+  /* Disable Timelimit. We have a controlling tty here, so this is safe. */
+  set_time_limit(0);
+
+  /* Open filedescriptors for the STD-channels */
+  $stdin  = fopen("php://stdin", "r");
+  $stdout = fopen("php://stdout", "w");
+  $stderr = fopen("php://stderr", "w");
+
+  /**
+   * Creates PostgreSQL indices
+   */
+  function create_index_pgsql() {
+    $sql = 'CREATE INDEX anweisung_mid ON anweisung (MENUE_ID)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX einheiten_abbrev ON einheiten (ABBREV)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX einheiten_eid ON EINHEITEN_ALIAS (EID)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX einheiten_alias_text ON EINHEITEN_ALIAS (TEXT)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX kat_kid ON kat (KATEGORIE_ID)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX kat_mid ON kat (MENUE_ID)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX kategorie_text ON kategorie (TEXT)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX menue_hash ON menue (HASH)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX rezept_mid ON rezept (MENUE_ID)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX zutaten_rid ON zutaten (REZEPT_ID)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX user_name on usertable (username)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX id on menu_meta (id)';
+    exec_or_die($sql);
+    $sql = 'CREATE INDEX mid on menu_meta (mid)';
+    exec_or_die($sql);
+  }
+
+  /**
+   * Creates tables for MySQL DBMS
+   *
+   */
+  function create_tables_mysql() {
+    $sql = "
+	CREATE TABLE ANWEISUNG (
+	  TEXT longtext,
+	  MENUE_ID int(11) NOT NULL default '0',
+	  KEY MENUE_ID (MENUE_ID)
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE EINHEITEN (
+	  ID int(11) NOT NULL default '0',
+	  ABBREV char(2) default NULL,
+	  DESCR varchar(255) default NULL,
+	  FAKTOR float(5,3) default NULL,
+	  FAKTOR_ID int(11) default NULL,
+	  RK_ABBREV varchar(11) default NULL,
+	  MMUSE enum('J','N') default NULL,
+	  PRIMARY KEY  (ID)
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE EINHEITEN_ALIAS (
+	  EID int(11) NOT NULL default '0',
+	  TEXT varchar(15) NOT NULL default '',
+	  KEY TEXT (TEXT)
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE KAT (
+	  ID int(11) NOT NULL default '0',
+	  KATEGORIE_ID int(11) default NULL,
+	  MENUE_ID int(11) NOT NULL default '0',
+	  PRIMARY KEY (ID),
+	  KEY MENUE_ID (MENUE_ID),
+	  KEY KATEGORIE_ID (KATEGORIE_ID)
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE KATEGORIE (
+	  ID int(11) NOT NULL default '0',
+	  TEXT varchar(255) default NULL,
+	  PRIMARY KEY  (ID),
+	  KEY TEXT (TEXT)
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE MENUE (
+	  ID int(11) NOT NULL default '0',
+	  PORTIONEN varchar(255) default NULL,
+	  TITEL varchar(255) NOT NULL default '',
+	  HASH varchar(255) default NULL,
+	  PRIMARY KEY  (ID),
+	  KEY TITEL (TITEL(50)),
+	  KEY HASH (HASH(50))
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE REZEPT (
+	  ID int(11) NOT NULL default '0',
+	  MENUE_ID int(11) NOT NULL default '0',
+	  TITEL varchar(255) default NULL,
+	  PRIMARY KEY  (ID),
+	  KEY MENUE_ID (MENUE_ID)
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE ZUTATEN (
+	  ID int(11) NOT NULL default '0',
+	  MENGE float(5,3) default NULL,
+	  EINHEIT char(2) default NULL,
+	  TEXT varchar(255) default NULL,
+	  REZEPT_ID int(11) NOT NULL default '0',
+	  PRIMARY KEY  (ID),
+	  KEY TEXT (TEXT),
+	  KEY REZEPT_ID (REZEPT_ID)
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE unit_langs (
+	  id int(11) default NULL,
+	  lang varchar(5) default NULL,
+	  text varchar(30) default NULL
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE usertable (
+	  username varchar(20) NOT NULL default '',
+	  usertype int(11) default NULL,
+	  password varchar(255) default NULL,
+	  email    varchar(255) default NULL,
+	  realname varchar(255) default NULL,
+	  free     enum('y','n') NOT NULL default 'y',
+	  PRIMARY KEY  (username)
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE menu_meta (
+	  id int(11) NOT NULL default '0',
+	  mid int(11) NOT NULL default '0',
+	  fieldname varchar(20) NOT NULL default '',
+	  fieldvalue varchar(255) default NULL,
+	  PRIMARY KEY  (id),
+	  KEY mid (mid)
+	) TYPE=MyISAM;";
+    exec_or_die($sql);
+  }
+
+  /**
+   * Creates tables for PostgreSQL DBMS
+   *
+   */
+  function create_tables_pgsql() {
+    exec_or_die('BEGIN');
+    $sql = "
+	CREATE TABLE ANWEISUNG (
+	  TEXT text, MENUE_ID integer DEFAULT '0' NOT NULL
+	);";
+    exec_or_die($sql);
+    $sql = "
+	CREATE TABLE EINHEITEN (
+	  ID integer NOT NULL PRIMARY KEY,
+	  ABBREV char(2),
+	  DESCR varchar(255),
+	  FAKTOR real,
+	  FAKTOR_ID integer,
+	  RK_ABBREV varchar(11),
+	  MMUSE char(1)
+	);";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE EINHEITEN_ALIAS (
+	  EID integer DEFAULT '0' NOT NULL,
+	  TEXT varchar(15) DEFAULT '' NOT NULL
+	);";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE KAT (
+	  ID integer NOT NULL,
+	  KATEGORIE_ID integer,
+	  MENUE_ID integer DEFAULT '0' NOT NULL
+	);";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE KATEGORIE (
+	  ID integer NOT NULL PRIMARY KEY,
+	  TEXT varchar(255)
+	);";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE MENUE (
+	  ID integer NOT NULL PRIMARY KEY,
+	  PORTIONEN varchar(255),
+	  TITEL varchar(255) DEFAULT '' NOT NULL,
+ 	  HASH varchar(255)
+	);";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE REZEPT (
+	  ID integer NOT NULL PRIMARY KEY,
+	  MENUE_ID integer DEFAULT '0' NOT NULL,
+	  TITEL varchar(255)
+	);";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE ZUTATEN (
+	  ID integer NOT NULL PRIMARY KEY,
+	  MENGE real,
+	  EINHEIT char(2),
+	  TEXT varchar(255),
+	  REZEPT_ID integer DEFAULT '0' NOT NULL
+	);";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE unit_langs (
+	  id integer default NULL,
+	  lang varchar(5) default NULL,
+	  text varchar(30) default NULL
+	);";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE usertable (
+	  username varchar(20) NOT NULL default '',
+	  usertype smallint default NULL,
+	  password varchar(255) default NULL,
+	  email    varchar(255) default NULL,
+	  realname varchar(255) default NULL,
+	  free     char(1) NOT NULL default 'y'
+	);";
+    exec_or_die($sql);
+
+    $sql = "
+	CREATE TABLE menu_meta (
+	  id integer NOT NULL default '0',
+	  mid integer NOT NULL default '0',
+	  fieldname varchar(20) NOT NULL default '',
+	  fieldvalue varchar(255) default NULL
+	);";
+    exec_or_die($sql);
+    exec_or_die("END");
+  }
+
+  function fill_tables() {
+    $einheiten=array(
+	"'1','x','Pro Rezept',NULL,NULL,'x','J'",
+	"'2','sm','',NULL,NULL,'klein.','J'",
+	"'3','md','',NULL,NULL,'mittl.','J'",
+	"'4','lg','',NULL,NULL,'groß.','J'",
+	"'5','cn','',NULL,NULL,'Dose/n','J'",
+	"'6','pk','',NULL,NULL,'Pack.','J'",
+	"'7','pn','engl: pinch',NULL,NULL,'Prise/n','J'",
+	"'8','dr','',NULL,NULL,'Tropfen','J'",
+	"'9','ds','Schuss',NULL,NULL,'Schuss','J'",
+	"'10','ct','',NULL,NULL,'Karton','J'",
+	"'11','bn','',NULL,NULL,'Bund','J'",
+	"'12','sl','',NULL,NULL,'Scheib.','J'",
+	"'13','ea','',NULL,NULL,'','N'",
+	"'14','t','',NULL,NULL,'Teel.','N'",
+	"'15','ts','',NULL,NULL,'Teel.','J'",
+	"'16','T','',NULL,NULL,'Essl.','N'",
+	"'17','tb','',NULL,NULL,'Essl.','J'",
+	"'18','c','ca. 250 ml',250.000,20,'Tasse/n','J'",
+	"'19','pt','ca. 1/2 Liter',500.000,20,'pt','J'",
+	"'20','l','',0.000,0,'Liter','J'",
+	"'21','qt','Quart entspr. ca 1 Liter',1.000,20,'qt','J'",
+	"'22','ga','',4.000,20,'ga','J'",
+	"'23','oz','',30.000,24,'oz','J'",
+	"'24','g','',0.000,0,'Gramm','J'",
+	"'25','lb','Englisches Pfund',450.000,24,'lb','J'",
+	"'26','ml','',0.000,0,'ml','J'",
+	"'27','cb','',0.000,0,'ml','N'",
+	"'28','cl','',10.000,26,'cl','J'",
+	"'29','dl','',100.000,26,'dl','J'",
+	"'30','cg','',0.010,24,'cg','J'",
+	"'31','dg','',0.100,24,'dg','J'",
+	"'32','kg','Kilogramm',1000.000,24,'Kilo','J'",
+	"'33','fl','fluid ounce',30.000,26,'fl','J'",
+	"'34','','',0.000,0,'','J'");
+
+    foreach ($einheiten as $eh) {
+      exec_or_die("INSERT INTO EINHEITEN VALUES ($eh);");
+    }
+
+    $sql = "INSERT INTO EINHEITEN_ALIAS VALUES (26,'Milliliter');";
+    exec_or_die($sql);
+
+    $unitlangs=array(
+	"1,'de',''",
+	"1,'en','per'",
+	"1,'es','por'",
+	"2,'de','klein(e)'",
+	"2,'en','small'",
+	"2,'es','pequenyo'",
+	"3,'de','mittl.'",
+	"3,'en','medium'",
+	"3,'es','medio'",
+	"4,'de','gr.'",
+	"4,'en','large'",
+	"4,'es','grande'",
+	"5,'de','Dose'",
+	"5,'en','can'",
+	"5,'es','lata'",
+	"6,'de','Packung'",
+	"6,'en','package'",
+	"6,'es','paquete'",
+	"7,'de','Prise'",
+	"7,'en','pinch'",
+	"7,'es','pizca'",
+	"8,'de','Tropfen'",
+	"8,'en','drop'",
+	"8,'es','pedacito'",
+	"9,'de','Schuss'",
+	"9,'en','dash'",
+	"9,'es','salpicon'",
+	"10,'de','Karton'",
+	"10,'en','carton'",
+	"10,'es','caja'",
+	"11,'de','Bund'",
+	"11,'en','bunch'",
+	"11,'es','manojo'",
+	"12,'de','Scheibe'",
+	"12,'en','slice'",
+	"12,'es','rodaja'",
+	"13,'de',''",
+	"13,'en','each'",
+	"13,'es','cada'",
+	"14,'de','Teel.'",
+	"14,'en','tsp'",
+	"14,'es','cucharadita'",
+	"15,'de','Teel.'",
+	"15,'en','tsp'",
+	"15,'es','cucharadita'",
+	"16,'de','Essl.'",
+	"16,'en','tbsp'",
+	"16,'es','cucharada'",
+	"17,'de','Essl.'",
+	"17,'en','tbsp'",
+	"17,'es','cucharada'",
+	"18,'de','Tasse'",
+	"18,'en','cup'",
+	"18,'es','taza'",
+	"19,'de','Pint'",
+	"19,'en','pint'",
+	"19,'es','pinta'",
+	"20,'de','Liter'",
+	"20,'en','liter'",
+	"20,'es','litro'",
+	"21,'de','Quart'",
+	"21,'en','quart'",
+	"21,'es','cuarto'",
+	"22,'de','Gallone'",
+	"22,'en','gallon'",
+	"22,'es','galon'",
+	"23,'de','Oz.'",
+	"23,'en','ounce'",
+	"23,'es','onza'",
+	"24,'de','g'",
+	"24,'en','g'",
+	"24,'es','g'",
+	"25,'de','Engl. Pfund'",
+	"25,'en','pound'",
+	"25,'es','libra'",
+	"26,'de','ml'",
+	"26,'en','ml'",
+	"26,'es','ml'",
+	"27,'de','ml'",
+	"27,'en','ml'",
+	"27,'es','ml'",
+	"28,'de','Centiliter'",
+	"28,'en','centiliter'",
+	"28,'es','centilitro'",
+	"29,'de','Deziliter'",
+	"29,'en','deciliter'",
+	"29,'es','decilitro'",
+	"30,'de','Centigram'",
+	"30,'en','centigram'",
+	"30,'es','centigramo'",
+	"31,'de','Dezigram'",
+	"31,'en','decigram'",
+	"31,'es','decigramo'",
+	"32,'de','Kg'",
+	"32,'en','kg'",
+	"32,'es','kg'",
+	"33,'de','fl. Oz.'",
+	"33,'en','fl.oz.'",
+	"33,'es','onzasFluidas'",
+	"34,'de',''",
+	"34,'en',''",
+	"34,'es',''");
+    foreach ($unitlangs as $ul) {
+      exec_or_die("INSERT INTO unit_langs VALUES ($ul);");
+    }
+
+    $sql = 'INSERT INTO usertable VALUES (\'admin\', \'500\', \'12wGaKkN1hGuw\', \'\', \'Admin\', \'y\');';
+    exec_or_die($sql);
+  }
+
+  /**
+   * Intermediate function to perform database queries (debugging)
+   *
+   * @param  string $query SQL statement
+   * @return int    Return code from PEAR/DB (rather useless)
+   */
+  function exec_or_die($query) {
+    print "$query\n";
+    $result=DB_query($query);
+  }
+
+  /**
+   * Checks whether we can safely create all tables (this is a hack)
+   *
+   * @return boolean  true: Yes, false: No
+   */
+  function safe_to_create() {
+    global $db;
+
+    $result=$db->query("SELECT count(*) from usertable");
+    if (DB::isError($result)) {
+      return(true);
+    }
+    return(false);
+  }
+
+
+  /**
+   * Main
+   */
+
+  /* Safety check */
+  if (!safe_to_create()) {
+    $str = <<<EOT
+It looks like the tables have already been created.  If you really would like to
+initialize the database, please DROP the database, CREATE it and re-run this
+script.
+
+EOT;
+    fputs($stderr, $str);
+    exit(1);
+  }
+
+  switch ($DB_STYLE) {
+    case DB_MYSQL:
+      create_tables_mysql();
+      fill_tables();
+      break;
+
+    case DB_PGSQL:
+    default:
+      create_tables_pgsql();
+      create_index_pgsql();
+      fill_tables();
+      break;
+  }
+  db_disconnect();
+?>

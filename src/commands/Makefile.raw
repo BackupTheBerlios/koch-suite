@@ -10,10 +10,14 @@ CONF_FILE=		../config.sed
 all: build
 	@#${MAKE} subdir TRGT=all
 
-build: ${PHP_FILES}
+build: ${PHP_FILES} init_db
 
 ${PHP_FILES}: ${PHP_FILES:%=%.raw}
 	sed -f ${CONF_FILE} ${@}.raw > ${@}
+
+init_db: init_db.raw
+	sed -f ${CONF_FILE} ${@}.raw > ${@}
+	<%%chmod%%> +x ${@}
 
 subdir:
 	@(for i in ${SUBDIRS} ; do\
@@ -25,7 +29,7 @@ subdir:
 
 clean:
 	@#${MAKE} subdir TRGT=clean
-	rm -f ${PHP_FILES}
+	rm -f ${PHP_FILES} init_db
 
 distclean:
 
