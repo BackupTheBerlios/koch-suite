@@ -7,7 +7,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <title>Koch-Suite</title>
-  <!-- $Id: index.raw,v 1.6 2001/01/12 01:08:56 michael Exp $ -->
+  <!-- $Id: index.raw,v 1.7 2001/01/18 00:47:12 michael Exp $ -->
 </head>
 
 <body>
@@ -19,7 +19,7 @@
   <td valign="top">
     <? include "./menue.inc"; ?>
   </td>
-  <td>
+  <td width="90%">
     <!-- Rechts: Ausgabe -->
     <?
       if ($suchen == 1) {
