@@ -2,7 +2,7 @@
   /** 
    * Functions for the "Koch-Suite"
    *
-   * $Id: parser.raw,v 1.4 2002/09/29 20:34:11 lestinsky Exp $
+   * $Id: parser.raw,v 1.5 2002/11/06 17:47:28 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -71,17 +71,32 @@
    */
   function getmeta (&$file) {
 
-    $return = '';
+    $temp = '';
 
     while ($line = $file->ReadLine()) {
       if (preg_match("/(\s){11,}-+\s*(.*)/", $line, $match)) {
-        $return .= $match[2] . ' ';
+        $temp .= $match[2] . ' ';
       } else {
         /* No meta-line here. Wind back for one line. */
         $file->UnReadLine($line);
         break;
       }
     }
+
+    if (preg_match("/(.*) Erfasst \*RK\* (\d+.\d+.\d+) von (.*)/", 
+                   $temp, $match)){
+      // Recipe was created with RezKonv, lets try to split the meta data
+      // a little more.
+
+      $return = array('Source'   => $match[1],
+                      'Date'     => $match[2],
+                      'Recorder' => $match[3]);
+
+    } else {
+      // Sorry, can't parse that further. Put everything into 'Source'.
+      $return = array('Source'   => $temp);
+    }
+
     return $return;
   }
 
@@ -109,13 +124,15 @@
     $source_pattern   = "/^:\s*". $Lang['pattern']['Source'] ."\s*:\s*(.+)$/i";
     $recorder_pattern = "/^:\s*". $Lang['pattern']['Recorder'] ."\s*:\s*(.+)$/";
     $date_pattern     = "/^:\s*". $Lang['pattern']['Date'] ."\s*:\s*(.+)$/";
-    $long_pattern     = "/^:\s*:\s*(.+)$/";
+    $long_pattern     = "/^:\s*[>:]\s*(.+)$/";
     $mmext_pattern    = "/^:.*:.+$/"; // Catchall for the rest
 
     $meta['Source']   = '';
     $meta['Recorder'] = '';
     $meta['Date']     = '';
-    $override_source_if_avail = false;
+    $override_source  = false;
+    $override_recorder= false;
+    $override_date    = false;
 
     $last = '';
 
@@ -185,8 +202,10 @@
           $ingr_list_title = preg_replace($search, $replace, trim($line));
 
           if (preg_match($Lang['pattern']['Source_ingr'], $ingr_list_title)) {
-            $meta['Source'] .= getmeta($file);
-            $override_source_if_avail = true;
+            $meta = getmeta($file);
+            $override_source   = true;
+            $override_recorder = true;
+            $override_date     = true;
 
           } else {
             array_push ($zutaten, 
@@ -196,11 +215,11 @@
             $seen_ingr = 1;
           }
 
-        } else if ($seen_title      == 1 and 
-                   $seen_categories == 1 and 
-                   $seen_yield      == 1 and
-                   $seen_instr      == 0 and
-                   $seen_ingr       == 0 ) {
+        } else if ($seen_title and 
+                   $seen_categories and 
+                   $seen_yield and
+                   !$seen_instr and
+                   !$seen_ingr) {
           /* lets look for the ingredients */ 
 
           /* We have read that line already. 
@@ -221,20 +240,26 @@
           $line = trim($line);
 
           if (preg_match($source_pattern, $line, $opt_fields)) {
-            if ($override_source_if_avail) {
+            if ($override_source) {
               $meta['Source'] = '';
-              $override_source_if_avail = false;
+              $override_source = false;
             } else $meta['Source'] .= ($meta['Source'] ? ' ' : '' );
             $meta['Source'] .= $opt_fields[2];
             $last = 'Source';
 
           } else if (preg_match($recorder_pattern, $line, $opt_fields)) {
-            $meta['Recorder'] .= ($meta['Recorder'] ? ' ' : '' );
+            if ($override_recorder) {
+              $meta['Recorder'] = '';
+              $override_recorder = false;
+            } else $meta['Recorder'] .= ($meta['Recorder'] ? ' ' : '' );
             $meta['Recorder'] .= $opt_fields[2];
             $last = 'Recorder';
 
           } else if (preg_match($date_pattern, $line, $opt_fields)) {
-            $meta['Date'] .= ($meta['Date'] ? ' ' : '' );
+            if ($override_date) {
+              $meta['Date'] = '';
+              $override_date = false;
+            } else $meta['Date'] .= ($meta['Date'] ? ' ' : '' );
             $meta['Date'] .= $opt_fields[2];
             $last = 'Date';
 
