@@ -1,4 +1,4 @@
-### $Id: README,v 1.2 2000/10/26 01:24:03 michael Exp $
+### $Id: README,v 1.3 2000/10/26 01:32:30 michael Exp $
 
 Koch-Suite
 ==========
@@ -40,6 +40,13 @@ Kopiere alle ausfuehrbaren Tools an eine sympatische Stelle, z.B.
 Passe include/config.inc an die lokalen Anforderungen an.
 Kopiere das Verzeichnis include/ nach irgendwo.
 
+Wenn du einen Rezept-Server betreiben willst: in der Datei init-db.sql
+sind SQL-Kommandos enthalten, die die notwendigen Datenstrukturen erzeugen.
+Man kann diese bequem mit einem
+
+  mysql DBkoch < init-db.sql 
+
+in die eigene Datenbank uebernehmen.
 
 Todo:
 -----
