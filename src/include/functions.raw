@@ -1,11 +1,11 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.8 2000/11/24 23:23:26 michael Exp $
+   * $Id: functions.raw,v 1.9 2000/11/29 18:29:56 michael Exp $
    */
 
   include "<%%PHP_LIBS%%>/config.inc";
-
+  require "<%%PHP_LIBS%%>/output.inc";
   /* --- Functions --- */
 
 
@@ -125,100 +125,6 @@
   }
 
 
-  function format_recipe($rezept) {
-    /* return a String, which contains the plain-text-formatted recipe */
-
-    $str  = "Titel: " . $rezept["title"] . "\n".
-            "Kategorien:";
-
-    foreach ($rezept["category"] as $cat) {
-      $str .= " " . $cat;
-    }
-    
-    $str .= "\n";
-
-    $str .= "Anzahl: " . $rezept["yield"] . "\n\n";
-
-    /* Zutaten: */
-
-    foreach ($rezept["zutaten"] as $z) {
-      $str .= $z["title"] . "\n";
-      foreach ($z["ingredients"] as $j) {
-        $rline = pad_left ($j["quant"] , " ", 7) . " " .
-                 pad_right($j["unit"]  , " ", 2) . " " .
-                 pad_right($j["ingred"], " ", 28) . "\n";
-        $str .= $rline;
-      }
-      $str .= "\n";
-    }
-
-    $str .= "Kochanleitung:\n\n";
-    $str .= $rezept["anleitung"]; 
-
-    return $str . "\n";
-  }
-
-
-  function format_recipe_html ($rezept) {
-    /* return a string, which contains the html-formatted recipe */
-   
-    $str = "<h2>" . htmlentities($rezept["title"]) . "</h2>\n";
-    $str .= "<table border=\"0\">\n";
-
-    $str .= "<tr><td><b>Kategorie</b>:</td><td width=\"90%\">";
-    foreach($rezept["category"] as $cat) {
-      $str .= htmlentities($cat) . " " ;
-    }
-    $str .= "</td></tr>\n"; 
-
-    $str .= "<tr><td><b>Portionen</b>:</td><td>" . $rezept["yield"] . "</td></tr>\n";
-
-    $str .= "<tr><td colspan=2>\n";
-
-    $str .= "<table border=\"0\" width=\"100%\">\n";
-    foreach ($rezept["zutaten"] as $z) {
-      $str .= "<tr><td colspan=3><b>" . 
-                      htmlentities($z["title"]) . 
-                      "</b></td></tr>\n";
-
-      foreach ($z["ingredients"] as $j) {
-
-        $quant = $j["quant"];
-        $quant = round($quant,3);
-        if ($quant == 0)
-          $quant = '';
-        $unit = nice_unit($j["unit"]);
-        $ingred = preg_replace("/^-* */", "", $j["ingred"]);
-        $str .= "<tr><td width=\"10%\" align=\"right\">" . $quant . "</td>" .
-                    "<td width=\"10%\">" . $unit . "</td>" .
-                    "<td>" . htmlentities($ingred) . "</td>" .
-                "</tr>\n";
-      }
-
-    }
-    $str .= "</table>\n";
-    $str .= "</td></tr>\n";
-  
-    $str .= "<tr><td colspan=2 style=\"font-family:Helvetica\">";
-    $str .= preg_replace("/(\r)?\n(\r)?\n?/", "\n<br>", htmlentities($rezept["anleitung"]));
-    $str .= "</td></tr>\n"; 
-    $str .= "</table>\n"; 
-
-    return $str;
-  }
-
-
-  function nice_unit ($unit) {
-    /* Lookup a beautified name for a unit */
-    $req = "select * from EINHEITEN where ABBREV = '$unit'";
-    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
-
-    $r = mysql_fetch_array($result);
-
-    return $r["TEXT"];
-  }
-
-
   function write_db ($rezept) {
     /* Write a recipe into the database. For the layout of the database
      * see Documentation/init_db.sql
@@ -282,36 +188,6 @@
              " ) ";
       $result = mysql_db_query($DB_NAME, $req);
     }
-  }
-
-
-  function pad_left($str, $pad, $length) {
-    /* Pad a String from the left side with $pad to a length of $length
-     * or if to long: cut it from the rigth to a length of $lenght.
-     */
-    if (strlen($str) > $length) {
-      // snip
-    } else {
-      while (strlen($str) < $length) {
-        $str = $pad . $str;
-      }
-    }
-    return $str;
-  }
-
-
-  function pad_right($str, $pad, $length) {
-    /* Pad a String from the rigth side with $pad to a length of $length
-     * or if to long: cut it from the rigth to a length of $lenght.
-     */
-    if (strlen($str) > $length) {
-      // snip
-    } else {
-      while (strlen($str) < $length) {
-        $str .= $pad;
-      }
-    }
-    return $str;
   }
 
 
@@ -404,4 +280,39 @@
 
     return $a;
   }
+
+
+  function get_mid_by_ingred($ingred) {
+    /* Search the database for a menu containing a special ingredient
+     * "ingred". 
+     * Returns "0" if noone found, an array of an associative arrays
+     * ("ID", "PORTIONEN", "TITEL") otherwise.
+     */
+    $m = array();
+
+    $req = "select * from ZUTATEN where TEXT like '%". addslashes($ingred) . "%'";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    while ($z = mysql_fetch_array($result)) {
+      $req = "select * from REZEPT where ID = '" .
+             addslashes($z["REZEPT_ID"]) . "'";
+
+      $result_rid = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+      if ($r = @mysql_fetch_array($result_rid)) {
+        $req_mid = "select * from MENUE where ID = '" . $r["MENUE_ID"] . "'"; 
+        $result_mid = mysql_db_query($GLOBALS["DB_NAME"], $req_mid);
+       
+        $j = mysql_fetch_array($result_mid); 
+        array_push ($m, array("id" => $j["ID"], "title" => $j["TITEL"]));
+      }
+    }
+
+    if (count($m) > 0) {
+      return array_unique($m);
+    } else {
+      return 0;
+    }
+  }
+
 ?>
