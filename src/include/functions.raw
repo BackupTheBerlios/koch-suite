@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.71 2002/03/31 23:13:58 lestinsky Exp $
+   * $Id: functions.raw,v 1.72 2002/05/11 12:20:47 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -665,7 +665,7 @@
    * @param  array $rezept Array containing the recipe
    * @return void 
    */
-  function write_db ($rezept) {
+  function write_db ($rezept, $new_cat_flag) {
 
     global $db;
 
@@ -711,12 +711,14 @@
       if ($r = $result->fetchRow()) {
         $cid = $r["id"];
       } else {
-        $cid = $db->nextID("KATEGORIESEQ");
-        $req = "insert into KATEGORIE values ( " .
-               "  $cid, " .
-               "  '" . addslashes($cat) . "' " .
-               " ) ";
-        $result = DB_query($req);
+        if ($new_cat_flag === true) {
+          $cid = $db->nextID("KATEGORIESEQ");
+          $req = "insert into KATEGORIE values ( " .
+                 "  $cid, " .
+                 "  '" . addslashes($cat) . "' " .
+                 " ) ";
+          $result = DB_query($req);
+        } else $GLOBALS['notice'] .= "$cat unknown, Ignoring.\n";
       }
 
       $kid = $db->nextID("KATSEQ");
