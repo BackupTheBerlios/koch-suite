@@ -1,8 +1,8 @@
-.\" $Id: mmimport.1.raw,v 1.6 2001/03/11 14:56:35 michael Exp $
+.\" $Id: mmimport.1.raw,v 1.7 2001/03/14 12:42:42 michael Exp $
 .\" Koch-Suite Reference
 .\" See File LICENSE in the top level source-directory for the license
 .\" of this document.
-.Dd February 5, 2000
+.Dd March 14, 2001
 .Dt mmimport 1 
 .Os Koch-Suite
 .Sh NAME
@@ -10,7 +10,9 @@
 .Nd import Mealmaster- and REZKONV-recipes.
 .Sh SYNOPSIS
 .Nm 
-.Op Fl t | Fl -test
+.Op Fl t | Fl -test Op Fl mm
+.Op Fl c Ar cat,cat,...
+.Op Fl h | Fl -help
 .Sh DESCRIPTION
 .Nm
 reads recipes from 
@@ -25,6 +27,12 @@ test the parser.
 Do not import the recipe, but rather reformat it into plain ascii.
 Output goes to
 .Em STDOUT .
+.It Fl mm
+Reformat parser output to Meal-Master format.
+.It Fl c Ar cat,cat,...
+Add comma separated categories to the recipe.
+.It Fl h Fl -help
+Show usage and exit.
 .El
 .\" The following requests should be uncommented and used where appropriate.
 .\" This next request is for sections 2 and 3 function return values only.
