@@ -1,7 +1,7 @@
 <?
   /* Configuration-file for the Koch-Suite
    * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.13 2001/06/21 14:10:22 michael Exp $
+   * $Id: config.raw,v 1.14 2001/06/23 00:39:48 michael Exp $
    *
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
@@ -29,6 +29,9 @@
   define("DB_MYSQL", ($DB_DSN["phptype"] == "mysql") ? true : false);
   define("DEBUG_FILE", "/tmp/koch-suite-debug");
   define("DEFAULT_LANG", "de");
+
+  define("MM_STRICT", true);
+  define("MM_VIOLATE", false);
 
   $kochsuite     = "<i>Koch-Suite</i>";
   $kochsuite_ver = "0.5-pre6";
