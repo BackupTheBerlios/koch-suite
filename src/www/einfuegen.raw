@@ -107,23 +107,26 @@
     // Rezept-Titel:
     $str .= "<tr>\n";
     $str .= "<td>" . $Lang['Title'] . ":</td>\n";
-    $str .= "<td><input type=\"text\" name=\"titel\" value=\"" .
-                   $rezept["title"] . "\" size=\"60\"></td>\n"; 
+    $str .= "<td><input type=\"text\" class=\"textfield\" name=\"titel\" ".
+                  "value=\"" .  $rezept["title"] . "\" size=\"60\"></td>\n"; 
     $str .= "</tr>\n";
  
     // Portionen:
     $str .= "<tr>\n";
     $str .= "<td>" . $Lang['Yield'] . ":</td>\n";
-    $str .= "<td><input type=\"text\" name=\"portionen\" value=\"" .
-                   $rezept["yield"] . "\" size=\"60\"></td>\n";
+    $str .= "<td><input type=\"text\" class=\"textfield\" name=\"portionen\" ".
+                  "value=\"" . $rezept["yield"] . "\" size=\"60\"></td>\n";
     $str .= "</tr>\n";
 
     // Kategorie:
     $str .= "<tr>\n";
     $str .= "<td><a href=\"kategorien.php?target=kategorie&maxsel=5\"" .
                  "target=\"kat\" onClick=\"kat();\">" . $Lang['Cat'] . "</a>:</td>\n";
-    $str .= "<td><input type=\"text\" name=\"kategorie\" value=\"" .
-                 ( !empty($rezept["category"]) ? implode(", ", $rezept["category"]) : '' ) . 
+    $str .= "<td><input type=\"text\" class=\"textfield\" name=\"kategorie\" ".
+                   "value=\"" .
+                   ( !empty($rezept["category"])
+                                 ? implode(", ", $rezept["category"]) 
+                                 : '' ) . 
                  "\" size=\"60\"></td>\n";
     $str .= "</tr>\n";
 
@@ -142,6 +145,7 @@
         $str .= "<td>&nbsp;</td>\n";
         $str .= "<td><input type=\"text\" " .
                      "name=\"ztitle[]\" " .
+                     "class=\"textfield\" " .
                      "value=\"" . $z["title"] . "\" " .
                      "size=\"60\">";
         $str .= "</tr>\n";
@@ -173,7 +177,7 @@
                 "<td>" . $Lang['Recorder'] . ":</td>\n";
       $str .= "<td><input type=\"text\" name=\"recorder\" value=\"".
                      htmlentities($rezept['meta']['Recorder']) .
-                     "\" size=\"60\"></td>\n";
+                     "\" class=\"textfield\" size=\"60\"></td>\n";
       $str .= "</tr>\n"; 
     }
 
@@ -182,7 +186,7 @@
                 "<td>" . $Lang['Date'] . ":</td>\n";
       $str .= "<td><input type=\"text\" name=\"date\" value=\"".
                      htmlentities($rezept['meta']['Date']) .
-                     "\" size=\"60\"></td>\n";
+                     "\" class=\"textfield\" size=\"60\"></td>\n";
       $str .= "</tr>\n";
     }
 
@@ -191,7 +195,7 @@
                 "<td>" . $Lang['Source'] . ":</td>\n";
       $str .= "<td><input type=\"text\" name=\"source\" value=\"".
                      htmlentities($rezept['meta']['Source']) .
-                     "\" size=\"60\"></td>\n";
+                     "\" class=\"textfield\" size=\"60\"></td>\n";
       $str .= "</tr>\n";
     }
 
@@ -384,7 +388,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.42 2002/08/31 17:51:25 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.43 2002/09/01 22:42:12 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -440,9 +444,11 @@
       echo make_form($r);
   ?>     
 
-    <input type="submit" name="submit" value="<? echo $Lang['FormApply']; ?>">
-    <input type="submit" name="more_zutaten" value="<? echo $Lang['FormMoreIngr']; ?>">
-    <input type="reset" value="<? echo $Lang['FormReset']; ?>">
+    <input type="submit" class="button" name="submit"
+           value="<? echo $Lang['FormApply']; ?>">
+    <input type="submit" class="button" name="more_zutaten"
+           value="<? echo $Lang['FormMoreIngr']; ?>">
+    <input type="reset" class="button" value="<? echo $Lang['FormReset']; ?>">
     </form>
 
   </td>

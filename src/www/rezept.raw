@@ -1,5 +1,5 @@
 <?php
-  /* $Id: rezept.raw,v 1.32 2002/08/31 17:56:21 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.33 2002/09/01 22:42:12 lestinsky Exp $
    * Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -113,7 +113,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.32 2002/08/31 17:56:21 lestinsky Exp $ -->
+  <!-- $Id: rezept.raw,v 1.33 2002/09/01 22:42:12 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -149,7 +149,8 @@
            ?>
              <input type="text" size="4" name="new_yield" value="<?php echo $yield ?>">
              <?php if (isset($post_str)) echo $post_str . '. '; ?>
-             <input type="submit" name="new_yield_submit" value="<?php echo $Lang['Apply'] ?>">
+             <input type="submit" class="button" name="new_yield_submit"
+                    value="<?php echo $Lang['Apply'] ?>">
            <?php
          }
        }
@@ -157,7 +158,8 @@
     </form>
     <?php if ($_SESSION['operate_on'] != "tagged_recipes") { ?>
     <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>">
-      <input type="submit" name="tag_submit" value="<?php echo $Lang['Tag']['Do'] ?>">
+      <input type="submit" class="button" name="tag_submit"
+             value="<?php echo $Lang['Tag']['Do'] ?>">
     </form>
     <?php } ?>
   </td>
