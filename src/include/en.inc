@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.11 2001/06/26 21:02:33 michael Exp $
+   * $Id: en.inc,v 1.12 2001/06/26 22:14:58 michael Exp $
    *
    * Define English text-constants.
    *
@@ -22,7 +22,6 @@
   $Lang['Text']			= "Text";
   $Lang['Description']		= "Description";
   $Lang['Alias']		= "Alias";
-  $Lang['UnitInfo']		= "Unit Info";
 
   $Lang['FormApply']		= "Apply";
   $Lang['FormMoreIngr']		= "Additional ingredientlist";
@@ -63,19 +62,26 @@
       to insert the value into the form.
 EOT;
 
+  $Lang['UnitInfo']['Title']    = "Unit-Infomations";
+  $Lang['UnitInfo']['MMText']   = "Units in Meal-Master format.";
+  $Lang['UnitInfo']['RKText']   = "Units in REZKONV format.";
+
   /*
    * Infos:
    */
+
+  $Lang['Infos']['Title']        = "Informations about the " . KOCHSUITE;
 
   $Lang['Homepage']['Title']	= 'Homepage';
   $Lang['Homepage']['Text'][0]	= <<<EOT
       <a href="http://www.lestinsky.de/michael/koch-suite/">http://www.lestinsky.de/michael/koch-suite/</a>:
       Up-to-date informations about this project an the currently newest
-      releases of the $kochsuite may be found here.
+      releases of the 
 EOT;
+  $Lang['Homepage']['Text'][0] .= KOCHSUITE . " may be found here".
 
   $Lang['Version']['Title']             = 'Version';
-  $Lang['Version']['Text']['Pre']       = "Installed is $kochsuite";
+  $Lang['Version']['Text']['Pre']       = "Installed is " . KOCHSUITE;
   $Lang['Version']['Text']['Post']      = "";
 
   $Lang['Requirements']['Title']	= 'Requirements';
@@ -97,7 +103,10 @@ EOT;
       PHP installed as CGI or Apache-module.
 EOT;
 
+  $Lang['License']['Title']	= "License";
+  $Lang['License']['Pre'][0]	= "The entire " . KOCHSUITE . "-package is released under the terms of the following BSD-style license.\n";
   $Lang['License']['Post'][0]	= "";
+
 
   /* 
    * Help:
@@ -122,12 +131,6 @@ EOT;
       (German "de") will be used.
       Of course we will not translate the recipes themself. This selection
       affects the interface-language only.
-EOT;
-
-  $Lang['License']['Title']	= "License";
-  $Lang['License']['Pre'][0]	= <<<EOT
-      The entire $kochsuite-package is released under the
-      terms of the following BSD-style license.
 EOT;
 
   $Lang['Helptext']['CL']['Title']	= "Command-Line-Tools";

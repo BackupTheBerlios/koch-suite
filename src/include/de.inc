@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.11 2001/06/26 21:02:33 michael Exp $
+   * $Id: de.inc,v 1.12 2001/06/26 22:14:58 michael Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -21,7 +21,6 @@
   $Lang['Text']			= "Text";
   $Lang['Description']		= "Beschreibung";
   $Lang['Alias']		= "Alias";
-  $Lang['UnitInfo']		= "Einheiten-Infos";
 
   $Lang['FormApply']		= "Eintragen";
   $Lang['FormMoreIngr']		= "Weitere Zutatenliste";
@@ -62,20 +61,26 @@
       Kategorie, um den Wert in das Formularfeld zu übertragen.
 EOT;
 
+  $Lang['UnitInfo']['Title']    = "Einheiten-Infos";
+  $Lang['UnitInfo']['MMText']   = "Einheit im Meal-Master-Format.";
+  $Lang['UnitInfo']['RKText']   = "Einheit im REZKONV-Format.";
 
   /* 
    * Infos: 
    */
 
+  $Lang['Infos']['Title']        = "Informationen &uuml;ber die " . KOCHSUITE;
+
   $Lang['Homepage']['Title']	= 'Homepage';
   $Lang['Homepage']['Text'][0]	= <<<EOT
       <a href="http://www.lestinsky.de/michael/koch-suite//">http://www.lestinsky.de/michael/koch-suite/</a>:
       Aktuelle Informationen rund um dieses Projekt und die jeweils
-      neusten Versionen der $kochsuite finden sich dort.
+      neusten Versionen der 
 EOT;
+  $Lang['Homepage']['Text'][0] .= " " . KOCHSUITE . " finden sich dort.\n";
 
   $Lang['Version']['Title']             = 'Version';
-  $Lang['Version']['Text']['Pre']       = "Installiert ist $kochsuite";
+  $Lang['Version']['Text']['Pre']       = "Installiert ist " . KOCHSUITE;
   $Lang['Version']['Text']['Post']      = "";
 
   $Lang['Requirements']['Title']	= 'Voraussetzungen';
@@ -110,11 +115,8 @@ EOT;
 EOT;
 
   $Lang['License']['Title']	= "Lizenz";
-  $Lang['License']['Pre'][0]	= <<<EOT
-      Das gesamte Paket der $kochsuite steht unter folgender BSD-artigen
-      Lizenz.
-EOT;
-
+  $Lang['License']['Pre'][0]	= "Das gesamte Paket der " . KOCHSUITE . 
+      " steht unter folgender BSD-artigen Lizenz.";
   $Lang['License']['Post'][0]	= "";
 
   /* 
