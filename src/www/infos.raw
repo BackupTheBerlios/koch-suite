@@ -1,4 +1,14 @@
 <?
+  /**
+   * Print Informations about the project.
+   *
+   * @package WWW
+   * @modulegroup UI
+   * @module info.php
+   * @author Michael Lestinsky <michael@lestinsky.de>
+   * @copyright Michael Lestinsky
+   */
+
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
@@ -13,7 +23,7 @@
   <title><? echo $Lang['Info']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.27 2001/06/20 18:33:29 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.28 2001/06/26 22:12:18 michael Exp $ -->
 </head>
 
 <body>
@@ -26,14 +36,14 @@
 <? require "./menue.inc"; ?>
   </td>
   <td width="90%">
-    <h2>Informationen zur Koch-Suite</h2>
+    <h2><?php echo $Lang['Infos']['Title']; ?></h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.27 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.28 $ -->
 
     <h3><?php echo $Lang["Version"]["Title"]; ?></h3>
     <p>
       <?php echo $Lang["Version"]["Text"]["Pre"] . " ";
-            echo $kochsuite_ver;
+            echo KOCHSUITE_VER;
             echo " " . $Lang["Version"]["Text"]["Post"]; ?>.
     </p>
 
