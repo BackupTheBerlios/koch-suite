@@ -1,4 +1,4 @@
-# $Id: config,v 1.12 2001/06/20 18:54:49 michael Exp $
+# $Id: config,v 1.13 2001/06/25 23:31:20 michael Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 
@@ -17,7 +17,7 @@ WEB_PREFIX	=/var/www/koch-suite
 
 # And the Documentation goes there:
 MAN_PREFIX	=/usr/local/man
-DOC_PREFIX      =/usr/local/share/doc/koch-suite
+DOC_PREFIX	=/usr/local/share/doc/koch-suite
 
 # User and Group, who will own the files, typically something like "root"
 # or "wheel"; consult your local /etc/passwd and /etc group for more info.
