@@ -1,3 +1,12 @@
+2002-09-03  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/koch-suite.raw 1.16, src/www/actions.raw 1.7, src/www/search.raw 1.27:
+  Allow turning on/off of global ops. Default is of
+
+  * src/README 1.53: Send me recipes
+
+  * src/include/loginform.raw 1.7: Add style
+
 2002-09-01  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/admin.raw 1.9, src/www/edit_alias.raw 1.16, src/www/einfuegen.raw 1.43, src/www/kategorien.raw 1.20, src/www/pastebox.raw 1.5, src/www/rezept.raw 1.33, src/www/search.raw 1.26, src/www/settings.raw 1.8, src/www/styles.css 1.11, src/www/units.raw 1.14:
