@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.16 2001/01/31 13:11:14 michael Exp $
+   * $Id: output.raw,v 1.17 2001/02/05 01:11:27 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -10,16 +10,10 @@
   function format_recipe($rezept) {
     /* return a String, which contains the plain-text-formatted recipe */
 
-    $str  = "Titel: " . $rezept["title"] . "\n".
-            "Kategorien:";
+    $str  = "     Titel: " . $rezept["title"] . "\n".
+            "Kategorien: " . implode(", " , $rezept["category"]) . "\n";
 
-    foreach ($rezept["category"] as $cat) {
-      $str .= " " . $cat;
-    }
-
-    $str .= "\n";
-
-    $str .= "Anzahl: " . $rezept["yield"] . "\n\n";
+    $str .= " Portionen: " . $rezept["yield"] . "\n\n";
 
     /* Zutaten: */
 
@@ -27,14 +21,12 @@
       $str .= $z["title"] . "\n";
       foreach ($z["ingredients"] as $j) {
         $rline = pad_left ($j["quant"] , " ", 7) . " " .
-                 pad_right($j["unit"]  , " ", 2) . " " .
+                 pad_right(nice_unit($j["unit"])  , " ", 11) . " " .
                  pad_right($j["ingred"], " ", 28) . "\n";
         $str .= $rline;
       }
       $str .= "\n";
     }
-
-    $str .= "Kochanleitung:\n\n";
 
     foreach (length_adjust($rezept["anleitung"], 72) as $line) {
       $str .= $line . "\n";
@@ -50,10 +42,9 @@
     $str = "<h2>" . htmlentities($rezept["title"]) . "</h2>\n";
     $str .= "<table border=\"0\">\n";
 
-    $str .= "  <tr><td><b>Kategorie</b>:</td><td width=\"90%\">";
-    foreach($rezept["category"] as $cat) {
-      $str .= htmlentities($cat) . " " ;
-    }
+    $str .= "  <tr><td><b>Kategorie</b>:</td>";
+    $str .= "<td width=\"90%\">";
+    $str .= htmlentities(implode(" ", $rezept["category"]));
     $str .= "</td></tr>\n";
 
     $str .= "  <tr><td><b>Portionen</b>:</td><td>" . $rezept["yield"] . "</td></tr>\n";
