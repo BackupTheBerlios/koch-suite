@@ -1,3 +1,7 @@
+# $Id: genconfig.awk,v 1.4 2001/10/15 07:28:06 lestinsky Exp $
+# Parse 'config' and generate the sedscript which performs the
+# replacements.
+
 # Variables are defined by:
 # Name = Value
 BEGIN { FS = "[ \t]*=[ \t]*" }
@@ -11,19 +15,27 @@ BEGIN { FS = "[ \t]*=[ \t]*" }
     value = $2
 
     # Expand variables
-    if (match(value, "\${([A-Za-z0-9_]+)}")) {
+    while (match(value, /\${([A-Za-z0-9_]+)}/)) {
       v = substr(value, RSTART+2, RLENGTH-3)
-      gsub("\${"v"}", vars[v], $2)
+
       if ( name == v ) { 
         printf "*** Recursive definition of '%s'\n", name > "/dev/stderr"
         exit 2
+      } else {
+        if (RSTART > 1) 
+          start = substr(value, 1, RSTART -1) 
+        else start = ""
+        if (length(value) > RSTART + RLENGTH)
+          end = substr(value, RSTART+RLENGTH)
+        else end = ""
+        value = start vars[v] end
       }
     }
 
     # Store the value for future expansions
-    vars[$1] = $2
+    vars[name] = value
 
     # Print output
-    print "s:<%%"$1"%%>:"vars[$1]":g" 
+    print "s:<%%"name"%%>:"vars[name]":g" 
   }
 }
