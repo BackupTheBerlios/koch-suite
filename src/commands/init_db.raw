@@ -29,7 +29,7 @@
    */
 
   /**
-   * $Id: init_db.raw,v 1.6 2003/05/19 16:04:07 lestinsky Exp $
+   * $Id: init_db.raw,v 1.7 2003/07/30 07:57:25 lestinsky Exp $
    * Initializes database, creates necessary tables and fills them with
    * default contents
    *
@@ -216,7 +216,7 @@
     $sql = "
       CREATE TABLE rating (
         menu_id int(11) NOT NULL default '0',
-        vote int(1) default NULL
+        vote int(1) default NULL,
         KEY menu_id (menu_id,vote)
       )";
     exec_or_die($sql);
