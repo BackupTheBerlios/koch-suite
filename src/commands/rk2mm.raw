@@ -29,7 +29,7 @@
    */
 
   /*
-   * $Id: rk2mm.raw,v 1.9 2001/07/24 19:51:09 michael Exp $
+   * $Id: rk2mm.raw,v 1.10 2001/08/06 17:59:01 lestinsky Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Translate REZKONV-formated recipes to Mealmaster-formated recipes.
    *
@@ -50,11 +50,20 @@
 
   /* --- Main --- */
 
-  list($tempname, $fd) = read_normalize($stdin);
+  /* Read input from stdin and return filehandle on normalized file */
 
-  while ($line = fgets($fd, 1024)) {
+  $tempfile = new File;
+  if ($tempfile->WriteOpen()) {
+    while ($line = fgets($stdin, 4096)) {
+      $tempfile->WriteLine($line);
+    }
+    $tempfile->Close();
+    $tempfile->ReadOpen();
+  }
+
+  while ($line = $tempfile->ReadLine()) {
     if (eregi("(={10}).*REZKONV.*", $line)) {
-      $rezept =& parse_recipe($fd, RECIPE_RK);
+      $rezept =& parse_recipe($tempfile, RECIPE_RK);
     }
 
     if (isset($rezept)) {
@@ -69,8 +78,7 @@
 
   /* Close open files */
 
-  fclose($fd);
-  unlink($tempname);
+  $tempfile->CloseRM();
 
   /* --- End --- */
 ?>

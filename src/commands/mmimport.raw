@@ -29,7 +29,7 @@
    */
 
   /*
-   * $Id: mmimport.raw,v 1.19 2001/07/24 19:52:13 michael Exp $
+   * $Id: mmimport.raw,v 1.20 2001/08/06 17:59:01 lestinsky Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
@@ -38,6 +38,7 @@
 
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
+  require "<%%PHP_LIBS%%>/file.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
 
   if (!isset($argc)) $argc = $HTTP_SERVER_VARS["argc"];
@@ -99,15 +100,26 @@ EOD;
   /* --- Main --- */
 
   /* Read input from stdin and return filehandle on normalized file */
-  list($tempname, $fd) = read_normalize($stdin);
 
-  while ($line = fgets($fd, 1024)) {
+  $tempfile = new File;
+  if ($tempfile->WriteOpen()) {
+    while ($line = fgets($stdin, 4096)) {
+      $tempfile->WriteLine($line);
+    }
+    $tempfile->Close();
+  }
+
+  # Reopen for reading
+  $tempfile->ReadOpen();
+
+  while ($line = $tempfile->ReadLine()) {
+
     /* Is the line the start of a new recipe? */
     if (eregi("(-{5}|M{5}).*Meal-Master.*", $line)) { 
       /* parse the recipe */
-      $rezept =& parse_recipe($fd, RECIPE_MM);
+      $rezept =& parse_recipe($tempfile, RECIPE_MM);
     } else if (eregi("(={10}).*REZKONV.*", $line)) {
-      $rezept =& parse_recipe($fd, RECIPE_RK);
+      $rezept =& parse_recipe($tempfile, RECIPE_RK);
     }
 
     if (isset($rezept)) {
@@ -129,7 +141,7 @@ EOD;
         if (! recipe_dupe($rezept["hash"])) {
           write_db($rezept);
         } else {
-          fputs($stderr, "Recipe " . $rezept["title"] . " is already in database.");
+          fputs($stderr, "Recipe " . $rezept["title"] . " is already in database.\n");
         }
       }
       unset ($rezept);
@@ -138,8 +150,7 @@ EOD;
 
   /* Close open files */
 
-  fclose($fd);
-  unlink($tempname);
+  $tempfile->CloseRM();
 
   /* --- End --- */
 ?>
