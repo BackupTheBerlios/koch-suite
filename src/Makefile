@@ -31,7 +31,7 @@ clean:
 
 distclean: clean
 	@make subdir TRGT=distclean
-	(for i in ${SUBDIRS}; do \
+	@(for i in ${SUBDIRS}; do \
 	echo "rm $${i}/Makefile" ; \
 	rm $${i}/Makefile ; \
 	done)
