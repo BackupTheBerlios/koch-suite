@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.42 2002/07/31 20:50:54 lestinsky Exp $
+   * $Id: en.inc,v 1.43 2002/08/11 20:57:56 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -240,7 +240,7 @@ EOT;
       for details.
 EOT;
 
-  $Lang['ingr_source_pattern']	= "/(Source|Reference)/";
+  $Lang['pattern']['Source_ingr']	= "/(Source|Reference)/i";
   $Lang['pattern']['Source']    = "(Source|Reference)";
   $Lang['pattern']['Recorder']  = "(Recorded by)";
   $Lang['pattern']['Date']      = "(Date|Recorded on)";

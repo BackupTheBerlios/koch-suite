@@ -2,7 +2,7 @@
   /** 
    * Functions for the "Koch-Suite"
    *
-   * $Id: parser.raw,v 1.2 2002/06/11 18:43:47 lestinsky Exp $
+   * $Id: parser.raw,v 1.3 2002/08/11 20:57:57 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -106,7 +106,7 @@
     $seen_ingr       = 0;
     $seen_instr      = 0;
 
-    $source_pattern   = "/^:\s*". $Lang['pattern']['Source'] ."\s*:\s*(.+)$/";
+    $source_pattern   = "/^:\s*". $Lang['pattern']['Source'] ."\s*:\s*(.+)$/i";
     $recorder_pattern = "/^:\s*". $Lang['pattern']['Recorder'] ."\s*:\s*(.+)$/";
     $date_pattern     = "/^:\s*". $Lang['pattern']['Date'] ."\s*:\s*(.+)$/";
     $long_pattern     = "/^:\s*:\s*(.+)$/";
@@ -184,7 +184,7 @@
 
           $ingr_list_title = preg_replace($search, $replace, trim($line));
 
-          if (preg_match($Lang['ingr_source_pattern'], $ingr_list_title)) {
+          if (preg_match($Lang['pattern']['Source_ingr'], $ingr_list_title)) {
             $meta['Source'] .= getmeta($file);
             $override_source_if_avail = true;
 
