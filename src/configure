@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.13 2001/09/03 21:01:39 lestinsky Exp $
+# $Id: configure,v 1.14 2001/09/24 22:02:41 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -57,7 +57,7 @@ check_opt () {
     # Check for optional tools an add their path to the config.sed
     echo -n "Checking for '$1': ... "
     req=$(which "$1")
-    if [ -n "${req}" -a $? == 0 ] ; then
+    if [ -n "${req}" -a $? = 0 ] ; then
         # Found.
         echo "Found - $req"
         echo "s:<%%$1%%>:${req}:" >> ${CONF_FILE}
