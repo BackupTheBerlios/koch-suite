@@ -1,6 +1,6 @@
-# $Id: Makefile.raw,v 1.8 2000/11/21 01:57:15 michael Exp $
+# $Id: Makefile.raw,v 1.9 2000/12/06 17:55:48 michael Exp $
 # Space-separated list of all "raw" php-files.
-PHP_FILES=		index rezept print mmprint infos
+PHP_FILES=		index rezept print mmprint infos einfuegen kategorien
 INC_FILES=		menue such
 
 # Files to install unmangled (dont forget the filename-suffix here!)
@@ -20,10 +20,10 @@ all:
 
 subdir:
 	@(for i in ${SUBDIRS} ; do\
-	echo "====> ${THISDIR}/$$i";\
+	echo "====> ${THISDIR}/$${i}";\
 	cd $$i; \
 	${MAKE} ${TRGT} CONF_FILE=${CONF_FILE} THISDIR=${THISDIR}/$$i; \
-	echo "<==== ${THISDIR}";\
+	echo "<==== ${THISDIR}/$${i}";\
 	cd ..; \
 	done )
 
