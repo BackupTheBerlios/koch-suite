@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.51 2002/10/14 20:05:31 lestinsky Exp $
+   * $Id: en.inc,v 1.52 2002/11/13 10:45:17 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -193,7 +193,9 @@ EOT;
       -> Preferences -> Navigator -> Languages).
       If the language you specified exists you will see all following
       pages in the requested language. Otherwise the default language
-      (German "de") will be used.
+      (English "en") will be used. You can change the interface language
+      during a session by selecting one out of <var>de</var>, <var>en</var> 
+      and <var>es</var> from the main menu.
       Of course this will not translate the recipes themselves. This selection
       affects the interface language only.
 EOT;

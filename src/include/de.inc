@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.46 2002/10/14 20:05:31 lestinsky Exp $
+   * $Id: de.inc,v 1.47 2002/11/13 10:45:17 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -174,7 +174,10 @@ EOT;
       gew&uuml;nschte Sprache ein (z.B. Mozilla: Edit -> Preferences ->
       Navigator -> Languages). Wenn die gew&uuml;nschte Sprache existiert,
       werden die Seiten in dieser Sprache ausgegeben. Andernfalls wird auf
-      die Standard-Sprache (Deutsch "de") zur&uuml;ckgegriffen.
+      die Standard-Sprache (Englisch "en") zur&uuml;ckgegriffen.
+      Die Einstellungen k&ouml;nnen auch f&uuml;r die Zeitdauer einer Session
+      durch Auswahl von <var>de</var>, <var>en</var> oder <var>es</var> aus
+      dem Hauptmen&uuml; ver&auml;ndert werden.
       Nat&uuml;rlich werden Rezepte selbst nicht &uuml;bersetzt, sondern
       nur die Interfacesprache angepasst.
 EOT;
