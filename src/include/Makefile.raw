@@ -13,10 +13,8 @@ all: build
 
 build: ${PHP_FILES_UNCONF}
 
-${PHP_FILES_UNCONF}: ${PHP_FILES_UNCONF:C,.inc$,.raw,}
-	sed -f ${CONF_FILE} ${@:C,.inc$,.raw,} > ${@}
-
-${PHP_FILES_UNCONF:C,.inc$,.raw,}:
+${PHP_FILES_UNCONF}: ${PHP_FILES_UNCONF:%.inc=%.raw}
+	sed -f ${CONF_FILE} ${@:%.inc=%.raw} > ${@}
 
 subdir:
 	@(for i in ${SUBDIRS} ; do\

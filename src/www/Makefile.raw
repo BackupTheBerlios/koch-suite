@@ -1,8 +1,8 @@
-# $Id: Makefile.raw,v 1.14 2001/02/15 17:37:11 michael Exp $
+# $Id: Makefile.raw,v 1.15 2001/02/15 18:10:39 michael Exp $
 # Space-separated list of all "raw" php-files.
-PHP_FILES=		delete einfuegen index infos rezept print mmprint \
-			kategorien
-INC_FILES=		menue such
+PHP_FILES=		delete.php einfuegen.php index.php infos.php \
+			rezept.php print.php mmprint.php kategorien.php
+INC_FILES=		menue.inc such.inc
 
 # Files to install unmangled (dont forget the filename-suffix here!)
 ADDITIONAL=		styles.css
@@ -10,16 +10,16 @@ SUBDIRS=		pics
 
 CONF_FILE=		../config.sed
 
-all:
+all: build
 	@make subdir TRGT=all
-	@(for i in ${PHP_FILES}; do\
-	echo "$$i.raw --> $$i.php"; \
-	cat $$i.raw | sed -f ${CONF_FILE} > $$i.php;\
-	done)
-	@(for i in ${INC_FILES}; do \
-	echo "$${i}.raw --> $${i}.inc"; \
-	cat $${i}.raw | sed -f ${CONF_FILE} > $${i}.inc ;\
-	done)
+
+build: ${PHP_FILES} ${INC_FILES}
+
+${PHP_FILES}: ${PHP_FILES:%.php=%.raw}
+	sed -f ${CONF_FILE} ${@:%.php=%.raw} > ${@}
+
+${INC_FILES}: ${INC_FILES:%.inc=%.raw}
+	sed -f ${CONF_FILE} ${@:%.inc=%.raw} > ${@}
 
 subdir:
 	@(for i in ${SUBDIRS} ; do\
@@ -32,8 +32,7 @@ subdir:
 
 clean:
 	@make subdir TRGT=clean
-	-rm -f *.php
-	-rm -f *.inc
+	rm -f ${PHP_FILES} ${INC_FILES}
 
 distclean:
 	@make subdir TRGT=distclean

@@ -9,13 +9,13 @@ SUBDIRS=		""
 
 CONF_FILE=		../config.sed
 
-all: 
+all: build
 	@#make subdir TRGT=all
-	@(for i in ${PHP_FILES_UNCONF}; do\
-	echo "$${i}.raw --> $$i"; \
-	cat $${i}.raw | sed -f ${CONF_FILE} > $$i;\
-	chmod +x $${i} ; \
-	done)
+
+build: ${PHP_FILES_UNCONF}
+
+${PHP_FILES_UNCONF}: ${PHP_FILES_UNCONF:C,$,.raw,}
+	sed -f ${CONF_FILE} ${@}.raw > ${@}
 
 subdir:
 	@(for i in ${SUBDIRS} ; do\
@@ -27,10 +27,7 @@ subdir:
 
 clean:
 	@#make subdir TRGT=clean
-	-@( for i in "${PHP_FILES_UNCONF}" ; do \
-	echo "rm -f $${i}"; \
-	rm -f $${i}; \
-	done)
+	rm -f ${PHP_FILES_UNCONF}
 
 distclean:
 
