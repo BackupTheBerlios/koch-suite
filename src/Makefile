@@ -7,7 +7,8 @@ CONF_FILE=	config.sed
 COMMAND_SUBDIR=	commands
 WWW_SUBDIR=	www
 INC_SUBDIR=	include
-SUBDIRS=	${INC_SUBDIR} ${COMMAND_SUBDIR} ${WWW_SUBDIR}
+MAN_SUBDIR=	man
+SUBDIRS=	${INC_SUBDIR} ${COMMAND_SUBDIR} ${WWW_SUBDIR} ${MAN_SUBDIR}
 
 THISDIR=	.
 
@@ -39,6 +40,9 @@ distclean: clean
 	rm $${i}/Makefile ; \
 	done)
 
+install-man:
+	@make subdir TRGT=install DIRS="${MAN_SUBDIR}"
+
 install-command:
 	@make subdir TRGT=install DIRS="${COMMAND_SUBDIR}"
 
@@ -48,6 +52,6 @@ install-includes:
 install-www:
 	@make subdir TRGT=install DIRS="${WWW_SUBDIR}"
 
-install: install-includes install-command install-www
+install: install-includes install-command install-www install-man
 
 .PHONY: all config subdir clean distclean install

@@ -1,0 +1,31 @@
+# $Id: Makefile.raw,v 1.1 2000/12/20 14:28:55 michael Exp $
+# Space-separated list of all "raw" php-files.
+
+MAN1=	mmexport.1 mmimport.1 rezept2latex.1 
+
+MAN=	${MAN1}
+
+all: man1
+
+man1:
+	@(cd man1; for i in ${MAN}; do\
+	echo "$$i.raw --> $$i" ;\
+	cat $$i.raw | sed -f ../${CONF_FILE} > $$i;\
+	done)
+
+clean:
+	(cd man1; rm -rf ${MAN1})
+
+distclean:
+
+install-man1:
+	@( test -d "<%%MAN_PREFIX%%>/man1" || \
+	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%MAN_PREFIX%%>/man1 )
+	@(cd man1; for i in ${MAN1}; do \
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%MAN_PREFIX%%>/man1;\
+	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%MAN_PREFIX%%>/man1";\
+	done)
+
+install: install-man1
+
+.PHONY: man1 all subdir clean distclean install
