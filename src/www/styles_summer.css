@@ -1,10 +1,10 @@
-/* $Id: styles_summer.css,v 1.1 2003/08/04 22:33:42 lestinsky Exp $ */
+/* $Id: styles_summer.css,v 1.2 2004/03/31 19:18:18 lestinsky Exp $ */
 body	    { background-color:#ffffff; 
               background-image:url(pics/bg_summer.png); 
               background-repeat:repeat-y;}
 h1          { font-family:Verdana,Helvetica,Arial; text-align:left; }
 h2,h3,h4    { font-family:Verdana,Lucida; }
-a,b,dt	    { font-family:Helvetica,Arial; }
+a,b,dt	    { font-family:Arial,Helvetica; }
 a:link      { color:#000463; }
 a:visited   { color:#000463; }
 a:active    { color:#111473; }
