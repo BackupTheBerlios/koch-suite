@@ -1,6 +1,6 @@
 <?php
-  /* $Id: rezept.raw,v 1.35 2002/09/23 21:48:57 lestinsky Exp $
-   * Copyright (c) 2002
+  /* $Id: rezept.raw,v 1.36 2003/01/10 23:39:43 lestinsky Exp $
+   * Copyright (c) 2003
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -81,6 +81,12 @@
   }
 
   if ($ok) {
+    if (isset($_POST['vote']) and 
+        abs(intval($_POST['vote'])) <= 5 and 
+        isset($_POST['vote_submit'])) {
+      rating($mid, $_POST['vote']);
+    }
+
     $recipe = get_menu_by_mid($mid, $scale);
   
     $tok = strtok($recipe['yield'], ' ');
@@ -141,7 +147,23 @@
 <?php if ($_SESSION['operate_on'] != "tagged_recipes") { ?>
 <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>">
   <input type="submit" class="button" name="tag_submit"
-         value="<?php echo $Lang['Tag']['Do'] ?>">
+         value="<?php echo $Lang['Tag']['Do'] ?>">&nbsp;&nbsp;&nbsp;
+
+  <select name="vote" size="1" class="button">
+    <option value="5">+++++</option>
+    <option value="4">++++</option>
+    <option value="3">+++</option>
+    <option value="2">++</option>
+    <option value="1">+</option>
+    <option value="0">0</option>
+    <option value="-1">-</option>
+    <option value="-2">--</option>
+    <option value="-3">---</option>
+    <option value="-4">----</option>
+    <option value="-5">-----</option>
+  </select>
+  <input type="submit" class="button" name="vote_submit"
+         value="<?php echo $Lang['Vote']['Submit'] ?>">
 </form>
 <?php } ?>
 
