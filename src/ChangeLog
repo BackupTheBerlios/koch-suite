@@ -1,3 +1,16 @@
+2002-07-03  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/auth.raw 1.17, src/include/functions.raw 1.79, src/www/delete.raw 1.18, src/www/print.raw 1.22:
+  Code auditing: check for sane variable types.
+
+  * src/www/kategorien.raw 1.17, src/www/search.raw 1.20:
+  fix category selection in non-Javascript-capable browser
+
+  * src/www/menue.raw 1.20: w3m prefers this
+
+  * src/www/edit_alias.raw 1.13, src/www/mmprint.raw 1.17, src/www/units.raw 1.12:
+  Code auditing: check variables before usage and prevent cross site scripting
+
 2002-06-29  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/Documentation/Overview.txt 1.10: Byebye
