@@ -1,3 +1,9 @@
+2004-12-02  Michael Lestinsky  <michael@lestinsky.de>
+
+  * include/defines.raw 1.17: Beta1
+
+  * README 1.61: Some more for the todo list
+
 2004-04-10  Michael Lestinsky  <michael@lestinsky.de>
 
   * include/koch-suite.raw 1.25, include/output.raw 1.56, www/print.raw 1.33:
