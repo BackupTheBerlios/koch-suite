@@ -80,7 +80,7 @@
     $str .= "<!-- Bar -->\n";
 
     // Anweisung:
-    $anleitung = htmlentities($rezept["anleitung"]);
+    $anleitung = htmlentities(stripslashes($rezept["anleitung"]));
     $anleitung = preg_replace("/\s*(&lt;|<)p(>|&gt;)\s*/", "\n\n", $anleitung);
     $anleitung = preg_replace("/\s*(&lt;|<)br(>|&gt;)\s*/", "\n", $anleitung);
 
@@ -193,7 +193,8 @@
   <title>Koch-Suite - Rezept einf&uuml;gen</title>
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
-  <!-- $Id: einfuegen.raw,v 1.6 2001/02/07 18:35:28 michael Exp $ -->
+  <meta http-equiv="expires" content="0">
+  <!-- $Id: einfuegen.raw,v 1.7 2001/02/15 17:37:01 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
