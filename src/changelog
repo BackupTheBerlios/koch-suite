@@ -1,4 +1,8 @@
-### $Id: changelog,v 1.21 2001/03/14 12:30:55 michael Exp $
+### $Id: changelog,v 1.22 2001/03/17 17:50:37 michael Exp $
+
+2001-03-17: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Webfrontend: Mengenangaben können nun auch als unechte Brüche
+        angegeben werden. Etwas aktualisiertes Style.
 
 2001-03-14: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	mmimport: "-m" -> "-mm", um innerhalb der Koch-Suite konsistent zu
