@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: lang.raw,v 1.17 2002/08/03 10:14:58 lestinsky Exp $
+   * $Id: lang.raw,v 1.18 2002/10/13 18:51:55 lestinsky Exp $
    * Guess prefered language for the web-interface.
    *
    * Copyright (c) 2002
@@ -86,13 +86,13 @@
    */
 
 
-  /* Read the default language-file (default: de) */
+  /* Read the default language-file (See <%%ETC_PREFIX%%>/koch-suite.inc) */
   read_lang_file($DEFAULT_LANG);
 
   if ($tmp = getenv("HTTP_ACCEPT_LANGUAGE")) {
     $accept_langs = explode(",", $tmp);
     reset($accept_langs);
-    while(list($key,$lang)=each($accept_langs)) {
+    while(list($key,$lang) = each($accept_langs)) {
       if (eregi("([-a-z]+) *; *qs=([0-9.]*)", $lang, $regs)) {
         $accepted_langs[$regs[1]]=$regs[2];
       } else if (eregi("([-a-z]+)", $lang, $regs)) {
