@@ -2,7 +2,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.16 2002/06/11 18:43:47 lestinsky Exp $
+   * $Id: auth.raw,v 1.17 2002/07/03 16:31:41 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -123,6 +123,8 @@
     global $Lang;
 
     if (!empty($username) and !empty($password)) {
+      $password = addslashes($password);
+      $username = addslashes($username);
 
       $req = "select password, usertype, email, realname, free from usertable " .
              " where username = '$username' ";
@@ -214,11 +216,12 @@
    * Change the passwords in the database.
    */
   function update_passwd ($username, $opasswd, $passwd) {
-    $cpwd = mk_crypted_pw($passwd);
+    $cpwd = mk_crypted_pw(addslashes($passwd));
+    $username = addslashes($username);
+
     $req = "update usertable set password = '$cpwd' " .
            " where username = '$username' ";
 
     $result = DB_query($req);
   }
-
 ?>

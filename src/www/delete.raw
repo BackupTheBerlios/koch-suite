@@ -42,10 +42,9 @@
 
   auth(WRITE);
 
-  if (isset($HTTP_GET_VARS["mid"]))     $mid     = $HTTP_GET_VARS["mid"];
-  if (isset($HTTP_GET_VARS["confirm"])) $confirm = $HTTP_GET_VARS["confirm"];
-  if (isset($HTTP_SERVER_VARS["PHP_SELF"])) 
-    $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
+  if (isset($_GET["mid"]))     $mid     = intval($_GET["mid"]);
+  if (isset($_GET["confirm"])) $confirm = $_GET["confirm"];
+  if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
 
   $scale = 1;
 ?>
@@ -60,7 +59,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.17 2002/06/11 18:43:47 lestinsky Exp $ -->
+  <!-- $Id: delete.raw,v 1.18 2002/07/03 16:29:48 lestinsky Exp $ -->
 </head>
 
 <body>

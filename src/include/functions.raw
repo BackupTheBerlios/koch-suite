@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.78 2002/06/11 18:43:47 lestinsky Exp $
+   * $Id: functions.raw,v 1.79 2002/07/03 16:31:20 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -551,6 +551,7 @@
    * @return array
    */
   function get_menu_by_mid ($mid, $scale) {
+    if (!is_numeric($mid) and !is_numeric($scale)) return -1;
 
     $req = "select id,portionen,titel from MENUE where ID = '$mid'";
     if ($result=DB_query($req)) {
@@ -731,8 +732,8 @@
 
     $result = DB_query($req);
     while ($z = $result->fetchRow()) {
-      array_push ($m, array("id"    => $z["id"],
-                            "title" => $z["titel"]) );
+      array_push ($m, array("id"    => stripslashes($z["id"]),
+                            "title" => stripslashes($z["titel"])) );
     }
     $result->free();
     return $m;
