@@ -1,4 +1,8 @@
-### $Id: changelog,v 1.22 2001/03/17 17:50:37 michael Exp $
+### $Id: changelog,v 1.23 2001/03/18 13:58:36 michael Exp $
+
+2001-03-18: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	rezept: Erweiterung der Suchmöglichkeiten um Suche nach Zutaten
+	und Kategorien.
 
 2001-03-17: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Webfrontend: Mengenangaben können nun auch als unechte Brüche

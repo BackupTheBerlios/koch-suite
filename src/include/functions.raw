@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.29 2001/03/17 17:47:27 michael Exp $
+   * $Id: functions.raw,v 1.30 2001/03/18 13:58:36 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -243,6 +243,11 @@
       if ($quant != '') {
         $quant = fraction_to_real($quant);
       }
+
+      // Es gibt 2 verschiedene Stiele für verlängerte Zeilen.
+      // "-bla" und "-- bla":
+      $text = preg_replace("/^-+\s*/", "-- ", $text);
+
       return array("quant"  => $quant,
                    "unit"   => $unit,
                    "ingred" => $text);
