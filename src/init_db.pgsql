@@ -1,17 +1,17 @@
 -- 
--- $Id: init_db.pgsql,v 1.4 2001/07/25 10:53:07 michael Exp $
+-- $Id: init_db.pgsql,v 1.5 2001/07/26 10:45:20 michael Exp $
 -- init_db_postgreSQL.sql
--- 2001-06-19 Michael Bussmann <bus@mb-net.net>
+-- 2001-07-25 Michael Bussmann <bus@mb-net.net>
 --
 
 --
 -- Table structure for table 'ANWEISUNG'
 --
 CREATE TABLE ANWEISUNG (
-  ID smallint NOT NULL PRIMARY KEY,
   TEXT text,
   MENUE_ID smallint DEFAULT '0' NOT NULL
 );
+CREATE INDEX anweisung_mid ON anweisung (MENUE_ID);
 
 --
 -- Table structure for table 'EINHEITEN'
@@ -26,6 +26,7 @@ CREATE TABLE EINHEITEN (
   RK_ABBREV varchar(11),
   MMUSE char(1)
 );
+CREATE INDEX einheiten_abbrev ON einheiten (ABBREV);
 
 --
 -- Dumping data for table 'EINHEITEN'
@@ -73,6 +74,8 @@ CREATE TABLE EINHEITEN_ALIAS (
   EID smallint DEFAULT '0' NOT NULL,
   TEXT varchar(15) DEFAULT '' NOT NULL
 );
+CREATE INDEX einheiten_eid ON EINHEITEN_ALIAS (EID);
+CREATE INDEX einheiten_alias_text ON EINHEITEN_ALIAS (TEXT);
 
 --
 -- Dumping data for table 'EINHEITEN_ALIAS'
@@ -97,10 +100,12 @@ INSERT INTO EINHEITEN_ALIAS VALUES (29,'Deziliter');
 -- Table structure for table 'KAT'
 --
 CREATE TABLE KAT (
-  ID smallint NOT NULL PRIMARY KEY,
+  ID smallint NOT NULL,
   KATEGORIE_ID smallint,
   MENUE_ID smallint DEFAULT '0' NOT NULL
 );
+CREATE INDEX kat_kid ON kat (KATEGORIE_ID);
+CREATE INDEX kat_mid ON kat (MENUE_ID);
 
 --
 -- Table structure for table 'KATEGORIE'
@@ -109,6 +114,7 @@ CREATE TABLE KATEGORIE (
   ID smallint NOT NULL PRIMARY KEY,
   TEXT varchar(255)
 );
+CREATE INDEX kategorie_text ON kategorie (TEXT);
 
 --
 -- Table structure for table 'MENUE'
@@ -119,6 +125,7 @@ CREATE TABLE MENUE (
   TITEL varchar(255) DEFAULT '' NOT NULL,
   HASH varchar(255)
 );
+CREATE INDEX menue_hash ON menue (HASH);
 
 --
 -- Table structure for table 'REZEPT'
@@ -128,6 +135,7 @@ CREATE TABLE REZEPT (
   MENUE_ID smallint DEFAULT '0' NOT NULL,
   TITEL varchar(255)
 );
+CREATE INDEX rezept_mid ON rezept (MENUE_ID);
 
 --
 -- Table structure for table 'ZUTATEN'
@@ -139,4 +147,4 @@ CREATE TABLE ZUTATEN (
   TEXT varchar(255),
   REZEPT_ID smallint DEFAULT '0' NOT NULL
 );
-
+CREATE INDEX zutaten_rid ON zutaten (REZEPT_ID);

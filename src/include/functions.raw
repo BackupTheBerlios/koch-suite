@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.54 2001/07/25 10:48:41 michael Exp $
+   * $Id: functions.raw,v 1.55 2001/07/26 10:45:20 michael Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -676,9 +676,7 @@
         $result = DB_query($req);
       }
     }
-    $aid = $db->nextID("ANWEISUNGSEQ");
     $req = "insert into ANWEISUNG values ( " .
-           "  $aid, " .
            "  '" . addslashes($rezept["anleitung"]) . "', " .
            "  '$mid' " .
            " ) ";
@@ -696,7 +694,6 @@
                "  '" . addslashes($cat) . "' " .
                " ) ";
         $result = DB_query($req);
-        // $cid = $db->nextID("KATEGORIESEQ");
       }
 
       $kid = $db->nextID("KATSEQ");
