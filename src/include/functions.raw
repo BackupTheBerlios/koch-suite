@@ -30,9 +30,8 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.51 2001/07/10 23:04:07 michael Exp $
+   * $Id: functions.raw,v 1.52 2001/07/17 21:31:39 michael Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
-   * See ../LICENSE for the license of this code.
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -45,6 +44,18 @@
   require "<%%PHP_LIBS%%>/output.inc";
 
   /* --- Functions --- */
+
+
+  /**
+   * Compare two recipe-references by their title
+   *
+   * @param  array $a
+   * @param  array $b
+   * @return int   $result See strcmp().
+   */
+  function cmp_menu ($a, $b) {
+    return strcmp($a["title"], $b["title"]);
+  }
 
 
   /**
@@ -70,6 +81,20 @@
     }
     return $return;
   }
+
+
+  /**
+   * Close database-connection
+   *
+   * @author Michael Bussmann <bus@mb-net.net>
+   * return void
+   */
+  function db_disconnect() { 
+    global $db;
+
+    write_log("Closing connection to DBMS");
+    $db->disconnect();
+  } 
 
 
   /**
@@ -157,10 +182,15 @@
   }
 
 
+  /**
+   * Perform the search.
+   *
+   * @param  string  $str    Searchstring provided by the user
+   * @param  string  $where  Where to search (Categories, Titles, Ingredients?)
+   * @param  string  $param  Either 1 or [a-z].
+   * @return array   $return 
+   */
   function exec_search ($str, $where, $param = '') {
-    /* Actually parse what and where to search for and then
-     * perform the proper searches.
-     */
 
     $return          = array();
     $return_is_empty = true;
@@ -168,7 +198,7 @@
     /*
      * (future) Grammer:
      * split by 'AND', then split by 'OR' and finally lookout for 'NOT'
-     * 'AND' is higher order then 'OR'.
+     * 'AND' has a higher priority then 'OR'.
      * i.e.: 'Muffins AND Choc OR Strawberry' searches for all Choclate or
      *       Strawberry-Muffins.
      *
@@ -470,6 +500,10 @@
                    $seen_ingr       == 0 ) {
           /* lets look for the ingredients */ 
 
+          /* We have read that line already. 
+           * To start reading ingredient-lines we must wind back 
+           * the internal filepointer for one line. 
+           */
           $len = strlen($line);
           fseek($fd, -$len, SEEK_CUR);
           if (($x = getingr($fd, $flavor)) > 0) {
@@ -592,6 +626,7 @@
       if ($b = parse_ingredient($line, $flavor)) {
         array_push ($a, $b);
       } else {
+        /* No ingredient-line here. Wind back for one line. */
         fseek($fd, -$len, SEEK_CUR);
         break;
       }
@@ -755,9 +790,14 @@
   }
 
 
+  /**
+   * List all available categories
+   *
+   * @return array
+   */
   function get_categories() {
-    /* returns an array containing all available categories */
     $a = array();
+
     $req = "select text from KATEGORIE order by TEXT" ;
     $result = DB_query($req);
 
@@ -769,28 +809,37 @@
   }
 
 
-  function get_mid_by_name($name, $first_char=0) {
-    /* Search the database for $name in the menu-title */
-    $a = array();
-    if ($first_char==1) {
-      $search = "$name%" ;
-    } else {
-      $search = "%$name%";
-    }
-    $req = "select id, titel from MENUE " .
-           " where TITEL like '$search' " .
-           " order by TITEL asc";
-    $result = DB_query($req);
+  /**
+   * Get all menus with category $cat 
+   *
+   * @param  string $cat
+   * @return array  $a   Resulting ID and Menu-title
+   */
+  function get_mid_by_cat ($cat) {
+    $a          = array();
 
-    while ($r = $result->fetchRow()) {
-      array_push($a, array("id"    => stripslashes($r["id"]),
-                           "title" => stripslashes($r["titel"])));
+    $req = "select distinct MENUE.titel, MENUE.id " .
+           "  from MENUE, KAT, KATEGORIE " .
+           " where MENUE.ID = KAT.MENUE_ID " .
+           "   and KAT.KATEGORIE_ID = KATEGORIE.ID " .
+           "   and KATEGORIE.TEXT = '$cat'" ;
+
+    $result=DB_query($req);
+    while ($m = $result->fetchRow()) {
+      array_push($a, array("id"    => stripslashes($m["id"]), 
+                           "title" => stripslashes($m["titel"]) ));
     }
     $result->free();
     return $a;
   }
 
 
+  /**
+   * Get all menus with ingredients like $ingred
+   *
+   * @param  string $ingred
+   * @return array  $a      Resulting ID and Menu-title
+   */
   function get_mid_by_ingred($ingred) {
     /* Search the database for a menu containing a special ingredient
      * "ingred". 
@@ -816,38 +865,61 @@
   }
 
 
-  function get_mid_by_cat ($cat) {
-    /* get all menus with category $cat */
-    $a          = array();
+  /**
+   * Get all menus with title like $name
+   *
+   * @param  string $name
+   * @param  int    $first_char Match the first character of the title
+   * @return array  $a          Resulting ID and Menu-title
+   */
+  function get_mid_by_name($name, $first_char=0) {
 
-    $req = "select distinct MENUE.titel, MENUE.id " .
-           "  from MENUE, KAT, KATEGORIE " .
-           " where MENUE.ID = KAT.MENUE_ID " .
-           "   and KAT.KATEGORIE_ID = KATEGORIE.ID " .
-           "   and KATEGORIE.TEXT = '$cat'" ;
+    $a = array();
+    if ($first_char==1) {
+      $search = "$name%" ;
+    } else {
+      $search = "%$name%";
+    }
+    $req = "select id, titel from MENUE " .
+           " where TITEL like '$search' " .
+           " order by TITEL asc";
+    $result = DB_query($req);
 
-    $result=DB_query($req);
-    while ($m = $result->fetchRow()) {
-      array_push($a, array("id"    => stripslashes($m["id"]), 
-                           "title" => stripslashes($m["titel"]) ));
+    while ($r = $result->fetchRow()) {
+      array_push($a, array("id"    => stripslashes($r["id"]),
+                           "title" => stripslashes($r["titel"])));
     }
     $result->free();
     return $a;
   }
 
 
-  function cmp_menu ($a, $b) {
-    /* Custom comparisson-function:
-     * compare two menu-ref's by their title.
-     */
-    return strcmp($a["title"], $b["title"]);
+  /**
+   * Normalize read recipes.
+   *
+   * @param int $in_fh Input-Filehandle
+   * @return int $out_fh Filehandle for the normalized recipe
+   */
+  function read_normalize ($in_fh) {
+
+    $temp = tempnam("/tmp", "mmimport");
+    if (! $out_fh = fopen($temp, "w")) {
+      write_log("Can't create temporary file $temp");
+      return false;
+    }
+
+    /* Read the recipe from input line by line */
+    while ($line = fgets($in_fh, 1024)) {
+
+      /* Strip "Carriage-Return-characters" from silly operating systems */
+      $line = preg_replace("/\r/", "", $line);
+
+      fputs($out_fh, $line);
+    }
+
+    /* Close that filehandle and reopen the file for reading. */
+    fclose($out_fh);
+    return fopen($temp, "r");
   }
-
-  function db_disconnect() { 
-    global $db;
-
-    write_log("Closing connection to DBMS");
-    $db->disconnect();
-  } 
 
 ?>
