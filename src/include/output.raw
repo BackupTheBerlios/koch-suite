@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.8 2000/12/16 01:36:51 michael Exp $
+   * $Id: output.raw,v 1.9 2001/01/07 19:20:19 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -188,7 +188,7 @@
 
       /* This is for historical reasons. Before 0.2 all instructions were
        * added with all Newlines included. Since 0.2 they get stripped
-       * away and replaced as <p> and <br>.
+       * away and replaced by <p> and <br>.
        */
       $str = preg_replace("/\n:/", "\n <br> :", $str);
       $str = preg_replace("/\n\n/", " <p> ", $str);
@@ -198,10 +198,12 @@
       $a = explode(" ", $str);
       $i = 0;
       while (isset($a[$i])) {
-        if ((strlen($foo) + strlen($a[$i])) < $len and $a[$i] != ' ') {
-          #if (preg_match("/\n/", $a[$i])) {
-          #  $foo .= preg_replace("/\n/", " ", $a[$i++]) . " ";
-          #} else 
+        if ($a[$i] == '<p>' or $a[$i] == '<br>') {
+          $wordlen = 0;
+        } else {
+          $wordlen = strlen($a[$i]);
+        }
+        if ((strlen($foo) + $wordlen) <= $len) {
           if (preg_match("/<(br|p)>/", $a[$i], $bla)) {
             $i++;
             array_push($bar, $foo);
@@ -209,8 +211,10 @@
               array_push($bar, "");
             }
             $foo = "";
+          } elseif ($a[$i] == ' ') {
+            $i++;
           } else {
-            $foo .= $a[$i++] . " ";
+            $foo .= ((strlen($foo) == 0) ? "" : " ") . $a[$i++];
           }
         } else {
           array_push($bar, $foo);
@@ -233,7 +237,7 @@
     global $ver, $tool;
     $str = "";
     $i = 0;
-    $header = "MMMMM-----mmexport (v0.2.2) Export nach Meal-Master-----\n";
+    $header = "MMMMM-----mmexport (v0.2.4) Export nach Meal-Master-----\n";
     $footer = "MMMMM";
 
     $str .= "$header\n";
@@ -253,7 +257,7 @@
     $str .= "     Yield: " . $rezept["yield"] . "\n"; 
 
     $str .= print_ingred($rezept["zutaten"]);
-    $a = length_adjust($rezept["anleitung"], 74); 
+    $a = length_adjust($rezept["anleitung"], 72); 
     foreach ($a as $line) {
       $str .= $line . "\n";
     }
