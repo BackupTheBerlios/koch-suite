@@ -48,6 +48,8 @@
   if (isset($HTTP_GET_VARS["confirm"])) $confirm = $HTTP_GET_VARS["confirm"];
   if (isset($HTTP_SERVER_VARS["PHP_SELF"])) 
     $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
+
+  $scale = 1;
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -60,7 +62,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.14 2001/10/03 21:10:31 lestinsky Exp $ -->
+  <!-- $Id: delete.raw,v 1.15 2002/03/31 23:13:58 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -80,7 +82,7 @@
         echo "<h1>" . $Lang["Recipe"]["Deleted"] . "</h1>\n";
       } else {
         echo "<h1>" . $Lang["Recipe"]["Delete"] ."?</h1>\n";
-        echo format_recipe_html(get_menu_by_mid($mid));
+        echo format_recipe_html(get_menu_by_mid($mid, $scale));
         echo "[<a href=\"$PHP_SELF?mid=$mid&confirm=y\">" . 
                 $Lang["Delete"] . "</a>]\n";
       }

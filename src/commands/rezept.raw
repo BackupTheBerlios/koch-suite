@@ -28,7 +28,7 @@
    * SUCH DAMAGE.
    */
 
-  /* $Id: rezept.raw,v 1.18 2002/02/18 17:37:40 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.19 2002/03/31 23:13:58 lestinsky Exp $
    * Export a recipe in different formats.
    */
 
@@ -45,6 +45,8 @@
   $write_latex_footer = false;
   $header_lock        = false;
 
+  $scale              = 1;
+
   /*
    * In case register_globals is turned off in php.ini, we need to get
    * those Variables manually 
@@ -56,7 +58,7 @@
   $helptext  = <<<EOT
 rezept (Koch-Suite $kochsuite_ver)
 Invoke as:
-    rezept [ -mm [ -relaxed ] | -text | -latex ] [-f filename [-1]] 
+    rezept [ -mm [ -relaxed ] | -text | -latex ] [-f filename [-1]] [-s X]
            [ -t | -c | -i ] "string"
 
        -mm           Export as Meal-Master-recipe
@@ -71,6 +73,8 @@ Invoke as:
                      counter to filename
            -1        Output goes into one single file, instead of one
                      file per match.
+
+       -s X          Scale recipe by factor X
 
        -t            Search for "string" in the menu titles [default]
        -c            Search in category
@@ -120,7 +124,10 @@ EOT;
           break;
         case '-1':
           $one_file = 1;
-          $break;
+          break;
+        case '-s':
+          $scale = 1 * $argv[++$i];
+          break;
         case '-t':
           $where = 'title';
           break;
@@ -173,25 +180,25 @@ EOT;
       switch ($format) {
 
 	case "mm":
-          fputs ($fp, mmexport(get_menu_by_mid($menu["id"]), $strict_mm));
+          fputs ($fp, mmexport(get_menu_by_mid($menu["id"], $scale), $strict_mm));
 	  break;
 
 	case "text":
-          fputs ($fp, format_recipe(get_menu_by_mid($menu["id"])));
+          fputs ($fp, format_recipe(get_menu_by_mid($menu["id"], $scale)));
           fputs ($fp, "\n-----\n");
 	  break;
 
 	case "latex":
           if ($one_file != 1) {
             fputs ($fp, latex_header());
-            fputs ($fp, latex_export(get_menu_by_mid($menu["id"])));
+            fputs ($fp, latex_export(get_menu_by_mid($menu["id"], $scale)));
             fputs ($fp, latex_footer());
           } else {
             if ($header_lock == false) {
               fputs($fp, latex_header());
               $header_lock = true;
             }
-            fputs ($fp, latex_export(get_menu_by_mid($menu["id"])));
+            fputs ($fp, latex_export(get_menu_by_mid($menu["id"], $scale)));
             fputs ($fp, "\n\n");
             $write_latex_footer = true;
           }

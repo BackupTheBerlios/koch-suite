@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.70 2002/02/18 17:36:24 lestinsky Exp $
+   * $Id: functions.raw,v 1.71 2002/03/31 23:13:58 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -735,7 +735,7 @@
    * @param  int   $mid Menu-ID
    * @return array
    */
-  function get_menu_by_mid ($mid) {
+  function get_menu_by_mid ($mid, $scale) {
 
     $req = "select id,portionen,titel from MENUE where ID = '$mid'";
     if ($result=DB_query($req)) {
@@ -744,9 +744,9 @@
       $result->free();
 
       return array("title" => stripslashes($r["titel"]),
-                   "yield" => stripslashes($r["portionen"]),
+                   "yield" => scale_alnum(stripslashes($r["portionen"]), $scale),
                    "category" => get_category_by_mid($mid),
-                   "zutaten" => get_recipe_by_mid($mid),
+                   "zutaten" => get_recipe_by_mid($mid, $scale),
                    "anleitung" => get_instructions_by_mid($mid));
     }
   }
@@ -757,7 +757,7 @@
    * @param  int   $mid Menu-ID
    * @return array
    */
-  function get_recipe_by_mid ($mid) {
+  function get_recipe_by_mid ($mid, $scale) {
     $a = array();
 
     $req = "select id,titel from REZEPT where MENUE_ID = '$mid' order by ID asc" ;
@@ -765,7 +765,7 @@
 
       while ($r = $result->fetchRow()) {
         array_push($a, array("title" => stripslashes($r["titel"]),
-                             "ingredients" => get_ingr_by_rid($r["id"])));
+                             "ingredients" => get_ingr_by_rid($r["id"], $scale)));
 
       }
       $result->free();
@@ -774,7 +774,7 @@
   }
 
 
-  function get_ingr_by_rid ($rid) {
+  function get_ingr_by_rid ($rid, $scale) {
     /* return an array with all the ingredients, belonging to an "Rezept" */
     $a = array();
 
@@ -782,7 +782,7 @@
     if ($result=DB_query($req)) {
 
       while($r = $result->fetchRow()) {
-        array_push($a, array("quant" => stripslashes($r["menge"]),
+        array_push($a, array("quant" => $scale * stripslashes($r["menge"]),
                              "unit"  => stripslashes($r["einheit"]),
                              "ingred" => stripslashes($r["text"])));
 
@@ -1026,4 +1026,28 @@
 
     return md5($hashme);
   }
+
+
+  /**
+   * Scale every number occuring in $string by factor $scale
+   *
+   * @param string $string
+   * @param float  $scale
+   * @return string $string
+   */
+  function scale_alnum ($string, $scale) {
+    $tok = strtok($string, " ");
+    $ret = "";
+
+    while ($tok) {
+      if (is_numeric($tok))
+        $tok *= $scale;
+      
+      $ret .= ((strlen($ret) == 0) ? '' : ' ') . $tok;
+      $tok = strtok(" ");
+    }
+
+    return $ret;
+  }
+
 ?>

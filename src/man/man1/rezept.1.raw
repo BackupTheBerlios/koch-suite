@@ -1,4 +1,4 @@
-.\" $Id: rezept.1.raw,v 1.6 2001/10/01 00:03:26 lestinsky Exp $
+.\" $Id: rezept.1.raw,v 1.7 2002/03/31 23:13:58 lestinsky Exp $
 .\"
 .\" Copyright (c) 2001
 .\"      Michael Lestinsky. All rights reserved.
@@ -38,6 +38,7 @@
 .Op Fl h
 .Op Fl text | Fl mm Op Fl relaxed | Fl latex
 .Op Fl f Ar filename Op Fl 1
+.Op Fl s Ar X
 .Op Fl t | Fl c | Fl i
 .Ar pattern
 .Sh DESCRIPTION
@@ -75,6 +76,8 @@ write all recipes into one file
 .Ar filename .
 Default output location is
 .Em STDOUT .
+.It Fl s Ar X
+Scale recipes by factor X. X must be an integer or a float value.
 .It Fl h
 Print usage and exit.
 .It Fl latex

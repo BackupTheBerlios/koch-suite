@@ -36,11 +36,22 @@
 
   session_register("searchresult");
 
-  if (isset($_GET["mid"])) 
+  if (isset($_GET["scale"])) {
+    $scale = $_GET["scale"];
+    if (! is_numeric($scale))
+      $error = "scale: illegal value";
+  } else {
+    $scale = 1;
+  }
+
+  if (isset($_GET["mid"])) {
     $mid = $_GET["mid"];
-  else {
+  } elseif (isset($_GET["result_id"])) {
     $result_id = $_GET["result_id"];
     $mid = $_SESSION["searchresult"][$result_id]["id"];
+  } else {
+    /* Sorry, wrong parameters. */
+    $error = "Wrong parameter list.";
   }
 
 ?>
@@ -53,7 +64,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.23 2002/01/02 21:28:21 lestinsky Exp $ -->
+  <!-- $Id: rezept.raw,v 1.24 2002/03/31 23:13:58 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -67,11 +78,14 @@
   </td>
   <td>
     <!-- Rechts: Ausgabe -->
-
-    <? include "./actions.inc"; ?>
-
-    <? echo format_recipe_html(get_menu_by_mid($mid)); ?>
-
+    <? 
+       if (isset($error)) {
+         echo $error;
+       } else {
+         include "./actions.inc";
+         echo format_recipe_html(get_menu_by_mid($mid, $scale));
+       }
+    ?>
   </td>
 </tr>
 </table>
@@ -79,9 +93,7 @@
 
 <hr noshade>
 &copy; Michael Lestinsky 
-&lt;<a
-href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.
-de</a>&gt; 
+&lt;<a href="mailto:michael@lestinsky.de">michael@lestinsky.de</a>&gt; 
 2001.
 
 </body>
