@@ -1,4 +1,4 @@
-### $Id: README,v 1.10 2000/11/29 18:31:58 michael Exp $
+### $Id: README,v 1.11 2000/11/29 18:41:55 michael Exp $
 
 Koch-Suite
 ==========
@@ -87,6 +87,13 @@ Zum Import der Datenstruktur kann mit einem
 alle notwendigen Komandos ausführen lassen. init-db.sql liegt im
 Documentation-Verzeichnis.
 
+
+Updating:
+---------
+
+0.1.* -> 0.2 Das Format der Datenbank hat sich leicht geändert:
+             Tabelle MENUE: 
+               alter table MENUE change PORTIONEN PORTIONEN varchar(255);
 
 Todo:
 -----
