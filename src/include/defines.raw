@@ -1,12 +1,12 @@
 <?
   /*
-   * $Id: defines.raw,v 1.8 2002/05/20 15:04:47 lestinsky Exp $
+   * $Id: defines.raw,v 1.9 2002/05/22 21:42:14 lestinsky Exp $
    *
    * Define some constants here:
    */
 
   define("KOCHSUITE", "<i>Koch-Suite</i>");
-  define("KOCHSUITE_VER", "0.7-alpha");
+  define("KOCHSUITE_VER", "0.7-beta1");
 
   define("DB_MYSQL", "mysql");
   define("DB_PGSQL", "pgsql");
