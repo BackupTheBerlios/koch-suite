@@ -1,4 +1,4 @@
-### $Id: README,v 1.9 2000/11/21 01:57:15 michael Exp $
+### $Id: README,v 1.10 2000/11/29 18:31:58 michael Exp $
 
 Koch-Suite
 ==========
@@ -102,7 +102,9 @@ Bugs:
  - Import von Rezepten mit uneigentlichen Brüchen, also Dinge wie "1 1/2"
  - Behandlung der Zeilenumbruch-Formatierung in den importierten Rezepten
  - Deutsch-Englischer Mischmasch in Kommentaren,...
-
+ - Import von Rezepten mit einer alternativen Darstellung der
+   Rezept-Header ("      H    Für die Sauce"). Header werden als solche
+   nicht erkannt und landen daher im Anweisungs-Text.
 
 Feedback:
 ---------
