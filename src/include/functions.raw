@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.66 2001/10/03 21:52:53 lestinsky Exp $
+   * $Id: functions.raw,v 1.67 2001/10/31 18:26:45 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -716,6 +716,9 @@
 
       $result = DB_query($req);
     }
+
+    // return the menu-id.
+    return $mid;
   }
 
 
