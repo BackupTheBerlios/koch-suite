@@ -41,7 +41,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.5 2001/09/30 12:41:18 lestinsky Exp $
+   * $Id: auth.raw,v 1.6 2001/10/13 14:05:02 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -58,7 +58,7 @@
 
 
   /**
-   * PHP 4.0.5 and later are somewhat broken. 
+   * PHP 4.0.5 and later are somewhat broken.
    * $HTTP_SESSION_VARS["user"] != $user depending on the setting of
    * register_globals in your php.ini.
    * So catch this difference here. Verified to work on 4.0.7RC3
@@ -79,7 +79,6 @@
    * @return bool
    */
   function auth ($level = READ) {
-    // global $HTTP_SESSION_VARS, $FORM_USERNAME, $FORM_PASSWORD;
     global $USER_S, $FORM_USERNAME, $FORM_PASSWORD;
 
     /* do we want authentication? */
@@ -90,7 +89,6 @@
         /* User already authenticated himself. -> go.
          * Trust the values we have saved in the $user-sessionvariable.
          */
-        write_log(serialize($USER_S));
         return true;
 
       } else {
@@ -109,12 +107,13 @@
             return true;
 
           } else {
-            // go away.
+            // Go away.
             session_destroy();
             die ("Authentication failed. Wrong Password?\n");
           }
 
         } else {
+          // Refering to a non-existing authentication-Function?
           session_destroy();
           die("Something's really screwed up here. " .
               "Check your configuration.");
