@@ -3,7 +3,7 @@
 # This file contains the substitution-rules for "sed"
 
 # Space-separated list of all "raw" php-files.
-PHP_FILES_UNCONF=	config functions
+PHP_FILES_UNCONF=	config functions output
 
 SUBDIRS=		""
 

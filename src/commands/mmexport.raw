@@ -1,0 +1,17 @@
+#!<%%PHP%%> <%%PHP_OPTS%%>
+<?
+  /* print a recipe in Meal-Master-format */
+
+  require "<%%PHP_LIBS%%>/output.inc";
+
+  $stdout = fopen("php://stdout", "w");
+
+  $name = "%" . $argv[1] . "%";
+
+  foreach (get_mid_by_name($name) as $menu) {
+    fputs($stdout, mmexport(get_menu_by_mid($menu["id"])));
+  }
+
+
+?>
+

@@ -1,5 +1,5 @@
 # Space-separated list of all "raw" php-files.
-PHP_FILES=		index rezept print
+PHP_FILES=		index rezept print mmprint
 INC_FILES=		menue such
 
 # Files to install unmangled (dont forget the filename-suffix here!)

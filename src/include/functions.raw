@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.6 2000/11/15 18:19:48 michael Exp $
+   * $Id: functions.raw,v 1.7 2000/11/15 20:49:05 michael Exp $
    */
 
   include "<%%PHP_LIBS%%>/config.inc";
@@ -69,9 +69,12 @@
           $seen_ingr = 1;
 
         } else {
-          /* Ok, treat the Rest as "instruction" */
-          $instruction .= trim($line) . "\n";
-          
+          /* Ok, treat the rest as "instruction"
+           * skip empty lines 
+           */
+          if (! preg_match("/^\s*$/", $line)) {
+            $instruction .= trim($line) . "\n";
+          }
         }
       }
     }

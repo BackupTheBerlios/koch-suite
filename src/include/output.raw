@@ -1,0 +1,58 @@
+<?
+  /*
+   * Output-Functions for Koch-Suite
+   * $Id: output.raw,v 1.1 2000/11/15 20:49:05 michael Exp $
+   */
+
+  require "<%%PHP_LIBS%%>/functions.inc";
+
+  function mmexport ($rezept) {
+    /* return a Meal-Master-formatted string. */
+    $str = "";
+    $header = "MMMMM-----mmexport (v0.1) *Meal-Master*-----";
+    $footer = "MMMMM";
+
+    $str .= "$header\n";
+    $str .= "     Title: " . $rezept["title"] . "\n"; 
+
+    $str .= "Categories: "; 
+    foreach ($rezept["category"] as $cat) {
+      $str .= "$cat ";
+    }
+    $str .= "\n";
+
+    $str .= "     Yield: " . $rezept["yield"] . "\n"; 
+
+    /* Zutaten: */
+
+    foreach ($rezept["zutaten"] as $z) {
+      if ($z["title"] != "Zutaten:") {
+        $str .= mmrezept_header($z["title"]) . "\n";
+      } else {
+        $str .= "\n";
+      }
+      foreach ($z["ingredients"] as $j) {
+        if (($quant = round($j["quant"], 3)) == 0) {
+          $quant = "";
+        }
+        $rline = pad_left($quant," ", 7) . " " .
+                 pad_right($j["unit"]  , " ", 2) . " " .
+                 pad_right($j["ingred"], " ", 28) . "\n";
+        $str .= $rline;
+      }
+      $str .= "\n";
+    }
+
+    $str .= $rezept["anleitung"]; 
+    $str .= "$footer\n\n";
+
+    return $str;
+  }
+
+  function mmrezept_header ($str) {
+    /* return a valid Mealmaster-subheader */
+    $fill = "--------------------";
+    $str = $fill . $str . $fill;
+    return "MMMMM$str";
+  }
+?>

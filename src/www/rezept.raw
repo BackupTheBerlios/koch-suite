@@ -28,7 +28,8 @@
 </table>
 
 <?
-      echo "<a href=\"print.php?mid=$mid\">Druckversion</a>\n";
+      echo "[<a href=\"print.php?mid=$mid\">Druckversion</a>]\n";
+      echo "[<a href=\"mmprint.php?mid=$mid\">Meal-Master-Format</a>]\n";
 ?>
 
 <hr noshade>
