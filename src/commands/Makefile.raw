@@ -2,14 +2,15 @@
 
 # This file contains the substitution-rules for "sed"
 
-# Space-separated list of all "raw" php-files.
+# Space-separated list of all "raw" php-/perl-files.
 PHP_FILES_UNCONF=	mmimport mmexport rezept2latex
+PERL_FILES_UNCONF=	tkrezept
 
 SUBDIRS=		""
 
-all:
+all: 
 	@#make subdir TRGT=all
-	@(for i in ${PHP_FILES_UNCONF}; do\
+	@(for i in ${PHP_FILES_UNCONF} ${PERL_FILES_UNCONF}; do\
 	echo "$${i}.raw --> $$i"; \
 	cat $${i}.raw | sed -f ${CONF_FILE} > $$i;\
 	chmod +x $${i} ; \
