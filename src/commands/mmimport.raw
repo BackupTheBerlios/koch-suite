@@ -29,7 +29,7 @@
    */
 
   /*
-   * $Id: mmimport.raw,v 1.34 2005/01/12 18:35:51 lestinsky Exp $
+   * $Id: mmimport.raw,v 1.35 2005/04/03 14:07:35 lestinsky Exp $
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
    * See the bundled file "LICENCE" for the licence of this script.
@@ -44,11 +44,14 @@
   /* Disable Timelimit. We have a controlling tty here, so this is safe. */
   set_time_limit(0);
 
-  $argc = $_SERVER["argc"];
-  $argv = $_SERVER["argv"];
+  if (isset($_SERVER['argc']) and !isset($argc))
+    $argc = $_SERVER["argc"];
+  if (isset($_SERVER['argv']) and !isset($argv))
+    $argv = $_SERVER["argv"];
 
   $opt_test = 0;
   $opt_test_printmm = 0;
+  $opt_test_printrk = 0;
   $opt_cat = false;
 
   $new_cat = false; // Ignore unknown categories by default.
@@ -97,6 +100,10 @@ EOD;
         case '-mm':
               $opt_test_printmm++;
               break;
+
+        case '-rk':
+	      $opt_test_printrk++;
+	      break;
       
         case '-c':
               if (++$i < $argc) {
@@ -168,6 +175,8 @@ EOD;
          */
         if ($opt_test_printmm) {
           fputs($stdout, mmexport($rezept));
+        } else if ($opt_test_printrk) {
+          fputs($stdout, rkexport($rezept));
         } else {
           fputs($stdout, format_recipe($rezept));
           fputs($stdout, "==========\n");
