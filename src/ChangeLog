@@ -1,3 +1,12 @@
+2004-02-06  Michael Lestinsky  <michael@lestinsky.de>
+
+  * include/functions.raw 1.93: test for pdflatex
+
+  * include/output.raw 1.54: use less space in the presentation
+
+  * www/search.raw 1.40:
+  Redo the layout of the searchresult presentation
+
 2004-02-05  Michael Lestinsky  <michael@lestinsky.de>
 
   * www/delete.raw 1.25, www/rezept.raw 1.38:
