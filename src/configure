@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.16 2001/10/13 23:56:54 lestinsky Exp $
+# $Id: configure,v 1.17 2001/10/15 07:28:57 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -45,7 +45,7 @@ check_prereq () {
     # Check if we can find all neccessary tools:
     echo -n "Checking for '$1': ... "
     req=$(which "$1")
-    if [ -n "${req}" ] ; then 
+    if [ -n "${req}" -a $? = 0 ] ; then 
         # Found.
         echo "Found - $req"
     else
@@ -84,11 +84,9 @@ translate_raw () {
 }
 
 ##########
-# Build-Depends:
-
-# Probe for a usable awk-version
+# Build-Depends: 'awk' and 'sed'
 echo -n "Checking for a usable awk ... "
-for i in mawk nawk awk; do
+for i in mawk nawk gawk awk; do
   awk=$(which $i)
   if [ -n "${awk}" -a $? = 0 ] ; then
     break;
@@ -105,9 +103,14 @@ check_prereq sed
 
 ##########
 # Generate the sed-file:
-echo -n "Generating config.sed "
+echo -n "Generating config.sed ... "
 ${awk} -f ${AWKSCRIPT} ${CONF_RAW} > ${CONF_FILE}
-echo "Done."
+if [ $? = 0 ] ; then 
+  echo "Done."
+else 
+  echo "Failed."
+  exit $?
+fi
 
 ##########
 # Optional tools:
