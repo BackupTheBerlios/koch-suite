@@ -1,20 +1,39 @@
-<!-- $Id: such.raw,v 1.5 2000/11/29 01:20:54 michael Exp $ -->
+<!-- $Id: such.raw,v 1.6 2000/12/14 17:27:36 michael Exp $ -->
 <?
   if (empty($begriff) and empty($all)) {
 ?>
     <h2>Suchen</h2>
+    <script language="JavaScript1.2">
+      <!--
+        function kat() {
+          foo = "kategorien.php?target=begriff&maxsel=1";
+          window.open(foo, 'kat', 'width=300,height=400,screenX=700,screenY=300,scrollbars=yes');
+          document.forms[0].where.options[1].selected = true;
+        }
+      //-->
+    </script>
     
     <form action="<? echo "$PHP_SELF?suchen=1"; ?>" method="post">
-    <input type="text" name="begriff">
-    <select name="where">
-      <option value="title">Name</option>
-      <option value="ingred">Zutat</option>
-    </select>
-    <br>
+      <table border=0>
+        <tr>
+          <td>Suchen nach:</td><td><input type="text" name="begriff"></td>
+        </tr>
+        <tr>
+          <td>Suchen in:</td>
+          <td><select name="where">
+                <option value="title">Menue-Titel</option>
+                <option value="cat">Kategorie</option>
+                <option value="ingred">Zutat</option>
+              </select>
+          </td>
+        </tr>
+      </table>
     <input type="submit" value="Suchen">
+    <input type="reset" value="L&ouml;schen">
     </form>
     <p>
-      <a href="<? echo "$PHP_SELF?suchen=1&all=1"; ?>">Alle Rezepte anzeigen</a>
+      [<a href="<? echo "$PHP_SELF?suchen=1&all=1"; ?>">Alle Rezepte anzeigen</a>]
+      [<a href="kategorien.php?target=begriff&maxsel=1" target="kat" onClick="kat();">Kategorie-Auswahl</a>]
       <br>
       <a href="<? echo "$PHP_SELF?suchen=1&all=a"; ?>">A</a>
       <a href="<? echo "$PHP_SELF?suchen=1&all=b"; ?>">B</a>
@@ -48,7 +67,11 @@
   } else {
     include "<%%PHP_LIBS%%>/functions.inc";
 ?>
-    <h2>Suchergebnis</h2>
+    <h2>Suchergebnis 
+      <? if (empty($all)) { ?> 
+        &quot;<? echo $begriff; ?>&quot;
+      <? } ?> 
+    </h2>
 
     <table border=0>
 <?
@@ -77,6 +100,10 @@
 
     } else if ($where == 'ingred') {
       if (($m = get_mid_by_ingred($begriff)) != 0) {
+        print_titles($m);
+      }
+    } else if ($where == 'cat') {
+      if (($m = get_mid_by_cat($begriff)) != 0) {
         print_titles($m);
       }
     }
