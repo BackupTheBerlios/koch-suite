@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.37 2001/10/01 16:04:51 lestinsky Exp $
+   * $Id: output.raw,v 1.38 2001/10/31 18:25:22 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -99,7 +99,7 @@
 
     $str .= "  <tr><td colspan=2>\n";
 
-    $str .= "    <table border=\"0\" width=\"100%\">\n";
+    $str .= "    <table border=\"0\">\n";
     foreach ($rezept["zutaten"] as $z) {
       if (empty($z["title"])) {
         $str .= "      <tr><td colspan=3><b>" .
@@ -119,7 +119,7 @@
         $str .= "      ";
         $str .= "<tr><td align=\"right\">" . $quant . "</td>" .
                     "<td>" . $unit . "</td>" .
-                    "<td width=\"90%\">" . htmlentities($ingred) . "</td>" .
+                    "<td>" . htmlentities($ingred) . "</td>" .
                 "</tr>\n";
       }
 
@@ -383,13 +383,37 @@
 
 
   function nice_quant ($quant) {
-    /* Return a beautified $qunat-string */
-
+    /* Return a beautified $quant-string */
     if (($quant = round($quant, 3)) == 0) {
-      $quant = "";              // suppress "0" values.
-    }
+      $return = "";                             // suppress "0" values.
+    } else {
+      $int = floor($quant) ;          // integer;
+      $rem = round($quant - $int, 3); // rest
+      $trans = array("0.1"   => "1/10",
+                     "0.125" => "1/8",
+                     "0.2"   => "1/5",
+                     "0.25"  => "1/4",
+                     "0.3"   => "3/10",
+                     "0.333" => "1/3",
+                     "0.375" => "3/8",
+                     "0.4"   => "2/5",
+                     "0.5"   => "1/2", 
+                     "0.6"   => "3/5",
+                     "0.625" => "5/8",
+                     "0.667" => "2/3",
+                     "0.7"   => "7/10",
+                     "0.75"  => "3/4",
+                     "0.8"   => "4/5",
+                     "0.875" => "7/8",
+                     "0.9"   => "9/10");
 
-    return $quant;
+      if (isset($trans["$rem"])) {
+        $return = ($int > 0 ? $int . " " . $trans["$rem"] : $trans["$rem"] );
+      } else {
+        $return = $quant;
+      }
+    }
+    return $return;
   }
 
 
