@@ -1,7 +1,7 @@
-/* $Id: styles.css,v 1.6 2001/03/17 17:43:29 michael Exp $ */
+/* $Id: styles.css,v 1.7 2001/03/27 21:40:32 michael Exp $ */
 body	    { background-color:#ffffff; }
 h1,h2,h3,h4 { font-family:Verdana,Lucida; }
-a,b	    { font-family:Helvetica,Arial; }
+a,b,dt	    { font-family:Helvetica,Arial; }
 a:link      { color:#000463; }
 a:visited   { color:#000463; }
 a:active    { color:#111473; }
