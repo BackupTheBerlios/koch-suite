@@ -1,3 +1,7 @@
+2002-03-30  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/Makefile.raw 1.23: add es.inc
+
 2002-03-29  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/es.inc 1.1:
