@@ -1,4 +1,4 @@
-### $Id: README,v 1.46 2002/04/15 22:38:39 lestinsky Exp $
+### $Id: README,v 1.47 2002/05/14 11:18:20 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -85,15 +85,14 @@ to follow it strictly.
 
 Planned for 0.7:
 
-  o  Finegrained Authentication scheme, enabling "moderated"
-     installations...
-  o  Administration-tool for the accounts
-     as a replacement of "ks_passwd"
+  o  spool recipe submissins somewhere for acknowledgement by the
+     moderator.
   o  A better system to categorize recipes
   o  Support non-standard-extensions in MM- or Rezkonv-formatted recipes
 
 Planned for later releases or bored weekends:
 
+  o  Support RezTransfer
   o  Rezkonv-export
   o  Annotate recipes
   o  Keep lists of "favorites" (also known as bookmark-list)
