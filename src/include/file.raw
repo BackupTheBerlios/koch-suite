@@ -5,7 +5,7 @@
    * 
    * Remember: You have to pass objects of this class by reference, 
    * or $this->buffer may be lost!
-   * $Id: file.raw,v 1.5 2002/06/05 10:05:40 lestinsky Exp $
+   * $Id: file.raw,v 1.6 2002/06/24 21:10:13 lestinsky Exp $
    */
 
   require_once "<%%PHP_LIBS%%>/debug.inc";
@@ -19,7 +19,7 @@
      * Constructor
      */
     function File () {
-      $this->Filename = tempnam($KS_TMPDIR, "mmimport");
+      $this->Filename = tempnam($GLOBALS['KS_TMPDIR'], "mmimport");
       $this->Filehandle = false;
       $this->buffer = array();
     }
