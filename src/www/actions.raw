@@ -1,12 +1,20 @@
-<?php if (isset($mid)) { ?>
 <table border="0" width="100%">
 <tr>
   <td style="text-align:left;">
   <div class="small">
   <?php
-    echo "[<a href=\"print.php?mid=$mid&scale=$scale\">" . $Lang['PrintVers'] . "</a>]\n";
-    echo "[<a href=\"mmprint.php?mid=$mid&scale=$scale\">Meal-Master-Format</a>]\n";
-    echo "[<a href=\"rezept.php?mid=$mid&scale=$scale\">" . $Lang['NormalVers'] .  "</a>]\n";
+    if (isset($mid))
+      echo "[<a href=\"print.php?mid=$mid&scale=$scale\">" . $Lang['PrintVers'] . "</a>]\n";
+    elseif(isset($_SESSION['operate_on']))
+      echo "[<a href=\"print.php\">" . $Lang['PrintVers'] ."</a>]\n";
+
+    if (isset($mid))
+      echo "[<a href=\"mmprint.php?mid=$mid&scale=$scale\">Meal-Master-Format</a>]\n";
+    elseif (isset($_SESSION['operate_on']))
+      echo "[<a href=\"mmprint.php\">Meal-Master-Format</a>]\n";
+
+    if (isset($mid))
+      echo "[<a href=\"rezept.php?mid=$mid&scale=$scale\">" . $Lang['NormalVers'] .  "</a>]\n";
   ?>
   </div>
   </td>
@@ -14,10 +22,12 @@
   <div class="small">
   <?php
     if ($USER_S['usertype'] >= WRITE) {
-      echo "[<a class=\"small\" href=\"einfuegen.php?mid=$mid\">" . $Lang['Recipe']['Edit'] . "</a>]\n";
+      if (isset($mid))
+        echo "[<a class=\"small\" href=\"einfuegen.php?mid=$mid\">" . $Lang['Recipe']['Edit'] . "</a>]\n";
+
       if (isset($result_id))
         echo "[<a class=\"small\" href=\"delete.php?result_id=$result_id\">" . $Lang['Recipe']['Delete'] . "</a>]\n";
-      else
+      elseif (isset($mid))
         echo "[<a class=\"small\" href=\"delete.php?mid=$mid\">" . $Lang['Recipe']['Delete'] . "</a>]\n";
     }
   ?>
@@ -59,4 +69,3 @@
   }
 ?>
 </table>
-<?php } ?>
