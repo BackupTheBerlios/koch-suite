@@ -30,7 +30,7 @@
   /**
    * Some debugging functions
    *
-   * $Id: debug.raw,v 1.7 2001/08/11 07:31:54 lestinsky Exp $
+   * $Id: debug.raw,v 1.8 2001/08/16 19:58:10 lestinsky Exp $
    *
    * @package Lib
    * @modulegroup Debug
@@ -50,7 +50,7 @@
    * @return void
    */
   function write_log ($str) {
-    if ($DEBUG != "no") {
+    if ($GLOBALS["DEBUG"] != "no") {
       if (!file_exists(DEBUG_FILE)) {
         touch(DEBUG_FILE);
         chmod(DEBUG_FILE, PERM_WORLDWRITEABLE);
