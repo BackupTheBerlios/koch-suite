@@ -1,4 +1,4 @@
-### $Id: FAQ.txt,v 1.7 2002/06/11 18:43:47 lestinsky Exp $
+### $Id: FAQ.txt,v 1.8 2002/06/25 20:12:55 lestinsky Exp $
 
 FAQ - Frequently Asked Questions
 ================================
@@ -12,6 +12,8 @@ Questions:
 2. I get an error message about 'DB.php' not being found.
 
 3. The Koch-Suite is quite good, but I'm missing $FEATURE.
+
+4. What about MS Windows(tm).
 
 
 Answers:
@@ -76,5 +78,12 @@ lack time, don't see any use for them or would be to hard to do the
 
 Don't ask for these.
 
+
+4. What about MS Windows(tm).
+
+Noone ever tried it. Or at least no one succeeded with it. You'll need a
+Bourne shell, sed, awk, make and other unix stuff, installing the Cygnus
+distribution might help. But as I don't use Windows(tm) you're on your
+own, sorry.
 
 Copyright (c) 2002 Michael Lestinsky <michael@lestinsky.de>
