@@ -10,10 +10,10 @@
 <head>
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
-  <title>Infos zur Koch-Suite</title>
+  <title><? echo $Lang['Help']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.8 2001/05/16 00:21:26 michael Exp $ -->
+  <!-- $Id: help.raw,v 1.9 2001/05/21 23:59:53 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -37,15 +37,41 @@
     ?>
   </td>
   <td width="90%">
-    <!-- Installierte Version: $Name:  $ $Revision: 1.8 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.9 $ -->
 
-    <? echo $Lang['Helptext']; ?>
+    <h2><? echo $Lang['Help']; ?></h2>
+    
+    <p>
+      <? echo $Lang['Helptext']['General']; ?>
+    </p>
 
-    <? echo $Lang['CLHelp']; ?>
+    <h3><? echo $Lang['Helptext']['CL']['Title']; ?></h3>
+    <dl>
+      <?
+        foreach ($Lang['Helptext']['CL']['commands'] as $c) {
+          echo "<dt><code>" . $c['Name'] . "</code></dt>\n";
+          echo "<dd>" . $c['Text'] . "</dd>\n";
+        }
+      ?>
+    </dl>
 
-    <? echo $Lang['WWWHelp']; ?>
+    <h3><? echo $Lang['Helptext']['WWW']['Title']; ?></h3>
+    <dl>
+      <?
+        foreach ($Lang['Helptext']['WWW']['part'] as $c) {
+          echo "<dt>" . $c['Title'] . "</dt>\n";
+          echo "<dd>" . $c['Text'] . "</dd>\n";
+        }
+      ?>
+    </dl>
 
-    <? echo $Lang['Feedback']; ?>
+    <h3><? echo $Lang['Helptext']['Feedback']['Title']; ?></h3>
+      <?
+        foreach($Lang['Helptext']['Feedback']['Text'] as $text) {
+          echo "<p>" . $text . "</p>"; 
+        }
+      ?>
+
   </td>
 </tr>
 </table>
