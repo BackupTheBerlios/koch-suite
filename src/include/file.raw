@@ -1,0 +1,120 @@
+<?php
+
+  /*
+   * $Id: file.raw,v 1.1 2001/08/06 17:55:13 lestinsky Exp $
+   */
+
+  require_once "<%%PHP_LIBS%%>/debug.inc";
+
+  Class File {
+    var $Filename;
+    var $Filehandle;
+    var $buffer;
+
+    /**
+     * Constructor
+     */
+    function File () {
+      $this->Filename = tempnam("/tmp", "mmimport");
+      $this->Filehandle = false;
+      $this->buffer = false;
+    }
+
+
+    /**
+     * Write a Line to the File
+     * @param string $line Line
+     * @return bool
+     */
+    function WriteLine ($line) {
+      if (! @fputs($this->Filehandle, preg_replace("/\r/", "", $line))) {
+        write_log("Can't write to " . $this->Filename);
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+
+    /**
+     * Read a Line from the File
+     * @return string Line
+     */
+    function ReadLine () {
+      if ($this->buffer !== false) {
+        $return       = $this->buffer;
+        $this->buffer = false;
+
+        return $return;
+      } else {
+        if ($line = fgets($this->Filehandle, 4096)) {
+          return $line;
+        } else {
+          write_log("Can't read from " . $this->Filename);   
+          return false;
+        }
+      }
+    }
+
+
+    /**
+     * "Un"-Read a Line from the File
+     * @param string $line String to "un-read"
+     */
+    function UnReadLine ($line) {
+      $this->buffer = $line;
+    }
+
+
+    /**
+     * Open Filename for writing. (appending)
+     * return bool;
+     */
+    function WriteOpen () {
+      if (! $this->Filehandle = fopen($this->Filename, "a")) {
+        write_log("Can't Open File for Writing");
+        return false;
+      } else return true;
+    }
+
+
+    /**
+     * Open Filename for reading.
+     * return bool;
+     */
+    function ReadOpen () {
+      if (! $this->Filehandle = fopen($this->Filename, "r")) {
+        write_log("Can't Open File for Reading");
+        return false;
+      } else return true;
+    }
+
+
+    /**
+     * Close Filehandle
+     * return bool
+     */
+    function Close () {
+      if ($this->Filehandle !== false) {
+        fclose($this->Filehandle);
+        $this->Filehandle = false;
+        return true;
+      } else return false;
+    }
+
+
+    /**
+     * Close Filehandle and delete Filename
+     * return bool
+     */
+    function CloseRM() {
+      if($this->Close()) {
+        unlink($this->Filename);
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+  }
+?>
