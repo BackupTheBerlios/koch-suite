@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.22 2002/10/14 20:14:39 lestinsky Exp $
+   * $Id: kategorien.raw,v 1.23 2002/11/06 17:43:06 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW
@@ -80,10 +80,6 @@
   //-->
   </script>
 <a name="top"><h2><?php echo $Lang['CatChoose']; ?></h2></a>
-
-<p>
-[<a href="edit_cat.php"><?php echo $Lang['Category']['Edit']; ?></a>]
-</p>
 
 <p>
 <?php echo $Lang['Category']['Help']; ?>
