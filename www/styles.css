@@ -1,11 +1,17 @@
-/* Michael Lestinsky, Aug 15th 2002 */
+/* $Id: styles.css,v 1.4 2002/08/16 11:00:36 lestinsky Exp $
+ * Michael Lestinsky, Aug 15th 2002 
+ */
 
 body { color:#000000; background-color:#ffffff; }
-h1       { font-family:Verdana,Helvetica,Arial; text-align:center; }
+h1       { font-family:Verdana,Helvetica,Arial; text-align:center; 
+           background-color:#e9e9f0; padding:3px;
+           border-top-width:thin; border-bottom-width:0px;
+           border-right-width:0px; border-left-width:0px;
+           border-style:solid; border-color:#9090b0; }
 h2       { font-family:Helvetica,Arial; text-align:left;
            background-color:#f9f9ff; padding:3px;
            border-top-width:thin; border-bottom-width:0px;
-           border-right-width:0px; border-left-width:thin;
+           border-right-width:0px; border-left-width:0px;
            border-style:solid; border-color:#d0d0e0; }
 h3,h4,h5,h6,strong,b,a {font-family:Helvetica,Arial}
 
