@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: defines.raw,v 1.7 2002/04/14 18:25:13 lestinsky Exp $
+   * $Id: defines.raw,v 1.8 2002/05/20 15:04:47 lestinsky Exp $
    *
    * Define some constants here:
    */
@@ -12,8 +12,6 @@
   define("DB_PGSQL", "pgsql");
 
   define("DEBUG_FILE", "/tmp/koch-suite-debug");
-
-  define("DEFAULT_LANG", "de");
 
   /* Recipe-format */
   define("RECIPE_MM", 0);
