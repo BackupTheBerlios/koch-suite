@@ -3,10 +3,10 @@
 body { color:#000000; background-color:#ffffff; }
 h1       { font-family:Verdana,Helvetica,Arial; text-align:center; }
 h2       { font-family:Helvetica,Arial; text-align:left;
-           background-color:#e9e9f0; padding:3px;
+           background-color:#f9f9ff; padding:3px;
            border-top-width:thin; border-bottom-width:0px;
            border-right-width:0px; border-left-width:thin;
-           border-style:solid; border-color:#9090b0; }
+           border-style:solid; border-color:#d0d0e0; }
 h3,h4,h5,h6,strong,b,a {font-family:Helvetica,Arial}
 
 h2 { margin-top:5mm; }
