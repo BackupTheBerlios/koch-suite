@@ -1,6 +1,10 @@
-### $Id: changelog,v 1.38 2001/06/23 00:41:51 michael Exp $
+### $Id: changelog,v 1.39 2001/06/27 13:22:16 michael Exp $
 
-2001-06-22: Michael Lestinsky
+2001-06-27: Michael Lestinsky <michael@lestinsky.de>
+	Fix some things which were broken in 0.5-pre6
+	Cleanup. More M17N. 0.5-pre7
+
+2001-06-22: Michael Lestinsky <michael@lestinsky.de>
         M17N.
         'rezept' unterstuetzt nun -relaxed bei MM-Rezepten, dabei werden
         einige Beschraenkungen von MM ignoriert und das Format damit verletzt.
