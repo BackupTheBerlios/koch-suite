@@ -1,4 +1,4 @@
-### $Id: PHP.txt,v 1.1 2001/08/31 17:39:48 lestinsky Exp $
+### $Id: PHP.txt,v 1.2 2001/09/23 11:13:35 lestinsky Exp $
 
 Koch-Suite und PHP
 ==================
@@ -62,6 +62,4 @@ mindestens PEAR updaten. Dazu:
    # cvs -d :pserver:cvsread@cvs.php.net:/repository login
  - Erzeuge eine lokale Kopie von PEAR
    # cvs -d :pserver:cvsread@cvs.php.net:/repository co php4/pear
- - Erweitere include_path in der php.ini so dass dieser
-   /usr/local/lib/php4/pear beinhaltet.
-
+ - Passe den Pfad zum PEAR-Verzeichnis in dem File ../config an

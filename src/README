@@ -1,4 +1,4 @@
-### $Id: README,v 1.39 2001/08/31 17:39:06 lestinsky Exp $
+### $Id: README,v 1.40 2001/09/23 11:13:35 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -53,9 +53,10 @@ Der LaTeX-Export greift auf das Paket 'floatflt' zurück. Bei Bedarf siehe
 bitte im CTAN-Archiv nach. Um PostScript oder PDF-Dateien zu erzeugen wird
 dvips (aus der TeTeX-Distribution) und Ghostscript benötigt.
 
-Ausserdem ist eine aktuelle Version von PEAR notwendig. Bei PHP-4.0.6 ist
+Ausserdem ist eine aktuelle Version von PEAR notwendig. Bei PHP-4.0.7 ist
 PEAR hinreichend aktuell, wer ein älteres PHP hat muss mindestens sein 
-mindestens PEAR updaten. 
+PEAR updaten, oder ein aktuelles PEAR an einem Nicht-Standard-Pfad
+installieren und in ./config den Pfad zu diesem aktuellen PEAR anpassen.
 
 Siehe auch Documentation/PHP.txt zu weiteren Details zum Thema PEAR und
 PHP.
