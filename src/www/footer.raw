@@ -4,7 +4,7 @@
 </table>
 <?php } ?>
 
-<table width="100%" class="menu_item">
+<table width="100%" class="footer">
   <tr>
     <td><?php 
           printf("%s: %s &lt;%s&gt;\n", $Lang['Contact'], 
@@ -13,9 +13,10 @@
     </td>
     <td style="text-align:right;">
        <?php 
-         if ($GLOBALS['ENABLE_PROFILING']) 
+         if ($GLOBALS['ENABLE_PROFILING']) {
            printf('Page execution took %.3f seconds', 
-                    getmicrotime() - $GLOBALS['profiling_start']); 
+                    $GLOBALS['TotProf']->GetTotalTime()); 
+         }
        ?>
     </td>
   </tr>

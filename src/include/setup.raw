@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: setup.raw,v 1.7 2003/01/20 20:26:47 lestinsky Exp $
+   * $Id: setup.raw,v 1.8 2003/01/23 15:48:39 lestinsky Exp $
    * Setup the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -17,7 +17,7 @@
 
   if ($ENABLE_PROFILING) {
     require_once '<%%PHP_LIBS%%>/profiling.inc';
-    $profiling_start = getmicrotime();
+    $TotProf = new Profiling;
   }
 
   if (isset($_SERVER['SERVER_PROTOCOL'])) {
