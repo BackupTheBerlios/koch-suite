@@ -1,3 +1,31 @@
+2002-11-27  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/commands/init_db2.raw 1.1:
+  Another attempt towards a more uniformed script for the table generation.
+  Dont use this one, yet. It's still in development and will probably break
+  your system.
+
+  The next steps would be to
+    - fix this insofar as it should generate exactly the same tables as we
+      used until now
+    - Do we want to specify the table layout in XML?
+
+  * src/include/debug.raw 1.10, src/include/defines.raw 1.15, src/include/es.inc 1.7, src/include/lang.raw 1.19, src/include/setup.raw 1.4:
+  replace some remaining <? by <?php
+
+  * src/config 1.25: MySQL Table type
+
+  * src/Documentation/FAQ.txt 1.10:
+  Windows: Try Cygnus?
+
+  * src/include/functions.raw 1.87:
+  First attempt in being transactional
+
+  * src/include/koch-suite.raw 1.19: Comment
+
+  * src/commands/Makefile.raw 1.24, src/commands/mmimport.raw 1.31, src/commands/rezept.raw 1.23, src/www/admin.raw 1.11, src/www/edit_alias.raw 1.18, src/www/edit_cat.raw 1.2, src/www/einfuegen.raw 1.48, src/www/header.raw 1.2, src/www/index.raw 1.30, src/www/infos.raw 1.39, src/www/kategorien.raw 1.24, src/www/login.raw 1.6, src/www/logout.raw 1.9, src/www/menue.raw 1.22, src/www/mmprint.raw 1.22, src/www/pastebox.raw 1.7, src/www/print.raw 1.27, src/www/search.raw 1.33, src/www/settings.raw 1.10, src/www/units.raw 1.16:
+  replace some remaining <? by <?php
+
 2002-11-13  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/de.inc 1.47, src/include/en.inc 1.52:
