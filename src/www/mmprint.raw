@@ -1,5 +1,5 @@
 <?php
-  /* $Id: mmprint.raw,v 1.16 2002/06/11 18:43:47 lestinsky Exp $
+  /* $Id: mmprint.raw,v 1.17 2002/07/03 16:25:33 lestinsky Exp $
    *
    * Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
@@ -57,7 +57,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
 
   <title>Koch-Suite</title>
-  <!-- $Id: mmprint.raw,v 1.16 2002/06/11 18:43:47 lestinsky Exp $ -->
+  <!-- $Id: mmprint.raw,v 1.17 2002/07/03 16:25:33 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -66,7 +66,7 @@
   if (isset($error)) 
     echo $error;
   else 
-    echo mmexport(get_menu_by_mid($mid, $scale));
+    echo htmlentities(mmexport(get_menu_by_mid($mid, $scale)));
 ?>
 </pre>
 </body>

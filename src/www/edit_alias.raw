@@ -30,7 +30,7 @@
   /**
    * Alias-Editor
    *
-   * $Id: edit_alias.raw,v 1.12 2002/06/11 18:43:47 lestinsky Exp $
+   * $Id: edit_alias.raw,v 1.13 2002/07/03 16:25:33 lestinsky Exp $
    * Edit the alias-list for a given unit.
    * @package WWW
    * @modulegroup Edit
@@ -50,7 +50,7 @@
 
   /* Parse arguments */
   $unit = $_GET["unit"];
-  if (empty($_POST["ALIASES"])) {
+  if (!isset($_POST["SUBMIT"])) {
     $aliases = get_unit_aliases($unit);
   } else {
     $FORM_ALIASES = $_POST["ALIASES"];
@@ -84,7 +84,7 @@
   <?php echo $fwd; ?>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: edit_alias.raw,v 1.12 2002/06/11 18:43:47 lestinsky Exp $ -->
+  <!-- $Id: edit_alias.raw,v 1.13 2002/07/03 16:25:33 lestinsky Exp $ -->
   <style class="text/css">
   <!--
     .dark  { background-color:#c0c0d5; font-family:Helvetica,Arial; }
@@ -109,7 +109,7 @@
 </p>
 
 <form method=post action="<?php echo $PHP_SELF . "?unit=$unit"; ?>">
-  <input type="text" value="<?php echo implode($aliases, " "); ?>" name="ALIASES"><br>
+  <input type="text" value="<?php echo htmlentities(implode($aliases, " ")); ?>" name="ALIASES"><br>
   <input type="submit" name="SUBMIT" value="<?php echo $Lang["FormApply"]; ?>">
   <input type="reset" value="<?php echo $Lang["FormReset"]; ?>"><br>
 </form>
