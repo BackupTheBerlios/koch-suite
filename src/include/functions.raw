@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.11 2000/12/06 18:03:01 michael Exp $
+   * $Id: functions.raw,v 1.12 2000/12/14 17:30:58 michael Exp $
    */
 
   require "<%%PHP_LIBS%%>/config.inc";
@@ -52,7 +52,7 @@
 
         } else if (preg_match($zutaten_header, $line, $foo)) {
           preg_match("/^(.*)[-@=]*$/U", $foo[2], $bar);
-          $j = array("title"       => strtoupper($bar[1]), 
+          $j = array("title"       => $bar[1], 
                      "ingredients" => getingr($fd));
           array_push ($zutaten, $j);
           $seen_ingr = 1;
@@ -327,6 +327,33 @@
     } else {
       return 0;
     }
+  }
+
+  function get_mid_by_cat ($cat) {
+    /* get all menus with category $cat */
+    $a = array();
+
+    /* request the ID of the category */
+    $req = "select distinct ID from KATEGORIE where TEXT = '$cat'";
+    $res = mysql_db_query($GLOBALS["DB_NAME"], $req);
+    $id  = mysql_fetch_array($res);
+  
+    /* which menues are of the category $id["ID"]? */ 
+    $req_mid = "select distinct MENUE_ID from KAT " .
+               " where KATEGORIE_ID = " . $id["ID"] ;
+    $res_mid = mysql_db_query($GLOBALS["DB_NAME"], $req_mid);
+
+    while ($mid = mysql_fetch_row($res_mid)) {
+      /* for each entry: request the id and title and push them into
+       * the result-array */
+      $req_menu = "select * from MENUE where ID = " . $mid[0];
+      $res_menu = mysql_db_query($GLOBALS["DB_NAME"], $req_menu);
+
+      if ($menu = mysql_fetch_array($res_menu)) {
+        array_push($a, array("id" => $menu["ID"], "title" => $menu["TITEL"] ));
+      }
+    }
+    return $a;
   }
 
 ?>
