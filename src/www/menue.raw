@@ -1,4 +1,4 @@
-<!-- $Id: menue.raw,v 1.18 2002/04/14 18:25:13 lestinsky Exp $ -->
+<!-- $Id: menue.raw,v 1.19 2002/05/20 15:03:47 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
 <?php
   $blue_dot = '<img src="pics/blue_dot.gif" align="bottom" alt="" border=0>';
@@ -63,7 +63,13 @@
                 <td><a href="login.php"><?php echo $Lang['Auth']['NoLogin'] ?></a></td>
               </tr>
             <?php } ?>
-
+            <tr>
+              <td colspan="2">
+                [<a href="<?php echo $_SERVER['PHP_SELF'] ?>?lang_override=de">de</a>]
+                [<a href="<?php echo $_SERVER['PHP_SELF'] ?>?lang_override=en">en</a>]
+                [<a href="<?php echo $_SERVER['PHP_SELF'] ?>?lang_override=es">es</a>]
+              </td>
+            </tr>
             </table>
           </td>
         </tr>

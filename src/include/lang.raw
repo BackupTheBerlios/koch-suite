@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: lang.raw,v 1.12 2002/02/12 18:38:04 lestinsky Exp $
+   * $Id: lang.raw,v 1.13 2002/05/20 15:03:47 lestinsky Exp $
    * Guess prefered language for the web-interface.
    *
    * Copyright (c) 2001
@@ -87,7 +87,7 @@
 
 
   /* Read the default language-file (default: de) */
-  read_lang_file(DEFAULT_LANG);
+  read_lang_file($DEFAULT_LANG);
 
   if ($tmp = getenv("HTTP_ACCEPT_LANGUAGE")) {
     $accept_langs = explode(",", $tmp);
@@ -106,7 +106,10 @@
      * therefore read environment-variables.
      */
 
-    if ($L = getenv("LC_MESSAGES")) {
+    if ($L = getenv("KS_LANG")) {
+      /* KS_LANG environment prefered */
+      read_best_language($L);
+    } else if ($L = getenv("LC_MESSAGES")) {
       /* LC_MESSAGES environment */
       read_best_language($L);
     } else if ($L = getenv("LANG")) {
@@ -125,7 +128,7 @@
       $l = trim(preg_replace("/(.*)?(;(.*))/" , "\\1", $lang));
 
       /* we don't need to read it twice: */
-      if ($l == DEFAULT_LANG) {
+      if ($l == $DEFAULT_LANG) {
         break;
       } else if (read_best_language($l)) {
         break;
@@ -133,4 +136,17 @@
       $i++;
     }
   }
+
+  /* User is overriding the settings from the webinterface */
+  if ($KS_ENV == "web") {
+    session_register('lang_override');
+    if (isset($_GET['lang_override']))
+      $USER_S['lang_override'] = $_GET['lang_override'];
+
+    if (!empty($USER_S['lang_override'])) 
+      read_lang_file($USER_S['lang_override']);
+  }
+
+  setlocale(LC_ALL, $DEFAULT_LOCALE);
+
 ?>
