@@ -1,6 +1,6 @@
-<?
+<?php
   /*
-   * $Id: en.inc,v 1.41 2002/07/21 02:43:53 vondo Exp $
+   * $Id: en.inc,v 1.42 2002/07/31 20:50:54 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -91,6 +91,11 @@
   $Lang['Settings']['Password']['Retype']	= "Confirm new password";
   $Lang['Settings']['Password']['nomatch']	= "Passwords don't match.";
   $Lang['Settings']['Password']['changed']      = "Password changed.";
+
+  $Lang['Pastebox']['Title']            = 'Pastebox';
+  $Lang['Pastebox']['Text']             = <<<EOT
+     Paste single preformatted recipes in Meal-Master or RezKonv-Format here.
+EOT;
 
   $Lang['AllRecipes']		= "All recipes";
   $Lang['CatChoose']		= "Category chooser";

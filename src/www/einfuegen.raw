@@ -46,6 +46,7 @@
   $scale = 1;
   $new_cat = true;
   $meta = array();
+  $r = false;
 
   /*
    * read the proper values submitted via form
@@ -63,6 +64,7 @@
   if (isset($_POST['recorder']))  $recorder  = $_POST['recorder'];
   if (isset($_POST['date']))      $date      = $_POST['date'];
   if (isset($_POST['source']))    $source    = $_POST['source'];
+  if (isset($_POST['pasted']))    $pasted    = $_POST['pasted'];
   if (isset($_SERVER["PHP_SELF"]))   $PHP_SELF = $_SERVER["PHP_SELF"];
 
   $target = $PHP_SELF;
@@ -215,7 +217,36 @@
       if (!isset($r['meta']['Date']))     $r['meta']['Date'] = '';
       if (!isset($r['meta']['Source']))   $r['meta']['Source'] = '';
 
-    } else {
+    } else if (isset($pasted)) {
+      /* There is input from pastebox.php */
+
+      require_once "<%%PHP_LIBS%%>/file.inc";
+      require_once "<%%PHP_LIBS%%>/parser.inc";
+
+      $r_file = new File;
+      if ($r_file->WriteOpen()) {
+        $r_file->WriteLine($pasted);
+        $r_file->Close();
+
+        $r_file->ReadOpen();
+        while($line = $r_file->ReadLine()) {
+          $r = false;
+          if (eregi("(-{5}|M{5}).*Meal-Master.*", $line)) { 
+            /* parse the recipe */
+            $r =& parse_recipe($r_file, false, RECIPE_MM);
+          } else if (eregi("(={10}).*REZKONV.*", $line)) {
+            $r =& parse_recipe($r_file, false, RECIPE_RK);
+          }
+          if (!isset($r['meta']['Recorder'])) $r['meta']['Recorder'] = '';
+          if (!isset($r['meta']['Date']))     $r['meta']['Date'] = '';
+          if (!isset($r['meta']['Source']))   $r['meta']['Source'] = '';
+        }
+
+        $r_file->Close();
+      }
+    } 
+
+    if ($r == false) {
 
       /* We were invoked as empty form */
 
@@ -354,7 +385,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.38 2002/06/11 18:43:47 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.39 2002/07/31 20:50:54 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -398,9 +429,12 @@
 
     <h2><?php echo $Lang['Recipe']['Insert']; ?></h2>
 
+    <p>
+    <div class="small">[<a href="pastebox.php"><?php echo $Lang['Pastebox']['Title'] ?></a>]</div>
+    </p>
     <form action="<? echo $target ?>" method="post">
 
-  <?
+  <?php
       echo make_form($r);
   ?>     
 

@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.36 2002/06/22 16:14:02 lestinsky Exp $
+   * $Id: de.inc,v 1.37 2002/07/31 20:50:54 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -91,6 +91,12 @@
   $Lang['Settings']['Password']['Retype']       = "Neues Passwort best&auml;tigen";
   $Lang['Settings']['Password']['nomatch']      = "Passw&ouml;rter stimmen nicht &uuml;berein.";
   $Lang['Settings']['Password']['changed']      = "Passwort ge&auml;ndert.";
+
+  $Lang['Pastebox']['Title']		= 'Pastebox';
+  $Lang['Pastebox']['Text']		= <<<EOT
+     Eingabefeld f&uuml;r einzelne vorvormatierte Rezepte im Meal-Master- oder 
+     RezKonv-Format.
+EOT;
 
   $Lang['AllRecipes']		= "Alle Rezepte";
   $Lang['CatChoose']		= "Kategorie-Auswahl";
