@@ -5,7 +5,7 @@
 <?php } ?>
 
 <address>
-  &copy; 2002 <?php echo $authorname ?> &lt;<?php echo $authormail ?>&gt;
+  <?php echo $SITE_CONTACT_NAME ?> &lt;<?php echo $SITE_CONTACT_MAIL ?>&gt;
 </address>
 </body>
 </html>

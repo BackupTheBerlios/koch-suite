@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: koch-suite.raw,v 1.17 2002/09/16 20:48:34 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.18 2002/11/06 17:44:16 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -16,6 +16,13 @@
   $GLOBAL_OPS = false;		// Enable global operations on search result.
 				// WARNING, enabling this could generate heavy
 				// load for your webserver and database.
+
+  /* Site informations:
+   *  Name and EMail address of the responsible person who is running this
+   *  site.
+   */
+  $SITE_CONTACT_MAIL = "<%%SITE_CONTACT_MAIL%%>";
+  $SITE_CONTACT_NAME = "<%%SITE_CONTACT_NAME%%>";
 
 
   // Shall we be in debug-mode? Answer "yes" or "no".
@@ -58,6 +65,15 @@
 
 
   /* Database: */
+
+  /* Does your database support transactions? 
+   * PostgreSQL does, 
+   * MySQL does for table types InnoDB and BDB
+   * valid values are true and false;
+   */
+  $TRANSACTIONAL = true;
+
+  /* Connections parameters */
   $DB_DSN      = array('phptype'  => "<%%DB_TYPE%%>",
                        'dbsyntax' => false,
                        'protocol' => false,
