@@ -1,4 +1,4 @@
-.\" $Id: mmimport.1.raw,v 1.5 2001/02/05 01:08:47 michael Exp $
+.\" $Id: mmimport.1.raw,v 1.6 2001/03/11 14:56:35 michael Exp $
 .\" Koch-Suite Reference
 .\" See File LICENSE in the top level source-directory for the license
 .\" of this document.
@@ -39,8 +39,7 @@ Output goes to
 .\" The next request is for sections 2 and 3 error and signal handling only.
 .\" .Sh ERRORS
 .Sh SEE ALSO
-.Xr mmexport 1
-.Xr rezept2latex 1
+.Xr rezept 1
 .Xr rk2mm 1
 .\" .Xr foobar 1
 .\" .Sh STANDARDS

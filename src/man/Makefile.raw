@@ -1,7 +1,7 @@
-# $Id: Makefile.raw,v 1.6 2001/02/16 09:48:37 michael Exp $
+# $Id: Makefile.raw,v 1.7 2001/03/11 14:56:35 michael Exp $
 # Space-separated list of all "raw" php-files.
 
-MAN1=	mmexport.1 mmimport.1 rezept2latex.1 rk2mm.1
+MAN1=	mmimport.1 rezept.1 rk2mm.1
 MAN=	${MAN1}
 
 CONF_FILE=	../config.sed
