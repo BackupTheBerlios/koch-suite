@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.14 2001/12/31 11:53:22 lestinsky Exp $
+  /* $Id: print.raw,v 1.15 2001/12/31 15:56:36 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    * (c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -40,6 +40,9 @@
   auth(READ);
 
 
+  session_register("searchresult");
+
+
   function latex_file ($text) {
     $filename = tempnam($GLOBALS["TMPDIR"], "KOCHSUITE");
     $fp = fopen("$filename.ltx", "w");
@@ -63,7 +66,7 @@
       <meta http-equiv="Content-Style-Type" content="text/css">
 
       <title>Koch-Suite</title>
-      <!-- $Id: print.raw,v 1.14 2001/12/31 11:53:22 lestinsky Exp $ -->
+      <!-- $Id: print.raw,v 1.15 2001/12/31 15:56:36 lestinsky Exp $ -->
     </head>
     <body>
     <h1>Error</h1>
@@ -79,7 +82,7 @@
   chdir ("/tmp");
   umask (0022);
 
-  $mid     = $HTTP_GET_VARS["mid"];
+  if (isset($_GET["mid"])) $mid = $_GET["mid"];
 
   $format = printable_format($PRINTABLE_FORMAT);
 
@@ -96,7 +99,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
 
   <title>Koch-Suite</title>
-  <!-- $Id: print.raw,v 1.14 2001/12/31 11:53:22 lestinsky Exp $ -->
+  <!-- $Id: print.raw,v 1.15 2001/12/31 15:56:36 lestinsky Exp $ -->
 </head>
 
 <body>

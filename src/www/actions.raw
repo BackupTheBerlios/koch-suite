@@ -16,8 +16,42 @@
     echo "[<a class=\"small\" href=\"einfuegen.php?mid=$mid\">" . $Lang['Recipe']['Edit'] . "</a>]\n";
     echo "[<a class=\"small\" href=\"delete.php?mid=$mid\">" . $Lang['Recipe']['Delete'] . "</a>]\n";
   ?>
+
   </div>
   </td>
 </tr>
+<?php 
+  if (isset($_SESSION["searchresult"]) and isset($result_id)) {
+    if (($total = count($_SESSION["searchresult"])) > 1) { 
+      $prev = $result_id - 1;
+      $next = $result_id + 1;
+?>
+<tr>
+  <td>
+    <div class="small">
+    <?php
+      if ($prev >= 0)
+        echo "<a href=\"".$_SERVER["PHP_SELF"]."?result_id=".$prev."\">" .
+             '<img src="pics/left.gif" border="0" width="16" height="16" alt="" align="middle">' .
+             $Lang['Previous'] . "</a>\n";
+    ?>
+    </div>
+  </td>
+  <td style="text-align:right;">
+    <div class="small">
+    <?php
+      if ($next <= $total - 1)
+        echo "<a href=\"".$_SERVER["PHP_SELF"]."?result_id=".$next."\">" .
+             $Lang['Next'] . 
+             '<img src="pics/right.gif" border="0" width="16" height="16" alt="" align="middle">' .
+             "</a>\n";
+    ?>
+    </div>
+  </td>
+</tr>
+<?php
+    }
+  }
+?>
 </table>
 <?php } ?>

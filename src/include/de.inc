@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.24 2001/12/24 14:10:25 lestinsky Exp $
+   * $Id: de.inc,v 1.25 2001/12/31 15:56:36 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -31,6 +31,9 @@
   $Lang['PrintVers']		= "Druckversion";
   $Lang['Close']		= "Schlie&szlig;en";
   $Lang['Edit']                 = "Bearbeiten";
+  $Lang['Next']                 = "N&auml;chstes";
+  $Lang['Previous']             = "Vorheriges";
+
 
   $Lang['Mainmenu']['Title']		= "Hauptmen&uuml;";
   $Lang['Mainmenu']['PlsChoose']	= "Bitte W&auml;hlen Sie im Hauptmen&uuml;";

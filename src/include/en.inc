@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.27 2001/12/24 14:10:25 lestinsky Exp $
+   * $Id: en.inc,v 1.28 2001/12/31 15:56:36 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -32,6 +32,8 @@
   $Lang['PrintVers']		= "Printable view";
   $Lang['Close']		= "Close";
   $Lang['Edit']                 = "Edit";
+  $Lang['Next']			= "Next";
+  $Lang['Previous']		= "Previous";
 
   $Lang['Mainmenu']['Title']		= "Mainmenu";
   $Lang['Mainmenu']['PlsChoose']	= "Please choose from the mainmenu";
