@@ -1,3 +1,22 @@
+2005-02-10  Michael Lestinsky  <michael@lestinsky.de>
+
+  * include/de.inc 1.55:
+  $Lang['TypeMealMaster'] and $Lang['TypeRezkonv'] for
+  i18n from www/actions.raw
+
+  * include/output.raw 1.58:
+  Don't use htmlentities() for variable values from the -array.
+
+  * include/en.inc 1.60: Fix typo
+
+  * include/fr.inc 1.2: Fixup of french translation.
+  Submitted by: Philippe Bégou <pbegou@tele2.fr>
+
+  * www/actions.raw 1.13: Use the $Lang-array here, too.
+
+  * www/search.raw 1.42:
+  FormReset makes more sense than "Delete", here. Suggested by Philippe Bégou <pbegou@tele2.fr>
+
 2005-02-05  Michael Bussmann  <bus@mb-net.net>
 
   * commands/init_db.raw 1.12:
