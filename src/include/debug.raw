@@ -30,7 +30,7 @@
   /**
    * Some debugging functions
    *
-   * $Id: debug.raw,v 1.5 2001/07/01 20:01:39 michael Exp $
+   * $Id: debug.raw,v 1.6 2001/07/01 20:48:55 michael Exp $
    *
    * @package Lib
    * @modulegroup Debug
@@ -38,6 +38,8 @@
    * @copyright Michael Lestinsky <michael@lestinsky.de>
    * @author Michael Lestinsky <michael@lestinsky.de>
    */
+
+  require_once "<%%PHP_LIBS%%>/defines.inc";
 
   /**
    * Write Debugging-Output.
