@@ -1,4 +1,8 @@
-### $Id: changelog,v 1.26 2001/04/17 11:10:02 michael Exp $
+### $Id: changelog,v 1.27 2001/04/23 09:24:49 michael Exp $
+
+2001-04-23: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Ein Fehler beim Import von MM 8.06-Rezepten ist aufgetaucht. Fixed.
+	0.4.1
 
 2001-04-17: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Ok, Betatesting ist abgeschlossen. -> 0.4
