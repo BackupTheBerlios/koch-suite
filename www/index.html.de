@@ -22,10 +22,9 @@
 <p>
 Die <i>Koch-Suite</i> ist eine <i>PHP</i>-basierte 
 <i>Rezeptverwaltung</i> f&uuml;r Unix-artige Betriebssysteme. Als
-Datenbank-Backend wird bis 0.4.2 MySQL verwendet. Seit 0.5 steht
-alternativ auch PostgreSQL zur Auswahl.
+Datenbank-Backend wird MySQL oder PostgreSQL verwendet. 
 
-Sie steht unter einer BSD-artigen Lizenz (3-clause) und ist daher
+Das Projekt steht unter einer BSD-artigen Lizenz (3-clause) und ist daher
 <a href="http://www.opensource.org">Opensource</a>.
 
 Getestet und unterst&uuml;tzt sind derzeit die Betriebssysteme
@@ -167,7 +166,7 @@ eintragen oder austragen.
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.de,v 1.5 2002/08/16 10:48:46 lestinsky Exp $
+$Id: index.html.de,v 1.6 2002/08/19 10:41:38 lestinsky Exp $
 </address>
 </body>
 </html>
