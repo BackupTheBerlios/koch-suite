@@ -72,7 +72,6 @@
           $passwd = mk_rndstring (8);
           $passwd_crypted = mk_crypted_pw ($passwd);
 
-          // mail out the access-data to the user.
           $mailmsg = "Hello " . $_POST['realname'] . "\n\n".
                      "Your Koch-Suite account has been created.\n".
                      "You may access your account with the following data:\n\n".
@@ -85,8 +84,17 @@
                      "fast as possible.\n\n".
                      "Your Koch-Suite administrator\n" . $USER_S['realname'];
 
-          mail($_POST['email'], 'Your Koch-Suite Account', $mailmsg,
-               "From: " . $USER_S['realname'] . " <" . $USER_S['email'] . ">" );
+          if ($GLOBALS['MAIL_NOTIFY']) {
+            // mail out the access-data to the user.
+            mail($_POST['email'], 'Your Koch-Suite Account', $mailmsg,
+                 "From: " . $USER_S['realname'] . 
+                             " <" . $USER_S['email'] . ">" );
+          } else {
+            $msg = "<pre>\n".
+                   "Please send the newly created user the following text:\n\n".
+                   $mailmsg.
+                   "</pre>\n";
+          }
 
           // write the entry into the database.
           $req = "insert into usertable values ( ".

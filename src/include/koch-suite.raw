@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: koch-suite.raw,v 1.21 2003/01/20 20:25:12 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.22 2003/02/09 18:26:37 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -17,7 +17,12 @@
 				// WARNING, enabling this could generate heavy
 				// load for your webserver and database.
 
-  $ENABLE_PROFILING  = true;    // Enable profiling.
+  $ENABLE_PROFILING  = <%%ENABLE_PROFILING%%>;
+				// Enable profiling.
+
+  $MAIL_NOTIFY = <%%MAIL_NOTIFY%%>;
+				// Send mails for notifications, e.g. when
+				// creating new users.
 
   /* Site informations:
    *  Name and EMail address of the responsible person who is running this
