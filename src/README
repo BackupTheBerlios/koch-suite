@@ -1,9 +1,9 @@
-### $Id: README,v 1.42 2001/12/31 11:51:52 lestinsky Exp $
+### $Id: README,v 1.43 2002/04/02 21:45:32 lestinsky Exp $
 
 Koch-Suite
 ==========
 
-Michael Lestinsky <michael@lestinsky.de>, October 2001
+Michael Lestinsky <michael@lestinsky.de>, April 2002
 Please see the file `LICENSE' for the license terms, under which you may
 use, modify and distribute this package or single parts of it.
 
@@ -37,9 +37,9 @@ The Koch-Suite was tested on:
 
 In any case you will need PHP4 with support for the used DBMS (please see
 Documentation/PHP.txt for details).
-These scripts were written and tested with PHP-4.0.5 and later, versions
-older than PHP-4.0.4 definitely won't work. For the console tools you have
-to install the standalone (a.k.a. cgi-version).
+These scripts were written and tested with PHP-4.1.1 and later, versions
+older than PHP-4.1.0 definitely won't work. For the console tools you have
+to install the standalone (a.k.a. cgi) version.
 
 The LaTeX export uses the `floatflt' package, which may be found on your
 nearest CTAN archive. To create Postscript you need dvips (which is part
