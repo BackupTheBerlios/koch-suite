@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.35 2001/08/16 19:54:10 lestinsky Exp $
+   * $Id: output.raw,v 1.36 2001/09/23 11:15:38 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -142,11 +142,9 @@
 
   /**
    * Generate LaTeX-Footer
-   *
    * @return string
    */
   function latex_footer () {
-    /* write Latex-Footers */
     $str = "\\end{document}\n";
     return $str;
   }
@@ -154,7 +152,6 @@
 
   /**
    * Print LaTeX Headers
-   *
    * @return string
    */
   function latex_header () {
