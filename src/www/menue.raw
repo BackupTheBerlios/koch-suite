@@ -1,4 +1,4 @@
-<!-- $Id: menue.raw,v 1.13 2001/05/30 20:12:10 michael Exp $ -->
+<!-- $Id: menue.raw,v 1.14 2001/08/31 17:34:41 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
 <table border=0 cellspacing=0 cellpadding=0>
   <tr style="background-color:#9090b0;" align="top">
@@ -9,10 +9,12 @@
         </tr>
         <tr>
           <td style="background-color:#e9e9f0; font-size:small;" class="menu">
+            <div style="white-space:nowrap">
             <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="search.php"><? echo $Lang['Search']['Search']; ?></a><br>
             <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="einfuegen.php"><? echo $Lang['Insert']; ?></a><br>
             <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="help.php"><? echo $Lang['Help']; ?></a><br>
             <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="infos.php"><? echo $Lang['Info']; ?></a><br>
+            </div>
           </td>
         </tr>
       </table>
