@@ -1,3 +1,47 @@
+2003-01-10  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/INSTALL 1.17, src/LICENSE 1.4, src/configure 1.26, src/install-sh 1.3, src/man/man1/mmimport.1.raw 1.14, src/man/man1/rezept.1.raw 1.10:
+  Bump Copyright
+
+  * src/README 1.57: Bump Copyright
+  One item has gone from the todo list
+
+  * src/www/search.raw 1.34:
+  Display average rating of recipes. This needs some profiling, as it seems.
+
+  * src/www/rezept.raw 1.36:
+  Enable rating of recipes
+
+  * src/commands/init_db2.raw 1.2: +rating
+
+  * src/commands/init_db.raw 1.3:
+  Dont set the table type for mysql-tables, but rather use the default, new table: rating
+
+  * src/commands/mmimport.raw 1.32, src/commands/rezept.raw 1.24:
+  Bump Copyright
+
+  * src/include/de.inc 1.48, src/include/en.inc 1.53, src/include/functions.raw 1.88, src/include/output.raw 1.49:
+  sucks_or_rocks-O-meter
+
+  * src/include/auth.raw 1.21, src/include/debug.raw 1.11, src/include/lang.raw 1.20, src/include/parser.raw 1.6, src/include/pwcrypt.raw 1.4, src/www/admin.raw 1.12, src/www/delete.raw 1.24, src/www/edit_alias.raw 1.19, src/www/edit_cat.raw 1.3, src/www/einfuegen.raw 1.49, src/www/help.raw 1.22, src/www/index.raw 1.31, src/www/infos.raw 1.40, src/www/kategorien.raw 1.26, src/www/login.raw 1.7, src/www/logout.raw 1.10, src/www/mmprint.raw 1.23, src/www/pastebox.raw 1.8, src/www/print.raw 1.29, src/www/settings.raw 1.11, src/www/theme_default.raw 1.2, src/www/theme_winter.raw 1.2, src/www/units.raw 1.17:
+  Bump Copyright
+
+  * src/www/pics/star.png 1.1, src/www/pics/dont.png 1.1:
+  more pix
+
+  * src/www/pics/Makefile.raw 1.11: Cleanup
+
+  * src/include/koch-suite.raw 1.20, src/include/setup.raw 1.6:
+  Allow setting the theme from koch-suite.inc
+
+  * src/include/auth.raw 1.20:  is global, too
+
+  * src/include/setup.raw 1.5, src/www/Makefile.raw 1.35, src/www/header.raw 1.3, src/www/kategorien.raw 1.25, src/www/menue.raw 1.23, src/www/pics/Makefile.raw 1.10, src/www/pics/bg_winter.png 1.1, src/www/pics/title_winter.gif 1.1, src/www/styles.css 1.12, src/www/styles_winter.css 1.1, src/www/theme_default.raw 1.1, src/www/theme_winter.raw 1.1:
+  From the things-you've-been-waiting-for-all-your-life-dept.:
+  Themes. Right now there is the default theme and a new 'winter' theme.
+
+  * src/INSTALL 1.16: Update text
+
 2002-12-27  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/README 1.56:
