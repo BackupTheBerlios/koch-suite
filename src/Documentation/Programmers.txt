@@ -1,41 +1,128 @@
-### $Id: Programmers.txt,v 1.2 2000/12/15 00:42:12 michael Exp $
+### $Id: Programmers.txt,v 1.3 2001/06/21 14:05:19 michael Exp $
 
 Programmierer-Dokumentation
 ===========================
 
+
 0. Inhalt
 ---------
 
-  1. Datenstruktur
-  2. "config"
+  1. Style
+     1.1 Allgemein
+     1.2 Funktionsdefinitionen
+     1.3 HTML
+  2. Datenstruktur
+  3. "config"
      2.1. Ersetzungen
 
-1. Datenstruktur
+
+
+1. Style
+--------
+
+1.1 Allgemein
+
+  * Verwende als Einrueckung keine <Tab>s sondern 2 <Space> fuer jeden
+    Einrueckungs-Level. 
+
+  * Verwende K&R-Style Klammern. Also lieber:
+
+       function foobar () {
+         // Something
+       }
+
+    als 
+
+      function foobar() 
+      {
+        // Something
+      }
+
+  * Nutze die Macht des Zeilenumbruchs wenn Zeilen sehr lang werden.
+    Funktionsparameter sollen dann untereinander in der gleichen Spalte
+    einsortiert werden.
+
+  * Verwende C-Style-Kommentare. C++-Style ist auch Ok.
+    Ok:
+
+      /* Comment */
+
+      /*
+       * Important comment
+       */
+
+      // Another comment
+
+    Unerwuenscht:
+
+      # Bad comment.
+
+
+1.2 Funktionsdefinitionen
+
+Sortiere neue Funktionen in alphabetischer Reihenfolge ein.
+
+Kommentiere deine Funtionen. Was tut die Funktion, welches sind Uebergabe
+und Rueckgabeparameter. Grob sollte dies in etwa so aussehen:
+
+  function foobar ($var1, $var2, $var3 = 'Default') {
+    /* This function does ...
+     * Parameters are
+     *   $var1:   The first Value
+     *   $var2:   The amount of Money to transfer to the programmer
+     *   $var3:   The Bankname
+     * Return-value:
+     *   $return = 42
+     */
+
+     // Do something ...
+  }
+
+
+1.3 HTML
+
+  * Die resultierende HTML-Seite muss gueltig sein. Der HTML-Code muss
+    fehlerfrei im Sinne der DTD sein (http://validator.w3.org).
+
+  * HTML-Standard: 4.0
+
+
+
+2. Datenstruktur
 ----------------
 
-Der zentrale Datentyp, der für die Übergabe von kompletten Rezepten
-verwendet wird, sieht folgendermaßen aus:
+Der zentrale Datentyp, in dem die vollstaendigen Rezepte intern gespeichert
+und uebergeben werden, sieht folgendermaßen aus:
 
-$rezept
-   |----> "title" [*]
-   |----> "yield"
-   |----> "category"
-   |         `----> array
-   |----> "zutaten"
-   |         `----> array
-   |                  |----> "title" [**]
-   |                  `----> "ingredients"
-   |                            `----> array
-   |                                     |----> "quant"
-   |                                     |----> "unit"
-   |                                     `----> "ingred"
-   `----> "anweisung"
+  $rezept
+     |----> "title" [*]
+     |----> "yield"
+     |----> "category"
+     |         `----> Array
+     |----> "zutaten"
+     |         `----> array
+     |                  |----> "title" [**]
+     |                  `----> "ingredients"
+     |                            `----> array
+     |                                     |----> "quant"
+     |                                     |----> "unit"
+     |                                     `----> "ingred"
+     `----> "anweisung"
+
+In Zukunft werden noch dazukommen:
+
+     `----> "meta"
+               |----> "erfasser"
+               |----> "datum"
+               `----> "quelle"
 
 [*]:  der Titel des kompletten Rezeptes/Menues
 [**]: der Titel des jeweiligen Unterabschnitts des Rezepts, also etwa 
       "Für die Sauce" o.ae.
 
-2. "config"
+
+
+3. "config"
 -----------
 
 In der Datei "config" werden Substitutionen definiert, die auf die Quellen
@@ -45,13 +132,21 @@ angewendet werden. Dadurch werden z.B. die korrekten Pfade in den
 Das 'configure'-Skript erzeugt aus "config" ein "config.sed", dass direkt
 an sed verfüttert werden kann.
 
-2.1. Ersetzungen
-- - - - - - - - -
 
-Soll ein Wert in einer Quell-Datei ersetzt werden, dann wird dieser in der
-Form "<%%VARIABLE%%>" erwartet. Die "Kompilation" mit 'sed' ersetzt dies
-dann zu "WERT", wobei in "./config" dann definiert sein muss:
+3.1. Ersetzungen
 
-  VARIABLE = WERT
+Soll ein Wert in einer Quelldatei Konfigurationsabhaengig sein und durch
+'sed' ersetzt werden, dann verwendet man in der Quelldatei als
+Platzhalter:
 
+   <%%VARIABLE%%>
+
+Und in der 'config'-Datei
+
+   VARIABLE = Wert
+
+Durch 'make' wird diese Ersetzung ausgefuehrt.
+
+
+-- 
 (c) 2000 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
