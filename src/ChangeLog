@@ -1,3 +1,10 @@
+2002-05-14  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/README 1.47: Update todo list
+
+  * src/man/man1/mmimport.1.raw 1.10:
+  document changed category handling
+
 2002-05-12  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/accountlocked.raw 1.1, src/include/auth.raw 1.12, src/include/de.inc 1.31, src/include/en.inc 1.35:
