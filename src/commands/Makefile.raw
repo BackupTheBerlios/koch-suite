@@ -34,7 +34,7 @@ distclean:
 install:
 	( [ -d "<%%SCRIPT_PREFIX%%>" ] || \
 	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%SCRIPT_PREFIX%%> )
-	@( for i in "${PHP_FILES_UNCONF}" ; do \
+	@( for i in ${PHP_FILES_UNCONF} ; do \
 	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%SCRIPT_PREFIX%%>; \
 	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%SCRIPT_PREFIX%%>" ; \
 	done )
