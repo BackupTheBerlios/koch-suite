@@ -1,23 +1,11 @@
 <?php
-  /* $Id: loginform.raw,v 1.7 2002/09/03 19:36:27 lestinsky Exp $ */
+  /* $Id: loginform.raw,v 1.8 2002/09/29 20:34:31 lestinsky Exp $ */
   if (!isset($goto)) $goto = $_SERVER["REQUEST_URI"];
+
+  $page_title = $Lang['Auth']['Login'];
+  include "<%%WEB_PREFIX%%>/header.inc";
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
-
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Koch-Suite</title>
-  <!-- $Id: loginform.raw,v 1.7 2002/09/03 19:36:27 lestinsky Exp $ -->
-</head>
-<body>
-<a name="top"></a>
-<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
-
+<h2><?php echo $Lang['Auth']['Login'] ?></h2>
 <form method="post" action="<?php echo $goto; ?>">
 <table border=0 cellpadding=3 cellspacing=1>
 <tr>
