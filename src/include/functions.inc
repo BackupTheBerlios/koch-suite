@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.inc,v 1.3 2000/10/31 00:17:38 michael Exp $
+   * $Id: functions.inc,v 1.4 2000/11/01 12:54:20 michael Exp $
    */
 
   include "./include/config.inc";
@@ -100,11 +100,13 @@
     $a = array();
 
     while ($line = fgets($fd, 1024)) {
+      $len = strlen($line);
       #if (preg_match("/^\s*$/", $line))
       #  break;
       if (($b = parse_ingredient($line)) != 0) {
         array_push ($a, $b);
       } else {
+        fseek($fd, -$len, SEEK_CUR);
         break;
       }
     }
