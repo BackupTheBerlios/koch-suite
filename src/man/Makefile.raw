@@ -1,4 +1,4 @@
-# $Id: Makefile.raw,v 1.7 2001/03/11 14:56:35 michael Exp $
+# $Id: Makefile.raw,v 1.8 2001/05/08 19:51:48 michael Exp $
 # Space-separated list of all "raw" php-files.
 
 MAN1=	mmimport.1 rezept.1 rk2mm.1
@@ -22,11 +22,11 @@ clean:
 distclean:
 
 install-man1:
-	@( test -d "<%%MAN_PREFIX%%>/man1" || \
-	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%MAN_PREFIX%%>/man1 )
+	@( test -d "${DESTDIR}/<%%MAN_PREFIX%%>/man1" || \
+	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%MAN_PREFIX%%>/man1 )
 	@(cd man1; for i in ${MAN1}; do \
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%MAN_PREFIX%%>/man1;\
-	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%MAN_PREFIX%%>/man1";\
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i ${DESTDIR}/<%%MAN_PREFIX%%>/man1;\
+	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i ${DESTDIR}/<%%MAN_PREFIX%%>/man1";\
 	done)
 
 install: man install-man1

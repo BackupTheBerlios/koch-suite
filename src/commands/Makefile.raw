@@ -21,7 +21,7 @@ subdir:
 	@(for i in ${SUBDIRS} ; do\
 	echo "====> ${THISDIR}/$$i";\
 	cd $$i; \
-	${MAKE} ${TRGT} THISDIR=${THISDIR}/$$i; \
+	${MAKE} ${TRGT} THISDIR=${THISDIR}/$$i DESTDIR=${DESTDIR}; \
 	echo "<==== ${THISDIR}";\
 	done )
 
@@ -32,8 +32,8 @@ clean:
 distclean:
 
 install: build
-	( [ -d "<%%SCRIPT_PREFIX%%>" ] || \
-	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%SCRIPT_PREFIX%%> )
-	install -c -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${PHP_FILES} <%%SCRIPT_PREFIX%%>
+	( [ -d "${DESTDIR}/<%%SCRIPT_PREFIX%%>" ] || \
+	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%SCRIPT_PREFIX%%> )
+	install -c -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${PHP_FILES} ${DESTDIR}/<%%SCRIPT_PREFIX%%>
 
 .PHONY: all subdir clean distclean install

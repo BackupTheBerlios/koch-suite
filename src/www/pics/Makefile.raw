@@ -24,6 +24,6 @@ clean:
 distclean:
 
 install:
-	( [ -d "<%%WEB_PREFIX%%>/pics" ] || \
-	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%WEB_PREFIX%%>/pics )
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${PICS} <%%WEB_PREFIX%%>/pics ; \
+	( [ -d "${DESTDIR}/<%%WEB_PREFIX%%>/pics" ] || \
+	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%WEB_PREFIX%%>/pics )
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${PICS} ${DESTDIR}/<%%WEB_PREFIX%%>/pics ; \

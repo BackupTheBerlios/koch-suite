@@ -20,7 +20,7 @@ subdir:
 	@(for i in ${DIRS}; do \
 	echo "====> ${THISDIR}/$$i";\
 	cd ${THISDIR}/$$i; \
-	${MAKE} THISDIR=${THISDIR}/$${i} ${TRGT};\
+	${MAKE} THISDIR=${THISDIR}/$${i} ${TRGT} DESTDIR=${DESTDIR} ;\
 	cd .. ; \
 	echo "<==== ${THISDIR}/$${i}";\
 	done)
@@ -39,16 +39,16 @@ distclean: clean
 	rm -f config.sed
 
 install-man:
-	@make subdir TRGT=install DIRS="${MAN_SUBDIR}"
+	@make subdir TRGT=install DIRS="${MAN_SUBDIR}" DESTDIR=${DESTDIR}
 
 install-command:
-	@make subdir TRGT=install DIRS="${COMMAND_SUBDIR}"
+	@make subdir TRGT=install DIRS="${COMMAND_SUBDIR}" DESTDIR=${DESTDIR}
 
 install-includes:
-	@make subdir TRGT=install DIRS="${INC_SUBDIR}"
+	@make subdir TRGT=install DIRS="${INC_SUBDIR}" DESTDIR=${DESTDIR}
 
 install-www:
-	@make subdir TRGT=install DIRS="${WWW_SUBDIR}"
+	@make subdir TRGT=install DIRS="${WWW_SUBDIR}" DESTDIR=${DESTDIR}
 
 install: ${CONF_FILE} install-includes install-command install-www install-man
 
