@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.23 2001/02/17 17:02:56 michael Exp $
+   * $Id: functions.raw,v 1.24 2001/02/21 11:35:27 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -47,6 +47,7 @@
     if ($alias = is_unit_alias($str)) {
       return $alias;
     } else {
+      $str = addslashes($str);
       $req = "select ABBREV from EINHEITEN " .
              " where STRCMP(ABBREV, '$str') = 0 " .
              "    or RK_ABBREV = '$str' ".
