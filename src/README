@@ -1,123 +1,120 @@
-### $Id: README,v 1.40 2001/09/23 11:13:35 lestinsky Exp $
+### $Id: README,v 1.41 2001/10/08 10:46:19 lestinsky Exp $
 
 Koch-Suite
 ==========
 
-Michael Lestinsky <michael@lestinsky.de>, Juli 2001
-Die Datei LICENSE enthält die Lizenz, unter der dieses Paket als ganzes
-oder einzelne Dateien hieraus verwendet werden dürfen.
+Michael Lestinsky <michael@lestinsky.de>, October 2001
+Please see the file `LICENSE' for the license terms, under which you may
+use, modify and distribute this package or single parts of it.
 
-Eine detaillierte Installationsanleitung steht in der Datei INSTALL.
-
-
-Was ist das hier ueberhaupt?
-----------------------------
-
-Kurz: Eine Sammlung von Skripten fuer die Rezeptverwaltung. 
-Angefangen von Mealmaster-Importfiltern (http://home1.gte.net/welliver/), 
-über Kommandozeilen-Tools für den Export in diverse Formate bis zu einem
-Web-Interface zur Datenbank.
-
-Das Ziel der Entwicklung ist es ein System zu schaffen, dass der
-Philosophie von Unix gerecht wird. Da durch die verwendete
-Programmiersprache (PHP) der Weg zum Web-Interface nicht mehr weit war,
-existiert auch dieses. Dadurch ist der Zugriff auf eine einheitliche
-Datenbank auch in heterogenen Netzen möglich.
-Webinterface und Console-Tools bilden dabei verschiedene Aspekte einer 
-Entität.
-
-Die Aenderungen gegenueber aelteren Versionen sind im changelog
-dokumentiert.
+The file `INSTALL' contains detailed installation instructions.
 
 
-Voraussetzungen:
-----------------
+What is this?
+-------------
 
-Wer eine Rezept-Ecke auf seinem Webserver betreiben will, der wird einen 
-laufenden http-Daemon (z.B. Apache) benötigen.
+Short: a suite of scripts for recipe managment, starting with import
+filters for recipes in `Meal-Master'-format (http://home1.gte.net/welliver/), 
+as well as some console-tools for exporting into several formats (Plain
+Text, MM, LaTeX,...) and finally a complete webinterface.
 
-Als Plattformen sind getestet:
+The goal of the development is to create a system, which complies to the
+Un*x-philosophy and makes reuse of code i.e. from a shellskript as simple
+as possible. The three main parts, the library, the webinterface and the
+console-tools, are different aspects of the same entity.
+
+
+Requirements:
+-------------
+
+To run the webinterface you'll need a running HTTP-daemon (i.e. Apache,
+http://httpd.apache.org), PHP4 and a DBMS supported by this package.
+
+The Koch-Suite was tested on:
  - Linux/i386
  - OpenBSD/i386
  - FreeBSD/i386
 
-Seit Version 0.5 existiert Support fuer PostgreSQL-Datenbanken.
-Auf alle Fälle ist auch PHP4 mit Support fuer die verwendete Datenbank
-notwendig. 
-Diese Skripten sind unter PHP-4.0.5 geschrieben und getestet worden, 
-PHP-Versionen, aelter als 4.0.4 funktionieren definitiv nicht. 
-Fuer die Console-Tools muss PHP ausserdem als Standalone-Version (alias
-CGI-Version) vorhanden sein.
+In any case you will need PHP4 with support for the used DBMS (please see
+Documentation/PHP.txt for details).
+This scripts where written and tested with PHP-4.0.5 and later, versions
+older than PHP-4.0.4 definitely won't work. For the console-tools you have
+to install the standalone (a.k.a. cgi-version).
 
-Der LaTeX-Export greift auf das Paket 'floatflt' zurück. Bei Bedarf siehe
-bitte im CTAN-Archiv nach. Um PostScript oder PDF-Dateien zu erzeugen wird
-dvips (aus der TeTeX-Distribution) und Ghostscript benötigt.
+The LaTeX-export uses the `floatflt'-package, which may be found on your
+nearest CTAN-archive. To create Postscript you need dvips (which is part
+of the TeTeX-distribution). To create PDF documents, you need Ghostscript.
+The installation will probe for them and will fall back to the best
+possible format if one of those tools is missing. You can manipulate this
+behaviour from ETC_PREFIX/koch-suite.inc after the installation.
 
-Ausserdem ist eine aktuelle Version von PEAR notwendig. Bei PHP-4.0.7 ist
-PEAR hinreichend aktuell, wer ein älteres PHP hat muss mindestens sein 
-PEAR updaten, oder ein aktuelles PEAR an einem Nicht-Standard-Pfad
-installieren und in ./config den Pfad zu diesem aktuellen PEAR anpassen.
+Further you need a (pretty) current PEAR distribution (later than 4.0.6).
+You can update PEAR without updating PHP or use a seperate PEAR installation.
+Adjust the path in the `./config'-file propperly.
 
-Siehe auch Documentation/PHP.txt zu weiteren Details zum Thema PEAR und
-PHP.
-
+More informations about PEAR may be found in `Documentation/PHP.txt'.
 
 Status:
 -------
 
-Inzwischen ist das Projekt in einem durchaus brauchbaren Zustand. Es gibt
-funktionierende Funktionen zum Import, zum Export und für die Suche
-innerhalb der Datenbank. 
+The project is quite usable, though it's not finished. The import, export 
+and search-functions to the database work very well.
 
-Bisher existiert/funktioniert:
- - ein Tool für den Datenbank-Import im Mealmaster- oder REZKONV-Format,
- - Exportfunktionen nach Latex, Plain-Text und Mealmaster-Format, und HTML
- - ein paar Prototyp-Webseiten, die elementare Suchfunktionen in der
-   Datenbank und ein Rezept-Erfassungsinterface implementieren.
- - Multilingualization. Liefere die Webseite in der Sprache aus, in der
-   sie angefordert werden (Browser-Vorgabe "Accept-Language").
-   Sprachmodule lassen sich sehr einfach erstellen.
- - eine eigene Userverwaltung
+At the moment we have:
+ - a tool for database-import of recipes in Meal-Master- or RezKonv-format,
+ - export-functions to LaTeX, plain text, Meal-Master-format and HTML,
+ - a few prototype-webpages, to implement some fundamental searchfunctions
+   to the database and for recipe recording.
+ - Multilingualization. Show all pages in the language requested by the
+   client. This affects Browsers (`Accept-Language'-header in
+   HTTP-requests) and the console-tools (`LC_MESSAGE'- and `LANG'-environment
+   variables, LC_MESSAGE has the higher priority)
+   The language-modules may be easily created and the interfaces can
+   adapted to other languages very simple.
+ - a user-managment
+
+You can see the changes to older versions in the file `ChangeLog'.
 
 
 Todo/'Roadmap':
 ---------------
 
- - Dokumentation schreiben,
- - vorhandene Rezepte kommentieren,
- - Bequemere Zugriffskontroll-Steuerung
- - RezKonv-Exportfilter.
+ - write documentation,
+ - create the possibility to annotate existing recipes,
+ - a more comfortable access-control,
+ - RezKonv export.
 
 
-Bekannte Bugs:
---------------
+Known Bugs:
+-----------
 
- - Original Meal-Master hat eine Beschränkung auf 100 Zeilen pro Rezept.
-   Dieses Limit wird von der Koch-Suite ignoriert. Beim Ueberschreiten
-   erfolgt keine Warnung.
- - Deutsch-Englischer Mischmasch in Kommentaren,...
- - Import von Rezepten mit einer alternativen Darstellung der
-   Rezept-Header ("      H    Für die Sauce"). Header werden als solche
-   nicht erkannt und landen daher im Anweisungs-Text. Allerdings sind
-   diese Header mittlerweile sehr selten.
+ - Original Meal-Master has a limit of 100 lines per recipe.
+   The Koch-Suite ignores this limit. You will receive no warning, when you
+   reach this limit.
+ - German-English Mischmasch in comments,...
+ - Import of recipes with the alternative method to declare
+   recipe-headers. (E.g. ("      H    For the sauce"). These headers won't
+   be recognised as such and are treated as part of the installation
+   instructions therefore. But this kind of headers seems not to be used
+   any longer.
 
 
 Feedback:
 ---------
 
-Bitte schickt mir Feedback. Am besten per EMail an meine oben angegebene
-Adresse. Ich nehme gerne auch Bugreports, Patches oder Wünsche für Features 
-an.
+Please send us feedback. Bugreports, patches or feature-requests are
+welcome. Either send your comments to my email address (as written above)
+or join us on our mailinglist. See http://koch-suite.berlios.de for
+details.
 
-Wenn dir mein Code nicht gefällt: Ich habe nie behauptet ich hätte Talent.
-;-)
+If you don't like my code: I never said that I've got talent. ;-)
 
 
-Danke an:
----------
+Thanks to:
+----------
 
-o  Michael Bussmann fuer die PEARifizierung der Datenbank-Abfragen 
-   und den PostgreSQL-Support
-o  Leo Caspari für Feedback, Fehler-Korrekturen und Erweiterungen
-o  Ulli Fetzer und Ilka Spiess für ihre Kommentare und Support beim 
-   Erstellen der Meal-Master- und REZKONV-Filter.
+o  Michael Bussmann for the PEARification of the database-requests 
+   and the PostgreSQL-support,
+o  Leo Caspari for feedback, error-corrections and extensions,
+o  Ulli Fetzer and Ilka Spiess their comments and support while creating
+   the Meal-Master- and RezKonv-filters.
