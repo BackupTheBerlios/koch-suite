@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.21 2001/02/07 19:08:13 michael Exp $
+   * $Id: functions.raw,v 1.22 2001/02/08 01:39:02 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -10,6 +10,13 @@
   require "<%%PHP_LIBS%%>/output.inc";
   /* --- Functions --- */
 
+  function get_line ($fh) {
+    if ($line = fgets($fh, 1024)) {
+      return $line;
+    } else {
+      return false;
+    }
+  }
 
   function delete_menue ($mid) {
     /* delete a recipe from the database */
@@ -66,7 +73,7 @@
     $rezept_ende    = "/^(-{5}|M{5})[@-]*$/";
     $br_lock        = 1;
 
-    while ($line = fgets($fd, 1024)) {
+    while ($line = get_line($fd)) {
       if (preg_match($rezept_ende, $line)) {
         /* Found the end of the recipe */
         break;
@@ -98,7 +105,7 @@
         } else if (preg_match($zutaten_header, $line, $foo)) {
           preg_match("/^(.*)[-@=]*$/U", $foo[2], $bar);
           $j = array("title"       => $bar[1], 
-                     "ingredients" => getingr($fd));
+                     "ingredients" => getingr($fd, "MM"));
           array_push ($zutaten, $j);
           $seen_ingr = 1;
 
@@ -109,7 +116,8 @@
           /* lets look for the ingredients */ 
           $len = strlen($line);
           fseek($fd, -$len, SEEK_CUR);
-          $j = array("title" => "Zutaten:", "ingredients" => getingr($fd));
+          $j = array("title" => "Zutaten:", 
+                     "ingredients" => getingr($fd, "MM"));
           array_push ($zutaten, $j);
           $seen_ingr = 1;
 
@@ -155,7 +163,7 @@
     $rk_zutatenheader = "/^={6,}.*=*$/";
     $rk_ende = "/^={5}$/";
 
-    while ($line = fgets($fh, 1024)) {
+    while ($line = get_line($fh)) {
       if (preg_match($rk_ende, $line)) {
         // Ende. Breche aus der while-Schleife aus.
         break;
@@ -190,7 +198,7 @@
           $replace = array("", "");
           array_push ( $zutaten, 
              array("title"       => preg_replace($search, $replace, $match[0]),
-                   "ingredients" => get_rk_ingr($fh)));
+                   "ingredients" => getingr($fh, "RK")));
           $seen_ingr = 1;
         } else if ($seen_title == 1 and 
                    $seen_kat   == 1 and 
@@ -202,7 +210,7 @@
           fseek($fh, -$len, SEEK_CUR);
           array_push($zutaten,
                      array("title"       => "Zutaten:",
-                           "ingredients" => get_rk_ingr($fh)));
+                           "ingredients" => getingr($fh, "RK")));
           $seen_ingr = 1;
 
         } else {
@@ -243,82 +251,69 @@
   }
 
 
-  function parse_ingredient($line) {
-    /* parse each line */
-    if (ereg("([ 0-9\.\/]{7}) (..) (.*)", $line, $foo)) {
-      $quant = preg_replace("/\s+/", "+", trim($foo[1]));
-      if ($quant != '') {
-        $quant = eval("return $quant;");
-      } 
+  function parse_ingredient($line, $flavor="MM") {
+    if ($flavor == "MM") {
+      /* Lese eine MM-Rezeptzeile */
+      if (ereg("([ 0-9\.\/]{7}) (..) (.*)", $line, $foo)) {
+        $quant = trim($foo[1]);
+        $unit = trim($foo[2]);
+        $text = trim($foo[3]);
+      }
+    } elseif ($flavor == "RK") {
+      /* Lese eine RK-Rezept-Zeile */
 
-      # if (is_unit($foo[2])) {
-        return array("quant"  => $quant, 
-                     "unit"   => trim($foo[2]), 
-                     "ingred" => trim($foo[3]));
-      # } else return 0;
-    } else return 0;
-  }
+      if (ereg("([ 0-9\.\/]{7}) (.{8}) (.*)", $line, $foo)) {
+        $quant = trim($foo[1]);
+        $rawunit = trim($foo[2]);
+        $text = trim($foo[3]);
 
-  function parse_rk_ingredient($line) {
-    if (ereg("([ 0-9\.\/]{7}) (.{8}) (.*)", $line, $foo)) {
-      $quant = preg_replace("/\s+/", "+", trim($foo[1]));
+        $req = "select ABBREV from EINHEITEN " .
+               " where RK_ABBREV = '$rawunit'" .
+               "   and MMUSE = 'J' ";
+        $res = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+        if ($res != 0 and $mmunit = mysql_fetch_row($res)) {
+          $unit = $mmunit[0];
+        } else {
+          $unit = '';
+          $text = $rawunit . " " . $text;
+        }
+      }
+    }
+
+    if (isset($quant) and isset($unit) and isset($text)) {
+      /* Ok, wir haben eine gueltige Zeile gelesen. */
       if ($quant != '') {
+        /* Rechne Brueche in dezimalzahlen um. */
+        $quant = preg_replace("/\s+/", "+", $quant);
         $quant = eval("return $quant;");
       }
-
-      $rawunit = trim($foo[2]);
-      $text = trim($foo[3]);
-
-      $req = "select ABBREV from EINHEITEN " .
-             " where RK_ABBREV = '$rawunit'" .
-             "   and MMUSE = 'J' ";
-      $res = mysql_db_query($GLOBALS["DB_NAME"], $req);
-
-      if ($res != 0 and $mmunit = mysql_fetch_row($res)) {
-        $unit = $mmunit[0];
-      } else {
-        $unit = '';
-        $text = $foo[2] . " " . $text;
-      }
-      return array("quant"  => $quant, // trim($foo[1]),
+      return array("quant"  => $quant,
                    "unit"   => $unit,
                    "ingred" => $text);
-    } else return 0;
+    } else {
+      /* Sorry, keine gültige Zeile */
+      return false;
+    }
   }
 
-  function getingr ($fd) {
+
+  function getingr ($fd, $flavor="MM") {
     /* read the ingredients 
      * return a 2-dim Array $a[count][ingr-spec]
      * where count is a plain integer-counter, specifying more or less
      * the linenumber of the ingredient and ingr-spec is one of "quant",
      * "unit" or "ingred".
      */
+
     $a = array();
 
-    while ($line = fgets($fd, 1024)) {
+    while ($line = get_line($fd)) {
       $len = strlen($line);
       #if (preg_match("/^\s*$/", $line))
       #  break;
-      if (($b = parse_ingredient($line)) != 0) {
+      if ($b = parse_ingredient($line, $flavor)) {
         array_push ($a, $b);
-      } else {
-        fseek($fd, -$len, SEEK_CUR);
-        break;
-      }
-    }
-    return $a;
-  }
-
-
-  function get_rk_ingr ($fd) {
-    /* same as getingr(), except it's for RK-Recipes. */
-
-    $a = array();
-
-    while ($line = fgets($fd, 1024)) {
-      $len = strlen($line);
-      if (($b = parse_rk_ingredient($line)) != 0) {
-        array_push($a, $b);
       } else {
         fseek($fd, -$len, SEEK_CUR);
         break;
