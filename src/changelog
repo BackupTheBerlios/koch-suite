@@ -1,4 +1,7 @@
-### $Id: changelog,v 1.43 2001/09/06 15:11:39 lestinsky Exp $
+### $Id: changelog,v 1.44 2001/09/09 14:24:11 lestinsky Exp $
+
+2001-09-07: Michael Lestinsky <michael@lestinsky.de>
+	Show the total number of hits in search-results.
 
 2001-08-31: Michael Lestinsky <michael@lestinsky.de>
 	Added Authentication-Module.
