@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.32 2001/07/10 23:03:20 michael Exp $
+   * $Id: output.raw,v 1.33 2001/08/11 22:36:11 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -201,7 +201,9 @@
                                "\"" => "\\dq ", 
                                "^"  => "\\textasciicircum ",
                                "|"  => "\\textbar ",
-                               "~"  => "\\textasciitilde "
+                               "~"  => "\\textasciitilde ",
+                               "<"  => "\\textless ",
+                               ">"  => "\\textgreater "
                             )
                 );
 
@@ -235,8 +237,13 @@
     $str .= "\\begin{tabular}{rl|l}\n";
     foreach($rezept["zutaten"] as $z) {
       $str .= "\\hline\n";
-      $str .= "\\multicolumn{3}{l}{\\textbf{" . 
-              preg_replace("/:/", "", ltx_string($z["title"])) . "}}\\\\\n";
+      if (! empty($z["title"])) {
+        $str .= "\\multicolumn{3}{l}{\\textbf{" . 
+                preg_replace("/:/", "", ltx_string($z["title"])) . "}}\\\\\n";
+      } else {
+        $str .= "\\multicolumn{3}{l}{\\textbf{" .
+                ltx_string($Lang["Ingred"]) . "}}\\\\\n";
+      }
       $str .= "\\hline\n";
 
       foreach ($z["ingredients"] as $i) {
