@@ -39,7 +39,8 @@
   require "<%%ETC_PREFIX%%>/koch-suite.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
-  require "<%%PHP_LIBS%%>/auth.inc";
+  require "<%%PHP_LIBS%%>/nocache.inc";
+  include "<%%PHP_LIBS%%>/auth.inc";
 
   auth(ALL);
 ?>
@@ -53,7 +54,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: index.raw,v 1.20 2001/10/03 21:10:31 lestinsky Exp $ -->
+  <!-- $Id: index.raw,v 1.21 2001/10/15 11:47:28 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -65,7 +66,7 @@
   <td valign="top">
     <? include "./menue.inc"; ?>
   </td>
-  <td>
+  <td valign="top">
     <h2><? echo $Lang['Mainmenu']['Title']; ?></h2>
 
     <p><? echo $Lang["Mainmenu"]["PlsChoose"]; ?></p>
