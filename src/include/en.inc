@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.24 2001/10/13 13:46:40 lestinsky Exp $
+   * $Id: en.inc,v 1.25 2001/10/18 11:47:36 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -98,9 +98,10 @@ EOT;
 
   $Lang['Requirements']['Text'][1]	= 'Tested Operating Systems (alphabetical Order):';
 
-  $Lang['Requirements']['OSes'][0]	= 'FreeBSD 4.3';
-  $Lang['Requirements']['OSes'][1]	= 'Linux (Debian 2.2)';
-  $Lang['Requirements']['OSes'][2]	= 'OpenBSD 2.9';
+  $Lang['Requirements']['OSes'][]	= 'AIX 4.3';
+  $Lang['Requirements']['OSes'][]	= 'FreeBSD 4.3';
+  $Lang['Requirements']['OSes'][]	= 'Linux (Debian 2.2)';
+  $Lang['Requirements']['OSes'][]	= 'OpenBSD 2.9';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
       You will need PHP compiled with MySQL-/PostgreSQL-support as standalone
