@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
   <title>Infos zur Koch-Suite</title>
-  <!-- $Id: infos.raw,v 1.4 2000/12/15 01:17:59 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.5 2000/12/20 13:44:12 michael Exp $ -->
 </head>
 
 <body>
@@ -33,15 +33,15 @@
 
     <h4>Kommandozeilen-Tools</h4>
     <dl>
-      <dt><code>mmimport</code></dt>
-          <dd><i>Import von Rezepten.</i> Der Input wird auf dem
-          Standard-Eingabe-Kanal erwartet.</dd>
       <dt><code>mmexport</code></dt>
           <dd><i>Export von Rezepten aus der Datenbank</i> im
           <a href="http://www.mealmaster.com">Meal-Master</a>-Format.
           Als Parameter wird ein Suchstring übergeben, nachdem in der
           Rezept-Datenbank in den Menu-Titeln gesucht wird.
           Die Ausgabe geschieht auf der Standard-Ausgabe.</dd>
+      <dt><code>mmimport</code></dt>
+          <dd><i>Import von Rezepten.</i> Der Input wird auf dem
+          Standard-Eingabe-Kanal erwartet.</dd>
       <dt><code>rezept2latex</code></dt>
           <dd><i>LaTeX</i>-Export von Rezepten. Rezepte werden als
           <i>LaTeX</i>-Source ausgegeben.</dd>
