@@ -1,0 +1,23 @@
+### $Id: todo.txt,v 1.1 2002/08/16 11:27:22 lestinsky Exp $
+
+Todo/Roadmap:
+=============
+
+This list gives you an overview of what shall/will be done in
+the next release(s). It is neither complete nor can we promise
+to follow it strictly.
+
+Planned for 0.8:
+
+  o  Keep lists of "favorites" (also known as bookmark-list)
+  o  mark multiple recipes for printing into a single document
+
+Planned for later releases or bored weekends:
+
+  o  Rezkonv-export
+  o  Annotate recipes
+  o  Improve the design of the user-interfaces
+  o  Save images with the recipes
+
+Please direct your feature-requests to our developers mailinglist,
+koch-suite-devel@lists.berlios.de
