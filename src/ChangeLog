@@ -1,3 +1,32 @@
+2001-12-22  Michael Bussmann  <bus@mb-net.net>
+
+  * src/init_db.pgsql 1.10: Oops, missed one
+
+  * src/init_db.pgsql 1.9:
+  Quick eyeball verification and correction
+
+2001-12-22  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/init_db.pgsql 1.8:
+  merge in changes to init_db.mysql.
+  MB: please check this.
+
+  * src/init_db.mysql 1.6: merge in changes.
+
+  * src/include/functions.raw 1.68, src/include/output.raw 1.39, src/www/units.raw 1.9:
+  multilingualized nice_unit() et al.
+
+  * src/include/lang.raw 1.10:
+  hell, im stupid. Last change broke the Console-tools
+
+2001-12-02  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/lang.raw 1.8.2.1:
+  Pull back fix from current.
+
+  * src/include/lang.raw 1.9:
+  Fix lang-related problem, reported by Eric Vaandering.
+
 2001-11-19  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/einfuegen.raw 1.32: Be more tolerant.
