@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: es.inc,v 1.4 2002/06/11 18:43:47 lestinsky Exp $
+   * $Id: es.inc,v 1.5 2002/06/22 16:13:19 lestinsky Exp $
    *
    * Define Spanish text-constants.
    *
@@ -133,7 +133,7 @@ EOT;
 
   $Lang['Language']['Title']	= "Opciones de idioma";
   $Lang['Language']['Text'][0]	= <<<EOT
-      La Kuch-Suite soporta varios idiomas desde la versión 0.5. 
+      La Koch-Suite soporta varios idiomas desde la versión 0.5. 
       Para seleccionar otro idioma, ajuste su browser (p. ej. Mozilla:
       Editar -> Preferencias -> Navegador -> Idiomas)
       Si el idioma que Ud. especific&oacute; existe, ver&aacute; todas las 
