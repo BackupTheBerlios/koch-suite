@@ -1,0 +1,6 @@
+<address>
+  &copy; 2002 <?php echo $authorname ?> &lt;<?php echo $authormail ?>&gt;
+</address>
+</body>
+</html>
+<?php db_disconnect(); ?>
