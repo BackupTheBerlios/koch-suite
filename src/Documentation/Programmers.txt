@@ -1,0 +1,26 @@
+### $Id: Programmers.txt,v 1.1 2000/11/12 01:12:02 michael Exp $
+
+Programmier-Dokumentation
+=========================
+
+Der zentrale Datentyp, der für die Übergabe von kompletten Rezepten
+verwendet wird, sieht folgendermaßen aus:
+
+$rezept
+   |----> "title" [*]
+   |----> "yield"
+   |----> "category"
+   |         `----> array
+   |----> "zutaten"
+   |         `----> array
+   |                  |----> "title" [**]
+   |                  `----> "ingredients"
+   |                            `----> array
+   |                                     |----> "quant"
+   |                                     |----> "unit"
+   |                                     `----> "ingred"
+   `----> "anweisung"
+
+[*]:  der Titel des kompletten Rezeptes/Menues
+[**]: der Titel des jeweiligen Unterabschnitts des Rezepts, also etwa 
+      "Für die Sauce" o.ae.
