@@ -1,9 +1,14 @@
 # Space-separated list of all "raw" php-files.
 
 # Files to install unmangled (dont forget the filename-suffix here!)
-PICS=			blue_dot.gif help_dot.gif info_dot.gif title.gif \
+PICS=			blue_dot.gif help_dot.gif info_dot.gif \
 			left.gif lupe.gif right.gif walking.gif white.gif \
-			write.gif ok.gif title_winter.gif bg_winter.png
+			write.gif ok.gif star.png dont.png \
+			${THEME_WINTER} ${THEME_DEFAULT}
+
+THEME_WINTER=		title_winter.gif bg_winter.png
+THEME_DEFAULT=		title.gif 
+
 SUBDIRS=		
 
 CONF_FILE=		../../config.sed
