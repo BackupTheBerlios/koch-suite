@@ -1,31 +1,43 @@
-### $Id: Programmers.txt,v 1.7 2001/09/23 11:12:55 lestinsky Exp $
+### $Id: Programmers.txt,v 1.8 2001/10/02 12:19:29 lestinsky Exp $
 
-Programmierer-Dokumentation
-===========================
-
-
-0. Inhalt
----------
-
-  1. Style
-     1.1 Allgemein
-     1.2 Funktionsdefinitionen
-     1.3 HTML
-  2. Datenstruktur
-  3. "config"
-     3.1. Ersetzungen
+Programmers Documentation
+=========================
 
 
+0. Content
+----------
 
-1. Style
+  1. General notes
+  2. Style
+     2.1 General
+     2.2 Function definitions
+     2.3 HTML
+  3. Datastructure
+  4. "config"
+     4.1. Substitutions
+
+
+
+1. General Notes
+----------------
+
+1.1 ChangeLog
+
+Please don't change the ChangeLog! The ChangeLog will be generated
+automatically every night from the CVS commitmessages. Woe be to those who
+attempt to mess with it.
+
+
+
+2. Style
 --------
 
-1.1 Allgemein
+2.1 General
 
-  * Verwende als Einrueckung keine <Tab>s sondern 2 <Space> fuer jeden
-    Einrueckungs-Level. 
+  * Don' use <Tab>s for indentions, but rather 2 <Space>s for every
+    indention level.
 
-  * Verwende K&R-Style Klammern. Also lieber:
+  * Use K&R bracestyle.
 
        function foobar () {
          // Something
@@ -38,13 +50,12 @@ Programmierer-Dokumentation
         // Something
       }
 
-  * Nutze die Macht des Zeilenumbruchs wenn Zeilen sehr lang werden.
-    Funktionsparameter sollen dann untereinander in der gleichen Spalte
-    einsortiert werden.
+  * Use the power of linebreaks when the lines are getting long.
+    I.E. align function parameters in the same row.
 
-  * Verwende PHPDoc-Style Kommentare (http://www.phpdoc.de) oder:
+  * Use PHPDoc style comments (http://www.phpdoc.org) or:
 
-  * Verwende C-Style-Kommentare. C++-Style ist auch Ok.
+  * Use C style comments. C++ style is Ok, too.
     Ok:
 
       /* Comment */
@@ -55,27 +66,27 @@ Programmierer-Dokumentation
 
       // Another comment
 
-    Unerwuenscht:
+    Deprecated:
 
       # Bad comment.
 
-  * Verwende <?php /* Foo */ ?> anstatt <? /* Foo */ ?>
+  * Use <?php something() ?> instead of <? something ?>
 
-1.2 Funktionsdefinitionen
+2.2 Function definitions
 
-Sortiere neue Funktionen in alphabetischer Reihenfolge ein.
+Sort new functions alphabetically into the libraries.
 
-Kommentiere deine Funtionen. Was tut die Funktion, welches sind Uebergabe
-und Rueckgabeparameter. Halte dich dabei an die PHPDoc-Konventionen
-(http://www.phpdoc.org). Grob sollte dies in etwa so aussehen:
+Comment your functions: what does it do, what are it's arguments, what
+does it return? Write this comments in PHPDoc-syntax.
+(http://www.phpdoc.org). As an example it should look like the following:
 
   /**
    * Short description ...
    *
    * Long description ...
    * @param  string $var1 The first Value
-   * @param  float  $var2 The amount of Money to transfer to the programmer
-   * @param  string $var3 The Bankname
+   * @param  float  $var2 The amount of money to transfer to the programmer
+   * @param  string $var3 The bankname
    * @return int    $return
    */
   function foobar ($var1, $var2, $var3 = 'Default') {
@@ -85,29 +96,28 @@ und Rueckgabeparameter. Halte dich dabei an die PHPDoc-Konventionen
   }
 
 
-1.3 HTML
+2.3 HTML
 
-  * Die resultierende HTML-Seite muss gueltig sein. Der HTML-Code muss
-    fehlerfrei im Sinne der DTD sein (Siehe http://validator.w3.org).
+  * The resulting HTML page must be valid. (Use http://validator.w3.org).
 
-  * Mindestens HTML-Standard: 4.0, besser XHTML1.0
+  * Least HTML standard: 4.0, better XHTML1.0
 
-  * Schreibe 7-bit clean, verwende die entsprechenden HTML-Entities fuer
-    Sonderzeichen.
-
+  * Write 7-bit clean. Use their respective HTML-entities for special
+    characters.
 
 
-2. Datenstruktur
-----------------
 
-Der zentrale Datentyp, in dem die vollstaendigen Rezepte intern gespeichert
-und uebergeben werden, sieht folgendermaßen aus:
+3. Datastructure
+-----------------
+
+The central datatype, which represents the complete recipe internally, is
+structured as shown below. Sorry for the german terms.
 
   $rezept
      |----> "title" [*]
      |----> "yield"
      |----> "category"
-     |         `----> Array
+     |         `----> array
      |----> "zutaten"
      |         `----> array
      |                  |----> "title" [**]
@@ -118,44 +128,42 @@ und uebergeben werden, sieht folgendermaßen aus:
      |                                     `----> "ingred"
      `----> "anweisung"
 
-In Zukunft werden noch dazukommen:
+In the future this will be suplemented by:
 
      `----> "meta"
                |----> "erfasser"
                |----> "datum"
                `----> "quelle"
 
-[*]:  der Titel des kompletten Rezeptes/Menues
-[**]: der Titel des jeweiligen Unterabschnitts des Rezepts, also etwa 
-      "Für die Sauce" o.ae.
+[*]:  The title of the complete recipe
+[**]: The title of the respective ingredients-sublist. I.e. "For the sauce".
 
 
 
-3. "config"
+4. "config"
 -----------
 
-In der Datei "config" werden Substitutionen definiert, die auf die Quellen
-angewendet werden. Dadurch werden z.B. die korrekten Pfade in den
-"compilierten" Dateien eingetragen.
+The file `config' defines substitutions, which will be applied to the
+sources. This replaces for example the paths to each module.
 
-Das 'configure'-Skript erzeugt aus "config" ein "config.sed", dass direkt
-an sed verfüttert werden kann.
+The `configure' script generates a `config.sed' from the `config', and
+`make' feeds `sed' with this generated `config.sed' to "compile" every 
+source-file.
 
 
-3.1. Ersetzungen
+4.1. Substitutions
 
-Soll ein Wert in einer Quelldatei Konfigurationsabhaengig sein und durch
-'sed' ersetzt werden, dann verwendet man in der Quelldatei als
-Platzhalter:
+To make a value in a source-file configuration-dependant and replacable by
+`make', use this placeholder instead:
 
    <%%VARIABLE%%>
 
-Und in der 'config'-Datei
+And in the `config' file
 
-   VARIABLE = Wert
+   VARIABLE = Value
 
-Durch 'make' wird diese Ersetzung ausgefuehrt.
+`make' will then perform this substitutions.
 
 
 -- 
-(c) 2000 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+(c) 2000 Michael Lestinsky <michael@lestinsky.de>
