@@ -1,3 +1,36 @@
+2002-08-31  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/mmprint.raw 1.20: Oops
+
+  * src/include/de.inc 1.42, src/include/en.inc 1.46, src/www/delete.raw 1.22, src/www/rezept.raw 1.32, src/www/search.raw 1.25:
+  Rename "Marking" to "Tagging" as this makes it a little more clear.
+
+  * src/www/mmprint.raw 1.19, src/www/print.raw 1.25:
+  Enable Prining and Export of tagged recipes
+
+  * src/www/admin.raw 1.8, src/www/edit_alias.raw 1.15, src/www/einfuegen.raw 1.42, src/www/index.raw 1.27, src/www/login.raw 1.5, src/www/logout.raw 1.7, src/www/pastebox.raw 1.4, src/www/settings.raw 1.7:
+  Don't load nocache.inc from here
+
+  * src/commands/mmimport.raw 1.30: Sync
+
+  * src/www/actions.raw 1.6:
+  Enable printing and export of tagged recipes
+
+  * src/include/functions.raw 1.82:
+  New parameter for write_db: set the menu id
+
+  * src/include/output.raw 1.48: Better LaTeX
+
+  * src/include/nocache.raw 1.2: Better
+
+  * src/include/setup.raw 1.3:
+  load nocache.inc from here
+
+2002-08-31  Michael Bussmann  <bus@mb-net.net>
+
+  * src/init_db.pgsql 1.19:
+  Incorporated spanish language
+
 2002-08-30  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/init_db.mysql 1.12.2.1, src/include/es.inc 1.5.2.1:
