@@ -1,111 +1,132 @@
-### $Id: INSTALL,v 1.2 2001/09/06 13:05:13 bus Exp $
+### $Id: INSTALL,v 1.3 2001/10/02 12:19:55 lestinsky Exp $
 
-Koch-Suite Installations-Anleitung
-==================================
+Koch-Suite Installation Instructions
+====================================
 
-Michael Lestinsky <michael@lestinsky.de>, Juli 2001
-Die Datei LICENSE enthält die Lizenz, unter der dieses Paket als ganzes
-oder einzelne Dateien hieraus verwendet werden dürfen.
+(c) Michael Lestinsky <michael@lestinsky.de>, Oct 2001
+The file `LICENSE' contains the license terms under which this package and
+every single file from it may be distributed.
 
-Falls du ein Update einer aelteren Version machst: Siehe weiter unten
+If you want to update from an older version of this package, see below.
 
-Die Folgende Anleitung geht davon aus, dass alle notwendigen
-Voraussetzungen (siehe README) erfuellt sind.
+The following instructions asume that all requirements (see `README') are 
+fulfilled.
 
 
 Installation:
 -------------
 
-Folgende Anleitung nimmt an, dass man vollen Shellzugriff auf den Rechner
-hat, auf dem die Koch-Suite installiert werden soll. Siehe gegebenenfalls
-in Documentation/FAQ.txt nach, wenn dies nicht ganz zutrifft.
+The following instructions asume, you've got shell access to the computer,
+you want the Koch-Suite installed on. Please take a look at
+`Documentation/FAQ.txt' if this doens't apply in your case.
 
  $ tar -xvzf kochsuite-*.tar.gz
-   Dieses Paket auspacken, wenn es nicht bereits geschehen ist.
+   Unpack the sources, if this didn't already happen.
 
  $ vi config
-   Anpassen der Konfigurationsvariablen, speziell der Pfade und der
-   Parameter fuer den Datenbank-Zugriff.
+   Adjust the configuration variables, especially the paths where to
+   install this package and the database parameters.
 
-   DB_TYPE bestimmt das verwendete DBMS.  "mysql" fuer MySQL, "pgsql" fuer
-   PostgreSQL.  Eine Uebersicht der unterstuetzen DBMS findet man im Dokument
-   STATUS im PEAR/DB Verzeichnis (<prefix>/share/php/DB).
+   Set DB_TYPE according to your DBMS. Use "mysql" for MySQL, "pgsql" for
+   PostgreSQL. You can find an overview of supported DBMSs in the file 
+   `STATUS' in the PEAR/DB directory of your PHP installation 
+   (<php-prefix>/share/php/DB).
 
  $ make
 
  $ sudo make install
-   oder:
-   $ su root
+
+   or:
+
+   $ su root               # (To be root is required only if you set the 
+                           # target directories to values you don't have 
+                           # write access to.)
    $ make install
 
-Um die User, Passwort und Datenbank anzulegen:
+To create a DBMS-user -password and -database:
 
 PostgreSQL:
-  Zum Erzeugen der PostgreSQL-Datenbank bietet sich an:
+  To create a PostgreSQL database:
 
-  Als PostgreSQL-Superuser (oder Benutzer mit CREATE DATABASE Rechten):
+  As PostgreSQl-Superuser (or user with "CREATE DATABASE" permissions):
   $ psql -c "CREATE DATABASE dbkoch" template1 bzw.
   $ psql -U<username> -c "CREATE DATABASE dbkoch" template1
 
-  Dann als normalsterblicher User (bzw. als der Benutzer, von dem spaeter
-  die Requests kommen):
+  Then as regular user (or the username, you will use to to perform the
+  requests, later):
   $ psql [-U<username>] dbkoch <init_db.pgsql
 
 MySQL:
-  Zum Anlegen der Datenbank und des Users:
+  To create the database and the MySQL-user:
 
-  Als MySQL-Superuser (root) eine MySQL-Shell aufrufen::
+  Invoke a MySQL-shell as MySQL-Superuser (root):
   $ mysql -h DBSERVER -u root -p mysql
 
-  und folgende Kommandos ausfuehren lassen:
+  type this commands:
+
   CREATE DATABASE DBkoch;
   GRANT ALL PRIVILEGES ON DBkoch TO USER@HOST IDENTIFIED BY 'PASSWORD';
   FLUSH PRIVILEGES;
 
-  Wobei DBSERVER durch den Namen des Datenbank-Servers, USER durch den
-  Namen des zu schaffenden Accounts (etwa 'kochsuite'), PASSWORD dessen
-  Passwort und HOST der Name des Rechners ist, auf dem die PHP-Skripte 
-  dann laufen werden.
+  Replace DBSERVER with the hostname of your database server, USER with
+  the name of the account you want to create , PASSWORD respectively and
+  HOST with the hostname where the Koch-Suite will be installed. (Please
+  note: in MySQL `localhost' and the FQDN of the same computer are not the
+  same!)
+
+  Drop back to your normal systems shell and perform
 
   $ mysql -h DBSERVER -u USER -pPASSWORD DBkoch < init_db.mysql 
 
-  alle notwendigen Komandos ausführen lassen (wobei USER, PASSWORD und 
-  DBSERVER mit den jew. Zugangsdaten zur Datenbank ersetzt werden müssen). 
+  to initialize the database. Replace DBSERVER, USER and PASSWORD
+  respectively with the accounts values you just created above.
 
-Anlegen der Koch-Suite User:
+To create Koch-Suite users:
 
-Weiter hat die Koch-Suite eine eigene Userverwaltung, die mittels der
-Tabelle 'usertable' gesteuert wird. Um die entsprechenden User darin
-anzulegen, rufe das Komando
+The Koch-Suite has an own user managment. This is represented by the table
+`usertable' in the database. This will be the usernames and passwords,
+you will use to access the webfrontend later. 
+To create the users therein, use the command
 
-  $ ks_passwd PASSWORT
+  $ ks_passwd PASSWORD
 
-auf, wobei du PASSWORT durch ein geeignetes Passwort ersetzt. Dies erzeugt
-das verschluesselte Passwort, das dann in der Datenbank hinterlegt werden
-kann. 
-Ausserdem wird ein Muster-String ausgegeben, der sich per Copy'n'Paste 
-in der SQL-Shell der Datenbank ausfuehren laesst. Auch hier muss nur noch
-der String USERNAME durch den Namen des zu schaffenden Users ersetzt werden.
+of course you should replace PASSWORD properly. This will echo the
+encrypted password and an example SQL-string you can use to insert the
+values into your database. Invoke your MySQL-Shell again:
+
+  $ mysql -u USER -p -h DBSERVER DBkoch
+
+and execute the SQL-command (replace "USERNAME" again).
+
+Please note: the crypt()-function used to encrypt the Passwords is
+strongly operating system dependant. Especially the Windows(TM)-
+Implementation differs from Unix(TM)'s crypt(). This means, you 
+can't install the Koch-Suite on a Windows AND on Unix-System and use
+the same database. This behaviour is client-independant, using a
+Windows client (such as IE) and a Unix Server is completly OK!
+MD5-Passwords will be used if your crypt() supports MD5 hashes, 
+otherwise the fallback is DES encryption. This is done transparently.
+
 
 
 Updating:
 ---------
 
-Es gab ein paar Aenderungen, die notwendig waren um den PostgreSQL-Support 
-einzubinden. Am einfachsten ist es von der Datenbank ein Backup zu machen, 
-mittels (dem alten!!!)
+A few changes to the database structure were neccessary to add
+PostgreSQL-Support. Therefore the old and the new database formats aren't
+compatible. If you want to preserve all stored recipes it is probably the
+best to dump all the data with (the old!) `rezept'
 
  $ rezept -mm "" > all.mm 
 
-oder falls bereits eine Version ab 0.5 installiert ist:
+Or if you have a (post) 0.5 already installed:
 
  $ rezept -mm -relaxed "" > all.mm
 
-den gesamten Inhalt im Mealmaster-Format zu speichern, alle Tabellen aus 
-der Datenbank zu loeschen und mit dem Inhalt aus init_db.??sql neu 
-anzulegen. Anschliessend die neue Version der Koch-Suite installieren und 
-mit dem dann neuen 
+into the file `all.mm' in (relaxed) Mealmaster-format. Delete all tables
+and recreate them with `init_db.??sql' from this release as described above. 
+Install the new Koch-Suite release and reimport the recipes afterwards
+with the new `mmimport'
 
  $ mmimport < all.mm
 
-die Daten wieder in die Datenbank importieren.
