@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.18 2001/09/24 21:18:47 lestinsky Exp $
+   * $Id: de.inc,v 1.19 2001/10/03 21:11:42 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -74,7 +74,7 @@ EOT;
 
   $Lang['Homepage']['Title']	= 'Homepage';
   $Lang['Homepage']['Text'][0]	= <<<EOT
-      <a href="http://www.lestinsky.de/michael/koch-suite//">http://www.lestinsky.de/michael/koch-suite/</a>:
+      <a href="http://koch-suite.berlios.de/">http://koch-suite.berlios.de/</a>:
       Aktuelle Informationen rund um dieses Projekt und die jeweils
       neusten Versionen der 
 EOT;
