@@ -2,7 +2,7 @@
 <?
 
   /*
-   * $Id: mmimport.raw,v 1.5 2000/11/29 19:21:25 michael Exp $
+   * $Id: mmimport.raw,v 1.6 2000/12/16 01:33:11 michael Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Import mealmaster-formated recipes to the "Koch-Suite".
    *
@@ -46,7 +46,7 @@
 
       if ($argv[1] == '-t' or $argv[1] == '--test') {
         /* Parse the recipe, but don't write it to the database.
-         * Mainly for parser-testing
+         * Main purpose: parser-testing
          */
         fputs($stdout, format_recipe($rezept));
       } else {
