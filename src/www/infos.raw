@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
   <title>Infos zur Koch-Suite</title>
-  <!-- $Id: infos.raw,v 1.7 2001/01/08 00:02:23 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.8 2001/01/18 00:47:56 michael Exp $ -->
 </head>
 
 <body>
@@ -63,7 +63,12 @@
         <i>Suchen</i>.
         </dd>
       <dt>Eingabe-Interface:</dt>
-        <dd>Dieses Interface ist derzeit nicht funktionsfähig.</dd>
+        <dd>Rezepte k&ouml;nnen mit diesem Interface erfasst und editiert
+        werden. Zahlenangaben in der Zutatenliste muessen mit 
+        &quot;<code>.</code>&quot
+        als Dezimaltrenner angegeben werden. Die Einheiten-Angaben haben
+        g&uuml;ltige Mealmaster-Einheiten zu sein. 
+        </dd>
     </dl>
 
     <h3>Voraussetzungen:</h3>
