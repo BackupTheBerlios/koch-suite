@@ -1,0 +1,30 @@
+<?php
+  /* $Id: accountlocked.raw,v 1.1 2002/05/12 11:37:07 lestinsky Exp $ */
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rev="made" href="mailto:michael@lestinsky.de">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Koch-Suite: Permission denied</title>
+  <!-- $Id: accountlocked.raw,v 1.1 2002/05/12 11:37:07 lestinsky Exp $ -->
+</head>
+<body>
+<a name="top"></a>
+<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
+
+<?php echo $Lang['Auth']['AccountLocked'] ?>
+
+<hr noshade>
+&copy; 2002 Michael Lestinsky
+&lt;<a href="mailto:michael@lestinsky.de">michael@lestinsky.de</a>&gt;.
+</body>
+</html>
+<?php
+  db_disconnect();
+  exit();
+?>

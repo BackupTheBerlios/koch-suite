@@ -40,7 +40,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.11 2002/05/12 11:31:31 lestinsky Exp $
+   * $Id: auth.raw,v 1.12 2002/05/12 11:37:07 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -142,6 +142,8 @@
    * @return array $user
    */
   function verify_authdata ($username, $password) {
+    global $Lang;
+
     if (!empty($username) and !empty($password)) {
 
       $req = "select password, usertype, email, realname, free from usertable " .

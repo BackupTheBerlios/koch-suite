@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.30 2002/05/12 11:31:31 lestinsky Exp $
+   * $Id: de.inc,v 1.31 2002/05/12 11:37:07 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -60,6 +60,7 @@
   $Lang['Auth']['Logout']       = "Abmelden";
   $Lang['Auth']['NoLogin']      = "Nicht angemeldet";
   $Lang['Auth']['AccessDenied'] = 'Sie haben leider keinen Zugriff auf diese Funktion.';
+  $Lang['Auth']['AccountLocked']	= 'Ihr Account wurde gesperrt.';
 
   $Lang['Admin']['Title']       = 'Administration';
   $Lang['Admin']['NewUser']['Title']	= 'Neuen Benutzer anlegen';

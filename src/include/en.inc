@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.34 2002/05/12 11:31:31 lestinsky Exp $
+   * $Id: en.inc,v 1.35 2002/05/12 11:37:07 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -60,6 +60,7 @@
   $Lang['Auth']['Logout']       = 'Logout';
   $Lang['Auth']['NoLogin']      = 'Not logged in';
   $Lang['Auth']['AccessDenied'] = 'Sorry, you do not have access to this function.';
+  $Lang['Auth']['AccountLocked']	= 'Your account has been disabled.';
 
   $Lang['Admin']['Title']	= 'Administration';
   $Lang['Admin']['NewUser']['Title']    = 'Create a new user';
