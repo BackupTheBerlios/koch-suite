@@ -27,8 +27,6 @@ subdir:
 	
 clean:
 	@${MAKE} subdir TRGT=clean DIRS="${SUBDIRS}"
-	rm -f *.php
-	rm -f *.gen
 
 distclean: clean
 	@${MAKE} subdir TRGT=distclean DIRS="${SUBDIRS}"
