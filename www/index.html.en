@@ -187,6 +187,7 @@ recipe management system for Unix-like operating systems</li>
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
+$Id: index.html.en,v 1.2 2002/08/16 10:23:19 lestinsky Exp $
 </address>
 </body>
 </html>
