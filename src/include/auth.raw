@@ -1,0 +1,191 @@
+<?
+  /* Copyright (c) 2001
+   *      Michael Lestinsky. All rights reserved.
+   *
+   * Redistribution and use in source and binary forms, with or without
+   * modification, are permitted provided that the following conditions
+   * are met:
+   * 1. Redistributions of source code must retain the above copyright
+   *    notice, this list of conditions and the following disclaimer.
+   * 2. Redistributions in binary form must reproduce the above copyright
+   *    notice, this list of conditions and the following disclaimer in the
+   *    documentation and/or other materials provided with the distribution.
+   * 3. All advertising materials mentioning features or use of this software
+   *    must display the following acknowledgement:
+   *      This product includes software developed by Michael Lestinsky.
+   *
+   * THIS SOFTWARE IS PROVIDED BY MICHAEL LESTINSKY ``AS IS'' AND
+   * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   * ARE DISCLAIMED.  IN NO EVENT SHALL MICHAEL LESTINSKY BE LIABLE
+   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+   * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+   * SUCH DAMAGE.
+   */
+
+
+  if (isset($HTTP_POST_VARS["FORM_USERNAME"])) 
+    $FORM_USERNAME = $HTTP_POST_VARS["FORM_USERNAME"];
+  if (isset($HTTP_POST_VARS["FORM_PASSWORD"]))
+    $FORM_PASSWORD = $HTTP_POST_VARS["FORM_PASSWORD"];
+
+
+  require_once "<%%PHP_LIBS%%>/config.inc";
+  require_once "<%%PHP_LIBS%%>/functions.inc";
+
+
+  /**
+   * Base Authentication-Module for the Koch-Suite
+   *
+   * $Id: auth.raw,v 1.1 2001/08/31 12:41:10 lestinsky Exp $
+   * The user is identified by an array $user.
+   *
+   * @author Michael Lestinsky <michael@lestinsky.de>
+   * @package Lib
+   * @modulegroup Authenication
+   * @module auth.inc
+   * @copyright Michael Lestinsky <michael@lestinsky.de>
+   */
+
+
+  if (!session_start()) 
+    die ("Cannot start a the session.");
+  session_register("user");
+
+  /**
+   * Call the right authentication-functions to verify the user
+   *
+   * @param  string $level minimum usertype required for this.
+   * @return bool
+   */
+  function auth ($level = READ) {
+    global $HTTP_SESSION_VARS, $FORM_USERNAME, $FORM_PASSWORD;
+
+    /* do we want authentication? */
+    if ($GLOBALS["AUTH_LEVEL"] <= $level) {
+      /* yeah: */
+
+      if (!empty($HTTP_SESSION_VARS["user"])) {
+        /* User already authenticated himself. -> go.
+         * Trust the values we have saved in the $user-sessionvariable.
+         */
+        write_log(serialize($HTTP_SESSION_VARS["user"]));
+        return true;
+
+      } else {
+
+        /* We need to fetch $username and $password from somewhere. */
+        if (!isset($FORM_USERNAME) and !isset($FORM_PASSWORD)) 
+          auth_loginform();
+
+        /* What kind of authentication?
+         * At the moment we support auth_by_db only.
+         */
+        switch ($GLOBALS["AUTH_STYLE"]) {
+
+          case "auth_by_db":
+            if ($HTTP_SESSION_VARS["user"] = auth_by_table($FORM_USERNAME, $FORM_PASSWORD)) {
+              // everything is fine here. :-)
+              return true;
+
+            } else {
+              // go away.
+              session_destroy();
+              die ("not authenticated.\n");
+            }
+            break;
+
+          default:
+            session_destroy();
+            die("Something's really screwed up here. " .
+                "Please send a detailed bugreport to the developers.");
+        }
+      }
+    } else {
+      /* nay, we don't want any authentication. Therefore be 'true'. */
+      return true;
+    }
+  }
+
+
+  /**
+   * Do Database-based authentication.
+   *
+   * That means: we need a table 'user':
+   * CREATE TABLE user (
+   *   username varchar(20) NOT NULL default '',
+   *   usertype varchar(20) default NULL,
+   *   password varchar(255) default NULL,
+   *   PRIMARY KEY  (username)
+   * )
+   *
+   * @param  string $username
+   * @param  string $password
+   * @return array $user
+   */
+  function auth_by_table ($username, $password) {
+    if (!empty($username) and !empty($password)) {
+
+      $req = "select password, usertype from user " .
+             " where username = '$username' ";
+
+      if (($result = DB_query($req)) and ($result->numRows() == 1)) {
+        // There is such a user, verify his password
+
+        $row = $result->fetchRow();
+        $crypted_passwd = $row["password"];
+
+        if (($salt = substr($crypted_passwd, 0, 2)) != '$1')  {
+          // DES-Password
+
+          if (crypt($password, $salt) == $crypted_passwd) {
+            // Valid
+            $return = array("username" => $username, 
+                            "usertype" => $row["usertype"]);
+          } else {
+            // Invalid
+            $return = false;
+          }
+        } else {
+          // MD5-Password
+
+          /* extract the salt */
+          $a = explode("$", $crypted_passwd);
+          $salt = $a[2];
+
+          if (crypt($password, "\$1\$$salt") == $crypted_passwd) {
+            // Valid
+            $return = array("username" => $username, 
+                            "usertype" => $row["usertype"]);
+          } else {
+            // Invalid
+            $return = false;
+          }
+        }
+
+        return $return;
+
+      } else {
+        // Wrong.
+        return false;
+      }
+    } else {
+      return false;
+    }
+  } 
+
+
+  /**
+   * Display the loginform
+   * @return void
+   */
+  function auth_loginform() {
+    global $HTTP_SERVER_VARS;
+    include "<%%PHP_LIBS%%>/loginform.inc";
+  }
+
+?>

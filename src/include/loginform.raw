@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Koch-Suite</title>
+  <!-- $Id: loginform.raw,v 1.1 2001/08/31 12:41:10 lestinsky Exp $ -->
+</head>
+<body>
+<a name="top"></a>
+<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
+
+<form method="post" action="<?php echo $HTTP_SERVER_VARS["REQUEST_URI"]; ?>">
+<table border=0 cellpadding=3 cellspacing=1>
+<tr>
+  <td>Username:</td>
+  <td><input name="FORM_USERNAME" type="text"></td>
+</tr>
+<tr>
+  <td>Password:</td>
+  <td><input name="FORM_PASSWORD" type="password"></td>
+</tr>
+<tr>
+  <td colspan="2">
+    <input type="submit" value="Anmelden">
+    <input type="reset"  value="Zur&uuml;cksetzen">
+  </td>
+</table>
+</form>
+
+<hr noshade>
+&copy; 2001 Michael Lestinsky
+&lt;<a href="mailto:michael@lestinsky.de">michael@lestinsky.de</a>&gt;.
+</body>
+</html>
+<?
+  db_disconnect();
+  exit();
+?>
+
