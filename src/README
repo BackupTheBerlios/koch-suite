@@ -1,4 +1,4 @@
-### $Id: README,v 1.50 2002/06/11 18:43:47 lestinsky Exp $
+### $Id: README,v 1.51 2002/08/10 22:21:17 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -112,7 +112,7 @@ Known Bugs:
  - German-English Mischmasch in comments,...
  - Import of recipes with the alternative method to declare
    recipe-headers. (E.g. ("      H    For the sauce"). These headers won't
-   be recognized as such and are treated as part of the installation
+   be recognized as such and are treated as part of the preparation
    instructions. But this kind of header seems not to be used
    any longer.
 
