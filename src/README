@@ -1,4 +1,4 @@
-### $Id: README,v 1.23 2001/03/30 17:34:14 michael Exp $
+### $Id: README,v 1.24 2001/04/17 11:09:20 michael Exp $
 
 Koch-Suite
 ==========
@@ -26,9 +26,10 @@ Daemon (z.B. Apache) benötigen.
 Als Plattformen sind getestet:
  - Linux/i386
  - OpenBSD/i386
+ - FreeBSD/i386
 
 Auf alle Fälle ist auch PHP4 mit MySQL-Support notwendig. Diese Skripten 
-sind unter PHP-4.0.3.pl1 geschrieben und getestet worden. PHP4 muss als 
+sind unter PHP-4.0.4.pl1 geschrieben und getestet worden. PHP4 muss als 
 Stand-Alone-Interpreter vorhanden sein, nur mit dem Apache-Modul funktio-
 nieren die Konsolen-Tools nicht.
 Der LaTeX-Export greift auf das Paket floatflt zurück. Bei Bedarf siehe
@@ -38,9 +39,9 @@ bitte im CTAN-Archiv nach.
 Status:
 -------
 
-Momentan ist das Projekt noch nicht allzuweit. Die meiste Arbeit findet an
-den zentralen Funktionen statt, damit die Anwendungen später nur noch eine
-triviale Abfolge von Funktionsaufrufen sein können.
+Inzwischen ist das Projekt in einem durchaus brauchbaren Zustand. Es gibt
+funktionierende Funktionen zum Import, zum Export und für die Suche
+innerhalb der Datenbank. 
 
 Bisher existiert/funktioniert:
  - ein Tool für den Datenbank-Import im Mealmaster- oder REZKONV-Format,
@@ -117,6 +118,7 @@ Updating:
              Am Einfachsten ist es, die Tabelle zu löschen und mit den
              Kommandos aus init_db.sql neu einzuspielen. Wenn man dies
              korrekt macht, dann gibt es keine Verluste *g*
+0.3 -> 0.4   Es gab keine Veränderungen an der Datenbank-Struktur.
 
 
 Todo/'Roadmap':
@@ -144,6 +146,9 @@ Feedback:
 Bitte schickt mir Feedback. Am besten per EMail an meine oben angegebene
 Adresse. Ich nehme gerne auch Bugreports, Patches oder Wünsche für Features 
 an.
+
+Wenn dir mein Code nicht gefällt: Ich habe nie behauptet ich hätte Talent.
+;-)
 
 
 Danke an:
