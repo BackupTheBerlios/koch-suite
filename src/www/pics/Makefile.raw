@@ -3,7 +3,7 @@
 # Files to install unmangled (dont forget the filename-suffix here!)
 PICS=			blue_dot.gif help_dot.gif info_dot.gif title.gif \
 			left.gif lupe.gif right.gif walking.gif white.gif \
-			write.gif ok.gif
+			write.gif ok.gif title_winter.gif bg_winter.png
 SUBDIRS=		
 
 CONF_FILE=		../../config.sed

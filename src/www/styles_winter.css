@@ -1,0 +1,40 @@
+/* $Id: styles_winter.css,v 1.1 2003/01/10 12:59:49 lestinsky Exp $ */
+body	    { background-color:#ffffff; 
+              background-image:url(pics/bg_winter.png); 
+              background-repeat:repeat-y;}
+h1          { font-family:Verdana,Helvetica,Arial; text-align:left; }
+h2,h3,h4    { font-family:Verdana,Lucida; }
+a,b,dt	    { font-family:Helvetica,Arial; }
+a:link      { color:#000463; }
+a:visited   { color:#000463; }
+a:active    { color:#111473; }
+code,i      { color:#000463; }
+address     { background-color:#f9f9ff; padding:3px;
+              border-top-width:0px; border-bottom-width:thin;
+              border-right-width:0px; border-left-width:0px;
+              border-style:solid; border-color:#2fa4bf; }
+textarea, select, .check, .textfield 
+            { background-color:#f9f9ff; 
+              border-width:2px; border-style:ridge; border-color:#9090b0;}
+.button     { background-color:#d8e0e8; padding:1px;
+              border-width:2px; border-style:groove; border-color:#9090b0;}
+
+.menu	    { font-family:Helvetica,Arial; 
+              font-size:small; 
+              border-style:inset; border-width:1px; border-color:#f9f9ff;
+              white-space:nowrap; }
+.menu_item  { font-family:Helvetica,Arial;
+              font-size:small;
+              background-color:#f9f9ff;
+              white-space:nowrap; }
+.menu_title { font-family:Helvetica,Arial;
+              font-size:small; 
+              border-style:inset; border-width:1px; border-color:#2060a0;
+              background-color:#2060a0;
+              text-align:center;
+              white-space:nowrap; color:#fff9f9; }
+.border     { background-color:#2fa4bf; border-style:outset;
+              border-width:1px; border-color:#2fa4bf; }
+.prop       { font-family:Courier; }
+.small      { font-size:small; }
+.warn       { color:red; }

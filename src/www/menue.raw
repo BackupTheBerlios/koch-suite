@@ -1,21 +1,21 @@
-<!-- $Id: menue.raw,v 1.22 2002/11/27 18:27:26 lestinsky Exp $ -->
+<!-- $Id: menue.raw,v 1.23 2003/01/10 12:59:49 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
 <?php
   $blue_dot = '<img src="pics/blue_dot.gif" align="bottom" alt="*" border=0>';
   $info_dot = '<img src="pics/info_dot.gif" align="bottom" alt="*" border=0>';
 ?>
-<table border=0 cellspacing=0 cellpadding=0>
-  <tr class="border" align="top">
+<table border=0 cellspacing=0 cellpadding=0 class="border">
+  <tr align="top">
     <td>
-      <table border="0" cellspacing="2" cellpadding="2">
+      <table border="0" cellspacing="2" cellpadding="0">
         <tr style="font-size:small;">
-          <td style="background-color:#c0c0d5" class="menu"><?php echo $Lang["Mainmenu"]["Title"]; ?></td>
+          <td class="menu_title"><?php echo $Lang["Mainmenu"]["Title"]; ?></td>
         </tr>
         <tr>
           <td class="menu">
             <div style="white-space:nowrap">
             </div>
-            <table border="0" cellspacing="1" cellpadding="1" class="menu">
+            <table border="0" cellspacing="1" cellpadding="1" class="menu_item">
             <tr>
               <td><img src="pics/lupe.gif" align="bottom" alt="*" border=0></td>
               <td><a href="search.php"><?php echo $Lang['Search']['Search']; ?></a></td>

@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.24 2002/11/27 18:27:26 lestinsky Exp $
+   * $Id: kategorien.raw,v 1.25 2003/01/10 12:59:49 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW
@@ -90,36 +90,41 @@
 </form>
 
 <div align="center">
-<table class="border" border="0" cellspacing="0" cellpadding="2">
-  <tr>
-    <td style="background-color:#9090b0;">
-      <table class="menu" border="0" cellspacing="0" cellpadding="3">
-      <tr style="background-color:#c0c0d5">
-        <th><?php echo $Lang['Cat'] ?></th>
-        <th></th>
-      </tr>
-      <?php
-        $kat = get_categories();
+<table border=0 cellspacing=0 cellpadding=0 class="border">
+  <tr align="top">
+    <td>
+      <table border="0" cellspacing="2" cellpadding="0">
+        <tr style="font-size:small;">
+          <td class="menu_title"><?php echo $Lang['Cat']; ?></td>
+        </tr>
+        <tr>
+          <td class="menu">
+          <table border="0" cellspacing="1" cellpadding="1" class="menu_item">
+          <?php
+            $kat = get_categories();
 
-        foreach ($kat as $kategorie) {
-          if ($maxsel == 1) {
-            echo "<tr><td><a href=\"search.php?suchen=1&target=$target&begriff=$kategorie\" onClick=\"eintragen('" . $kategorie . "');\">$kategorie</a></td>".
-                     "<td>" . (($USER_S['usertype'] >= WRITE) 
-                                 ? "[<a href=\"edit_cat.php?cat=". urlencode($kategorie) ."\">". $Lang['Category']['Edit'] ."</a>]" 
-                                 : "" ) . 
-                     "</td>".
-                 "</tr>\n";
-          } else {
-            echo "<tr><td><a name=\"$kategorie\" href=\"$PHP_SELF?target=$target#$kategorie\" onClick=\"eintragen('" . $kategorie . "');\">$kategorie</a></td>".
-                     "<td>". (($USER_S['usertype'] >= WRITE)
-                                 ? "[<a href=\"edit_cat.php?cat=". urlencode($kategorie) ."\">". $Lang['Category']['Edit'] ."</a>]" 
-                                 : "" ) 
-                     . "</td>\n" .
-                 "</tr>\n";
-          }
-        }
-      ?>
-      </table>   
+            foreach ($kat as $kategorie) {
+              if ($maxsel == 1) {
+                echo "<tr><td class=\"menu_item\"><a href=\"search.php?suchen=1&target=$target&begriff=$kategorie\" onClick=\"eintragen('" . $kategorie . "');\">$kategorie</a></td>".
+                         "<td class=\"menu_item\">" . (($USER_S['usertype'] >= WRITE) 
+                                     ? "[<a href=\"edit_cat.php?cat=". urlencode($kategorie) ."\">". $Lang['Category']['Edit'] ."</a>]" 
+                                     : "" ) . 
+                         "</td>".
+                     "</tr>\n";
+              } else {
+                echo "<tr><td class=\"menu_item\"><a name=\"$kategorie\" href=\"$PHP_SELF?target=$target#$kategorie\" onClick=\"eintragen('" . $kategorie . "');\">$kategorie</a></td>".
+                         "<td class=\"menu_item\">". (($USER_S['usertype'] >= WRITE)
+                                     ? "[<a href=\"edit_cat.php?cat=". urlencode($kategorie) ."\">". $Lang['Category']['Edit'] ."</a>]" 
+                                     : "" ) 
+                         . "</td>\n" .
+                     "</tr>\n";
+              }
+            }
+          ?>
+          </table>   
+          </td>
+        </tr>
+      </table>
     </td>
   </tr>
 </table>
