@@ -1,7 +1,7 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
   /* 
-   * $Id: mmexport.raw,v 1.4 2000/11/29 18:35:47 michael Exp $
+   * $Id: mmexport.raw,v 1.5 2000/11/29 19:05:44 michael Exp $
    * print a recipe in Meal-Master-format to STDOUT
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, November 200
    *
@@ -14,11 +14,11 @@
   $stdout = fopen("php://stdout", "w");
   $stderr = fopen("php://stderr", "w");
 
-  $ver = 0.2;
-
-  $helptext  = "mmexport $ver\n" ;
+  $ver = "0.2.1";
+  $tool = "mmexport";
+  $helptext  = "$tool $ver\n" ;
   $helptext .= "Invoke as:\n";
-  $helptext .= "\tmmexport \"searchstring\"\n";
+  $helptext .= "\t$tool \"searchstring\"\n";
 
   if ($argc == 1) {
     /* No search-string */

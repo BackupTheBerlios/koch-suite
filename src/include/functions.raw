@@ -1,10 +1,10 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.9 2000/11/29 18:29:56 michael Exp $
+   * $Id: functions.raw,v 1.10 2000/11/29 19:05:44 michael Exp $
    */
 
-  include "<%%PHP_LIBS%%>/config.inc";
+  require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/output.inc";
   /* --- Functions --- */
 

@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.5 2000/11/29 18:30:48 michael Exp $
+   * $Id: output.raw,v 1.6 2000/11/29 19:05:44 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -208,9 +208,10 @@
 
   function mmexport ($rezept) {
     /* return a Meal-Master-formatted string. */
+    global $ver, $tool;
     $str = "";
     $i = 0;
-    $header = "MMMMM-----mmexport (v0.2) Export nach Meal-Master-----\n";
+    $header = "MMMMM-----".$tool." (v". $ver .") Export nach Meal-Master-----\n";
     $footer = "MMMMM";
 
     $str .= "$header\n";
