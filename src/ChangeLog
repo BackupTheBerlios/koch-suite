@@ -1,3 +1,8 @@
+2004-12-17  Michael Lestinsky  <michael@lestinsky.de>
+
+  * include/es.inc 1.11: Fix for es translations.
+  Submitted by "Vicente J. Ruiz Jurado" <vjrj@ourproject.org>
+
 2004-12-11  Michael Lestinsky  <michael@lestinsky.de>
 
   * include/defines.raw 1.18: Beta2
