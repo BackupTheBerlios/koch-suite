@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.13 2001/07/01 19:44:59 michael Exp $
+   * $Id: en.inc,v 1.14 2001/07/01 20:01:21 michael Exp $
    *
    * Define English text-constants.
    *
@@ -87,15 +87,15 @@ EOT;
   $Lang['Requirements']['Title']	= 'Requirements';
   $Lang['Requirements']['Text'][0]	= 'Required Software:';
 
-  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 and 3.23 tested), or PostgreSQL';
-  $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version 4), with MySQL-support,';
-  $Lang['Requirements']['Software'][2]	= 'a Webserver, which supports PHP (i.e. <a href="http://www.apache.org">Apache</a>)';
+  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 and 3.23 tested) or PostgreSQL (7.0.3 tested)';
+  $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version 4), with MySQL- or PostgreSQL-support,';
+  $Lang['Requirements']['Software'][2]	= 'a Webserver which is supported by PHP (i.e. <a href="http://www.apache.org">Apache</a>)';
 
   $Lang['Requirements']['Text'][1]	= 'Tested Operating Systems (alphabetical Order):';
 
-  $Lang['Requirements']['OSes'][0]	= 'FreeBSD 4.2';
+  $Lang['Requirements']['OSes'][0]	= 'FreeBSD 4.3';
   $Lang['Requirements']['OSes'][1]	= 'Linux (Debian 2.2)';
-  $Lang['Requirements']['OSes'][2]	= 'OpenBSD 2.8';
+  $Lang['Requirements']['OSes'][2]	= 'OpenBSD 2.9';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
       You will need PHP compiled with MySQL-support as standalone
