@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.82 2002/08/31 17:48:08 lestinsky Exp $
+   * $Id: functions.raw,v 1.83 2002/09/01 22:41:06 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -222,17 +222,18 @@
   function exec_search ($str, $where, $param = '') {
 
     $return          = array();
-    $return_is_empty = true;
 
     /*
      * (future) Grammer:
      * split by 'AND', then split by 'OR' and finally lookout for 'NOT'
      * 'AND' has a higher priority then 'OR'.
-     * i.e.: 'Muffins AND Choc OR Strawberry' searches for all Choclate or
+     * e.g.: 'Muffins AND Choc OR Strawberry' searches for all Choclate or
      *       Strawberry-Muffins.
      *
      * current status: 'AND' only.
      */
+
+    $array_intersect_lock = true;
 
     $and = split(" AND ", $str);
     foreach ($and as $this) {
@@ -262,14 +263,11 @@
           return false;
       }
 
-      /* Intersection with an empty array is empty. So we need to catch
-       * this situation first. 
-       */
-      if (!$return_is_empty) {
+      if (! $array_intersect_lock) {
         $return = KS_array_intersect($return, $result);
       } else {
         $return = $result;
-        $return_is_empty = false;
+        $array_intersect_lock = false;
       }
     }
 
@@ -288,15 +286,37 @@
      * get_mid_by_*() results.
      */
 
-    foreach ($a as $item) {
-      foreach ($b as $other) {
-        if ($item == $other) {
-          $r[] = $item;
+    if (is_array($a) and is_array($b)) {
+      $r = array();
+      foreach ($a as $item) {
+        foreach ($b as $other) {
+          if ($item == $other) {
+            $r[] = $item;
+          }
         }
+        array_shift($a);
       }
-      array_shift($a);
+      return $r;
+    } else {
+      write_log ("Not an array? ". serialize($a));
+      write_log ("Not an array? ". serialize($b));
+      return false;
     }
-    return $r;
+  }
+
+
+  /**
+   * Merge two arrays.
+   */
+  function KS_array_merge ($a, $b) {
+    if (is_array($a) and is_array($b)) {
+
+      foreach ($b as $entry_b) {
+        // If $entry_b is not already in array $a, append it to $a.
+        if (!in_array($entry_b, $a)) $a[] = $entry_b;
+      }
+      return $a;
+    } else return false;
   }
 
 
