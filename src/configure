@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.9 2001/07/01 20:50:16 michael Exp $
+# $Id: configure,v 1.10 2001/08/06 18:06:13 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -31,7 +31,12 @@
 # Parse the config-File and create a sed-Script from it.
 
 CONF_RAW=config
+CONF_RAW_MY=config.my
 CONF_FILE=config.sed
+
+if [ -f ${CONF_RAW_MY} ] ; then 
+  CONF_RAW=${CONF_RAW_MY}
+fi
 
 THISDIR=$(pwd)
 
