@@ -29,7 +29,7 @@
    */
 
   /**
-   * $Id: init_db.raw,v 1.9 2004/12/05 08:42:25 bus Exp $
+   * $Id: init_db.raw,v 1.10 2004/12/06 11:27:10 bus Exp $
    * Initializes database, creates necessary tables and fills them with
    * default contents
    *
@@ -523,6 +523,26 @@
     return(false);
   }
 
+  /**
+   * Creates sequences
+   *
+   * @return boolean  true: no error, false: error
+   */
+  function create_sequences() {
+    global $db;
+    $sequences=array(
+	"MENUESEQ", "REZEPTSEQ", "ZUTATENSEQ", "KATEGORIESEQ",
+	"KATSEQ", "menu_metaseq");
+
+    foreach ($sequences as $seq) {
+	$tmp = $db->createSequence($seq);
+	if (DB::isError($tmp)) {
+	  warn($tmp->getMessage());
+	  return(false);
+	}
+    }
+    return(true);
+}
 
   /**
    * Main
@@ -544,6 +564,7 @@ EOT;
     case DB_MYSQL:
       create_tables_mysql();
       fill_tables();
+      create_sequences();
       break;
 
     case DB_PGSQL:
@@ -551,6 +572,7 @@ EOT;
       create_tables_pgsql();
       create_index_pgsql();
       fill_tables();
+      create_sequences();
       break;
   }
   db_disconnect();
