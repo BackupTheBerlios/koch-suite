@@ -1,4 +1,7 @@
-### $Id: changelog,v 1.42 2001/08/06 21:30:48 lestinsky Exp $
+### $Id: changelog,v 1.43 2001/09/06 15:11:39 lestinsky Exp $
+
+2001-08-31: Michael Lestinsky <michael@lestinsky.de>
+	Added Authentication-Module.
 
 2001-08-06: Michael Lestinsky <michael@lestinsky.de>
 	Update of Localized files (de.inc, en.inc)
