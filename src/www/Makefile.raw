@@ -1,13 +1,15 @@
 # Space-separated list of all "raw" php-files.
-PHP_FILES_UNCONF=	""
+PHP_FILES=		index
 
-SUBDIRS=		""
+# Files to install unmangled (dont forget the filename-suffix here!)
+ADDITIONAL=		styles.css menue.inc such.inc
+SUBDIRS=		pics
 
 all:
-	@#make subdir TRGT=all
-	@#(for i in ${PHP_FILES_UNCONF}; do\
-	echo "$$i.raw --> $$i.inc"; \
-	cat $$i.raw | sed -f ${CONF_FILE} > $$i.inc;\
+	@make subdir TRGT=all
+	@(for i in ${PHP_FILES}; do\
+	echo "$$i.raw --> $$i.php"; \
+	cat $$i.raw | sed -f ${CONF_FILE} > $$i.php;\
 	done)
 
 subdir:
@@ -16,20 +18,27 @@ subdir:
 	cd $$i; \
 	${MAKE} ${TRGT} CONF_FILE=${CONF_FILE} THISDIR=${THISDIR}/$$i; \
 	echo "<==== ${THISDIR}";\
+	cd ..; \
 	done )
 
 clean:
-	@#make subdir TRGT=clean
-	rm -rf *.php
-	rm -rf *.inc
-	rm -rf *.gen
+	@make subdir TRGT=clean
+	-rm -rf *.php
 
 distclean:
+	@make subdir TRGT=distclean
+	@( for i in ${SUBDIRS}; do \
+	echo "rm $${i}/Makefile" ; \
+	rm $${i}/Makefile; \
+	done)
 
 install:
+	@make subdir TRGT=install
 	( [ -d "<%%WEB_PREFIX%%>" ] || \
 	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%WEB_PREFIX%%> )
-	@#( for i in ${PHP_FILES_UNDEF} ; do \
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i.inc <%%WEB_PREFIX%%>; \
-	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i.inc <%%WEB_PREFIX%%>" ; \
+	@( for i in ${PHP_FILES} ; do \
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i}.php <%%WEB_PREFIX%%>; \
+	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i}.php <%%WEB_PREFIX%%>" ; \
 	done )
+	@install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${ADDITIONAL} <%%WEB_PREFIX%%>; \
+	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${ADDITIONAL} <%%WEB_PREFIX%%>"

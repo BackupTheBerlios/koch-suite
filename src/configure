@@ -1,20 +1,21 @@
 #!/bin/sh
-# $Id: configure,v 1.1 2000/11/04 00:07:09 michael Exp $
+# $Id: configure,v 1.2 2000/11/12 01:16:51 michael Exp $
 # Parse the config-File and create a sed-Script out of it.
 
 CONF_FILE=config.sed
 
+THISDIR=`pwd`
 # Generate the sed-file
 grep -Ev "^#" config | grep -Ev "^$" | \
 sed -e "s/{\t| }//g"  | tr '=' ' ' | sed "s|:|\\\:|" |\
   awk '{print "s:<%%"$1"%%>:"$2":" }' > config.sed
 
 # Create the Makefiles
-for foo in include www commands
+for foo in include www www/pics commands
 do
     cd ${foo}
     echo "Creating Makefile in ${foo}";
-    cat Makefile.raw | sed -f ../${CONF_FILE} > Makefile
-    cd ..
+    cat Makefile.raw | sed -f ${THISDIR}/${CONF_FILE} > Makefile
+    cd ${THISDIR}
 done
 

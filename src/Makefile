@@ -18,7 +18,7 @@ subdir:
 	@(for i in ${SUBDIRS}; do \
 	echo "====> ${THISDIR}/$$i";\
 	cd ${THISDIR}/$$i; \
-	${MAKE} THISDIR=${THISDIR} CONF_FILE=../${CONF_FILE} ${TRGT};\
+	${MAKE} THISDIR=${THISDIR}/$${i} CONF_FILE=../${CONF_FILE} ${TRGT};\
 	cd .. ; \
 	echo "<==== ${THISDIR}";\
 	done)
