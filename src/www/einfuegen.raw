@@ -192,9 +192,9 @@
 
   // Catch Configuration-settings:
   if (get_cfg_var('magic_quotes_gpc') == 1) {
-    $titel = stripslashes($titel);
-    $portionen = stripslashes($portionen);
-    $anweisung = stripslashes($anweisung);
+    if (isset($titel))     $titel = stripslashes($titel);
+    if (isset($portionen)) $portionen = stripslashes($portionen);
+    if (isset($anweisung)) $anweisung = stripslashes($anweisung);
   }
 
   foreach ($zutaten as $z) {
@@ -288,7 +288,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.27 2001/08/31 12:41:58 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.28 2001/09/03 21:02:58 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
