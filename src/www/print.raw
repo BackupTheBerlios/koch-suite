@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.20 2002/06/11 18:43:47 lestinsky Exp $
+  /* $Id: print.raw,v 1.21 2002/06/22 16:13:01 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    *
@@ -61,6 +61,16 @@
   }
 
 
+  function cleanup($filename) {
+    $suffixes = array(".log", ".aux", ".dvi", ".ltx", ".tex", ".pdf"); 
+    foreach ($suffixes as $suf) {
+      $file = $filename . $suf;
+      if (file_exists($file)) unlink ($file); 
+    }
+    if (file_exists($filename)) unlink ($filename);
+  }
+
+
   function error_message () {
     ?>
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -73,7 +83,7 @@
       <meta http-equiv="Content-Style-Type" content="text/css">
 
       <title>Koch-Suite</title>
-      <!-- $Id: print.raw,v 1.20 2002/06/11 18:43:47 lestinsky Exp $ -->
+      <!-- $Id: print.raw,v 1.21 2002/06/22 16:13:01 lestinsky Exp $ -->
     </head>
     <body>
     <h1>Error</h1>
@@ -104,7 +114,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
 
   <title>Koch-Suite</title>
-  <!-- $Id: print.raw,v 1.20 2002/06/11 18:43:47 lestinsky Exp $ -->
+  <!-- $Id: print.raw,v 1.21 2002/06/22 16:13:01 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -164,5 +174,6 @@
       die ("Configuration-Error: Unsupported format.\n");
   }
 
+  cleanup($filename);
   db_disconnect();
 ?>
