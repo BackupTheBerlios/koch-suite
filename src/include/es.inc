@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: es.inc,v 1.10 2003/08/11 20:11:32 lestinsky Exp $
+   * $Id: es.inc,v 1.11 2004/12/17 19:50:53 lestinsky Exp $
    *
    * Define Spanish text-constants.
    *
@@ -14,6 +14,7 @@
   $Lang['Info']			= "Informaci&oacute;n";
 
   $Lang['Title']		= "T&iacute;tulo";
+  $Lang['OrigTitle']		= "T&iacute;tulo Original";
   $Lang['Yield']		= "Porciones";
   $Lang['Cat'] 			= "Categor&iacute;as";
   $Lang['Ingred']		= "Ingredientes";
