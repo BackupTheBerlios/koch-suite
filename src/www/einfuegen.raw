@@ -199,113 +199,147 @@
     return $str;
   }
 
-  // Parse den Input, bzw. Wenn der Input leer ist, erzeuge trotzdem ein
-  // passendes, leeres Array:
 
-  if (!isset($zutaten) or !is_array($zutaten)) {
-    $zutaten[] = "";
-  }
+  /*
+   * Lets go. What are we going to do? parse the submitted data, fetch
+   * something from the database or create an empty entry?
+   */
 
-  if (!isset($ztitle) or !is_array($ztitle)) {
-    $ztitle[] = "";
-  }
+  if (!isset($more_zutaten) and !isset($submit)) {
 
-  if (isset($more_zutaten)) {
-    array_push($zutaten, "");
-    array_push($ztitle, "");
-  }
+    if(isset($mid) and $mid != 0) {
+      /* We are editing an existing recipe, so fetch it from the database. */
+      $r = get_menu_by_mid($mid, $scale);
 
-  $zutat = array();
-  $y = 0;
+      if (!isset($r['meta']['Recorder'])) $r['meta']['Recorder'] = '';
+      if (!isset($r['meta']['Date']))     $r['meta']['Date'] = '';
+      if (!isset($r['meta']['Source']))   $r['meta']['Source'] = '';
 
-  // Catch Configuration-settings:
-  if (get_cfg_var('magic_quotes_gpc') == 1) {
-    if (isset($titel))     $titel = stripslashes($titel);
-    if (isset($portionen)) $portionen = stripslashes($portionen);
-    if (isset($anweisung)) $anweisung = stripslashes($anweisung);
-  }
+    } else {
 
-  foreach ($zutaten as $z) {
-    /* $zutaten ist ein Array, dass aus einzelnen Zutatenlisten
-     * besteht.
-     */
+      /* We were invoked as empty form */
 
-    $ingredients = array();
-
-    foreach (split("[\r]?\n", trim($z)) as $line) {
-      // Jede Zutatenliste wird in ihre einzelnen Zeilen aufgespalten
-
-      if (get_cfg_var('magic_quotes_gpc') == 1) {
-        $line = stripslashes($line);
+      if (!isset($zutaten) or !is_array($zutaten)) {
+        $zutaten[] = "";
       }
 
-      if ($line != '') {
-        $line = trim($line); // Remove whitespaces
-        if (preg_match("/^((\d* ){0,1}[\d\/\.,]*) +(.*)$/", $line, $bar)) {
-          // Wenn die Zeile mit einer Mengenangabe beginnt...
-	  if ($bar[1] != 0) {
-	    $quant = fraction_to_real($bar[1]);
-	  }
-	  $a = split(' +', $bar[3]);
-	  if ($unit = is_unit($a[0])) {
-	    array_shift($a);
-          }
-          $ingred = implode(" ", $a);
-        } else {
-          // Einheiten ohne Mengenangabe machen keinen Sinn 
-          // -> alles in den Zutatentext.
-          $quant  = '';
-          $unit   = '';
-          $ingred = trim($line);
-        }
-        array_push ($ingredients, array ('quant'  => $quant,
-                                         'unit'   => $unit,
-                                         'ingred' => $ingred));
+      if (!isset($ztitle) or !is_array($ztitle)) {
+        $ztitle[] = "";
       }
 
-      $quant  = '';
-      $unit   = '';
-      $ingred = '';
+      $zutat[] = array("title"       => $ztitle[0],
+                       "ingredients" => array(array('quant'  => '', 
+                                                    'unit'   => '',
+                                                    'ingred' => '')
+                                             )
+                      );
+
+      $meta['Recorder'] = $USER_S['realname']; 
+      $meta['Date'] = strftime("%x");
+      $meta['Source'] = '';
+
+      $r = array ('title'     => '',
+                  'yield'     => '',
+                  'category'  => '',
+                  'zutaten'   => $zutat,
+                  'anleitung' => '',
+                  'meta'      => $meta);
     }
 
-    array_push ($zutat, array("title"       => $ztitle[$y], 
-                              "ingredients" => $ingredients));
-    $y++;
-  }
-
-  // Formatiere Zeilenbrueche in das System wie wir es brauchen um.
-  if (isset($anweisung)) {
-    $anweisung = preg_replace('/((\r)?\n\s*){2,}/m', ' <p> ', $anweisung);
-    $anweisung = preg_replace('/(\r)?\n:/m', ' <br> :', $anweisung);
-    $anweisung = preg_replace('/(\r)?\n/m', ' ', $anweisung);
-  }
-
-  if (!empty($recorder)) {
-    $meta['Recorder'] = trim($recorder);
   } else {
-    if (!isset($mid)) $meta['Recorder'] = $USER_S['realname'];
+    /* Parse submitted data and generate an array of the needed structure */
+
+    if (isset($more_zutaten)) {
+      array_push($zutaten, "");
+      array_push($ztitle, "");
+    }
+
+    $zutat = array();
+    $y = 0;
+
+    // Catch Configuration-settings:
+    if (get_cfg_var('magic_quotes_gpc') == 1) {
+      if (isset($titel))     $titel = stripslashes($titel);
+      if (isset($portionen)) $portionen = stripslashes($portionen);
+      if (isset($anweisung)) $anweisung = stripslashes($anweisung);
+    }
+
+    foreach ($zutaten as $z) {
+      /* $zutaten ist ein Array, dass aus einzelnen Zutatenlisten
+       * besteht.
+       */
+
+      $ingredients = array();
+
+      foreach (split("[\r]?\n", trim($z)) as $line) {
+        // Jede Zutatenliste wird in ihre einzelnen Zeilen aufgespalten
+  
+        if (get_cfg_var('magic_quotes_gpc') == 1) {
+          $line = stripslashes($line);
+        }
+
+        if ($line != '') {
+          $line = trim($line); // Remove whitespaces
+          if (preg_match("/^((\d* ){0,1}[\d\/\.,]*) +(.*)$/", $line, $bar)) {
+            // Wenn die Zeile mit einer Mengenangabe beginnt...
+	    if ($bar[1] != 0) {
+	      $quant = fraction_to_real($bar[1]);
+	    }
+	    $a = split(' +', $bar[3]);
+	    if ($unit = is_unit($a[0])) {
+	      array_shift($a);
+            }
+            $ingred = implode(" ", $a);
+          } else {
+            // Einheiten ohne Mengenangabe machen keinen Sinn 
+            // -> alles in den Zutatentext.
+            $quant  = '';
+            $unit   = '';
+            $ingred = trim($line);
+          }
+          array_push ($ingredients, array ('quant'  => $quant,
+                                           'unit'   => $unit,
+                                           'ingred' => $ingred));
+        }
+
+        $quant  = '';
+        $unit   = '';
+        $ingred = '';
+      }
+
+      array_push ($zutat, array("title"       => $ztitle[$y], 
+                                "ingredients" => $ingredients));
+      $y++;
+    }
+
+    // Formatiere Zeilenbrueche in das System wie wir es brauchen um.
+    if (isset($anweisung)) {
+      $anweisung = preg_replace('/((\r)?\n\s*){2,}/m', ' <p> ', $anweisung);
+      $anweisung = preg_replace('/(\r)?\n:/m', ' <br> :', $anweisung);
+      $anweisung = preg_replace('/(\r)?\n/m', ' ', $anweisung);
+    }
+
+    if (!empty($recorder)) {
+      $meta['Recorder'] = trim($recorder);
+    } 
+
+    if (!empty($date)) {
+      $meta['Date'] = trim($date);
+    } 
+
+    if (!empty($source)) {
+      $meta['Source'] = trim($source);
+    } 
+
+    $r = array ('title'     => (isset($titel)     ? trim($titel) : '') , 
+                'yield'     => (isset($portionen) ? trim($portionen) : ''),
+                'category'  => (isset($kategorie) ? split(',[ ]*', $kategorie) : ''),
+                'zutaten'   => $zutat,
+                'anleitung' => (isset($anweisung) ? $anweisung : ''),
+                'meta'      => $meta );
+
+    $r["hash"] = recipe_hash($r);
   }
-
-  if (!empty($date)) {
-    $meta['Date'] = trim($date);
-  } else {
-    if (!isset($mid)) $meta['Date'] = strftime("%x");
-  }
-
-  if (!empty($source)) {
-    $meta['Source'] = trim($source);
-  } else {
-    if (!isset($mid)) $meta['Source'] = '';
-  }
-
-  $r = array ('title'     => (isset($titel)     ? trim($titel) : '') , 
-              'yield'     => (isset($portionen) ? trim($portionen) : ''),
-              'category'  => (isset($kategorie) ? split(',[ ]*', $kategorie) : ''),
-              'zutaten'   => $zutat,
-              'anleitung' => (isset($anweisung) ? $anweisung : ''),
-              'meta'      => $meta );
-
-  $r["hash"] = recipe_hash($r);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -320,7 +354,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.36 2002/05/20 15:07:35 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.37 2002/05/22 21:41:32 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -357,12 +391,6 @@
       }
       echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
       $mid = write_db($r, $new_cat);
-    } elseif (isset($more_zutaten)) {
-      // Do nothing.
-    } else {
-      if (isset($mid) and $mid != 0) {
-        $r = get_menu_by_mid($mid, $scale);
-      }
     }
 
     include "./actions.inc";
