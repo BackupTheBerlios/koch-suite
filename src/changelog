@@ -1,4 +1,16 @@
-### $Id: changelog,v 1.9 2000/12/27 18:12:36 michael Exp $
+### $Id: changelog,v 1.10 2001/01/12 01:07:01 michael Exp $
+
+2001-01-11: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+        Release 0.2
+
+2001-01-10: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+        Bugfix in rezept2latex
+
+2001-01-07: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+        Bug-Fix in mmexport. Unter gewissen Bedingungen wurde manchmal
+        eine doppelte Leerzeile eingefügt. -> Fixed.
+        Manual-Pages für Console-Tools erstellt.
+        Release 0.2-pre3
 
 2000-12-27: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Entwurf eines Eingabe-Interface mittels Perl/Tk
