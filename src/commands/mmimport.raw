@@ -29,7 +29,7 @@
    */
 
   /*
-   * $Id: mmimport.raw,v 1.24 2001/12/23 17:21:02 lestinsky Exp $
+   * $Id: mmimport.raw,v 1.25 2002/02/18 17:37:40 lestinsky Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
@@ -44,8 +44,8 @@
   /* Disable Timelimit. We have a controlling tty here, so this is safe. */
   set_time_limit(0);
 
-  if (!isset($argc)) $argc = $HTTP_SERVER_VARS["argc"];
-  if (!isset($argv)) $argv = $HTTP_SERVER_VARS["argv"];
+  $argc = $_SERVER["argc"];
+  $argv = $_SERVER["argv"];
 
   $opt_test = 0;
   $opt_test_printmm = 0;
@@ -74,28 +74,28 @@ EOD;
   /* parse arguments */
   for ($i = 1; $i < $argc; $i++) {
     switch ($argv[$i]) {
-        case "-t":
-        case "--test":
+        case '-t':
+        case '--test':
               $opt_test++;
               break;
-        case "-mm":
+        case '-mm':
               $opt_test_printmm++;
               break;
       
-        case "-c":
+        case '-c':
               if (++$i < $argc) {
-                $opt_cat = split(",", $argv[$i]);
+                $opt_cat = split(',', $argv[$i]);
               } else {
-                fputs($stderr, "$argv[0]: invalid option -- " . preg_replace("/^-*/", "", $argv[$i]) . "\n");
+                fputs($stderr, "$argv[0]: invalid option -- " . preg_replace('/^-*/', '', $argv[$i]) . "\n");
                 exit();
               }
               break;
 
         default:
-              fputs($stderr, "$argv[0]: invalid option -- " . preg_replace("/^-*/", "", $argv[$i]) . "\n");
+              fputs($stderr, "$argv[0]: ignoring invalid option -- " . preg_replace('/^-*/', '', $argv[$i]) . "\n");
 	      
-        case "--help":
-        case "-h":
+        case '--help':
+        case '-h':
               fputs($stderr, $help);
               exit();
     }
@@ -129,7 +129,7 @@ EOD;
     if (isset($rezept)) {
       
       if ($opt_cat)
-        $rezept["category"] = array_merge($opt_cat, $rezept["category"]) ;
+        $rezept['category'] = array_merge($opt_cat, $rezept['category']) ;
       
       if ($opt_test) {
         /* Parse the recipe, but don't write it to the database.
@@ -142,10 +142,10 @@ EOD;
           fputs($stdout, "==========\n");
         }
       } else {
-        if (! recipe_dupe($rezept["hash"])) {
+        if (! recipe_dupe($rezept['hash'])) {
           write_db($rezept);
         } else {
-          fputs($stderr, "Recipe " . $rezept["title"] . " is already in database.\n");
+          fputs($stderr, 'Recipe ' . $rezept["title"] . " is already in database.\n");
         }
       }
       unset ($rezept);

@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.69 2001/12/24 14:14:42 lestinsky Exp $
+   * $Id: functions.raw,v 1.70 2002/02/18 17:36:24 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -239,7 +239,7 @@
         case 'title':
           if ($param == 1) {
             $result = get_mid_by_name("");
-          } else if (ereg("[a-z]", $param)) {
+          } else if (is_string ($param) and !is_numeric($param) and strlen($param) == 1) {
             $result = get_mid_by_name("$param", 1);
           } else {
             $result = get_mid_by_name("$this");
@@ -607,17 +607,17 @@
 
     if (isset($quant) and isset($unit) and isset($text)) {
       /* Ok, wir haben eine gueltige Zeile gelesen. */
-      if ($quant != '') {
+      if ($quant != '' and strpos($quant, '/') !== false) {
         $quant = fraction_to_real($quant);
       }
 
       // Es gibt 2 verschiedene Stiele für verlängerte Zeilen.
       // "-bla" und "-- bla":
-      $text = preg_replace("/^-+\s*/", "-- ", $text);
+      $text = preg_replace('/^-+\s*/', '-- ', $text);
 
-      return array("quant"  => $quant,
-                   "unit"   => $unit,
-                   "ingred" => $text);
+      return array('quant'  => $quant,
+                   'unit'   => $unit,
+                   'ingred' => $text);
     } else {
       /* Sorry, keine gültige Zeile */
       return false;
@@ -628,8 +628,8 @@
   function fraction_to_real ($quant) {
     /* Convert fractions to real numbers. */
 
-    $quant = preg_replace("/,/", ".", $quant);
-    $quant = preg_replace("/(\d+\/\d+)/", "+\\1", $quant);
+    $quant = preg_replace('/,/', '.', $quant);
+    $quant = preg_replace('/(\d+\/\d+)/', "+\\1", $quant);
     $quant = eval("return $quant;");
 
     return $quant;
