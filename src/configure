@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.14 2001/09/24 22:02:41 lestinsky Exp $
+# $Id: configure,v 1.15 2001/10/13 13:59:43 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -33,6 +33,7 @@
 CONF_RAW=config
 CONF_RAW_MY=config.my
 CONF_FILE=config.sed
+AWKSCRIPT=genconfig.awk
 
 if [ -f ${CONF_RAW_MY} ] ; then 
   CONF_RAW=${CONF_RAW_MY}
@@ -83,27 +84,40 @@ translate_raw () {
 }
 
 ##########
+# Build-Depends:
 
-# Let's see if we can find all required tools:
-TOOLS="sed awk"
-for foo in ${TOOLS} ; do 
-  check_prereq ${foo}
+# Probe for a usable awk-version
+echo -n "Checking for a usable awk ... "
+for i in mawk awk; do
+  awk=$(which $i)
+  if [ -n "${awk}" -a $? = 0 ] ; then
+    break;
+  fi
 done
+if [ -z "${awk}" ] ; then
+  echo "Not Found"
+  exit 1
+else
+  echo "Found - ${awk}"
+fi
 
-# Generate the sed-file
-echo -n "Generating config.sed... "
-grep -Ev "^#" ${CONF_RAW} | grep -Ev "^$" | \
-  tr '=' ' ' | sed "s|:|\\\:|g" |\
-  awk '{print "s:<%%"$1"%%>:"$2":" }' > ${CONF_FILE}
+check_prereq sed
+
+##########
+# Generate the sed-file:
+echo -n "Generating config.sed "
+${awk} -f ${AWKSCRIPT} ${CONF_RAW} > ${CONF_FILE}
 echo "Done."
 
-# Let's check for some 'nice-to-have' tools
+##########
+# Optional tools:
 TOOLS="latex dvips gs"
 for foo in ${TOOLS} ; do
   check_opt ${foo}
 done
 
-# Create the Makefiles
+##########
+# Create the Makefiles:
 SUBDIRS="include www www/pics commands man"
 for foo in ${SUBDIRS}
 do
