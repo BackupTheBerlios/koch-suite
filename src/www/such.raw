@@ -1,4 +1,4 @@
-<!-- $Id: such.raw,v 1.6 2000/12/14 17:27:36 michael Exp $ -->
+<!-- $Id: such.raw,v 1.7 2001/01/15 10:02:46 michael Exp $ -->
 <?
   if (empty($begriff) and empty($all)) {
 ?>
@@ -16,13 +16,14 @@
     <form action="<? echo "$PHP_SELF?suchen=1"; ?>" method="post">
       <table border=0>
         <tr>
-          <td>Suchen nach:</td><td><input type="text" name="begriff"></td>
+          <td>Suchen nach:</td>
+          <td><input type="text" name="begriff" value="<? echo $begr ?>">
         </tr>
         <tr>
           <td>Suchen in:</td>
           <td><select name="where">
                 <option value="title">Menue-Titel</option>
-                <option value="cat">Kategorie</option>
+                <option value="cat" <? if ($begr != '') echo 'selected' ?>>Kategorie</option>
                 <option value="ingred">Zutat</option>
               </select>
           </td>
