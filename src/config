@@ -1,16 +1,16 @@
-# $Id: config,v 1.25 2002/11/27 18:34:04 lestinsky Exp $
+# $Id: config,v 1.26 2003/02/09 18:25:13 lestinsky Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 # All variables will be are referenced by ${VARNAME}. Expansion takes
 # place immediately while reading every line.
 
 # Where is the php-cgi-Binary?
-PHP		=/usr/local/bin/php4
+PHP		=/usr/local/bin/php
 PHP_OPTS	=-q
 
 # Where did you install your PEAR? (eg. /usr/local/lib/php/ )
 # Remember: you need a post-4.0.6-PEAR repository.
-PEAR		=/usr/local/lib/php4
+PEAR		=/usr/local/lib/php
 
 # Where to install the all of this?
 PREFIX		=/usr/local
@@ -30,6 +30,15 @@ WEB_PREFIX	=/var/www/koch-suite
 # And the Documentation goes there:
 MAN_PREFIX	=${PREFIX}/man
 DOC_PREFIX	=${PREFIX}/share/doc/koch-suite
+
+# Enable profiling engine.
+ENABLE_PROFILING=true
+
+# Shall we use the PHP-builtin mail()-function for automatic email
+# notification in certain situations? Output will go to your browser/stdout
+# otherwise. You need a configured and working MTA on your local machine,
+# to use this.
+MAIL_NOTIFY	=true
 
 # Site contact:
 #   Please fill out properly.
