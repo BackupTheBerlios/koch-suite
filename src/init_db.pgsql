@@ -1,5 +1,5 @@
 -- 
--- $Id: init_db.pgsql,v 1.14 2002/05/20 16:26:49 lestinsky Exp $
+-- $Id: init_db.pgsql,v 1.15 2002/06/02 09:50:38 bus Exp $
 -- init_db_postgreSQL.sql
 -- 2001-07-25 Michael Bussmann <bus@mb-net.net>
 --
@@ -245,8 +245,8 @@ CREATE INDEX user_name on usertable (username);
 -- Table structure for table 'menu_meta'
 --
 CREATE TABLE menu_meta (
-  id int(11) NOT NULL default '0',
-  mid int(11) NOT NULL default '0',
+  id int NOT NULL default '0',
+  mid int NOT NULL default '0',
   fieldname varchar(20) NOT NULL default '',
   fieldvalue varchar(255) default NULL
 );
