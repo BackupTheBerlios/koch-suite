@@ -1,20 +1,60 @@
-<!-- $Id: menue.raw,v 1.14 2001/08/31 17:34:41 lestinsky Exp $ -->
+<!-- $Id: menue.raw,v 1.15 2001/10/13 14:00:28 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
+<?php
+  $blue_dot = '<img src="pics/blue_dot.gif" align="bottom" alt="" border=0>';
+  $info_dot = '<img src="pics/info_dot.gif" align="bottom" alt="" border=0>';
+?>
 <table border=0 cellspacing=0 cellpadding=0>
-  <tr style="background-color:#9090b0;" align="top">
+  <tr class="border" align="top">
     <td>
       <table border="0" cellspacing="2" cellpadding="3">
         <tr style="font-size:small;">
           <td style="background-color:#c0c0d5" class="menu"><? echo $Lang["Mainmenu"]["Title"]; ?></td>
         </tr>
         <tr>
-          <td style="background-color:#e9e9f0; font-size:small;" class="menu">
+          <td class="menu">
             <div style="white-space:nowrap">
-            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="search.php"><? echo $Lang['Search']['Search']; ?></a><br>
-            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="einfuegen.php"><? echo $Lang['Insert']; ?></a><br>
-            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="help.php"><? echo $Lang['Help']; ?></a><br>
-            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="infos.php"><? echo $Lang['Info']; ?></a><br>
             </div>
+            <table border="0" cellspacing="1" cellpadding="0" class="menu">
+            <tr>
+              <td><?php echo $blue_dot; ?></td>
+              <td><a href="search.php"><? echo $Lang['Search']['Search']; ?></a></td>
+            </tr>
+            <tr>
+              <td><?php echo $blue_dot; ?></td>
+              <td><a href="einfuegen.php"><? echo $Lang['Insert']; ?></a></td>
+            </tr>
+            <tr>
+              <td><?php echo $blue_dot; ?></td>
+              <td><a href="help.php"><? echo $Lang['Help']; ?></a></td>
+            </tr>
+            <tr>
+              <td><?php echo $blue_dot; ?></td>
+              <td><a href="infos.php"><? echo $Lang['Info']; ?></a></td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
+
+            <?php if (!empty($USER_S["username"])) { ?>
+              <!-- Logged in -->
+              <tr>
+                <td valign="top"><?php echo $info_dot; ?></td>
+                <td><?php echo $Lang['Auth']['LoggedInAs'] ?><br>
+                    <i><?php echo $USER_S["username"] ?></i>
+                </td>
+              </tr>
+              <tr>
+                <td><?php echo $blue_dot; ?></td>
+                <td><a href="logout.php"><?php echo $Lang['Auth']['Logout'] ?></a></td>
+              </tr>
+            <?php } else { ?>
+              <!-- Not Logged in -->
+              <tr>
+                <td><?php echo $info_dot; ?></td>
+                <td><?php echo $Lang['Auth']['NoLogin'] ?></td>
+              </tr>
+            <?php } ?>
+
+            </table>
           </td>
         </tr>
       </table>
