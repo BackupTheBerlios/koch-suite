@@ -10,8 +10,8 @@ SUBDIRS=		""
 all:
 	@#make subdir TRGT=all
 	@(for i in ${PHP_FILES_UNCONF}; do\
-	echo "$$i.raw --> $$i.inc"; \
-	cat $$i.raw | sed -f ${CONF_FILE} > $$i.inc;\
+	echo "$$i.raw --> $$i"; \
+	cat $$i.raw | sed -f ${CONF_FILE} > $$i;\
 	done)
 
 subdir:
@@ -24,15 +24,17 @@ subdir:
 
 clean:
 	@#make subdir TRGT=clean
-	rm -rf *.php
-	rm -rf *.inc
-	rm -rf *.gen
+	@( for i in "${PHP_FILES_UNCONF}" ; do \
+	echo "rm $${i}"; \
+	rm $${i}; \
+	done)
 
 distclean:
 
 install:
-	( [-d <%%SCRIPT_PREFIX%%> ] || \
+	( [ -d "<%%SCRIPT_PREFIX%%>" ] || \
 	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%SCRIPT_PREFIX%%> )
-	( for i in ${PHP_FILES_UNDEF} ; do \
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i.inc <%%SCRIPT_PREFIX%%>; \
+	@( for i in "${PHP_FILES_UNCONF}" ; do \
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%SCRIPT_PREFIX%%>; \
+	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%SCRIPT_PREFIX%%>" ; \
 	done )

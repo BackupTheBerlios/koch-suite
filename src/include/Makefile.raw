@@ -31,8 +31,9 @@ clean:
 distclean:
 
 install:
-	( [-d <%%PHP_LIBS%%> ] || \
+	( [ -d "<%%PHP_LIBS%%>" ] || \
 	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%PHP_LIBS%%> )
-	( for i in ${PHP_FILES_UNDEF} ; do \
+	@( for i in "${PHP_FILES_UNCONF}" ; do \
 	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i.inc <%%PHP_LIBS%%>; \
+	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i.inc <%%PHP_LIBS%%>" ; \
 	done )
