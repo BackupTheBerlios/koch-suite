@@ -37,7 +37,6 @@ distclean: clean
 	rm -f $${i}/Makefile ; \
 	done)
 	rm -f config.sed
-	rm -f ChangeLog
 
 ChangeLog: CVS/Entries
 	rcs2log -l 70 -i 2 -t 4 -v \
