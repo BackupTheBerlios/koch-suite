@@ -1,9 +1,9 @@
-### $Id: README,v 1.36 2001/07/10 08:56:25 michael Exp $
+### $Id: README,v 1.37 2001/07/25 10:49:07 michael Exp $
 
 Koch-Suite
 ==========
 
-Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
+Michael Lestinsky <michael@lestinsky.de>, Juli 2001
 Die Datei LICENSE enthält die Lizenz, unter der dieses Paket als ganzes
 oder einzelne Dateien hieraus verwendet werden dürfen.
 
@@ -43,8 +43,8 @@ Neu in der Version 0.5 ist der Support fuer PostgreSQL-Datenbanken.
 Auf alle Fälle ist auch PHP4 mit Support fuer die verwendete Datenbank
 notwendig. 
 Diese Skripten sind unter PHP-4.0.5 geschrieben und getestet worden, 
-Versionen, aelter als 4.0.4 funktionieren definitiv nicht. 
-Fuer die Console-Tools muss PHP ausserdem als Standalone-Version (Alias
+PHP-Versionen, aelter als 4.0.4 funktionieren definitiv nicht. 
+Fuer die Console-Tools muss PHP ausserdem als Standalone-Version (alias
 CGI-Version) vorhanden sein.
 
 Der LaTeX-Export greift auf das Paket 'floatflt' zurück. Bei Bedarf siehe
