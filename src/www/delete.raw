@@ -15,6 +15,8 @@
 
   $mid     = $HTTP_GET_VARS["mid"];
   $confirm = $HTTP_GET_VARS["confirm"];
+  if (isset($HTTP_SERVER_VARS["PHP_SELF"])) $PHP_SELF =
+    $HTTP_SERVER_VARS["PHP_SELF"];
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -27,7 +29,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.8 2001/06/26 22:13:13 michael Exp $ -->
+  <!-- $Id: delete.raw,v 1.9 2001/06/27 13:15:59 michael Exp $ -->
 </head>
 
 <body>
