@@ -1,9 +1,28 @@
-<!-- $Id: menue.raw,v 1.23 2003/01/10 12:59:49 lestinsky Exp $ -->
+<!-- $Id: menue.raw,v 1.24 2004/12/07 18:19:55 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
 <?php
+
+  /**
+   * Offers available languages.
+   * Use this to create a menu entry for every language present.
+   *
+   * @param string $lang Show menu entry for this language
+   * @return void
+   */
+  function offer_lang ($lang) {
+    if (!empty($_SERVER['QUERY_STRING'])) {
+      printf("[<a href=\"%s?%s&lang_override=%s\">%s</a>]\n", 
+	$_SERVER['PHP_SELF'], $_SERVER['QUERY_STRING'], $lang, $lang);
+    } else {
+      printf("[<a href=\"%s?lang_override=%s\">%s</a>]\n", 
+	$_SERVER['PHP_SELF'], $lang, $lang);
+    }
+  }
+
   $blue_dot = '<img src="pics/blue_dot.gif" align="bottom" alt="*" border=0>';
   $info_dot = '<img src="pics/info_dot.gif" align="bottom" alt="*" border=0>';
 ?>
+
 <table border=0 cellspacing=0 cellpadding=0 class="border">
   <tr align="top">
     <td>
@@ -65,9 +84,11 @@
             <?php } ?>
             <tr>
               <td colspan="2">
-                [<a href="<?php echo $_SERVER['PHP_SELF'] ?>?lang_override=de">de</a>]
-                [<a href="<?php echo $_SERVER['PHP_SELF'] ?>?lang_override=en">en</a>]
-                [<a href="<?php echo $_SERVER['PHP_SELF'] ?>?lang_override=es">es</a>]
+		<?php
+                  offer_lang("de");
+                  offer_lang("en");
+                  offer_lang("es");
+                ?>
               </td>
             </tr>
             </table>
