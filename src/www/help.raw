@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.5 2001/04/20 11:20:59 michael Exp $ -->
+  <!-- $Id: help.raw,v 1.6 2001/04/23 09:22:57 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -32,7 +32,7 @@
     ?>
   </td>
   <td width="90%">
-    <!-- Installierte Version: $Name:  $ $Revision: 1.5 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.6 $ -->
 
     <h2>Hilfe:</h2>
     <p class="top">
@@ -59,6 +59,8 @@
           Siehe <code>rezept(1)</code>.
       <dt><code>rk2mm</code></dt>
           <dd>Konvertiere REZKONV- in Meal-Master-Rezepte.
+          <code>rk2mm</code> fungiert dabei als Filter zwischen der 
+          Standard-Eingabe und der Standard-Ausgabe.
           Siehe <code>rk2mm(1)</code>.</dd>
     </dl>
 
