@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.21 2001/05/10 23:56:12 michael Exp $
+   * $Id: output.raw,v 1.22 2001/05/22 00:13:54 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -39,24 +39,31 @@
 
   function format_recipe_html ($rezept) {
     /* return a string, which contains the html-formatted recipe */
+    global $Lang;
 
     $str = "<h2>" . htmlentities($rezept["title"]) . "</h2>\n";
     $str .= "<table border=\"0\">\n";
 
-    $str .= "  <tr><td><b>Kategorie</b>:</td>";
+    $str .= "  <tr><td><b>" . $Lang['Cat'] . "</b>:</td>";
     $str .= "<td width=\"90%\">";
     $str .= htmlentities(implode(" ", $rezept["category"]));
     $str .= "</td></tr>\n";
 
-    $str .= "  <tr><td><b>Portionen</b>:</td><td>" . $rezept["yield"] . "</td></tr>\n";
+    $str .= "  <tr><td><b>" . $Lang['Yield'] . "</b>:</td><td>" . $rezept["yield"] . "</td></tr>\n";
 
     $str .= "  <tr><td colspan=2>\n";
 
     $str .= "    <table border=\"0\" width=\"100%\">\n";
     foreach ($rezept["zutaten"] as $z) {
-      $str .= "      <tr><td colspan=3><b>" .
-                      htmlentities($z["title"]) .
-                      "</b></td></tr>\n";
+      if (empty($z["title"])) {
+        $str .= "      <tr><td colspan=3><b>" .
+                       htmlentities($Lang["Ingred"]) .
+                       "</b></td></tr>\n";
+      } else {
+        $str .= "      <tr><td colspan=3><b>" .
+                       htmlentities($z["title"]) .
+                       "</b></td></tr>\n";
+      }
 
       foreach ($z["ingredients"] as $j) {
 
