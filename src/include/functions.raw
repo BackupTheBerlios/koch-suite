@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.65 2001/10/02 12:18:46 lestinsky Exp $
+   * $Id: functions.raw,v 1.66 2001/10/03 21:52:53 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -137,8 +137,8 @@
     $result=$db->query($query);
 
     if (DB::isError($result)) {
-      write_log("SQL error: " . $result->getMessage());
-      die("SQL error: " . $result->getMessage());
+      write_log('SQL error: ' . $result->getMessage());
+      die('SQL error: ' . $result->getMessage());
     }
 
     if ($result === DB_OK) {
@@ -1000,19 +1000,19 @@
    * @return string $hash
    */
   function recipe_hash ($recipe) {
-    $str = $recipe["title"] . $recipe["anleitung"];
-    $str = strtolower($str);
-    $str = strtr($str, array("ß" => "ss",
-                             "ä" => "ae",
-                             "ö" => "oe",
-                             "ü" => "ue")); // Strip Umlauts
-    $str = htmlentities($str);
-    $str = preg_replace("/^:.*$/m", "", $str);
-    $str = strtr($str, array("\n" => "",
-                             " "  => "",
-                             "\t" => "" )); // Strip Whitespaces
+    $hashme = '';
+    $str    = $recipe["title"] . $recipe["anleitung"];
+    $str    = strtolower($str);
+    $j      = strlen($str);
 
-    return md5($str);
+    for ($i = 0; $i < $j ; $i++) {
+      $char = $str[$i];
+      if (strpos("bcdfghklmnpqrtvwxz", $char) !== false) {
+        $hashme .= $char;
+      }
+    }
+
+    return md5($hashme);
   }
 
 ?>
