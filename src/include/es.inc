@@ -1,8 +1,8 @@
 <?php
   /*
-   * $Id: es.inc,v 1.8 2003/02/07 16:06:01 bus Exp $
+   * $Id: es.inc,v 1.9 2003/08/04 21:15:08 lestinsky Exp $
    *
-   * Define English text-constants.
+   * Define Spanish text-constants.
    *
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
@@ -25,6 +25,11 @@
   $Lang['Recorder']		= "Registrada por";
   $Lang['Date']			= 'Dia';
   $Lang['Source']		= 'Fuente';
+  $Lang['Instructions']		= 'Instruciones';
+  $Lang['Rating']		= 'Puntuaci&oacute;n';
+  $Lang['Vote']['Submit']	= 'Puntua esta receta';
+  $Lang['Contact']		= 'Contacto';
+  $Lang['TotalRecipes']		= 'N&uacute;mero total de recetas';
 
   $Lang['FormApply']		= "Aplicar";
   $Lang['FormMoreIngr']		= "Ingredientes adicionales";
@@ -37,7 +42,14 @@
   $Lang['Edit']                 = "Editar";
   $Lang['Next']			= "Siguiente";
   $Lang['Previous']		= "Anterior";
-  $Lang['Apply']                = 'Aplicar';
+  $Lang['LastResult']		= '&Uacute;ltimo resultado';
+  $Lang['Apply']		= 'Aplicar';
+  $Lang['Tag']['Do']		= 'Marcar';
+  $Lang['Tag']['All']		= 'Marcar todas';
+  $Lang['Tag']['Show']['Do']	= 'Mostrar recetas marcadas';
+  $Lang['Tag']['Show']['Title']	= 'Recetas marcadas';
+  $Lang['Untag']['Do']		= 'Desmarcar';
+  $Lang['Untag']['All']		= 'Desmarcar todas';
 
   $Lang['Mainmenu']['Title']		= "Men&uacute; principal";
   $Lang['Mainmenu']['PlsChoose']	= "Por favor seleccione del men&uacute; principal";
@@ -59,6 +71,7 @@
   $Lang['Recipe']['Insert']     = "Insertar receta en la base de datos";
   $Lang['Recipe']['Inserted']   = "Receta insertada.";
 
+  $Lang['Auth']['Login']	= 'Entrar';
   $Lang['Auth']['LoggedInAs']   = 'Conectado como';
   $Lang['Auth']['Logout']       = 'Salir';
   $Lang['Auth']['NoLogin']      = 'No conectado';
@@ -92,6 +105,11 @@
   $Lang['Settings']['Password']['nomatch']	= "Las contrase&ntilde;as no coinciden.";
   $Lang['Settings']['Password']['changed']      = "Contrase&ntilde;a cambiada.";
 
+  $Lang['Pastebox']['Title']            = 'Caja de pegado';
+  $Lang['Pastebox']['Text']             = <<<EOT
+     Pega abajo una receta &uacute;nica y preformateada en formato Meal-Master o RezKonv.
+EOT;
+
   $Lang['AllRecipes']		= "Todas las recetas";
   $Lang['CatChoose']		= "Selector de categor&iacute;a";
 
@@ -102,6 +120,10 @@
       Por favor seleccione 5 diferentes categor&iacute;as como m&aacute;ximo. Haga click
       en la categor&iacute;a para insertar el valor en la forma.
 EOT;
+  $Lang['Category']['Edit']     = 'Editar Categor&iacute;as';
+  $Lang['Category']['EditAlias']= 'Editar alias';
+  $Lang['Category']['MakeAlias']= 'Haz un alias para';
+  $Lang['Category']['Delete']   = 'Borrar categor&iacute;a';
 
   $Lang['UnitInfo']['Title']    = "Informaci&oacute;n de unidades";
   $Lang['UnitInfo']['MMText']   = "Unidades en formato Meal-Master.";
@@ -225,6 +247,25 @@ EOT;
         <a href="units.php" target="units" onclick="units();">Mealmaster,
         RezKonv o alias definidos</a> y deben estar separadas de la
         cantidad por un espacio .
+EOT;
+
+  $Lang['Helptext']['WWW']['part'][2]['Title']  = "Algunos consejos sobre el uso de categor&iacute;s";
+  $Lang['Helptext']['WWW']['part'][2]['Text']   = <<<EOT
+	Las recetas se pueden incorporar en diferentes categorias. Realmente
+	no hay un l&iacute;mite real para ello, sin embargo la especifaci&oacute;n del
+	formato de mealmaster permite un m&aacute;ximo de cinco categor&iacute;s.
+	Las nuevas categor&iacute;s se crean directamente, cada vez que una
+	receta la usa por primara vez.
+	Para mantener las categor&iacute;s en orden, es recomendable usar el
+	siguiente esquema para las nuevas recetas, cuando se a&ntilde;ada nuevas recetas
+	a la base de datos a trav&eacute;s del interfaz web:
+	<ul>
+	  <li>La primera categor&iacute;a debe describir el tipo de recetea. Por
+	      ejemplo una "Sopa", un "Aperitivo" o un "Cocktail".</li>
+	  <li>La segunda categor&iacute;a debe describir el origen de la receta.
+	      Use el nombre del pa&iacute;s de origen como <code>Itaila</code>, 
+	      <code>Francia</code> o <code>China</code>.</li>
+	</ul>
 EOT;
 
   $Lang['Helptext']['Feedback']['Title']	= "Sus comentarios";
