@@ -1,3 +1,13 @@
+2002-08-10  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/configure 1.24, src/man/Makefile.raw 1.12, src/man/man1/Makefile.raw 1.1:
+  Add a Makefile for man/man1 and use it.
+
+  * src/README 1.51:
+  the 'preparation' instructions, of course.
+
+  * src/Makefile 1.25: Remove useless code
+
 2002-08-03  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/INSTALL 1.12.2.1:
