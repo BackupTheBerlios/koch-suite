@@ -1,3 +1,45 @@
+2001-10-31  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/functions.raw 1.67:
+  return the menu-id.
+
+  * src/include/de.inc 1.23, src/include/en.inc 1.26:
+  +"Normal view"
+
+  * src/include/output.raw 1.38:
+  Print nicer numbers. Change some "common" floats into fractions.
+
+  * src/www/Makefile.raw 1.28: Use actions.inc
+
+  * src/www/einfuegen.raw 1.31: Use actions.inc
+  Beautify Output
+
+  * src/www/kategorien.raw 1.14:
+  initialize some variables.
+
+  * src/Documentation/ChangeLog.2000 1.2: Undo.
+
+  * src/Makefile 1.24:
+  Undo. Seems like rcs2log is somewhat broken.
+
+  * src/www/rezept.raw 1.21: use actions.raw
+
+  * src/www/actions.raw 1.1: Display "Action"-menu
+
+  * src/Makefile 1.23:
+  Only Changes after 2001-01-01
+
+  * src/Documentation/ChangeLog.1999 1.2, src/Documentation/ChangeLog.2000 1.1:
+  Argh! s/1999/2000/
+
+  * src/Documentation/ChangeLog.1999 1.1:
+  Changes in 1999
+
+  * src/config 1.20: Typo
+
+  * src/include/koch-suite.raw 1.5, src/INSTALL 1.7:
+  Language
+
 2001-10-25  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/defines.raw 1.6:
