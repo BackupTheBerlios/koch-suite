@@ -1,0 +1,335 @@
+<?php
+  /** 
+   * Functions for the "Koch-Suite"
+   *
+   * $Id: parser.raw,v 1.1 2002/05/26 22:14:26 lestinsky Exp $
+   * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
+   * Editors: Please sort new functions alphabetically.
+   *
+   * @author Michael Lestinsky <michael@lestinsky.de>
+   * @package Lib
+   * @modulegroup General
+   * @module functions.inc
+   * @copyright Michael Lestinsky <michael@lestinsky.de>
+   *
+   * Copyright (c) 2001
+   *      Michael Lestinsky. All rights reserved.
+   *
+   * Redistribution and use in source and binary forms, with or without
+   * modification, are permitted provided that the following conditions
+   * are met:
+   * 1. Redistributions of source code must retain the above copyright
+   *    notice, this list of conditions and the following disclaimer.
+   * 2. Redistributions in binary form must reproduce the above copyright
+   *    notice, this list of conditions and the following disclaimer in the
+   *    documentation and/or other materials provided with the distribution.
+   * 3. All advertising materials mentioning features or use of this software
+   *    must display the following acknowledgement:
+   *      This product includes software developed by Michael Lestinsky.
+   *
+   * THIS SOFTWARE IS PROVIDED BY MICHAEL LESTINSKY ``AS IS'' AND
+   * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   * ARE DISCLAIMED.  IN NO EVENT SHALL MICHAEL LESTINSKY BE LIABLE
+   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+   * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+   * SUCH DAMAGE.
+   */
+
+
+  /**
+   * read the ingredients
+   * return a 2-dim Array $a[count][ingr-spec]
+   * where count is a plain integer-counter, specifying more or less
+   * the linenumber of the ingredient and ingr-spec is one of "quant",
+   * "unit" or "ingred".
+   * @return array
+   */
+  function getingr (&$file, $flavor=RECIPE_MM) {
+    
+    $a = array();
+   
+    while ($line = $file->ReadLine()) {
+      if ($b = parse_ingredient($line, $flavor)) {
+        array_push ($a, $b);   
+      } else {
+        /* No ingredient-line here. Wind back for one line. */
+        $file->UnReadLine($line);
+        break;
+      }
+    }
+    return $a;
+  }
+
+
+  /**
+   * extract meta informations from ingredientlists.
+   * @return string
+   */
+  function getmeta (&$file) {
+
+    $return = '';
+
+    while ($line = $file->ReadLine()) {
+      if (preg_match("/(\s){11,}-+\s*(.*)/", $line, $match)) {
+        $return .= $match[2] . ' ';
+      } else {
+        /* No meta-line here. Wind back for one line. */
+        $file->UnReadLine($line);
+        break;
+      }
+    }
+    return $return;
+  }
+
+
+  /**
+   * Versuche aus dem File-Objekt $file ein Rezept zu lesen
+   *
+   * Das Format kann MM-Style oder RK-Style sein.
+   * Gib eine Referenz auf das Ergebnis zurück.
+   * @param object $file File-Object
+   * @param int $flavor Rezept-Format
+   * @return 
+   */
+  function &parse_recipe(&$file, $ignore_unknown_mmext, $flavor=RECIPE_MM) {
+    global $Lang;
+
+    $zutaten         = array();
+    $instruction     = "";
+    $seen_title      = 0;
+    $seen_categories = 0;
+    $seen_yield      = 0;
+    $seen_ingr       = 0;
+    $seen_instr      = 0;
+
+    $source_pattern   = "/^:\s*". $Lang['pattern']['Source'] ."\s*:\s*(.+)$/";
+    $recorder_pattern = "/^:\s*". $Lang['pattern']['Recorder'] ."\s*:\s*(.+)$/";
+    $date_pattern     = "/^:\s*". $Lang['pattern']['Date'] ."\s*:\s*(.+)$/";
+    $long_pattern     = "/^:\s*:\s*(.+)$/";
+    $mmext_pattern    = "/^:.*:.+$/"; // Catchall for the rest
+
+    $meta['Source']   = '';
+    $meta['Recorder'] = '';
+    $meta['Date']     = '';
+    $override_meta_if_avail = false;
+
+    $last = '';
+
+    if ($flavor == RECIPE_MM) {
+      $zutaten_header = "/^(-{5}|M{5})-*(.*)[-=@]*$/i";
+      $rezept_ende    = "/^(-{5}|M{5})[@-]*$/";
+      $title_pattern  = "Title:";
+      $cat_pattern    = "Categories:";
+      $yield_pattern  = "(Yield|Servings):";
+    } else if ($flavor == RECIPE_RK) {
+      $zutaten_header = "/^={6,}.*=*$/";
+      $rezept_ende    = "/^={5}$/";
+      $title_pattern  = "Titel:";
+      $cat_pattern    = "Kategorien:";
+      $yield_pattern  = "(Menge):";
+    } else {
+      /* wrong flavor. */
+      return false;
+    }
+
+    $br_lock        = 1;
+
+    while ($line = $file->ReadLine()) {
+      if (preg_match($rezept_ende, $line)) {
+        /* Found the end of the recipe */
+        break;
+      } else {
+
+        if ($seen_title == 0 and 
+            ereg("$title_pattern(.*)", $line, $foo)) {
+          // Titel:
+
+          $title = trim($foo[1]);
+          $seen_title = 1;
+
+        } else if ($seen_categories != 1 and 
+                   ereg("$cat_pattern(.*)", $line, $foo)) {
+          // Kategorie:
+
+          $categories = split(", *", trim($foo[1]));
+          $seen_categories = 1;
+
+          $bar = 0;
+          while(isset($categories[$bar])) {
+            $categories[$bar] = trim($categories[$bar]);
+            $bar++;
+          }
+
+        } else if ($seen_yield != 1 and 
+                   ereg("$yield_pattern(.*)", $line, $foo)) {
+          // Menge:
+
+          $yield = trim($foo[2]);
+          $seen_yield = 1;
+
+        } else if (preg_match("/^ *$/", $line) and $seen_ingr == 0) {
+          # Skip this line
+
+        } else if (preg_match($zutaten_header, $line)) {
+          # Additional ingredient-lists
+
+          $search  = array ("/^[=-]{5,}/",     "/[=-]{5,}$/", 
+                            "/^M{5}[-=]*/",    "/[-@=]*$/"    );
+
+          $replace = array ("", "", "", "");
+
+          $ingr_list_title = preg_replace($search, $replace, trim($line));
+
+          if (preg_match($Lang['ingr_source_pattern'], $ingr_list_title)) {
+            $meta['Source'] .= getmeta($file);
+            $override_source_if_avail = true;
+
+          } else {
+            array_push ($zutaten, 
+              array("title" => $ingr_list_title,
+                    "ingredients" => getingr($file, $flavor)));
+
+            $seen_ingr = 1;
+          }
+
+        } else if ($seen_title      == 1 and 
+                   $seen_categories == 1 and 
+                   $seen_yield      == 1 and
+                   $seen_instr      == 0 and
+                   $seen_ingr       == 0 ) {
+          /* lets look for the ingredients */ 
+
+          /* We have read that line already. 
+           * To start reading ingredient-lines we must wind back 
+           * the internal filepointer for one line. 
+           */
+          $file->UnReadLine($line);
+          if (($x = getingr($file, $flavor)) > 0) {
+            array_push ($zutaten, array("title"       => "", 
+                                        "ingredients" => $x));
+          }
+          $seen_ingr = 1;
+
+        } else {
+          // Anweisungen:
+
+          $seen_instr = 1;
+          $line = trim($line);
+
+          if (preg_match($source_pattern, $line, $opt_fields)) {
+            if ($override_source_if_avail) {
+              $meta['Source'] = '';
+              $override_source_if_avail = false;
+            } else $meta['Source'] .= ($meta['Source'] ? ' ' : '' );
+            $meta['Source'] .= $opt_fields[2];
+            $last = 'Source';
+
+          } else if (preg_match($recorder_pattern, $line, $opt_fields)) {
+            $meta['Recorder'] .= ($meta['Recorder'] ? ' ' : '' );
+            $meta['Recorder'] .= $opt_fields[2];
+            $last = 'Recorder';
+
+          } else if (preg_match($date_pattern, $line, $opt_fields)) {
+            $meta['Date'] .= ($meta['Date'] ? ' ' : '' );
+            $meta['Date'] .= $opt_fields[2];
+            $last = 'Date';
+
+          } else if (preg_match($long_pattern, $line, $opt_fields)) {
+            $meta[$last] .= " " . $opt_fields[1];
+
+          } else if (preg_match($mmext_pattern, $line) and 
+                       $ignore_unknown_mmext == true) {
+            // Just drop this line.
+
+          } else {
+
+            if ( $line == "" ) {
+              if ( $br_lock == 0 ) {
+                $instruction .= "<p> ";
+              }
+              $br_lock = 1;
+            } else {
+              if ( preg_match("/^:.*$/", $line) and $br_lock == 0 ) {
+                $instruction .= "<br> $line ";
+              } else {
+                $instruction .= "$line ";
+              }
+              $br_lock = 0;
+            }
+          }
+        }
+      }
+    }
+
+    /* Strip leading and trailing <p>- and <br>-tags */
+    $search = array("/^(<(p|br)>\s*)*/", "/\s*(<(p|br)>\s*)*$/");
+    $replace = array("", "");
+    $instruction =  preg_replace($search, $replace, $instruction);
+
+    $recipe = array("title"     => $title,
+                    "category"  => $categories,
+                    "yield"     => $yield,
+                    "zutaten"   => $zutaten,
+                    "anleitung" => $instruction,
+                    'meta'      => $meta);
+
+    $recipe["hash"] = recipe_hash($recipe);
+
+    return $recipe;
+  }
+
+
+  function parse_ingredient($line, $flavor=RECIPE_MM) {
+    if ($flavor == RECIPE_MM) {
+      /* Lese eine MM-Rezeptzeile */
+      if (ereg("([ 0-9\.\/]{7}) (..) (.*)", $line, $foo)) {
+        $quant = trim($foo[1]);
+        $unit = trim($foo[2]);
+        $text = trim($foo[3]);
+      }
+    } elseif ($flavor == RECIPE_RK) {
+      /* Lese eine RK-Rezept-Zeile */
+
+      if (ereg("([ 0-9\.\/]{7}) (.{8}) (.*)", $line, $foo)) {
+        $quant = trim($foo[1]);
+        $rawunit = trim($foo[2]);
+        $text = trim($foo[3]);
+
+        $req = "select abbrev from EINHEITEN " .
+               " where RK_ABBREV = '$rawunit'" .
+               "   and MMUSE = 'J' ";
+
+        if (($res=DB_query($req)) and $mmunit = $res->fetchRow(DB_FETCHMODE_ORDERED)) {
+          $unit = $mmunit[0];
+        } else {
+          $unit = '';
+          $text = $rawunit . " " . $text;
+        }
+      }
+    }
+
+    if (isset($quant) and isset($unit) and isset($text)) {
+      /* Ok, wir haben eine gueltige Zeile gelesen. */
+      if ($quant != '' and strpos($quant, '/') !== false) {
+        $quant = fraction_to_real($quant);
+      }
+
+      // Es gibt 2 verschiedene Stiele für verlängerte Zeilen.
+      // "-bla" und "-- bla":
+      $text = preg_replace('/^-+\s*/', '-- ', $text);
+
+      return array('quant'  => $quant,
+                   'unit'   => $unit,
+                   'ingred' => $text);
+    } else {
+      /* Sorry, not a valid ingredient line */
+      return false;
+    }
+  }
+
+?>
