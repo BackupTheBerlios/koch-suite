@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.19 2001/10/03 21:11:42 lestinsky Exp $
+   * $Id: de.inc,v 1.20 2001/10/13 13:46:40 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -50,6 +50,10 @@
   $Lang['Recipe']['Deleted']    = "Rezept gel&auml;scht";
   $Lang['Recipe']['Insert']     = "Rezept in die Datenbank aufnehmen";
   $Lang['Recipe']['Inserted']   = "Rezept eingef&uuml;gt.";
+
+  $Lang['Auth']['LoggedInAs']   = "Angemeldet als";
+  $Lang['Auth']['Logout']       = "Abmelden";
+  $Lang['Auth']['NoLogin']      = "Nicht angemeldet";
 
   $Lang['AllRecipes']		= "Alle Rezepte";
   $Lang['CatChoose']		= "Kategorie-Auswahl";

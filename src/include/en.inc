@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.23 2001/10/03 21:11:42 lestinsky Exp $
+   * $Id: en.inc,v 1.24 2001/10/13 13:46:40 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -51,6 +51,10 @@
   $Lang['Recipe']['Deleted']    = "Recipe deleted";
   $Lang['Recipe']['Insert']     = "Insert recipe into the database";
   $Lang['Recipe']['Inserted']   = "Recipe inserted.";
+
+  $Lang['Auth']['LoggedInAs']   = "Logged in as";
+  $Lang['Auth']['Logout']       = "Logout";
+  $Lang['Auth']['NoLogin']      = "Not logged in";
 
   $Lang['AllRecipes']		= "All recipes";
   $Lang['CatChoose']		= "Category-chooser";
