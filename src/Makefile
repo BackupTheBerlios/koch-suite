@@ -38,6 +38,8 @@ distclean: clean
 	done)
 	rm -f config.sed
 
+install-temp-for-remote: install-includes install-www
+
 install-man:
 	@make subdir TRGT=install DIRS="${MAN_SUBDIR}" DESTDIR=${DESTDIR}
 
