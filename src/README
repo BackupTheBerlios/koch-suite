@@ -1,4 +1,4 @@
-### $Id: README,v 1.51 2002/08/10 22:21:17 lestinsky Exp $
+### $Id: README,v 1.52 2002/09/01 22:39:12 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -31,7 +31,7 @@ Requirements:
 -------------
 
 To run the web interface you'll need a running HTTP-daemon (i.e. Apache,
-http://httpd.apache.org), PHP 4.1 and a DBMS supported by this package.
+http://httpd.apache.org), PHP 4.2 and a DBMS supported by this package.
 
 The Koch-Suite was tested on:
  - Linux/i386
