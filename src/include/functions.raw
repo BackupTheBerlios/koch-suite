@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.67 2001/10/31 18:26:45 lestinsky Exp $
+   * $Id: functions.raw,v 1.68 2001/12/22 00:53:52 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -336,8 +336,17 @@
     /* Gib Informationen zu den Einheiten aus. */
 
     $all = array();
-    $req = "select id,abbrev,text,descr,faktor,faktor_id,rk_abbrev,mmuse from EINHEITEN ".
+    $req = "select EINHEITEN.id, " .
+           "       EINHEITEN.abbrev, " . 
+           "       unit_langs.text, " .
+           "       EINHEITEN.faktor, ".
+           "       EINHEITEN.faktor_id," .
+           "       EINHEITEN.rk_abbrev, " .
+           "       EINHEITEN.mmuse " .
+           "  from EINHEITEN, unit_langs ".
            " where MMUSE != 'N' " .
+           "   and EINHEITEN.ID = unit_langs.id " .
+           "   and unit_langs.lang = '" . $GLOBALS["KS_LANG"] . "' ".
            " order by ABBREV";
     if ($result=DB_query($req)) {
 
@@ -345,7 +354,7 @@
         $a = get_unit_aliases ($unit["abbrev"]);
         array_push ($all, array("unit"    => $unit,
                                 "aliases" => $a));
-    }
+      }
       $result->free();
     }
     return $all;
