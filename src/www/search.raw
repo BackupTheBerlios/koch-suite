@@ -74,6 +74,9 @@
 
   include "<%%WEB_PREFIX%%>/header.inc";
 
+  if (isset($_GET['begriff']))     $begriff = $_GET['begriff'];
+  if (isset($_POST['begriff']))	   $begriff = $_POST['begriff'];
+  if (isset($_GET["where"]))       $where = $_GET["where"];
   if (isset($_POST["where"]))      $where = $_POST["where"];
   if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
 
@@ -157,7 +160,7 @@
     }
 
 
-  } else if (!empty($_POST["begriff"]) or !empty($_GET["all"])) {
+  } else if (!empty($begriff) or !empty($_GET["all"])) {
     // Perform a search and display the results
 
     $_SESSION['operate_on'] = 'searchresult';
@@ -166,7 +169,7 @@
     <h2><?php echo $Lang['Search']['Result']; ?>:
       <?php
          if (empty($_GET["all"])) { 
-           echo $_POST["begriff"];
+           echo $begriff;
          } 
       ?> 
     </h2>
@@ -175,7 +178,7 @@
 
     // Do the search
     if (empty($where)) $where[] = 'title';
-    $all_result = exec_search((isset($_POST["begriff"]) ? $_POST['begriff'] : ''), 
+    $all_result = exec_search((isset($begriff) ? $begriff : ''), 
                      $where, 
                      (isset($_GET["all"]) ? $_GET["all"] : ''));
 
@@ -220,7 +223,7 @@
   <table border=0>
     <tr>
       <td><?php echo $Lang['Search']['For']; ?></td>
-      <td><input class="textfield" type="text" name="begriff" <?php if (isset($_POST['begriff'])) echo "value=\"" . $_POST['begriff'] ."\""; ?>>
+      <td><input class="textfield" type="text" name="begriff" <?php if (isset($begriff)) echo "value=\"" . $begriff ."\""; ?>>
     </tr>
     <tr>
       <td><?php echo $Lang['Search']['In']; ?></td>
