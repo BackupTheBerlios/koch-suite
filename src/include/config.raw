@@ -3,7 +3,7 @@
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.21 2001/08/11 22:33:00 lestinsky Exp $
+   * $Id: config.raw,v 1.22 2001/08/16 19:59:35 lestinsky Exp $
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
@@ -19,6 +19,7 @@
    */
 
   $DEBUG = "yes";
+  error_reporting(E_ALL);
 
 
   /* Paths: */
@@ -26,6 +27,7 @@
   $LATEX   = "<%%latex%%>";
   $DVIPS   = "<%%dvips%%>";
   $GS      = "<%%gs%%>";
+  $TMPDIR  = "/tmp";
 
   /*
    * Offer "printable" recipes in that format: 
