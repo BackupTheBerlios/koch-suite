@@ -1,5 +1,3 @@
-#!/usr/bin/make
-
 # This file contains the substitution-rules for "sed"
 CONF_FILE=	config.sed
 
@@ -12,10 +10,10 @@ SUBDIRS=	${INC_SUBDIR} ${COMMAND_SUBDIR} ${WWW_SUBDIR} ${MAN_SUBDIR}
 
 THISDIR=	.
 
-all: config
+all: ${CONF_FILE}
 	@make subdir TRGT=all DIRS="${SUBDIRS}"
 
-config:
+${CONF_FILE}: config
 	./configure
 
 subdir:
@@ -52,6 +50,6 @@ install-includes:
 install-www:
 	@make subdir TRGT=install DIRS="${WWW_SUBDIR}"
 
-install: install-includes install-command install-www install-man
+install: ${CONF_FILE} install-includes install-command install-www install-man
 
-.PHONY: all config subdir clean distclean install
+.PHONY: ${CONF_FILE} subdir clean distclean install

@@ -1,4 +1,4 @@
-# $Id: Makefile.raw,v 1.5 2001/02/15 17:37:11 michael Exp $
+# $Id: Makefile.raw,v 1.6 2001/02/16 09:48:37 michael Exp $
 # Space-separated list of all "raw" php-files.
 
 MAN1=	mmexport.1 mmimport.1 rezept2latex.1 rk2mm.1
@@ -6,7 +6,9 @@ MAN=	${MAN1}
 
 CONF_FILE=	../config.sed
 
-all: man1
+all: man
+
+man: man1
 
 man1:
 	@(cd man1; for i in ${MAN}; do\
@@ -27,6 +29,6 @@ install-man1:
 	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%MAN_PREFIX%%>/man1";\
 	done)
 
-install: install-man1
+install: man install-man1
 
 .PHONY: man1 all subdir clean distclean install

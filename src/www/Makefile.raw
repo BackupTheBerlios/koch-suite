@@ -1,4 +1,4 @@
-# $Id: Makefile.raw,v 1.15 2001/02/15 18:10:39 michael Exp $
+# $Id: Makefile.raw,v 1.16 2001/02/16 09:48:37 michael Exp $
 # Space-separated list of all "raw" php-files.
 PHP_FILES=		delete.php einfuegen.php index.php infos.php \
 			rezept.php print.php mmprint.php kategorien.php
@@ -41,22 +41,12 @@ distclean:
 	rm -f $${i}/Makefile; \
 	done)
 
-install:
+install: build
 	@make subdir TRGT=install
 	@( test -d "<%%WEB_PREFIX%%>" || \
 	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%WEB_PREFIX%%> )
-	@( for i in ${PHP_FILES} ; do \
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i}.php <%%WEB_PREFIX%%>; \
-	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i}.php <%%WEB_PREFIX%%>" ; \
-	done )
-	@echo "Teil 2:"
-	@(for i in ${INC_FILES} ; do \
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i}.inc <%%WEB_PREFIX%%> ; \
-	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i}.inc <%%WEB_PREFIX%%>" ; \
-	done)
-	@( for i in ${ADDITIONAL} ; do \
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i} <%%WEB_PREFIX%%> ; \
-	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i} <%%WEB_PREFIX%%>" ; \
-	done )
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${PHP_FILES} <%%WEB_PREFIX%%>
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${INC_FILES} <%%WEB_PREFIX%%>
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${ADDITIONAL} <%%WEB_PREFIX%%>
 
 .PHONY: all subdir clean distclean install
