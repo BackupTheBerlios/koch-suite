@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.79 2002/07/03 16:31:20 lestinsky Exp $
+   * $Id: functions.raw,v 1.80 2002/08/03 14:59:35 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -504,6 +504,7 @@
     foreach ($rezept["category"] as $cat) {
       $req = "select id,text from KATEGORIE where TEXT = '$cat'";
       $result = DB_query($req);
+
       if ($r = $result->fetchRow()) {
         $cid = $r["id"];
       } else {
@@ -517,10 +518,11 @@
         } else $GLOBALS['notice'] .= "$cat unknown, Ignoring.\n";
       }
 
-      $kid = $db->nextID("KATSEQ");
-      $req = "insert into KAT values ( $kid,$cid,$mid)";
-
-      $result = DB_query($req);
+      if (isset($cid)) {
+        $kid = $db->nextID("KATSEQ");
+        $req = "insert into KAT values ($kid,$cid,$mid)";
+        $result = DB_query($req);
+      }
     }
 
     foreach ($rezept['meta'] as $fieldname => $fieldvalue) {
