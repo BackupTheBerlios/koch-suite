@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.91 2003/02/14 18:54:42 lestinsky Exp $
+   * $Id: functions.raw,v 1.92 2003/08/11 20:08:31 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -278,7 +278,7 @@
     $and = split(" AND ", $str);
     foreach ($and as $this) {
       foreach ($where as $search_field) {
-        switch ($search_field) {
+        switch ((string) $search_field) {
           case 'title':
             if ($param == 1) {
               $result = get_mid_by_name("");
@@ -405,6 +405,73 @@
   }
 
 
+  /**
+   * get_and_check_*_variable() - Extract variables and check their type.
+   * @param	array	$from	"Super"-array from which to extract the variable
+   * @param	string	$name	The index name, by which the variable is identified
+   */
+  function get_and_check_string_variable (&$from, $name) {
+    if (isset($from[$name])) {
+      $val    = $from[$name];
+      $oldval = $val;
+      if (!settype($val, "string"))
+        die ("Failed to set the variable type for $name");
+
+      if (strcmp($val, $oldval) != 0) {
+        write_log("Got invalid value for $name: " . $from[$name]);
+        die      ("Got invalid value for $name: " . $from[$name]);
+      }
+      $GLOBALS[$name] = $val;
+    } else {
+      write_log("$name is not set");
+    }
+    return true;
+  }
+
+
+  function get_and_check_num_variable (&$from, $name, $type, $min = 0, $max = 0) {
+    if (isset($from[$name])) {
+      $val    = $from[$name];
+      $oldval = $val;
+      if (!settype($val, $type))
+        die ("Failed to set the variable type for $name");
+
+      if (strcmp($val, $oldval) != 0) {
+        write_log("Got invalid value for $name: " . $from[$name]);
+        die      ("Got invalid value for $name: " . $from[$name]);
+      }
+
+      if ($min != 0 and $max != 0) {
+        // Check range:
+        if ($val >= $min and $val <= $max) {
+          $GLOBALS[$name] = $val;
+          return true;
+        } else {
+          write_log("Variable $name out of range [$min, $max]: $val");
+          return false;
+        }
+      } else {
+        $GLOBALS[$name] = $val;
+        return true;
+      }
+    } else {
+      write_log("$name is not defined. ");
+    }
+  }
+
+
+  function get_and_check_float_variable (&$from, $name, $min = 0, $max = 0) {
+    return get_and_check_num_variable($from, $name, "float", $min, $max);
+  }
+
+
+  function get_and_check_int_variable (&$from, $name, $min = 0, $max = 0) {
+    return get_and_check_num_variable($from, $name, "int", $min, $max);
+  }
+
+
+
+  
   /**
    * Select all synonyms for a given category
    * @param string $cat
@@ -1025,7 +1092,7 @@
   function printable_format($wish) {
     global $LATEX, $DVIPS, $GS;
 
-    switch ($wish) {
+    switch ((string) $wish) {
       case "html":
         return "html";
         break;
