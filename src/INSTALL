@@ -1,4 +1,4 @@
-### $Id: INSTALL,v 1.8 2001/12/31 11:51:52 lestinsky Exp $
+### $Id: INSTALL,v 1.9 2002/05/26 11:02:33 lestinsky Exp $
 
 Koch-Suite Installation Instructions
 ====================================
@@ -116,8 +116,8 @@ otherwise the fallback is DES encryption. This is done transparently.
 Updating:
 ---------
 
-A few changes to the database structure were necessary to add
-PostgreSQL support. Therefore the old and the new database formats aren't
+The process of development made it neccessary to change the database
+format slightly. Therefore the old and the new database formats aren't
 compatible. If you want to preserve all stored recipes it is probably the
 best to dump all the data with (the old!) `rezept'
 

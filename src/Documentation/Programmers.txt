@@ -1,4 +1,4 @@
-### $Id: Programmers.txt,v 1.13 2002/05/20 15:08:08 lestinsky Exp $
+### $Id: Programmers.txt,v 1.14 2002/05/26 11:02:56 lestinsky Exp $
 
 Programmers Documentation
 =========================
@@ -71,7 +71,7 @@ attempt to mess with it.
 
       # Bad comment.
 
-  * Use <?php something() ?> instead of <? something ?>
+  * Use <?php something() ?> instead of <? something() ?>
 
 2.2 Function definitions
 
@@ -174,7 +174,7 @@ in this way:
  +-----------------------------------------------+
  |       Admin:                                  |
  | +------------------------------------------+  |
- | |     Moderator:                           |  |
+ | |     Moderator: (currently unavailable)   |  |
  | | +---------------------------------+      |  |
  | | |   Writer:                       |      |  |
  | | | +-------------------------+     |      |  |

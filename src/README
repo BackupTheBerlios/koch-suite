@@ -1,4 +1,4 @@
-### $Id: README,v 1.48 2002/05/20 15:08:43 lestinsky Exp $
+### $Id: README,v 1.49 2002/05/26 11:02:43 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -23,27 +23,31 @@ Un*x-philosophy and makes reuse of code i.e. from a shell script as simple
 as possible. The three main parts, the library, the web interface and the
 console tools, are different aspects of the same entity.
 
+The functionallity of the web interface and the console tools doesn't
+completly correspond, so you'll probably want both parts.
+
 
 Requirements:
 -------------
 
 To run the web interface you'll need a running HTTP-daemon (i.e. Apache,
-http://httpd.apache.org), PHP4 and a DBMS supported by this package.
+http://httpd.apache.org), PHP 4.1 and a DBMS supported by this package.
 
 The Koch-Suite was tested on:
  - Linux/i386
  - OpenBSD/i386
  - FreeBSD/i386
+ - AIX4.3
 
 In any case you will need PHP4 with support for the used DBMS (please see
 Documentation/PHP.txt for details).
 These scripts were written and tested with PHP-4.1.1 and later, versions
 older than PHP-4.1.0 definitely won't work. For the console tools you have
-to install the standalone (a.k.a. cgi) version.
+to install the standalone (a.k.a. cgi) version of PHP.
 
 The LaTeX export uses the `floatflt' package, which may be found on your
 nearest CTAN archive. To create Postscript you need dvips (which is part
-of the TeTeX distribution). To create PDF documents, you need Ghostscript.
+of the teTeX distribution). To create PDF documents, you need Ghostscript.
 The installation will probe for them and will fall back to the best
 possible format if one of those tools is missing. You can manipulate this
 behaviour from ETC_PREFIX/koch-suite.inc after the installation.
@@ -83,20 +87,17 @@ This list gives you an overview of what shall/will be done in
 the next release(s). It is neither complete nor can we promise
 to follow it strictly.
 
-Planned for 0.7:
-
-  o  spool recipe submissins somewhere for acknowledgement by the
-     moderator.
-  o  A better system to categorize recipes
-
 Planned for later releases or bored weekends:
 
+  o  A better system to categorize recipes
   o  Support RezTransfer
   o  Rezkonv-export
   o  Annotate recipes
   o  Keep lists of "favorites" (also known as bookmark-list)
   o  Improve the design of the user-interfaces
   o  Save images with the recipes
+  o  spool recipe submissins somewhere for acknowledgement by the
+     moderator. 
 
 Please direct your feature-requests to our developers mailinglist,
 koch-suite-devel@lists.berlios.de
