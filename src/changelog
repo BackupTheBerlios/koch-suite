@@ -1,4 +1,9 @@
-### $Id: changelog,v 1.40 2001/07/02 23:28:37 michael Exp $
+### $Id: changelog,v 1.41 2001/07/25 10:53:53 michael Exp $
+
+2001-07-23: Michael Lestinsky <michael@lestinsky.de>
+	New function for pre-parsing (still somewhat incomplete)
+	Dupe-Detection. Requires new database-format, 
+	since we need to store the hash somewhere.
 
 2001-07-02: Michael Lestinsky <michael@lestinsky.de>
         More Cleanup. 0.5-Release
