@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.31 2002/05/12 11:37:07 lestinsky Exp $
+   * $Id: de.inc,v 1.32 2002/05/17 11:26:04 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -136,7 +136,7 @@ EOT;
   $Lang['Requirements']['OSes'][0]	= 'AIX 4.3';
   $Lang['Requirements']['OSes'][1]	= 'FreeBSD 4.*';
   $Lang['Requirements']['OSes'][2]	= 'Linux (Debian 2.2)';
-  $Lang['Requirements']['OSes'][3]	= 'OpenBSD 2.9';
+  $Lang['Requirements']['OSes'][3]	= 'OpenBSD 3.1';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
       F&uuml;r die Kommandozeilen-Tools ist PHP mit MySQL-/PostgreSQL-
