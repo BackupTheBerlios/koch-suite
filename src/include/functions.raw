@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.52 2001/07/17 21:31:39 michael Exp $
+   * $Id: functions.raw,v 1.53 2001/07/24 19:50:13 michael Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -541,11 +541,15 @@
     $replace = array("", "");
     $instruction =  preg_replace($search, $replace, $instruction);
 
-    return array("title"     => $title,
-                 "category"  => $categories,
-                 "yield"     => $yield,
-                 "zutaten"   => $zutaten,
-                 "anleitung" => $instruction);
+    $recipe = array("title"     => $title,
+                    "category"  => $categories,
+                    "yield"     => $yield,
+                    "zutaten"   => $zutaten,
+                    "anleitung" => $instruction);
+
+    $recipe["hash"] = recipe_hash($recipe);
+
+    return $recipe;
   }
 
 
@@ -646,7 +650,8 @@
     $req = "insert into MENUE values ( " .
           "  $mid, " .
           "  '" . addslashes($rezept["yield"]) . "', " .
-          "  '" . addslashes($rezept["title"]) . "' " .
+          "  '" . addslashes($rezept["title"]) . "', " .
+          "  '" . addslashes($rezept["hash"])  . "'  " .
           "  ) ";
     $result = DB_query($req);
 
@@ -912,14 +917,58 @@
     while ($line = fgets($in_fh, 1024)) {
 
       /* Strip "Carriage-Return-characters" from silly operating systems */
-      $line = preg_replace("/\r/", "", $line);
-
-      fputs($out_fh, $line);
+      fputs($out_fh, preg_replace("/\r/", "", $line));
     }
 
     /* Close that filehandle and reopen the file for reading. */
     fclose($out_fh);
-    return fopen($temp, "r");
+    return array($temp, fopen($temp, "r"));
+  }
+
+
+  /**
+   * Check if we already have an hash for this recipe
+   *
+   * @param  string $hash
+   * @return bool         If that hash is a dupe return a ref, false otherwise
+   */
+  function recipe_dupe ($hash) {
+    $req = "select id, titel from MENUE " .
+           " where HASH = '$hash'" ;
+    $result = DB_query($req);
+
+    if ($result->numRows() > 0) {
+      /* Dupe */
+      while ($r = $result->fetchRow()) {
+        $a[] = array("id"    => stripslashes($r["id"]),
+                     "title" => stripslashes($r["titel"]));
+      }
+      return $a;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Calculate an uniq hash for every recipe
+   *
+   * @param array $recipe
+   * @return string $hash
+   */
+  function recipe_hash ($recipe) {
+    $str = $recipe["title"] . $recipe["anleitung"];
+    $str = strtolower($str);
+    $str = strtr($str, array("ß" => "ss",
+                             "ä" => "ae",
+                             "ö" => "oe",
+                             "ü" => "ue")); // Strip Umlaute
+    $str = htmlentities($str);
+    $str = preg_replace("/^:.*$/m", "", $str);
+    $str = strtr($str, array("\n" => "",
+                             " "  => "",
+                             "\t" => "" )); // Strip Whitespaces
+
+    return md5($str);
   }
 
 ?>
