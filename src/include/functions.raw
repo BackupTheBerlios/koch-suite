@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.38 2001/05/30 19:47:34 michael Exp $
+   * $Id: functions.raw,v 1.39 2001/05/30 19:51:27 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -118,9 +118,10 @@
   }
 
 
-  function parse_recipe($fd, $flavor="MM") {
+  function &parse_recipe($fd, $flavor="MM") {
     /* Versuche aus dem Filehandle ein Rezept im Format $flavor zu
      * extrahieren.
+     * Gib eine Referenz auf das Ergebnis zurück.
      */
     $zutaten        = array();
     $bar            = 0;
