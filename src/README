@@ -1,4 +1,4 @@
-### $Id: README,v 1.53 2002/09/03 21:19:25 lestinsky Exp $
+### $Id: README,v 1.54 2002/09/15 14:31:21 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -93,13 +93,12 @@ to follow it strictly.
 Planned for later releases or bored weekends:
 
   o  A better system to categorize recipes
-  o  Support RezTransfer
+  o  Support RezTransfer (will there ever be a draft?)
   o  Rezkonv-export
   o  Annotate recipes
   o  Keep lists of "favorites" (also known as bookmark-list)
-  o  Improve the design of the user-interfaces
   o  Save images with the recipes
-  o  spool recipe submissins somewhere for acknowledgement by the
+  o  spool recipe submissions somewhere for acknowledgement by the
      moderator. 
 
 Please direct your feature-requests to our developers mailinglist,
@@ -109,6 +108,8 @@ koch-suite-devel@lists.berlios.de
 Known Bugs:
 -----------
 
+ - The entire system is very ISO-8859-1 centric. You'll probably have
+   problems with different character sets.
  - Original Meal-Master has a limit of 100 lines per recipe. Which is IMO
    braindead.  The Koch-Suite ignores this limit. You will receive no 
    warning, when you reach this limit.
