@@ -1,10 +1,10 @@
 #!/bin/sh
-# $Id: install-sh,v 1.2 2002/06/11 18:43:47 lestinsky Exp $
+# $Id: install-sh,v 1.3 2003/01/10 23:43:24 lestinsky Exp $
 #
 # This install-script tries to be as BSD-install compatible as possible
 # And is used, if your operating-system doesn't support a suitable one.
 #
-# Copyright (c) 2002
+# Copyright (c) 2003
 #      Michael Lestinsky. All rights reserved.
 #
 #  Redistribution and use in source and binary forms, with or without
