@@ -1,4 +1,4 @@
-# $Id: config,v 1.22 2002/04/02 21:56:31 lestinsky Exp $
+# $Id: config,v 1.23 2002/06/05 10:05:40 lestinsky Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 # All variables will be are referenced by ${VARNAME}. Expansion takes
@@ -30,6 +30,9 @@ WEB_PREFIX	=/var/www/koch-suite
 # And the Documentation goes there:
 MAN_PREFIX	=${PREFIX}/man
 DOC_PREFIX	=${PREFIX}/share/doc/koch-suite
+
+# Store temporary files here. Typically /tmp
+KS_TMPDIR	=/tmp
 
 # User and Group, who will own the files, typically something like "root"
 # or "wheel"; consult your local /etc/passwd and /etc/group for more info.
