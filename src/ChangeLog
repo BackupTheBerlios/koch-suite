@@ -1,3 +1,35 @@
+2002-05-20  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/functions.raw 1.74:
+  Remove meta, too
+
+  * src/init_db.mysql 1.10, src/init_db.pgsql 1.14:
+  New table menu_meta stores meta informations such as the source or the
+  author of a recipe.
+
+  * src/README 1.48:
+  Another point from our todo list is gone
+
+  * src/Documentation/Programmers.txt 1.13: Update
+
+  * src/commands/mmimport.raw 1.27, src/include/functions.raw 1.73, src/include/output.raw 1.42, src/www/einfuegen.raw 1.36:
+  Extract MM-extensions and store them seprately
+
+  * src/man/man1/mmimport.1.raw 1.11, src/man/man1/rezept.1.raw 1.9:
+  Update
+
+  * src/include/defines.raw 1.8:
+  DEFAULT_LANG is a variable now
+
+  * src/include/de.inc 1.33, src/include/en.inc 1.37:
+  Some more
+
+  * src/include/lang.raw 1.13, src/www/menue.raw 1.19:
+  Add language selection directly to the webinterface
+
+  * src/commands/rezept.raw 1.20, src/include/Makefile.raw 1.28, src/include/auth.raw 1.14, src/include/koch-suite.raw 1.11, src/include/setup.raw 1.1, src/www/admin.raw 1.3, src/www/delete.raw 1.16, src/www/edit_alias.raw 1.11, src/www/help.raw 1.17, src/www/index.raw 1.23, src/www/infos.raw 1.34, src/www/kategorien.raw 1.15, src/www/login.raw 1.3, src/www/logout.raw 1.3, src/www/mmprint.raw 1.15, src/www/print.raw 1.18, src/www/rezept.raw 1.27, src/www/search.raw 1.17, src/www/settings.raw 1.3, src/www/units.raw 1.10:
+  Use setup.inc which does a little more magic then koch-suite.inc
+
 2002-05-17  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/login.raw 1.2: remove bogus
