@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.15 2001/10/13 13:59:43 lestinsky Exp $
+# $Id: configure,v 1.16 2001/10/13 23:56:54 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -88,7 +88,7 @@ translate_raw () {
 
 # Probe for a usable awk-version
 echo -n "Checking for a usable awk ... "
-for i in mawk awk; do
+for i in mawk nawk awk; do
   awk=$(which $i)
   if [ -n "${awk}" -a $? = 0 ] ; then
     break;
