@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.36 2001/05/22 22:47:49 michael Exp $
+   * $Id: functions.raw,v 1.37 2001/05/30 19:04:33 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -655,14 +655,5 @@
   function cmp_menu ($a, $b) {
     /* Custom comparisson-function */
     return strcmp($a["title"], $b["title"]);
-  }
-
-  function write_log ($str) {
-    /* write Debugging-Output. */
-
-    $fp   = fopen ($GLOBALS["DEBUG_FILE"], "a");
-
-    fputs($fp, date("U") . ": $str\n");
-    fclose($fp);
   }
 ?>
