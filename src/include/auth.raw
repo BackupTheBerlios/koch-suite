@@ -40,7 +40,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.12 2002/05/12 11:37:07 lestinsky Exp $
+   * $Id: auth.raw,v 1.13 2002/05/17 23:08:24 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -118,7 +118,7 @@
        * but perform it anyways, if requested by user 
        */
       if (isset($FORM_USERNAME) and isset($FORM_PASSWORD)) {
-        verify_authdata($FORM_USERNAME, $FORM_PASSWORD);
+        $USER_S = verify_authdata($FORM_USERNAME, $FORM_PASSWORD);
       } else {
         return true;
       }
