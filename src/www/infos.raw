@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.14 2001/03/15 13:13:52 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.15 2001/03/15 13:14:43 michael Exp $ -->
 </head>
 
 <body>
@@ -25,7 +25,7 @@
   <td width="90%">
     <h2>Informationen zur Koch-Suite</h2>
 
-    <!-- Installierte Version: $Name:  $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.15 $ -->
 
     <h3>Hilfe:</h3>
     <p class="top">
