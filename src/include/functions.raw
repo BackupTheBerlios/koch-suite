@@ -1,13 +1,13 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.39 2001/05/30 19:51:27 michael Exp $
+   * $Id: functions.raw,v 1.40 2001/06/06 11:07:55 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
 
-  // require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/output.inc";
+
   /* --- Functions --- */
 
   function get_line ($fh) {
@@ -42,12 +42,36 @@
   }
 
 
-  function errorlog ($str) {
-    /* Write some debugging-Output. */
+  function delete_unit_alias ($unit) {
+    /* Delete all Aliases for a given Unit. */
 
-    $fp = fopen("/tmp/koch-suite.err", "a");
-    fputs($fp, "$str\n");
-    fclose($fp);
+    /* What's the unit id to be deleted? */
+
+    $req = "select ID from EINHEITEN " .
+           " where STRCMP(EINHEITEN.ABBREV, '" . addslashes($unit) . "') = 0";
+
+    if (! $result = mysql_db_query($GLOBALS["DB_NAME"], $req)) {
+      write_log("delete_unit_alias(): $req");
+      write_log(mysql_error());
+      return false;
+    } else {
+      if ($id = mysql_fetch_array($result)) {
+           
+        $req = "delete from EINHEITEN_ALIAS " .
+               " where EID = " . $id["ID"];
+
+        if (! $result = mysql_db_query($GLOBALS["DB_NAME"], $req)) {
+          write_log("delete_unit_alias(): $req");
+          write_log(mysql_error());
+          return false;
+        } else {
+          return true;
+          mysql_free_result($result);
+        }
+      } else {
+        return false;
+      }
+    }
   }
 
 
@@ -102,25 +126,90 @@
     $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
 
     while ($unit = mysql_fetch_array($result)) {
-      $a = array();
-      $req_alias = "select TEXT from EINHEITEN_ALIAS " .
-                   " where EID = " . $unit["ID"] . " order by TEXT";
-      $result_alias = mysql_db_query($GLOBALS["DB_NAME"], $req_alias);
-
-      while ($alias = mysql_fetch_row($result_alias)) {
-        array_push($a, $alias[0]);
-      }
- 
+      $a = get_unit_aliases ($unit["ABBREV"]);
       array_push ($all, array("unit"    => $unit,
                               "aliases" => $a));
     }
     return $all;
   }
 
+ 
+  function get_unit_aliases ($id) {
+    /* Get a List of defined aliases of unit-id $id */
+    $a = array();
+    $req_alias = "select EINHEITEN_ALIAS.TEXT " .
+                 "  from EINHEITEN_ALIAS, EINHEITEN " .
+                 " where EINHEITEN_ALIAS.EID = EINHEITEN.ID " .
+                 "   and STRCMP(EINHEITEN.ABBREV, '$id') = 0 " .
+                 " order by TEXT";
+    if (!$result_alias = mysql_db_query($GLOBALS["DB_NAME"], $req_alias)) {
+      write_log ($req_alias);
+      write_log (mysql_error());
+      return false;
+    } else {
+      while ($alias = mysql_fetch_row($result_alias)) {
+        array_push($a, $alias[0]);
+      }
+    }
+
+    return $a;
+  }
+ 
+
+
+  function mk_unit_alias ($unit, $alias) {
+    /* Create a list of Aliases for a given unit.
+     * $unit is the MM-Style abbreviation for the unit and 
+     * $alias (string) is the alias to be created.
+     * returns > 0 on Success, 0 if already defined and < 0 on error.
+     */
+
+    $alias = addslashes($alias);
+    $unit  = addslashes($unit);
+
+    /* Let's start checking if that alias is already defined somewhere
+     * else or even a valid unitname and stop then:
+     */
+    if (is_unit($alias)) {
+      return 0;
+    } else {
+      /* Alias is undefined. That's fine, lets proceed. */
+
+      /* What's the ID of the unit? */
+      $req = "select ID from EINHEITEN where STRCMP('$unit', ABBREV) = 0";
+      if ($result = mysql_db_query($GLOBALS["DB_NAME"], $req)) {
+
+        /* we have the ID, do the insert: */
+
+        $id = mysql_fetch_array($result);
+        $req = "insert into EINHEITEN_ALIAS " . 
+               " values (0, " . $id["ID"] . ", '$alias')";
+
+        if (! $result = mysql_db_query($GLOBALS["DB_NAME"], $req)) {
+
+          /* Something's wrong. */
+          write_log ($req);
+          write_log (mysql_error());
+          return -2;
+
+        } else {
+
+          /* All is fine. Return something >0. */
+          return 1;
+
+        }
+      } else {
+        return -1;
+      }
+    }
+
+  }
+
 
   function &parse_recipe($fd, $flavor="MM") {
-    /* Versuche aus dem Filehandle ein Rezept im Format $flavor zu
-     * extrahieren.
+    /* Versuche aus dem Filehandle $fd ein Rezept 
+     * im Format $flavor ("MM" oder "RK") 
+     * zu extrahieren.
      * Gib eine Referenz auf das Ergebnis zurück.
      */
     $zutaten        = array();
@@ -538,7 +627,7 @@
     #       " where TEXT like '%". addslashes($ingred) . "%'";
     $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
 
-    errorlog($req);
+    write_log($req);
 
     while ($z = mysql_fetch_array($result)) {
       $req = "select * from REZEPT where ID = '" .
