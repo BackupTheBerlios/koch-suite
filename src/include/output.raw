@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.20 2001/03/12 09:53:52 michael Exp $
+   * $Id: output.raw,v 1.21 2001/05/10 23:56:12 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -194,7 +194,10 @@
 
 
   function length_adjust ($str, $len) {
-    /* Adjust the String-Length. return an array */
+    /* Adjust the String-Length. 
+     * return an array containing all individual lines. 
+     */
+
     $bar = array();
     $foo = "";
 
@@ -202,11 +205,13 @@
 
       /* This is for historical reasons. Before 0.2 all instructions were
        * added with all Newlines included. Since 0.2 they get stripped
-       * away and replaced by <p> and <br>.
+       * away and replaced by <p> and <br>. 
+       * >>>>> Historical
        */
       $str = preg_replace("/\n:/", "\n <br> :", $str);
       $str = preg_replace("/\n\n/", " <p> ", $str);
       $str = preg_replace("/\n/", " ", $str);
+      /* <<<<< Historical */
 
       /* Ingredient-line to long */
       $a = explode(" ", $str);
@@ -220,17 +225,30 @@
         }
         if ((strlen($foo) + $wordlen) <= $len) {
           if (preg_match("/<(br|p)>/", $a[$i], $bla)) {
+            /* If we have some linebreak: */
             $i++;
             array_push($bar, $foo);
             if ($bla[1] == 'p') {
               array_push($bar, "");
             }
             $foo = "";
+
           } elseif ($a[$i] == ' ') {
-            $i++;
+            /* Just skip 'words' if they are 'space-character' */
+            $i++; 
+
           } else {
-            $foo .= ((strlen($foo) == 0) ? "" : " ") . $a[$i++];
+            /* Apend an whitespace and the word to the current line. */
+            $foo .= ((strlen($foo) == 0) ? "" : " ") . $a[$i];
+            $i++;
           }
+        } else if ($wordlen >= $len) {
+          /* Oops, by some accident we have a word here, 
+           * which itself is longer then the allowed line-lenght.
+           */
+          array_push($bar, $foo);
+          $foo = $a[$i];
+          $i++;
         } else {
           array_push($bar, $foo);
           $foo = "";
@@ -249,9 +267,9 @@
 
   function mmexport ($rezept) {
     /* return a Meal-Master-formatted string. */
-    global $ver, $tool;
+    global $kochsuite_ver, $tool;
     $i = 0;
-    $header = "MMMMM-----mmexport (v0.2.6) Export nach Meal-Master-----\n";
+    $header = "MMMMM-----Koch-Suite ($kochsuite_ver) Export nach Meal-Master-----\n";
     $footer = "MMMMM";
 
     $str  = "$header\n";
