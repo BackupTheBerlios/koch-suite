@@ -28,7 +28,7 @@
    */
 
   /**
-   * $Id: einfuegen.raw,v 1.50 2003/03/12 12:43:10 lestinsky Exp $
+   * $Id: einfuegen.raw,v 1.51 2003/08/11 20:16:44 lestinsky Exp $
    * Insert new and edit exiting recipes.
    *
    * @package WWW
@@ -55,18 +55,18 @@
    * read the proper values submitted via form
    */
 
-  if (isset($_GET["mid"]))        $mid       = doubleval($_GET["mid"]);
-  if (isset($_POST["titel"]))     $titel     = trim($_POST["titel"]);
-  if (isset($_POST["portionen"])) $portionen = trim($_POST["portionen"]);
-  if (isset($_POST["kategorie"])) $kategorie = trim($_POST["kategorie"]);
+  get_and_check_int_variable ($_GET, 'mid');
+  get_and_check_string_variable ($_POST, 'titel');
+  get_and_check_string_variable ($_POST, 'kategorie');
+  get_and_check_string_variable ($_POST, 'portionen');
+  get_and_check_string_variable ($_POST, 'anweisung');
+  get_and_check_string_variable ($_POST, 'date');
+  get_and_check_string_variable ($_POST, 'source');
+  get_and_check_string_variable ($_POST, 'recorder');
   if (isset($_POST["zutaten"]))   $zutaten   = $_POST["zutaten"];
-  if (isset($_POST["anweisung"])) $anweisung = $_POST["anweisung"];
   if (isset($_POST["ztitle"]))    $ztitle    = $_POST["ztitle"];
   if (isset($_POST["more_zutaten"])) $more_zutaten = $_POST["more_zutaten"];
   if (isset($_POST["submit"]))       $submit = $_POST["submit"];
-  if (isset($_POST['recorder']))  $recorder  = $_POST['recorder'];
-  if (isset($_POST['date']))      $date      = $_POST['date'];
-  if (isset($_POST['source']))    $source    = $_POST['source'];
   if (isset($_POST['pasted']))    $pasted    = $_POST['pasted'];
   if (isset($_SERVER["PHP_SELF"]))   $PHP_SELF = $_SERVER["PHP_SELF"];
 
@@ -362,20 +362,31 @@
       $anweisung = preg_replace('/(\r)?\n/m', ' ', $anweisung);
     }
 
-    if (!empty($recorder)) {
+    if (!empty($recorder))
       $meta['Recorder'] = trim($recorder);
-    } 
+    else
+      $meta['Recorder'] = '';
 
-    if (!empty($date)) {
+    if (!empty($date))
       $meta['Date'] = trim($date);
-    } 
+    else
+      $meta['Date'] = '';
 
-    if (!empty($source)) {
+    if (!empty($source))
       $meta['Source'] = trim($source);
-    } 
+    else
+      $meta['Source'] = '';
 
+
+    if (strlen($titel) > 65)
+      $error .= "Notice: the title string is longer than allowed by some ". 
+                "export formats and will be truncated during export.<br />";
     if (strlen($kategorie) == 0) 
-      $error .= "Notice: you've submitted a recipe without a category entry\n";
+      $error .= "Notice: you've submitted a recipe without a category " .
+                "entry<br />";
+    if (strlen($kategorie) > 65)
+      $error .= "Notice: you've submitted a recipe with an excessively long ".
+                "category entry<br />";
     
     if (strlen($portionen) == 0)
       $error .= "Notice: you haven't set the yield for this recipe.\n";
