@@ -1,4 +1,4 @@
-### $Id: INSTALL,v 1.11 2002/06/11 18:43:47 lestinsky Exp $
+### $Id: INSTALL,v 1.12 2002/07/20 10:11:39 lestinsky Exp $
 
 Koch-Suite Installation Instructions
 ====================================
@@ -51,7 +51,8 @@ PostgreSQL:
   To create a PostgreSQL database:
 
   As PostgreSQl-Superuser (or user with "CREATE DATABASE" permissions):
-  $ psql -c "CREATE DATABASE dbkoch" template1 bzw.
+  $ psql -c "CREATE DATABASE dbkoch" template1 
+  or
   $ psql -U<username> -c "CREATE DATABASE dbkoch" template1
 
   Then as regular user (or the username, you will use to to perform the
@@ -67,7 +68,7 @@ MySQL:
   type this commands:
 
   CREATE DATABASE DBkoch;
-  GRANT ALL PRIVILEGES ON DBkoch TO USER@HOST IDENTIFIED BY 'PASSWORD';
+  GRANT ALL PRIVILEGES ON DBkoch.* TO USER@HOST IDENTIFIED BY 'PASSWORD';
   FLUSH PRIVILEGES;
 
   Replace DBSERVER with the hostname of your database server, USER with
@@ -75,6 +76,8 @@ MySQL:
   HOST with the hostname where the Koch-Suite will be installed. (Please
   note: in MySQL `localhost' and the FQDN of the same computer are not the
   same!)
+  USERNAME, PASSWORD and HOST need to be the same as you typed in the file
+  config for DB_USER, DB_PASSWORD and DB_SERVER.
 
   Drop back to your normal system shell and perform
 
