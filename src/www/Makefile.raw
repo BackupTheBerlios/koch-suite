@@ -1,9 +1,9 @@
-# $Id: Makefile.raw,v 1.24 2001/10/13 14:03:23 lestinsky Exp $
+# $Id: Makefile.raw,v 1.25 2001/10/15 11:47:49 lestinsky Exp $
 # Space-separated list of all "raw" php-files.
 PHP_FILES=		delete.php einfuegen.php index.php infos.php \
 			rezept.php print.php mmprint.php kategorien.php \
 			help.php units.php search.php edit_alias.php \
-			logout.php
+			login.php logout.php
 INC_FILES=		menue.inc
 
 # Files to install unmangled (dont forget the filename-suffix here!)
