@@ -1,4 +1,4 @@
-### $Id: README,v 1.60 2003/07/30 08:00:03 lestinsky Exp $
+### $Id: README,v 1.61 2004/12/02 19:39:31 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -94,10 +94,13 @@ to follow it strictly.
 
 Planned for later releases or bored weekends:
 
+  o  Store date of last modification/injection into the DB
+     and create some fancy "latest recipes" display.
   o  A better system to categorize recipes
   o  Support RezTransfer
   o  Annotate recipes
   o  Keep lists of "favorites" (also known as bookmark-list)
+  o  Organize recipes in Collections (something like different cookbooks)
   o  Save images with the recipes
   o  spool recipe submissions somewhere for acknowledgement by the
      moderator. 
