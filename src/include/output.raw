@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.27 2001/06/23 00:24:54 michael Exp $
+   * $Id: output.raw,v 1.28 2001/06/23 00:38:59 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -240,8 +240,8 @@
       if (preg_match("/<(p|br)>/", $a[$i])) {
         $wordlen = 0;
       } else {
-        $wordlen = strlen($a[$i]) + 1;
         /* String-Length + prefixed Space-character! */
+        $wordlen = strlen($a[$i]) + 1;
       }
 
       if ((strlen($foo) + $wordlen) <= $len) {
@@ -276,9 +276,12 @@
         $foo = "";
       }
     }
+
     if ($foo != "") {
+      /* include the last line, too */
       array_push($bar, $foo);
     }
+
     return $bar;
   }
 
@@ -399,10 +402,11 @@
 
         $quant = nice_quant($j["quant"]);
 
-        if ($strict == true)
+        if ($strict == true) {
            $a = length_adjust($j["ingred"], 28);
-        else 
+        } else {
            $a = length_adjust($j["ingred"], 65);
+        }
     
         $rline = pad_left($quant," ", 7) . " " .
                  pad_right($j["unit"]  , " ", 2) . " " .
