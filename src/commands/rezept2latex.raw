@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* $Id: rezept2latex.raw,v 1.4 2000/12/20 13:16:04 michael Exp $
+  /* $Id: rezept2latex.raw,v 1.5 2001/01/12 01:05:10 michael Exp $
    *
    * Export a recipe as Latex-source.
    */
@@ -10,7 +10,7 @@
   $stdout = fopen("php://stdout", "w");
   $stderr = fopen("php://stderr", "w");
 
-  $ver = "0.1.2";
+  $ver = "0.1.3";
 
   $helptext  = "rezept2latex $ver\n" ;
   $helptext .= "Invoke as:\n";
@@ -57,8 +57,8 @@
         $counter++;
       }
     } else if (count($result) == 1) {
+      $menu = $result[0];
       if (isset ($filename)) {
-        $menu = $result[0];
         $fp = fopen($filename, "w");
         fputs($fp, latex_export(get_menu_by_mid($menu["id"])));
         fclose ($fp);
