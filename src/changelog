@@ -1,4 +1,13 @@
-### $Id: changelog,v 1.37 2001/06/20 18:32:12 michael Exp $
+### $Id: changelog,v 1.38 2001/06/23 00:41:51 michael Exp $
+
+2001-06-22: Michael Lestinsky
+        M17N.
+        'rezept' unterstuetzt nun -relaxed bei MM-Rezepten, dabei werden
+        einige Beschraenkungen von MM ignoriert und das Format damit verletzt.
+        In dem Fall lassen sich die Rezepte aber besser reimportieren. 
+        Damit ist der Inhalt der Datenbank nach einem Export/Import-Zyklus 
+        identisch.
+        Dokumentation
 
 2001-06-20: Michael Bussmann <bus@fgan.de>
 	Verwende PEAR anstatt mysql_*().
