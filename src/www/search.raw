@@ -96,7 +96,7 @@
     }
   } else if (isset($_POST['untag_all'])) {
     $tagged_recipes = array();
-  } else if (isset($_POST['tag_all']) and $GLOBAL_OPS) {
+  } else if (isset($_POST['tag_all']) and $EXPENSIVE_OPS) {
     $tagged_recipes = KS_array_merge($searchresult, $tagged_recipes);
   }
 
@@ -118,7 +118,7 @@
       </table>
       <input type="submit" class="button" name="tag_submit"
              value="<?php echo $Lang['Tag']['Do'] ?>">
-      <?php if ($GLOBAL_OPS) { ?>
+      <?php if ($EXPENSIVE_OPS) { ?>
       <input type="submit" class="button" name="tag_all"
              value="<?php echo $Lang['Tag']['All'] ?>">
       <?php } ?>
@@ -171,7 +171,7 @@
 
     <?php
 
-    /* Do the search */
+    // Do the search
     if (empty($where)) $where[] = 'title';
     $all_result = exec_search((isset($_POST["begriff"]) ? $_POST['begriff'] : ''), 
                      $where, 
@@ -190,7 +190,7 @@
       </table>
       <input type="submit" class="button" name="tag_submit"
              value="<?php echo $Lang['Tag']['Do'] ?>">
-      <?php if ($GLOBAL_OPS) { ?>
+      <?php if ($EXPENSIVE_OPS) { ?>
       <input type="submit" class="button" name="tag_all"
              value="<?php echo $Lang['Tag']['All'] ?>">
       <?php } ?>
@@ -201,6 +201,7 @@
     }
   }
 ?>
+
 <h2><?php echo $Lang['Search']['Search']; ?></h2>
 <script language="JavaScript1.2">
   <!--
@@ -274,7 +275,7 @@
   <a class="prop" href="<?php echo "$PHP_SELF?all=y"; ?>">Y</a>
   <a class="prop" href="<?php echo "$PHP_SELF?all=z"; ?>">Z</a>
 </p>
-<?php if (count($tagged_recipes) > 0) { ?>
+<?php if (!empty($tagged_recipes) and count($tagged_recipes) > 0) { ?>
 <p>
     [<a href="<?php echo "$PHP_SELF?showtagged=1"; ?>"><?php echo $Lang['Tag']['Show']['Do']; ?></a>]
 </p>

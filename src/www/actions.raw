@@ -4,7 +4,7 @@
   <div class="small">
   <?php
     if (isset($_SESSION['operate_on']) and !isset($mid) and !isset($result_id)
-        and ($GLOBAL_OPS or ($_SESSION['operate_on'] != 'searchresult'))) {
+        and ($EXPENSIVE_OPS or ($_SESSION['operate_on'] != 'searchresult'))) {
 
       // We are working on a big bunch of data
 
