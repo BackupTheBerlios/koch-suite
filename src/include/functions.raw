@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2001
    *      Michael Lestinsky. All rights reserved.
    *
@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.68 2001/12/22 00:53:52 lestinsky Exp $
+   * $Id: functions.raw,v 1.69 2001/12/24 14:14:42 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -381,7 +381,6 @@
     return $a;
   }
  
-
 
   /**
    * Create a list of Aliases for a given unit.
@@ -1005,6 +1004,7 @@
     }
   }
 
+
   /**
    * Calculate an uniq hash for every recipe
    *
@@ -1026,5 +1026,4 @@
 
     return md5($hashme);
   }
-
 ?>

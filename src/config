@@ -1,8 +1,8 @@
-# $Id: config,v 1.20 2001/10/31 15:47:31 lestinsky Exp $
+# $Id: config,v 1.21 2001/12/24 14:14:42 lestinsky Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 # All variables will be are referenced by ${VARNAME}. Expansion takes
-# place while reading the lines.
+# place immediately while reading every line.
 
 # Where is the php-Binary?
 PHP		=/usr/local/bin/php4
@@ -39,8 +39,11 @@ OWNER		=root
 GROUP		=0
 
 # -- DB-Definitions --
+# Use 'mysql' or 'pgsql' as DB_TYPE. Other databases aren't supported yet.
 DB_TYPE		=mysql
+DB_SERVER	=localhost
+
 DB_USER		=kochsuite
 DB_PASSWORD	=
-DB_SERVER	=localhost
+
 DB_NAME		=DBkoch
