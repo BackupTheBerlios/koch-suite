@@ -1,4 +1,4 @@
-### $Id: Overview.txt,v 1.5 2000/12/15 00:18:15 michael Exp $
+### $Id: Overview.txt,v 1.6 2001/01/18 00:42:09 michael Exp $
 
 Uebersicht
 ==========
@@ -11,10 +11,11 @@ Koch-Suite besteht aus folgenden Bestandteilen:
    - rezept2latex: Ausgabe von Rezepten als LaTeX-Source.
 
  - ein paar WWW-Seiten
+   - einfuegen.php: Rezept-Eingabe- und Editier-Interface
    - index.php: Haupt-Menue
      - Such-Funktion
-   - rezept.php: Ausgabe des formatierten Rezeptes
    - print.php: ausgabe des Rezeptes als reiner Ascii-Text
+   - rezept.php: Ausgabe des formatierten Rezeptes
 
  - einer Bibliothekensammlung
    - functions.inc: Hier steckt der Parser und die Datenbank-Schnittstelle
