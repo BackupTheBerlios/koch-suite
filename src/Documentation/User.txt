@@ -1,4 +1,4 @@
-### $Id: User.txt,v 1.4 2000/12/15 00:25:51 michael Exp $
+### $Id: User.txt,v 1.5 2001/02/07 19:03:14 michael Exp $
 
 User-Dokumentation
 ==================
@@ -37,5 +37,10 @@ rezept2latex
                 Dateinamen noch ein 2-stelliger Zähler angehängt.
         "Suchbegriff"
                 Durchsuche die Titel der Menüs nach diesem Begriff.
+
+rk2mm
+-----
+  rk2mm konvertiert Rezepte aus dem REZKONV-Format in das
+  Mealmaster-Format und ließt dabei von STDIN und schreibt nach STDOUT.
 
 (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, November 2000
