@@ -1,8 +1,9 @@
-### $Id: changelog,v 1.28 2001/05/08 20:01:52 michael Exp $
+### $Id: changelog,v 1.29 2001/05/08 21:43:11 michael Exp $
 
 2001-05.28: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Makefiles wissen nun mit 'DESTDIR=/tmp/foo' was anzufangen.
-        +Documentation/FAQ.txt
+        Documentation/FAQ.txt
+        Erweiterte Suchfuntion: suche nach "Muffin AND Schoko".
 
 2001-04-23: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Ein Fehler beim Import von MM 8.06-Rezepten ist aufgetaucht. Fixed.
