@@ -1,5 +1,8 @@
 2001-10-31  Michael Lestinsky  <michael@lestinsky.de>
 
+  * src/www/kategorien.raw 1.13.2.1:
+  Pull in fix from current.
+
   * src/include/functions.raw 1.67:
   return the menu-id.
 
