@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.16 2001/09/06 09:37:46 bus Exp $
+   * $Id: de.inc,v 1.17 2001/09/09 14:22:13 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -38,6 +38,7 @@
   $Lang['Search']['In']		= "Suchen in";
   $Lang['Search']['Go']		= "Suche Starten";
   $Lang['Search']['Result']	= "Suchergebnis";
+  $Lang['Search']['Hits']       = "Treffer";
 
   $Lang['Search']['Menutitle']	= "Men&uuml;-Titel";
   $Lang['Search']['Categories']	= "Kategorie";

@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.20 2001/09/06 09:37:46 bus Exp $
+   * $Id: en.inc,v 1.21 2001/09/09 14:22:13 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -39,6 +39,7 @@
   $Lang['Search']['In']		= "Search in";
   $Lang['Search']['Go']		= "Start search";
   $Lang['Search']['Result']	= "Searchresult";
+  $Lang['Search']['Hits']       = "Hits";
 
   $Lang['Search']['Menutitle']	= "Menutitle";
   $Lang['Search']['Categories']	= "Categories";
