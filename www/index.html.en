@@ -36,6 +36,12 @@ isn't tested until now.
 <h2>News:</h2>
 
 <ul>
+  <li>19.8.2002: <a href="http://download.berlios.de/koch-suite/koch-suite-0.7.1.tar.gz">Version 0.7.1</a> (<a href="http://developer.berlios.de/cvs/?group_id=144">see our CVS</a>) Bugfix Release:
+    <ul> 
+      <li>Repair treatment of fractions</li>
+      <li>Repair category handling in <code>mmimport(1)</code></li>
+    </ul>
+  </li>
   <li>30.7.2002: <a href="http://download.berlios.de/koch-suite/koch-suite-0.7.tar.gz">Version 0.7</a> (<a href="http://developer.berlios.de/cvs/?group_id=144">see our CVS</a>)
     <ul class="lightbluedot">
       <li>Bug fixing, code auditing and cleanup.</li>
@@ -160,7 +166,7 @@ recipe management system for Unix-like operating systems</li>
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.en,v 1.5 2002/08/19 10:48:16 lestinsky Exp $
+$Id: index.html.en,v 1.6 2002/08/19 12:33:40 lestinsky Exp $
 </address>
 </body>
 </html>

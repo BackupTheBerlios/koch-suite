@@ -38,6 +38,12 @@ nur nicht getestet.
 <h2>Neues:</h2>
 
 <ul>
+  <li>19.8.2002: <a href="http://download.berlios.de/koch-suite/koch-suite-0.7.1.tar.gz">Version 0.7.1</a> (<a href="http://developer.berlios.de/cvs/?group_id=144">Siehe unser CVS</a>) Bugfix Release:
+    <ul>
+      <li>Repariere die Behandlung von Br&uuml;chen</li>
+      <li>Repariere den Umgang mit Kategorien beim Import mit <code>mmimport(1)</code></li>
+    </ul>
+  </li>
   <li>30.7.2002: <a href="http://download.berlios.de/koch-suite/koch-suite-0.7.tar.gz">Version 0.7</a> (<a href="http://developer.berlios.de/cvs/?group_id=144">Siehe unser CVS</a>)
     <ul class="lightbluedot">
       <li>Bugfixes, Aufräumarbeiten und Code-Audit.</li>
@@ -169,7 +175,7 @@ eintragen oder austragen.
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.de,v 1.7 2002/08/19 10:48:16 lestinsky Exp $
+$Id: index.html.de,v 1.8 2002/08/19 12:33:40 lestinsky Exp $
 </address>
 </body>
 </html>
