@@ -18,11 +18,11 @@
         echo "[<a href=\"print.php?mid=$mid&scale=$scale\">" . $Lang['PrintVers'] . "</a>]\n";
 
       if (isset($result_id)) {
-        echo "[<a href=\"mmprint.php?result_id=$result_id&scale=$scale\">Meal-Master-Format</a>]\n";
-        echo "[<a href=\"mmprint.php?format=rk&result_id=$result_id&scale=$scale\">RezKonv-Format</a>]\n";
+        echo "[<a href=\"mmprint.php?result_id=$result_id&scale=$scale\">" . $Lang['TypeMealMaster'] . "</a>]\n";
+        echo "[<a href=\"mmprint.php?format=rk&result_id=$result_id&scale=$scale\">" . $Lang['TypeRezkonv'] . "</a>]\n";
       } else if (isset($mid)) {
-        echo "[<a href=\"mmprint.php?mid=$mid&scale=$scale\">Meal-Master-Format</a>]\n";
-        echo "[<a href=\"mmprint.php?format=rk&mid=$mid&scale=$scale\">RezKonv-Format</a>]\n";
+        echo "[<a href=\"mmprint.php?mid=$mid&scale=$scale\">" . $Lang['TypeMealMaster'] . "</a>]\n";
+        echo "[<a href=\"mmprint.php?format=rk&mid=$mid&scale=$scale\">" .  $Lang['TypeRezkonv'] . "</a>]\n";
       }
   
       if (isset($result_id))
