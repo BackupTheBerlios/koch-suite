@@ -1,5 +1,5 @@
 -- 
--- $Id: init_db.pgsql,v 1.16 2002/06/02 10:48:49 lestinsky Exp $
+-- $Id: init_db.pgsql,v 1.17 2002/06/02 10:54:40 lestinsky Exp $
 -- init_db_postgreSQL.sql
 -- 2001-07-25 Michael Bussmann <bus@mb-net.net>
 --
@@ -241,6 +241,8 @@ CREATE TABLE usertable (
   free     enum('y','n') NOT NULL default 'y'
 );
 CREATE INDEX user_name on usertable (username);
+
+INSERT INTO usertable VALUES ('admin', '500', '12wGaKkN1hGuw', '', 'Admin', 'y');
 
 --
 -- Table structure for table 'menu_meta'

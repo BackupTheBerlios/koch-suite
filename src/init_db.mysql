@@ -1,6 +1,6 @@
 # MySQL dump 8.13
 #
-# $Id: init_db.mysql,v 1.11 2002/06/02 10:48:49 lestinsky Exp $
+# $Id: init_db.mysql,v 1.12 2002/06/02 10:54:40 lestinsky Exp $
 #
 # Host: localhost    Database: DBkoch
 #--------------------------------------------------------
@@ -248,6 +248,8 @@ CREATE TABLE usertable (
   free     enum('y','n') NOT NULL default 'y',
   PRIMARY KEY  (username)
 ) TYPE=MyISAM;
+
+INSERT INTO usertable VALUES ('admin', '500', '12wGaKkN1hGuw', '', 'Admin', 'y');
 
 #
 # Table structure for table 'menu_meta'
