@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.92 2003/08/11 20:08:31 lestinsky Exp $
+   * $Id: functions.raw,v 1.93 2004/02/06 14:42:32 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -1090,7 +1090,7 @@
    * @return string
    */
   function printable_format($wish) {
-    global $LATEX, $DVIPS, $GS;
+    global $PDFLATEX, $LATEX, $DVIPS, $GS;
 
     switch ((string) $wish) {
       case "html":
@@ -1117,6 +1117,9 @@
         break;
 
       case "pdf":
+        if ($PDFLATEX != 'none') {
+          return "pdf";
+        }
         if ($LATEX != 'none' and $DVIPS != 'none' and $GS != 'none') {
           return "pdf";
         } else {
