@@ -1,3 +1,19 @@
+2003-08-04  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/Makefile.raw 1.37, src/www/pics/Makefile.raw 1.12:
+  Und es war Sommer, das erste Mal in seinem Leben...
+
+  * src/include/koch-suite.raw 1.23:
+  Summer, palms, sunshine
+
+  * src/www/pics/bg_summer.png 1.1, src/www/styles_summer.css 1.1, src/www/theme_summer.raw 1.1:
+  Well, it's 0:32h and still 28°C, we definitly need a summer theme
+
+  * src/config 1.27: Some comments
+
+  * src/include/es.inc 1.9:
+  Update Spanish texts. Work done by Vicente Ruiz <vjrj@terra.es>
+
 2003-07-30  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/README 1.60:
