@@ -59,7 +59,7 @@
           <?php
             if ($prev >= 0)
               echo "<a href=\"".$_SERVER["PHP_SELF"]."?result_id=".$prev."\">" .
-                   '<img src="pics/left.gif" border="0" width="16" height="16" alt="" align="middle">' .
+                   '<img src="pics/left.gif" border="0" width="14" height="14" alt="" align="middle">' .
                    $Lang['Previous'] . "</a>\n";
           ?>
           </div>
@@ -79,7 +79,7 @@
             if ($next <= $total - 1)
               echo "<a href=\"".$_SERVER["PHP_SELF"]."?result_id=".$next."\">" .
                    $Lang['Next'] . 
-                   '<img src="pics/right.gif" border="0" width="16" height="16" alt="" align="middle">' .
+                   '<img src="pics/right.gif" border="0" width="14" height="14" alt="" align="middle">' .
                    "</a>\n";
           ?>
           </div>

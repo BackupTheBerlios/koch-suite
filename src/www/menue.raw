@@ -1,4 +1,4 @@
-<!-- $Id: menue.raw,v 1.20 2002/07/03 16:26:46 lestinsky Exp $ -->
+<!-- $Id: menue.raw,v 1.21 2002/09/17 22:43:34 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
 <?php
   $blue_dot = '<img src="pics/blue_dot.gif" align="bottom" alt="*" border=0>';
@@ -7,7 +7,7 @@
 <table border=0 cellspacing=0 cellpadding=0>
   <tr class="border" align="top">
     <td>
-      <table border="0" cellspacing="2" cellpadding="3">
+      <table border="0" cellspacing="2" cellpadding="2">
         <tr style="font-size:small;">
           <td style="background-color:#c0c0d5" class="menu"><? echo $Lang["Mainmenu"]["Title"]; ?></td>
         </tr>
@@ -15,17 +15,17 @@
           <td class="menu">
             <div style="white-space:nowrap">
             </div>
-            <table border="0" cellspacing="1" cellpadding="0" class="menu">
+            <table border="0" cellspacing="1" cellpadding="1" class="menu">
             <tr>
-              <td><?php echo $blue_dot; ?></td>
+              <td><img src="pics/lupe.gif" align="bottom" alt="*" border=0></td>
               <td><a href="search.php"><? echo $Lang['Search']['Search']; ?></a></td>
             </tr>
             <tr>
-              <td><?php echo $blue_dot; ?></td>
+              <td><img src="pics/write.gif" align="bottom" alt="*" border=0></td>
               <td><a href="einfuegen.php"><? echo $Lang['Insert']; ?></a></td>
             </tr>
             <tr>
-              <td><?php echo $blue_dot; ?></td>
+              <td><img src="pics/help_dot.gif" align="bottom" alt="*" border=0></td>
               <td><a href="help.php"><? echo $Lang['Help']; ?></a></td>
             </tr>
             <tr>
@@ -43,7 +43,7 @@
                 </td>
               </tr>
               <tr>
-                <td><?php echo $blue_dot; ?></td>
+                <td><img src="pics/ok.gif" align="bottom" alt="*" border=0></td>
                 <td><a href="settings.php"><?php echo $Lang['Settings']['Title'] ?></a></td>
               </tr>
               <?php if ($USER_S['usertype'] == ADMIN) { ?>
@@ -53,7 +53,7 @@
                 </tr>
               <?php } ?>
               <tr>
-                <td><?php echo $blue_dot; ?></td>
+                <td><img src="pics/walking.gif" align="bottom" alt="*" border=0></td>
                 <td><a href="logout.php"><?php echo $Lang['Auth']['Logout'] ?></a></td>
               </tr>
             <?php } else { ?>
