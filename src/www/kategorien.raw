@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.13 2001/09/24 21:20:23 lestinsky Exp $
+   * $Id: kategorien.raw,v 1.14 2001/10/31 18:22:52 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW
@@ -45,10 +45,12 @@
 
   auth(READ);
 
-
+  $target    = false;
+  $maxsel    = false;
+  $kategorie = false;
   if (isset($HTTP_GET_VARS["target"]))    $target = $HTTP_GET_VARS["target"];
   if (isset($HTTP_GET_VARS["kategorie"])) $kategorie = $HTTP_GET_VARS["kategorie"];
-  if (isset($HTTP_GET_VARS["maxsel"]))    $maxsel    = $HTTP_GET_VARS["maxsel"];
+  if (isset($HTTP_GET_VARS["maxsel"]))    $maxsel = $HTTP_GET_VARS["maxsel"];
   if (isset($HTTP_SERVER_VARS["PHP_SELF"])) 
     $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
 ?>
