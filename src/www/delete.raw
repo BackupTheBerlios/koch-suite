@@ -40,11 +40,35 @@
   include "<%%PHP_LIBS%%>/functions.inc";
   include "<%%PHP_LIBS%%>/auth.inc";
 
+  session_register('searchresult');
+
   auth(WRITE);
 
-  if (isset($_GET["mid"]))     $mid     = intval($_GET["mid"]);
   if (isset($_GET["confirm"])) $confirm = $_GET["confirm"];
   if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
+
+  if (isset($_GET["mid"])) {
+    $mid = $_GET["mid"];
+    if (is_numeric($mid)) {
+      $ok = true;
+    } else {
+      $error = "Illegal value for mid";
+      $ok = false;
+    }
+  } elseif (isset($_GET["result_id"])) {
+    $result_id = $_GET["result_id"];
+    if (is_numeric($result_id)) {
+      $mid = $_SESSION["searchresult"][$result_id]["id"];
+      $ok = true;
+    } else {
+      $error = "Illegal value for result_id";
+      $ok = false;
+    }
+  } else {
+    /* Sorry, wrong parameters. */
+    $error = "Wrong parameter list.";
+    $ok = false;
+  }
 
   $scale = 1;
 ?>
@@ -59,7 +83,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.20 2002/08/18 13:56:25 lestinsky Exp $ -->
+  <!-- $Id: delete.raw,v 1.21 2002/08/19 18:12:34 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -77,11 +101,24 @@
       if (isset($confirm) and $confirm == 'y') {
         delete_menue ($mid);
         echo "<h1>" . $Lang["Recipe"]["Deleted"] . "</h1>\n";
+
+        if (isset($result_id)) {
+          array_splice($_SESSION['searchresult'], $result_id, 1);
+
+          if ($_SESSION['operate_on'] == "marked_recipes") {
+            array_splice($_SESSION['marked_recipes'], $result_id, 1);
+          }
+        }
+
       } else {
         echo "<h1>" . $Lang["Recipe"]["Delete"] ."?</h1>\n";
         echo format_recipe_html(get_menu_by_mid($mid, $scale));
-        echo "[<a href=\"$PHP_SELF?mid=$mid&confirm=y\">" . 
-                $Lang["Delete"] . "</a>]\n";
+        if (isset($result_id))
+          echo "[<a href=\"$PHP_SELF?result_id=$result_id&confirm=y\">" . 
+                  $Lang["Delete"] . "</a>]\n";
+        else
+          echo "[<a href=\"$PHP_SELF?mid=$mid&confirm=y\">" . 
+                  $Lang["Delete"] . "</a>]\n";
       }
     ?>
   </td>
