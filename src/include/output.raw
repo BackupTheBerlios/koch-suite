@@ -1,53 +1,165 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.4 2000/11/24 23:23:28 michael Exp $
+   * $Id: output.raw,v 1.5 2000/11/29 18:30:48 michael Exp $
+   * This file is automatically included when including functins.inc.
+   * It contains all functions for output.
    */
 
-  require "<%%PHP_LIBS%%>/functions.inc";
 
-  function mmexport ($rezept) {
-    /* return a Meal-Master-formatted string. */
-    $str = "";
-    $i = 0;
-    $header = "MMMMM-----mmexport (v0.2) Export nach Meal-Master-----\n";
-    $footer = "MMMMM";
+  function format_recipe($rezept) {
+    /* return a String, which contains the plain-text-formatted recipe */
 
-    $str .= "$header\n";
-    $str .= "     Title: " . $rezept["title"] . "\n"; 
+    $str  = "Titel: " . $rezept["title"] . "\n".
+            "Kategorien:";
 
-    $cat_a = $rezept["category"];
-    $str .= "Categories: "; 
-    while (isset($cat_a[$i])) {
-      if ($i != 0) {
-        $str  .= ", ";
-      }
-      $str .= $cat_a[$i];
-      $i++;
+    foreach ($rezept["category"] as $cat) {
+      $str .= " " . $cat;
     }
+
     $str .= "\n";
 
-    $str .= "     Yield: " . $rezept["yield"] . " Portionen\n"; 
+    $str .= "Anzahl: " . $rezept["yield"] . "\n\n";
 
-    $str .= print_ingred($rezept["zutaten"]);
-    $a = length_adjust($rezept["anleitung"], 78); 
-    foreach ($a as $line) {
-      $str .= $line . "\n";
+    /* Zutaten: */
+
+    foreach ($rezept["zutaten"] as $z) {
+      $str .= $z["title"] . "\n";
+      foreach ($z["ingredients"] as $j) {
+        $rline = pad_left ($j["quant"] , " ", 7) . " " .
+                 pad_right($j["unit"]  , " ", 2) . " " .
+                 pad_right($j["ingred"], " ", 28) . "\n";
+        $str .= $rline;
+      }
+      $str .= "\n";
     }
-    $str .= "\n$footer\n";
+
+    $str .= "Kochanleitung:\n\n";
+    $str .= $rezept["anleitung"];
+
+    return $str . "\n";
+  }
+
+
+  function format_recipe_html ($rezept) {
+    /* return a string, which contains the html-formatted recipe */
+
+    $str = "<h2>" . htmlentities($rezept["title"]) . "</h2>\n";
+    $str .= "<table border=\"0\">\n";
+
+    $str .= "<tr><td><b>Kategorie</b>:</td><td width=\"90%\">";
+    foreach($rezept["category"] as $cat) {
+      $str .= htmlentities($cat) . " " ;
+    }
+    $str .= "</td></tr>\n";
+
+    $str .= "<tr><td><b>Portionen</b>:</td><td>" . $rezept["yield"] . "</td></tr>\n";
+
+    $str .= "<tr><td colspan=2>\n";
+
+    $str .= "<table border=\"0\" width=\"100%\">\n";
+    foreach ($rezept["zutaten"] as $z) {
+      $str .= "<tr><td colspan=3><b>" .
+                      htmlentities($z["title"]) .
+                      "</b></td></tr>\n";
+
+      foreach ($z["ingredients"] as $j) {
+
+        $quant = $j["quant"];
+        $quant = round($quant,3);
+        if ($quant == 0)
+          $quant = '';
+        $unit = nice_unit($j["unit"]);
+        $ingred = preg_replace("/^(-*|;*) */", "", $j["ingred"]);
+        $str .= "<tr><td width=\"10%\" align=\"right\">" . $quant . "</td>" .
+                    "<td width=\"10%\">" . $unit . "</td>" .
+                    "<td>" . htmlentities($ingred) . "</td>" .
+                "</tr>\n";
+      }
+
+    }
+    $str .= "</table>\n";
+    $str .= "</td></tr>\n";
+ 
+    $str .= "<tr><td colspan=2 style=\"font-family:Helvetica\">";
+    $str .= preg_replace("/(\r)?\n(\r)?\n?/", "\n<br>", htmlentities($rezept["anleitung"]));
+    $str .= "</td></tr>\n";
+    $str .= "</table>\n";
 
     return $str;
   }
 
 
-  function mmrezept_header ($str) {
-    /* return a valid Mealmaster-subheader */
-    $len = strlen($str);
-    $fill = "--------------------";
-    $fill_l = "MMMMM" . $fill;
-    $fill_r = "-----" . $fill;
-    $str = $fill_l . $str . $fill_r;
-    return "$str";
+  function latex_export ($rezept) {
+    /* Export a recipe as LaTeX-file */
+
+    /* write the Latex-headers... */
+
+    $str  = "\\documentclass[a4paper,11pt]{article}\n\n";
+    $str .= "\\usepackage{german}\n";
+    $str .= "\\usepackage[latin1]{inputenc}\n";
+    $str .= "\\usepackage{here}\n";
+    $str .= "\\usepackage{array}\n";
+    $str .= "\\usepackage[lflt]{floatflt}\n";
+   
+    $str .= "\\setlength{\\textwidth}{16cm}\n";
+    $str .= "\\setlength{\\textheight}{26cm}\n";
+    $str .= "\\addtolength{\\topmargin}{-3cm}\n"; 
+    $str .= "\\addtolength{\\oddsidemargin}{-2cm}\n";
+    $str .= "\\pagestyle{empty}\n";
+    /* ... some meta-data, ... */
+
+    $str .= "\n\\title{\\textsf{" . $rezept["title"] . "}}\n\n";
+    $str .= "\\author{rezept2latex}\n";
+    $str .= "\\begin{document}\n";
+    #$str .= "\\maketitle\n";
+
+    $str .= "\\section*{" . $rezept["title"] . "}\n";
+
+    /* ... the content... */
+
+    $str .= "\\begin{table}[H]\n";
+    $str .= "\\begin{tabular}{rl}\n";
+    $str .= "\\textbf{Portionen:} & " . $rezept["yield"] . "\\\\\n";
+    $str .= "\\textbf{Kategorie:} & ";
+    foreach ($rezept["category"] as $cat) {
+      $str .= "$cat ";
+    }
+    $str .= "\\\\\n";
+    $str .= "\\end{tabular}\\\\\n";
+    $str .= "\\end{table}\n";
+
+    /* ... ingredients, ... */
+
+    $str .= "\\begin{floatingtable}{\n";
+    $str .= "\\begin{tabular}{rl|l}\n";
+    foreach($rezept["zutaten"] as $z) {
+      $str .= "\\hline\n";
+      $str .= "\\multicolumn{3}{l}{\\textbf{" . 
+              preg_replace("/:/", "", $z["title"]) . "}}\\\\\n";
+      $str .= "\\hline\n";
+
+      foreach ($z["ingredients"] as $i) {
+        if (($quant = round($i["quant"], 3)) == 0) {
+          $quant = "";
+        }
+        $ingred = preg_replace("/^(-*|;*) */", "", $i["ingred"]);
+        $ingred = preg_replace("/(&)/", "\\\\1", $ingred);
+        $str .= $quant . " & " . 
+                nice_unit($i["unit"]) . " & " . 
+                $ingred . "\\\\\n";
+      }
+    }
+    $str .= "\\hline\\\\\n";
+    $str .= "\\end{tabular}\\\\\n";
+    $str .= "}\\end{floatingtable}\n";
+
+    $anleitung = preg_replace ('/(")/', "\\dq ", $rezept["anleitung"]);
+
+    $str .= $anleitung;
+    /* ... and the footers */
+    $str .= "\\end{document}\n";
+    return $str;
   }
 
 
@@ -57,7 +169,7 @@
     $foo = "";
 
     if (strlen($str) > $len) {
-      $str = preg_replace("/\n:/", " <br> :", $str);
+      $str = preg_replace("/\n:/", "\n <br> :", $str);
       $str = preg_replace("/\n\n/", " <p> ", $str);
       $str = preg_replace("/\n/", " ", $str);
       /* Ingredient-line to long */
@@ -65,9 +177,10 @@
       $i = 0;
       while (isset($a[$i])) {
         if ((strlen($foo) + strlen($a[$i])) < $len) {
-          if (preg_match("/\n/", $a[$i])) {
-            $foo .= preg_replace("/\n/", " ", $a[$i++]) . " ";
-          } else if (preg_match("/<(br|p)>/", $a[$i], $bla)) {
+          #if (preg_match("/\n/", $a[$i])) {
+          #  $foo .= preg_replace("/\n/", " ", $a[$i++]) . " ";
+          #} else 
+          if (preg_match("/<(br|p)>/", $a[$i], $bla)) {
             $i++;
             array_push($bar, $foo);
             if ($bla[1] == 'p') {
@@ -90,6 +203,92 @@
       array_push($bar, $str);
     }
     return $bar;
+  }
+
+
+  function mmexport ($rezept) {
+    /* return a Meal-Master-formatted string. */
+    $str = "";
+    $i = 0;
+    $header = "MMMMM-----mmexport (v0.2) Export nach Meal-Master-----\n";
+    $footer = "MMMMM";
+
+    $str .= "$header\n";
+    $str .= "     Title: " . $rezept["title"] . "\n"; 
+
+    $cat_a = $rezept["category"];
+    $str .= "Categories: "; 
+    while (isset($cat_a[$i])) {
+      if ($i != 0) {
+        $str  .= ", ";
+      }
+      $str .= $cat_a[$i];
+      $i++;
+    }
+    $str .= "\n";
+
+    $str .= "     Yield: " . $rezept["yield"] . "\n"; 
+
+    $str .= print_ingred($rezept["zutaten"]);
+    $a = length_adjust($rezept["anleitung"], 78); 
+    foreach ($a as $line) {
+      $str .= $line . "\n";
+    }
+    $str .= "$footer\n";
+
+    return $str;
+  }
+
+
+  function mmrezept_header ($str) {
+    /* return a valid Mealmaster-subheader */
+    $len = strlen($str);
+    $fill = "--------------------";
+    $fill_l = "MMMMM" . $fill;
+    $fill_r = "-----" . $fill;
+    $str = $fill_l . $str . $fill_r;
+    return "$str";
+  }
+
+
+  function nice_unit ($unit) {
+    /* Lookup a beautified name for a unit */
+    $req = "select * from EINHEITEN where ABBREV = '$unit'";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    $r = mysql_fetch_array($result);
+
+    return $r["TEXT"];
+  }
+
+
+  function pad_left($str, $pad, $length) {
+    /* Pad a String from the left side with $pad to a length of $length
+     * or if to long: cut it from the rigth to a length of $lenght.
+     */
+    if (strlen($str) > $length) {
+      // snip
+    } else {
+      while (strlen($str) < $length) {
+        $str = $pad . $str;
+      }
+    }
+    return $str;
+  }
+
+
+  function pad_right($str, $pad, $length) {
+    /* Pad a String from the rigth side with $pad to a length of $length
+     * or if to long: cut it from the rigth to a length of $lenght.
+     */
+    if (strlen($str) > $length) {
+      // snip
+    } else {
+      while (strlen($str) < $length) {
+        $str .= $pad;
+      }
+    }
+    return $str;
   }
 
 
