@@ -29,7 +29,7 @@
    */
 
   /**
-   * $Id: init_db.raw,v 1.11 2005/01/02 02:43:30 lestinsky Exp $
+   * $Id: init_db.raw,v 1.12 2005/02/05 13:24:02 bus Exp $
    * Initializes database, creates necessary tables and fills them with
    * default contents
    *
@@ -102,7 +102,7 @@
 	  ID int(11) NOT NULL default '0',
 	  ABBREV char(2) default NULL,
 	  DESCR varchar(255) default NULL,
-	  FAKTOR float(5,3) default NULL,
+	  FAKTOR numeric(7,2) default NULL,
 	  FAKTOR_ID int(11) default NULL,
 	  RK_ABBREV varchar(11) default NULL,
 	  MMUSE enum('J','N') default NULL,
@@ -163,7 +163,7 @@
     $sql = "
 	CREATE TABLE ZUTATEN (
 	  ID int(11) NOT NULL default '0',
-	  MENGE float(5,3) default NULL,
+	  MENGE numeric(7,2) default NULL,
 	  EINHEIT char(2) default NULL,
 	  TEXT varchar(255) default NULL,
 	  REZEPT_ID int(11) NOT NULL default '0',
@@ -240,7 +240,7 @@
 	  ID integer NOT NULL PRIMARY KEY,
 	  ABBREV char(2),
 	  DESCR varchar(255),
-	  FAKTOR real,
+	  FAKTOR numeric(7,2),
 	  FAKTOR_ID integer,
 	  RK_ABBREV varchar(11),
 	  MMUSE char(1) constraint yesno check (MMUSE in ('J','N')) default NULL
@@ -289,7 +289,7 @@
     $sql = "
 	CREATE TABLE ZUTATEN (
 	  ID integer NOT NULL PRIMARY KEY,
-	  MENGE real,
+	  MENGE numeric(7,2),
 	  EINHEIT char(2),
 	  TEXT varchar(255),
 	  REZEPT_ID integer DEFAULT '0' NOT NULL
