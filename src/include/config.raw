@@ -1,9 +1,10 @@
 <?
-
-  /* Cetral configuration-file for the koch-suite
+  /* Configuration-file for the koch-suite
    * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
-   * $Id: config.raw,v 1.6 2001/05/16 00:21:26 michael Exp $
+   * $Id: config.raw,v 1.7 2001/05/30 19:43:35 michael Exp $
    */
+
+  include "<%%PHP_LIBS%%>/debug.inc";
 
   $DB_SERVER   = "<%%DB_SERVER%%>";
   $DB_USER     = "<%%DB_USER%%>";
@@ -17,15 +18,15 @@
   $kochsuite_ver = "0.5-pre1";
 
   /* Connect to the Database */
-
   if (get_cfg_var(mysql.allow_persistent) == 1) {
-    if (! @mysql_pconnect($DB_SERVER, $DB_USER, $DB_PASSWORD)) {
-      $mysql_error = mysql_error();
+    if (! $link = @mysql_pconnect("$DB_SERVER", "$DB_USER", "$DB_PASSWORD")) {
+      write_log("Can't connect to the MySQL-Server:");
+      write_log(mysql_error());
     }
   } else {
-    if (! @mysql_connect($DB_SERVER, $DB_USER, $DB_PASSWORD)) {
-      $mysql_error = mysql_error();
+    if (! $link = @mysql_connect("$DB_SERVER", "$DB_USER", "$DB_PASSWORD")) {
+      write_log("Can't connect to the MySQL-Server (Link = $link): ");
+      write_log(mysql_error());
     }
   }
-
 ?>
