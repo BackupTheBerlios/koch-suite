@@ -29,7 +29,7 @@
    */
 
   /**
-   * $Id: init_db.raw,v 1.5 2003/01/21 20:43:22 bus Exp $
+   * $Id: init_db.raw,v 1.6 2003/05/19 16:04:07 lestinsky Exp $
    * Initializes database, creates necessary tables and fills them with
    * default contents
    *
@@ -398,7 +398,7 @@
 	"3,'de','mittl.'",
 	"3,'en','medium'",
 	"3,'es','medio'",
-	"4,'de','gr.'",
+	"4,'de','groﬂ.'",
 	"4,'en','large'",
 	"4,'es','grande'",
 	"5,'de','Dose'",
@@ -458,7 +458,7 @@
 	"23,'de','Oz.'",
 	"23,'en','ounce'",
 	"23,'es','onza'",
-	"24,'de','g'",
+	"24,'de','Gramm'",
 	"24,'en','g'",
 	"24,'es','g'",
 	"25,'de','Engl. Pfund'",
