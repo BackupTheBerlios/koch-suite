@@ -1,3 +1,9 @@
+2003-01-21  Michael Bussmann  <bus@mb-net.net>
+
+  * src/commands/init_db.raw 1.5:
+  Fixed some syntax errors
+  Added constrained statements to resemble mysql's enum type
+
 2003-01-20  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/footer.raw 1.4:
