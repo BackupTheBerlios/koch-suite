@@ -1,7 +1,8 @@
-<!-- $Id: such.raw,v 1.12 2001/05/23 00:07:11 michael Exp $ -->
+<!-- $Id: such.raw,v 1.13 2001/05/30 19:45:15 michael Exp $ -->
 <?
   $begriff = $HTTP_POST_VARS["begriff"];
-  $all     = $HTTP_POST_VARS["all"];
+  $where   = $HTTP_POST_VARS["where"];
+  $all     = $HTTP_GET_VARS["all"];
 
   if (empty($begriff) and empty($all)) {
 ?>
