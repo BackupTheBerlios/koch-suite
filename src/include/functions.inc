@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.inc,v 1.5 2000/11/01 13:19:43 michael Exp $
+   * $Id: functions.inc,v 1.6 2000/11/01 13:23:17 michael Exp $
    */
 
   include "./include/config.inc";
@@ -154,7 +154,15 @@
      * see Documentation/init_db.sql
      */
 
-    
+   global $DB_NAME;
+
+   $req = "insert into MENUE values ( " .
+          "  0, " .
+          "  '$yield', " .
+          "  '$title', " .
+          "  ) ";
+    $result = mysql_db_query($DB_NAME, $req);
+    $mid = mysql_insert_id();
 
   }
 
