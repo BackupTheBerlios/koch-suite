@@ -59,10 +59,10 @@
     $str .= "</tr>\n";
 
     // Zutaten-Liste:
-    $str .= "<!-- Foo -->\n";
     foreach($rezept["zutaten"] as $z) {
+      $tmp = each($rezept["zutaten"]);
       $str .= "<tr>\n";
-      if ($z["title"] == 'Zutaten:') {
+      if ($tmp["key"] == 0) {
         $str .= "<td>" . $Lang['Ingred'] . ":" .
                 "<input type=\"hidden\" name=\"ztitle[0]\"" .
                        "value=\"" . $z["title"] . "\">" .
@@ -107,11 +107,11 @@ $Lang['Units'] . "</a></td>\n";
   // passendes, leeres Array:
 
   if (!is_array($zutaten)) {
-    $zutaten = array("");
+    $zutaten = array();
   }
 
   if (!is_array($ztitle)) {
-    $ztitle = array("Zutaten:");
+    $ztitle = array();
   }
 
   if (isset($more_zutaten)) {
@@ -216,7 +216,7 @@ $Lang['Units'] . "</a></td>\n";
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.14 2001/05/16 00:21:26 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.15 2001/05/21 23:59:18 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
