@@ -1,3 +1,23 @@
+2001-12-31  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/de.inc 1.25, src/include/en.inc 1.28, src/www/actions.raw 1.2, src/www/pics/left.gif 1.1, src/www/pics/right.gif 1.1, src/www/print.raw 1.15, src/www/rezept.raw 1.22, src/www/search.raw 1.13:
+  Enable navigation between searchresults.
+
+  * src/www/pics/Makefile.raw 1.8:
+  +left.gif, +right.gif
+
+  * src/init_db.mysql 1.7, src/init_db.pgsql 1.11:
+  Add 'en' Lang-pack. Submitted by Eric Vaandering <ewv@fnal.gov>
+
+  * src/include/koch-suite.raw 1.6: set PDFLATEX
+
+  * src/configure 1.22, src/www/print.raw 1.14:
+  Probe for pdflatex and fallback to latex -> dvips -> ghostscript if
+  unavailable. pdflatex is much faster.
+
+  * src/INSTALL 1.8, src/README 1.42:
+  Language-Corrections submitted by Eric Vaandering <ewv@fnal.gov>
+
 2001-12-24  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/config 1.21, src/include/functions.raw 1.69, src/include/output.raw 1.40:
