@@ -1,3 +1,20 @@
+2002-05-11  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/commands/mmimport.raw 1.26:
+  Don't import unknown categories by default. Use new switch "-C", if you want
+  the new categories to be imported.
+  Print $notice.
+
+  * src/include/koch-suite.raw 1.9: Empty notice
+
+  * src/www/einfuegen.raw 1.35: Sync
+
+  * src/include/functions.raw 1.72:
+  Add flag, which allows to ignore unknown categories
+
+  * src/include/Makefile.raw 1.26:
+  Be a bit more verbose
+
 2002-04-15  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/README 1.46: typo and thanks
