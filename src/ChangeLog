@@ -1,3 +1,27 @@
+2004-03-31  Michael Lestinsky  <michael@lestinsky.de>
+
+  * include/functions.raw 1.94: Bugfixing, reported by Jan Dreyer
+
+  * include/koch-suite.raw 1.24:
+  There is no reason to 'compile' this value in.
+
+  * include/de.inc 1.53, include/en.inc 1.58: OrigTitle
+
+  * include/parser.raw 1.8, www/einfuegen.raw 1.52:
+  Fix several bugs detected by Jan Dreyer
+
+  * include/output.raw 1.55:
+  If we had to crop the title to satisfy the length specifications
+  of the format, append the original title at the end of the recipe.
+  Suggested by Jan Dreyer.
+
+  * www/mmprint.raw 1.27:
+  Be less verbose, wipe one write_log() invocation.
+
+  * www/styles_summer.css 1.2:
+  This looks somewhat nicer on my FreeBSD installation,
+  since my Arial font is a ttf which is antialiased and helvetica isn't.
+
 2004-02-06  Michael Lestinsky  <michael@lestinsky.de>
 
   * include/functions.raw 1.93: test for pdflatex
