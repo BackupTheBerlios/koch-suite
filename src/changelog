@@ -1,4 +1,7 @@
-### $Id: changelog,v 1.8 2000/12/16 01:36:50 michael Exp $
+### $Id: changelog,v 1.9 2000/12/27 18:12:36 michael Exp $
+
+2000-12-27: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Entwurf eines Eingabe-Interface mittels Perl/Tk
 
 2000-12-15: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
         Mealmaster-Import-Filter: Parser überarbeitet. Schreibe keine
