@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.59 2005/01/02 02:41:53 lestinsky Exp $
+   * $Id: en.inc,v 1.60 2005/02/10 19:03:13 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -127,7 +127,7 @@ EOT;
   $Lang['Category']['Delete']   = 'Delete category';
 
 
-  $Lang['UnitInfo']['Title']    = "Unit Infomation";
+  $Lang['UnitInfo']['Title']    = "Unit Information";
   $Lang['UnitInfo']['MMText']   = "Units in Meal-Master format.";
   $Lang['UnitInfo']['RKText']   = "Units in REZKONV format.";
 
