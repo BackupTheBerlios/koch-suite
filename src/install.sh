@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: install.sh,v 1.1 2001/10/18 10:05:03 lestinsky Exp $
+# $Id: install.sh,v 1.2 2001/10/22 12:26:53 lestinsky Exp $
 #
 # This install-script tries to be as BSD-install compatible as possible
 # And is used, if your operating-system doesn't support a suitable one.
@@ -105,18 +105,18 @@ while [ "$1" != "" ] ; do
 done
 
 
-if [ ${dir} = 0 -a "${src}" = "" ] ; then
+if [ ${dir} = 0 -a -z "${src}" ] ; then
     echo "$0: error in parameter list"
     exit 1
 
-elif [ "${dst}" = "" ] ; then
+elif [ -z "${dst}" ] ; then
     echo "$0: no target specified"
     exit 1
 
 elif [ ${dir} = 1 ] ; then
     # Create a directory
 
-    if [ "${dst}" != "" ] ; then
+    if [ -n "${dst}" ] ; then
         if [ -d ${dst} ] ; then
             # The directory does already exist
             true
@@ -144,6 +144,7 @@ else
         if [ -f $i ] ; then
 
             if [ -d ${dst} ] ; then
+                # ${dst} is a directory
                 target="${dst}/$i"
             else
                 target="${dst}" 
