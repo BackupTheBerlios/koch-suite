@@ -1,14 +1,27 @@
 <?
+  /* einfuegen.php - Rezepte einfuegen und bearbeiten.
+   * This file is subject to the license as included in the file LICENSE
+   * in the top-level directory of this release.
+   * (c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+   */
+
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
 
-  $mid = doubleval($HTTP_GET_VARS["mid"]);
-
-  /* einfuegen.php - Rezepte einfuegen und bearbeiten.
-   * Diese Datei unterliegt der in der Datei LICENSE beigefügten Lizenz
-   * (c) Januar 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+  /*
+   * read the proper values submitted via form
    */
+  $mid       = doubleval($HTTP_GET_VARS["mid"]);
+  $titel     = trim($HTTP_POST_VARS["titel"]);
+  $portionen = trim($HTTP_POST_VARS["portionen"]);
+  $kategorie = trim($HTTP_POST_VARS["kategorie"]);
+  $zutaten   = $HTTP_POST_VARS["zutaten"];
+  $anweisung = $HTTP_POST_VARS["anweisung"];
+  $ztitle    = $HTTP_POST_VARS["ztitle"];
+  if (isset($HTTP_POST_VARS["more_zutaten"])) {
+    $more_zutaten = $HTTP_POST_VARS["more_zutaten"];
+  }
 
   $target = $PHP_SELF;
   if (isset($mid) and $mid != 0) {
@@ -218,7 +231,7 @@ $Lang['Units'] . "</a></td>\n";
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.16 2001/05/23 01:22:00 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.17 2001/06/01 22:32:26 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
