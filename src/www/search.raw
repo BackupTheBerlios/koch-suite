@@ -53,7 +53,7 @@
                "<td>$j</td>" .
                "<td><a href=\"rezept.php?result_id=" . $i . "\">" . 
                       htmlentities($r[$i]["title"]) . "</a> " . 
-                    sucks_or_rocks_meter(get_rating($r[$i]['id'])) . "</td></tr>\n";
+                      sucks_or_rocks_meter($r[$i]['rating']) . "</td></tr>\n";
     }
   }
 
