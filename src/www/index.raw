@@ -13,7 +13,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: index.raw,v 1.12 2001/05/16 00:21:26 michael Exp $ -->
+  <!-- $Id: index.raw,v 1.13 2001/05/23 00:04:47 michael Exp $ -->
 </head>
 
 <body>
@@ -28,7 +28,7 @@
   <td>
     <!-- Rechts: Ausgabe -->
     <?
-      if ($suchen == 1) {
+      if ($HTTP_GET_VARS["suchen"] == 1) {
         /* include Search-Submenu */
         include "./such.inc";
       } else {
