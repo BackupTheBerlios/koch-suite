@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.75 2002/05/20 22:05:09 lestinsky Exp $
+   * $Id: functions.raw,v 1.76 2002/05/22 21:38:12 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -561,19 +561,23 @@
 
 
           if (preg_match($source_pattern, $line, $opt_fields)) {
+            $meta['Source'] .= ($meta['Source'] ? ' ' : '' );
             $meta['Source'] .= $opt_fields[1];
             $last = 'Source';
 
           } else if (preg_match($recorder_pattern, $line, $opt_fields)) {
+            $meta['Recorder'] .= ($meta['Recorder'] ? ' ' : '' );
             $meta['Recorder'] .= $opt_fields[1];
             $last = 'Recorder';
 
           } else if (preg_match($date_pattern, $line, $opt_fields)) {
+            $meta['Date'] .= ($meta['Date'] ? ' ' : '' );
             $meta['Date'] .= $opt_fields[1];
             $last = 'Date';
 
           } else if (preg_match($long_pattern, $line, $opt_fields)) {
             $meta[$last] .= " " . $opt_fields[1];
+
           } else if (preg_match($mmext_pattern, $line) and 
                        $ignore_unknown_mmext == true) {
             // Just drop this line.
@@ -719,24 +723,26 @@
     $result = DB_query($req);
 
     foreach ($rezept["zutaten"] as $z) {
-      $rid = $db->nextID("REZEPTSEQ");
-      $req = "insert into REZEPT values ( " .
-             "  $rid, " .
-             "  '$mid', " .
-             "  '" . addslashes($z["title"]) . "' " .
-             " ) ";
-      $result = DB_query($req);
-
-      foreach ($z["ingredients"] as $i) {
-        $zid = $db->nextID("ZUTATENSEQ");
-        $req = "insert into ZUTATEN values ( " .
-               "  $zid, " .
-               "  '" . addslashes($i["quant"]) . "', " .
-               "  '" . addslashes($i["unit"])  . "', " .
-               "  '" . addslashes($i["ingred"]) ."', " .
-               "  '$rid' ".
+      if (isset($z['ingredients'][0]['ingred'])) {
+        $rid = $db->nextID("REZEPTSEQ");
+        $req = "insert into REZEPT values ( " .
+               "  $rid, " .
+               "  '$mid', " .
+               "  '" . addslashes($z["title"]) . "' " .
                " ) ";
         $result = DB_query($req);
+
+        foreach ($z["ingredients"] as $i) {
+          $zid = $db->nextID("ZUTATENSEQ");
+          $req = "insert into ZUTATEN values ( " .
+                 "  $zid, " .
+                 "  '" . addslashes($i["quant"]) . "', " .
+                 "  '" . addslashes($i["unit"])  . "', " .
+                 "  '" . addslashes($i["ingred"]) ."', " .
+                 "  '$rid' ".
+                 " ) ";
+          $result = DB_query($req);
+        }
       }
     }
     $req = "insert into ANWEISUNG values ( " .
