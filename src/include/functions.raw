@@ -1,5 +1,5 @@
 <?php
-  /* Copyright (c) 2002
+  /* Copyright (c) 2003
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.87 2002/11/27 18:31:58 lestinsky Exp $
+   * $Id: functions.raw,v 1.88 2003/01/10 23:31:53 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -669,7 +669,8 @@
                    "category"  => get_category_by_mid($mid),
                    "zutaten"   => get_recipe_by_mid($mid, $scale),
                    "anleitung" => get_instructions_by_mid($mid),
-                   "meta"      => get_meta_by_mid($mid));
+                   "meta"      => get_meta_by_mid($mid),
+                   "rating"    => get_rating($mid));
     }
   }
 
@@ -922,6 +923,22 @@
 
 
   /**
+   * Get the average rating for a recipe
+   * @param  int   $mid  Menu id
+   * @retorn float $avg  average
+   */
+  function get_rating ($mid) {
+    if (!is_numeric($mid) and !is_numeric($scale)) return false;
+
+    $req = "select avg(vote) as rating from rating where menu_id = $mid";
+    if ($result=DB_query($req)) {
+      $r = $result->fetchRow();
+      return $r['rating'];
+    } else return false;
+  }
+
+
+  /**
    * Create an alias for a category
    *
    * @param string $cat
@@ -994,6 +1011,20 @@
         }
         break;
     }
+  }
+
+
+  /**
+   * Cast a vote for a recipe
+   */
+  function rating ($menu_id, $rating) {
+    if (!is_numeric($menu_id) and !is_numeric($rating) and abs($rating) > 5)
+      return false;
+
+    $req = "insert into rating values ( $menu_id, $rating )";
+    if ($result=DB_query($req)) {
+      return true;
+    } else return false; 
   }
 
 

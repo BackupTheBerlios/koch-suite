@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.47 2002/11/13 10:45:17 lestinsky Exp $
+   * $Id: de.inc,v 1.48 2003/01/10 23:31:53 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -25,6 +25,8 @@
   $Lang['Date']			= 'Datum';
   $Lang['Source']		= 'Quelle';
   $Lang['Instructions']		= 'Anweisungen';
+  $Lang['Rating']		= 'Bewertung';
+  $Lang['Vote']['Submit']	= 'Rezept bewerten';
 
   $Lang['FormApply']		= "Eintragen";
   $Lang['FormMoreIngr']		= "Weitere Zutatenliste";
