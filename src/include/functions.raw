@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.83 2002/09/01 22:41:06 lestinsky Exp $
+   * $Id: functions.raw,v 1.84 2002/09/15 14:28:06 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -253,6 +253,9 @@
           break;
         case 'ingred':
           $result = get_mid_by_ingred($this);
+          break;
+        case 'instructions':
+          $result = get_mid_by_instruction($this);
           break;
         case 'Source':
         case 'Recorder':
@@ -745,12 +748,6 @@
    * @return array  $a      Resulting ID and Menu-title
    */
   function get_mid_by_ingred($ingred) {
-    /* Search the database for a menu containing a special ingredient
-     * "ingred". 
-     * Returns "0" if none found, an array of an associative arrays
-     * ("ID", "PORTIONEN", "TITEL") otherwise.
-     */
-
     $m = array();
 
     $req = "select distinct MENUE.id, MENUE.titel " .
@@ -764,6 +761,31 @@
       array_push ($m, array("id"    => stripslashes($z["id"]),
                             "title" => stripslashes($z["titel"])) );
     }
+    $result->free();
+    return $m;
+  }
+
+
+  /**
+   * Get all menus containing $search in their instruction text
+   *
+   * @param  string $search
+   * @return array
+   */
+  function get_mid_by_instruction ($search) {
+    $m = array();
+
+    $req = "select distinct MENUE.id, MENUE.titel " .
+           "  from MENUE, ANWEISUNG " .
+           " where MENUE.ID = ANWEISUNG.MENUE_ID " .
+           "   and " . DB_ilike("ANWEISUNG.text", "%$search%");
+
+    $result = DB_query($req);
+    while ($z = $result->fetchRow()) {
+      $m[] = array('id'    => stripslashes($z['id']),
+                   'title' => stripslashes($z['titel']));
+    }
+
     $result->free();
     return $m;
   }
