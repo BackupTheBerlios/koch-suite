@@ -1,4 +1,4 @@
-### $Id: README,v 1.22 2001/03/15 13:23:55 michael Exp $
+### $Id: README,v 1.23 2001/03/30 17:34:14 michael Exp $
 
 Koch-Suite
 ==========
@@ -149,6 +149,6 @@ an.
 Danke an:
 ---------
 
+o  Leo Caspari für Feedback, Fehler-Korrekturen und Erweiterungen
 o  Ulli Fetzer und Ilka Spiess für ihre Kommentare und Support beim 
    Erstellen der Meal-Master- und REZKONV-Filter.
-o  Leo Caspari für Feedback, Fehler-Korrekturen und Erweiterungen
