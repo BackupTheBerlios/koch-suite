@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.14 2001/10/31 18:22:52 lestinsky Exp $
+   * $Id: kategorien.raw,v 1.15 2002/05/20 15:01:38 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW
@@ -38,7 +38,7 @@
    * @module kategorien
    */
 
-  require_once "<%%ETC_PREFIX%%>/koch-suite.inc";
+  require_once "<%%PHP_LIBS%%>/setup.inc";
   require_once "<%%PHP_LIBS%%>/functions.inc";
   require_once "<%%PHP_LIBS%%>/lang.inc";
   include "<%%PHP_LIBS%%>/auth.inc";

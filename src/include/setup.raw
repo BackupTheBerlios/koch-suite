@@ -1,0 +1,89 @@
+<?
+  /*
+   * $Id: setup.raw,v 1.1 2002/05/20 15:01:38 lestinsky Exp $
+   * Setup the Koch-Suite
+   *
+   * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
+   * See LICENSE in the top-level directory of the Koch-Suite distribution
+   * for the License of this file.
+   */
+
+  require_once '<%%PHP_LIBS%%>/defines.inc';
+  require_once '<%%ETC_PREFIX%%>/koch-suite.inc';
+
+
+  /* =======================
+   * What's our environment?
+   * ======================= */
+
+  if (isset($_SERVER['SERVER_PROTOCOL'])) {
+    /* We are running as webinterface */
+
+    /* The name of the Session-Cookie */
+    session_name("KS_SESS");
+    if (!session_start()) 
+      die ("Cannot start the session.");
+    session_register("user");
+
+    /* create a reference on $_SESSION['user'] */
+    if (isset($_SESSION["user"])) {
+      // PHP 4.1.0 and later...
+      $USER_S =& $_SESSION["user"];
+    } else {
+      if (ini_get("register_globals") != false) {
+        // register_globals is "On".
+        $USER_S =& $user;
+      } else {
+        // register_globals is "Off".
+        $USER_S =& $HTTP_SESSION_VARS["user"];
+      }
+    }
+
+    $KS_ENV = "web";
+
+  } else {
+    /* Seems like we are running from the commandline */
+
+    $KS_ENV = "cl";
+  }
+
+  /* =======================
+   * Setup PHP as we need it
+   * ======================= */
+
+  /* Extend the include-path to $PEAR, or PEAR-Modules won't work 
+   * correctly. */
+
+  $path = ini_get("include_path");
+  if (! ini_set("include_path", "$PEAR:$path"))
+    die ("Can't setup include-path correctly.\n");
+
+  if (! set_magic_quotes_runtime(0))
+    die ("Can't disable magic_quotes_runtime.\n");
+
+  /* Load additional files: */
+  require_once '<%%PHP_LIBS%%>/debug.inc';
+
+  $notice = '';
+
+  /* =============================                
+   * Setup the database connection
+   * ============================= */
+
+  $DB_STYLE    = $DB_DSN["phptype"];
+
+  require_once '<%%PEAR%%>/DB.php';
+
+  write_log("Connecting to " . serialize($DB_DSN));
+  $db=DB::connect($DB_DSN);
+
+  if (DB::isError($db)) {
+    write_log("Can't connect to database ". $DB_DSN['database'] ."': ". 
+              $db->getMessage());
+    die("Can't connect to database '" . $DB_DSN['database'] ."': " . 
+        $db->getMessage());
+  }
+
+  /* Return associative arrays per default */
+  $db->setFetchMode(DB_FETCHMODE_ASSOC);
+?>

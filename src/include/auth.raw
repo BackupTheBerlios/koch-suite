@@ -32,7 +32,7 @@
   if (isset($_POST["FORM_PASSWORD"])) $FORM_PASSWORD = $_POST["FORM_PASSWORD"];
 
 
-  require_once "<%%ETC_PREFIX%%>/koch-suite.inc";
+  require_once "<%%PHP_LIBS%%>/setup.inc";
   require_once "<%%PHP_LIBS%%>/functions.inc";
   require_once "<%%PHP_LIBS%%>/pwcrypt.inc";
 
@@ -40,7 +40,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.13 2002/05/17 23:08:24 lestinsky Exp $
+   * $Id: auth.raw,v 1.14 2002/05/20 15:01:38 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>

@@ -36,7 +36,7 @@
    * @module index
    */
 
-  require "<%%ETC_PREFIX%%>/koch-suite.inc";
+  require_once "<%%PHP_LIBS%%>/setup.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
   require "<%%PHP_LIBS%%>/nocache.inc";

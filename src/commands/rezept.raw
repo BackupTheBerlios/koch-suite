@@ -28,11 +28,11 @@
    * SUCH DAMAGE.
    */
 
-  /* $Id: rezept.raw,v 1.19 2002/03/31 23:13:58 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.20 2002/05/20 15:01:38 lestinsky Exp $
    * Export a recipe in different formats.
    */
 
-  require "<%%ETC_PREFIX%%>/koch-suite.inc";
+  require_once "<%%PHP_LIBS%%>/setup.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
 

@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: koch-suite.raw,v 1.10 2002/05/12 11:25:05 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.11 2002/05/20 15:01:38 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
@@ -8,19 +8,10 @@
    * for the License of this file.
    */
 
-  require_once '<%%PHP_LIBS%%>/defines.inc';
 
-  /* ==================================
-   * Section I: Configure PHP as needed
-   * ================================== */
-
-  /* Use PEAR from this directory: */
+  /* Pear: */
   $PEAR = '<%%PEAR%%>';
 
-
-  /* ================================
-   * Section II: Setup the Koch-Suite
-   * ================================ */
 
   // Shall we be in debug-mode? Answer "yes" or "no".
   // If yes: all SQL-Queries and a little more will be logged in
@@ -28,6 +19,12 @@
 
   $DEBUG = "yes";                             // Mind security, disable this.
   error_reporting(E_ALL);
+
+
+  /* Localization */
+
+  $DEFAULT_LANG     = "de";
+  $DEFAULT_LOCALE   = "de_DE.ISO8859-15";
 
 
   /* Paths: */
@@ -56,11 +53,7 @@
   $PRINTABLE_FORMAT = "pdf";
 
 
-  /*
-   * What about the Database?
-   */
-
-  /* DSN */
+  /* Database: */
   $DB_DSN      = array('phptype'  => "<%%DB_TYPE%%>",
                        'dbsyntax' => false,
                        'protocol' => false,
@@ -69,41 +62,4 @@
                        'username' => "<%%DB_USER%%>",
                        'password' => "<%%DB_PASSWORD%%>" );
 
-  /* ==================================================
-   * Section III: You don't need to care about the rest
-   * ================================================== */
-
-  /* The name of the Session-Cookie */
-  session_name("KS_SESS");
-
-  /* Extend the include-path to $PEAR, or PEAR-Modules won't work 
-   * correctly. */
-  $path = ini_get("include_path");
-  if (! ini_set("include_path", "$PEAR:$path"))
-    die ("Can't setup include-path correctly.\n");
-
-  if (! set_magic_quotes_runtime(0))
-    die ("Can't disable magic_quotes_runtime.\n");
-
-  /* Load additional files: */
-  require_once '<%%PEAR%%>/DB.php';
-  require_once '<%%PHP_LIBS%%>/debug.inc';
-
-  $DB_STYLE    = $DB_DSN["phptype"];
-
-  /* Do the Database-connect */
-  write_log("Connecting to " . serialize($DB_DSN));
-  $db=DB::connect($DB_DSN);
-
-  if (DB::isError($db)) {
-    write_log("Can't connect to database ". $DB_DSN['database'] ."': ". 
-              $db->getMessage());
-    die("Can't connect to database '" . $DB_DSN['database'] ."': " . 
-        $db->getMessage());
-  }
-
-  $notice = '';
-
-  /* Return associative arrays per default */
-  $db->setFetchMode(DB_FETCHMODE_ASSOC);
 ?>

@@ -1,5 +1,5 @@
 <?php
-  /* $Id: rezept.raw,v 1.26 2002/04/02 21:54:43 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.27 2002/05/20 15:01:38 lestinsky Exp $
    * Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -28,7 +28,7 @@
    * SUCH DAMAGE.
    */
 
-  require "<%%ETC_PREFIX%%>/koch-suite.inc";
+  require_once "<%%PHP_LIBS%%>/setup.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
   include "<%%PHP_LIBS%%>/auth.inc";
@@ -104,7 +104,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.26 2002/04/02 21:54:43 lestinsky Exp $ -->
+  <!-- $Id: rezept.raw,v 1.27 2002/05/20 15:01:38 lestinsky Exp $ -->
 </head>
 
 <body>
