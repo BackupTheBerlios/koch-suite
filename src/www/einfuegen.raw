@@ -28,6 +28,7 @@
    */
 
   /**
+   * $Id: einfuegen.raw,v 1.46 2002/10/13 18:51:26 lestinsky Exp $
    * Insert new and edit exiting recipes.
    *
    * @package WWW
@@ -397,7 +398,12 @@
     <!--
       function kat() {
         foo = "kategorien.php?target=begriff&maxsel=1";
-        window.open(foo, 'kat', 'width=300,height=400,screenX=700,screenY=300, scrollbars=yes');
+        window.open(foo, 'kat', 'width=500,height=500,screenX=700,screenY=300, scrollbars=yes');
+      }
+
+      function units() {
+        foo = "units.php";
+        window.open(foo, 'units', 'width=500,height=500,scrollbars=yes');
       }
     //-->
   </script>
