@@ -138,18 +138,19 @@
         $line = stripslashes($line);
       }
       if ($line != '') {
-        if (preg_match("/([\d\/\., ]*) (.*)/", $line, $bar)) {
+        if (preg_match("/^((\d* ){0,1}[\d\/\.,]*) (.*)$/", $line, $bar)) {
           // Wenn die Zeile mit einer Mengenangabe beginnt...
 	  if ($bar[1] != 0) {
 	    $quant = fraction_to_real($bar[1]);
 	  }
-	  $i = 0;
-	  $a = explode(" ", $bar[2], 2);
-	  if ($unit = is_unit($a[$i])) {
+	  $a = explode(" ", $bar[3], 2);
+	  if ($unit = is_unit($a[0])) {
 	    array_shift($a);
           }
           $ingred = implode(" ", $a);
         } else {
+          // Einheiten ohne Mengenangabe machen keinen Sinn 
+          // -> alles in den Zutatentext.
           $quant  = "";
           $unit   = "";
           $ingred = trim($line);
@@ -210,7 +211,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.12 2001/03/27 21:38:57 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.13 2001/04/05 11:19:00 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
