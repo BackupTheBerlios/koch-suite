@@ -28,11 +28,7 @@
    */
 
   /**
-   * Rezepte einfuegen und bearbeiten.
-   *
-   * This file is subject to the license as included in the file LICENSE
-   * in the top-level directory of this release.
-   * (c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+   * Insert new and edit exiting recipes.
    *
    * @package WWW
    * @modulegroup Edit
@@ -210,14 +206,15 @@
       if (get_cfg_var('magic_quotes_gpc') == 1) {
         $line = stripslashes($line);
       }
+
       if ($line != '') {
         $line = trim($line); // Remove whitespaces
-        if (preg_match("/^((\d* ){0,1}[\d\/\.,]*) (.*)$/", $line, $bar)) {
+        if (preg_match("/^((\d* ){0,1}[\d\/\.,]*) +(.*)$/", $line, $bar)) {
           // Wenn die Zeile mit einer Mengenangabe beginnt...
 	  if ($bar[1] != 0) {
 	    $quant = fraction_to_real($bar[1]);
 	  }
-	  $a = explode(" ", $bar[3], 2);
+	  $a = split(' +', $bar[3]);
 	  if ($unit = is_unit($a[0])) {
 	    array_shift($a);
           }
@@ -225,13 +222,13 @@
         } else {
           // Einheiten ohne Mengenangabe machen keinen Sinn 
           // -> alles in den Zutatentext.
-          $quant  = "";
-          $unit   = "";
+          $quant  = '';
+          $unit   = '';
           $ingred = trim($line);
         }
-        array_push ($ingredients, array ("quant"  => $quant,
-                                         "unit"   => $unit,
-                                         "ingred" => $ingred));
+        array_push ($ingredients, array ('quant'  => $quant,
+                                         'unit'   => $unit,
+                                         'ingred' => $ingred));
       }
 
       $quant  = '';
@@ -248,16 +245,16 @@
 
   // Formatiere Zeilenbrueche in das System wie wir es brauchen um.
   if (isset($anweisung)) {
-    $anweisung = preg_replace("/((\r)?\n\s*){2,}/m", " <p> ", $anweisung);
-    $anweisung = preg_replace("/(\r)?\n:/m", " <br> :", $anweisung);
-    $anweisung = preg_replace("/(\r)?\n/m", " ", $anweisung);
+    $anweisung = preg_replace('/((\r)?\n\s*){2,}/m', ' <p> ', $anweisung);
+    $anweisung = preg_replace('/(\r)?\n:/m', ' <br> :', $anweisung);
+    $anweisung = preg_replace('/(\r)?\n/m', ' ', $anweisung);
   }
 
-  $r = array ("title"     => (isset($titel)     ? trim($titel) : '') , 
-              "yield"     => (isset($portionen) ? trim($portionen) : ''),
-              "category"  => (isset($kategorie) ? split(',[ ]*', $kategorie) : ''),
-              "zutaten"   => $zutat,
-              "anleitung" => (isset($anweisung) ? $anweisung : '') );
+  $r = array ('title'     => (isset($titel)     ? trim($titel) : '') , 
+              'yield'     => (isset($portionen) ? trim($portionen) : ''),
+              'category'  => (isset($kategorie) ? split(',[ ]*', $kategorie) : ''),
+              'zutaten'   => $zutat,
+              'anleitung' => (isset($anweisung) ? $anweisung : '') );
 
   $r["hash"] = recipe_hash($r);
 ?>
@@ -274,7 +271,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.31 2001/10/31 18:23:27 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.32 2001/11/19 21:08:49 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
