@@ -1,4 +1,4 @@
-# $Id: Makefile.raw,v 1.35 2003/01/10 12:59:49 lestinsky Exp $
+# $Id: Makefile.raw,v 1.36 2003/02/09 18:32:17 lestinsky Exp $
 # Space-separated list of all "raw" php-files.
 PHP_FILES=		delete.php einfuegen.php index.php infos.php \
 			rezept.php print.php mmprint.php kategorien.php \
@@ -21,10 +21,10 @@ all: build
 
 build: ${PHP_FILES} ${INC_FILES}
 
-${PHP_FILES}: ${PHP_FILES:%.php=%.raw}
+${PHP_FILES}: ${PHP_FILES:%.php=%.raw} ${CONF_FILE}
 	sed -f ${CONF_FILE} ${@:%.php=%.raw} > ${@}
 
-${INC_FILES}: ${INC_FILES:%.inc=%.raw}
+${INC_FILES}: ${INC_FILES:%.inc=%.raw} ${CONF_FILE}
 	sed -f ${CONF_FILE} ${@:%.inc=%.raw} > ${@}
 
 subdir:

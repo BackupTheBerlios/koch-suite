@@ -12,14 +12,14 @@ all: build
 
 build: ${PHP_FILES} init_db init_db2
 
-${PHP_FILES}: ${PHP_FILES:%=%.raw}
+${PHP_FILES}: ${PHP_FILES:%=%.raw} ${CONF_FILE}
 	sed -f ${CONF_FILE} ${@}.raw > ${@}
 
-init_db: init_db.raw
+init_db: init_db.raw ${CONF_FILE}
 	sed -f ${CONF_FILE} ${@}.raw > ${@}
 	<%%chmod%%> +x ${@}
 
-init_db2: init_db2.raw
+init_db2: init_db2.raw ${CONF_FILE}
 	sed -f ${CONF_FILE} ${@}.raw > ${@}
 	<%%chmod%%> +x ${@}
 

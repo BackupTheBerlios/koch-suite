@@ -14,12 +14,12 @@ CONF_FILE=		../config.sed
 all: build
 	@#${MAKE} subdir TRGT=all
 
-build: ${PHP_FILES_UNCONF} ${KS_CONFIG}
+build: ${PHP_FILES_UNCONF} ${KS_CONFIG} 
 
-${PHP_FILES_UNCONF}: ${PHP_FILES_UNCONF:%.inc=%.raw}
+${PHP_FILES_UNCONF}: ${PHP_FILES_UNCONF:%.inc=%.raw} ${CONF_FILE}
 	sed -f ${CONF_FILE} ${@:%.inc=%.raw} > ${@}
 
-${KS_CONFIG}: ${KS_CONFIG:%.inc=%.raw}
+${KS_CONFIG}: ${KS_CONFIG:%.inc=%.raw} ${CONF_FILE}
 	sed -f ${CONF_FILE} ${@:%.inc=%.raw} > ${@}
 
 subdir:
