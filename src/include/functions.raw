@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.33 2001/05/08 21:29:09 michael Exp $
+   * $Id: functions.raw,v 1.34 2001/05/15 20:09:28 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -520,12 +520,11 @@
     $i      = 0;
 
     foreach ($single_ingred as $ingr) {
-      if ($i > 0)
-        $tables .= ","; // prepend a comma, if needed.
-      $tables .= " ZUTATEN as a". $i;
       if ($i > 0) {
+        $tables .= ","; // prepend a comma, if needed.
         $where .= " and ";
       }
+      $tables .= " ZUTATEN as a". $i;
       $where .= " a0.REZEPT_ID = a" . $i . ".REZEPT_ID ";
       $and   .= " and a" . $i . ".TEXT like '%" . $ingr . "%'" ;
       $i++;
@@ -595,13 +594,11 @@
     $i = 0;
     foreach ($categories as $id) {
       if ($i > 0) {
-        $tables .= ", KAT as a" . $i; // prepend a comma
-        if ($i > 1) 
-          $where .= " and ";
-        $where  .= " a0.MENUE_ID = a" . $i . ".MENUE_ID ";
-      } else {
-        $tables .=  " KAT as a" . $i; // prepend no comma
+        $tables .= ","; // prepend a comma
+        $where .= " and ";
       }
+      $where  .= " a0.MENUE_ID = a" . $i . ".MENUE_ID ";
+      $tables .=  " KAT as a" . $i; // prepend no comma
       $and    .= " and a" . $i . ".KATEGORIE_ID = " . $id["ID"] ;
       $i++;
     }
@@ -609,6 +606,7 @@
     /* which menues are of the category $id["ID"]? */ 
     $req_mid = "select distinct a0.MENUE_ID from $tables " .
                " where $where $and";
+
     if ($res_mid = mysql_db_query($GLOBALS["DB_NAME"], $req_mid)) {
       while ($mid = mysql_fetch_row($res_mid)) {
         /* for each entry: request the id and title and push them into
@@ -624,7 +622,6 @@
       return $a;
     } else {
       return false;
-      // return $req_mid;
     }
   }
 
@@ -649,5 +646,15 @@
     }
 
     return $r;
+  }
+
+
+  function write_log ($str) {
+    /* write Debugging-Output. */
+
+    $fp   = fopen ($GLOBALS["DEBUG_FILE"], "a");
+
+    fputs($fp, date("U") . ": $str\n");
+    fclose($fp);
   }
 ?>
