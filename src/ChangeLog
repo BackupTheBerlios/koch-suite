@@ -1,3 +1,22 @@
+2002-04-14  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/access_denied.raw 1.1, src/include/auth.raw 1.10, src/include/de.inc 1.29, src/include/defines.raw 1.7, src/include/en.inc 1.33, src/init_db.mysql 1.8, src/init_db.pgsql 1.12, src/www/Makefile.raw 1.30, src/www/actions.raw 1.4, src/www/admin.raw 1.1, src/www/menue.raw 1.18:
+  Finally! Improving the Authentication-Scheme, making it possible to add
+  users directly from the Webinterface, if you are a ADMIN class user.
+
+  * src/README 1.45, src/Documentation/FAQ.txt 1.6:
+  Language and more...
+
+  * src/commands/ks_passwd.raw 1.5:
+  I hope, this will die soon
+
+  * src/include/Makefile.raw 1.25: ***
+
+  * src/include/loginform.raw 1.4: php4.1-style
+
+  * src/checklangs.sh 1.1:
+  Helps showing differences between to language files
+
 2002-04-11  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/Makefile.raw 1.24:
