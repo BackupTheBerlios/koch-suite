@@ -1,3 +1,8 @@
+2004-12-05  Michael Bussmann  <bus@mb-net.net>
+
+  * commands/init_db.raw 1.9:
+  Fixed syntax error in table generation script
+
 2004-12-02  Michael Lestinsky  <michael@lestinsky.de>
 
   * include/defines.raw 1.17: Beta1
