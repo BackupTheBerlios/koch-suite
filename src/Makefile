@@ -40,7 +40,10 @@ distclean: clean
 	rm -f ChangeLog
 
 ChangeLog: CVS/Entries
-	rcs2log >$@
+	rcs2log \
+	-u "bus	Michael Bussmann	bus@mb-net.net" \
+	-u "lestinsky	Michael Lestinsky	michael@lestinsky.de" \
+	-u "michael	Michael Lestinsky	michael@lestinsky.de" >$@
 
 install-temp-for-remote: install-includes install-www
 
