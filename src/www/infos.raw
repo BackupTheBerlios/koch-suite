@@ -6,7 +6,9 @@
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
   <title>Infos zur Koch-Suite</title>
-  <!-- $Id: infos.raw,v 1.8 2001/01/18 00:47:56 michael Exp $ -->
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <!-- $Id: infos.raw,v 1.9 2001/01/25 00:18:10 michael Exp $ -->
 </head>
 
 <body>
@@ -20,7 +22,7 @@
       require "./menue.inc";
     ?>
   </td>
-  <td>
+  <td width="90%">
     <h2>Informationen zur Koch-Suite</h2>
 
     <h3>Hilfe:</h3>
