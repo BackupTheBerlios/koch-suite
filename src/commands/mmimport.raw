@@ -29,7 +29,7 @@
    */
 
   /*
-   * $Id: mmimport.raw,v 1.22 2001/09/24 21:20:23 lestinsky Exp $
+   * $Id: mmimport.raw,v 1.23 2001/10/01 16:07:38 lestinsky Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
@@ -125,7 +125,7 @@ EOD;
 
     if (isset($rezept)) {
       
-      if (sizeof($opt_cat) > 0)
+      if ($opt_cat)
         $rezept["category"] = array_merge($opt_cat, $rezept["category"]) ;
       
       if ($opt_test) {
