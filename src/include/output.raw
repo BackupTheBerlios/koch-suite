@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.6 2000/11/29 19:05:44 michael Exp $
+   * $Id: output.raw,v 1.7 2000/11/29 20:15:52 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -231,7 +231,7 @@
     $str .= "     Yield: " . $rezept["yield"] . "\n"; 
 
     $str .= print_ingred($rezept["zutaten"]);
-    $a = length_adjust($rezept["anleitung"], 78); 
+    $a = length_adjust($rezept["anleitung"], 74); 
     foreach ($a as $line) {
       $str .= $line . "\n";
     }
