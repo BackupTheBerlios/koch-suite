@@ -34,7 +34,7 @@
    * @modulegroup UI
    * @module help
    */
-  require "<%%PHP_LIBS%%>/config.inc";
+  require "<%%ETC_PREFIX%%>/koch-suite.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
   include "<%%PHP_LIBS%%>/auth.inc";
@@ -52,7 +52,7 @@
   <title><?php echo $Lang['Help']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.14 2001/08/31 12:41:58 lestinsky Exp $ -->
+  <!-- $Id: help.raw,v 1.15 2001/09/24 21:20:23 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -76,7 +76,7 @@
     ?>
   </td>
   <td width="90%">
-    <!-- Installierte Version: $Name:  $ $Revision: 1.14 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.15 $ -->
 
     <h2><?php echo $Lang['Help']; ?></h2>
     

@@ -1,4 +1,4 @@
-# $Id: config,v 1.17 2001/09/23 11:14:13 lestinsky Exp $
+# $Id: config,v 1.18 2001/09/24 21:20:23 lestinsky Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 
@@ -12,6 +12,9 @@ PEAR		=/usr/local/lib/php4
 
 # Where to place general "include"-Files:
 PHP_LIBS 	=/usr/local/lib/koch-suite
+
+# Configurationfile koch-suite.inc goes here:
+ETC_PREFIX	=/usr/local/etc
 
 # Where to install the executables:
 SCRIPT_PREFIX   =/usr/local/bin

@@ -27,7 +27,7 @@
    * SUCH DAMAGE.
    */
 
-  require "<%%PHP_LIBS%%>/config.inc";
+  require "<%%ETC_PREFIX%%>/koch-suite.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
   include "<%%PHP_LIBS%%>/auth.inc";
@@ -45,7 +45,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: units.raw,v 1.7 2001/08/31 12:41:58 lestinsky Exp $ -->
+  <!-- $Id: units.raw,v 1.8 2001/09/24 21:20:23 lestinsky Exp $ -->
   <style class="text/css">
   <!--
     .dark  { background-color:#c0c0d5; font-family:Helvetica,Arial; }

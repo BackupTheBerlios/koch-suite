@@ -37,7 +37,7 @@
    * @module delete
    */
 
-  include "<%%PHP_LIBS%%>/config.inc";
+  include "<%%ETC_PREFIX%%>/koch-suite.inc";
   include "<%%PHP_LIBS%%>/lang.inc";
   include "<%%PHP_LIBS%%>/functions.inc";
   include "<%%PHP_LIBS%%>/auth.inc";
@@ -60,7 +60,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.12 2001/08/31 12:41:58 lestinsky Exp $ -->
+  <!-- $Id: delete.raw,v 1.13 2001/09/24 21:20:23 lestinsky Exp $ -->
 </head>
 
 <body>

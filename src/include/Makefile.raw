@@ -1,7 +1,8 @@
 # This file contains the substitution-rules for "sed"
 
 # Space-separated list of all "raw" php-files.
-PHP_FILES_UNCONF=	config.inc functions.inc lang.inc output.inc \
+KS_CONFIG=		koch-suite.inc
+PHP_FILES_UNCONF=	functions.inc lang.inc output.inc \
 			debug.inc defines.inc file.inc nocache.inc \
 			auth.inc loginform.inc
 ADDITIONAL=		de.inc en.inc 
@@ -12,9 +13,12 @@ CONF_FILE=		../config.sed
 all: build
 	@#${MAKE} subdir TRGT=all
 
-build: ${PHP_FILES_UNCONF}
+build: ${PHP_FILES_UNCONF} ${KS_CONFIG}
 
 ${PHP_FILES_UNCONF}: ${PHP_FILES_UNCONF:%.inc=%.raw}
+	sed -f ${CONF_FILE} ${@:%.inc=%.raw} > ${@}
+
+${KS_CONFIG}: ${KS_CONFIG:%.inc=%.raw}
 	sed -f ${CONF_FILE} ${@:%.inc=%.raw} > ${@}
 
 subdir:
@@ -28,11 +32,17 @@ subdir:
 clean:
 	@#${MAKE} subdir TRGT=clean
 	rm -f ${PHP_FILES_UNCONF}
+	rm -f ${KS_CONFIG}
 
 distclean:
 
-install: build
+install: install-lib install-etc
+
+install-lib: build
 	( [ -d "${DESTDIR}/<%%PHP_LIBS%%>" ] || \
 	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%PHP_LIBS%%> )
 	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${PHP_FILES_UNCONF} ${DESTDIR}/<%%PHP_LIBS%%>
 	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${ADDITIONAL} ${DESTDIR}/<%%PHP_LIBS%%>
+
+install-etc: build
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${KS_CONFIG} ${DESTDIR}/<%%ETC_PREFIX%%>

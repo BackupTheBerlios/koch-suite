@@ -37,7 +37,7 @@
    * @copyright Michael Lestinsky
    */
 
-  require "<%%PHP_LIBS%%>/config.inc";
+  require "<%%ETC_PREFIX%%>/koch-suite.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
   include "<%%PHP_LIBS%%>/auth.inc";
@@ -55,7 +55,7 @@
   <title><? echo $Lang['Info']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.31 2001/08/31 12:41:58 lestinsky Exp $ -->
+  <!-- $Id: infos.raw,v 1.32 2001/09/24 21:20:23 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -70,7 +70,7 @@
   <td width="90%">
     <h2><?php echo $Lang['Infos']['Title']; ?></h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.31 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.32 $ -->
 
     <h3><?php echo $Lang["Version"]["Title"]; ?></h3>
     <p>

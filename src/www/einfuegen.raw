@@ -39,7 +39,7 @@
    * @module einfuegen
    */
 
-  require_once "<%%PHP_LIBS%%>/config.inc";
+  require_once "<%%ETC_PREFIX%%>/koch-suite.inc";
   require_once "<%%PHP_LIBS%%>/functions.inc";
   require_once "<%%PHP_LIBS%%>/lang.inc";
   require_once "<%%PHP_LIBS%%>/nocache.inc";
@@ -288,7 +288,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.28 2001/09/03 21:02:58 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.29 2001/09/24 21:20:23 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--

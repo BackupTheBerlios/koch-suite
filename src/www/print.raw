@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.12 2001/08/31 12:41:58 lestinsky Exp $
+  /* $Id: print.raw,v 1.13 2001/09/24 21:20:23 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    * (c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -32,7 +32,7 @@
    * SUCH DAMAGE.
    */
 
-  include "<%%PHP_LIBS%%>/config.inc";
+  include "<%%ETC_PREFIX%%>/koch-suite.inc";
   include "<%%PHP_LIBS%%>/lang.inc";
   include "<%%PHP_LIBS%%>/functions.inc";
   include "<%%PHP_LIBS%%>/auth.inc";
@@ -64,7 +64,7 @@
       <meta http-equiv="Content-Style-Type" content="text/css">
 
       <title>Koch-Suite</title>
-      <!-- $Id: print.raw,v 1.12 2001/08/31 12:41:58 lestinsky Exp $ -->
+      <!-- $Id: print.raw,v 1.13 2001/09/24 21:20:23 lestinsky Exp $ -->
     </head>
     <body>
     <h1>Error</h1>
@@ -97,7 +97,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
 
   <title>Koch-Suite</title>
-  <!-- $Id: print.raw,v 1.12 2001/08/31 12:41:58 lestinsky Exp $ -->
+  <!-- $Id: print.raw,v 1.13 2001/09/24 21:20:23 lestinsky Exp $ -->
 </head>
 
 <body>
