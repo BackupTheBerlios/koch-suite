@@ -2,9 +2,9 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.34 2002/05/26 22:11:48 lestinsky Exp $
+   * $Id: de.inc,v 1.35 2002/06/11 18:39:59 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
-   * (c) 2001 Michael Lestinsky
+   * (c) 2002 Michael Lestinsky
    */
 
   /* Menu */
@@ -243,4 +243,6 @@ EOT;
   $Lang['pattern']['Source']	= "(Quelle|Ref)";
   $Lang['pattern']['Recorder']	= "(Erfasser)";
   $Lang['pattern']['Date']	= "(Datum|Erfasst am)";
+
+  $Lang['Locale']	= "de_DE.ISO8859-1";
 ?>

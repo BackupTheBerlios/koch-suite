@@ -1,9 +1,9 @@
 <?
   /*
-   * $Id: lang.raw,v 1.15 2002/06/05 10:00:10 lestinsky Exp $
+   * $Id: lang.raw,v 1.16 2002/06/11 18:39:59 lestinsky Exp $
    * Guess prefered language for the web-interface.
    *
-   * Copyright (c) 2001
+   * Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -147,6 +147,6 @@
       read_lang_file($_SESSION['lang_override']);
   }
 
-  setlocale(LC_ALL, $DEFAULT_LOCALE);
+  setlocale(LC_ALL, $Lang['Locale']);
 
 ?>

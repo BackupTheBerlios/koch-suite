@@ -1,9 +1,9 @@
 <?
   /*
-   * $Id: koch-suite.raw,v 1.12 2002/06/05 10:05:40 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.13 2002/06/11 18:39:59 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
-   * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
+   * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
@@ -24,7 +24,6 @@
   /* Localization */
 
   $DEFAULT_LANG     = "de";
-  $DEFAULT_LOCALE   = "de_DE.ISO8859-15";
 
 
   /* Paths: */
