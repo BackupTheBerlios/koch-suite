@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.15 2001/01/12 17:29:09 michael Exp $
+   * $Id: functions.raw,v 1.16 2001/01/15 10:06:09 michael Exp $
    */
 
   require "<%%PHP_LIBS%%>/config.inc";
@@ -30,6 +30,20 @@
 
     $req = "delete from MENUE where ID = " . $mid;
     $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+  }
+
+
+  function is_unit ($str) {
+    // Test, whether a given string is a valid MM-Unit or not
+
+    $req = "select * from EINHEITEN where ABBREV = '$str'";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+    if (mysql_num_rows($result) == 1) {
+      return true;
+    } else {
+      return false;
+    }
+    mysql_free_result($result);
   }
 
 

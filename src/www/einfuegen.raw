@@ -3,11 +3,11 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <title>Koch-Suite - Rezept einf&uuml;gen</title>
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: einfuegen.raw,v 1.2 2000/12/15 01:23:00 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.3 2001/01/15 10:06:09 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -30,6 +30,66 @@
   </td>
   <td>
     <!-- Rechts: Ausgabe -->
+  <?
+    require "<%%PHP_LIBS%%>/functions.inc";
+
+    if (isset($submit)) {
+      // Titel ist gesetzt -> Formular auswerten
+
+      $zutat = array();
+
+      foreach ($zutaten as $z) {
+        /* $zutaten ist ein Array, dass aus einzelnen Zutatenlisten
+         * besteht.
+         */
+
+        $ingredients = array();
+
+        foreach (split("[\r]?\n", trim($z)) as $line) {
+          // Jede Zutatenliste wird in ihre einzelnen Zeilen aufgespalten
+
+          $line = stripslashes($line);
+          if ($line != '') { 
+            // Nur nicht-leere Zeilen beachten
+
+            $a = explode(" ", $line, 3); 
+            /* Jede Zeile wird jetzt in ihre einzelnen Wörter zerlegt. */
+  
+            $i = 0;
+            if (is_numeric($a[$i])) {
+              $quant = array_shift($a);
+            } 
+            if (is_unit($a[$i])) { 
+              $unit = array_shift($a);
+            }
+            $ingred = implode(" ", $a);
+  
+            array_push ($ingredients, array ("quant"  => $quant, 
+                                             "unit"   => $unit,
+                                             "ingred" => $ingred));
+          }
+          $quant  = '';
+          $unit   = '';
+          $ingred = '';
+        }
+
+        array_push ($zutat, array("title" => "Zutaten:", 
+                                  "ingredients" => $ingredients));
+
+      }
+
+      $r = array ("title" => trim(stripslashes($titel)), 
+                  "yield" => trim(stripslashes($portionen)),
+                  "category" => split(',[ ]*', $kategorie),
+                  "zutaten" => $zutat,
+                  "anleitung" => $anweisung);
+
+      echo "<pre>\n";
+      echo mmexport(&$r);
+      echo "</pre>\n";
+    } else {
+      // Titel ist nicht gesetzt -> Leerformular anzeigen.
+  ?>
     <h2>Rezept in die Datenbank aufnehmen</h2>
 
     <form action="<? echo $PHP_SELF; ?>" method="post">
@@ -40,15 +100,15 @@
       </tr>
       <tr>
         <td>Portionen:</td>
-        <td><input type="text" name="portionen" value="<? echo $portionen ?>"size="40"></td>
+        <td><input type="text" name="portionen" value="<? echo $portionen ?>"size="60"></td>
       </tr>
       <tr>
         <td><a href="kategorien.php?target=kategorie&maxsel=5" target="kat" onClick="kat();">Kategorien</a>:</td>
-        <td><input type="text" name="kategorie" value="<? echo $kat ?>" size="40"></td>
+        <td><input type="text" name="kategorie" value="<? echo $kategorie ?>" size="60"></td>
       </tr>
       <tr>
         <td>Zutaten:</td>
-        <td><textarea cols="40" rows="10" name="zutaten" wrap="physical"><? echo $zutaten ?></textarea>
+        <td><textarea cols="60" rows="10" name="zutaten[0]" wrap="physical"><? echo $zutaten ?></textarea>
         </td>
       </tr>
       <tr>
@@ -57,15 +117,20 @@
         </td>
       </tr>
     </table>
-    <input type="submit" value="Eintragen">
+    <input type="submit" name="submit" value="Eintragen">
     <input type="reset" value="Formular L&ouml;schen">
     </form>
+
+  <?
+    }
+  ?>
+
   </td>
 </tr>
 </table>
 
 <hr noshade>
-&copy; 2000 Michael Lestinsky 
+&copy; 2001 Michael Lestinsky 
 &lt;<a href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.de</a>&gt;.
 
 </body>

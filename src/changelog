@@ -1,13 +1,19 @@
-### $Id: changelog,v 1.11 2001/01/12 17:29:09 michael Exp $
+### $Id: changelog,v 1.12 2001/01/15 10:06:08 michael Exp $
+
+2001-01-15: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Rezept-Einfüge-Interface nimmt Formen an. Es geschieht noch kein
+	DB-Import, aber es wird ein MM-Formatiertes Rezept ausgegeben, 
+	dass dann separat importiert werden kann.
 
 2001-01-11: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
-	Löschfunktion eingefügt.
+	Löschfunktion eingefügt. HTML weiter 'lynx'ifiziert, sprich:
+	Funktionalität nicht mehr vollständig abhängig von Javascript.
 
 2001-01-11: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
-        Release 0.2
+	Release 0.2
 
 2001-01-10: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
-        Bugfix in rezept2latex
+	Bugfix in rezept2latex
 
 2001-01-07: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
         Bug-Fix in mmexport. Unter gewissen Bedingungen wurde manchmal
