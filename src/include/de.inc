@@ -1,9 +1,8 @@
 <?
   /*
-   * $Id: de.inc,v 1.10 2001/06/25 23:30:35 michael Exp $
-   *
    * Define German text-constants.
    *
+   * $Id: de.inc,v 1.11 2001/06/26 21:02:33 michael Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -192,14 +191,14 @@ EOT;
   $Lang['Helptext']['Feedback']['Title']	= "Feedback";
   $Lang['Helptext']['Feedback']['Text'][0]	= <<<EOT
       Für die User und Entwickler existiert eine Mailingliste,
-      <i>koch-suite@zaphod.rhein-neckar.de</i>. Diese Mailingliste
+      <i>koch-suite@magrathea.rhein-neckar.de</i>. Diese Mailingliste
       ist &ouml;ffentlich, es darf aber nur an diese Liste schreiben, wer
       sie auch aboniert (&quot;subscribe&quot;) hat (notwendig, um Spam zu
       verhindern).
 EOT;
   $Lang['Helptext']['Feedback']['Text'][1]      = <<<EOT
       Um sich auf der Mailingliste zu subscriben schickt man eine EMail an
-      <i>koch-suite-request@zaphod.rhein-neckar.de</i> mit
+      <i>koch-suite-request@magrathea.rhein-neckar.de</i> mit
       folgendem Subject/Betreff: &raquo;<code>subscribe</code>&laquo;.
       (Nat&uuml;rlich ohne die Quotes darum!)
 EOT;

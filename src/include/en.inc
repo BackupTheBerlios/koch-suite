@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.10 2001/06/25 23:30:35 michael Exp $
+   * $Id: en.inc,v 1.11 2001/06/26 21:02:33 michael Exp $
    *
    * Define English text-constants.
    *
@@ -186,13 +186,13 @@ EOT;
   $Lang['Helptext']['Feedback']['Title']	= "Feedback";
   $Lang['Helptext']['Feedback']['Text'][0]	= <<<EOT
       We have a mailinglist for users and developers,
-      <i>koch-suite@zaphod.rhein-neckar.de</i>. This mailinglist is
+      <i>koch-suite@magrathea.rhein-neckar.de</i>. This mailinglist is
       public, but only subscribed addresses are allowed to write there (to
       suppress spam).
 EOT;
   $Lang['Helptext']['Feedback']['Text'][1]      = <<<EOT
       To subscribe to this mailinglist send a mail to
-      <i>koch-suite-request@zaphod.rhein-neckar.de</i>, subject:
+      <i>koch-suite-request@magrathea.rhein-neckar.de</i>, subject:
       &raquo;<code>subscribe</code>&laquo;. (Of course without the quotes!)
 EOT;
 
