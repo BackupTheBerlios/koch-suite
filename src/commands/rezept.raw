@@ -28,7 +28,7 @@
    * SUCH DAMAGE.
    */
 
-  /* $Id: rezept.raw,v 1.21 2002/06/11 18:43:47 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.22 2002/10/02 22:39:58 lestinsky Exp $
    * Export a recipe in different formats.
    */
 
@@ -93,7 +93,7 @@ EOT;
     
     /* Default ist Text-Format */
     $format = "text";
-    $where  = "title";
+    $where[]  = "title";
 
     /* Default is not to violate MM-Rules. */
     $strict_mm = MM_STRICT;
@@ -129,13 +129,13 @@ EOT;
           $scale = 1 * $argv[++$i];
           break;
         case '-t':
-          $where = 'title';
+          $where[] = 'title';
           break;
         case '-c':
-          $where = 'cat';
+          $where[] = 'cat';
           break;
         case '-i':
-          $where = 'ingred';
+          $where[] = 'ingred';
           break;
         default:
           $search = $argv[$i];
