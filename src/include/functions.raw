@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.94 2004/03/31 19:28:53 lestinsky Exp $
+   * $Id: functions.raw,v 1.95 2004/12/08 21:37:09 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -1098,47 +1098,29 @@
     global $PDFLATEX, $LATEX, $DVIPS, $GS;
 
     switch ((string) $wish) {
+      case "pdf":
+        if (!empty ($PDFLATEX) and $PDFLATEX != 'none')
+          return "pdf";
+
+        if (!empty ($LATEX) and $LATEX != 'none' and 
+            !empty ($DVIPS) and $DVIPS != 'none' and 
+            !empty ($GS) and $GS != 'none')
+          return "pdf";
+
+      case "ps":
+        if (!empty ($LATEX) and $LATEX != 'none' and 
+            !empty ($DVIPS) and $DVIPS != 'none')
+          return "ps";
+
+      case "latex":
+        if (!empty($LATEX) and $LATEX != 'none')
+          return "latex";
+
       case "html":
         return "html";
         break;
-
-      case "latex":
-        if ($LATEX != 'none')
-          return "latex";
-        else
-          return "html";
-        break;
-
-      case "ps":
-        if ($LATEX != 'none' and $DVIPS != 'none') {
-          return "ps";
-        } else {
-          if ($LATEX != 'none') {
-            return "latex";
-          } else {
-            return "html";
-          }
-        }
-        break;
-
-      case "pdf":
-        if ($PDFLATEX != 'none') {
-          return "pdf";
-        }
-        if ($LATEX != 'none' and $DVIPS != 'none' and $GS != 'none') {
-          return "pdf";
-        } else {
-          if ($LATEX != 'none' and $DVIPS != 'none') {
-            return "ps";
-          } else {
-            if ($LATEX != 'none') {
-              return "latex";
-            } else {
-              return "html";
-            }
-          }
-        }
-        break;
+      default:
+	return "unset";
     }
   }
 
