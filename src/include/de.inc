@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.26 2002/01/07 21:27:42 lestinsky Exp $
+   * $Id: de.inc,v 1.27 2002/03/31 23:11:10 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -110,7 +110,7 @@ EOT;
   $Lang['Requirements']['Text'][1]	= 'Getestete Betriebssysteme (alphabet. Reihenfolge):';
 
   $Lang['Requirements']['OSes'][0]	= 'AIX 4.3';
-  $Lang['Requirements']['OSes'][1]	= 'FreeBSD 4.3';
+  $Lang['Requirements']['OSes'][1]	= 'FreeBSD 4.*';
   $Lang['Requirements']['OSes'][2]	= 'Linux (Debian 2.2)';
   $Lang['Requirements']['OSes'][3]	= 'OpenBSD 2.9';
 

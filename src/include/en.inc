@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.30 2002/01/07 21:27:42 lestinsky Exp $
+   * $Id: en.inc,v 1.31 2002/03/31 23:11:10 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -110,7 +110,7 @@ EOT;
   $Lang['Requirements']['Text'][1]	= 'Tested Operating Systems (alphabetical Order):';
 
   $Lang['Requirements']['OSes'][0]	= 'AIX 4.3';
-  $Lang['Requirements']['OSes'][1]	= 'FreeBSD 4.3';
+  $Lang['Requirements']['OSes'][1]	= 'FreeBSD 4.*';
   $Lang['Requirements']['OSes'][2]	= 'Linux (Debian 2.2)';
   $Lang['Requirements']['OSes'][3]	= 'OpenBSD 2.9';
 
