@@ -41,7 +41,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.4 2001/09/24 22:02:41 lestinsky Exp $
+   * $Id: auth.raw,v 1.5 2001/09/30 12:41:18 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -56,6 +56,22 @@
     die ("Cannot start a the session.");
   session_register("user");
 
+
+  /**
+   * PHP 4.0.5 and later are somewhat broken. 
+   * $HTTP_SESSION_VARS["user"] != $user depending on the setting of
+   * register_globals in your php.ini.
+   * So catch this difference here. Verified to work on 4.0.7RC3
+   */
+  if (ini_get("register_globals") != false) {
+    // register_globals is "On".
+    $USER_S =& $user;
+  } else {
+    // register_globals is "Off".
+    $USER_S =& $HTTP_SESSION_VARS["user"];
+  }
+
+
   /**
    * Call the right authentication-functions to verify the user
    *
@@ -63,17 +79,18 @@
    * @return bool
    */
   function auth ($level = READ) {
-    global $HTTP_SESSION_VARS, $FORM_USERNAME, $FORM_PASSWORD;
+    // global $HTTP_SESSION_VARS, $FORM_USERNAME, $FORM_PASSWORD;
+    global $USER_S, $FORM_USERNAME, $FORM_PASSWORD;
 
     /* do we want authentication? */
     if ($GLOBALS["AUTH_LEVEL"] <= $level) {
       /* yeah: */
 
-      if (!empty($HTTP_SESSION_VARS["user"])) {
+      if (!empty($USER_S)) {
         /* User already authenticated himself. -> go.
          * Trust the values we have saved in the $user-sessionvariable.
          */
-        write_log(serialize($HTTP_SESSION_VARS["user"]));
+        write_log(serialize($USER_S));
         return true;
 
       } else {
@@ -85,24 +102,22 @@
         /* What kind of authentication?
          * At the moment we support auth_by_db only.
          */
-        switch ($GLOBALS["AUTH_STYLE"]) {
+        if (function_exists($GLOBALS["AUTH_STYLE"])) {
 
-          case "auth_by_db":
-            if ($HTTP_SESSION_VARS["user"] = auth_by_table($FORM_USERNAME, $FORM_PASSWORD)) {
-              // everything is fine here. :-)
-              return true;
+          if ($USER_S = $GLOBALS["AUTH_STYLE"]($FORM_USERNAME, $FORM_PASSWORD)) {
+            // everything is fine here. :-)
+            return true;
 
-            } else {
-              // go away.
-              session_destroy();
-              die ("Authentication failed. Wrong Password?\n");
-            }
-            break;
-
-          default:
+          } else {
+            // go away.
             session_destroy();
-            die("Something's really screwed up here. " .
-                "Please send a detailed bugreport to the developers.");
+            die ("Authentication failed. Wrong Password?\n");
+          }
+
+        } else {
+          session_destroy();
+          die("Something's really screwed up here. " .
+              "Check your configuration.");
         }
       }
     } else {
@@ -127,7 +142,7 @@
    * @param  string $password
    * @return array $user
    */
-  function auth_by_table ($username, $password) {
+  function auth_by_db ($username, $password) {
     if (!empty($username) and !empty($password)) {
 
       $req = "select password, usertype from usertable " .
