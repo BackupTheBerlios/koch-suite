@@ -1,9 +1,9 @@
-.\" $Id: mmimport.1.raw,v 1.1 2000/12/20 14:02:36 michael Exp $
+.\" $Id: mmimport.1.raw,v 1.2 2001/01/07 20:16:35 michael Exp $
 .\" Koch-Suite Reference
 .\" See File LICENSE in the top level source-directory for the license
 .\" of this document.
 .Dd December 20, 2000
-.Dt MMIMPORT 1 
+.Dt mmimport 1 
 .Os Koch-Suite
 .Sh NAME
 .Nm mmimport
@@ -38,6 +38,7 @@ Output goes to
 .Sh SEE ALSO
 .Xr mmexport 1
 .Xr rezept2latex 1
+.Xr tkrezept 1
 .\" .Xr foobar 1
 .\" .Sh STANDARDS
 .\" .Sh HISTORY

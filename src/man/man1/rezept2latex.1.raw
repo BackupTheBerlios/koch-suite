@@ -1,6 +1,6 @@
-.\" $Id: rezept2latex.1.raw,v 1.1 2000/12/20 14:02:36 michael Exp $
+.\" $Id: rezept2latex.1.raw,v 1.2 2001/01/07 20:16:35 michael Exp $
 .Dd December 20, 2000
-.Dt REZEPT2LATEX 1
+.Dt rezept2latex 1
 .Os Koch-Suite
 .Sh NAME
 .Nm rezept2latex
