@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: lang.raw,v 1.14 2002/05/26 11:02:02 lestinsky Exp $
+   * $Id: lang.raw,v 1.15 2002/06/05 10:00:10 lestinsky Exp $
    * Guess prefered language for the web-interface.
    *
    * Copyright (c) 2001
@@ -124,7 +124,7 @@
      */
 
     $i = 0;
-    while ($lang = $accept_langs[$i]) {
+    while (isset($accept_langs[$i]) and $lang = $accept_langs[$i]) {
       $l = trim(preg_replace("/(.*)?(;(.*))/" , "\\1", $lang));
 
       /* we don't need to read it twice: */
