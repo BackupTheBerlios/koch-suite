@@ -1,5 +1,7 @@
 2002-05-20  Michael Lestinsky  <michael@lestinsky.de>
 
+  * src/include/functions.raw 1.75: Fix patterns
+
   * src/include/functions.raw 1.74:
   Remove meta, too
 
