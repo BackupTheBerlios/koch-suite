@@ -3,49 +3,23 @@
   /**
    * Erzeuge den verschluesselten Passwort-String.
    *
-   * $Id: ks_passwd.raw,v 1.2 2001/09/06 13:05:13 bus Exp $
+   * $Id: ks_passwd.raw,v 1.3 2001/12/24 14:13:10 lestinsky Exp $
    */
 
-  function mk_rndstring ($len) {
-    // Generiere einen zufaelligen String.
+  include "<%%PHP_LIBS%%>/pwcrypt.inc";
 
-    $randstr = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-     
-    srand ((double) microtime () * 1000000);
-    for ($i = 0; $i < $len; $i++) {
-      $PW .= substr ($randstr, rand(0,61), 1);
-    }
-    return $PW;
-  }
+  if ($_SERVER["argc"] == 2) {
 
-  if (!isset($argc)) $argc = $HTTP_SERVER_VARS["argc"];
-  if (!isset($argv)) $argv = $HTTP_SERVER_VARS["argv"];
+    $argv = $_SERVER["argv"];
 
-  $md5_check = '$1$Pi314$8NdgmoWHvMPgQOGw0BCCe0';
-
-  if ($argc == 2) {
-    $passwd = $argv[1];
-    
-    if (crypt('Passwort', '$1$Pi314') == $md5_check) {
-      // MD5 is ok
-
-      echo "Using MD5-encrypted passwords\n\n";
-      $salt = "\$1\$" . mk_rndstring(8);
-
-    } else {
-      // fallback to DES
-
-      echo "*** Your System/PHP-Installation lacks MD5-Password support.\n";
-      echo "Falling back to DES-encrypted passwords.\n\n";
-
-      $salt = mk_rndstring(2);
-    }
-
-    $crypted_passwd = crypt($passwd, $salt);
+    $crypted_passwd = mk_crypted_pw($argv[1]);
     echo "Encrypted password: " . $crypted_passwd . "\n\n";
     
     echo "Example SQL-command: \n";
     echo "insert into usertable values \n" .
          "\t('USERNAME', 'Normal', '$crypted_passwd');\n";
+  } else {
+    echo "Syntax: " . $_SERVER["PHP_SELF"] . " pwd\n";
+    echo "\twhere pwd is the password to encrypt.\n";
   }
 ?>
