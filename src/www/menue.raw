@@ -1,4 +1,4 @@
-<!-- $Id: menue.raw,v 1.10 2001/03/17 16:25:39 michael Exp $ -->
+<!-- $Id: menue.raw,v 1.11 2001/05/10 23:53:05 michael Exp $ -->
 <!-- Links: Programm-Menue -->
 <table border=0 cellspacing=0 cellpadding=0>
   <tr style="background-color:#9090b0;" align="top">
@@ -9,10 +9,10 @@
         </tr>
         <tr>
           <td style="background-color:#e9e9f0; font-size:small;" class="menu">
-            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0> <a href="index.php?suchen=1">Suchen</a><br>
-            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0> <a href="einfuegen.php">Einf&uuml;gen</a><br>
-            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0> <a href="help.php">Hilfe</a><br>
-            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0> <a href="infos.php">Infos</a><br>
+            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="index.php?suchen=1">Suchen</a><br>
+            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="einfuegen.php">Einf&uuml;gen</a><br>
+            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="help.php">Hilfe</a><br>
+            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0>&nbsp;<a href="infos.php">Infos</a><br>
           </td>
         </tr>
       </table>
