@@ -1,0 +1,80 @@
+<?
+  /*
+   * $Id: koch-suite.raw,v 1.1 2001/09/30 13:52:51 bus Exp $
+   * Configuration-file for the Koch-Suite
+   *
+   * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
+   * See LICENSE in the top-level directory of the Koch-Suite distribution
+   * for the License of this file.
+   */
+
+  require_once '<%%PEAR%%>/DB.php';
+  require_once '<%%PHP_LIBS%%>/debug.inc';
+  require_once '<%%PHP_LIBS%%>/defines.inc';
+
+  /*
+   * Shall we be in debug-mode? Answer "yes" or "no".
+   * If yes: all SQL-Queries and a little more will be logged in
+   * /tmp/koch-suite-debug. This will include passwords...
+   */
+
+  $DEBUG = "yes";
+  error_reporting(E_ALL);
+
+
+  /* Paths: */
+
+  $LATEX   = "<%%latex%%>";
+  $DVIPS   = "<%%dvips%%>";
+  $GS      = "<%%gs%%>";
+  $TMPDIR  = "/tmp";
+
+
+  /* Authentication: */
+
+  // Where to authenticate the user? 
+  // at the moment auth_by_db is the only one. But this might be extendet
+  // to LDAP, file,... easily.
+  $AUTH_STYLE = "auth_by_db";
+
+  // What level of authentication do we want? ALL, READ, WRITE or NONE?
+  $AUTH_LEVEL = READ;  // Capitals and no quotes, these are constants.
+
+
+  /*
+   * Offer "printable" recipes in that format: 
+   * May be: "html", "latex", "ps", "pdf" 
+   * We will fall back in this queue from right to left if one of the 
+   * required tools is missing.
+   */
+  $PRINTABLE_FORMAT = "pdf";
+
+
+  /*
+   * What about the Database?
+   */
+
+  /* DSN */
+  $DB_DSN      = array('phptype'  => "<%%DB_TYPE%%>",
+                       'dbsyntax' => false,
+                       'protocol' => false,
+                       'hostspec' => "<%%DB_SERVER%%>",
+                       'database' => "<%%DB_NAME%%>",
+                       'username' => "<%%DB_USER%%>",
+                       'password' => "<%%DB_PASSWORD%%>" );
+
+  $DB_STYLE    = $DB_DSN["phptype"];
+
+  /* Do the connect */
+  if ($DEBUG == "yes") write_log("Connecting to " . serialize($DB_DSN));
+  $db=DB::connect($DB_DSN);
+
+  if (DB::isError($db)) {
+    write_log("Can't connect to $DB_DSN: " . $db->getMessage());
+    die("Can't connect to $DB_DSN: " . $db->getMessage());
+  }
+
+
+  /* Return associative arrays per default */
+  $db->setFetchMode(DB_FETCHMODE_ASSOC);
+?>
