@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.84 2002/09/15 14:28:06 lestinsky Exp $
+   * $Id: functions.raw,v 1.85 2002/09/30 17:26:52 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -237,40 +237,41 @@
 
     $and = split(" AND ", $str);
     foreach ($and as $this) {
+      foreach ($where as $search_field) {
+        switch ($search_field) {
+          case 'title':
+            if ($param == 1) {
+              $result = get_mid_by_name("");
+            } else if (is_string ($param) and !is_numeric($param) and strlen($param) == 1) {
+              $result = get_mid_by_name("$param", 1);
+            } else {
+              $result = get_mid_by_name("$this");
+            }
+            break;
+          case 'cat':
+            $result = get_mid_by_cat($this);
+            break;
+          case 'ingred':
+            $result = get_mid_by_ingred($this);
+            break;
+          case 'instructions':
+            $result = get_mid_by_instruction($this);
+            break;
+          case 'Source':
+          case 'Recorder':
+            $result = get_mid_by_meta($search_field, $this);
+            break;
+          default:
+            write_log("$search_field is not an search option");
+            return false;
+        }
 
-      switch ($where) {
-        case 'title':
-          if ($param == 1) {
-            $result = get_mid_by_name("");
-          } else if (is_string ($param) and !is_numeric($param) and strlen($param) == 1) {
-            $result = get_mid_by_name("$param", 1);
-          } else {
-            $result = get_mid_by_name("$this");
-          }
-          break;
-        case 'cat':
-          $result = get_mid_by_cat($this);
-          break;
-        case 'ingred':
-          $result = get_mid_by_ingred($this);
-          break;
-        case 'instructions':
-          $result = get_mid_by_instruction($this);
-          break;
-        case 'Source':
-        case 'Recorder':
-          $result = get_mid_by_meta($where, $this);
-          break;
-        default:
-          write_log("$where is not an search option");
-          return false;
-      }
-
-      if (! $array_intersect_lock) {
-        $return = KS_array_intersect($return, $result);
-      } else {
-        $return = $result;
-        $array_intersect_lock = false;
+        if (! $array_intersect_lock and count($result)) {
+          $return = KS_array_intersect($return, $result);
+        } else {
+          $return = array_merge($return, $result);
+          $array_intersect_lock = false;
+        }
       }
     }
 
