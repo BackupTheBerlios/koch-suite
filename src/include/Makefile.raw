@@ -2,8 +2,9 @@
 
 # Space-separated list of all "raw" php-files.
 PHP_FILES_UNCONF=	config.inc functions.inc lang.inc output.inc \
-			debug.inc defines.inc file.inc nocache.inc
-ADDITIONAL=		de.inc en.inc
+			debug.inc defines.inc file.inc nocache.inc \
+			auth.inc loginform.inc
+ADDITIONAL=		de.inc en.inc 
 SUBDIRS=		
 
 CONF_FILE=		../config.sed
