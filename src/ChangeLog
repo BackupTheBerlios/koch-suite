@@ -1,3 +1,31 @@
+2001-10-18  Michael Bussmann  <bus@mb-net.net>
+
+  * src/configure 1.20:
+  Using build-in which and backticks for command substitution
+
+2001-10-18  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/INSTALL 1.6: AIX-specific note.
+
+  * src/include/de.inc 1.22, src/include/en.inc 1.25:
+  +AIX. Wahoo!
+
+  * src/www/Makefile.raw 1.27: Oops? My fault.
+
+  * src/Makefile 1.22: Depend on "configure"
+
+  * src/genconfig.awk 1.6:
+  delete whitespaces in front of comments.
+
+  * src/man/Makefile.raw 1.11:
+  Oops, missed that one in my last commit.
+
+  * src/commands/Makefile.raw 1.22, src/include/Makefile.raw 1.20, src/www/Makefile.raw 1.26, src/www/pics/Makefile.raw 1.7, src/configure 1.19, src/install.sh 1.1:
+  Provide a BSD compatible "install.sh"
+  Use <%%INSTALL%%> instead of "install". This might be a step towards
+  AIX-support, since AIX' install ist not BSD compatible and installbsd is
+  to stupid.
+
 2001-10-15  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/auth.raw 1.7:
