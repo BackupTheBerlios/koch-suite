@@ -1,3 +1,11 @@
+2002-06-25  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/koch-suite.raw 1.14:
+  Comment: don't use $DEBUG='yes' in safe mode
+
+  * src/Documentation/FAQ.txt 1.8:
+  4. What about MS Windows(tm)
+
 2002-06-24  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/file.raw 1.6:
