@@ -1,4 +1,4 @@
-<!-- $Id: menue.raw,v 1.15 2001/10/13 14:00:28 lestinsky Exp $ -->
+<!-- $Id: menue.raw,v 1.16 2001/10/15 11:46:08 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
 <?php
   $blue_dot = '<img src="pics/blue_dot.gif" align="bottom" alt="" border=0>';
@@ -50,7 +50,7 @@
               <!-- Not Logged in -->
               <tr>
                 <td><?php echo $info_dot; ?></td>
-                <td><?php echo $Lang['Auth']['NoLogin'] ?></td>
+                <td><a href="login.php"><?php echo $Lang['Auth']['NoLogin'] ?></a></td>
               </tr>
             <?php } ?>
 
