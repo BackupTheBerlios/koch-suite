@@ -1,10 +1,10 @@
-/* $Id: styles_winter.css,v 1.2 2003/01/23 15:42:23 lestinsky Exp $ */
+/* $Id: styles_winter.css,v 1.3 2004/12/08 21:38:31 lestinsky Exp $ */
 body	    { background-color:#ffffff; 
               background-image:url(pics/bg_winter.png); 
               background-repeat:repeat-y;}
 h1          { font-family:Verdana,Helvetica,Arial; text-align:left; }
 h2,h3,h4    { font-family:Verdana,Lucida; }
-a,b,dt	    { font-family:Helvetica,Arial; }
+a,b,dt	    { font-family:Arial,Helvetica; }
 a:link      { color:#000463; }
 a:visited   { color:#000463; }
 a:active    { color:#111473; }
