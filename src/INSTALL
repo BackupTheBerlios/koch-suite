@@ -1,4 +1,4 @@
-### $Id: INSTALL,v 1.5 2001/10/03 21:13:48 lestinsky Exp $
+### $Id: INSTALL,v 1.6 2001/10/18 11:50:27 lestinsky Exp $
 
 Koch-Suite Installation Instructions
 ====================================
@@ -10,7 +10,9 @@ every single file from it may be distributed.
 If you want to update from an older version of this package, see below.
 
 The following instructions asume that all requirements (see `README') are 
-fulfilled.
+fulfilled. You can find some operating system specific notes at the end of
+this document.
+
 
 
 Installation:
@@ -129,4 +131,12 @@ Install the new Koch-Suite release and reimport the recipes afterwards
 with the new `mmimport'
 
  $ mmimport < all.mm
+
+
+
+Operating System Specific Notes:
+--------------------------------
+
+AIX 4.3:
+ * you will need Gnu-make (fetch it i.e. from ftp://ftp.gnu.org/pub/gnu/make)
 
