@@ -59,7 +59,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.18 2002/07/03 16:29:48 lestinsky Exp $ -->
+  <!-- $Id: delete.raw,v 1.19 2002/08/16 17:06:12 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -69,7 +69,7 @@
 <table border="0" cellpadding="3" cellspacing="0">
 <tr>
   <td valign="top">
-    <? include "./menue.inc"; ?>
+    <? include "<%%WEB_PREFIX%%>/menue.inc"; ?>
   </td>
   <td>
     <!-- Rechts: Ausgabe -->

@@ -1,5 +1,5 @@
 <?php
-  /* $Id: rezept.raw,v 1.28 2002/06/11 18:43:47 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.29 2002/08/16 17:06:12 lestinsky Exp $
    * Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -104,7 +104,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.28 2002/06/11 18:43:47 lestinsky Exp $ -->
+  <!-- $Id: rezept.raw,v 1.29 2002/08/16 17:06:12 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -114,7 +114,7 @@
 <table border="0" cellpadding="3" cellspacing="0">
 <tr>
   <td valign="top">
-    <?php include "./menue.inc"; ?>
+    <?php include "<%%WEB_PREFIX%%>/menue.inc"; ?>
   </td>
   <td>
     <form method="get" action="<?php echo $_SERVER['REQUEST_URI'] ?>">
@@ -128,7 +128,7 @@
        if (! $ok) {
          echo $error;
        } else {
-         include "./actions.inc";
+         include "<%%WEB_PREFIX%%>/actions.inc";
 
          echo format_recipe_html($recipe);
 

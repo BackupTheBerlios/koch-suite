@@ -52,7 +52,7 @@
   <title><?php echo $Lang['Help']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.18 2002/06/11 18:43:47 lestinsky Exp $ -->
+  <!-- $Id: help.raw,v 1.19 2002/08/16 17:06:12 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -72,11 +72,11 @@
 <tr>
   <td valign="top">
     <?php
-      require "./menue.inc";
+      require "<%%WEB_PREFIX%%>/menue.inc";
     ?>
   </td>
   <td>
-    <!-- Installierte Version: $Name:  $ $Revision: 1.18 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.19 $ -->
 
     <h2><?php echo $Lang['Help']; ?></h2>
     
