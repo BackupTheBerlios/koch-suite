@@ -1,4 +1,16 @@
-### $Id: changelog,v 1.13 2001/01/18 00:48:39 michael Exp $
+### $Id: changelog,v 1.14 2001/02/07 18:50:03 michael Exp $
+
+2001-02-07: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Einfüge-Interface versteht jetzt auch RK-Einheiten.
+	Neues DB-Format, siehe README
+
+2001-02-05: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	RezKonv-Format kann jetzt ebenfalls importiert werden.
+	Neues DB-Format, siehe README
+	mmimport(1) Führt den Import aus, rk2mm(1) konvertiert RK-Rezepte
+        in MM-Rezepte.
+        Prerelease 1 von 0.3
+	Prerelease 2 von 0.3
 
 2001-01-18: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Rezept-Einfüge-Interface ist funktionsfähig. :-)
