@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.64 2001/10/01 16:05:38 lestinsky Exp $
+   * $Id: functions.raw,v 1.65 2001/10/02 12:18:46 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -1005,7 +1005,7 @@
     $str = strtr($str, array("ß" => "ss",
                              "ä" => "ae",
                              "ö" => "oe",
-                             "ü" => "ue")); // Strip Umlaute
+                             "ü" => "ue")); // Strip Umlauts
     $str = htmlentities($str);
     $str = preg_replace("/^:.*$/m", "", $str);
     $str = strtr($str, array("\n" => "",
