@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.18 2001/08/12 21:53:50 lestinsky Exp $
+   * $Id: en.inc,v 1.19 2001/08/16 19:55:33 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -123,7 +123,7 @@ EOT;
 
   $Lang['Language']['Title']	= "Language Setting";
   $Lang['Language']['Text'][0]	= <<<EOT
-      The $kochsuite is multilingual starting with release 0.5.
+      The Koch-Suite is multilingual starting with release 0.5.
       To choose another lanuage, adjust your browser (i.e. Mozilla: Edit
       -> Preferences -> Navigator -> Languages).
       If the language you specified does exist you will see all following

@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.10 2001/07/01 20:47:01 michael Exp $
+   * $Id: kategorien.raw,v 1.11 2001/08/16 19:49:34 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW
@@ -42,9 +42,9 @@
     require_once "<%%PHP_LIBS%%>/functions.inc";
     require_once "<%%PHP_LIBS%%>/lang.inc";
 
-    $target = $HTTP_GET_VARS["target"];
-    $kategorie = $HTTP_GET_VARS["kategorie"];
-    $maxsel    = $HTTP_GET_VARS["maxsel"];
+    if (isset($HTTP_GET_VARS["target"]))    $target = $HTTP_GET_VARS["target"];
+    if (isset($HTTP_GET_VARS["kategorie"])) $kategorie = $HTTP_GET_VARS["kategorie"];
+    if (isset($HTTP_GET_VARS["maxsel"]))    $maxsel    = $HTTP_GET_VARS["maxsel"];
     if (isset($HTTP_SERVER_VARS["PHP_SELF"])) 
       $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
 ?>

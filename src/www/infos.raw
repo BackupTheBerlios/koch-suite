@@ -51,7 +51,7 @@
   <title><? echo $Lang['Info']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.29 2001/07/01 20:47:11 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.30 2001/08/16 19:49:34 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -66,7 +66,7 @@
   <td width="90%">
     <h2><?php echo $Lang['Infos']['Title']; ?></h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.29 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.30 $ -->
 
     <h3><?php echo $Lang["Version"]["Title"]; ?></h3>
     <p>
@@ -83,7 +83,7 @@
       ?>
 
 
-    <h3><? echo $Lang['Reqirements']['Title']; ?></h3>
+    <h3><? echo $Lang['Requirements']['Title']; ?></h3>
     <p>
       <? echo $Lang['Requirements']['Text'][0] ?>
     </p>

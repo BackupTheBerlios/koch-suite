@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.14 2001/08/06 17:57:47 lestinsky Exp $
+   * $Id: de.inc,v 1.15 2001/08/16 19:55:33 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -105,7 +105,7 @@ EOT;
 
   $Lang['Language']['Title']	= "Spracheinstellung";
   $Lang['Language']['Text'][0]	= <<<EOT
-      Seit Version 0.5 ist die $kochsuite mehrsprachig. Um eine andere
+      Seit Version 0.5 ist die Koch-Suite mehrsprachig. Um eine andere
       Sprache auszuw&auml;hlen, stellt man im Browser einfach die
       gew&uuml;nschte Sprache ein (z.B. Mozilla: Edit -> Preferences ->
       Navigator -> Languages). Wenn die gew&uuml;nschte Sprache existiert,

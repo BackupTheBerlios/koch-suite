@@ -30,7 +30,7 @@
   /**
    * Alias-Editor
    *
-   * $Id: edit_alias.raw,v 1.5 2001/07/01 20:47:42 michael Exp $
+   * $Id: edit_alias.raw,v 1.6 2001/08/16 19:51:37 lestinsky Exp $
    * Edit the alias-list for a given unit.
    * @package WWW
    * @modulegroup Edit
@@ -40,6 +40,7 @@
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
+  require "<%%PHP_LIBS%%>/nocache.inc";
 
   /* Parse arguments */
   $unit = $HTTP_GET_VARS["unit"];
@@ -76,7 +77,7 @@
   <?php echo $fwd; ?>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: edit_alias.raw,v 1.5 2001/07/01 20:47:42 michael Exp $ -->
+  <!-- $Id: edit_alias.raw,v 1.6 2001/08/16 19:51:37 lestinsky Exp $ -->
   <style class="text/css">
   <!--
     .dark  { background-color:#c0c0d5; font-family:Helvetica,Arial; }

@@ -28,7 +28,7 @@
    */
 
   /*
-   * $Id: lang.raw,v 1.6 2001/07/01 20:00:54 michael Exp $
+   * $Id: lang.raw,v 1.7 2001/08/16 19:54:10 lestinsky Exp $
    *
    * Guess prefered language for the web-interface.
    *
@@ -95,7 +95,7 @@
   if ($tmp = getenv("HTTP_ACCEPT_LANGUAGE")) {
     $accept_langs = explode(",", $tmp);
   }
-  if (count($accept_langs) == 0) {
+  if (!isset($accep_langs) or count($accept_langs) == 0) {
     /* Seems we are running from the commandline. 
      * therefore read environment-variables.
      */
@@ -119,7 +119,7 @@
       $l = trim(preg_replace("/(.*)?(;(.*))/" , "\\1", $lang));
 
       /* we don't need to read it twice: */
-      if ($l == $DEFAULT_LANG) {
+      if ($l == DEFAULT_LANG) {
         break;
       } else {
         read_best_language($l);

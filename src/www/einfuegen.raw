@@ -42,27 +42,25 @@
   require_once "<%%PHP_LIBS%%>/config.inc";
   require_once "<%%PHP_LIBS%%>/functions.inc";
   require_once "<%%PHP_LIBS%%>/lang.inc";
+  require_once "<%%PHP_LIBS%%>/nocache.inc";
 
   /*
    * read the proper values submitted via form
    */
 
-  $mid       = doubleval($HTTP_GET_VARS["mid"]);
-  $titel     = trim($HTTP_POST_VARS["titel"]);
-  $portionen = trim($HTTP_POST_VARS["portionen"]);
-  $kategorie = trim($HTTP_POST_VARS["kategorie"]);
-  $zutaten   = $HTTP_POST_VARS["zutaten"];
-  $anweisung = $HTTP_POST_VARS["anweisung"];
-  $ztitle    = $HTTP_POST_VARS["ztitle"];
-  if (isset($HTTP_POST_VARS["more_zutaten"])) {
+  if (isset($HTTP_GET_VARS["mid"]))        $mid       = doubleval($HTTP_GET_VARS["mid"]);
+  if (isset($HTTP_POST_VARS["titel"]))     $titel     = trim($HTTP_POST_VARS["titel"]);
+  if (isset($HTTP_POST_VARS["portionen"])) $portionen = trim($HTTP_POST_VARS["portionen"]);
+  if (isset($HTTP_POST_VARS["kategorie"])) $kategorie = trim($HTTP_POST_VARS["kategorie"]);
+  if (isset($HTTP_POST_VARS["zutaten"]))   $zutaten   = $HTTP_POST_VARS["zutaten"];
+  if (isset($HTTP_POST_VARS["anweisung"])) $anweisung = $HTTP_POST_VARS["anweisung"];
+  if (isset($HTTP_POST_VARS["ztitle"]))    $ztitle    = $HTTP_POST_VARS["ztitle"];
+  if (isset($HTTP_POST_VARS["more_zutaten"]))
     $more_zutaten = $HTTP_POST_VARS["more_zutaten"];
-  }
-  if (isset($HTTP_POST_VARS["submit"])) {
+  if (isset($HTTP_POST_VARS["submit"]))
     $submit = $HTTP_POST_VARS["submit"];
-  }
-  if (isset($HTTP_SERVER_VARS["PHP_SELF"])) {
+  if (isset($HTTP_SERVER_VARS["PHP_SELF"]))
     $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
-  }
 
   $target = $PHP_SELF;
   if (isset($mid) and $mid != 0) {
@@ -76,6 +74,8 @@
    * @return string
    */
   function make_zutaten ($ingr) {
+    $str = '';
+
     foreach ($ingr as $i) {
       if ($i["quant"] != '' and $i["quant"] != 0)
         $str .= round($i["quant"], 3) . " ";
@@ -119,7 +119,7 @@
     $str .= "<td><a href=\"kategorien.php?target=kategorie&maxsel=5\"" .
                  "target=\"kat\" onClick=\"kat();\">" . $Lang['Cat'] . "</a>:</td>\n";
     $str .= "<td><input type=\"text\" name=\"kategorie\" value=\"" .
-                 implode(", ", $rezept["category"]) . 
+                 ( !empty($rezept["category"]) ? implode(", ", $rezept["category"]) : '' ) . 
                  "\" size=\"60\"></td>\n";
     $str .= "</tr>\n";
 
@@ -137,14 +137,14 @@
       } else {
         $str .= "<td>&nbsp;</td>\n";
         $str .= "<td><input type=\"text\" " .
-                     "name=\"ztitle[" . $i . "]\" " .
+                     "name=\"ztitle[]\" " .
                      "value=\"" . $z["title"] . "\" " .
                      "size=\"60\">";
         $str .= "</tr>\n";
         $str .= "<tr>\n";
         $str .= "<td>&nbsp;</td>\n";
       }
-      $str .= "<td><textarea name=\"zutaten[" . $i . "]\" " . 
+      $str .= "<td><textarea name=\"zutaten[]\" " . 
                    "cols=\"60\" rows=\"10\" wrap=\"physical\">" .
                    make_zutaten($z["ingredients"]) . "</textarea></td>\n";
       $str .= "</tr>\n";
@@ -171,11 +171,11 @@
   // Parse den Input, bzw. Wenn der Input leer ist, erzeuge trotzdem ein
   // passendes, leeres Array:
 
-  if (!is_array($zutaten)) {
+  if (!isset($zutaten) or !is_array($zutaten)) {
     $zutaten[] = "";
   }
 
-  if (!is_array($ztitle)) {
+  if (!isset($ztitle) or !is_array($ztitle)) {
     $ztitle[] = "";
   }
 
@@ -188,7 +188,7 @@
   $y = 0;
 
   // Catch Configuration-settings:
-  if (get_cfg_var(magic_quotes_gpc) == 1) {
+  if (get_cfg_var('magic_quotes_gpc') == 1) {
     $titel = stripslashes($titel);
     $portionen = stripslashes($portionen);
     $anweisung = stripslashes($anweisung);
@@ -204,7 +204,7 @@
     foreach (split("[\r]?\n", trim($z)) as $line) {
       // Jede Zutatenliste wird in ihre einzelnen Zeilen aufgespalten
 
-      if (get_cfg_var(magic_quotes_gpc) == 1) {
+      if (get_cfg_var('magic_quotes_gpc') == 1) {
         $line = stripslashes($line);
       }
       if ($line != '') {
@@ -243,15 +243,17 @@
   }
 
   // Formatiere Zeilenbrueche in das System wie wir es brauchen um.
-  $anweisung = preg_replace("/((\r)?\n\s*){2,}/m", " <p> ", $anweisung);
-  $anweisung = preg_replace("/(\r)?\n:/m", " <br> :", $anweisung);
-  $anweisung = preg_replace("/(\r)?\n/m", " ", $anweisung);
+  if (isset($anweisung)) {
+    $anweisung = preg_replace("/((\r)?\n\s*){2,}/m", " <p> ", $anweisung);
+    $anweisung = preg_replace("/(\r)?\n:/m", " <br> :", $anweisung);
+    $anweisung = preg_replace("/(\r)?\n/m", " ", $anweisung);
+  }
 
-  $r = array ("title" => trim($titel), 
-              "yield" => trim($portionen),
-              "category" => split(',[ ]*', $kategorie),
-              "zutaten" => $zutat,
-              "anleitung" => $anweisung);
+  $r = array ("title"     => (isset($titel)     ? trim($titel) : '') , 
+              "yield"     => (isset($portionen) ? trim($portionen) : ''),
+              "category"  => (isset($kategorie) ? split(',[ ]*', $kategorie) : ''),
+              "zutaten"   => $zutat,
+              "anleitung" => (isset($anweisung) ? $anweisung : '') );
 
   $r["hash"] = recipe_hash($r);
 
@@ -283,7 +285,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.25 2001/07/24 19:49:28 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.26 2001/08/16 19:51:37 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--

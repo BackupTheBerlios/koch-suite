@@ -41,10 +41,10 @@
   include "<%%PHP_LIBS%%>/lang.inc";
   include "<%%PHP_LIBS%%>/functions.inc";
 
-  $mid     = $HTTP_GET_VARS["mid"];
-  $confirm = $HTTP_GET_VARS["confirm"];
-  if (isset($HTTP_SERVER_VARS["PHP_SELF"])) $PHP_SELF =
-    $HTTP_SERVER_VARS["PHP_SELF"];
+  if (isset($HTTP_GET_VARS["mid"]))     $mid     = $HTTP_GET_VARS["mid"];
+  if (isset($HTTP_GET_VARS["confirm"])) $confirm = $HTTP_GET_VARS["confirm"];
+  if (isset($HTTP_SERVER_VARS["PHP_SELF"])) 
+    $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -57,7 +57,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.10 2001/07/01 20:47:49 michael Exp $ -->
+  <!-- $Id: delete.raw,v 1.11 2001/08/16 19:51:37 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -72,14 +72,14 @@
   <td>
     <!-- Rechts: Ausgabe -->
     <?
-      if ($confirm != 'y') {
+      if (isset($confirm) and $confirm == 'y') {
+        delete_menue ($mid);
+        echo "<h1>" . $Lang["Recipe"]["Deleted"] . "</h1>\n";
+      } else {
         echo "<h1>" . $Lang["Recipe"]["Delete"] ."?</h1>\n";
         echo format_recipe_html(get_menu_by_mid($mid));
         echo "[<a href=\"$PHP_SELF?mid=$mid&confirm=y\">" . 
                 $Lang["Delete"] . "</a>]\n";
-      } else {
-        delete_menue ($mid);
-        echo "<h1>" . $Lang["Recipe"]["Deleted"] . "</h1>\n";
       }
     ?>
   </td>

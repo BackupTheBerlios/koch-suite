@@ -41,7 +41,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: search.raw,v 1.6 2001/07/01 20:46:23 michael Exp $ -->
+  <!-- $Id: search.raw,v 1.7 2001/08/16 19:47:19 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -56,10 +56,13 @@
   <td>
 
     <?
-      if (isset($HTTP_POST_VARS["begriff"])) $begriff = $HTTP_POST_VARS["begriff"];
-      if (isset($HTTP_POST_VARS["where"]))   $where   = $HTTP_POST_VARS["where"];
-      if (isset($HTTP_GET_VARS["all"]))      $all     = $HTTP_GET_VARS["all"];
+      if (isset($HTTP_POST_VARS["begriff"]))    $begriff  = $HTTP_POST_VARS["begriff"];
+      if (isset($HTTP_POST_VARS["where"]))      $where    = $HTTP_POST_VARS["where"];
+      if (isset($HTTP_GET_VARS["all"]))         $all      = $HTTP_GET_VARS["all"];
       if (isset($HTTP_SERVER_VARS["PHP_SELF"])) $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
+
+      if (! isset($all)) $all = '';
+      if (! isset($begriff)) $begriff = '';
 
       if (empty($begriff) and empty($all)) {
         /* No search -> make search-form */
@@ -79,13 +82,13 @@
           <table border=0>
             <tr>
               <td><? echo $Lang['Search']['For']; ?></td>
-              <td><input type="text" name="begriff" value="<? echo $begr ?>">
+              <td><input type="text" name="begriff">
             </tr>
             <tr>
               <td><? echo $Lang['Search']['In']; ?></td>
               <td><select name="where">
                     <option value="title"><? echo $Lang['Search']['Menutitle']; ?></option>
-                    <option value="cat" <? if ($begr != '') echo 'selected' ?>><? echo $Lang['Search']['Categories']; ?></option>
+                    <option value="cat"><? echo $Lang['Search']['Categories']; ?></option>
                     <option value="ingred"><? echo $Lang['Search']['Ingredients']; ?></option>
                   </select>
               </td>

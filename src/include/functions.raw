@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.60 2001/08/12 21:48:15 lestinsky Exp $
+   * $Id: functions.raw,v 1.61 2001/08/16 19:55:33 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -438,9 +438,14 @@
    * @return 
    */
   function &parse_recipe(&$file, $flavor=RECIPE_MM) {
-    $zutaten        = array();
-    $bar            = 0;
-    $instruction    = "";
+    $zutaten         = array();
+    $bar             = 0;
+    $instruction     = "";
+    $seen_title      = 0;
+    $seen_categories = 0;
+    $seen_yield      = 0;
+    $seen_ingr       = 0;
+    $seen_instr      = 0;
     if ($flavor == RECIPE_MM) {
       $zutaten_header = "/^(-{5}|M{5})-*(.*)[-=@]*$/i";
       $rezept_ende    = "/^(-{5}|M{5})[@-]*$/";
