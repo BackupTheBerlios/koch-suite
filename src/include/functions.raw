@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.96 2005/01/02 02:43:31 lestinsky Exp $
+   * $Id: functions.raw,v 1.97 2005/04/03 14:16:12 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -656,9 +656,10 @@
           $zid = $db->nextID("ZUTATENSEQ");
           $req = "insert into ZUTATEN values ( " .
                  "  $zid, " .
-                 "  '" . addslashes($i["quant"]) . "', " .
-                 "  '" . addslashes($i["unit"])  . "', " .
-                 "  '" . addslashes($i["ingred"]) ."', " .
+                 "  '" . addslashes($i['quant_lo']) . "', " .
+                 "  '" . addslashes($i['quant_hi']) . "', " .
+                 "  '" . addslashes($i['unit'])  . "', " .
+                 "  '" . addslashes($i['ingred']) ."', " .
                  "  '$rid' ".
                  " ) ";
           $result = DB_query($req);
@@ -673,7 +674,7 @@
     $result = DB_query($req);
     if (! $result) return -1;
 
-    foreach ($rezept["category"] as $cat) {
+    foreach ($rezept['category'] as $cat) {
 
       if (!($cid = get_category_id($cat))) {
         if ($new_cat_flag === true) {
@@ -792,14 +793,14 @@
     /* return an array with all the ingredients, belonging to an "Rezept" */
     $a = array();
 
-    $req = "select id,menge,einheit,text from ZUTATEN where REZEPT_ID = '$rid' order by ID asc";
+    $req = "select id,menge_lo,menge_hi,einheit,text from ZUTATEN where REZEPT_ID = '$rid' order by ID asc";
     if ($result=DB_query($req)) {
 
       while($r = $result->fetchRow()) {
-        array_push($a, array("quant" => $scale * stripslashes($r["menge"]),
-                             "unit"  => stripslashes($r["einheit"]),
-                             "ingred" => stripslashes($r["text"])));
-
+        array_push($a, array('quant_lo' => $scale * stripslashes($r['menge_lo']),
+			     'quant_hi' => $scale * stripslashes($r['menge_hi']),
+                             'unit'  => stripslashes($r['einheit']),
+                             'ingred' => stripslashes($r['text'])));
       }
       $result->free();
     }

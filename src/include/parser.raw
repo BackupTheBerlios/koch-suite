@@ -2,7 +2,7 @@
   /** 
    * Functions for the "Koch-Suite"
    *
-   * $Id: parser.raw,v 1.9 2005/01/02 02:43:31 lestinsky Exp $
+   * $Id: parser.raw,v 1.10 2005/04/03 14:16:13 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -326,16 +326,24 @@
   function parse_ingredient($line, $flavor=RECIPE_MM) {
     if ($flavor == RECIPE_MM) {
       /* Lese eine MM-Rezeptzeile */
-      if (ereg("([ 0-9\.\/]{7}) (..) (.*)", $line, $foo)) {
-        $quant = trim($foo[1]);
+      if (preg_match('/([ 0-9\.\/]{7}) (..) ((\(-([0-9\.\/]+)\))?(.*))/', $line, $foo)) {
+        $quant_lo = trim($foo[1]);
+	$quant_hi = (isset($foo[4])) ? trim($foo[5]) : false;
         $unit = trim($foo[2]);
-        $text = trim($foo[3]);
+        $text = trim($foo[6]);
       }
     } elseif ($flavor == RECIPE_RK) {
       /* Lese eine RK-Rezept-Zeile */
 
-      if (ereg("([ 0-9\.\/]{7}) (.{8}) (.*)", $line, $foo)) {
+      if (preg_match("/([\- 0-9\.\/]{7}) (.{8}) (.*)/", $line, $foo)) {
         $quant = trim($foo[1]);
+
+        if (strstr($quant, "-") === false) {
+          $quant_lo = $quant; 
+	  $quant_hi = false;
+        } else
+          list($quant_lo, $quant_hi) = explode("-", $quant);
+        
         $rawunit = trim($foo[2]);
         $text = trim($foo[3]);
 
@@ -352,17 +360,21 @@
       }
     }
 
-    if (isset($quant) and isset($unit) and isset($text)) {
-      /* Ok, wir haben eine gueltige Zeile gelesen. */
-      if ($quant != '' and strpos($quant, '/') !== false) {
-        $quant = fraction_to_real($quant);
+    if (isset($quant_lo) and isset($unit) and isset($text)) {
+      /* Ok, we've got a valid ingredient line. */
+      if ($quant_lo != false and strpos($quant_lo, '/') !== false) {
+        $quant_lo = fraction_to_real($quant_lo);
+      }
+      if ($quant_hi != false and strpos($quant_hi, '/') !== false) {
+        $quant_hi = fraction_to_real($quant_hi);
       }
 
-      // Es gibt 2 verschiedene Stiele für verlängerte Zeilen.
+      // Es gibt 2 verschiedene Stile für verlängerte Zeilen.
       // "-bla" und "-- bla":
       $text = preg_replace('/^-+\s*/', '-- ', $text);
 
-      return array('quant'  => $quant,
+      return array('quant_lo'  => $quant_lo,
+		   'quant_hi'  => $quant_hi,
                    'unit'   => $unit,
                    'ingred' => $text);
     } else {

@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.58 2005/02/10 19:05:15 lestinsky Exp $
+   * $Id: output.raw,v 1.59 2005/04/03 14:16:13 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -61,7 +61,11 @@
     foreach ($rezept["zutaten"] as $z) {
       if (!empty($z["title"])) $str .= $z["title"] . "\n";
       foreach ($z["ingredients"] as $j) {
-        $quant = nice_quant($j["quant"]);
+        $quant_lo = nice_quant($j['quant_lo']);
+        $quant_hi = nice_quant($j['quant_hi']);
+        $quant = ($quant_hi != false) ? $quant_lo . " " . $quant_hi 
+				      : $quant_lo;
+
         $rline = pad_left ($quant , " ", 7) . " " .
                  pad_right(nice_unit($j["unit"])  , " ", 11) . " " .
                  pad_right($j["ingred"], " ", 28) . "\n";
@@ -122,7 +126,12 @@
       $str.= "<tr><td><b>" . $Lang['Rating'] . "</b>:</td>" .
                  "<td>". sucks_or_rocks_meter($rezept['rating']) . "</td>";
     $str .= "<tr><td><b>" . $Lang['Cat'] . "</b>:</td>";
-    $str .= "<td>" . htmlentities(implode(" ", $rezept["category"])) . "</td></tr>\n";
+    $str .= "<td>";
+    foreach($rezept["category"] as $c) {
+      $str .= '<a href="search.php?where[]=cat&begriff=' . htmlentities($c) . '">' .
+             htmlentities($c) . '</a> ';
+    }
+    $str .= "</td></tr>\n";
     $str .= "<tr><td><b>" . $Lang['Yield'] . "</b>:</td><td>" . htmlentities($rezept["yield"]) . "</td></tr>\n";
     $str .= "</table>\n";
 
@@ -140,7 +149,11 @@
 
       foreach ($z["ingredients"] as $j) {
 
-        $quant = nice_quant($j["quant"]);
+        $quant_lo = nice_quant($j['quant_lo']);
+        $quant_hi = nice_quant($j['quant_hi']);
+        $quant = ($quant_hi != false) ? $quant_lo . " - " . $quant_hi
+                                      : $quant_lo;
+
         $unit = nice_unit($j["unit"]);
         $ingred = preg_replace("/^(-*|;*) */", "", $j["ingred"]);
         $str .= "      ";
@@ -293,8 +306,14 @@
           }
           $c++;
         }
-        $str .= nice_quant($i["quant"]) . " & " . 
-                nice_unit($i["unit"]) . " & " . 
+
+        $quant_lo = nice_quant($i['quant_lo']);
+        $quant_hi = nice_quant($i['quant_hi']);
+        $quant = ($quant_hi != false) ? $quant_lo . " -- " . $quant_hi
+                                      : $quant_lo;
+
+        $str .= $quant . ' & ' . 
+                nice_unit($i["unit"]) . ' & ' . 
                 $ingred_;
       }
     }
@@ -636,10 +655,13 @@
       foreach ($z["ingredients"] as $j) {
         $u = 0;
 
-        $quant = nice_quant($j["quant"]);
-
         switch ($format) {
           case RECIPE_RK:
+            $quant_lo = nice_quant($j['quant_lo']);
+            $quant_hi = nice_quant($j['quant_hi']);
+            $quant = ($quant_hi != false) ? $quant_lo . "-" . $quant_hi
+                                          : $quant_lo;
+
             // Split too long lines
             $a = length_adjust($j["ingred"], 50);
 
@@ -668,9 +690,10 @@
                $a = length_adjust($j["ingred"], 65);
             } 
 
-            $iline = pad_left($quant," ", 7) . " " .
-                     pad_right($j["unit"]  , " ", 2) . " " .
-                     $a[$u++] . "\n";
+            $iline = pad_left($j['quant_lo']," ", 7) . " " .
+                     pad_right($j['unit']  , " ", 2) . " " .
+                     (($j['quant_hi'] != false) ? sprintf('(-%s) ', $j['quant_hi']) : '') .
+		     $a[$u++] . "\n";
             $str .= $iline;
             while (isset($a[$u])) {
               $str .= "           -- " . $a[$u++] . "\n";

@@ -28,7 +28,7 @@
    */
 
   /**
-   * $Id: einfuegen.raw,v 1.53 2005/01/02 02:43:32 lestinsky Exp $
+   * $Id: einfuegen.raw,v 1.54 2005/04/03 14:16:14 lestinsky Exp $
    * Insert new and edit exiting recipes.
    *
    * @package WWW
@@ -98,12 +98,16 @@
     $str = '';
 
     foreach ($ingr as $i) {
-      if ($i["quant"] != '' and $i["quant"] != 0)
-        $str .= round($i["quant"], 3) . " ";
-      if ($i["unit"] != '')
-        $str .= $i["unit"] . " ";
-      if ($i["ingred"] != '')
-        $str .= $i["ingred"];
+      if ($i['quant_lo'] != '' and $i['quant_lo'] != 0)
+        if ($i['quant_hi'] != '' and $i['quant_hi'] != 0)
+          $str .= sprintf("%s-%s ", round($i['quant_lo'], 3), round($i['quant_hi'], 3));
+        else
+          $str .= sprintf("%s ",    round($i['quant_lo'], 3));
+
+      if ($i['unit'] != '')
+        $str .= $i['unit'] . " ";
+      if ($i['ingred'] != '')
+        $str .= $i['ingred'];
       $str .= "\n";
     }
     return $str ;
@@ -170,11 +174,10 @@
         $str .= "<td>&nbsp;</td>\n";
       }
       $str .= "<td><textarea name=\"zutaten[]\" " . 
-                   "cols=\"60\" rows=\"10\" wrap=\"physical\">" .
+                   "cols=\"80\" rows=\"10\" wrap=\"physical\">" .
                    make_zutaten($z["ingredients"]) . "</textarea></td>\n";
       $str .= "</tr>\n";
     }
-    $str .= "<!-- Bar -->\n";
 
     // Anweisung:
     $anleitung = htmlentities($rezept["anleitung"]);
@@ -183,7 +186,7 @@
 
     $str .= "<tr>\n";
     $str .= "<td>" . $Lang['Preparation'] . ":</td>\n";
-    $str .= "<td><textarea cols=\"60\" rows=\"10\" " .
+    $str .= "<td><textarea cols=\"80\" rows=\"10\" " .
                  "name=\"anweisung\" wrap=\"virtual\">" . 
                  $anleitung . "</textarea></td>\n";
     $str .= "</tr>\n";
@@ -278,9 +281,10 @@
       }
 
       $zutat[] = array("title"       => $ztitle[0],
-                       "ingredients" => array(array('quant'  => '', 
-                                                    'unit'   => '',
-                                                    'ingred' => '')
+                       "ingredients" => array(array('quant_lo' => '', 
+						    'quant_hi' => '',
+                                                    'unit'     => '',
+                                                    'ingred'   => '')
                                              )
                       );
 
@@ -322,17 +326,25 @@
         // Jede Zutatenliste wird in ihre einzelnen Zeilen aufgespalten
   
         $line = gpc_stripslashes($line);
-        $quant  = '';
-        $unit   = '';
-        $ingred = '';
+        $quant_lo = '';
+        $quant_hi = '';
+        $unit     = '';
+        $ingred   = '';
 
         if ($line != '') {
           $line = trim($line); // Remove whitespaces
 
-          if (preg_match("/^((\d* ){0,1}[\d\/\.,]*) *(.*)$/", $line, $bar)) {
+          if (preg_match("/^((\d* ){0,1}[\-\d\/\.,]*) *(.*)$/", $line, $bar)) {
             // Wenn die Zeile mit einer Mengenangabe beginnt...
 	    if ($bar[1] != 0) {
-	      $quant = fraction_to_real($bar[1]);
+              if (strstr($bar[1], "-")) {
+                list($quant_lo, $quant_hi) = explode("-", $bar[1]);
+		$quant_lo = fraction_to_real($quant_lo);
+                $quant_hi = fraction_to_real($quant_hi);
+              } else {
+	        $quant_lo = fraction_to_real($bar[1]);
+ 		$quant_hi = false;
+              }
 	    }
 	    $a = split(' +', $bar[3]);
 	    if ($unit = is_unit($a[0])) {
@@ -344,9 +356,10 @@
             // -> put everything into the ingredient text.
             $ingred = trim($line);
           }
-          array_push ($ingredients, array ('quant'  => $quant,
-                                           'unit'   => $unit,
-                                           'ingred' => $ingred));
+          array_push ($ingredients, array ('quant_lo' => $quant_lo,
+					   'quant_hi' => $quant_hi,
+                                           'unit'     => $unit,
+                                           'ingred'   => $ingred));
         }
 
       }
