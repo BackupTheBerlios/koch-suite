@@ -1,3 +1,19 @@
+2003-02-09  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/commands/Makefile.raw 1.25, src/include/Makefile.raw 1.31, src/man/man1/Makefile.raw 1.2, src/www/Makefile.raw 1.36:
+  Fix dependency lists
+
+  * src/www/header.raw 1.4: adjust cellspacing
+
+  * src/www/search.raw 1.39:
+  Fix searchresult and showtagged, which were broken by my last commit
+
+  * src/include/koch-suite.raw 1.22, src/www/admin.raw 1.13:
+  Make MAIL_NOTIFY toggles the use of PHPs mail() function
+
+  * src/config 1.26:
+  Make ENABLE_PROFILING and MAIL_NOTIFY compile-time-options (you may change them later, too)
+
 2003-02-07  Michael Bussmann  <bus@mb-net.net>
 
   * src/include/es.inc 1.8, src/README 1.58, src/include/de.inc 1.50, src/include/en.inc 1.55:
