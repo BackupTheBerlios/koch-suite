@@ -1,5 +1,5 @@
 -- 
--- $Id: init_db.pgsql,v 1.10 2001/12/22 10:42:32 bus Exp $
+-- $Id: init_db.pgsql,v 1.11 2001/12/31 15:53:43 lestinsky Exp $
 -- init_db_postgreSQL.sql
 -- 2001-07-25 Michael Bussmann <bus@mb-net.net>
 --
@@ -193,6 +193,41 @@ INSERT INTO unit_langs VALUES (31,'de','Dezigram');
 INSERT INTO unit_langs VALUES (32,'de','Kg');
 INSERT INTO unit_langs VALUES (33,'de','fl. Oz.');
 INSERT INTO unit_langs VALUES (34,'de','');
+
+INSERT INTO unit_langs VALUES ( 1,'en','per');
+INSERT INTO unit_langs VALUES ( 2,'en','small');
+INSERT INTO unit_langs VALUES ( 3,'en','medium');
+INSERT INTO unit_langs VALUES ( 4,'en','large');
+INSERT INTO unit_langs VALUES ( 5,'en','can');
+INSERT INTO unit_langs VALUES ( 6,'en','package');
+INSERT INTO unit_langs VALUES ( 7,'en','pinch');
+INSERT INTO unit_langs VALUES ( 8,'en','drop');
+INSERT INTO unit_langs VALUES ( 9,'en','dash');
+INSERT INTO unit_langs VALUES (10,'en','carton');
+INSERT INTO unit_langs VALUES (11,'en','bunch');
+INSERT INTO unit_langs VALUES (12,'en','slice');
+INSERT INTO unit_langs VALUES (13,'en','each');
+INSERT INTO unit_langs VALUES (14,'en','tsp');
+INSERT INTO unit_langs VALUES (15,'en','tsp');
+INSERT INTO unit_langs VALUES (16,'en','tbsp');
+INSERT INTO unit_langs VALUES (17,'en','tbsp');
+INSERT INTO unit_langs VALUES (18,'en','cup');
+INSERT INTO unit_langs VALUES (19,'en','pint');
+INSERT INTO unit_langs VALUES (20,'en','liter');
+INSERT INTO unit_langs VALUES (21,'en','quart');
+INSERT INTO unit_langs VALUES (22,'en','gallon');
+INSERT INTO unit_langs VALUES (23,'en','ounce');
+INSERT INTO unit_langs VALUES (24,'en','g');
+INSERT INTO unit_langs VALUES (25,'en','pound');
+INSERT INTO unit_langs VALUES (26,'en','ml');
+INSERT INTO unit_langs VALUES (27,'en','ml');
+INSERT INTO unit_langs VALUES (28,'en','centiliter');
+INSERT INTO unit_langs VALUES (29,'en','deciliter');
+INSERT INTO unit_langs VALUES (30,'en','centigram');
+INSERT INTO unit_langs VALUES (31,'en','decigram');
+INSERT INTO unit_langs VALUES (32,'en','kg');
+INSERT INTO unit_langs VALUES (33,'en','fl.oz.');
+INSERT INTO unit_langs VALUES (34,'en','');
 
 --
 -- Table structure for table 'usertable'
