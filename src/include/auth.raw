@@ -42,7 +42,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.8 2001/12/24 14:10:25 lestinsky Exp $
+   * $Id: auth.raw,v 1.9 2002/02/12 18:40:35 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -54,14 +54,13 @@
 
 
   if (!session_start()) 
-    die ("Cannot start a the session.");
+    die ("Cannot start the session.");
   session_register("user");
 
 
   /**
-   * PHP 4.0.5 and later are somewhat broken.
-   * $HTTP_SESSION_VARS["user"] != $user depending on the setting of
-   * register_globals in your php.ini.
+   * PHP 4.0.5/6 are somewhat broken. Since 4.1.0 there is a
+   * better attempt to solve this problem.
    * So catch this difference here. Verified to work on 4.0.7RC3
    */
   if (isset($_SESSION["user"])) {
@@ -79,7 +78,9 @@
 
 
   /**
-   * Call the right authentication-functions to verify the user
+   * auth($level) - Authenticate the User against the page.
+   * This function returns true if the user has at least $level
+   * permissions and false otherwise.
    *
    * @param  string $level minimum usertype required for this.
    * @return bool
@@ -87,7 +88,10 @@
   function auth ($level = READ) {
     global $USER_S, $FORM_USERNAME, $FORM_PASSWORD;
 
-    /* do we want authentication? */
+    /* do we want authentication? Test the global settings. Operations of
+     * the level $GLOBALS["AUTH_LEVEL"] or higher require the user to be
+     * authenticated. 
+     */
     if ($GLOBALS["AUTH_LEVEL"] <= $level) {
       /* yeah: */
 
@@ -103,10 +107,9 @@
         if (!isset($FORM_USERNAME) and !isset($FORM_PASSWORD)) 
           auth_loginform();
 
-        /* What kind of authentication?
-         * At the moment we support auth_by_db only.
-         */
-        return verify_authdata($FORM_USERNAME, $FORM_PASSWORD);
+        /* We've got a username and a password -> check them. */
+        $USER_S = verify_authdata($FORM_USERNAME, $FORM_PASSWORD);
+        return true;
 
       }
     } else {
@@ -137,7 +140,7 @@
    * @param  string $password
    * @return array $user
    */
-  function auth_by_db ($username, $password) {
+  function verify_authdata ($username, $password) {
     if (!empty($username) and !empty($password)) {
 
       $req = "select password, usertype from usertable " .
@@ -157,7 +160,7 @@
             $return = array("username" => $username, 
                             "usertype" => $row["usertype"]);
           } else {
-            // Invalid
+            // Go away.
             $return = false;
           }
         } else {
@@ -172,19 +175,26 @@
             $return = array("username" => $username, 
                             "usertype" => $row["usertype"]);
           } else {
-            // Invalid
             $return = false;
           }
         }
 
-        return $return;
+        if ($return != false) {
+          return $return;
+        } else {
+          session_destroy();
+          die ("Authentication failed.\n");
+        }
 
       } else {
-        // Wrong.
-        return false;
+        // Go away.
+        session_destroy();
+        die ("Authentication failed.\n");
       }
     } else {
-      return false;
+      // Go away.
+      session_destroy();
+      die ("Username and password must not be empty.\n");
     }
   } 
 
@@ -200,26 +210,9 @@
 
 
   /**
-   * Invoke the proper update_passwd_*-function
-   * @param string $username
-   * @param string $opasswd  Old password
-   * @param string $passwd   New password
-   */
-  function update_passwd($username, $opasswd, $passwd) {
-
-    $update_func = "update_passwd_" . $GLOBALS["AUTH_STYLE"];
-
-    if (function_exists($update_func))
-      return $update_func($username, $opasswd, $passwd);
-    else
-      return false;
-  }
-
-
-  /**
    * Change the passwords in the database.
    */
-  function update_passwd_auth_by_db ($username, $opasswd, $passwd) {
+  function update_passwd ($username, $opasswd, $passwd) {
     $cpwd = mk_crypted_pw($passwd);
     $req = "update usertable set password = '$cpwd' " .
            " where username = '$username' ";
@@ -227,53 +220,4 @@
     $result = DB_query($req);
   }
 
-
-  /**
-   * Is the user authenticated?
-   */
-  function verify_authdata($username, $password) {
-    global $USER_S;
-    /* What kind of authentication?
-     * At the moment we support auth_by_db only.
-     */
-    if (function_exists($GLOBALS["AUTH_STYLE"])) {
-
-      if ($USER_S = $GLOBALS["AUTH_STYLE"]($username, $password)) {
-        // everything is fine here. :-)
-        return true;
-
-      } else {
-        // Go away.
-        session_destroy();
-        die ("Authentication failed. Wrong Password?\n");
-      }
-
-    } else {
-      // Refering to a non-existing authentication-Function?
-      session_destroy();
-      die("Something's really screwed up here. " .
-          "Check your configuration.");
-    }
-  }
-
-
-  /**
-   * Do password/username match?
-   * This function differs from verify_authdata in
-   *   - it doesn't change $USER_S
-   *   - it returns a bool value.
-   */
-  function verify_passwd($username, $password) {
-    if (function_exists($GLOBALS["AUTH_STYLE"])) {
-      if ($GLOBALS["AUTH_STYLE"]($username, $password))
-        return true;
-      else 
-        return false;
-    } else {
-      // This code shouldn't be ever executed in normal operation.
-      session_destroy();
-      die("Either someone is screwing up your configuration" . 
-          " or you've just found a new bug.");
-    }
-  }
 ?>

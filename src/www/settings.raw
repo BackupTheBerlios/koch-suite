@@ -57,7 +57,7 @@
       } else {
         // Apply changes.
 
-        if (verify_passwd($USER_S["username"], $_POST["opass"])) {      
+        if (verify_authdata($USER_S["username"], $_POST["opass"])) {      
 
           update_passwd($USER_S["username"], $_POST["opass"], $_POST["pass1"]);
           $msg .= $Lang['Settings']['Password']['changed'];
@@ -81,7 +81,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: settings.raw,v 1.1 2001/12/24 14:10:25 lestinsky Exp $ -->
+  <!-- $Id: settings.raw,v 1.2 2002/02/12 18:40:35 lestinsky Exp $ -->
 </head>
 
 <body>
