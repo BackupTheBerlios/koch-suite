@@ -2,7 +2,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.21 2003/01/10 23:29:10 lestinsky Exp $
+   * $Id: auth.raw,v 1.22 2003/01/20 20:30:31 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -197,8 +197,7 @@
    * @return void
    */
   function auth_loginform() {
-    global $_SERVER, $theme, $goto, $Lang, $SITE_CONTACT_MAIL, 
-           $SITE_CONTACT_NAME;
+    global $_SERVER, $theme, $goto, $Lang;
     include "<%%PHP_LIBS%%>/loginform.inc";
   }
 
