@@ -43,6 +43,22 @@ der <a href="http://www.lestinsky.de/koch-suite">Demo-Version</a> verschaffen.
 <h2>Neues:</h2>
 
 <ul>
+  <li>2.12.2004: <a href="http://download.berlios.de/koch-suite/koch-suite-0.8-beta1.tar.gz">Version 0.8-beta1</a></li>
+    <ul>
+      <li>Webinterface
+        <ul>
+          <li>Eine Paste-Box für einfachen Rezeptimport</li>
+          <li>Markieren von Rezepten für verschiedene Operationen 
+              (Drucken, Exportieren, Löschen, ...) in einem Rutsch.</li>
+          <li>Globale Operationen</li>
+          <li>Bearbeiten von Kategorien (Löschen, Zusammenfassen)...</li>
+          <li>Bewertungssystem für Rezepte</li>
+          <li>Viele optische Verbesserungen (Themes!).</li>
+        </ul>
+      <li>Exportiere Rezepte im Rezkonv-Format</li>
+      <li>Zahlreiche Bugs wurden behoben.</li>
+    </ul>
+  </li>
   <li>19.8.2002: <a href="http://download.berlios.de/koch-suite/koch-suite-0.7.1.tar.gz">Version 0.7.1</a> (<a href="http://developer.berlios.de/cvs/?group_id=144">Siehe unser CVS</a>) Bugfix Release:
     <ul>
       <li>Repariere die Behandlung von Br&uuml;chen</li>
@@ -96,7 +112,7 @@ zum Schutz vor Spam. Wir bitten daher um euer Verst&auml;ndnis.
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2004 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.de,v 1.14 2004/04/11 12:15:24 lestinsky Exp $
+$Id: index.html.de,v 1.15 2004/12/02 20:34:23 lestinsky Exp $
 </address>
 </body>
 </html>

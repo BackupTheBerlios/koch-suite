@@ -41,6 +41,21 @@ To give you an overview of this software package, there is a
 <h2>News:</h2>
 
 <ul>
+  <li>2.12.2004: <a href="http://download.berlios.de/koch-suite/koch-suite-0.8-beta1.tar.gz">Version 0.8-beta1</a></li>
+    <ul>
+      <li>Webinterface
+        <ul>
+          <li>A pastebox for easy recipe import</li>
+          <li>tagging of recipes for merged operations
+              (printing, export, deleting ...) in one round.</li>
+          <li>Editing of categories (delete, merge,...)</li>
+          <li>Rating system</li>
+          <li>Plenty beautifications (Themes!).</li>
+        </ul>
+      <li>New export format: REZKONV</li>
+      <li>Countless bugs have been fixed.</li>
+    </ul>
+  </li>
   <li>19.8.2002: <a href="http://download.berlios.de/koch-suite/koch-suite-0.7.1.tar.gz">Version 0.7.1</a> 
     (<a href="http://developer.berlios.de/cvs/?group_id=144">see our CVS</a>) Bugfix Release:
     <ul> 
@@ -92,7 +107,7 @@ subscribed addresses only. This helps us to keep the list clean from spam.
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2004 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.en,v 1.10 2004/04/11 12:15:24 lestinsky Exp $
+$Id: index.html.en,v 1.11 2004/12/02 20:34:23 lestinsky Exp $
 </address>
 </body>
 </html>
