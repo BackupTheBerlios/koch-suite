@@ -1,3 +1,33 @@
+2005-04-03  Michael Lestinsky  <michael@lestinsky.de>
+
+  * www/einfuegen.raw 1.54, include/output.raw 1.59, include/parser.raw 1.10, include/functions.raw 1.97:
+  Extend database format a little. Ingredient quantities may now be given in
+  ranges, such as:
+
+  200-400 g  Sugar
+
+  This is supported for RK- and MM-Import, -Export and for manually typing
+  in recipes.
+
+  The MM-format doesn't support this, so we have to use a workaround here,
+  which would look like the following:
+
+      200  g (-400) Sugar
+
+  To update your database use the following SQL-commands:
+
+  alter table ZUTATEN change MENGE MENGE_LO decimal(8,3);
+  alter table ZUTATEN add MENGE_HI decimal(8,3) after MENGE_LO;
+
+  * commands/rezept.raw 1.27: argc-Fix
+
+  * commands/mmimport.raw 1.35:
+  Also give out Rezkonv-formated parser test results
+
+  * www/search.raw 1.43: Allow passing of arguments via GET, too
+
+  * www/styles.css 1.13, www/styles_summer.css 1.3: More style
+
 2005-04-02  Michael Bussmann  <bus@mb-net.net>
 
   * include/en.inc 1.61, include/es.inc 1.13, include/fr.inc 1.3:
