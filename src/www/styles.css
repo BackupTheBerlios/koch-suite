@@ -1,3 +1,4 @@
 body	{ background-color:#ffffff; }
-h1,h2,h3 { font-family:Verdana,Lucida; }
-td	{ font-family:Helvetica,Arial; }
+h1,h2,h3,h4 { font-family:Verdana,Lucida; }
+.menu	{ font-family:Helvetica,Arial; }
+a,b	{ font-family:Helvetica,Arial; }

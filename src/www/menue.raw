@@ -4,10 +4,10 @@
     <td>
       <table border="0" cellspacing="0" cellpadding="3">
         <tr>
-          <td style="background-color:#f0f0f0">
+          <td style="background-color:#f0f0f0" class="menu">
             <img src="pics/white.gif" align="top" alt=""><a href="index.php?suchen=1">Suchen</a><br>
             <img src="pics/white.gif" align="top" alt=""><a href="">Einf&uuml;gen</a></br>
-                <img src="pics/white.gif" align="top" alt=""><a href="">Infos</a></br>
+                <img src="pics/white.gif" align="top" alt=""><a href="infos.php">Infos</a></br>
           </td>
         </tr>
       </table>

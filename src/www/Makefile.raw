@@ -1,5 +1,5 @@
 # Space-separated list of all "raw" php-files.
-PHP_FILES=		index rezept print mmprint
+PHP_FILES=		index rezept print mmprint infos
 INC_FILES=		menue such
 
 # Files to install unmangled (dont forget the filename-suffix here!)
@@ -51,3 +51,7 @@ install:
 	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i}.inc <%%WEB_PREFIX%%> ; \
 	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i}.inc <%%WEB_PREFIX%%>" ; \
 	done)
+	@( for i in ${ADDITIONAL} ; do \
+	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i} <%%WEB_PREFIX%%> ; \
+	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $${i} <%%WEB_PREFIX%%>" ; \
+	done )

@@ -17,7 +17,7 @@
   <td valign="top">
     <? include "./menue.inc"; ?>
   </td>
-  <td>
+  <td style="font-family:Courier;">
     <!-- Rechts: Ausgabe -->
     <?
       include "<%%PHP_LIBS%%>/functions.inc";

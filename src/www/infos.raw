@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
+  <title>Infos zur Koch-Suite</title>
+</head>
+
+<body>
+<a name="top"></a>
+<h1><img src="pics/title.gif" alt="WWW-Kochbuch"></h1>
+
+<table border=0>
+<tr>
+  <td valign="top">
+    <?
+      require "./menue.inc";
+    ?>
+  </td>
+  <td>
+    <h2>Informationen zur Koch-Suite</h2>
+
+    <h3>Hilfe:</h3>
+    <p class="top">
+      Dieses Programmpaket besteht aus zwei wesentlichen Komponenten.
+      Den Kommandozeilen-Tools und dem Web-Frontend.
+    <p>
+
+    <h4>Kommandozeilen-Tools</h4>
+    <dl>
+      <dt><code>mmimport</code></dt>
+          <dd><i>Import von Rezepten.</i> Der Input wird auf dem
+          Standard-Eingabe-Kanal erwartet.</dd>
+      <dt><code>mmexport</code></dt>
+          <dd><i>Export von Rezepten aus der Datenbank</i> im
+          <a href="http://www.mealmaster.com">Meal-Master</a>-Format.
+          Als Parameter wird ein Suchstring übergeben, nachdem in der
+          Rezept-Datenbank in den Menu-Titeln gesucht wird.
+          Die Ausgabe geschieht auf der Standard-Ausgabe.</dd>
+    </dl>
+
+    <h4>Web-Frontend</h4>
+    <p>
+      Das Web-Frontend ist eigentlich weitgehend selbsterklärend.
+    </p>
+
+    <h3>Voraussetzungen:</h3>
+    <p>
+      Vorausgesetzte Software:
+    </p>
+    <ol>
+      <li><a href="http://www.mysql.org">MySQL</a>,</li>
+      <li><a href="http://www.php.net">PHP</a>, mit MySQL-Unterstützung,</li>
+      <li>ein Webserver, der PHP unterstützt. (z.B. <a
+          href="http://www.apache.org">Apache</a>)</li>
+    </ol>
+
+    <p>
+      Getestete Betriebssysteme:
+    </p>
+    <ul>
+      <li>Linux (Debian 2.2)</li>
+      <li>OpenBSD 2.8</li>
+    </ul>
+    <p>
+      Für die Kommandozeilen-Tools ist PHP mit MySQL-Unterstützung als
+      Standalone-Interpreter notwendig.
+    </p>
+
+  </td>
+</tr>
+</table>
+
+<hr noshade>
+&copy; Michael Lestinsky 
+&lt;<a
+href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.
+de</a>&gt; 
+November 2000.
+
+</body>
+</html>
