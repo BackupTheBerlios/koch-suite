@@ -1,0 +1,149 @@
+#!<%%PHP%%> <%%PHP_OPTS%%>
+<?
+  /* $Id: rezept.raw,v 1.1 2001/03/11 14:28:33 michael Exp $
+   * Export a recipe in different formats.
+   */
+
+  require "<%%PHP_LIBS%%>/functions.inc";
+
+  $stdout = fopen("php://stdout", "w");
+  $stderr = fopen("php://stderr", "w");
+
+  $ver = "0.1";
+
+  $helptext  = "rezept $ver\n" ;
+  $helptext .= "Invoke as:\n";
+  $helptext .= "\trezept " .
+               " [ -mm | -text | -latex ] [-h] [-f filename] [-1]" .
+               " \"searchstring\"\n";
+  $helptext .= "\t-mm\tExport as Meal-Master-recipe\n";
+  $helptext .= "\t-text\tExport as plain and humam-readable text\n";
+  $helptext .= "\t\tThis is the default.\n";
+  $helptext .= "\t-latex\tExport as LaTeX-Source\n";
+  $helptext .= "\t-h\tPrint this help-text and exit\n";
+  $helptext .= "\t-f\tSpecify a filename for the output, otherwise\n";
+  $helptext .= "\t\tto STDOUT. On multiple matches append an 2-digit\n";
+  $helptext .= "\t\tcounter to filename\n";
+  $helptext .= "\t\"searchstring\"\tSearch for this string in the database.\n";
+
+  if ($argc == 1) {
+    /* No search-string, empty command-line arguments */
+
+    fputs ($stderr, $helptext);
+  } else {
+    
+    /* Default ist Text-Format */
+    $format = "text";
+
+    for ($i=1 ; $i < count($argv) ; $i++) {
+      /* parse the command-line */
+
+      switch ($argv[$i]) {
+        case '-mm':
+          $format = "mm";
+          break;
+        case '-text':
+          $format = "text";
+          break;
+        case '-latex': 
+          $format = "latex";
+          break;
+        case '-f':
+          $filename = $argv[++$i];
+          break;
+        case '-h':
+          fputs ($stderr, $helptext);
+          break;
+        case '-1':
+          $one_file = 1;
+          $break;
+        default:
+          $search = $argv[$i];
+      }
+    }
+    $name = "%" . $search . "%";
+
+    /* PHP wechselt nicht automatisch nach $PWD, also muessen wir es von
+     * Hand tun. 
+     */
+    if (isset($PWD) and is_dir($PWD)) {
+      chdir($PWD);
+    } else {
+      fputs($stderr, "Warning: Could not chdir() to \$PWD\n" .
+                     "         Your shell probably doesn't export that " .
+                              "environment.\n");
+      exit();
+    }
+
+    /* Suche: */
+
+    $result = get_mid_by_name($name);
+
+    /* Ausgabe: */
+
+    foreach($result as $menu) {
+
+      /* wohin schreiben? */
+      if (!isset($filename)) {
+        /* Schreibe nach STDOUT */
+        $fp = $stdout;
+        $one_file = 1;
+      } else {
+        if ($one_file == 1) {
+          $fp = fopen($filename, "a");
+        } else {
+          $filename_ = "./" . $filename . "." . sprintf("%02d", $counter++);
+          $fp = fopen($filename_, "w");
+        }
+      } 
+
+      /* Und jetzt der Output. */
+      switch ($format) {
+
+	case "mm":
+          fputs ($fp, mmexport(get_menu_by_mid($menu["id"])));
+	  break;
+
+	case "text":
+          fputs ($fp, format_recipe(get_menu_by_mid($menu["id"])));
+          fputs ($fp, "\n-----\n");
+	  break;
+
+	case "latex":
+          if ($one_file != 1) {
+            fputs ($fp, latex_header());
+            fputs ($fp, latex_export(get_menu_by_mid($menu["id"])));
+            fputs ($fp, latex_footer());
+          } else {
+            if ($header_lock != 1) {
+              fputs($fp, latex_header());
+              $header_lock = 1;
+            }
+            fputs ($fp, latex_export(get_menu_by_mid($menu["id"])));
+            fputs ($fp, "\n\n");
+            $write_latex_footer = 1;
+          }
+	  break; 
+
+        default:
+          break;
+      }
+
+      /* Schliesse File wieder, wenn es sich nicht um STDOUT handelt */
+      if ($fp != $stdout) fclose($fp);
+
+    }
+
+    if ($write_latex_footer == 1 and $one_file == 1 and isset($filename)) {
+      $fp = fopen($filename, "a");
+      fputs($fp, latex_footer());
+      fclose ($fp);
+    } else if ($write_latex_footer == 1 and $fp == $stdout) {
+      fputs($fp, latex_footer());
+    }
+  }
+
+  fclose ($stdout);
+  fclose ($stderr);
+
+?>
