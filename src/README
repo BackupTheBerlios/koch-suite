@@ -1,4 +1,4 @@
-### $Id: README,v 1.34 2001/06/23 00:42:29 michael Exp $
+### $Id: README,v 1.35 2001/06/25 23:32:49 michael Exp $
 
 Koch-Suite
 ==========
@@ -146,16 +146,37 @@ in Documentation/FAQ.txt nach, wenn dies nicht ganz zutrifft.
 
 Um die User, Passwort und Datenbank anzulegen:
 
-  -== FIXME ==-
+PostgreSQL:
+  Zum Erzeugen der PostgreSQL-Datenbank bietet sich an:
 
-Zum Import der Datenstruktur kann mit einem
+  Als PostgreSQL-Superuser (oder Benutzer mit CREATE DATABASE Rechten):
+  $ psql -c "CREATE DATABASE dbkoch" template1 bzw.
+  $ psql -U<username> -c "CREATE DATABASE dbkoch" template1
 
- $ mysql -uUSER -pPASSWORD -hHOST DBkoch < init_db.??sql 
+  Dann als normalsterblicher User (bzw. als der Benutzer, von dem spaeter
+  die Requests kommen):
+  $ psql [-U<username>] dbkoch <init_db.pgsql
 
-alle notwendigen Komandos ausführen lassen (wobei USER, PASSWORD und HOST mit
-den jew. Zugangsdaten zur Datenbank ersetzt werden müssen). Wie die
-Datenbank selbst angelegt wird, oder ein Datenbank-Benutzer, steht im
-MySQL-Manual unter http://www.mysql.com sehr gut beschrieben.
+MySQL:
+  Zum Anlegen der Datenbank und des Users:
+
+  Als MySQL-Superuser (root) eine MySQL-Shell aufrufen::
+  $ mysql -h DBSERVER -u root -p mysql
+
+  und folgende Kommandos ausfuehren lassen:
+  CREATE DATABASE DBkoch;
+  GRANT ALL PRIVILEGES ON DBkoch TO USER@HOST IDENTIFIED BY 'PASSWORD';
+  FLUSH PRIVILEGES;
+
+  Wobei DBSERVER durch den Namen des Datenbank-Servers, USER durch den
+  Namen des zu schaffenden Accounts (etwa 'kochsuite'), PASSWORD dessen
+  Passwort und HOST der Name des Rechners ist, auf dem die PHP-Skripte 
+  dann laufen werden.
+
+  $ mysql -h DBSERVER -u USER -pPASSWORD DBkoch < init_db.mysql 
+
+  alle notwendigen Komandos ausführen lassen (wobei USER, PASSWORD und 
+  DBSERVER mit den jew. Zugangsdaten zur Datenbank ersetzt werden müssen). 
 
 
 Updating:
