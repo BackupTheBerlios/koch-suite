@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* $Id: rezept.raw,v 1.4 2001/03/18 13:56:57 michael Exp $
+  /* $Id: rezept.raw,v 1.5 2001/05/10 23:56:56 michael Exp $
    * Export a recipe in different formats.
    */
 
@@ -11,12 +11,12 @@
 
   $ver = "0.2";
 
-  $helptext  = "rezept $ver\n" ;
+  $helptext  = "rezept $ver (Koch-Suite $kochsuite_ver)\n" ;
   $helptext .= "Invoke as:\n";
   $helptext .= "    rezept -h\n";
   $helptext .= "    rezept".
                " [ -mm | -text | -latex ] [-f filename [-1]]" .
-               " [ -c | -i ] \"searchstring\"\n";
+               " [ -c | -i ] \"search\"\n";
   $helptext .= "\t-mm\tExport as Meal-Master-recipe\n";
   $helptext .= "\t-text\tExport as plain and humam-readable text\n";
   $helptext .= "\t\tThis is the default.\n";
@@ -29,7 +29,7 @@
   $helptext .= "\t\tfile per match.\n";
   $helptext .= "\t-c\tSearch for category\n";
   $helptext .= "\t-i\tSearch for ingredient\n";
-  $helptext .= "\t\"searchstring\"\tSearch for this string in the database.\n";
+  $helptext .= "\t\"search\"\tSearch for this string in the database.\n";
   $helptext .= "\t\tBy default search in the menu-titles.\n";
 
   if ($argc == 1) {
