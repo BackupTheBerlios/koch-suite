@@ -1,5 +1,5 @@
 <?
-  if ($begriff == "") {
+  if (empty($begriff) and empty($all)) {
 ?>
     <h2>Suchen</h2>
     
@@ -13,6 +13,37 @@
     <br>
     <input type="submit" value="Suchen">
     </form>
+    <p>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=1"; ?>">Alle Rezepte anzeigen</a>
+      <br>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=a"; ?>">A</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=b"; ?>">B</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=c"; ?>">C</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=d"; ?>">D</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=e"; ?>">E</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=f"; ?>">F</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=g"; ?>">G</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=h"; ?>">H</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=i"; ?>">I</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=j"; ?>">J</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=k"; ?>">K</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=l"; ?>">L</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=m"; ?>">M</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=n"; ?>">N</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=o"; ?>">O</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=p"; ?>">P</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=q"; ?>">Q</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=r"; ?>">R</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=s"; ?>">S</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=t"; ?>">T</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=u"; ?>">U</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=v"; ?>">V</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=w"; ?>">W</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=x"; ?>">X</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=y"; ?>">Y</a>
+      <a href="<? echo "$PHP_SELF?suchen=1&all=z"; ?>">Z</a>
+    </p>
+
 <?
   } else {
     include "<%%PHP_LIBS%%>/functions.inc";
@@ -21,7 +52,14 @@
 
     <table border=0>
 <?
-    $r = get_mid_by_name("$begriff");
+    if ($begriff != "") {
+      $r = get_mid_by_name("%$begriff%");
+    } else {
+      if ($all == 1) {
+        $all = "";
+      }
+      $r = get_mid_by_name("$all%");
+    }
     $count = 0;
 
     foreach ($r as $foo) {

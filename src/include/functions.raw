@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.4 2000/11/13 14:03:48 michael Exp $
+   * $Id: functions.raw,v 1.5 2000/11/13 19:35:58 michael Exp $
    */
 
   include "<%%PHP_LIBS%%>/config.inc";
@@ -177,9 +177,8 @@
         $quant = round($quant,3);
         if ($quant == 0)
           $quant = '';
-        if (($unit = $j["unit"]) == '')
-          $unit = '&nbsp;';
-        $str .= "<tr><td width=\"10%\">" . $quant . "</td>" .
+        $unit = nice_unit($j["unit"]);
+        $str .= "<tr><td width=\"10%\" align=\"right\">" . $quant . "</td>" .
                     "<td width=\"10%\">" . $unit . "</td>" .
                     "<td>" . $j["ingred"] . "</td>" .
                 "</tr>\n";
@@ -195,6 +194,17 @@
     $str .= "</table>\n"; 
 
     return $str;
+  }
+
+
+  function nice_unit ($unit) {
+    /* Lookup a beautified name for a unit */
+    $req = "select * from EINHEITEN where ABBREV = '$unit'";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    $r = mysql_fetch_array($result);
+
+    return $r["TEXT"];
   }
 
 
@@ -374,7 +384,7 @@
     global $DB_NAME;
     $a = array();
 
-    $req = "select * from MENUE where TITEL like '%$name%' order by TITEL asc";
+    $req = "select * from MENUE where TITEL like '$name' order by TITEL asc";
     $result = mysql_db_query($DB_NAME, $req);
 
     while ($r = @mysql_fetch_array($result)) {
