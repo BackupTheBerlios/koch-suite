@@ -1,5 +1,5 @@
 -- 
--- $Id: init_db.pgsql,v 1.19 2002/08/31 07:16:18 bus Exp $
+-- $Id: init_db.pgsql,v 1.20 2002/09/26 08:56:42 bus Exp $
 -- init_db_postgreSQL.sql
 -- 2001-07-25 Michael Bussmann <bus@mb-net.net>
 --
@@ -9,7 +9,7 @@
 --
 CREATE TABLE ANWEISUNG (
   TEXT text,
-  MENUE_ID smallint DEFAULT '0' NOT NULL
+  MENUE_ID integer DEFAULT '0' NOT NULL
 );
 CREATE INDEX anweisung_mid ON anweisung (MENUE_ID);
 
@@ -17,11 +17,11 @@ CREATE INDEX anweisung_mid ON anweisung (MENUE_ID);
 -- Table structure for table 'EINHEITEN'
 --
 CREATE TABLE EINHEITEN (
-  ID smallint NOT NULL PRIMARY KEY,
+  ID integer NOT NULL PRIMARY KEY,
   ABBREV char(2),
   DESCR varchar(255),
   FAKTOR real,
-  FAKTOR_ID smallint,
+  FAKTOR_ID integer,
   RK_ABBREV varchar(11),
   MMUSE char(1)
 );
@@ -69,7 +69,7 @@ INSERT INTO EINHEITEN VALUES (34,'','',0.000,0,'','J');
 -- Table structure for table 'EINHEITEN_ALIAS'
 --
 CREATE TABLE EINHEITEN_ALIAS (
-  EID smallint DEFAULT '0' NOT NULL,
+  EID integer DEFAULT '0' NOT NULL,
   TEXT varchar(15) DEFAULT '' NOT NULL
 );
 CREATE INDEX einheiten_eid ON EINHEITEN_ALIAS (EID);
@@ -97,9 +97,9 @@ INSERT INTO EINHEITEN_ALIAS VALUES (29,'Deziliter');
 -- Table structure for table 'KAT'
 --
 CREATE TABLE KAT (
-  ID smallint NOT NULL,
-  KATEGORIE_ID smallint,
-  MENUE_ID smallint DEFAULT '0' NOT NULL
+  ID integer NOT NULL,
+  KATEGORIE_ID integer,
+  MENUE_ID integer DEFAULT '0' NOT NULL
 );
 CREATE INDEX kat_kid ON kat (KATEGORIE_ID);
 CREATE INDEX kat_mid ON kat (MENUE_ID);
@@ -108,7 +108,7 @@ CREATE INDEX kat_mid ON kat (MENUE_ID);
 -- Table structure for table 'KATEGORIE'
 --
 CREATE TABLE KATEGORIE (
-  ID smallint NOT NULL PRIMARY KEY,
+  ID integer NOT NULL PRIMARY KEY,
   TEXT varchar(255)
 );
 CREATE INDEX kategorie_text ON kategorie (TEXT);
@@ -117,7 +117,7 @@ CREATE INDEX kategorie_text ON kategorie (TEXT);
 -- Table structure for table 'MENUE'
 --
 CREATE TABLE MENUE (
-  ID smallint NOT NULL PRIMARY KEY,
+  ID integer NOT NULL PRIMARY KEY,
   PORTIONEN varchar(255),
   TITEL varchar(255) DEFAULT '' NOT NULL,
   HASH varchar(255)
@@ -128,8 +128,8 @@ CREATE INDEX menue_hash ON menue (HASH);
 -- Table structure for table 'REZEPT'
 --
 CREATE TABLE REZEPT (
-  ID smallint NOT NULL PRIMARY KEY,
-  MENUE_ID smallint DEFAULT '0' NOT NULL,
+  ID integer NOT NULL PRIMARY KEY,
+  MENUE_ID integer DEFAULT '0' NOT NULL,
   TITEL varchar(255)
 );
 CREATE INDEX rezept_mid ON rezept (MENUE_ID);
@@ -138,11 +138,11 @@ CREATE INDEX rezept_mid ON rezept (MENUE_ID);
 -- Table structure for table 'ZUTATEN'
 --
 CREATE TABLE ZUTATEN (
-  ID smallint NOT NULL PRIMARY KEY,
+  ID integer NOT NULL PRIMARY KEY,
   MENGE real,
   EINHEIT char(2),
   TEXT varchar(255),
-  REZEPT_ID smallint DEFAULT '0' NOT NULL
+  REZEPT_ID integer DEFAULT '0' NOT NULL
 );
 CREATE INDEX zutaten_rid ON zutaten (REZEPT_ID);
 
@@ -151,7 +151,7 @@ CREATE INDEX zutaten_rid ON zutaten (REZEPT_ID);
 --
 
 CREATE TABLE unit_langs (
-  id smallint default NULL,
+  id integer default NULL,
   lang varchar(5) default NULL,
   text varchar(30) default NULL
 );
@@ -285,8 +285,8 @@ INSERT INTO usertable VALUES ('admin', '500', '12wGaKkN1hGuw', '', 'Admin', 'y')
 -- Table structure for table 'menu_meta'
 --
 CREATE TABLE menu_meta (
-  id int NOT NULL default '0',
-  mid int NOT NULL default '0',
+  id integer NOT NULL default '0',
+  mid integer NOT NULL default '0',
   fieldname varchar(20) NOT NULL default '',
   fieldvalue varchar(255) default NULL
 );
