@@ -1,3 +1,16 @@
+2002-05-12  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/accountlocked.raw 1.1, src/include/auth.raw 1.12, src/include/de.inc 1.31, src/include/en.inc 1.35:
+  Inform user if his account has been disabled
+
+  * src/include/Makefile.raw 1.27, src/include/auth.raw 1.11, src/include/de.inc 1.30, src/include/en.inc 1.34, src/www/admin.raw 1.2:
+  Allow locking of user accounts
+
+  * src/init_db.mysql 1.9, src/init_db.pgsql 1.13:
+  Oops? forgot those
+
+  * src/include/koch-suite.raw 1.10: Byebye
+
 2002-05-11  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/commands/mmimport.raw 1.26:
