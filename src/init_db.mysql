@@ -1,6 +1,6 @@
 # MySQL dump 8.13
 #
-# $Id: init_db.mysql,v 1.9 2002/05/12 11:29:26 lestinsky Exp $
+# $Id: init_db.mysql,v 1.10 2002/05/20 16:26:49 lestinsky Exp $
 #
 # Host: localhost    Database: DBkoch
 #--------------------------------------------------------
@@ -246,5 +246,18 @@ CREATE TABLE usertable (
   email    varchar(255) default NULL,
   realname varchar(255) default NULL,
   PRIMARY KEY  (username)
+) TYPE=MyISAM;
+
+#
+# Table structure for table 'menu_meta'
+#
+
+CREATE TABLE menu_meta (
+  id int(11) NOT NULL default '0',
+  mid int(11) NOT NULL default '0',
+  fieldname varchar(20) NOT NULL default '',
+  fieldvalue varchar(255) default NULL,
+  PRIMARY KEY  (id),
+  KEY mid (mid)
 ) TYPE=MyISAM;
 
