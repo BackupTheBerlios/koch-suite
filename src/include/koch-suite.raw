@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: koch-suite.raw,v 1.20 2003/01/10 13:07:26 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.21 2003/01/20 20:25:12 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -13,9 +13,11 @@
   $PEAR = '<%%PEAR%%>';
 
   /* Global Ops */
-  $GLOBAL_OPS = false;		// Enable global operations on search result.
+  $EXPENSIVE_OPS = false;	// Enable expensive operations.
 				// WARNING, enabling this could generate heavy
 				// load for your webserver and database.
+
+  $ENABLE_PROFILING  = true;    // Enable profiling.
 
   /* Site informations:
    *  Name and EMail address of the responsible person who is running this
