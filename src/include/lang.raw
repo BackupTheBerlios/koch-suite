@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: lang.raw,v 1.10 2001/12/22 00:40:56 lestinsky Exp $
+   * $Id: lang.raw,v 1.11 2002/01/05 11:49:19 lestinsky Exp $
    * Guess prefered language for the web-interface.
    *
    * Copyright (c) 2001
@@ -90,6 +90,15 @@
 
   if ($tmp = getenv("HTTP_ACCEPT_LANGUAGE")) {
     $accept_langs = explode(",", $tmp);
+    reset($accept_langs);
+    while(list($key,$lang)=each($accept_langs)) {
+      if (eregi("([-a-z]+) *; *qs=([0-9.]*)",$lang,$regs)) {
+        $accepted_langs[$regs[1]]=$regs[2];
+      } else if (eregi("([-a-z]+)",$lang,$regs)) {
+        $accepted_langs[$regs[1]]="1.0";
+      }
+    }
+    arsort($accepted_langs,SORT_NUMERIC);
   }
   if (!isset($accept_langs) or count($accept_langs) == 0) {
     /* Seems we are running from the commandline. 
@@ -117,8 +126,7 @@
       /* we don't need to read it twice: */
       if ($l == DEFAULT_LANG) {
         break;
-      } else {
-        read_best_language($l);
+      } else if (read_best_language($l)) {
         break;
       }
       $i++;
