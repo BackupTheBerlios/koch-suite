@@ -1,3 +1,16 @@
+2002-08-30  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/init_db.mysql 1.12.2.1, src/include/es.inc 1.5.2.1:
+  New spanish version, submitted by Vicente Ruiz <vjrj@terra.es>; pulled in from current
+
+  * src/www/print.raw 1.22.2.1:
+  Fix, pulled in from current
+
+  * src/include/es.inc 1.6, src/init_db.mysql 1.13:
+  New spanish version, submitted by Vicente Ruiz <vjrj@terra.es>
+
+  * src/www/print.raw 1.24: Fix
+
 2002-08-24  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/functions.raw 1.81:
