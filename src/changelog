@@ -1,4 +1,7 @@
-### $Id: changelog,v 1.39 2001/06/27 13:22:16 michael Exp $
+### $Id: changelog,v 1.40 2001/07/02 23:28:37 michael Exp $
+
+2001-07-02: Michael Lestinsky <michael@lestinsky.de>
+        More Cleanup. 0.5-Release
 
 2001-06-27: Michael Lestinsky <michael@lestinsky.de>
 	Fix some things which were broken in 0.5-pre6
