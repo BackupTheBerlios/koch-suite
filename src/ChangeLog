@@ -1,3 +1,8 @@
+2001-10-02  Michael Bussmann  <bus@mb-net.net>
+
+  * src/Documentation/Programmers.txt 1.9, src/INSTALL 1.4:
+  Typo fix
+
 2001-10-02  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/INSTALL 1.3: Translate this into English
