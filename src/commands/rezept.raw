@@ -1,9 +1,10 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* $Id: rezept.raw,v 1.6 2001/05/30 19:49:48 michael Exp $
+  /* $Id: rezept.raw,v 1.7 2001/06/01 21:46:30 michael Exp $
    * Export a recipe in different formats.
    */
 
+  require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
 
   $stdout = fopen("php://stdout", "w");
