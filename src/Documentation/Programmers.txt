@@ -1,7 +1,17 @@
-### $Id: Programmers.txt,v 1.1 2000/11/12 01:12:02 michael Exp $
+### $Id: Programmers.txt,v 1.2 2000/12/15 00:42:12 michael Exp $
 
-Programmier-Dokumentation
-=========================
+Programmierer-Dokumentation
+===========================
+
+0. Inhalt
+---------
+
+  1. Datenstruktur
+  2. "config"
+     2.1. Ersetzungen
+
+1. Datenstruktur
+----------------
 
 Der zentrale Datentyp, der für die Übergabe von kompletten Rezepten
 verwendet wird, sieht folgendermaßen aus:
@@ -24,3 +34,24 @@ $rezept
 [*]:  der Titel des kompletten Rezeptes/Menues
 [**]: der Titel des jeweiligen Unterabschnitts des Rezepts, also etwa 
       "Für die Sauce" o.ae.
+
+2. "config"
+-----------
+
+In der Datei "config" werden Substitutionen definiert, die auf die Quellen
+angewendet werden. Dadurch werden z.B. die korrekten Pfade in den
+"compilierten" Dateien eingetragen.
+
+Das 'configure'-Skript erzeugt aus "config" ein "config.sed", dass direkt
+an sed verfüttert werden kann.
+
+2.1. Ersetzungen
+- - - - - - - - -
+
+Soll ein Wert in einer Quell-Datei ersetzt werden, dann wird dieser in der
+Form "<%%VARIABLE%%>" erwartet. Die "Kompilation" mit 'sed' ersetzt dies
+dann zu "WERT", wobei in "./config" dann definiert sein muss:
+
+  VARIABLE = WERT
+
+(c) 2000 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
