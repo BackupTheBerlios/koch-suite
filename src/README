@@ -1,4 +1,4 @@
-### $Id: README,v 1.57 2003/01/10 23:41:27 lestinsky Exp $
+### $Id: README,v 1.58 2003/02/07 16:06:00 bus Exp $
 
 Koch-Suite
 ==========
@@ -41,6 +41,7 @@ The Koch-Suite was tested on:
  - OpenBSD/i386
  - FreeBSD/i386
  - AIX4.3
+ - Solaris 2.x
 
 In any case you will need PHP4 with support for the used DBMS (please see
 Documentation/PHP.txt for details).

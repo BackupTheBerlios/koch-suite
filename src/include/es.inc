@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: es.inc,v 1.7 2002/11/27 18:34:42 lestinsky Exp $
+   * $Id: es.inc,v 1.8 2003/02/07 16:06:01 bus Exp $
    *
    * Define English text-constants.
    *
@@ -131,7 +131,7 @@ EOT;
   $Lang['Requirements']['Title']	= 'Requisitos';
   $Lang['Requirements']['Text'][0]	= 'Software requerido:';
 
-  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (probado con la versi&oacute;n 3.23) o <A HREF="http://www.postgresql.org/">PostgreSQL</A> (probado con la versi&oacute;n 7.0.3)';
+  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (probado con la versi&oacute;n 3.23) o <A HREF="http://www.postgresql.org/">PostgreSQL</A> (probado con la versi&oacute;n 7.2.1)';
   $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Versi&oacute;n 4.1 o mayor), con soporte para MySQL o PostgreSQL y un PEAR actual,';
   $Lang['Requirements']['Software'][2]	= 'un servidor Web soportado por PHP (p. ej. <a href="http://www.apache.org">Apache</a>)';
 
@@ -139,8 +139,9 @@ EOT;
 
   $Lang['Requirements']['OSes'][0]	= 'AIX 4.3';
   $Lang['Requirements']['OSes'][1]	= 'FreeBSD 4.*';
-  $Lang['Requirements']['OSes'][2]	= 'Linux (Debian 2.2)';
+  $Lang['Requirements']['OSes'][2]	= 'Linux (Debian 2.2, 3.0)';
   $Lang['Requirements']['OSes'][3]	= 'OpenBSD 3.1';
+  $Lang['Requirements']['OSes'][4]	= 'Solaris 2.[5-9]';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
       Necesitar&aacute; tener PHP compilado con soporte para MySQL y PostgreSQL
