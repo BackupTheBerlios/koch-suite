@@ -78,7 +78,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: search.raw,v 1.28 2002/09/15 14:28:06 lestinsky Exp $ -->
+  <!-- $Id: search.raw,v 1.29 2002/09/16 20:51:15 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
     <!--
@@ -106,7 +106,7 @@
       if (isset($_POST["where"]))      $where = $_POST["where"];
       if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
 
-      if (isset($_POST['tag_submit'])) {
+      if (isset($_POST['tag_submit']) and isset($_POST['tag'])) {
         /* Tag this recipes for further operations */
 
         foreach ($_POST['tag'] as $do_tag) {
@@ -120,7 +120,7 @@
               $tagged_recipes[] = $searchresult[$do_tag];
           }
         }
-      } else if (isset($_POST['untag_submit'])) {
+      } else if (isset($_POST['untag_submit']) and isset($_POST['tag'])) {
         foreach ($_POST['tag'] as $do_untag) {
           if (isset($tagged_recipes[$do_untag]))
             array_splice($tagged_recipes, $do_untag, 1);
@@ -131,23 +131,53 @@
         $tagged_recipes = KS_array_merge($searchresult, $tagged_recipes);
       }
 
-      if (isset($_GET['showtagged'])) {
+      if (isset($_GET['showresult'])) {
+        // Display the last searchresult again.
+
+        $_SESSION['operate_on'] = 'searchresult';
+        include "<%%WEB_PREFIX%%>/actions.inc";
+        ?>
+        <h2><? echo $Lang['Search']['Result']; ?>:</h2>
+
+        <?php
+        if (count($$_SESSION['operate_on'])) {
+          ?>
+          <form method="post" action="<?php echo $_SERVER['REQUEST_URI'];
+?>">
+          <table border=0>
+          <?php
+          print_count($$_SESSION['operate_on']);
+          print_titles($$_SESSION['operate_on']);
+          ?>
+          </table>
+          <input type="submit" class="button" name="tag_submit"
+                 value="<?php echo $Lang['Tag']['Do'] ?>">
+          <?php if ($GLOBAL_OPS) { ?>
+          <input type="submit" class="button" name="tag_all"
+                 value="<?php echo $Lang['Tag']['All'] ?>">
+          <?php } ?>
+          </form>
+          <?php
+        } else {
+          echo $Lang['Search']['NoResult']. "\n";
+        }
+
+
+      } else if (isset($_GET['showtagged'])) {
         // Display all the tagged recipes
 
-        $_SESSION['operate_on'] = "tagged_recipes";
+        $_SESSION['operate_on'] = 'tagged_recipes';
         include "<%%WEB_PREFIX%%>/actions.inc";
         ?>
         <h2><?php echo $Lang['Tag']['Show']['Title']; ?></h2>
-
         <?php
-        if (count($tagged_recipes)) {
+        if (count($$_SESSION['operate_on'])) {
           ?>
           <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
           <table border=0>
           <?php
-          $searchresult = $tagged_recipes;
-          print_count($tagged_recipes);
-          print_titles($tagged_recipes);
+          print_count($$_SESSION['operate_on']);
+          print_titles($$_SESSION['operate_on']);
           ?>
           </table>
           <input type="submit" class="button" name="untag_submit"

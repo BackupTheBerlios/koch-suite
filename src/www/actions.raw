@@ -15,7 +15,7 @@
 
       if (isset($mid))
         echo "[<a href=\"print.php?mid=$mid&scale=$scale\">" . $Lang['PrintVers'] . "</a>]\n";
-  
+
       if (isset($mid))
         echo "[<a href=\"mmprint.php?mid=$mid&scale=$scale\">Meal-Master-Format</a>]\n";
   
@@ -43,33 +43,50 @@
   </td>
 </tr>
 <?php 
-  if (isset($_SESSION[$_SESSION['operate_on']]) and isset($result_id)) {
-    if (($total = count($_SESSION["searchresult"])) > 1) { 
+  if (isset($_SESSION['operate_on']) and 
+      isset($_SESSION[$_SESSION['operate_on']]) and 
+      isset($result_id)) {
+    if (($total = count($_SESSION[$_SESSION['operate_on']])) > 1) { 
       $prev = $result_id - 1;
       $next = $result_id + 1;
 ?>
 <tr>
+  <td colspan="2">
+    <table border="0" width="100%">
+      <tr>
+        <td style="text-align:left;" width="33%">
+          <div class="small">
+          <?php
+            if ($prev >= 0)
+              echo "<a href=\"".$_SERVER["PHP_SELF"]."?result_id=".$prev."\">" .
+                   '<img src="pics/left.gif" border="0" width="16" height="16" alt="" align="middle">' .
+                   $Lang['Previous'] . "</a>\n";
+          ?>
+          </div>
+        </td>
+        <td style="text-align:center;" width="33%">
+          <div class="small">
+            <?php
+            if (isset($_SESSION['operate_on']) and
+                isset($_SESSION[$_SESSION['operate_on']]))
+              echo "<a href=\"search.php?showresult=1\">" . $Lang['LastResult'] . "</a>";
+            ?>
+          </div>
+        </td>
+        <td style="text-align:right;" width="33%">
+          <div class="small">
+          <?php
+            if ($next <= $total - 1)
+              echo "<a href=\"".$_SERVER["PHP_SELF"]."?result_id=".$next."\">" .
+                   $Lang['Next'] . 
+                   '<img src="pics/right.gif" border="0" width="16" height="16" alt="" align="middle">' .
+                   "</a>\n";
+          ?>
+          </div>
+        </td>
+      </tr>
+    </table>
   <td>
-    <div class="small">
-    <?php
-      if ($prev >= 0)
-        echo "<a href=\"".$_SERVER["PHP_SELF"]."?result_id=".$prev."\">" .
-             '<img src="pics/left.gif" border="0" width="16" height="16" alt="" align="middle">' .
-             $Lang['Previous'] . "</a>\n";
-    ?>
-    </div>
-  </td>
-  <td style="text-align:right;">
-    <div class="small">
-    <?php
-      if ($next <= $total - 1)
-        echo "<a href=\"".$_SERVER["PHP_SELF"]."?result_id=".$next."\">" .
-             $Lang['Next'] . 
-             '<img src="pics/right.gif" border="0" width="16" height="16" alt="" align="middle">' .
-             "</a>\n";
-    ?>
-    </div>
-  </td>
 </tr>
 <?php
     }

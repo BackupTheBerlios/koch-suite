@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.47 2002/09/15 14:29:13 lestinsky Exp $
+   * $Id: en.inc,v 1.48 2002/09/16 20:51:15 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -38,6 +38,7 @@
   $Lang['Edit']                 = "Edit";
   $Lang['Next']			= "Next";
   $Lang['Previous']		= "Previous";
+  $Lang['LastResult']		= 'Last result';
   $Lang['Apply']		= 'Apply';
   $Lang['Tag']['Do']		= 'Tag';
   $Lang['Tag']['All']		= 'Tag all';
