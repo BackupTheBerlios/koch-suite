@@ -1,3 +1,18 @@
+2001-10-03  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/functions.raw 1.66:
+  New algorithm to calculate the recipe's hash. Sorry, not backward
+  compatible.
+
+  * src/INSTALL 1.5:
+  Language corrections from Keith Otis <keith@kaboing.net>
+
+  * src/include/de.inc 1.19, src/include/en.inc 1.23:
+  Use Berlios-Adress.
+
+  * src/www/delete.raw 1.14, src/www/einfuegen.raw 1.30, src/www/help.raw 1.16, src/www/index.raw 1.20, src/www/infos.raw 1.33, src/www/rezept.raw 1.20, src/www/search.raw 1.11:
+  Unify HTML
+
 2001-10-02  Michael Bussmann  <bus@mb-net.net>
 
   * src/Documentation/Programmers.txt 1.9, src/INSTALL 1.4:
