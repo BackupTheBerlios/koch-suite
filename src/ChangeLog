@@ -1,3 +1,44 @@
+2001-10-13  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/genconfig.awk 1.3:
+  works with mawk, but neither with gawk nor nawk. :-\
+
+  * src/configure 1.16: +nawk
+
+  * src/include/auth.raw 1.6: Comments.
+
+  * src/Makefile 1.21: do not remove ChangeLog.
+
+  * src/genconfig.awk 1.2: Skip comments.
+
+  * src/www/Makefile.raw 1.24: +logout.php
+
+  * src/include/koch-suite.raw 1.3:
+  rename the session-cookie to KS_SESS
+
+  * src/www/logout.raw 1.1:
+  Enable Logout, destroy session.
+
+  * src/www/menue.raw 1.15:
+  Show state: Logged in or not? Enable Logout.
+
+  * src/configure 1.15:
+  Enhanced new version: parse 'config'
+
+  * src/genconfig.awk 1.1:
+  This script expands variables in config. Now you can use:
+  ETC_PREFIX = ${PREFIX}/etc
+
+  * src/Documentation/Programmers.txt 1.11: +Auth
+
+  * src/include/de.inc 1.20, src/include/en.inc 1.24:
+  Logout
+
+  * src/www/styles.css 1.8: Better
+
+  * src/www/pics/Makefile.raw 1.6, src/www/pics/info_dot.gif 1.1:
+  "Info"-button
+
 2001-10-08  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/README 1.41: Translate this into English
