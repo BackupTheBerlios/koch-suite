@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.93 2004/02/06 14:42:32 lestinsky Exp $
+   * $Id: functions.raw,v 1.94 2004/03/31 19:28:53 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -433,6 +433,11 @@
     if (isset($from[$name])) {
       $val    = $from[$name];
       $oldval = $val;
+
+      // type mappings for php < 4.2
+      if (strcmp ($type, "int") == 0) {$type = "integer";}
+      if (strcmp ($type, "float") == 0) {$type = "double";}
+
       if (!settype($val, $type))
         die ("Failed to set the variable type for $name");
 
@@ -751,7 +756,7 @@
     $req = "select fieldname, fieldvalue from menu_meta where mid = '$mid'";
     if ($result = DB_query($req)) {
       while ($r = $result->fetchRow()) {
-        $meta[$r['fieldname']] = $r['fieldvalue'];
+        $meta[$r['fieldname']] = stripslashes($r['fieldvalue']);
       }
       $result->free();
       return $meta;
