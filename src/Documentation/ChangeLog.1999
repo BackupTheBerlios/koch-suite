@@ -1,0 +1,137 @@
+2000-12-27  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/changelog 1.9: tkrezept
+
+  * src/README 1.12: todo
+
+2000-12-20  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/configure 1.3:
+  Oops missed that one. Generate Makefile in ./man
+
+  * src/config 1.7, src/Makefile 1.8:
+  Generate and install Manpages.
+
+2000-12-16  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/changelog 1.8:
+  Verändertes Datenbankformat. Rückwärstkompatibel. Entferne "\n", ersetze
+  Leerzeilen durch Platzhalter.
+
+2000-12-15  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/changelog 1.7: Release 0.2
+
+  * src/LICENCE 1.3, src/LICENSE 1.1:
+  LICENCE -> LICENSE
+
+2000-12-13  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/changelog 1.6: Update
+
+2000-12-09  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/config 1.6: Add some comments
+
+2000-12-08  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/Makefile 1.7: ??
+
+  * src/changelog 1.5, src/config 1.5, src/Makefile 1.6:
+  Aufteilen der Installtargets in install-command, install-includes und
+  install-www. 'make install' führt alle 3 separaten Targets aus.
+
+2000-12-06  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/Makefile 1.5:
+  Teile das install-Target auf in install-command, install-includes und
+  install-www. So muss nicht auf jedem Rechner der ganze Satz
+  installiert werden.
+
+2000-11-29  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/README 1.11: Sektion Updating
+
+  * src/changelog 1.4: Foo
+
+  * src/README 1.10: Ergänzung der Bug-Liste.
+
+2000-11-21  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/changelog 1.3, src/README 1.9:
+  Added several Comments, missing cvs-keywords.
+  Sync'd Documentation
+
+2000-11-13  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/README 1.8: Ausgabe-funktionen erweitert.
+
+2000-11-12  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/README 1.7: bla
+
+  * src/configure 1.2, src/Makefile 1.4:
+  Next step towards a more complete version
+
+2000-11-04  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/README 1.6:
+  Instructions for building PHP as needed for this Project added.
+
+  * src/config 1.4:
+  Finally the installed mmimport does work also.
+
+  * src/config 1.3:
+  Some Bugs in the "make install" fixed.
+
+  * src/changelog 1.2, src/config 1.2, src/Makefile 1.3:
+  Added Install-Target
+  Minor changes for portability. Tested on OpenBSD and Linux.
+
+  * src/Makefile 1.2: foo
+
+  * src/changelog 1.1, src/config 1.1, src/configure 1.1, src/Makefile 1.1, src/mmimport 1.3, src/README 1.5:
+  Created a Makefile for convenience
+
+  Added a file named "config". configure parses it and creates Makefiles
+  and sed-scripts out of it's content.
+
+  New Installation-Method:
+
+   - vi config
+
+   - make
+
+   - make install
+       as "root"
+
+  Directory-Cleanup
+
+2000-11-01  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/README 1.4: bla
+
+  * src/init_db.sql 1.2:
+  Created a "Documentation"-directory for the documentation of this
+  suite and some notes about the database-layout.
+
+  * src/mmimport 1.2:
+  fixed a problem with importing Recipes, that have no empty line
+  between a ingredient-line and a header for additional ingredients.
+
+2000-10-26  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/README 1.3:
+  SQL-Infos zu den Installationsanweisungen.
+
+  * src/LICENCE 1.2: foo
+
+  * src/README 1.2:
+  Update der Installations-Anweisungen
+
+  * src/init_db.sql 1.1.1.1, src/LICENCE 1.1.1.1, src/mmimport 1.1.1.1, src/README 1.1.1.1:
+  Alpha-Version der Koch-Suite, einem einfachen Rezeptverwaltungs-System.
+
+  * src/init_db.sql 1.1, src/LICENCE 1.1, src/mmimport 1.1, src/README 1.1:
+  New file.
+
