@@ -15,12 +15,21 @@
     </form>
 <?
   } else {
+    include "<%%PHP_LIBS%%>/functions.inc";
 ?>
     <h2>Suchergebnis</h2>
 
-    <p>
-    foo
-    </p>
+    <table border=0>
+<?
+    $r = get_mid_by_name("$begriff");
+    $count = 0;
+
+    foreach ($r as $foo) {
+      $count++;
+      echo "<tr><td>$count</td><td><a href=\"rezept.php?mid=" . $foo["id"] . "\">" . $foo["title"] . "</a></td></tr>\n";
+    }
+?>
+    </table>
 <?
   }
 ?>

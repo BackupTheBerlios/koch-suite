@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
+  <title>Kuch-Suite</title>
+</head>
+
+<body>
+<pre>
+<?
+  include "<%%PHP_LIBS%%>/functions.inc";
+
+  echo format_recipe(get_menu_by_mid($mid));
+?>
+</pre>
+</body>
+</html>
+

@@ -2,7 +2,7 @@
 <?
 
   /*
-   * $Id: mmimport.raw,v 1.3 2000/11/04 01:11:40 michael Exp $
+   * $Id: mmimport.raw,v 1.4 2000/11/13 14:03:48 michael Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Import mealmaster-formated recipes to the "Koch-Suite".
    *
@@ -12,6 +12,11 @@
 
   require "<%%PHP_LIBS%%>/functions.inc";
 
+  /* Open filedescriptors for the STD-channels */
+  $stdin  = fopen("php://stdin", "r");
+  $stdout = fopen("php://stdout", "w");
+  $stderr = fopen("php://stderr", "w");
+
   /* Create a temporary file, write $stdin to it and close the
    * temporary file. 
    * Why this way instead of using /dev/stdin directly:
@@ -20,7 +25,6 @@
 
   $temp = tempnam("/tmp", "mmimport");
 
-  echo "$temp\n";
   $temp_fd = fopen($temp, "w");
 
   while ($line = fgets($stdin, 1024)) {

@@ -1,4 +1,4 @@
-### $Id: README,v 1.7 2000/11/12 01:17:50 michael Exp $
+### $Id: README,v 1.8 2000/11/13 14:03:47 michael Exp $
 
 Koch-Suite
 ==========
@@ -29,6 +29,17 @@ Auf alle Fälle ist auch PHP4 mit MySQL-Support notwendig. Diese Skripten
 sind unter PHP-4.0.3.pl1 geschrieben und getestet worden. PHP4 muss als 
 Stand-Alone-Interpreter vorhanden sein, als Apache-Modul funktionieren
 die Konsolen-Tools nicht.
+
+
+Status:
+-------
+
+Momentan ist das Projekt noch nicht allzuweit. Die meiste Arbeit findet an
+den zentralen Funktionen statt, damit die Anwendungen später nur noch eine
+triviale Abfolge von Funktionsaufrufen sein können.
+
+Bisher existiert nur ein Kommando für den Datenbank-Import. An allem
+anderen wird derzeit noch kräfitg gearbeitet.
 
 
 PHP-4 Installation:

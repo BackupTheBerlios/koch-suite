@@ -20,25 +20,22 @@
   <td>
     <!-- Rechts: Ausgabe -->
     <?
-      if ($suchen == 1) {
-        /* Suchfunktion */
-        include "./such.inc";
-      } else {
-        /* User hat garnichts gewaehlt -> Hauptmenue */
-    ?>
-    <h2>Hauptmen&uuml;</h2>
-    <p>
-      Bitte w&auml;hlen sie im Hauptmen&uuml;.
-    </p>
-    <?
-      }
+      include "<%%PHP_LIBS%%>/functions.inc";
+
+      echo format_recipe_html(get_menu_by_mid($mid));
     ?>
 </tr>
 </table>
 
+<?
+      echo "<a href=\"print.php?mid=$mid\">Druckversion</a>\n";
+?>
+
 <hr noshade>
 &copy; Michael Lestinsky 
-&lt;<a href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.de</a>&gt; 
+&lt;<a
+href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.
+de</a>&gt; 
 November 2000.
 
 </body>

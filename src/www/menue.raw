@@ -5,7 +5,7 @@
       <table border="0" cellspacing="0" cellpadding="3">
         <tr>
           <td style="background-color:#f0f0f0">
-            <img src="pics/white.gif" align="top" alt=""><a href="<? echo $PHP_SELF . "?suchen=1" ?>">Suchen</a><br>
+            <img src="pics/white.gif" align="top" alt=""><a href="index.php?suchen=1">Suchen</a><br>
             <img src="pics/white.gif" align="top" alt=""><a href="">Einf&uuml;gen</a></br>
                 <img src="pics/white.gif" align="top" alt=""><a href="">Infos</a></br>
           </td>

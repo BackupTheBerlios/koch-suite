@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.3 2000/11/12 01:13:39 michael Exp $
+   * $Id: functions.raw,v 1.4 2000/11/13 14:03:48 michael Exp $
    */
 
   include "<%%PHP_LIBS%%>/config.inc";
@@ -60,6 +60,8 @@
                    $seen_yield == 1 and
                    $seen_ingr == 0 ) {
           /* lets look for the ingredients */ 
+          $len = strlen($line);
+          fseek($fd, -$len, SEEK_CUR);
           $j = array("title" => "Zutaten:", "ingredients" => getingr($fd));
           array_push ($zutaten, $j);
           $seen_ingr = 1;
@@ -83,7 +85,7 @@
 
   function parse_ingredient($line) {
     /* parse each line */
-    if (ereg("([ 0-9\.\/]{7}) (..) ([a-zA-Züöä0-9 \/\(\)-;:]*)", $line, $foo)) {
+    if (ereg("([ 0-9\.\/]{7}) (..) (.*)", $line, $foo)) {
       return array("quant"  => trim($foo[1]), 
                    "unit"   => trim($foo[2]), 
                    "ingred" => trim($foo[3]));
@@ -116,7 +118,7 @@
 
 
   function format_recipe($rezept) {
-    /* return a String, which contains the formatted recipe */
+    /* return a String, which contains the plain-text-formatted recipe */
 
     $str  = "Titel: " . $rezept["title"] . "\n".
             "Kategorien:";
@@ -146,6 +148,53 @@
     $str .= $rezept["anleitung"]; 
 
     return $str . "\n";
+  }
+
+
+  function format_recipe_html ($rezept) {
+    /* return a string, which contains the html-formatted recipe */
+   
+    $str = "<h2>" . $rezept["title"] . "</h2>\n";
+    $str .= "<table border=\"0\">\n";
+
+    $str .= "<tr><td><b>Kategorie</b>:</td><td width=\"90%\">";
+    foreach($rezept["category"] as $cat) {
+      $str .= "$cat ";
+    }
+    $str .= "</td></tr>\n"; 
+
+    $str .= "<tr><td><b>Portionen</b>:</td><td>" . $rezept["yield"] . "</td></tr>\n";
+
+    $str .= "<tr><td colspan=2>\n";
+
+    $str .= "<table border=\"0\" width=\"100%\">\n";
+    foreach ($rezept["zutaten"] as $z) {
+      $str .= "<tr><td colspan=3><b>" . $z["title"] . "</b></td></tr>\n";
+
+      foreach ($z["ingredients"] as $j) {
+
+        $quant = $j["quant"];
+        $quant = round($quant,3);
+        if ($quant == 0)
+          $quant = '';
+        if (($unit = $j["unit"]) == '')
+          $unit = '&nbsp;';
+        $str .= "<tr><td width=\"10%\">" . $quant . "</td>" .
+                    "<td width=\"10%\">" . $unit . "</td>" .
+                    "<td>" . $j["ingred"] . "</td>" .
+                "</tr>\n";
+      }
+
+    }
+    $str .= "</table>\n";
+    $str .= "</td></tr>\n";
+  
+    $str .= "<tr><td colspan=2 style=\"font-family:Helvetica\">";
+    $str .= preg_replace("/(\r)?\n(\r)?\n?/", "\n<br>", $rezept["anleitung"]);
+    $str .= "</td></tr>\n"; 
+    $str .= "</table>\n"; 
+
+    return $str;
   }
 
 
@@ -265,11 +314,11 @@
     /* */
     $a = array();
 
-    $req = "select * from REZEPT where MENUE_ID = '$mid'";
+    $req = "select * from REZEPT where MENUE_ID = '$mid' order by ID asc";
     $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
 
     while ($r = mysql_fetch_array($result)) {
-      $a = array_push($a, array("title" => $r["TITEL"],
+      array_push($a, array("title" => $r["TITEL"],
                                 "ingredients" => get_ingr_by_rid($r["ID"])));
     }
     return $a;
@@ -280,13 +329,13 @@
     /* return an array with all the ingredients, belonging to an "Rezept" */
     $a = array();
 
-    $req = "select * from ZUTATEN where REZEPT_ID = '$rid'";
+    $req = "select * from ZUTATEN where REZEPT_ID = '$rid' order by ID asc";
     $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
 
     while($r = mysql_fetch_array($result)) {
-      $a = array_push("quant" => $r["MENGE"],
-                      "unit"  => $r["EINHEIT"],
-                      "ingred" => $r["TEXT"]);
+      array_push($a, array("quant" => $r["MENGE"],
+                                "unit"  => $r["EINHEIT"],
+                                "ingred" => $r["TEXT"]));
     }
     return $a;
   }
@@ -304,7 +353,7 @@
 
       $f = mysql_fetch_array($res_1);
 
-      $a = array_push($a, $f["TEXT"]);
+      array_push($a, $f["TEXT"]);
     }
     return $a;
   }
@@ -317,5 +366,21 @@
     $f = mysql_fetch_array($result);
 
     return $f["TEXT"];
+  }
+
+
+  function get_mid_by_name($name) {
+    /* Search the database for $name in the menu-title */
+    global $DB_NAME;
+    $a = array();
+
+    $req = "select * from MENUE where TITEL like '%$name%' order by TITEL asc";
+    $result = mysql_db_query($DB_NAME, $req);
+
+    while ($r = @mysql_fetch_array($result)) {
+      array_push($a, array("id" => $r["ID"], "title" => $r["TITEL"]));
+    }
+
+    return $a;
   }
 ?>

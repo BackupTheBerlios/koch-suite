@@ -2,7 +2,7 @@
 
   /* Cetral configuration-file for the koch-suite
    * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
-   * $Id: config.raw,v 1.1 2000/11/04 00:07:10 michael Exp $
+   * $Id: config.raw,v 1.2 2000/11/13 14:03:48 michael Exp $
    */
 
   $DB_SERVER   = "<%%DB_SERVER%%>";
@@ -12,10 +12,5 @@
 
   /* Connect to the Database */
   mysql_pconnect($DB_SERVER, $DB_USER, $DB_PASSWORD);
-
-  /* Open filedescriptors for the STD-channels */
-  $stdin  = fopen("php://stdin", "r");
-  $stdout = fopen("php://stdout", "w");
-  $stderr = fopen("php://stderr", "w");
 
 ?>
