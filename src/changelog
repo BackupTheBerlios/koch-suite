@@ -1,4 +1,11 @@
-### $Id: changelog,v 1.32 2001/05/16 00:23:04 michael Exp $
+### $Id: changelog,v 1.33 2001/05/22 00:17:21 michael Exp $
+
+2001-05-22: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Verbessertes M17N.
+
+2001-05-16: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Sortiere die Suchergebnisse bei Suche in Kategorie oder Zutaten in
+	alphabetischer Reihenfolge.
 
 2001-05-15: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
         Suche nach Kategorie repariert.
