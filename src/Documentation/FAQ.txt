@@ -1,19 +1,21 @@
-### $Id: FAQ.txt,v 1.4 2001/10/22 12:25:56 lestinsky Exp $
+### $Id: FAQ.txt,v 1.5 2002/04/08 15:12:14 lestinsky Exp $
 
 FAQ - Frequently Asked Questions
 ================================
 
 Questions:
-----------
+~~~~~~~~~~
 
 1. How can I install Koch-Suite having only FTP and HTTP access
    to my webspace?
 
 2. I get an error message about 'DB.php' not being found.
 
+3. The Koch-Suite is quite good, but I'm missing $FEATURE.
+
 
 Answers:
---------
+~~~~~~~~
 
 1. How can I install Koch-Suite having only FTP and HTTP access
    to my webspace?
@@ -47,10 +49,29 @@ please send feedback to me.
 
 2. I get an error message about 'DB.php' not being found.
 
-'DB.php' is part of PHP's PEAR-modules. Normally, these are
-installed. Search for DB.php using 'find' or 'locate' and adjust the
-variable `PEAR' in ../config to the path of this file (or if you have 
-the Koch-Suite already installed, adjust it in `koch-suite.inc').
+'DB.php' is part of PHP's PEAR-modules. Normally, these should be
+installed (If they aren't follow the instructions in PHP.txt). Search 
+for DB.php using 'find' or 'locate' and adjust the variable `PEAR' 
+in ../config to the path of this file (or if you have the Koch-Suite 
+already installed, adjust it in `koch-suite.inc').
 
 
-(c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+3. The Koch-Suite is quite good, but I'm missing $FEATURE.
+
+There are several ways:
+
+  i)   implement it yourself and send us the patch,
+  ii)  send us a detailed description, what you are missing, and ask
+       us to implement it.
+  iii) use another software which implenets $FEATURE.
+
+There are also some things which probably will never be done, because we
+lack time, don't see the use of $FEATURE or would be to hard to do the 
+right way. Some of them are:
+
+  i)   shopping lists
+
+Don't ask for these.
+
+
+(c) 2001 Michael Lestinsky <michael@lestinsky.de>
