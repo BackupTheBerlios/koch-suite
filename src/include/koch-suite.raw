@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: koch-suite.raw,v 1.5 2001/10/31 15:47:09 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.6 2001/12/31 11:54:16 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
@@ -32,10 +32,11 @@
 
   /* Paths: */
 
-  $LATEX   = "<%%latex%%>";
-  $DVIPS   = "<%%dvips%%>";
-  $GS      = "<%%gs%%>";
-  $TMPDIR  = "/tmp";
+  $PDFLATEX = "<%%pdflatex%%>";
+  $LATEX    = "<%%latex%%>";
+  $DVIPS    = "<%%dvips%%>";
+  $GS       = "<%%gs%%>";
+  $TMPDIR   = "/tmp";
 
 
   /* Authentication: */
