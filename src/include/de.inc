@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: de.inc,v 1.4 2001/05/30 19:52:43 michael Exp $
+   * $Id: de.inc,v 1.5 2001/06/01 22:33:15 michael Exp $
    *
    * Define German text-constants.
    *
@@ -89,11 +89,13 @@ EOT;
       Navigator -> Languages). Wenn die gew&uuml;nschte Sprache existiert,
       werden die Seiten in dieser Sprache ausgegeben. Andernfalls wird auf
       die Standard-Sprache (Deutsch "de") zur&uuml;ckgegriffen.
+      Nat&uuml;rlich werden Rezepte selbst nicht &uuml;bersetzt, sondern
+      nur die Interfacesprache angepasst.
 EOT;
 
   $Lang['License']['Title']	= "Lizenz";
   $Lang['License']['Pre'][0]	= <<<EOT
-      Das gesamte Paket der Koch-Suite steht unter einer BSD-artigen
+      Das gesamte Paket der Koch-Suite steht unter folgender BSD-artigen
       Lizenz.
 EOT;
 
@@ -174,8 +176,9 @@ EOT;
   $Lang['Helptext']['Feedback']['Text'][0]	= <<<EOT
       Für die User und Entwickler existiert eine Mailingliste,
       <i>koch-suite@zaphod.rhein-neckar.de</i>. Diese Mailingliste
-      ist &ouml;ffentlich. Es darf aber nur an diese Liste schreiben, wer
-      sie auch aboniert (&quot;subscribe&quot;) hat.
+      ist &ouml;ffentlich, es darf aber nur an diese Liste schreiben, wer
+      sie auch aboniert (&quot;subscribe&quot;) hat (notwendig, um Spam zu
+      verhindern).
 EOT;
   $Lang['Helptext']['Feedback']['Text'][1]      = <<<EOT
       Um sich auf der Mailingliste zu subscriben schickt man eine EMail an
