@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.59 2001/08/11 07:28:45 lestinsky Exp $
+   * $Id: functions.raw,v 1.60 2001/08/12 21:48:15 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -54,7 +54,7 @@
    * @return int   $result See strcmp().
    */
   function cmp_menu ($a, $b) {
-    return strcmp($a["title"], $b["title"]);
+    return strcasecmp($a["title"], $b["title"]);
   }
 
 
