@@ -1,11 +1,11 @@
 <?php
   /*
-   * $Id: es.inc,v 1.11 2004/12/17 19:50:53 lestinsky Exp $
+   * $Id: es.inc,v 1.12 2005/01/02 02:43:31 lestinsky Exp $
    *
    * Define Spanish text-constants.
    *
    * This file is subject to the license as included in ../LICENSE
-   * (c) 2002 Michael Lestinsky
+   * (c) 2005 Michael Lestinsky
    */
 
   /* Menu */

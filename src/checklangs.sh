@@ -1,6 +1,6 @@
 #!/bin/sh
 
-LANGS="de en es"
+LANGS="de en es fr"
 rest=${LANGS}
 
 for lang in $LANGS ; do

@@ -6,7 +6,7 @@ PHP_FILES_UNCONF=	functions.inc lang.inc output.inc \
 			debug.inc defines.inc file.inc nocache.inc \
 			auth.inc access_denied.inc loginform.inc pwcrypt.inc \
 			accountlocked.inc setup.inc parser.inc profiling.inc
-ADDITIONAL=		de.inc en.inc es.inc
+ADDITIONAL=		de.inc en.inc es.inc fr.inc
 SUBDIRS=		
 
 CONF_FILE=		../config.sed

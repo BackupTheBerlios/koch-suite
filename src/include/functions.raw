@@ -1,5 +1,5 @@
 <?php
-  /* Copyright (c) 2003
+  /* Copyright (c) 2005
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.95 2004/12/08 21:37:09 lestinsky Exp $
+   * $Id: functions.raw,v 1.96 2005/01/02 02:43:31 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>

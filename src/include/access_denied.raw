@@ -1,5 +1,5 @@
 <?php
-  /* $Id: access_denied.raw,v 1.1 2002/04/14 18:25:13 lestinsky Exp $ */
+  /* $Id: access_denied.raw,v 1.2 2005/01/02 02:43:31 lestinsky Exp $ */
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
     "http://www.w3.org/TR/REC-html40/loose.dtd">
@@ -11,7 +11,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite: Permission denied</title>
-  <!-- $Id: access_denied.raw,v 1.1 2002/04/14 18:25:13 lestinsky Exp $ -->
+  <!-- $Id: access_denied.raw,v 1.2 2005/01/02 02:43:31 lestinsky Exp $ -->
 </head>
 <body>
 <a name="top"></a>
@@ -20,7 +20,7 @@
 <?php echo $Lang['Auth']['AccessDenied'] ?>
 
 <hr noshade>
-&copy; 2002 Michael Lestinsky
+&copy; 2005 Michael Lestinsky
 &lt;<a href="mailto:michael@lestinsky.de">michael@lestinsky.de</a>&gt;.
 </body>
 </html>

@@ -1,9 +1,9 @@
 <?php
   /*
-   * $Id: setup.raw,v 1.8 2003/01/23 15:48:39 lestinsky Exp $
+   * $Id: setup.raw,v 1.9 2005/01/02 02:43:31 lestinsky Exp $
    * Setup the Koch-Suite
    *
-   * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+   * (c) 2005 Michael Lestinsky <michael@lestinsky.de>
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
