@@ -1,3 +1,15 @@
+2005-01-12  Michael Lestinsky  <michael@lestinsky.de>
+
+  * Documentation/FAQ.txt 1.12:
+  Link to the mailinglist article by Gerhard Welte describing
+  installation of Koch-Suite in Cygwin on Windows(tm)
+
+  Thanks for that contribution
+
+  * commands/mmimport.raw 1.34: Fix to importing recipes by force.
+
+  Submitted by: Kuschelbaer40 <kuschelbaer40@gmx.de>
+
 2005-01-02  Michael Lestinsky  <michael@lestinsky.de>
 
   * man/man1/rezept.1.raw 1.12, www/admin.raw 1.15, www/delete.raw 1.26, www/edit_alias.raw 1.20, www/edit_cat.raw 1.5, www/einfuegen.raw 1.53, www/footer.raw 1.7, www/help.raw 1.23, www/index.raw 1.32, www/infos.raw 1.41, www/kategorien.raw 1.27, www/login.raw 1.8, www/logout.raw 1.11, www/mmprint.raw 1.28, www/pastebox.raw 1.10, www/print.raw 1.35, www/rezept.raw 1.39, www/search.raw 1.41, www/settings.raw 1.12, www/theme_default.raw 1.3, www/theme_summer.raw 1.2, www/theme_winter.raw 1.3, www/units.raw 1.19, include/access_denied.raw 1.2, include/debug.raw 1.12, include/es.inc 1.12, include/functions.raw 1.96, include/koch-suite.raw 1.26, include/lang.raw 1.21, include/output.raw 1.57, include/parser.raw 1.9, include/profiling.raw 1.3, include/pwcrypt.raw 1.5, include/setup.raw 1.9, Documentation/FAQ.txt 1.11, Documentation/Programmers.txt 1.15, commands/init_db.raw 1.11, commands/init_db2.raw 1.3, commands/rezept.raw 1.26, include/Makefile.raw 1.32, install-sh 1.4, INSTALL 1.18, LICENSE 1.5, README 1.62, checklangs.sh 1.2, configure 1.27:
