@@ -1,3 +1,8 @@
+2001-10-06  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/Documentation/Programmers.txt 1.10:
+  Oops? Missed this one.
+
 2001-10-03  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/functions.raw 1.66:
