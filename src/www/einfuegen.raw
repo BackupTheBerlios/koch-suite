@@ -80,7 +80,7 @@
     $str .= "<!-- Bar -->\n";
 
     // Anweisung:
-    $anleitung = htmlentities(stripslashes($rezept["anleitung"]));
+    $anleitung = htmlentities($rezept["anleitung"]);
     $anleitung = preg_replace("/\s*(&lt;|<)p(>|&gt;)\s*/", "\n\n", $anleitung);
     $anleitung = preg_replace("/\s*(&lt;|<)br(>|&gt;)\s*/", "\n", $anleitung);
 
@@ -115,6 +115,13 @@
   $zutat = array();
   $y = 0;
 
+  // Catch Configuration-settings:
+  if (get_cfg_var(magic_quotes_gpc) == 1) {
+    $titel = stripslashes($titel);
+    $portionen = stripslashes($portionen);
+    $anweisung = stripslashes($anweisung);
+  }
+
   foreach ($zutaten as $z) {
     /* $zutaten ist ein Array, dass aus einzelnen Zutatenlisten
      * besteht.
@@ -125,7 +132,9 @@
     foreach (split("[\r]?\n", trim($z)) as $line) {
       // Jede Zutatenliste wird in ihre einzelnen Zeilen aufgespalten
 
-      $line = stripslashes($line);
+      if (get_cfg_var(magic_quotes_gpc) == 1) {
+        $line = stripslashes($line);
+      }
       if ($line != '') { 
         // Nur nicht-leere Zeilen beachten
 
@@ -157,12 +166,13 @@
     $y++;
   }
 
+  // Formatiere Zeilenbrueche in das System wie wir es brauchen um.
   $anweisung = preg_replace("/((\r)?\n\s*){2,}/m", " <p> ", $anweisung);
   $anweisung = preg_replace("/(\r)?\n:/m", " <br> :", $anweisung);
   $anweisung = preg_replace("/(\r)?\n/m", " ", $anweisung);
 
-  $r = array ("title" => trim(stripslashes($titel)), 
-              "yield" => trim(stripslashes($portionen)),
+  $r = array ("title" => trim($titel), 
+              "yield" => trim($portionen),
               "category" => split(',[ ]*', $kategorie),
               "zutaten" => $zutat,
               "anleitung" => $anweisung);
@@ -195,7 +205,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.8 2001/02/16 09:48:24 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.9 2001/02/21 11:36:11 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
