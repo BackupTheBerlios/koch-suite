@@ -1,3 +1,10 @@
+2001-11-19  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/einfuegen.raw 1.32: Be more tolerant.
+
+  * src/www/edit_alias.raw 1.9:
+  Don't use uninitialized variables.
+
 2001-10-31  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/kategorien.raw 1.13.2.1:
