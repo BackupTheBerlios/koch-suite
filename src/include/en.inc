@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.28 2001/12/31 15:56:36 lestinsky Exp $
+   * $Id: en.inc,v 1.29 2002/01/01 20:43:40 vondo Exp $
    *
    * Define English text-constants.
    *
@@ -24,7 +24,7 @@
   $Lang['Alias']		= "Alias";
 
   $Lang['FormApply']		= "Apply";
-  $Lang['FormMoreIngr']		= "Additional ingredientlist";
+  $Lang['FormMoreIngr']		= "Additional ingredient list";
   $Lang['FormReset']		= "Reset form";
 
   $Lang['Delete']		= "Delete";
@@ -36,12 +36,12 @@
   $Lang['Previous']		= "Previous";
 
   $Lang['Mainmenu']['Title']		= "Mainmenu";
-  $Lang['Mainmenu']['PlsChoose']	= "Please choose from the mainmenu";
+  $Lang['Mainmenu']['PlsChoose']	= "Please choose from the main menu";
   $Lang['Search']['Search']	= "Search";
   $Lang['Search']['For']	= "Search for";
   $Lang['Search']['In']		= "Search in";
   $Lang['Search']['Go']		= "Start search";
-  $Lang['Search']['Result']	= "Searchresult";
+  $Lang['Search']['Result']	= "Search result";
   $Lang['Search']['Hits']       = "Hits";
 
   $Lang['Search']['Menutitle']	= "Menutitle";
@@ -70,7 +70,7 @@
   $Lang['AllRecipes']		= "All recipes";
   $Lang['CatChoose']		= "Category-chooser";
 
-  $Lang['Aliases']['DefDescr']  = "enter space-separated alias-list.";
+  $Lang['Aliases']['DefDescr']  = "enter space separated alias list.";
 
   $Lang['Category']['Title']    = "Defined Categories";
   $Lang['Category']['Help']     = <<<EOT
@@ -78,7 +78,7 @@
       to insert the value into the form.
 EOT;
 
-  $Lang['UnitInfo']['Title']    = "Unit-Infomations";
+  $Lang['UnitInfo']['Title']    = "Unit Infomation";
   $Lang['UnitInfo']['MMText']   = "Units in Meal-Master format.";
   $Lang['UnitInfo']['RKText']   = "Units in REZKONV format.";
 
@@ -86,12 +86,12 @@ EOT;
    * Infos:
    */
 
-  $Lang['Infos']['Title']        = "Informations about the " . KOCHSUITE;
+  $Lang['Infos']['Title']        = "Information about the " . KOCHSUITE;
 
   $Lang['Homepage']['Title']	= 'Homepage';
   $Lang['Homepage']['Text'][0]	= <<<EOT
       <a href="http://koch-suite.berlios.de/">http://koch-suite.berlios.de/</a>:
-      Up-to-date informations about this project and the currently newest
+      Up-to-date information about this project and the currently newest
       releases of the 
 EOT;
   $Lang['Homepage']['Text'][0] .= KOCHSUITE . " may be found here";
@@ -115,13 +115,13 @@ EOT;
   $Lang['Requirements']['OSes'][]	= 'OpenBSD 2.9';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
-      You will need PHP compiled with MySQL-/PostgreSQL-support as standalone
-      interpreter for the commandline-tools. For the webinterface you need
-      PHP installed as CGI or Apache-module.
+      You will need PHP compiled with MySQL/PostgreSQL support as standalone
+      interpreter for the command line tools. For the web interface you need
+      PHP installed as CGI or Apache module.
 EOT;
 
   $Lang['License']['Title']	= "License";
-  $Lang['License']['Pre'][0]	= "The entire " . KOCHSUITE . "-package is released under the terms of the following BSD-style license.\n";
+  $Lang['License']['Pre'][0]	= "The entire " . KOCHSUITE . " package is released under the terms of the following BSD-style license.\n";
   $Lang['License']['Post'][0]	= "";
 
 
@@ -132,7 +132,7 @@ EOT;
   $Lang['Helptext']['General']	= <<<EOT
     <p class="top">
       This program package consists of those three major parts: 
-      a big library containing all the converting- and output-functions,
+      a big library containing all the converting and output functions,
       (more or less as trivial wrappers to this library) a few 
       command-line tools and the webfrontend.
     <p>
@@ -143,11 +143,11 @@ EOT;
       The Koch-Suite is multilingual starting with release 0.5.
       To choose another lanuage, adjust your browser (i.e. Mozilla: Edit
       -> Preferences -> Navigator -> Languages).
-      If the language you specified does exist you will see all following
+      If the language you specified exists you will see all following
       pages in the requested language. Otherwise the default language
       (German "de") will be used.
-      Of course we will not translate the recipes themself. This selection
-      affects the interface-language only.
+      Of course this will not translate the recipes themselves. This selection
+      affects the interface language only.
 EOT;
 
   $Lang['Helptext']['CL']['Title']	= "Command-Line-Tools";
@@ -156,14 +156,14 @@ EOT;
           Import recipes. The input will be expected from standard input
           (STDIN).
           The recipes will be extracted from surrounding text and may be
-          in Meal-Master- or 
-          <a href="http://home.t-online.de/home/ufetzer/">REZKONV</a>-format.
+          in Meal-Master or 
+          <a href="http://home.t-online.de/home/ufetzer/">REZKONV</a> format.
           See also <code>mmimport(1)</code>
 EOT;
   $Lang['Helptext']['CL']['commands'][1]['Name'] = "rezept";
   $Lang['Helptext']['CL']['commands'][1]['Text'] = <<<EOT
           Search for recipes in the database and print them as
-          LaTeX-source, in Meal-Master-format or as human readable text
+          LaTeX source, in Meal-Master format or as human readable text
           into a file or standard output.
           See <code>rezept(1)</code>.
 EOT;
@@ -179,27 +179,27 @@ EOT;
           </ul>
         The result is a list of all recipes containing the specified term
         in the chosen field.
-        Choose "Search" from the mainmenu, enter the term into the form,
-        choose from "Search in" where to search for that term an click 
-        onto the "Start Search"-button.
+        Choose "Search" from the main menu, enter the term into the form,
+        choose from "Search in" where to search for that term and click 
+        the "Start Search" button.
         Since version <i>0.5</i> you can combine several terms by "AND"
         (uppercase!). So we can finally search for 
         <code>Muffins AND Choc</code>
 EOT;
-  $Lang['Helptext']['WWW']['part'][1]['Title']  = "Recording- and Editing-Interface";
+  $Lang['Helptext']['WWW']['part'][1]['Title']  = "Recording and Editing Interface";
   $Lang['Helptext']['WWW']['part'][1]['Text']   = <<<EOT
         This interface allows you to edit saved recipes or record new
         ones. Numbers must use &raquo;<code>.</code>&laquo; (dot) as decimal seperator.
         Units should be valid 
-        <a href="units.php" target="units" onclick="units();">Mealmaster-,
-        RezKonv-units or defined aliases</a> and must be seperated by a space
+        <a href="units.php" target="units" onclick="units();">Mealmaster,
+        RezKonv units or defined aliases</a> and must be seperated by a space
         character from the quantity.
 EOT;
 
   $Lang['Helptext']['Feedback']['Title']	= "Feedback";
   $Lang['Helptext']['Feedback']['Text'][0]	= <<<EOT
-      We have a mailinglist for users and developers,
-      <i>koch-suite-devel@lists.berlios.de</i>. This mailinglist is
+      We have a mailing list for users and developers,
+      <i>koch-suite-devel@lists.berlios.de</i>. This mailing list is
       public, but only subscribed addresses are allowed to write there (to
       suppress spam). Please see 
       <a href="http://lists.berlios.de/mailman/listinfo/koch-suite-devel">this page</a> 
