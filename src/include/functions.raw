@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.31 2001/03/27 21:41:26 michael Exp $
+   * $Id: functions.raw,v 1.32 2001/04/23 09:22:12 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -172,7 +172,7 @@
 
         } else if (preg_match($zutaten_header, $line, $foo)) {
 
-          $search  = array ("/^={5,}/",     "/={5,}$/", 
+          $search  = array ("/^[=-]{5,}/",     "/[=-]{5,}$/", 
                             "/^M{5}[-=]*/", "/[-@=]*$/");
 
           $replace = array ("", "", "", "");
