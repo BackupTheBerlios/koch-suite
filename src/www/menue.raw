@@ -1,4 +1,4 @@
-<!-- $Id: menue.raw,v 1.24 2004/12/07 18:19:55 lestinsky Exp $ -->
+<!-- $Id: menue.raw,v 1.25 2005/01/02 02:38:00 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
 <?php
 
@@ -88,6 +88,7 @@
                   offer_lang("de");
                   offer_lang("en");
                   offer_lang("es");
+		  offer_lang("fr");
                 ?>
               </td>
             </tr>
