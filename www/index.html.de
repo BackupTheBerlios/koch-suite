@@ -40,7 +40,7 @@ nur nicht getestet.
 
 <ul>
   <li>30.7.2002: <a href="http://download.berlios.de/koch-suite/koch-suite-0.7.tar.gz">Version 0.7</a> (<a href="http://developer.berlios.de/cvs/?group_id=144">Siehe unser CVS</a>)
-    <ul>
+    <ul class="lightbluedot">
       <li>Bugfixes, Aufräumarbeiten und Code-Audit.</li>
       <li>Aktiviere Suche nach Metadaten.</li>
       <li>Erlaube PHPs safemode Umgebungen.</li>
@@ -93,7 +93,7 @@ Siehe auch unsere <a href="todo.txt">Todo-Liste/Roadmap</a>.
       (f&uuml;r die CLI-Tools) und als 
       <a href="http://www.apache.org">Apache</a>-Modul</li>
   <li>Datenbank-D&aelig;mon:
-    <ul>
+    <ul class="lightbluedot">
       <li>Entweder <a href="http://www.mysql.com">MySQL</a> 
         (Getestet unter 3.22.32 und 3.23.32)</li>
       <li>Oder <a href="http://www.postgresql.org">PostgreSQL</a> 
@@ -167,7 +167,7 @@ eintragen oder austragen.
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.de,v 1.4 2002/08/16 10:31:40 lestinsky Exp $
+$Id: index.html.de,v 1.5 2002/08/16 10:48:46 lestinsky Exp $
 </address>
 </body>
 </html>

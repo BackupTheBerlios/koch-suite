@@ -25,6 +25,9 @@ a:active    { color:#111473; }
 .table   { background-color:#9090b0; }
 .whitebg { background-color:#ffffff; }
 
+ul       { list-style-image:url(blue_dot.gif); }
+.lightbluedot { list-style-image:url(lightblue_dot.gif); }
+
 p        { text-align:justify; }
 td       { background-color:#e9e9f0; }
 th       { background-color:#c0c0d5; }
@@ -35,4 +38,3 @@ address  { background-color:#e9e9f0; padding:3px;
 
 i,emph   { color:#001144; font-family:Helvetica,Arial; }
 code     { color:#002288; }
-ul       { list-style-image:url(blue_dot.gif); }

@@ -37,7 +37,7 @@ isn't tested until now.
 
 <ul>
   <li>30.7.2002: <a href="http://download.berlios.de/koch-suite/koch-suite-0.7.tar.gz">Version 0.7</a> (<a href="http://developer.berlios.de/cvs/?group_id=144">see our CVS</a>)
-    <ul>
+    <ul class="lightbluedot">
       <li>Bug fixing, code auditing and cleanup.</li>
       <li>Enable searching for metadata.</li>
       <li>Allow PHPs safemode environments.</li>
@@ -88,7 +88,7 @@ See our <a href="todo.txt">todo-list/roadmap</a>.
   <li><a href="http://www.php.net/">PHP4</a> as standalone interpreter 
       and as <a href="http://www.apache.org">Apache</a>-Modul</li>
   <li>Database-D&aelig;mon:
-    <ul>
+    <ul class="lightbluedot">
       <li>Either <a href="http://www.mysql.com">MySQL</a> 
         (tested are 3.22.32 and 3.23.32)</li>
       <li>Or <a href="http://www.postgresql.org">PostgreSQL</a> 
@@ -159,7 +159,7 @@ recipe management system for Unix-like operating systems</li>
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.en,v 1.3 2002/08/16 10:33:02 lestinsky Exp $
+$Id: index.html.en,v 1.4 2002/08/16 10:48:46 lestinsky Exp $
 </address>
 </body>
 </html>
