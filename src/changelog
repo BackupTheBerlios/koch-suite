@@ -1,7 +1,12 @@
-### $Id: changelog,v 1.7 2000/12/15 01:28:59 michael Exp $
+### $Id: changelog,v 1.8 2000/12/16 01:36:50 michael Exp $
 
-2000-12-14: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
-        koch-suite_0_2
+2000-12-15: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+        Mealmaster-Import-Filter: Parser überarbeitet. Schreibe keine
+        "\n" mehr in die Datenbank. Einfache "\n" werden ingoriert,
+        Leerzeilen ("\n\n") werden durch Platzhalter ersetzt ("<p>"). 
+        Dadurch vereinfacht sich die Umformatierung von Rezepten wesentlich. 
+        LaTeX-Export: Automatisches Umbrechen von sehr langen
+        Zutatentexten.
 
 2000-12-13: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
         Suche im Webinterface jetzt auch nach der Kategorie möglich.

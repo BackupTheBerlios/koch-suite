@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.12 2000/12/14 17:30:58 michael Exp $
+   * $Id: functions.raw,v 1.13 2000/12/16 01:36:50 michael Exp $
    */
 
   require "<%%PHP_LIBS%%>/config.inc";
@@ -20,6 +20,7 @@
     $instruction    = "";
     $zutaten_header = "/^(-{5}|M{5})-*(.*)[-=@]*$/i";
     $rezept_ende    = "/^(-{5}|M{5})[@-]*$/";
+    $br_lock        = 1;
 
     while ($line = fgets($fd, 1024)) {
       if (preg_match($rezept_ende, $line)) {
@@ -70,23 +71,34 @@
 
         } else {
           /* Ok, treat the rest as "instruction"
-           * skip empty lines 
            */
-          if ($seen_instructions != 1 and preg_match("/^\s*$/", $line)) {
-            $seen_instructions = 0;
+          $trimmed = trim($line);
+          $seen_instructions = 1;
+          if ( $trimmed == "" ) {
+            if ( $br_lock == 0 ) {
+              $instruction .= "<p> ";
+            }
+            $br_lock = 1;
           } else {
-            $seen_instructions = 1;
-            $instruction .= trim($line) . "\n";
+            if ( preg_match("/^:.*$/", $trimmed) and $br_lock == 0 ) {
+              $instruction .= "<br> $trimmed ";
+            } else 
+            $instruction .= "$trimmed ";
+            $br_lock = 0;
           }
         }
       }
     }
-    $instructions = trim($instructions);
 
-    return array("title" => $title,
-                 "category" => $categories,
-                 "yield"    => $yield,
-                 "zutaten"  => $zutaten,
+    /* Strip leading and trailing <p>- and <br>-tags */
+    $search = array("/^(<(p|br)>\s*)*/", "/(<(p|br)>\s*)*$/");
+    $replace = array("", "");
+    $instruction =  preg_replace($search, $replace, $instruction);
+
+    return array("title"     => $title,
+                 "category"  => $categories,
+                 "yield"     => $yield,
+                 "zutaten"   => $zutaten,
                  "anleitung" => $instruction);
   }
 

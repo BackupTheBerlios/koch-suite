@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.7 2000/11/29 20:15:52 michael Exp $
+   * $Id: output.raw,v 1.8 2000/12/16 01:36:51 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -35,9 +35,12 @@
     }
 
     $str .= "Kochanleitung:\n\n";
-    $str .= $rezept["anleitung"];
 
-    return $str . "\n";
+    foreach (length_adjust($rezept["anleitung"], 72) as $line) {
+      $str .= $line . "\n";
+    }
+
+    return $str;
   }
 
 
@@ -81,8 +84,10 @@
     $str .= "</table>\n";
     $str .= "</td></tr>\n";
  
-    $str .= "<tr><td colspan=2 style=\"font-family:Helvetica\">";
-    $str .= preg_replace("/(\r)?\n(\r)?\n?/", "\n<br>", htmlentities($rezept["anleitung"]));
+    $str .= "<tr><td colspan=2 style=\"font-family:Helvetica\">\n";
+    $instr = preg_replace("/(\r)?\n(\r)?\n?/", "<br>\n", htmlentities($rezept["anleitung"]));
+    $instr = preg_replace("/&lt;(p|br)&gt;/", "\n<\\1>\n", $instr);
+    $str .= $instr;
     $str .= "</td></tr>\n";
     $str .= "</table>\n";
 
@@ -93,8 +98,9 @@
   function latex_export ($rezept) {
     /* Export a recipe as LaTeX-file */
 
-    /* write the Latex-headers... */
+    $c = 0;
 
+    /* write the Latex-headers... */
     $str  = "\\documentclass[a4paper,11pt]{article}\n\n";
     $str .= "\\usepackage{german}\n";
     $str .= "\\usepackage[latin1]{inputenc}\n";
@@ -103,12 +109,11 @@
     $str .= "\\usepackage[lflt]{floatflt}\n";
    
     $str .= "\\setlength{\\textwidth}{16cm}\n";
-    $str .= "\\setlength{\\textheight}{26cm}\n";
-    $str .= "\\addtolength{\\topmargin}{-3cm}\n"; 
+    $str .= "\\setlength{\\textheight}{25cm}\n";
+    $str .= "\\addtolength{\\topmargin}{-2.5cm}\n"; 
     $str .= "\\addtolength{\\oddsidemargin}{-2cm}\n";
     $str .= "\\pagestyle{empty}\n";
     /* ... some meta-data, ... */
-
     $str .= "\n\\title{\\textsf{" . $rezept["title"] . "}}\n\n";
     $str .= "\\author{rezept2latex}\n";
     $str .= "\\begin{document}\n";
@@ -130,7 +135,6 @@
     $str .= "\\end{table}\n";
 
     /* ... ingredients, ... */
-
     $str .= "\\begin{floatingtable}{\n";
     $str .= "\\begin{tabular}{rl|l}\n";
     foreach($rezept["zutaten"] as $z) {
@@ -145,18 +149,30 @@
         }
         $ingred = preg_replace("/^(-*|;*) */", "", $i["ingred"]);
         $ingred = preg_replace("/(&)/", "\\\\1", $ingred);
+        $c = 0;
+        $ingred = length_adjust($ingred, 30);
+        while ($line = $ingred[$c]) {
+          if ($c == 0) { 
+            $ingred_ = $line . "\\\\\n"; 
+          } else {
+            $ingred_ .= " & & \\hspace{4mm} " . $line . "\\\\\n";
+          }
+          $c++;
+        }
         $str .= $quant . " & " . 
                 nice_unit($i["unit"]) . " & " . 
-                $ingred . "\\\\\n";
+                $ingred_;
       }
     }
     $str .= "\\hline\\\\\n";
     $str .= "\\end{tabular}\\\\\n";
     $str .= "}\\end{floatingtable}\n";
 
-    $anleitung = preg_replace ('/(")/', "\\dq ", $rezept["anleitung"]);
-
-    $str .= $anleitung;
+    foreach (length_adjust($rezept["anleitung"], 74) as $line) {
+      $line = preg_replace ('/(")/', "\\dq ", $line);
+      $line = preg_replace ('/^:/', "\n:", $line);
+      $str .= $line . "\n";
+    }
     /* ... and the footers */
     $str .= "\\end{document}\n";
     return $str;
@@ -169,14 +185,20 @@
     $foo = "";
 
     if (strlen($str) > $len) {
+
+      /* This is for historical reasons. Before 0.2 all instructions were
+       * added with all Newlines included. Since 0.2 they get stripped
+       * away and replaced as <p> and <br>.
+       */
       $str = preg_replace("/\n:/", "\n <br> :", $str);
       $str = preg_replace("/\n\n/", " <p> ", $str);
       $str = preg_replace("/\n/", " ", $str);
+
       /* Ingredient-line to long */
       $a = explode(" ", $str);
       $i = 0;
       while (isset($a[$i])) {
-        if ((strlen($foo) + strlen($a[$i])) < $len) {
+        if ((strlen($foo) + strlen($a[$i])) < $len and $a[$i] != ' ') {
           #if (preg_match("/\n/", $a[$i])) {
           #  $foo .= preg_replace("/\n/", " ", $a[$i++]) . " ";
           #} else 
@@ -211,7 +233,7 @@
     global $ver, $tool;
     $str = "";
     $i = 0;
-    $header = "MMMMM-----".$tool." (v". $ver .") Export nach Meal-Master-----\n";
+    $header = "MMMMM-----mmexport (v0.2.2) Export nach Meal-Master-----\n";
     $footer = "MMMMM";
 
     $str .= "$header\n";
@@ -235,7 +257,7 @@
     foreach ($a as $line) {
       $str .= $line . "\n";
     }
-    $str .= "$footer\n";
+    $str .= "\n$footer\n";
 
     return $str;
   }

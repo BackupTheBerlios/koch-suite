@@ -15,7 +15,7 @@
   include "<%%PHP_LIBS%%>/functions.inc";
 
   $tool = "mmprint.php";
-  $ver  = "0.3";
+  $ver  = "0.3.1";
 
   echo mmexport(get_menu_by_mid($mid));
 ?>
