@@ -1,6 +1,6 @@
-<?
+<?php
   /*
-   * $Id: defines.raw,v 1.14 2002/07/31 18:26:45 lestinsky Exp $
+   * $Id: defines.raw,v 1.15 2002/11/27 18:34:42 lestinsky Exp $
    *
    * Define some constants here:
    */

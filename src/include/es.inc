@@ -1,6 +1,6 @@
-<?
+<?php
   /*
-   * $Id: es.inc,v 1.6 2002/08/30 22:07:22 lestinsky Exp $
+   * $Id: es.inc,v 1.7 2002/11/27 18:34:42 lestinsky Exp $
    *
    * Define English text-constants.
    *

@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -30,7 +30,7 @@
   /**
    * Some debugging functions
    *
-   * $Id: debug.raw,v 1.9 2002/06/11 18:43:47 lestinsky Exp $
+   * $Id: debug.raw,v 1.10 2002/11/27 18:34:42 lestinsky Exp $
    *
    * @package Lib
    * @modulegroup Debug

@@ -1,6 +1,6 @@
-<?
+<?php
   /*
-   * $Id: setup.raw,v 1.3 2002/08/31 17:46:11 lestinsky Exp $
+   * $Id: setup.raw,v 1.4 2002/11/27 18:34:42 lestinsky Exp $
    * Setup the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>

@@ -1,6 +1,6 @@
-<?
+<?php
   /*
-   * $Id: lang.raw,v 1.18 2002/10/13 18:51:55 lestinsky Exp $
+   * $Id: lang.raw,v 1.19 2002/11/27 18:34:42 lestinsky Exp $
    * Guess prefered language for the web-interface.
    *
    * Copyright (c) 2002
