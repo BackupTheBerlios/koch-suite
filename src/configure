@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.19 2001/10/18 10:05:03 lestinsky Exp $
+# $Id: configure,v 1.20 2001/10/18 21:36:35 bus Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -40,7 +40,21 @@ if [ -f ${CONF_RAW_MY} ] ; then
   CONF_RAW=${CONF_RAW_MY}
 fi
 
-THISDIR=$(pwd)
+THISDIR=`pwd`
+
+my_which () {
+	OIFS=$IFS
+	IFS=":$IFS"
+	result=""
+	for i in $PATH
+	do
+		[ -x "$i/$1" ] && result="$i/$1" && break
+	done
+	IFS=$OIFS
+	echo $result
+	[ $result ] && return 0
+	return 1
+}
 
 add_conf () {
     # Add a line to ${CONF_FILE}
@@ -51,7 +65,7 @@ add_conf () {
 check_prereq () {
     # Check if we can find all neccessary tools:
     echo -n "Checking for '$1' ... "
-    req=$(which "$1")
+    req=`my_which "$1"`
     if [ -n "${req}" -a $? = 0 ] ; then 
         # Found.
         echo "Found - $req"
@@ -65,7 +79,7 @@ check_prereq () {
 check_opt () {
     # Check for optional tools and add their path to the config.sed
     echo -n "Probing for optional '$1': ... "
-    req=$(which "$1")
+    req=`my_which "$1"`
     if [ -n "${req}" -a $? = 0 ] ; then
         # Found.
         echo "Found - $req"
@@ -101,7 +115,7 @@ rm -f ${CONF_FILE}
 # Build-Depends: 'awk' and 'sed'
 echo -n "Checking for an usable awk ... "
 for i in mawk nawk gawk awk; do
-    awk=$(which $i)
+    awk=`my_which "$i"`
     if [ -n "${awk}" -a $? = 0 ] ; then
         if [ $i = "awk" ] ; then
             warn_awk=1
@@ -128,7 +142,7 @@ check_prereq chown
 # Probe for a good install or use the one we provide as fallback
 echo -n "Checking for a BSD compatible install ... "
 for i in ginstall installbsd install ; do
-    install=$(which $i)
+    install=`my_which "$i"`
     if [ -n "${install}" -a $? = 0 ] ; then
         # Got one. Is it sufficient enough?
 
