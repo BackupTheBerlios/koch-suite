@@ -1,7 +1,7 @@
-.\" $Id: mmimport.1.raw,v 1.15 2003/02/05 23:55:25 lestinsky Exp $
+.\" $Id: mmimport.1.raw,v 1.16 2005/01/02 02:39:58 lestinsky Exp $
 .\" Koch-Suite Reference
 .\"
-.\" Copyright (c) 2003
+.\" Copyright (c) 2005
 .\"      Michael Lestinsky. All rights reserved.
 .\"
 .\" Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,7 @@
 .\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 .\" SUCH DAMAGE.
 .\"
-.Dd July 20th, 2002
+.Dd Jan 1st, 2005
 .Dt mmimport 1 
 .Os Koch-Suite
 .Sh NAME
@@ -39,6 +39,7 @@
 .Op Fl t No | Fl -test Op Fl mm
 .Op Fl c Ar cat,cat,...
 .Op Fl C No | Fl -import-new-cat
+.Op Fl D No | Fl -force-dupes
 .Op Fl i No | Fl -ignore-unknown-mmext
 .Op Fl h No | Fl -help
 .Sh DESCRIPTION
@@ -64,6 +65,9 @@ Add these category-entries to the recipe.
 .It Fl C No | Fl -import-new-cat
 Don't ignore categories which are unknown to the database. 
 This is disabled by default.
+.It Fl D No | Fl -force-dupes
+Import recipes even if they are detected as duplicates of already stored
+recipes.
 .It Fl i No | Fl -ignore-unknown-mmext
 Many programs append additional informations - such as the source or date
 of recording - to the recipes instruction text in lines starting with a
@@ -87,10 +91,10 @@ The default locale settings,
 and
 .Ev LANG
 are used as fallback in that order.
-If those fail, too,
-use the default,
-which may be set in
-.Pa <%%ETC_PREFIX%%>/koch-suite.inc .
+If those variables aren't set either,
+the defaults from
+.Pa <%%ETC_PREFIX%%>/koch-suite.inc
+are used as language setting.
 .Sh FILES
 .Bl -tag -width <%%ETC_PREFIX%%>/koch-suite.inc -compact
 .It Pa <%%ETC_PREFIX%%>/koch-suite.inc
