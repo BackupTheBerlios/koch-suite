@@ -8,12 +8,12 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: index.raw,v 1.9 2001/03/15 12:59:36 michael Exp $ -->
+  <!-- $Id: index.raw,v 1.10 2001/03/15 13:24:47 michael Exp $ -->
 </head>
 
 <body>
 <a name="top"></a>
-<h1><img src="pics/title.gif" alt="WWW-Kochbuch"></h1>
+<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
 
 <table border=0 cellpadding=3 cellspacing=1>
 <tr>
