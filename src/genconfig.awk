@@ -5,6 +5,7 @@ BEGIN {
   j = 0 
 }
 
+/#/ { next }
 { # For every empty line
   if ($1 != "") {
     # Expand variables
