@@ -1,4 +1,4 @@
-.\" $Id: mmimport.1.raw,v 1.14 2003/01/10 23:43:24 lestinsky Exp $
+.\" $Id: mmimport.1.raw,v 1.15 2003/02/05 23:55:25 lestinsky Exp $
 .\" Koch-Suite Reference
 .\"
 .\" Copyright (c) 2003
@@ -36,11 +36,11 @@
 .Nd import Mealmaster- and REZKONV-recipes.
 .Sh SYNOPSIS
 .Nm 
-.Op Fl t | Fl -test Op Fl mm
+.Op Fl t No | Fl -test Op Fl mm
 .Op Fl c Ar cat,cat,...
-.Op Fl C | Fl -import-new-cat
-.Op Fl i | Fl -ignore-unknown-mmext
-.Op Fl h | Fl -help
+.Op Fl C No | Fl -import-new-cat
+.Op Fl i No | Fl -ignore-unknown-mmext
+.Op Fl h No | Fl -help
 .Sh DESCRIPTION
 .Nm
 reads recipes from 
@@ -50,7 +50,7 @@ REZKONV- or Meal-Master-format.
 .Pp
 Optional paramters are:
 .Bl -tag -width "ABITTOLONG"
-.It Fl t Fl -test
+.It Fl t No | Fl -test
 test the parser.
 Do not import the recipe, but rather reformat it into plain ascii.
 Output goes to
@@ -61,10 +61,10 @@ conjunction with
 .Fl -test
 .It Fl c Ar cat,cat,...
 Add these category-entries to the recipe.
-.It Fl C Fl -import-new-cat
-Don"t ignore categories which are unknown to the database. 
+.It Fl C No | Fl -import-new-cat
+Don't ignore categories which are unknown to the database. 
 This is disabled by default.
-.It Fl i Fl -ignore-unknown-mmext
+.It Fl i No | Fl -ignore-unknown-mmext
 Many programs append additional informations - such as the source or date
 of recording - to the recipes instruction text in lines starting with a
 colon. 
@@ -72,7 +72,7 @@ The default is to treat every unknown extension as instruction text.
 This flag makes 
 .Nm
 ignore such fields and remove them from the recipes.
-.It Fl h Fl -help
+.It Fl h No | Fl -help
 Show usage and exit.
 .El
 .\" The following requests should be uncommented and used where appropriate.
