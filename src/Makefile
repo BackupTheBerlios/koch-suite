@@ -10,7 +10,7 @@ SUBDIRS=	${INC_SUBDIR} ${COMMAND_SUBDIR} ${WWW_SUBDIR} ${MAN_SUBDIR}
 
 THISDIR=	.
 
-all: ${CONF_FILE}
+all: ${CONF_FILE} configure
 	@${MAKE} subdir TRGT=all DIRS="${SUBDIRS}"
 
 ${CONF_FILE}: config configure
