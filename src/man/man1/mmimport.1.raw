@@ -1,4 +1,4 @@
-.\" $Id: mmimport.1.raw,v 1.12 2002/06/11 18:43:47 lestinsky Exp $
+.\" $Id: mmimport.1.raw,v 1.13 2002/07/21 10:48:11 lestinsky Exp $
 .\" Koch-Suite Reference
 .\"
 .\" Copyright (c) 2002
@@ -28,7 +28,7 @@
 .\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 .\" SUCH DAMAGE.
 .\"
-.Dd June 9th, 2002
+.Dd July 20th, 2002
 .Dt mmimport 1 
 .Os Koch-Suite
 .Sh NAME
@@ -39,6 +39,7 @@
 .Op Fl t | Fl -test Op Fl mm
 .Op Fl c Ar cat,cat,...
 .Op Fl C | Fl -import-new-cat
+.Op Fl i | Fl -ignore-unknown-mmext
 .Op Fl h | Fl -help
 .Sh DESCRIPTION
 .Nm
@@ -61,8 +62,16 @@ conjunction with
 .It Fl c Ar cat,cat,...
 Add these category-entries to the recipe.
 .It Fl C Fl -import-new-cat
-Don"t ignore categories which are unknown to the database. This is
-disabled by default.
+Don"t ignore categories which are unknown to the database. 
+This is disabled by default.
+.It Fl i Fl -ignore-unknown-mmext
+Many programs append additional informations - such as the source or date
+of recording - to the recipes instruction text in lines starting with a
+colon. 
+The default is to treat every unknown extension as instruction text. 
+This flag makes 
+.Nm
+ignore such fields and remove them from the recipes.
 .It Fl h Fl -help
 Show usage and exit.
 .El
