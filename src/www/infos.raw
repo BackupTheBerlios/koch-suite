@@ -13,7 +13,7 @@
   <title><? echo $Lang['Info']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.24 2001/05/21 23:59:53 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.25 2001/06/01 22:30:36 michael Exp $ -->
 </head>
 
 <body>
@@ -28,7 +28,7 @@
   <td width="90%">
     <h2>Informationen zur Koch-Suite</h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.24 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.25 $ -->
 
     <h3><? echo $Lang['Homepage']['Title']; ?></h3>
       <?
@@ -62,13 +62,6 @@
     <p>
       <? echo $Lang['Requirements']['Text'][2] ?>
     </p>
-
-    <h3><? echo $Lang['Language']['Title']; ?></h3>
-      <?
-         foreach ($Lang['Language']['Text'] as $text) {
-           echo "<p>" . $text . "</p>";
-         };    
-      ?>
 
     <h3><? echo $Lang['License']['Title']; ?></h3>
       <?
