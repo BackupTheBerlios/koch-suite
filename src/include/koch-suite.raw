@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: koch-suite.raw,v 1.18 2002/11/06 17:44:16 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.19 2002/11/27 18:30:48 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -68,7 +68,7 @@
 
   /* Does your database support transactions? 
    * PostgreSQL does, 
-   * MySQL does for table types InnoDB and BDB
+   * MySQL does, too, but only for table types InnoDB and BDB
    * valid values are true and false;
    */
   $TRANSACTIONAL = true;
