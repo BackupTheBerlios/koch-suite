@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.11 2001/03/03 12:08:29 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.12 2001/03/03 12:32:13 michael Exp $ -->
 </head>
 
 <body>
@@ -45,7 +45,7 @@
           <dd><i>Import von Rezepten.</i> Der Input wird auf dem
           Standard-Eingabe-Kanal erwartet. Die Rezepte werden dabei aus
           umgebendem Text extrahiert und k&ouml;nnen sowohl im Meal-Master- 
-          oder im 
+          als auch im 
           <a href="http://home.t-online.de/home/ufetzer/">REZKONV</a>-Format 
           sein.</dd>
       <dt><code>rezept2latex</code></dt>
