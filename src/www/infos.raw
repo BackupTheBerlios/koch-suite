@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.20 2001/03/30 17:34:14 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.21 2001/04/23 09:23:29 michael Exp $ -->
 </head>
 
 <body>
@@ -25,7 +25,7 @@
   <td width="90%">
     <h2>Informationen zur Koch-Suite</h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.20 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.21 $ -->
 
     <h3>Homepage</h3>
     <p>
@@ -65,7 +65,10 @@
     <p>
       Sorry, at the moment the web-frontend to the Koch-Suite is available 
       in german only. If you would like to translate this documents, 
-      contact me at <i>michael@zaphod.rhein-neckar.de</i>.
+      contact me at <i>michael@zaphod.rhein-neckar.de</i>. 
+      <a href="http://www.apache.org">Apache's</a>
+      Content-Negotiation-capabilities would be the preferred way to provide
+      a multilingual version of the <em>Koch-Suite</em>.
     </p>
 
     <h3>Lizenz:</h3>
