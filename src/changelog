@@ -1,4 +1,9 @@
-### $Id: changelog,v 1.3 2000/11/21 01:57:15 michael Exp $
+### $Id: changelog,v 1.4 2000/11/29 18:32:41 michael Exp $
+
+2000-11-26: michael@zaphod.rhein-neckar.de
+        WWW-Interface: Suche innerhalb der Zutatenliste funktioniert
+        Kommandozeile: Neues Kommando "rezept2latex" exportiere Rezepte als
+        Latex-Source.
 
 2000-11-20: michael@zaphod.rhein-neckar.de
 	CVS-Tag "koch-suite_0_1_3"
