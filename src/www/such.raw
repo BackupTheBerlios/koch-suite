@@ -1,4 +1,4 @@
-<!-- $Id: such.raw,v 1.7 2001/01/15 10:02:46 michael Exp $ -->
+<!-- $Id: such.raw,v 1.8 2001/01/18 00:40:49 michael Exp $ -->
 <?
   if (empty($begriff) and empty($all)) {
 ?>
@@ -104,8 +104,10 @@
         print_titles($m);
       }
     } else if ($where == 'cat') {
-      if (($m = get_mid_by_cat($begriff)) != 0) {
+      if ($m = get_mid_by_cat($begriff)) {
         print_titles($m);
+      } else {
+        echo "<tr><td>Kein Treffer.</td></tr>\n";
       }
     }
 ?>
