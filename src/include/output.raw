@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.50 2003/01/20 20:25:45 lestinsky Exp $
+   * $Id: output.raw,v 1.51 2003/03/12 12:39:45 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -397,6 +397,11 @@
   }
 
 
+  /**
+   * Return a string containing a recipe in MealMaster format.
+   * @param array $rezept Recipe
+   * @param bool  $strict Be strict about the MealMaster format definitions
+   */
   function mmexport (&$rezept, $strict = true) {
     /* return a Meal-Master-formatted string. */
     global $tool, $Lang;
@@ -408,11 +413,14 @@
     $str .= "     Title: " . $rezept["title"] . "\n"; 
 
     $cat_a = $rezept["category"];
-    $str .= "Categories: " . implode(", ", $cat_a) . "\n";
+    $str .= "Categories: " . 
+                ($strict == true 
+                   ? str_implode_bound (", ", $cat_a, 5, 0, 11)
+                   : implode(", ", $cat_a)) . "\n";
 
     $str .= "     Yield: " . $rezept["yield"] . "\n"; 
 
-    $str .= print_ingred($rezept["zutaten"], $strict) . "\n";
+    $str .= print_ingred($rezept["zutaten"], RECIPE_MM, $strict) . "\n";
     $a = length_adjust($rezept["anleitung"], 72); 
     foreach ($a as $line) {
       $str .= stripslashes($line) . "\n";
@@ -448,11 +456,79 @@
   }
 
 
-  function mmrezept_header ($str) {
+  /**
+   * Return a string containing a recipe in RezKonv format.
+   * @param array $rezept Recipe
+   */
+  function rkexport (&$rezept) {
+    /* return a Meal-Master-formatted string. */
+    global $tool, $Lang;
+    $i = 0;
+    $header = "==========REZKONV-Rezept - Koch-Suite (" . KOCHSUITE_VER . ") \n";
+    $footer = "=====";
+
+    $str  = "$header\n";
+    $str .= "     Titel: " . $rezept["title"] . "\n";
+
+    $cat_a = $rezept["category"];
+    $str .= "Kategorien: " . str_implode_bound (", ", $cat_a, 5, 0, 11) ."\n";
+    $str .= "     Menge: " . $rezept["yield"] . "\n";
+
+    $str .= print_ingred($rezept["zutaten"], RECIPE_RK) . "\n";
+    $a = length_adjust($rezept["anleitung"], 72);
+    foreach ($a as $line) {
+      $str .= stripslashes($line) . "\n";
+    }
+
+    if (isset($rezept['meta']) and count($rezept['meta']) >0) {
+      $str .= "\n";
+
+      foreach ($rezept['meta'] as $fieldname => $fieldvalue) {
+        $fieldvalue = trim($fieldvalue);
+        $firstline = true;
+
+        if (strlen($fieldvalue) > 0) {
+          if (strlen($fieldvalue) < 55) {
+            $str .= sprintf(":%-15s: ", $Lang[$fieldname]) . $fieldvalue . "\n";
+          } else {
+            foreach(length_adjust($fieldvalue, 55) as $line) {
+              if ($firstline) {
+                $str .= sprintf(":%-15s: ", $Lang[$fieldname]) . $line . "\n";
+                $firstline = false;
+              } else {
+                $str .= ":               : " . $line . "\n";
+              }
+            }
+          }
+        }
+      }
+    }
+
+    $str .= "\n$footer\n";
+
+    return $str;
+  }
+
+
+
+
+  function rezept_header ($str, $format) {
     /* return a valid Mealmaster-subheader */
-    $fill = pad_left("", "-", 23 - strlen($str)/2);
-    $fill_l = "MMMMM" . $fill;
-    $fill_r = $fill . "-----";
+
+    switch ($format) {
+      case RECIPE_RK:
+        $fill = pad_left("", "=", 30 - strlen($str)/2);
+        $fill_l = $fill;
+        $fill_r = $fill;
+        break;
+      case RECIPE_MM:
+        $fill = pad_left("", "-", 23 - strlen($str)/2);
+        $fill_l = "MMMMM" . $fill;
+        $fill_r = $fill . "-----";
+        break;
+      default:
+        die ("Unsupported format");
+    }
     $str = $fill_l . $str . $fill_r;
     return "$str";
   }
@@ -539,14 +615,14 @@
   }
 
 
-  function print_ingred ($r, $strict = true) {
+  function print_ingred ($r, $format = RECIPE_MM, $strict = true) {
     $i   = 0;
     $str = '';
 
     foreach ($r as $z) {
       /* Print a mealmaster-Subheader for subrecipes: */
       if ($z["title"] != "Zutaten:" and $z["title"] != "") {
-        $str .= "\n" . mmrezept_header($z["title"]) . "\n";
+        $str .= "\n" . rezept_header($z["title"], $format) . "\n";
       } else {
         $str .= "\n";
       }
@@ -556,25 +632,91 @@
 
         $quant = nice_quant($j["quant"]);
 
-        if ($strict == true) {
-           $a = length_adjust($j["ingred"], 28);
-        } else {
-           $a = length_adjust($j["ingred"], 65);
+        switch ($format) {
+          case RECIPE_RK:
+            // Split too long lines
+            $a = length_adjust($j["ingred"], 50);
+
+            $unit = nice_unit($j['unit']);
+            if (preg_match("/.*\.$/", $unit)) {
+              // unit is abbreviated, we format them slightly differently.
+              $iline = pad_left($quant, " ", 7) . " " .
+                       pad_left($unit, " ", 10) . " " .
+                       $a[$u++] . "\n";
+            } else {
+              $iline = pad_left($quant, " ", 7) . " " .
+                       pad_left($unit, " ", 9) . "  " .
+                       $a[$u++] . "\n";
+            }
+            $str .= $iline;
+            while (isset($a[$u])) {
+              $str .= "                   -- " . $a[$u++] . "\n";
+            }
+
+            break;
+
+          case RECIPE_MM:
+            if ($strict == true) {
+               $a = length_adjust($j["ingred"], 28);
+            } else {
+               $a = length_adjust($j["ingred"], 65);
+            } 
+
+            $iline = pad_left($quant," ", 7) . " " .
+                     pad_right($j["unit"]  , " ", 2) . " " .
+                     $a[$u++] . "\n";
+            $str .= $iline;
+            while (isset($a[$u])) {
+              $str .= "           -- " . $a[$u++] . "\n";
+            }
+
+            break;
+          default:
+            die ("Unsupported format");
         }
     
-        $rline = pad_left($quant," ", 7) . " " .
-                 pad_right($j["unit"]  , " ", 2) . " " .
-                 $a[$u++] . "\n";
-        $str .= $rline;
-        while (isset($a[$u])) {
-          $str .= "           -- " . $a[$u++] . "\n";
-        }
       }
     }
     return $str;
   }
 
 
+  /**
+   * Replacement for implode() with limits.
+   * @param  string $glue
+   * @param  array  $array  Array of strings
+   * @param  int    $maxcount
+   * @param  int    $start  Use this stringposition as start in every substring
+   * @param  int    $length Maximum length of each substring
+   * @return string
+   */
+  function str_implode_bound ($glue, $array, $maxcount, $start, $length) {
+    $count = 0;
+    $return = "";
+
+    if (!is_array($array))
+      return false;
+
+    foreach ($array as $str) {
+      if (!is_string($str))
+        return false;
+
+      if ($count >= 1) 
+        $return .= $glue;
+
+      if (++$count < $maxcount)
+        $return .= substr($str, $start, $length);
+    }
+
+    return $return;
+  }
+
+
+  /**
+   * Generate a HTML sniplet indicating the current rating of a recipe
+   * @param  int    $rating average rating of a recipe
+   * @return string
+   */
   function sucks_or_rocks_meter($rating) {
     if (!is_numeric($rating)) return false;
 
