@@ -3,7 +3,7 @@
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.22 2001/08/16 19:59:35 lestinsky Exp $
+   * $Id: config.raw,v 1.23 2001/08/31 12:43:02 lestinsky Exp $
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
@@ -28,6 +28,17 @@
   $DVIPS   = "<%%dvips%%>";
   $GS      = "<%%gs%%>";
   $TMPDIR  = "/tmp";
+
+
+  /* Authentication: */
+
+  // Where to authenticate the user? 
+  // at the moment auth_by_db is the only one.
+  $AUTH_STYLE = "auth_by_db";
+
+  // What level of authentication do we want? ALL, READ, WRITE or NONE?
+  $AUTH_LEVEL = READ;  // Capitals and no quotes, these are constants.
+
 
   /*
    * Offer "printable" recipes in that format: 
