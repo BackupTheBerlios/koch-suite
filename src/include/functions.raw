@@ -2,7 +2,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.47 2001/06/26 23:47:24 michael Exp $
+   * $Id: functions.raw,v 1.48 2001/06/27 13:18:05 michael Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * See ../LICENSE for the license of this code.
    * Editors: Please sort new functions alphabetically.
@@ -34,7 +34,12 @@
       write_log("SQL error: " . $result->getMessage());
       die("SQL error: " . $result->getMessage());
     }
-    return($result);
+
+    if ($result === DB_OK) {
+      return true;
+    } else {
+      return($result);
+    }
   }
 
   /**
@@ -51,6 +56,7 @@
       return false;
     }
   }
+
 
   /**
    * Delete a recipe from the database 
@@ -86,13 +92,13 @@
    * Delete all Aliases for a given Unit. 
    *
    * @param string $unit MM-unitname
-   * @return void
+   * @return bool
    */
   function delete_unit_alias ($unit) {
 
     /* What's the unit id to be deleted? */
 
-    if ($DB_STYLE == DB_MYSQL) {
+    if ($GLOBALS["DB_STYLE"] == DB_MYSQL) {
       $req = "select id from EINHEITEN " .
              " where STRCMP(EINHEITEN.ABBREV, '" . addslashes($unit) . "') = 0";
     } else {
@@ -108,11 +114,8 @@
         $result->free();
         $req = "delete from EINHEITEN_ALIAS where EID = " . $id["id"];
 
-        if (! $result = DB_query($req)) {
-          return false;
-        } else {
-          return true;
-        }
+        $result = DB_query($req);
+        return true;
       } else {
         return false;
       }
@@ -200,7 +203,7 @@
       return $alias;
     } else {
       $str = addslashes($str);
-      if ($DB_STYLE == DB_MYSQL) {
+      if ($GLOBALS["DB_STYLE"] == DB_MYSQL) {
         $req = "select abbrev from EINHEITEN " .
                " where STRCMP(ABBREV, '$str') = 0 " .
                "    or RK_ABBREV = '$str' ".
@@ -265,7 +268,7 @@
   function get_unit_aliases ($id) {
     /* Get a List of defined aliases of unit-id $id */
     $a = array();
-    if ($DB_STYLE == DB_MYSQL) {
+    if ($GLOBALS["DB_STYLE"] == DB_MYSQL) {
       $req_alias = "select EINHEITEN_ALIAS.text " .
                    "  from EINHEITEN_ALIAS, EINHEITEN " .
                    " where EINHEITEN_ALIAS.EID = EINHEITEN.ID " .
@@ -291,13 +294,16 @@
  
 
 
+  /**
+   * Create a list of Aliases for a given unit.
+   * $unit is the MM-Style abbreviation for the unit and 
+   * $alias (string) is the alias to be created.
+   * returns > 0 on Success, 0 if already defined and < 0 on error.
+   * @param string $unit   MM-Unit
+   * @param string $alias  New alias-list
+   * @return int   $result 0 if already defined, <0 on error, >0 on success
+   */
   function mk_unit_alias ($unit, $alias) {
-    /* Create a list of Aliases for a given unit.
-     * $unit is the MM-Style abbreviation for the unit and 
-     * $alias (string) is the alias to be created.
-     * returns > 0 on Success, 0 if already defined and < 0 on error.
-     */
-
     $alias = addslashes($alias);
     $unit  = addslashes($unit);
 
@@ -310,7 +316,7 @@
       /* Alias is undefined. That's fine, lets proceed. */
 
       /* What's the ID of the unit? */
-      if ($DB_STYLE == DB_MYSQL) {
+      if ($GLOBALS["DB_STYLE"] == DB_MYSQL) {
         $req = "select id from EINHEITEN where STRCMP('$unit', ABBREV) = 0";
       } else {
         $req = "select id from EINHEITEN where ABBREV='$unit'";
@@ -320,6 +326,7 @@
         /* we have the ID, do the insert: */
 
         $id = $result->fetchRow();
+        $result->free();
         $req = "insert into EINHEITEN_ALIAS values (" . $id["id"] . ", '$alias')";
 
         if (! $result = DB_query($req)) {
@@ -337,7 +344,6 @@
         return -1;
       }
     }
-
   }
 
 
