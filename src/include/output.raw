@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.19 2001/03/11 15:08:13 michael Exp $
+   * $Id: output.raw,v 1.20 2001/03/12 09:53:52 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -283,8 +283,7 @@
 
   function mmrezept_header ($str) {
     /* return a valid Mealmaster-subheader */
-    $len = strlen($str);
-    $fill = pad_left("", "-", 23 - $len/2);
+    $fill = pad_left("", "-", 23 - strlen($str)/2);
     $fill_l = "MMMMM" . $fill;
     $fill_r = $fill . "-----";
     $str = $fill_l . $str . $fill_r;

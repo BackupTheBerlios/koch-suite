@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.26 2001/03/11 15:08:13 michael Exp $
+   * $Id: functions.raw,v 1.27 2001/03/12 09:53:52 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -12,7 +12,7 @@
 
   function get_line ($fh) {
     if ($line = fgets($fh, 1024)) {
-      return $line;
+      return preg_replace("/\r/", "", $line);
     } else {
       return false;
     }
@@ -152,7 +152,7 @@
           $replace = array ("", "", "", "");
 
           array_push ($zutaten, 
-               array("title"       => preg_replace($search, $replace, $line),
+               array("title" => preg_replace($search, $replace, trim($line)),
                      "ingredients" => getingr($fd, $flavor)));
           $seen_ingr = 1;
 
@@ -183,7 +183,7 @@
             $br_lock = 1;
           } else {
             if ( preg_match("/^:.*$/", $line) and $br_lock == 0 ) {
-              $instruction .= "<br> $line";
+              $instruction .= "<br> $line ";
             } else {
               $instruction .= "$line ";
             }

@@ -1,4 +1,8 @@
-### $Id: changelog,v 1.19 2001/03/11 15:28:00 michael Exp $
+### $Id: changelog,v 1.20 2001/03/12 09:53:52 michael Exp $
+
+2001-03-12: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Oops, bei Rezept-Listen-Titeln wurde dass "\n" nicht
+	abgeschnitten. Fixed.
 
 2001-03-11: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Vereinheitlichte Ausgabe durch 'rezept' als Ersatz für
