@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.35 2001/05/22 00:15:20 michael Exp $
+   * $Id: functions.raw,v 1.36 2001/05/22 22:47:49 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -202,7 +202,7 @@
           fseek($fd, -$len, SEEK_CUR);
           if (($x = getingr($fd, $flavor)) > 0) {
             array_push ($zutaten,
-                      array("title" => "Zutaten:", 
+                      array("title" => "", 
                             "ingredients" => $x));
           }
           $seen_ingr = 1;
