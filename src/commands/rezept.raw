@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* $Id: rezept.raw,v 1.5 2001/05/10 23:56:56 michael Exp $
+  /* $Id: rezept.raw,v 1.6 2001/05/30 19:49:48 michael Exp $
    * Export a recipe in different formats.
    */
 
@@ -80,8 +80,9 @@
     /* PHP wechselt nicht automatisch nach $PWD, also muessen wir es von
      * Hand tun. 
      */
-    if (isset($PWD) and is_dir($PWD)) {
-      chdir($PWD);
+    $dir = getenv("PWD");
+    if (isset($dir) and is_dir($dir)) {
+      chdir($dir);
     } else {
       fputs($stderr, "Warning: Could not chdir() to \$PWD\n" .
                      "         Your shell probably doesn't export that " .
