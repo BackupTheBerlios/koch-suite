@@ -1,0 +1,71 @@
+<?php
+
+  /* $Id: edit_alias.raw,v 1.1 2001/06/06 11:09:13 michael Exp $
+   * Edit the alias-list for a given unit.
+   */
+
+  require "<%%PHP_LIBS%%>/config.inc";
+  require "<%%PHP_LIBS%%>/functions.inc";
+  require "<%%PHP_LIBS%%>/lang.inc";
+
+  /* Parse arguments */
+  $unit = $HTTP_GET_VARS["unit"];
+  if (! $FORM_ALIASES = $HTTP_POST_VARS["ALIASES"]) {
+    $aliases = get_unit_aliases($unit);
+  } else {
+    $aliases = split(",* +", $FORM_ALIASES);
+  }
+  if (isset($HTTP_POST_VARS["SUBMIT"])) {
+    if (delete_unit_alias($unit)) {
+      foreach ($aliases as $alias) {
+        if (($r = mk_unit_alias($unit, $alias)) >= 0) {
+          /* Ok, go back. */
+          $fwd = "<meta http-equiv=\"refresh\" content=\"0; URL=units.php\">";
+        } else {
+          /* Fehler. */;
+          $error = "Error: $r";
+        }
+      }
+    }
+  }
+
+?>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
+  <?php echo $fwd; ?>
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Koch-Suite</title>
+  <!-- $Id: edit_alias.raw,v 1.1 2001/06/06 11:09:13 michael Exp $ -->
+  <style class="text/css">
+  <!--
+    .dark  { background-color:#c0c0d5; font-family:Helvetica,Arial; }
+    .light { background-color:#e9e9f0; }
+    .small { font-size:small; }
+  //-->
+  </style>
+</head>
+
+<body>
+<h1><?php echo $Lang["Edit"] . ": " . $unit; ?></h1>
+
+<p>
+<?php
+  echo "$error<br>\n";
+  echo $Lang['Aliases']['DefDescr'];
+?>
+</p>
+
+<form method=post action="<?php echo $PHP_SELF . "?unit=$unit"; ?>">
+  <input type="text" value="<?php echo implode($aliases, " "); ?>" name="ALIASES"><br>
+  <input type="submit" name="SUBMIT" value="<?php echo $Lang["FormApply"]; ?>">
+  <input type="reset" value="<?php echo $Lang["FormReset"]; ?>"><br>
+</form>
+
+</body>
+</html>
