@@ -41,7 +41,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.6 2001/10/13 14:05:02 lestinsky Exp $
+   * $Id: auth.raw,v 1.7 2001/10/15 11:49:42 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -100,28 +100,18 @@
         /* What kind of authentication?
          * At the moment we support auth_by_db only.
          */
-        if (function_exists($GLOBALS["AUTH_STYLE"])) {
+        return verify_authdata();
 
-          if ($USER_S = $GLOBALS["AUTH_STYLE"]($FORM_USERNAME, $FORM_PASSWORD)) {
-            // everything is fine here. :-)
-            return true;
-
-          } else {
-            // Go away.
-            session_destroy();
-            die ("Authentication failed. Wrong Password?\n");
-          }
-
-        } else {
-          // Refering to a non-existing authentication-Function?
-          session_destroy();
-          die("Something's really screwed up here. " .
-              "Check your configuration.");
-        }
       }
     } else {
-      /* nay, we don't want any authentication. Therefore be 'true'. */
-      return true;
+      /* Authentication is not required.
+       * but perform it anyways, if requested by user 
+       */
+      if (isset($FORM_USERNAME) and isset($FORM_PASSWORD)) {
+        verify_authdata();
+      } else {
+        return true;
+      }
     }
   }
 
@@ -198,8 +188,35 @@
    * @return void
    */
   function auth_loginform() {
-    global $HTTP_SERVER_VARS;
+    global $HTTP_SERVER_VARS, $goto;
     include "<%%PHP_LIBS%%>/loginform.inc";
+  }
+
+
+  function verify_authdata() {
+    global $USER_S, $FORM_USERNAME, $FORM_PASSWORD;
+    /* What kind of authentication?
+     * At the moment we support auth_by_db only.
+     */
+    if (function_exists($GLOBALS["AUTH_STYLE"])) {
+
+      if ($USER_S = $GLOBALS["AUTH_STYLE"]($FORM_USERNAME, $FORM_PASSWORD)) {
+
+        // everything is fine here. :-)
+        return true;
+
+      } else {
+        // Go away.
+        session_destroy();
+        die ("Authentication failed. Wrong Password?\n");
+      }
+
+    } else {
+      // Refering to a non-existing authentication-Function?
+      session_destroy();
+      die("Something's really screwed up here. " .
+          "Check your configuration.");
+    }
   }
 
 ?>
