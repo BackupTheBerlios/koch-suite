@@ -29,7 +29,7 @@
    */
 
   /*
-   * $Id: rk2mm.raw,v 1.10 2001/08/06 17:59:01 lestinsky Exp $
+   * $Id: rk2mm.raw,v 1.11 2001/08/16 20:00:52 lestinsky Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Translate REZKONV-formated recipes to Mealmaster-formated recipes.
    *
@@ -39,6 +39,7 @@
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
+  require "<%%PHP_LIBS%%>/file.inc";
 
   if (!isset($argc)) $argc = $HTTP_SERVER_VARS["argc"];
   if (!isset($argv)) $argv = $HTTP_SERVER_VARS["argv"];

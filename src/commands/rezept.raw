@@ -28,7 +28,7 @@
    * SUCH DAMAGE.
    */
 
-  /* $Id: rezept.raw,v 1.14 2001/07/01 20:49:52 michael Exp $
+  /* $Id: rezept.raw,v 1.15 2001/08/16 20:00:52 lestinsky Exp $
    * Export a recipe in different formats.
    */
 
@@ -38,6 +38,9 @@
 
   $stdout = fopen("php://stdout", "w");
   $stderr = fopen("php://stderr", "w");
+
+  $write_latex_footer = false;
+  $header_lock        = false;
 
   /*
    * In case register_globals is turned off in php.ini, we need to get
@@ -181,13 +184,13 @@ EOT;
             fputs ($fp, latex_export(get_menu_by_mid($menu["id"])));
             fputs ($fp, latex_footer());
           } else {
-            if ($header_lock != 1) {
+            if ($header_lock == false) {
               fputs($fp, latex_header());
-              $header_lock = 1;
+              $header_lock = true;
             }
             fputs ($fp, latex_export(get_menu_by_mid($menu["id"])));
             fputs ($fp, "\n\n");
-            $write_latex_footer = 1;
+            $write_latex_footer = true;
           }
 	  break; 
 
@@ -200,11 +203,11 @@ EOT;
 
     }
 
-    if ($write_latex_footer == 1 and $one_file == 1 and isset($filename)) {
+    if ($write_latex_footer and $one_file == 1 and isset($filename)) {
       $fp = fopen($filename, "a");
       fputs($fp, latex_footer());
       fclose ($fp);
-    } else if ($write_latex_footer == 1 and $fp == $stdout) {
+    } else if ($write_latex_footer and $fp == $stdout) {
       fputs($fp, latex_footer());
     }
   }
