@@ -1,0 +1,60 @@
+### $Id: README,v 1.1 2000/10/26 01:20:25 michael Exp $
+
+Koch-Suite
+==========
+
+Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
+Siehe die Datei LICENCE, welche für alle in diesem Paket enthaltenen
+Dateien gültig ist.
+
+Was ist das ueberhaupt?
+-----------------------
+
+Eine Sammlung von Skripten fuer die Rezeptverwaltung. Angefangen von
+Mealmaster-Importfiltern (http://www.mealmaster.com), bis ...
+
+Voraussetzungen:
+----------------
+
+Wer einen Rezept-Server betreiben will, der wird einen laufenden http-
+Daemon und MySQL benötigen. 
+
+Auf alle Fälle ist aber PHP4 mit MySQL-Support notwendig. Diese Skripten 
+sind unter PHP-4.0.3.pl1 geschrieben und getestet worden. PHP muss als 
+Stand-Alone-Interpreter vorhanden sein, als Apache-Modul funktionieren
+die Konsolen-Tools nicht.
+
+Installation:
+-------------
+
+Wenn du dieses Dokument liest, dann hast du wahrscheinlich schon den
+Tar-Ball ausgepackt. Andernfalls mittels
+
+  tar -xvzf kochsuite-1.0.tar.gz
+
+auspacken. Du findest dann einige Ausfuehrbare Skripte vor. In diesen
+ueberpruefst du den Pfad zum PHP-Interpreter. Gib bei den Konsolen-Tools
+auch das Flag "-q" mit an, damit PHP keine HTTP-Header erzeugt.
+Kopiere alle ausfuehrbaren Tools an eine sympatische Stelle, z.B. 
+/usr/local/bin. Kopiere das Verzeichnis include/ nach 
+
+Todo:
+-----
+
+Noch sehr viel.
+ - Makefile schreiben,
+ - On-the-Fly-Konfiguration erzeugen,
+ - Web-Frontends,
+ - Suchfunktionen,
+
+Bugs:
+-----
+
+gibt es sicherlich auch eine Menge.
+
+Feedback:
+---------
+
+Bitte schickt mir Feedback. Am besten per EMail an meine oben angegebene
+Adresse. Ich nehme gerne auch Patches an.
+
