@@ -1,4 +1,4 @@
-### $Id: README,v 1.1 2000/10/26 01:20:25 michael Exp $
+### $Id: README,v 1.2 2000/10/26 01:24:03 michael Exp $
 
 Koch-Suite
 ==========
@@ -36,7 +36,10 @@ auspacken. Du findest dann einige Ausfuehrbare Skripte vor. In diesen
 ueberpruefst du den Pfad zum PHP-Interpreter. Gib bei den Konsolen-Tools
 auch das Flag "-q" mit an, damit PHP keine HTTP-Header erzeugt.
 Kopiere alle ausfuehrbaren Tools an eine sympatische Stelle, z.B. 
-/usr/local/bin. Kopiere das Verzeichnis include/ nach 
+/usr/local/bin. 
+Passe include/config.inc an die lokalen Anforderungen an.
+Kopiere das Verzeichnis include/ nach irgendwo.
+
 
 Todo:
 -----
