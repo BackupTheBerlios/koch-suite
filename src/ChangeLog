@@ -1,3 +1,7 @@
+2002-07-22  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/Documentation/PHP.txt 1.6: Typo
+
 2002-07-21  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/man/man1/mmimport.1.raw 1.13: Sync
