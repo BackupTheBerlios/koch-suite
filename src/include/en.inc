@@ -1,11 +1,11 @@
 <?php
   /*
-   * $Id: en.inc,v 1.58 2004/03/31 19:26:39 lestinsky Exp $
+   * $Id: en.inc,v 1.59 2005/01/02 02:41:53 lestinsky Exp $
    *
    * Define English text-constants.
    *
    * This file is subject to the license as included in ../LICENSE
-   * (c) 2002 Michael Lestinsky
+   * (c) 2005 Michael Lestinsky
    */
 
   /* Menu */
@@ -200,8 +200,8 @@ EOT;
       If the language you specified exists you will see all following
       pages in the requested language. Otherwise the default language
       (English "en") will be used. You can change the interface language
-      during a session by selecting one out of <var>de</var>, <var>en</var> 
-      and <var>es</var> from the main menu.
+      during a session by selecting one out of <var>de</var>, <var>en</var>, 
+      <var>es</var> and <var>fr</var> from the main menu.
       Of course this will not translate the recipes themselves. This selection
       affects the interface language only.
 EOT;

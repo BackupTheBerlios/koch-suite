@@ -1,10 +1,11 @@
 <?php
   /*
+   * $Id: de.inc,v 1.54 2005/01/02 02:41:53 lestinsky Exp $
+   *
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.53 2004/03/31 19:26:39 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
-   * (c) 2002 Michael Lestinsky
+   * (c) 2005 Michael Lestinsky
    */
 
   /* Menu */
@@ -28,7 +29,7 @@
   $Lang['Instructions']		= 'Anweisungen';
   $Lang['Rating']		= 'Bewertung';
   $Lang['Vote']['Submit']	= 'Rezept bewerten';
-  $Lang['TotalRecipes']		= 'Verf&uuml;gbare Rezeptes';
+  $Lang['TotalRecipes']		= 'Verf&uuml;gbare Rezepte';
   $Lang['Contact']		= 'Kontakt';
 
   $Lang['FormApply']		= "Eintragen";
@@ -182,8 +183,8 @@ EOT;
       werden die Seiten in dieser Sprache ausgegeben. Andernfalls wird auf
       die Standard-Sprache (Englisch "en") zur&uuml;ckgegriffen.
       Die Einstellungen k&ouml;nnen auch f&uuml;r die Zeitdauer einer Session
-      durch Auswahl von <var>de</var>, <var>en</var> oder <var>es</var> aus
-      dem Hauptmen&uuml; ver&auml;ndert werden.
+      durch Auswahl von <var>de</var>, <var>en</var>, <var>es</var> und
+      <var>fr</var> aus dem Hauptmen&uuml; ver&auml;ndert werden.
       Nat&uuml;rlich werden Rezepte selbst nicht &uuml;bersetzt, sondern
       nur die Interfacesprache angepasst.
 EOT;
