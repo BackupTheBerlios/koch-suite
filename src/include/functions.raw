@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.58 2001/08/06 23:32:06 lestinsky Exp $
+   * $Id: functions.raw,v 1.59 2001/08/11 07:28:45 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -903,6 +903,55 @@
     }
     $result->free();
     return $a;
+  }
+
+
+  /**
+   * Which format can we print?
+   */
+  function printable_format($wish) {
+    global $LATEX, $DVIPS, $GS;
+
+    switch ($wish) {
+      case "html":
+        return "html";
+        break;
+
+      case "latex":
+        if ($LATEX != 'none')
+          return "latex";
+        else
+          return "html";
+        break;
+
+      case "ps":
+        if ($LATEX != 'none' and $DVIPS != 'none') {
+          return "ps";
+        } else {
+          if ($LATEX != 'none') {
+            return "latex";
+          } else {
+            return "html";
+          }
+        }
+        break;
+
+      case "pdf":
+        if ($LATEX != 'none' and $DVIPS != 'none' and $GS != 'none') {
+          return "pdf";
+        } else {
+          if ($LATEX != 'none' and $DVIPS != 'none') {
+            return "ps";
+          } else {
+            if ($LATEX != 'none') {
+              return "latex";
+            } else {
+              return "html";
+            }
+          }
+        }
+        break;
+    }
   }
 
 
