@@ -1,4 +1,4 @@
-### $Id: README,v 1.35 2001/06/25 23:32:49 michael Exp $
+### $Id: README,v 1.36 2001/07/10 08:56:25 michael Exp $
 
 Koch-Suite
 ==========
@@ -136,6 +136,10 @@ in Documentation/FAQ.txt nach, wenn dies nicht ganz zutrifft.
  $ vi config
    Anpassen der Konfigurationsvariablen, speziell der Pfade und der
    Parameter fuer den Datenbank-Zugriff.
+
+   DB_TYPE bestimmt das verwendete DBMS.  "mysql" fuer MySQL, "pgsql" fuer
+   PostgreSQL.  Eine Uebersicht der unterstuetzen DBMS findet man im Dokument
+   STATUS im PEAR/DB Verzeichnis (<prefix>/share/php/DB).
 
  $ make
 
