@@ -1,10 +1,14 @@
-# $Id: config,v 1.16 2001/07/25 11:07:28 michael Exp $
+# $Id: config,v 1.17 2001/09/23 11:14:13 lestinsky Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 
 # Where is the php-Binary?
 PHP		=/usr/local/bin/php4
 PHP_OPTS	=-q
+
+# Where did you install your PEAR? (eg. /usr/local/lib/php/ )
+# Remember: you need a post-4.0.6-PEAR repository.
+PEAR		=/usr/local/lib/php4
 
 # Where to place general "include"-Files:
 PHP_LIBS 	=/usr/local/lib/koch-suite
