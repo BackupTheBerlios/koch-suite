@@ -1,3 +1,20 @@
+2002-09-23  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/admin.raw 1.10, src/www/delete.raw 1.23, src/www/edit_alias.raw 1.17, src/www/einfuegen.raw 1.44, src/www/footer.raw 1.2, src/www/help.raw 1.21, src/www/index.raw 1.28, src/www/infos.raw 1.38, src/www/kategorien.raw 1.21, src/www/logout.raw 1.8, src/www/pastebox.raw 1.6, src/www/print.raw 1.26, src/www/rezept.raw 1.35, src/www/search.raw 1.30, src/www/settings.raw 1.9, src/www/units.raw 1.15:
+  Use header.inc
+
+  * src/www/mmprint.raw 1.21:
+  Use actions.inc and header.inc; this enables browsing through recipes as in rezept.php
+
+  * src/www/actions.raw 1.10:
+  Use $result_id when it makes sense
+
+  * src/www/Makefile.raw 1.33: +header.inc
+
+  * src/www/header.raw 1.1: HTML header template.
+  $page_title sets the <title> of the generated page.
+  $no_tabular disables the menu.
+
 2002-09-17  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/actions.raw 1.9, src/www/menue.raw 1.21:
