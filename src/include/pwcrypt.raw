@@ -30,7 +30,7 @@
   /**
    * Password-functions for the "Koch-Suite"
    *
-   * $Id: pwcrypt.raw,v 1.1 2001/12/24 14:10:25 lestinsky Exp $
+   * $Id: pwcrypt.raw,v 1.2 2002/02/18 17:32:46 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -70,8 +70,11 @@
     $randstr = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     srand ((double) microtime () * 1000000);
-    for ($i = 0; $i < $len; $i++) {
-      $str .= substr ($randstr, rand(0,61), 1);
+    for (; strlen($str) < $len;) {
+      $chr = substr ($randstr, rand(0,61), 1);
+      if (strpos($str, $chr) === false) {
+        $str .= $chr;
+      }
     }
     return $str;
   }
