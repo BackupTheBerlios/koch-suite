@@ -1,4 +1,4 @@
-### $Id: User.txt,v 1.3 2000/11/29 18:33:14 michael Exp $
+### $Id: User.txt,v 1.4 2000/12/15 00:25:51 michael Exp $
 
 User-Dokumentation
 ==================
@@ -27,7 +27,15 @@ mmexport
 
 rezept2latex
 ------------
-  rezept2latex gibt Rezepte als LaTeX-Source aus. Als Aufruf-Parameter 
-  wird ein Suchstring übergeben.
+  rezept2latex gibt Rezepte als LaTeX-Source aus.
+  Kommandozeile:
+    rezept2latex [-h] [-f Dateiname] "Suchbegriff"
+        -h      Drucke einen Filfetext.
+        -f      Definiert den Dateinamen der Augabedatei. Standard-Wert
+                ist die Standard-Ausgabe. Wenn es mehrere Rezepte gibt,
+                auf die "Suchbegriff" zutrifft, dann wird an den
+                Dateinamen noch ein 2-stelliger Zähler angehängt.
+        "Suchbegriff"
+                Durchsuche die Titel der Menüs nach diesem Begriff.
 
 (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, November 2000
