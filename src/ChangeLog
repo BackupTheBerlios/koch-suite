@@ -1,3 +1,25 @@
+2002-08-19  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/output.raw 1.47: Format header
+
+  * src/www/actions.raw 1.5:
+  use $result_id if availible
+
+  * src/include/de.inc 1.41, src/include/en.inc 1.45:
+  Sync
+
+  * src/www/delete.raw 1.21:
+  Remove deleted recipes from the cached data, too
+
+  * src/www/rezept.raw 1.31:
+  Enable marking recipes from here, too
+
+  * src/www/search.raw 1.23:
+  Enable unmarking recipes.
+
+  * src/include/defines.raw 1.13.2.2:
+  Bump version to 0.7.1
+
 2002-08-18  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/loginform.raw 1.6, src/www/Makefile.raw 1.32, src/www/admin.raw 1.7, src/www/delete.raw 1.20, src/www/edit_alias.raw 1.14, src/www/einfuegen.raw 1.41, src/www/help.raw 1.20, src/www/index.raw 1.26, src/www/infos.raw 1.37, src/www/kategorien.raw 1.18, src/www/logout.raw 1.6, src/www/mmprint.raw 1.18, src/www/pastebox.raw 1.3, src/www/print.raw 1.23, src/www/rezept.raw 1.30, src/www/settings.raw 1.6, src/www/units.raw 1.13:
