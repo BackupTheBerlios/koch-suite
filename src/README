@@ -1,4 +1,4 @@
-### $Id: README,v 1.28 2001/05/30 18:54:35 michael Exp $
+### $Id: README,v 1.29 2001/06/01 22:40:46 michael Exp $
 
 Koch-Suite
 ==========
@@ -83,10 +83,13 @@ Konfiguration von PHP mit folgenden Werten erforderlich.
     magic_quotes_gpc      = On
     magic_quotes_runtime  = Off
     magic_quotes_sybase   = Off
-    register_argc_argv    = On
-    register_globals      = On
+    register_argc_argv    = On 
+    register_globals      = On [*]
   [snap]
 
+[*]: Wenn du für die Apache-Modul-Version und die CGI-Version von PHP zwei
+verschiedene php.ini-Files verwendest, dann ist dieser Wert in der
+Apache-Version egal.
 
 Installation:
 -------------
