@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta name="Author" content="Michael Lestinsky" />
-  <meta name="keywords" lang="de" content="Kochen, Kochbuch, Rezept, Rezeptverwaltung, Unix, Linux" />
+  <meta name="keywords" lang="de" content="Cooking, Recipes, Cookbook, Software, Unix, Linux" />
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <title>Koch-Suite</title>
 </head>
@@ -16,27 +16,25 @@
 <p class="buttonbar">
 [<a href="index.html">Intro</a>]
 [<a href="features.html">Features</a>]
-[<a href="requirements.html">Voraussetzungen</a>]
+[<a href="requirements.html">Requirements</a>]
 [Links]
 </p>
 
-<h2>Alternative Rezeptverwaltungen f&uuml;r Un*x</h2>
+<h2>Alternative Recipe management tools.</h2>
 <ul>
   <li><a href="http://trident.mcs.kent.edu/~dwatson/cookbook.html">Cookbook</a>,
-      eine Rezeptverwaltung f&uuml;r KDE.</li>
-  <li><a href="http://home.CameloT.de/thomas/">Mampf</a>, eine etwas
-      &auml;ltere Rezeptverwaltung f&uuml;r Unix. Geschrieben in Tcl/Tk,
-      verwendet mSQL.</li>
-  <li><a href="http://mango.sourceforge.net">Mango</a>. Geschrieben in C++,
-      verwendet Qt.</li>
+      for KDE.</li>
+  <li><a href="http://home.CameloT.de/thomas/">Mampf</a>, a somewhat
+      ancient tool for Unix. Written in Tcl/Tk, with mSQL backend.</li>
+  <li><a href="http://mango.sourceforge.net">Mango</a>. Another <em>Qt</em>ish tool.</li>
 </ul>
 
-<h2>Sonstiges</h2>
+<h2>More</h2>
 <ul>
   <li><a href="http://developer.berlios.de/projects/koch-suite/">Koch-Suite at Berlios</a></li>
-  <li>Details zum <a href="http://developer.berlios.de/cvs/?group_id=144">CVS-Repository</a></li>
-  <li><a href="http://developer.berlios.de/survey/survey.php?group_id=144&amp;survey_id=4">Umfrage: Welches Interface?</a></li>
-  <li>Dir gef&auml;llt die Koch-Suite? Sag <a href="http://www.amazon.de/exec/obidos/wishlist/38UW4J3AT8UMH/ref=wl_em_to">Danke</a>. :-)</li>
+  <li><a href="http://developer.berlios.de/cvs/?group_id=144">CVS repository details</a></li>
+  <li><a href="http://developer.berlios.de/survey/survey.php?group_id=144&amp;survey_id=4">Survey: Which Userinterface?</a></li>
+  <li>Do you like the Koch-Suite? Say <a href="http://www.amazon.de/exec/obidos/wishlist/38UW4J3AT8UMH/ref=wl_em_to">thank you</a>. :-)</li>
 </ul>
 
 <address>
@@ -49,7 +47,7 @@
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2004 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: links.html.de,v 1.2 2004/04/11 12:15:24 lestinsky Exp $
+$Id: links.html.en,v 1.1 2004/04/11 12:15:24 lestinsky Exp $
 </address>
 </body>
 </html>

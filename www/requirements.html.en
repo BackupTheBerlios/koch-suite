@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta name="Author" content="Michael Lestinsky" />
-  <meta name="keywords" lang="de" content="Kochen, Kochbuch, Rezept, Rezeptverwaltung, Unix, Linux" />
+  <meta name="keywords" lang="de" content="Recipes, Cookbook" />
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <title>Koch-Suite</title>
 </head>
@@ -16,25 +16,26 @@
 <p class="buttonbar">
 [<a href="index.html">Intro</a>]
 [<a href="features.html">Features</a>]
-[Voraussetzungen]
+[Requirements]
 [<a href="links.html">Links</a>]
 </p>
 
 <p>
-Zum Betrieb der Koch-Suite muss folgende Software installiert sein:
+This list of requirements has to be met, in order to run the
+Koch-Suite on your system.
 </p>
 <ul>
-  <li><a href="http://www.php.net/">PHP4</a> als Standalone-Interpreter
-      (f&uuml;r die CLI-Tools) und als
-      <a href="http://www.apache.org">Apache</a>-Modul</li>
+  <li><a href="http://www.php.net/">PHP4</a> as standalone Interpreter
+      (for the command line tools) and as
+      <a href="http://www.apache.org">Apache</a> module</li>.
   <li>Pear</li>
-  <li>Datenbank-D&aelig;mon:
+  <li>Database daemons:
     <ul class="lightbluedot">
-      <li>entweder <a href="http://www.mysql.com">MySQL</a>
-        (Getestet unter 3.23.32 ff. und 4.0.17 ff.),</li>
-      <li>oder <a href="http://www.postgresql.org">PostgreSQL</a>
-        (Getestet unter 7.0.3).</li>
-      <li>Andere DBMSe <em>k&ouml;nnen</em> unter Umst&auml;nden ebenfalls funktionieren.</li> 
+      <li>either <a href="http://www.mysql.com">MySQL</a>
+        (tested with 3.23.32 ff. and 4.0.17 ff.)</li>
+      <li>or <a href="http://www.postgresql.org">PostgreSQL</a>
+        (tested with version 7.0.3)</li>
+      <li>Others DBMS <em>might</em> work, too.</li>
     </ul>
   </li>
 </ul>
@@ -49,7 +50,7 @@ Zum Betrieb der Koch-Suite muss folgende Software installiert sein:
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2004 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: requirements.html.de,v 1.2 2004/04/11 12:15:24 lestinsky Exp $
+$Id: requirements.html.en,v 1.1 2004/04/11 12:15:24 lestinsky Exp $
 </address>
 </body>
 </html>
