@@ -1,3 +1,35 @@
+2001-10-01  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/commands/mmimport.raw 1.23:
+  Who the fuck wrote this?
+
+  * src/include/file.raw 1.4: Add Destructor.
+  Organize $this->buffer as unlimited LIFO.
+
+  * src/include/functions.raw 1.64:
+  better readability
+
+  * src/include/output.raw 1.37: better
+
+  * src/include/koch-suite.raw 1.2:
+  Of Course, DB.php cannot find PEAR.php if include_path is empty.
+  Therefore extend include_path to match <%%PEAR%%> to.
+
+  * src/man/man1/mmimport.1.raw 1.9, src/man/man1/rezept.1.raw 1.6:
+  Update, language,...
+
+  * src/man/Makefile.raw 1.10, src/man/man1/rk2mm.1.raw 1.4:
+  rk2mm has gone, so wipe the manpage, too.
+
+2001-09-30  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/changelog 1.47:
+  replaced by automatically generated ChangeLog
+
+  * src/ChangeLog 1.2: Regen
+
+  * src/Makefile 1.19: Beautify output.
+
 2001-09-30  Michael Bussmann  <bus@mb-net.net>
 
   * src/Makefile 1.18:
