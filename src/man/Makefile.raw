@@ -1,4 +1,4 @@
-# $Id: Makefile.raw,v 1.8 2001/05/08 19:51:48 michael Exp $
+# $Id: Makefile.raw,v 1.9 2001/05/10 23:52:37 michael Exp $
 # Space-separated list of all "raw" php-files.
 
 MAN1=	mmimport.1 rezept.1 rk2mm.1
@@ -11,7 +11,7 @@ all: man
 man: man1
 
 man1:
-	@(cd man1; for i in ${MAN}; do\
+	@(cd man1; for i in ${MAN1}; do\
 	echo "$$i.raw --> $$i" ;\
 	sed -f ../${CONF_FILE} $$i.raw > $$i;\
 	done)

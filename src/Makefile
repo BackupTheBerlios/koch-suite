@@ -11,9 +11,9 @@ SUBDIRS=	${INC_SUBDIR} ${COMMAND_SUBDIR} ${WWW_SUBDIR} ${MAN_SUBDIR}
 THISDIR=	.
 
 all: ${CONF_FILE}
-	@make subdir TRGT=all DIRS="${SUBDIRS}"
+	@${MAKE} subdir TRGT=all DIRS="${SUBDIRS}"
 
-${CONF_FILE}: config
+${CONF_FILE}: config configure
 	./configure
 
 subdir:
@@ -26,12 +26,12 @@ subdir:
 	done)
 	
 clean:
-	@make subdir TRGT=clean DIRS="${SUBDIRS}"
+	@${MAKE} subdir TRGT=clean DIRS="${SUBDIRS}"
 	rm -f *.php
 	rm -f *.gen
 
 distclean: clean
-	@make subdir TRGT=distclean DIRS="${SUBDIRS}"
+	@${MAKE} subdir TRGT=distclean DIRS="${SUBDIRS}"
 	@(for i in ${SUBDIRS}; do \
 	echo "rm -f $${i}/Makefile" ; \
 	rm -f $${i}/Makefile ; \
@@ -41,16 +41,16 @@ distclean: clean
 install-temp-for-remote: install-includes install-www
 
 install-man:
-	@make subdir TRGT=install DIRS="${MAN_SUBDIR}" DESTDIR=${DESTDIR}
+	@${MAKE} subdir TRGT=install DIRS="${MAN_SUBDIR}" DESTDIR=${DESTDIR}
 
 install-command:
-	@make subdir TRGT=install DIRS="${COMMAND_SUBDIR}" DESTDIR=${DESTDIR}
+	@${MAKE} subdir TRGT=install DIRS="${COMMAND_SUBDIR}" DESTDIR=${DESTDIR}
 
 install-includes:
-	@make subdir TRGT=install DIRS="${INC_SUBDIR}" DESTDIR=${DESTDIR}
+	@${MAKE} subdir TRGT=install DIRS="${INC_SUBDIR}" DESTDIR=${DESTDIR}
 
 install-www:
-	@make subdir TRGT=install DIRS="${WWW_SUBDIR}" DESTDIR=${DESTDIR}
+	@${MAKE} subdir TRGT=install DIRS="${WWW_SUBDIR}" DESTDIR=${DESTDIR}
 
 install: ${CONF_FILE} install-includes install-command install-www install-man
 

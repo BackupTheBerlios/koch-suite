@@ -1,5 +1,3 @@
-#!/usr/bin/make
-
 # This file contains the substitution-rules for "sed"
 
 # Space-separated list of all "raw" php-files.
@@ -9,7 +7,7 @@ SUBDIRS=
 CONF_FILE=		../config.sed
 
 all: build
-	@#make subdir TRGT=all
+	@#${MAKE} subdir TRGT=all
 
 build: ${PHP_FILES_UNCONF}
 
@@ -25,7 +23,7 @@ subdir:
 	done )
 
 clean:
-	@#make subdir TRGT=clean
+	@#${MAKE} subdir TRGT=clean
 	rm -f ${PHP_FILES_UNCONF}
 
 distclean:

@@ -7,7 +7,7 @@ SUBDIRS=
 CONF_FILE=		../../config.sed
 
 all:
-	@#make subdir TRGT=all
+	@#${MAKE} subdir TRGT=all
 
 subdir:
 	@(for i in ${SUBDIRS} ; do\
@@ -19,7 +19,7 @@ subdir:
 	done )
 
 clean:
-	@#make subdir TRGT=clean
+	@#${MAKE} subdir TRGT=clean
 
 distclean:
 
