@@ -1,5 +1,5 @@
 -- 
--- $Id: init_db.pgsql,v 1.3 2001/07/25 10:52:41 michael Exp $
+-- $Id: init_db.pgsql,v 1.4 2001/07/25 10:53:07 michael Exp $
 -- init_db_postgreSQL.sql
 -- 2001-06-19 Michael Bussmann <bus@mb-net.net>
 --
@@ -116,8 +116,8 @@ CREATE TABLE KATEGORIE (
 CREATE TABLE MENUE (
   ID smallint NOT NULL PRIMARY KEY,
   PORTIONEN varchar(255),
-  TITEL varchar(255) DEFAULT '' NOT NULL
-  HASH varchar(255),
+  TITEL varchar(255) DEFAULT '' NOT NULL,
+  HASH varchar(255)
 );
 
 --
