@@ -1,4 +1,4 @@
-### $Id: README,v 1.29 2001/06/01 22:40:46 michael Exp $
+### $Id: README,v 1.30 2001/06/07 16:11:37 michael Exp $
 
 Koch-Suite
 ==========
@@ -11,10 +11,18 @@ oder einzelne Dateien hieraus verwendet werden dürfen.
 Was ist das hier ueberhaupt?
 ----------------------------
 
-Eine Sammlung von Skripten fuer die Rezeptverwaltung. Angefangen von
-Mealmaster-Importfiltern (http://www.mealmaster.com), über
-Kommandozeilen-Tools für den Export in diverse Formate bis zu einem
+Kurz: Eine Sammlung von Skripten fuer die Rezeptverwaltung. 
+Angefangen von Mealmaster-Importfiltern (http://home1.gte.net/welliver/), 
+über Kommandozeilen-Tools für den Export in diverse Formate bis zu einem
 Web-Interface zur Datenbank.
+
+Das Ziel der Entwicklung ist es ein System zu schaffen, dass der
+Philosophie von Unix gerecht wird. Da durch die verwendete
+Programmiersprache (PHP) der Weg zum Web-Interface nicht mehr weit war,
+existiert auch dieses. Dadurch ist der Zugriff auf eine einheitliche
+Datenbank auch in heterogenen Netzen möglich.
+Webinterface und Console-Tools bilden dabei verschiedene Aspekte einer 
+Entität.
 
 
 Voraussetzungen:
@@ -59,7 +67,13 @@ PHP4-Installation:
 Um PHP4 entsprechend zu kompilieren, packt man die Quellen aus und 
 ruft im PHP-Quell-Verzeichnis "configure" mit folgenden Optionen auf: 
 
- $ ./configure  --with-mysql --enable-force-cgi-redirect
+(Stand-Alone Interpreter:)
+
+ $ ./configure  --with-mysql=/path/to/mysql --enable-force-cgi-redirect
+
+(Apache-Modul:)
+
+ $ ./configure  --with-apxs=/path/to/apxs --with-mysql=/path/to/mysql
 
 Danach baut und installiert man PHP mittels:
 
@@ -91,6 +105,7 @@ Konfiguration von PHP mit folgenden Werten erforderlich.
 verschiedene php.ini-Files verwendest, dann ist dieser Wert in der
 Apache-Version egal.
 
+
 Installation:
 -------------
 
@@ -98,15 +113,15 @@ Folgende Anleitung nimmt an, dass man vollen Shellzugriff auf den Rechner
 hat, auf dem die Koch-Suite installiert werden soll. Siehe gegebenenfalls
 in Documentation/FAQ.txt nach, wenn dies nicht ganz zutrifft.
 
- - tar -xvzf kochsuite-*.tar.gz
+ $ tar -xvzf kochsuite-*.tar.gz
    Dieses Paket auspacken, wenn es nicht bereits geschehen ist.
 
- - vi config
+ - edit config
    Anpassen der Konfigurationsvariablen, speziell der Pfade
 
- - make
+ $ make
 
- - make install
+ $ make install
    als Root.
 
 Zum Import der Datenstruktur kann mit einem
@@ -132,8 +147,9 @@ Updating:
              Tabelle EINHEITEN, EINHEITEN_ALIAS:
              Am Einfachsten ist es, die Tabelle zu löschen und mit den
              Kommandos aus init_db.sql neu einzuspielen. Wenn man dies
-             korrekt macht, dann gibt es keine Verluste *g*
+             korrekt macht, dann gibt es keine Verluste *eg*
 0.3 -> 0.4   Es gab keine Veränderungen an der Datenbank-Struktur.
+0.4 -> 0.5   dito.
 
 
 Todo/'Roadmap':
