@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.25 2001/10/18 11:47:36 lestinsky Exp $
+   * $Id: en.inc,v 1.26 2001/10/31 18:26:02 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -28,7 +28,8 @@
   $Lang['FormReset']		= "Reset form";
 
   $Lang['Delete']		= "Delete";
-  $Lang['PrintVers']		= "Printable version";
+  $Lang['NormalVers']		= "Normal view";
+  $Lang['PrintVers']		= "Printable view";
   $Lang['Close']		= "Close";
   $Lang['Edit']                 = "Edit";
 

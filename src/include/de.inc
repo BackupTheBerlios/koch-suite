@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.22 2001/10/18 11:47:36 lestinsky Exp $
+   * $Id: de.inc,v 1.23 2001/10/31 18:26:02 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -27,6 +27,7 @@
   $Lang['FormReset']		= "Formular zur&uuml;cksetzen";
 
   $Lang['Delete']		= "L&ouml;schen";
+  $Lang['NormalVers']		= "Normalansicht";
   $Lang['PrintVers']		= "Druckversion";
   $Lang['Close']		= "Schlie&szlig;en";
   $Lang['Edit']                 = "Bearbeiten";
