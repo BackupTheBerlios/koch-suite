@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.15 2001/07/03 00:11:29 michael Exp $
+   * $Id: en.inc,v 1.16 2001/07/25 12:46:53 michael Exp $
    *
    * Define English text-constants.
    *
@@ -49,7 +49,7 @@
   $Lang['Recipe']['Delete']	= "Delete recipe";
   $Lang['Recipe']['Deleted']    = "Recipe deleted";
   $Lang['Recipe']['Insert']     = "Insert recipe into the database";
-  $Lang['Recipe']['Inserted']   = "Recipe deleted.";
+  $Lang['Recipe']['Inserted']   = "Recipe inserted.";
 
   $Lang['AllRecipes']		= "All recipes";
   $Lang['CatChoose']		= "Category-chooser";
