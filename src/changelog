@@ -1,10 +1,17 @@
-### $Id: changelog,v 1.44 2001/09/09 14:24:11 lestinsky Exp $
+### $Id: changelog,v 1.45 2001/09/23 11:14:34 lestinsky Exp $
+
+2001-09-23: Michael Lestinsky <michael@lestinsky.de>
+	Ask for the path to PEAR, instead of using the settings in your
+	php.ini. Setting this in php.ini might not be an option in every
+	situation.
+	rk2mm: has gone away. byebye.
 
 2001-09-07: Michael Lestinsky <michael@lestinsky.de>
 	Show the total number of hits in search-results.
 
 2001-08-31: Michael Lestinsky <michael@lestinsky.de>
-	Added Authentication-Module.
+	Added Authentication-Module. Use ks_passwd to create a valid
+        sql-string to insert into the table 'username'.
 
 2001-08-06: Michael Lestinsky <michael@lestinsky.de>
 	Update of Localized files (de.inc, en.inc)
