@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.16 2001/01/15 10:06:09 michael Exp $
+   * $Id: functions.raw,v 1.17 2001/01/18 00:43:21 michael Exp $
    */
 
   require "<%%PHP_LIBS%%>/config.inc";
@@ -121,7 +121,7 @@
             if ( preg_match("/^:.*$/", $trimmed) and $br_lock == 0 ) {
               $instruction .= "<br> $trimmed ";
             } else 
-            $instruction .= "$trimmed ";
+              $instruction .= "$trimmed ";
             $br_lock = 0;
           }
         }
@@ -391,19 +391,21 @@
     /* which menues are of the category $id["ID"]? */ 
     $req_mid = "select distinct MENUE_ID from KAT " .
                " where KATEGORIE_ID = " . $id["ID"] ;
-    $res_mid = mysql_db_query($GLOBALS["DB_NAME"], $req_mid);
-
-    while ($mid = mysql_fetch_row($res_mid)) {
-      /* for each entry: request the id and title and push them into
-       * the result-array */
-      $req_menu = "select * from MENUE where ID = " . $mid[0];
-      $res_menu = mysql_db_query($GLOBALS["DB_NAME"], $req_menu);
-
-      if ($menu = mysql_fetch_array($res_menu)) {
-        array_push($a, array("id" => $menu["ID"], "title" => $menu["TITEL"] ));
+    if ($res_mid = mysql_db_query($GLOBALS["DB_NAME"], $req_mid)) {
+      while ($mid = mysql_fetch_row($res_mid)) {
+        /* for each entry: request the id and title and push them into
+         * the result-array */
+        $req_menu = "select * from MENUE where ID = " . $mid[0];
+        $res_menu = mysql_db_query($GLOBALS["DB_NAME"], $req_menu);
+  
+        if ($menu = mysql_fetch_array($res_menu)) {
+          array_push($a, array("id" => $menu["ID"], "title" => $menu["TITEL"] ));
+        }
       }
+      return $a;
+    } else {
+      return false;
     }
-    return $a;
   }
 
 ?>
