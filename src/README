@@ -1,4 +1,4 @@
-### $Id: README,v 1.45 2002/04/14 18:21:41 lestinsky Exp $
+### $Id: README,v 1.46 2002/04/15 22:38:39 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -85,7 +85,7 @@ to follow it strictly.
 
 Planned for 0.7:
 
-  o  Finegrained Authentication scheme, enabling "moderated" i
+  o  Finegrained Authentication scheme, enabling "moderated"
      installations...
   o  Administration-tool for the accounts
      as a replacement of "ks_passwd"
@@ -132,6 +132,7 @@ If you don't like my code: I never said that I've got talent. ;-)
 Thanks to:
 ----------
 
+o  Everyone who sent me suggestions or patches,
 o  Michael Bussmann for the PEARification of the database requests 
    and the PostgreSQL support,
 o  Leo Caspari for feedback, error corrections and extensions,
