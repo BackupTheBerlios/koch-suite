@@ -5,13 +5,14 @@
    * (c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
    */
 
-  require "<%%PHP_LIBS%%>/config.inc";
-  require "<%%PHP_LIBS%%>/functions.inc";
-  require "<%%PHP_LIBS%%>/lang.inc";
+  require_once "<%%PHP_LIBS%%>/config.inc";
+  require_once "<%%PHP_LIBS%%>/functions.inc";
+  require_once "<%%PHP_LIBS%%>/lang.inc";
 
   /*
    * read the proper values submitted via form
    */
+
   $mid       = doubleval($HTTP_GET_VARS["mid"]);
   $titel     = trim($HTTP_POST_VARS["titel"]);
   $portionen = trim($HTTP_POST_VARS["portionen"]);
@@ -32,6 +33,7 @@
   }
 
   function make_zutaten ($ingr) {
+    /* Construct the ingredient-lines from $ingr */
     foreach ($ingr as $i) {
       if ($i["quant"] != '' and $i["quant"] != 0)
         $str .= round($i["quant"], 3) . " ";
@@ -234,7 +236,7 @@ $Lang['Units'] . "</a></td>\n";
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.20 2001/06/20 18:33:29 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.21 2001/06/23 00:23:20 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
