@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: koch-suite.raw,v 1.1 2001/09/30 13:52:51 bus Exp $
+   * $Id: koch-suite.raw,v 1.2 2001/10/01 13:35:34 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
@@ -8,9 +8,16 @@
    * for the License of this file.
    */
 
+
+  /* Setup the include-path, or PEAR-Modules won't work correctly. */
+  $path = ini_get("include_path");
+  if (! ini_set("include_path", "$path:<%%PEAR%%>"))
+    die ("Can't setup include-path correctly.");
+
   require_once '<%%PEAR%%>/DB.php';
   require_once '<%%PHP_LIBS%%>/debug.inc';
   require_once '<%%PHP_LIBS%%>/defines.inc';
+
 
   /*
    * Shall we be in debug-mode? Answer "yes" or "no".
