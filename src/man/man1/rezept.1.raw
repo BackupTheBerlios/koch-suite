@@ -1,6 +1,6 @@
-.\" $Id: rezept.1.raw,v 1.10 2003/01/10 23:43:24 lestinsky Exp $
+.\" $Id: rezept.1.raw,v 1.11 2004/02/05 11:41:59 lestinsky Exp $
 .\"
-.\" Copyright (c) 2003
+.\" Copyright (c) 2004
 .\"      Michael Lestinsky. All rights reserved.
 .\"
 .\" Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 .\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 .\" SUCH DAMAGE.
 .\"
-.Dd Apr 1st, 2002
+.Dd Feb, 5th, 2004
 .Dt rezept 1
 .Os Koch-Suite
 .Sh NAME
@@ -36,7 +36,7 @@
 .Sh SYNOPSIS
 .Nm 
 .Op Fl h
-.Op Fl text | Fl mm Op Fl relaxed | Fl latex
+.Op Fl text | Fl mm Op Fl relaxed | Fl rk | Fl latex
 .Op Fl f Ar filename Op Fl 1
 .Op Fl s Ar X
 .Op Fl t | Fl c | Fl i
@@ -87,7 +87,10 @@ write output in Meal-Master format.
 Using
 .Fl relaxed
 violates the strict definitions of the Meal-Master format slightly.
-Don't use it.
+Don't use it, if you plan to share the output with other users. This
+option is mainly useful for plain text backups.
+.It Fl rk
+write putput in RezKonv format.
 .It Fl text
 write output as human readable text. 
 This is the default.
@@ -119,7 +122,7 @@ use the default language,
 which may be set in
 .Pa <%%ETC_PREFIX%%>/koch-suite.inc .
 This doesn't translate the recipes, of course,
-but it affects the representation of i.e. the units.
+but it affects the representation of e.g. the units.
 .Sh FILES
 .Bl -tag -width <%%ETC_PREFIX%%>/koch-suite.inc -compact
 .It Pa <%%ETC_PREFIX%%>/koch-suite.inc
