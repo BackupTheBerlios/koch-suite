@@ -1,3 +1,13 @@
+2002-12-27  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/README 1.56:
+  Thanks to Joel Swartz for sending me a StarTrek-VI DVD.
+
+2002-12-26  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/print.raw 1.28:
+  Small fix by Maike Hanneck <maike@turfkoenig.de>
+
 2002-11-27  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/commands/init_db2.raw 1.1:
