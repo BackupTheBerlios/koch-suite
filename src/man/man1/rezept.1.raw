@@ -1,4 +1,4 @@
-.\" $Id: rezept.1.raw,v 1.5 2001/07/01 20:48:09 michael Exp $
+.\" $Id: rezept.1.raw,v 1.6 2001/10/01 00:03:26 lestinsky Exp $
 .\"
 .\" Copyright (c) 2001
 .\"      Michael Lestinsky. All rights reserved.
@@ -27,7 +27,7 @@
 .\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 .\" SUCH DAMAGE.
 .\"
-.Dd Mai 22, 2001
+.Dd Oct 1st, 2001
 .Dt rezept 1
 .Os Koch-Suite
 .Sh NAME
@@ -55,11 +55,11 @@ in the
 .Pp
 .Ar pattern 
 may be a combination of several searchstrings, connected by
-.Dq AND .
+.So AND Sc .
 I. e. a valid pattern is 
-.Dq Muffins AND Choc . 
+.So Muffins AND Choc Sc . 
 While the searchstrings are case-insensitive, the 
-.Dq AND
+.Sq AND
 has to be upper case.
 .Pp
 Optional paramters are:
@@ -116,9 +116,25 @@ If
 is set, and the defined language exists use that,
 otherwise try
 .Ev LANG .
-If that fails to, use the default language.
-.\" .Sh FILES
-.\" .Sh EXAMPLES
+If that fails to, use the default language,
+which may be set in
+.Pa <%%ETC_PREFIX%%>/koch-suite.inc .
+.Sh FILES
+.Bl -tag -width <%%ETC_PREFIX%%>/koch-suite.inc -compact
+.It Pa <%%ETC_PREFIX%%>/koch-suite.inc
+Configuration of the
+.Em Koch-Suite
+.El
+.Sh EXAMPLES
+To Search for all recipes with the strings
+.So Choc Sc
+and
+.So Muffin Sc
+in their titles, use
+.Pp
+.Dl $ rezept -text Qo Chok AND Muffin Qc
+.Pp
+at the prompt of your shell.
 .\" This next request is for sections 1, 6, 7 & 8 only
 .\"     (command return values (to shell) and fprintf/stderr type diagnostics)
 .\" .Sh DIAGNOSTICS
@@ -126,10 +142,9 @@ If that fails to, use the default language.
 .\" .Sh ERRORS
 .Sh SEE ALSO
 .Xr mmimport 1
-.Xr rk2mm 1
 .\" .Xr foobar 1
 .\" .Sh STANDARDS
 .\" .Sh HISTORY
 .Sh AUTHORS
-Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+Michael Lestinsky <michael@lestinsky.de>
 .\" .Sh BUGS

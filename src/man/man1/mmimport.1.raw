@@ -1,4 +1,4 @@
-.\" $Id: mmimport.1.raw,v 1.8 2001/07/01 20:48:17 michael Exp $
+.\" $Id: mmimport.1.raw,v 1.9 2001/10/01 00:03:26 lestinsky Exp $
 .\" Koch-Suite Reference
 .\"
 .\" Copyright (c) 2001
@@ -28,7 +28,7 @@
 .\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 .\" SUCH DAMAGE.
 .\"
-.Dd March 14, 2001
+.Dd Oct 1st, 2001
 .Dt mmimport 1 
 .Os Koch-Suite
 .Sh NAME
@@ -47,16 +47,18 @@ parses them and imports them into the database. The recipes may be in
 REZKONV- or Meal-Master-format.
 .Pp
 Optional paramters are:
-.Bl -tag -width "LITTLETOLONG"
+.Bl -tag -width "ABITTOLONG"
 .It Fl t Fl -test
 test the parser.
 Do not import the recipe, but rather reformat it into plain ascii.
 Output goes to
 .Em STDOUT .
 .It Fl mm
-Reformat parser output to Meal-Master format.
+Reformat parser output to Meal-Master format. This makes sense only in
+conjunction with
+.Fl -test
 .It Fl c Ar cat,cat,...
-Add comma separated categories to the recipe.
+Add these category-entries to the recipe.
 .It Fl h Fl -help
 Show usage and exit.
 .El
@@ -65,8 +67,18 @@ Show usage and exit.
 .\" .Sh RETURN VALUES
 .\" This next request is for sections 1, 6, 7 & 8 only
 .\" .Sh ENVIRONMENT
-.\" .Sh FILES
-.\" .Sh EXAMPLES
+.Sh FILES
+.Bl -tag -width <%%ETC_PREFIX%%>/koch-suite.inc -compact
+.It Pa <%%ETC_PREFIX%%>/koch-suite.inc
+Configuration of the
+.Em Koch-Suite
+.El
+.Sh EXAMPLES
+To import a recipe from a file invoke
+.Nm
+this way:
+.Pp
+.Dl $ mmimport --test -mm < file.mm
 .\" This next request is for sections 1, 6, 7 & 8 only
 .\"     (command return values (to shell) and fprintf/stderr type diagnostics)
 .\" .Sh DIAGNOSTICS
@@ -74,10 +86,9 @@ Show usage and exit.
 .\" .Sh ERRORS
 .Sh SEE ALSO
 .Xr rezept 1
-.Xr rk2mm 1
 .\" .Xr foobar 1
 .\" .Sh STANDARDS
 .\" .Sh HISTORY
 .Sh AUTHORS
-Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+Michael Lestinsky <michael@lestinsky.de>
 .\" .Sh BUGS
