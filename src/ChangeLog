@@ -1,3 +1,15 @@
+2002-06-05  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/defines.raw 1.12: Beta2
+
+  * src/include/defines.raw 1.11: Oops.
+
+  * src/config 1.23, src/include/defines.raw 1.10, src/include/file.raw 1.5, src/include/koch-suite.raw 1.12, src/www/print.raw 1.19:
+  make KS_TMPDIR a config-time variable. This enables running the Koch-Suite in PHP's Safe-mode finally
+
+  * src/include/lang.raw 1.15:
+  first check, if this index is available
+
 2002-06-02  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/INSTALL 1.10: Update
