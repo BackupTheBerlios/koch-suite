@@ -1,9 +1,9 @@
 <?php
-  /* $Id: print.raw,v 1.28 2002/12/26 23:59:13 lestinsky Exp $
+  /* $Id: print.raw,v 1.29 2003/01/10 23:26:31 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    *
-   * Copyright (c) 2002
+   * Copyright (c) 2003
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
