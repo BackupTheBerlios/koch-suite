@@ -60,7 +60,7 @@
   } elseif (isset($_GET["result_id"])) {
     $result_id = $_GET["result_id"];
     if (is_numeric($result_id)) {
-      $mid = $_SESSION["searchresult"][$result_id]["id"];
+      $mid = floor($_SESSION["searchresult"][$result_id]["id"]);
       $ok = true;
     } else {
       $error = "Illegal value for result_id";

@@ -1,5 +1,5 @@
 <?php
-  /* $Id: rezept.raw,v 1.37 2003/01/23 15:47:31 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.38 2004/02/05 11:45:16 lestinsky Exp $
    * Copyright (c) 2003
    *      Michael Lestinsky. All rights reserved.
    *
@@ -68,6 +68,7 @@
     while (($result_id+1) > count($_SESSION[$_SESSION['operate_on']]))
       $result_id--;
     if (is_numeric($result_id)) {
+      $result_id = floor($result_id);
       $mid = $_SESSION[$_SESSION['operate_on']][$result_id]["id"];
       $ok = true;
     } else {
