@@ -1,4 +1,8 @@
-### $Id: changelog,v 1.4 2000/11/29 18:32:41 michael Exp $
+### $Id: changelog,v 1.5 2000/12/08 23:54:58 michael Exp $
+
+2000-12-09: michael@zaphod.rhein-neckar.de
+        Makefile korrigiert. Aufteilen der Installtargets, so dass nicht
+        zwingend die ganze Suite installiert werden muss.
 
 2000-11-26: michael@zaphod.rhein-neckar.de
         WWW-Interface: Suche innerhalb der Zutatenliste funktioniert

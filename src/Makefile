@@ -27,7 +27,7 @@ subdir:
 	done)
 	
 clean:
-	@make subdir TRGT=clean DIRS=${SUBDIRS}
+	@make subdir TRGT=clean DIRS="${SUBDIRS}"
 	rm -f *.php
 	rm -f *.gen
 	rm -f config.sed
@@ -50,4 +50,4 @@ install-www:
 
 install: install-includes install-command install-www
 
-.PHONY: distclean clean subdir all config
+.PHONY: all config subdir clean distclean install
