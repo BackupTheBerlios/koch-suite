@@ -1,4 +1,4 @@
-### $Id: README,v 1.12 2000/12/27 17:46:30 michael Exp $
+### $Id: README,v 1.13 2001/01/15 10:03:15 michael Exp $
 
 Koch-Suite
 ==========
@@ -49,7 +49,7 @@ Bisher existiert nur:
 An allem anderen wird derzeit noch kräfitg gearbeitet.
 
 
-PHP-4 Installation:
+PHP4-Installation:
 -------------------
 
 Um PHP4 entsprechend zu kompilieren, packt man die Quellen aus und 
@@ -66,6 +66,22 @@ ohne größere Probleme.
 
 Ausführlichere Informationen zu PHP, der Installation und eine Sprach-
 referenz finden sich unter http://www.php.net
+
+
+PHP4-Konfiguration:
+-------------------
+
+Ok, es ist nicht schön, dies vorauszusetzen. Mir ist es auch erst
+aufgefallen, nachdem ich darüber gestolpert bin. Derzeit ist aber die
+Konfiguration von PHP mit folgenden Werten erforderlich.
+
+  [snip]
+    magic_quotes_gpc 	= On   ;
+    magic_quotes_runtime= Off  ;
+    magic_quotes_sybase	= Off  ;
+  [snap]
+
+Ich hoffe, dass ich diese Voraussetzung noch vor 0.3 bereinigen kann.
 
 
 Installation:
@@ -96,7 +112,8 @@ Updating:
 0.1.* -> 0.2 Das Format der Datenbank hat sich leicht geändert:
              Tabelle MENUE: 
                alter table MENUE change PORTIONEN PORTIONEN varchar(255);
-             Diese Änderung ist vollkommen Transparent.
+             Diese Änderung ist vollkommen transparent.
+
 
 Todo/'Roadmap':
 ---------------
@@ -107,6 +124,7 @@ Todo/'Roadmap':
  - vorhandene Rezepte kommentieren und editieren,
  - Zugriffskontrolle für die Datenbank/Authentifizierung des Users
 
+
 Bugs:
 -----
 
@@ -114,7 +132,9 @@ Bugs:
  - Deutsch-Englischer Mischmasch in Kommentaren,...
  - Import von Rezepten mit einer alternativen Darstellung der
    Rezept-Header ("      H    Für die Sauce"). Header werden als solche
-   nicht erkannt und landen daher im Anweisungs-Text.
+   nicht erkannt und landen daher im Anweisungs-Text. Allerdings sind
+   diese Header sehr selten.
+
 
 Feedback:
 ---------
