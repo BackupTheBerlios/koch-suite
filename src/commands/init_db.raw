@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?php
-  /* Copyright (c) 2003
+  /* Copyright (c) 2004
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,7 @@
    */
 
   /**
-   * $Id: init_db.raw,v 1.7 2003/07/30 07:57:25 lestinsky Exp $
+   * $Id: init_db.raw,v 1.8 2004/02/05 11:37:45 lestinsky Exp $
    * Initializes database, creates necessary tables and fills them with
    * default contents
    *
@@ -144,7 +144,6 @@
 	  PORTIONEN varchar(255) default NULL,
 	  TITEL varchar(255) NOT NULL default '',
 	  HASH varchar(255) default NULL,
-	  RATING int(1) default 0,
 	  PRIMARY KEY  (ID),
 	  KEY TITEL (TITEL(50)),
 	  KEY HASH (HASH(50))
@@ -276,7 +275,6 @@
 	  PORTIONEN varchar(255),
 	  TITEL varchar(255) DEFAULT '' NOT NULL,
  	  HASH varchar(255),
-	  RATING integer default '0'
 	);";
     exec_or_die($sql);
 
