@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.31 2002/03/31 23:11:10 lestinsky Exp $
+   * $Id: en.inc,v 1.32 2002/04/01 22:40:33 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -34,6 +34,7 @@
   $Lang['Edit']                 = "Edit";
   $Lang['Next']			= "Next";
   $Lang['Previous']		= "Previous";
+  $Lang['Apply']               = 'Apply';
 
   $Lang['Mainmenu']['Title']		= "Mainmenu";
   $Lang['Mainmenu']['PlsChoose']	= "Please choose from the main menu";
@@ -81,6 +82,9 @@ EOT;
   $Lang['UnitInfo']['Title']    = "Unit Infomation";
   $Lang['UnitInfo']['MMText']   = "Units in Meal-Master format.";
   $Lang['UnitInfo']['RKText']   = "Units in REZKONV format.";
+
+  $Lang['Scale']['Title']	= 'Change yield';
+
 
   /*
    * Infos:

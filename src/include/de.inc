@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.27 2002/03/31 23:11:10 lestinsky Exp $
+   * $Id: de.inc,v 1.28 2002/04/01 22:40:33 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -33,6 +33,7 @@
   $Lang['Edit']                 = "Bearbeiten";
   $Lang['Next']                 = "N&auml;chstes";
   $Lang['Previous']             = "Vorheriges";
+  $Lang['Apply']		= '&Uuml;bernehmen';
 
 
   $Lang['Mainmenu']['Title']		= "Hauptmen&uuml;";
@@ -81,6 +82,8 @@ EOT;
   $Lang['UnitInfo']['Title']    = "Einheiten-Infos";
   $Lang['UnitInfo']['MMText']   = "Einheit im Meal-Master-Format.";
   $Lang['UnitInfo']['RKText']   = "Einheit im REZKONV-Format.";
+
+  $Lang['Scale']['Title']	= 'Zahl der Portionen &auml;ndern';
 
   /* 
    * Infos: 
