@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
+  <title>Koch-Suite</title>
+  <!-- $Id: delete.raw,v 1.1 2001/01/12 17:29:08 michael Exp $ -->
+</head>
+
+<body>
+<a name="top"></a>
+<h1><img src="pics/title.gif" alt="WWW-Kochbuch"></h1>
+
+<table border=0 cellpadding=3 cellspacing=1>
+<tr>
+  <td valign="top">
+    <? include "./menue.inc"; ?>
+  </td>
+  <td style="font-family:Courier;">
+    <!-- Rechts: Ausgabe -->
+    <?
+      include "<%%PHP_LIBS%%>/functions.inc";
+
+      if ($confirm != 'y') {
+        echo "<h1>Rezept l&ouml;schen?</h1>\n";
+        echo format_recipe_html(get_menu_by_mid($mid));
+        echo "[<a href=\"$PHP_SELF?mid=$mid&confirm=y\">L&ouml;schen</a>]\n";
+      } else {
+        delete_menue ($mid);
+        echo "<h1>Rezept gel&ouml;scht.</h1>\n";
+      }
+    ?>
+  </td>
+</tr>
+</table>
+
+<hr noshade>
+
+&copy; Michael Lestinsky
+&lt;<a
+href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.
+de</a>&gt;
+Januar 2001.
+
+</body>
+</html>
+

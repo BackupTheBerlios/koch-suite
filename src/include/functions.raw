@@ -1,12 +1,36 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.14 2001/01/07 19:24:38 michael Exp $
+   * $Id: functions.raw,v 1.15 2001/01/12 17:29:09 michael Exp $
    */
 
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/output.inc";
   /* --- Functions --- */
+
+
+  function delete_menue ($mid) {
+    /* delete a recipe from the database */
+    $req = "select * from REZEPT where MENUE_ID = " . $mid;
+    $result = mysql_db_query ($GLOBALS["DB_NAME"], $req);
+
+    while ($r = mysql_fetch_array($result)) {
+      $req_z = "delete from ZUTATEN where REZEPT_ID = " . $r["ID"];
+      $result_z = mysql_db_query ($GLOBALS["DB_NAME"], $req_z);
+    }
+
+    $req = "delete from REZEPT where MENUE_ID = " . $mid;
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    $req = "delete from ANWEISUNG where MENUE_ID = " . $mid;
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    $req = "delete from KAT where MENUE_ID = " . $mid;
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    $req = "delete from MENUE where ID = " . $mid;
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+  }
 
 
   function parse_mmrecipe($fd) {

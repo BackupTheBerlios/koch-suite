@@ -1,4 +1,7 @@
-### $Id: changelog,v 1.10 2001/01/12 01:07:01 michael Exp $
+### $Id: changelog,v 1.11 2001/01/12 17:29:09 michael Exp $
+
+2001-01-11: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Löschfunktion eingefügt.
 
 2001-01-11: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
         Release 0.2
