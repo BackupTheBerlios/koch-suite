@@ -59,7 +59,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.19 2002/08/16 17:06:12 lestinsky Exp $ -->
+  <!-- $Id: delete.raw,v 1.20 2002/08/18 13:56:25 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -88,13 +88,8 @@
 </tr>
 </table>
 
-<hr noshade>
-
-&copy; 2002 Michael Lestinsky
-&lt;<a
-href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.
-de</a>&gt;.
-
-</body>
-</html>
-<?db_disconnect();?>
+<?php
+  $authorname = "Michael Lestinsky";
+  $authormail = "michael@lestinsky.de";
+  include "<%%WEB_PREFIX%%>/footer.inc";
+?>

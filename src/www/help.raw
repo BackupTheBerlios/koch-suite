@@ -52,7 +52,7 @@
   <title><?php echo $Lang['Help']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.19 2002/08/16 17:06:12 lestinsky Exp $ -->
+  <!-- $Id: help.raw,v 1.20 2002/08/18 13:56:25 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -76,7 +76,7 @@
     ?>
   </td>
   <td>
-    <!-- Installierte Version: $Name:  $ $Revision: 1.19 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.20 $ -->
 
     <h2><?php echo $Lang['Help']; ?></h2>
     
@@ -122,10 +122,9 @@
 </tr>
 </table>
 
-<hr noshade>
-&copy; 2002 Michael Lestinsky 
-&lt;<a href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.de</a>&gt;.
+<?php
+  $authorname = "Michael Lestinsky";
+  $authormail = "michael@lestinsky.de";
+  include "<%%WEB_PREFIX%%>/footer.inc";
+?>
 
-</body>
-</html>
-<?db_disconnect();?>
