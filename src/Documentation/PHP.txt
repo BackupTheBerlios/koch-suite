@@ -1,4 +1,4 @@
-### $Id: PHP.txt,v 1.5 2002/06/11 18:43:47 lestinsky Exp $
+### $Id: PHP.txt,v 1.6 2002/07/22 11:28:47 lestinsky Exp $
 
 Koch-Suite and PHP
 ==================
@@ -54,7 +54,7 @@ PEAR:
 -----
 
 You also need an fairly recent verion of PEAR. PHP-4.1.2's PEAR is 
-sufficent. If you do not have a recent version of PHP installed, you 
+sufficient. If you do not have a recent version of PHP installed, you 
 have to update at least PEAR. To update PEAR, do:
 
  - change to the directory where the PEAR-files are to be installed:
