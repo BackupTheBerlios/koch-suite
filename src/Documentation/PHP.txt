@@ -1,65 +1,67 @@
-### $Id: PHP.txt,v 1.2 2001/09/23 11:13:35 lestinsky Exp $
+### $Id: PHP.txt,v 1.3 2001/10/22 12:25:56 lestinsky Exp $
 
-Koch-Suite und PHP
+Koch-Suite and PHP
 ==================
 
-Michael Lestinsky <michael@lestinsky.de>, Juli 2001
-Die Datei ../LICENSE enthält die Lizenz, unter der dieses Paket als ganzes
-oder einzelne Dateien hieraus verwendet werden dürfen.
+Michael Lestinsky <michael@lestinsky.de>, July 2001
+Please see the file `LICENSE' for the license terms, under which you may
+use, modify and distribute this package or single parts of it.
 
 
-PHP4-Installation:
+PHP4 Installation:
 ------------------
 
-Um PHP4 entsprechend zu kompilieren, packt man die Quellen aus und 
-ruft im PHP-Quell-Verzeichnis "configure" mit folgenden Optionen auf: 
+To compile PHP4, unpack the source and execute "configure" with the 
+following opions:
 
-(Stand-Alone Interpreter:)
+for use with MySQL: 
+  (Standalone interpreter:)
+  $ ./configure --with-mysql=/path/to/mysql --enable-force-cgi-redirect
 
- $ ./configure  --with-mysql=/path/to/mysql --enable-force-cgi-redirect
-      bzw:      --with-pgsql=/path/to/pgsql
+  (Apache module:)
+  $ ./configure --with-apxs=/path/to/apxs --with-mysql=/path/to/mysql
 
-(Apache-Modul:)
+for use with PostgreSQL:
+  (Standalone interpreter:)
+  $ ./configure --with-pgsql=/path/to/pgsql --enable-force-cgi-redirect
 
- $ ./configure  --with-apxs=/path/to/apxs --with-mysql=/path/to/mysql
-      bzw:                                --with-pgsql=/path/to/pgsql
+  (Apache module:)
+  $ ./configure --with-apxs=/path/to/apxs --with-pgsql=/path/to/pgsql
 
-Danach baut und installiert man PHP mittels:
+Then execute
 
- $ make && make install
+  $ make && make install
 
-aus dem PHP-Quell-Verzeichnis heraus. In der Regel funktioniert dies
-ohne größere Probleme.
+from the src directory to compile and install PHP. This should work
+without major problems. (Remember: depending on your configuration, 
+the `install'-step might require `root'-permissions.)
 
-Ausführlichere Informationen zu PHP, der Installation und eine Sprach-
-referenz finden sich unter http://www.php.net
+Further information on PHP, the installation procedure and a language
+reference can be found at http://www.php.net.
 
-
-PHP4-Konfiguration:
+PHP4 Configuration:
 -------------------
 
-Ok, es ist nicht schön, dies vorauszusetzen. Mir ist es auch erst
-aufgefallen, nachdem ich darüber gestolpert bin. Derzeit ist aber die
-Konfiguration von PHP mit folgenden Werten erforderlich.
+At the moment, Koch-Suite needs the following PHP setup:
 
-  [snip]
-    magic_quotes_runtime  = Off
-    magic_quotes_sybase   = Off
-    register_argc_argv    = On      <-- Wichtig!!
-  [snap]
-
+  [cut]
+  magic_quotes_runtime  = Off
+  magic_quotes_sybase   = Off
+  register_argc_argv    = On	<-- Very important!
+  [cut]
 
 PEAR:
 -----
 
-Ausserdem ist eine aktuelle Version von PEAR notwendig. Bei PHP-4.0.6 ist
-PEAR hinreichend aktuell, wer ein älteres PHP hat muss mindestens sein 
-mindestens PEAR updaten. Dazu:
+You also need an up-to-date verion of PEAR. PHP-4.0.6's PEAR isn't 
+sufficent.  If you do not have a recent version of PHP installed, you 
+have to update at least PEAR. To update PEAR, do:
 
- - Wechsel in das Verzeichnis, in dem die PEAR-Files landen sollen:
+ - change to the directory where the PEAR-files are to be installed:
    # cd /usr/local/lib
- - Logge dich am CVS-Repository ein (Passwort "phpfi"):
+ - log into the CVS-repository (password "phpfi"):
    # cvs -d :pserver:cvsread@cvs.php.net:/repository login
- - Erzeuge eine lokale Kopie von PEAR
+ - fetch a local copy of PEAR:
    # cvs -d :pserver:cvsread@cvs.php.net:/repository co php4/pear
- - Passe den Pfad zum PEAR-Verzeichnis in dem File ../config an
+ - adjust the path to PEAR-directory in ../config or in your
+   koch-suite.inc, if you have the koch-suite already installed.
