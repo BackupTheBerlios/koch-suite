@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.74 2002/05/20 16:27:56 lestinsky Exp $
+   * $Id: functions.raw,v 1.75 2002/05/20 22:05:09 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -455,11 +455,11 @@
     $seen_ingr       = 0;
     $seen_instr      = 0;
 
-    $source_pattern   = "/^:\s*". $Lang['Source']   ."\s*:\s*(.*)$/";
-    $recorder_pattern = "/^:\s*". $Lang['Recorder'] ."\s*:\s*(.*)$/";
-    $date_pattern     = "/^:\s*". $Lang['Date']     ."\s*:\s*(.*)$/";
-    $long_pattern     = "/^:\s*:\s*(.*)$/";
-    $mmext_pattern    = "/^:.*:.*$/"; // Catchall for the rest
+    $source_pattern   = "/^:\s*". $Lang['Source']   ."\s*:\s*(.+)$/";
+    $recorder_pattern = "/^:\s*". $Lang['Recorder'] ."\s*:\s*(.+)$/";
+    $date_pattern     = "/^:\s*". $Lang['Date']     ."\s*:\s*(.+)$/";
+    $long_pattern     = "/^:\s*:\s*(.+)$/";
+    $mmext_pattern    = "/^:.*:.+$/"; // Catchall for the rest
 
     $meta['Source']   = '';
     $meta['Recorder'] = '';
