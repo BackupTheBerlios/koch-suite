@@ -1,3 +1,21 @@
+2002-06-02  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/INSTALL 1.10: Update
+
+  * src/init_db.mysql 1.12, src/init_db.pgsql 1.17:
+  Default Account: Username 'admin', password 'admin'
+
+  * src/www/admin.raw 1.4:
+  Sniffed glue. Reported by Jan Dreyer <dreyerja@math.uni-paderborn.de>
+
+  * src/init_db.mysql 1.11, src/init_db.pgsql 1.16:
+  insert missing field
+
+2002-06-02  Michael Bussmann  <bus@mb-net.net>
+
+  * src/init_db.pgsql 1.15:
+  Using standard integer type instead of int(11)
+
 2002-05-26  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/search.raw 1.18:
