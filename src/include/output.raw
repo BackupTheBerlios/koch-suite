@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.51 2003/03/12 12:39:45 lestinsky Exp $
+   * $Id: output.raw,v 1.52 2003/05/19 16:08:10 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -82,12 +82,12 @@
       $str .= "\n";
  
       foreach ($rezept['meta'] as $fieldname => $fieldvalue) {
- 
-        $firstline = true;
 
         if (strlen($fieldvalue) < 55) {
           $str .= sprintf("%11s: ", $Lang[$fieldname]) . $fieldvalue . "\n";
         } else {
+
+          $firstline = true;
           foreach(length_adjust($fieldvalue, 55) as $line) {
             if ($firstline) {
               $str .= sprintf("%11s: ", $Lang[$fieldname]) . $line . "\n";
