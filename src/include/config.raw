@@ -1,7 +1,7 @@
 <?
   /* Configuration-file for the Koch-Suite
    * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.11 2001/06/20 18:33:29 michael Exp $
+   * $Id: config.raw,v 1.12 2001/06/20 18:54:49 michael Exp $
    *
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
@@ -11,7 +11,14 @@
 
   include "<%%PHP_LIBS%%>/debug.inc";
 
-  $DB_DSN      = "<%%DB_DSN%%>";
+  // $DB_DSN      = "<%%DB_DSN%%>";
+  $DB_DSN      = array('phptype'  => "<%%DB_TYPE%%>",
+                       'dbsyntax' => false,
+                       'protocol' => false,
+                       'hostspec' => "<%%DB_SERVER%%>",
+                       'database' => "<%%DB_NAME%%>",
+                       'username' => "<%%DB_USER%%>",
+                       'password' => "<%%DB_PASSWORD%%>" );
 
   $DEBUG_FILE  = "/tmp/koch-suite-debug";
 
