@@ -1,5 +1,10 @@
 # MySQL dump 7.1
 #
+# $Id: init_db.sql,v 1.3 2000/11/21 01:57:15 michael Exp $
+#
+# Please see the MySQL-Documentation for further details about MySQL and
+# it's implementation of SQL available at http://www.mysql.org.
+#
 # Host: magrathea    Database: DBkoch
 #--------------------------------------------------------
 # Server version	3.22.32

@@ -1,9 +1,18 @@
-2000-11-04 Michael Lestinsky <michael@zaphod.rhein-neckar.de>:
+### $Id: changelog,v 1.3 2000/11/21 01:57:15 michael Exp $
+
+2000-11-20: michael@zaphod.rhein-neckar.de
+	CVS-Tag "koch-suite_0_1_3"
+
+2000-11-19: michael@zaphod.rhein-neckar.de
+	mmexport war fehlerhaft. Zutaten-Zeilen wurden ohne Längenprüfung
+	ausgegeben.
+
+2000-11-04: michael@zaphod.rhein-neckar.de
 	Added "install"-Target to Makefile.
 	Tested Plattforms: Linux/i386, OpenBSD/i386.
 
-2000-11-04 Michael Lestinsky <michael@zaphod.rhein-neckar.de>:
+2000-11-04: michael@zaphod.rhein-neckar.de
 	Makefile-Mechanismus funktioniert.
 
-2000-11-02 Michael Lestinsky <michael@zaphod.rhein-neckar.de>:
+2000-11-02: michael@zaphod.rhein-neckar.de
 	Erstmalig funktionierender Import.

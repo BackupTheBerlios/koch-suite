@@ -1,6 +1,13 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* print a recipe in Meal-Master-format */
+  /* 
+   * $Id: mmexport.raw,v 1.3 2000/11/21 01:57:15 michael Exp $
+   * print a recipe in Meal-Master-format to STDOUT
+   * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, November 200
+   *
+   * Please see the bundled file "LICENCE" for the Licence of this
+   * software. 
+   */
 
   require "<%%PHP_LIBS%%>/output.inc";
 

@@ -1,3 +1,4 @@
+# $Id: Makefile.raw,v 1.8 2000/11/21 01:57:15 michael Exp $
 # Space-separated list of all "raw" php-files.
 PHP_FILES=		index rezept print mmprint infos
 INC_FILES=		menue such

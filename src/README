@@ -1,4 +1,4 @@
-### $Id: README,v 1.8 2000/11/13 14:03:47 michael Exp $
+### $Id: README,v 1.9 2000/11/21 01:57:15 michael Exp $
 
 Koch-Suite
 ==========
@@ -38,8 +38,13 @@ Momentan ist das Projekt noch nicht allzuweit. Die meiste Arbeit findet an
 den zentralen Funktionen statt, damit die Anwendungen später nur noch eine
 triviale Abfolge von Funktionsaufrufen sein können.
 
-Bisher existiert nur ein Kommando für den Datenbank-Import. An allem
-anderen wird derzeit noch kräfitg gearbeitet.
+Bisher existiert nur:
+ - Tool für den Datenbank-Import im Mealmaster-Format,
+ - Tool für den Datenbank-Export im Mealmaster-Format.
+ - Ein paar Prototyp-Webseiten, die elementare Suchfunktionen in der
+   Datenbank implementieren.
+
+An allem anderen wird derzeit noch kräfitg gearbeitet.
 
 
 PHP-4 Installation:
@@ -94,7 +99,9 @@ Todo:
 Bugs:
 -----
 
-gibt es sicherlich auch eine Menge.
+ - Import von Rezepten mit uneigentlichen Brüchen, also Dinge wie "1 1/2"
+ - Behandlung der Zeilenumbruch-Formatierung in den importierten Rezepten
+ - Deutsch-Englischer Mischmasch in Kommentaren,...
 
 
 Feedback:
