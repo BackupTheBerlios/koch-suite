@@ -1,3 +1,12 @@
+2002-07-31  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/de.inc 1.37, src/include/en.inc 1.42, src/www/Makefile.raw 1.31, src/www/einfuegen.raw 1.39, src/www/pastebox.raw 1.1:
+  Use the pastebox to copy&paste single preformatted recipes in Meal-Master
+  or RezKonv-Format and display the result in the menu editor for further
+  manual mangling.
+
+  * src/include/defines.raw 1.14: Tag as 0.8-devel
+
 2002-07-30  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/defines.raw 1.13.2.1: 0.7.0
