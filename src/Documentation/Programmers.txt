@@ -1,4 +1,4 @@
-### $Id: Programmers.txt,v 1.11 2001/10/13 13:47:21 lestinsky Exp $
+### $Id: Programmers.txt,v 1.12 2002/04/02 21:53:56 lestinsky Exp $
 
 Programmers Documentation
 =========================
@@ -199,4 +199,4 @@ in this way:
 Every level inherits all the permissions of its sub-levels, of course.
 
 -- 
-(c) 2000 Michael Lestinsky <michael@lestinsky.de>
+(c) 2002 Michael Lestinsky <michael@lestinsky.de>
