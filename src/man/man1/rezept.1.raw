@@ -1,5 +1,5 @@
-.\" $Id: rezept.1.raw,v 1.1 2001/03/11 14:56:35 michael Exp $
-.Dd March 11, 2001
+.\" $Id: rezept.1.raw,v 1.2 2001/03/18 13:57:25 michael Exp $
+.Dd March 18, 2001
 .Dt rezept 1
 .Os Koch-Suite
 .Sh NAME
@@ -10,6 +10,7 @@
 .Op Fl h
 .Op Fl text | Fl mm | Fl latex
 .Op Fl f Ar filename Op Fl 1
+.Op Fl c | Fl i
 .Ar pattern
 .Sh DESCRIPTION
 .Nm
@@ -19,9 +20,9 @@ If no
 .Ar pattern
 is specified, 
 print usage and exit.
-The
+By default search for
 .Ar pattern
-is searched for in the
+in the
 .Em menu-titles .
 .Pp
 Optional paramters are:
@@ -47,6 +48,14 @@ write output in Meal-Master format
 .It Fl text
 write output as human readable text. 
 This is the default.
+.It Fl c
+Search for recipes matching
+.Ar pattern
+in their categories-list.
+.It Fl i
+Search for recipes with
+.Ar pattern
+in their ingredient-list.
 .El
 .\" The following requests should be uncommented and used where appropriate.
 .\" This next request is for sections 2 and 3 function return values only.
