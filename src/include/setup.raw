@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: setup.raw,v 1.5 2003/01/10 12:59:49 lestinsky Exp $
+   * $Id: setup.raw,v 1.6 2003/01/10 13:07:26 lestinsky Exp $
    * Setup the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -20,7 +20,7 @@
     /* We are running as webinterface */
 
     require_once "<%%PHP_LIBS%%>/nocache.inc";
-    require_once "<%%WEB_PREFIX%%>/theme_default.inc";
+    require_once "<%%WEB_PREFIX%%>/theme_".$THEME.".inc";
 
     /* The name of the Session-Cookie */
     session_name("KS_SESS");
