@@ -48,7 +48,7 @@
     // Kategorie:
     $str .= "<tr>\n";
     $str .= "<td><a href=\"kategorien.php?target=kategorie&maxsel=5\"" .
-                 "target=\"kat\" on Click=\"kat();\">Kategorien</a>:</td>\n";
+                 "target=\"kat\" onClick=\"kat();\">Kategorien</a>:</td>\n";
     $str .= "<td><input type=\"text\" name=\"kategorie\" value=\"" .
                  implode(", ", $rezept["category"]) . 
                  "\" size=\"60\"></td>\n";
@@ -192,7 +192,8 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <title>Koch-Suite - Rezept einf&uuml;gen</title>
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: einfuegen.raw,v 1.4 2001/01/18 00:41:49 michael Exp $ -->
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <!-- $Id: einfuegen.raw,v 1.5 2001/01/25 00:17:21 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
