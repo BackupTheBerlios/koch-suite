@@ -1,17 +1,19 @@
 <?
   /* Configuration-file for the Koch-Suite
    * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.12 2001/06/20 18:54:49 michael Exp $
+   * $Id: config.raw,v 1.13 2001/06/21 14:10:22 michael Exp $
    *
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
 
+  /*
+   * Include PEARs Database abstraction-layer
+   */
+
   require_once 'DB.php';
+  require_once '<%%PHP_LIBS%%>/debug.inc';
 
-  include "<%%PHP_LIBS%%>/debug.inc";
-
-  // $DB_DSN      = "<%%DB_DSN%%>";
   $DB_DSN      = array('phptype'  => "<%%DB_TYPE%%>",
                        'dbsyntax' => false,
                        'protocol' => false,
@@ -20,14 +22,22 @@
                        'username' => "<%%DB_USER%%>",
                        'password' => "<%%DB_PASSWORD%%>" );
 
-  $DEBUG_FILE  = "/tmp/koch-suite-debug";
+  /*
+   * Define some constants.
+   */
 
-  $DEFAULT_LANG = "de";
+  define("DB_MYSQL", ($DB_DSN["phptype"] == "mysql") ? true : false);
+  define("DEBUG_FILE", "/tmp/koch-suite-debug");
+  define("DEFAULT_LANG", "de");
 
   $kochsuite     = "<i>Koch-Suite</i>";
   $kochsuite_ver = "0.5-pre6";
 
-  write_log("Connecting to $DB_DSN");
+  /*
+   * Connect to the database
+   */
+
+  write_log("Connecting to " . serialize($DB_DSN));
   $db=DB::connect($DB_DSN);
 
   if (DB::isError($db)) {
