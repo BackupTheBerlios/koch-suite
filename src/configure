@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.6 2001/06/20 18:33:28 michael Exp $
+# $Id: configure,v 1.7 2001/06/25 23:32:27 michael Exp $
 # Parse the config-File and create a sed-Script from it.
 
 CONF_RAW=config
@@ -25,9 +25,14 @@ make_makefiles () {
     ( 
         echo -n "Generating Makefile in ./$1 ... ";
         cd "$1";
-        sed -f ${THISDIR}/${CONF_FILE} Makefile.raw > Makefile
+        translate_raw Makefile
         echo "Done."
     )
+}
+
+translate_raw () {
+    # Translate Raw files
+    sed -f ${THISDIR}/${CONF_FILE} $1.raw > $1
 }
 
 # Let's see if we can find all required tools:
@@ -37,9 +42,11 @@ for foo in ${TOOLS} ; do
 done
 
 # Generate the sed-file
+echo -n "Generating config.sed... "
 grep -Ev "^#" ${CONF_RAW} | grep -Ev "^$" | \
-  sed -e "s/{\t| }//g"  | tr '=' ' ' | sed "s|:|\\\:|g" |\
+  sed -e "s/{\t| }//g" | tr '=' ' ' | sed "s|:|\\\:|g" |\
   awk '{print "s:<%%"$1"%%>:"$2":" }' > ${CONF_FILE}
+echo "Done."
 
 # Create the Makefiles
 SUBDIRS="include www www/pics commands man"
