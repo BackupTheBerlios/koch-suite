@@ -33,20 +33,20 @@ clean:
 	rm -f config.sed
 
 distclean: clean
-	@make subdir TRGT=distclean DIRS=${SUBDIRS}
+	@make subdir TRGT=distclean DIRS="${SUBDIRS}"
 	@(for i in ${SUBDIRS}; do \
 	echo "rm $${i}/Makefile" ; \
 	rm $${i}/Makefile ; \
 	done)
 
 install-command:
-	@make subdir TRGT=install DIRS=${COMMAND_SUBDIR}
+	@make subdir TRGT=install DIRS="${COMMAND_SUBDIR}"
 
 install-includes:
-	@make subdir TRGT=install DIRS=${INC_SUBDIR}
+	@make subdir TRGT=install DIRS="${INC_SUBDIR}"
 
 install-www:
-	@make subdir TRGT=install DIRS=${WWW_SUBDIR}
+	@make subdir TRGT=install DIRS="${WWW_SUBDIR}"
 
 install: install-includes install-command install-www
 
