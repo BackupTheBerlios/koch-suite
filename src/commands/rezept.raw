@@ -28,7 +28,7 @@
    * SUCH DAMAGE.
    */
 
-  /* $Id: rezept.raw,v 1.26 2005/01/02 02:43:30 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.27 2005/04/03 14:08:51 lestinsky Exp $
    * Export a recipe in different formats.
    */
 
@@ -51,8 +51,10 @@
    * In case register_globals is turned off in php.ini, we need to get
    * those Variables manually 
    */
-  $argc = $_SERVER['argc'];
-  $argv = $_SERVER['argv'];
+  if (isset($_SERVER['argc']) and !isset($argc))
+    $argc = $_SERVER['argc'];
+  if (isset($_SERVER['argv']) and !isset($argv))
+    $argv = $_SERVER['argv'];
 
   $kochsuite_ver = KOCHSUITE_VER;
   $helptext  = <<<EOT
