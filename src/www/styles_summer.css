@@ -1,17 +1,17 @@
-/* $Id: styles_summer.css,v 1.2 2004/03/31 19:18:18 lestinsky Exp $ */
+/* $Id: styles_summer.css,v 1.3 2005/04/03 14:03:49 lestinsky Exp $ */
 body	    { background-color:#ffffff; 
               background-image:url(pics/bg_summer.png); 
               background-repeat:repeat-y;}
-h1          { font-family:Verdana,Helvetica,Arial; text-align:left; }
-h2,h3,h4    { font-family:Verdana,Lucida; }
-a,b,dt	    { font-family:Arial,Helvetica; }
-a:link      { color:#000463; }
-a:visited   { color:#000463; }
-a:active    { color:#111473; }
+h1          { font-family:Georgia,Luxi Serif,Verdana,Helvetica,Arial; text-align:left; }
+h2,h3,h4    { font-family:Georgia,Luxi Serif,Verdana,Helvetica,Arial; }
+// a,b,dt	    { font-family:Arial,Helvetica; }
+a:link      { color:#000463; text-decoration:none; }
+a:visited   { color:#000463; text-decoration:none; }
+a:active    { color:#111473; text-decoration:none; }
+a:hover     { color:#000463; text-decoration:underline; }
 code,i      { color:#000463; }
 address     { background-color:#ffe9aa; padding:3px;
-              border-top-width:0px; border-bottom-width:thin;
-              border-right-width:0px; border-left-width:0px;
+              border-width:0px; border-bottom-width:thin;
               border-style:solid; border-color:#2fa4bf; }
 textarea, select, .check, .textfield 
             { background-color:#fffbf4; 
@@ -34,7 +34,7 @@ textarea, select, .check, .textfield
               white-space:nowrap; color:#fff9f9; }
 .border     { background-color:#f2cd71; border-style:outset;
               border-width:1px; border-color:#c1a55e; }
-.prop       { font-family:Courier; }
+.prop       { font-family:Courier New,Luxi Mono,Courier; }
 .small      { font-size:small; }
 .warn       { color:red; }
 .footer	    { font-family:Helvetica,Arial; font-size:small; 
