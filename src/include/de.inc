@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: de.inc,v 1.54 2005/01/02 02:41:53 lestinsky Exp $
+   * $Id: de.inc,v 1.55 2005/02/10 19:06:49 lestinsky Exp $
    *
    * Define German text-constants.
    *
@@ -39,6 +39,8 @@
   $Lang['Delete']		= "L&ouml;schen";
   $Lang['NormalVers']		= "Normalansicht";
   $Lang['PrintVers']		= "Druckversion";
+  $Lang['TypeMealMaster']	= 'MealMaster-Format';
+  $Lang['TypeRezkonv']		= 'Rezkonv-Format';
   $Lang['Close']		= "Schlie&szlig;en";
   $Lang['Edit']                 = "Bearbeiten";
   $Lang['Next']                 = "N&auml;chstes";
