@@ -1,5 +1,5 @@
 -- 
--- $Id: init_db.pgsql,v 1.18 2002/06/26 07:23:53 bus Exp $
+-- $Id: init_db.pgsql,v 1.19 2002/08/31 07:16:18 bus Exp $
 -- init_db_postgreSQL.sql
 -- 2001-07-25 Michael Bussmann <bus@mb-net.net>
 --
@@ -194,6 +194,7 @@ INSERT INTO unit_langs VALUES (32,'de','Kg');
 INSERT INTO unit_langs VALUES (33,'de','fl. Oz.');
 INSERT INTO unit_langs VALUES (34,'de','');
 
+-- English
 INSERT INTO unit_langs VALUES ( 1,'en','per');
 INSERT INTO unit_langs VALUES ( 2,'en','small');
 INSERT INTO unit_langs VALUES ( 3,'en','medium');
@@ -228,6 +229,42 @@ INSERT INTO unit_langs VALUES (31,'en','decigram');
 INSERT INTO unit_langs VALUES (32,'en','kg');
 INSERT INTO unit_langs VALUES (33,'en','fl.oz.');
 INSERT INTO unit_langs VALUES (34,'en','');
+
+-- Spanish
+INSERT INTO unit_langs VALUES ( 1,'es','por');
+INSERT INTO unit_langs VALUES ( 2,'es','pequenyo');
+INSERT INTO unit_langs VALUES ( 3,'es','medio');
+INSERT INTO unit_langs VALUES ( 4,'es','grande');
+INSERT INTO unit_langs VALUES ( 5,'es','lata');
+INSERT INTO unit_langs VALUES ( 6,'es','paquete');
+INSERT INTO unit_langs VALUES ( 7,'es','pizca');
+INSERT INTO unit_langs VALUES ( 8,'es','pedacito');
+INSERT INTO unit_langs VALUES ( 9,'es','salpicon');
+INSERT INTO unit_langs VALUES (10,'es','caja');
+INSERT INTO unit_langs VALUES (11,'es','manojo');
+INSERT INTO unit_langs VALUES (12,'es','rodaja');
+INSERT INTO unit_langs VALUES (13,'es','cada');
+INSERT INTO unit_langs VALUES (14,'es','cucharadita');
+INSERT INTO unit_langs VALUES (15,'es','cucharadita');
+INSERT INTO unit_langs VALUES (16,'es','cucharada');
+INSERT INTO unit_langs VALUES (17,'es','cucharada');
+INSERT INTO unit_langs VALUES (18,'es','taza');
+INSERT INTO unit_langs VALUES (19,'es','pinta');
+INSERT INTO unit_langs VALUES (20,'es','litro');
+INSERT INTO unit_langs VALUES (21,'es','cuarto');
+INSERT INTO unit_langs VALUES (22,'es','galon');
+INSERT INTO unit_langs VALUES (23,'es','onza');
+INSERT INTO unit_langs VALUES (24,'es','g');
+INSERT INTO unit_langs VALUES (25,'es','libra');
+INSERT INTO unit_langs VALUES (26,'es','ml');
+INSERT INTO unit_langs VALUES (27,'es','ml');
+INSERT INTO unit_langs VALUES (28,'es','centilitro');
+INSERT INTO unit_langs VALUES (29,'es','decilitro');
+INSERT INTO unit_langs VALUES (30,'es','centigramo');
+INSERT INTO unit_langs VALUES (31,'es','decigramo');
+INSERT INTO unit_langs VALUES (32,'es','kg');
+INSERT INTO unit_langs VALUES (33,'es','onzasFluidas');
+INSERT INTO unit_langs VALUES (34,'es','');
 
 --
 -- Table structure for table 'usertable'
