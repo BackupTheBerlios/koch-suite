@@ -97,7 +97,7 @@
   }
 
   // Parse den Input, bzw. Wenn der Input leer ist, erzeuge trotzdem ein
-  // passendes Array:
+  // passendes, leeres Array:
 
   if (!is_array($zutaten)) {
     $zutaten = array("");
@@ -135,25 +135,28 @@
       if (get_cfg_var(magic_quotes_gpc) == 1) {
         $line = stripslashes($line);
       }
-      if ($line != '') { 
-        // Nur nicht-leere Zeilen beachten
-
-        $a = explode(" ", $line, 3); 
-        /* Jede Zeile wird jetzt in ihre einzelnen Wörter zerlegt. */
-
-        $i = 0;
-        if (is_numeric($a[$i])) {
-          $quant = array_shift($a);
-        } 
-        if ($unit = is_unit($a[$i])) { 
-          array_shift($a);
+      if ($line != '') {
+        if (preg_match("/([\d\/\., ]*) (.*)/", $line, $bar)) {
+          // Wenn die Zeile mit einer Mengenangabe beginnt...
+	  if ($bar[1] != 0) {
+	    $quant = fraction_to_real($bar[1]);
+	  }
+	  $i = 0;
+	  $a = explode(" ", $bar[2], 2);
+	  if ($unit = is_unit($a[$i])) {
+	    array_shift($a);
+          }
+          $ingred = implode(" ", $a);
+        } else {
+          $quant  = "";
+          $unit   = "";
+          $ingred = trim($line);
         }
-        $ingred = implode(" ", $a);
-
-        array_push ($ingredients, array ("quant"  => $quant, 
+        array_push ($ingredients, array ("quant"  => $quant,
                                          "unit"   => $unit,
                                          "ingred" => $ingred));
       }
+
       $quant  = '';
       $unit   = '';
       $ingred = '';
@@ -205,7 +208,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.10 2001/03/15 13:24:47 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.11 2001/03/17 17:46:20 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
