@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.55 2001/07/26 10:45:20 michael Exp $
+   * $Id: functions.raw,v 1.56 2001/08/01 09:13:45 michael Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -77,6 +77,32 @@
       case DB_PGSQL:
       default:
         $return = " $str1 = '$str2' ";
+        break;
+    }
+    return $return;
+  }
+
+  /**
+   * Return an valid SQL-string to perform an case-insensitive LIKE comparison
+   *
+   * @author Michael Bussmann <bus@mb-net.net>
+   * @param  string $str1 column-title
+   * @param  string $str2 value
+   * @return string $return SQL-substring
+   */
+  function DB_ilike ($str1, $str2) {
+    global $DB_STYLE;
+
+    $str2 = addslashes($str2);
+
+    switch ($DB_STYLE) {
+      case DB_MYSQL:
+        $return = " $str1 LIKE '$str2' ";
+        break;
+      case DB_PGSQL:
+      default:
+        $str2 = strtoupper($str2);
+        $return = " UPPER($str1) LIKE '$str2' ";
         break;
     }
     return $return;
@@ -855,7 +881,7 @@
            "  from MENUE, REZEPT, ZUTATEN " .
            " where MENUE.ID = REZEPT.MENUE_ID " .
            "   and REZEPT.ID = ZUTATEN.REZEPT_ID " .
-           "   and ZUTATEN.TEXT like '%" . addslashes($ingred) . "%'";
+           "   and " . DB_ilike("ZUTATEN.TEXT", "%" . "$ingred" ."%");
 
     $result = DB_query($req);
     while ($z = $result->fetchRow()) {
@@ -883,7 +909,7 @@
       $search = "%$name%";
     }
     $req = "select id, titel from MENUE " .
-           " where TITEL like '$search' " .
+           " where " . DB_ilike("TITEL","$search")  .
            " order by TITEL asc";
     $result = DB_query($req);
 
