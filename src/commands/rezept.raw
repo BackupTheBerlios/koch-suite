@@ -28,13 +28,16 @@
    * SUCH DAMAGE.
    */
 
-  /* $Id: rezept.raw,v 1.16 2001/09/24 21:20:23 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.17 2001/12/23 17:21:02 lestinsky Exp $
    * Export a recipe in different formats.
    */
 
   require "<%%ETC_PREFIX%%>/koch-suite.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
+
+  /* Disable Timelimit. We have a controlling tty here, so this is safe. */
+  set_time_limit(0);
 
   $stdout = fopen("php://stdout", "w");
   $stderr = fopen("php://stderr", "w");
