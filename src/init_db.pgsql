@@ -1,4 +1,5 @@
 -- 
+-- $Id: init_db.pgsql,v 1.2 2001/06/27 13:18:21 michael Exp $
 -- init_db_postgreSQL.sql
 -- 2001-06-19 Michael Bussmann <bus@mb-net.net>
 --
