@@ -2,13 +2,15 @@
 
   /* Cetral configuration-file for the koch-suite
    * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
-   * $Id: config.raw,v 1.4 2001/05/10 23:56:34 michael Exp $
+   * $Id: config.raw,v 1.5 2001/05/15 20:08:13 michael Exp $
    */
 
   $DB_SERVER   = "<%%DB_SERVER%%>";
   $DB_USER     = "<%%DB_USER%%>";
   $DB_PASSWORD = "<%%DB_PASSWORD%%>";
   $DB_NAME     = "<%%DB_NAME%%>";
+
+  $DEBUG_FILE  = "/tmp/koch-suite-debug";
 
   $kochsuite_ver = "0.5-pre1";
 
