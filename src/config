@@ -1,14 +1,10 @@
-# $Id: config,v 1.8 2001/01/07 20:14:53 michael Exp $
+# $Id: config,v 1.9 2001/01/18 00:46:29 michael Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 
 # Where is the php-Binary?
 PHP		=/usr/local/bin/php4
 PHP_OPTS	=-q
-
-# Perl?
-PERL		=/usr/bin/perl
-PERL_OPTS	=-w
 
 # Where to place general "include"-Files:
 PHP_LIBS 	=/usr/local/lib/koch-suite
