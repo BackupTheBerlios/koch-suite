@@ -36,4 +36,7 @@ distclean: clean
 	rm $${i}/Makefile ; \
 	done)
 
+install:
+	@make subdir TRGT=install
+
 .PHONY: distclean clean subdir all config

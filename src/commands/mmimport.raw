@@ -1,8 +1,8 @@
-#!/usr/local/bin/php -q
+#!<%%PHP%%> <%%PHP_OPTS%%>
 <?
 
   /*
-   * $Id: mmimport.raw,v 1.1 2000/11/04 00:07:10 michael Exp $
+   * $Id: mmimport.raw,v 1.2 2000/11/04 00:23:52 michael Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Import mealmaster-formated recipes to the "Koch-Suite".
    *

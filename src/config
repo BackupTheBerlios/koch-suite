@@ -1,4 +1,4 @@
-# $Id: config,v 1.1 2000/11/04 00:07:09 michael Exp $
+# $Id: config,v 1.2 2000/11/04 00:23:38 michael Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 
@@ -13,7 +13,7 @@ PHP_LIBS 	=/usr/local/lib/koch-suite
 SCRIPT_PREFIX   =/usr/local/bin
 
 # Where to place the "Web"-Documents for this Interface:
-WEB_PREFIX	=/var/www/koch-suite
+WEB_PREFIX	=/var/www/htdocs/koch-suite
 
 # And the Documentation goes there:
 DOC_PREFIX      =/usr/local/share/doc/koch-suite
@@ -22,7 +22,7 @@ DOC_PREFIX      =/usr/local/share/doc/koch-suite
 # or "wheel";
 
 OWNER		=root
-GROUP		=root
+GROUP		=wheel
 
 # -- DB-Definitions --
 DB_SERVER	=magrathea

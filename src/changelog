@@ -1,4 +1,8 @@
 2000-11-04 Michael Lestinsky <michael@zaphod.rhein-neckar.de>:
+	Added "install"-Target to Makefile.
+	Tested Plattforms: Linux/i386, OpenBSD/i386.
+
+2000-11-04 Michael Lestinsky <michael@zaphod.rhein-neckar.de>:
 	Makefile-Mechanismus funktioniert.
 
 2000-11-02 Michael Lestinsky <michael@zaphod.rhein-neckar.de>:
