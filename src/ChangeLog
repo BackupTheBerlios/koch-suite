@@ -1,3 +1,17 @@
+2003-07-30  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/README 1.60:
+  slightly better language and clearifcation of a few things
+
+  * src/Documentation/PHP.txt 1.7:
+  Update installation instructions to PHP 4.3.*
+
+  * src/commands/init_db.raw 1.7: Fix sql
+
+  * src/www/print.raw 1.31:
+  We are done here, so exit instead of break
+  this fixes a warning when "printing" recipes in HTML-Mode
+
 2003-05-19  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/output.raw 1.52:
