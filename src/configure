@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.17 2001/10/15 07:28:57 lestinsky Exp $
+# $Id: configure,v 1.18 2001/10/15 11:44:36 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -56,7 +56,7 @@ check_prereq () {
 
 check_opt () {
     # Check for optional tools an add their path to the config.sed
-    echo -n "Checking for '$1': ... "
+    echo -n "Probing for optional '$1': ... "
     req=$(which "$1")
     if [ -n "${req}" -a $? = 0 ] ; then
         # Found.
@@ -85,18 +85,24 @@ translate_raw () {
 
 ##########
 # Build-Depends: 'awk' and 'sed'
-echo -n "Checking for a usable awk ... "
+echo -n "Checking for an usable awk ... "
 for i in mawk nawk gawk awk; do
-  awk=$(which $i)
-  if [ -n "${awk}" -a $? = 0 ] ; then
-    break;
-  fi
+    awk=$(which $i)
+    if [ -n "${awk}" -a $? = 0 ] ; then
+        if [ $i = "awk" ] ; then
+            warn_awk=1
+        fi
+        break;
+    fi
 done
 if [ -z "${awk}" ] ; then
-  echo "Not Found"
-  exit 1
+    echo "Not Found"
+    exit 1
 else
-  echo "Found - ${awk}"
+    echo "Found - ${awk}"
+    if [ "${warn_awk}" = "1" ] ; then
+        echo "*** Warning: using an unknown awk."
+    fi
 fi
 
 check_prereq sed
@@ -106,17 +112,17 @@ check_prereq sed
 echo -n "Generating config.sed ... "
 ${awk} -f ${AWKSCRIPT} ${CONF_RAW} > ${CONF_FILE}
 if [ $? = 0 ] ; then 
-  echo "Done."
+    echo "Done."
 else 
-  echo "Failed."
-  exit $?
+    echo "Failed."
+    exit $?
 fi
 
 ##########
 # Optional tools:
 TOOLS="latex dvips gs"
 for foo in ${TOOLS} ; do
-  check_opt ${foo}
+    check_opt ${foo}
 done
 
 ##########
