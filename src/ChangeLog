@@ -1,3 +1,8 @@
+2002-07-20  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/INSTALL 1.12:
+  Suggestions by Eric Vaandering <ewv@fnal.gov>
+
 2002-07-16  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/defines.raw 1.13: beta3
