@@ -1,6 +1,6 @@
 # MySQL dump 7.1
 #
-# $Id: init_db.sql,v 1.4 2001/02/10 00:32:48 michael Exp $
+# $Id: init_db.sql,v 1.5 2001/02/17 17:03:14 michael Exp $
 #
 # Host: magrathea    Database: DBkoch
 #--------------------------------------------------------
@@ -125,4 +125,39 @@ INSERT INTO EINHEITEN VALUES (31,'dg','Dezigramm','',0.100,24,'dg','J');
 INSERT INTO EINHEITEN VALUES (32,'kg','Kg','Kilogramm',1000.000,24,'Kilo','J');
 INSERT INTO EINHEITEN VALUES (33,'fl','fl. Unze','fluid ounce',30.000,26,'fl','J');
 INSERT INTO EINHEITEN VALUES (34,'','','',0.000,0,'','J');
+
+# MySQL dump 7.1
+#
+# Host: magrathea    Database: DBkoch
+#--------------------------------------------------------
+# Server version	3.22.32
+
+#
+# Table structure for table 'EINHEITEN_ALIAS'
+#
+CREATE TABLE EINHEITEN_ALIAS (
+  ID int(11) DEFAULT '0' NOT NULL auto_increment,
+  EID int(11) DEFAULT '0' NOT NULL,
+  TEXT varchar(15) DEFAULT '' NOT NULL,
+  PRIMARY KEY (ID),
+  KEY TEXT (TEXT)
+);
+
+#
+# Dumping data for table 'EINHEITEN_ALIAS'
+#
+
+INSERT INTO EINHEITEN_ALIAS VALUES (1,2,'kl.');
+INSERT INTO EINHEITEN_ALIAS VALUES (2,4,'gr.');
+INSERT INTO EINHEITEN_ALIAS VALUES (3,12,'Scheibe');
+INSERT INTO EINHEITEN_ALIAS VALUES (4,15,'TL');
+INSERT INTO EINHEITEN_ALIAS VALUES (5,15,'Teeloeffel');
+INSERT INTO EINHEITEN_ALIAS VALUES (6,15,'Teelöffel');
+INSERT INTO EINHEITEN_ALIAS VALUES (7,17,'Esslöffel');
+INSERT INTO EINHEITEN_ALIAS VALUES (8,17,'Essloeffel');
+INSERT INTO EINHEITEN_ALIAS VALUES (9,26,'Milliliter');
+INSERT INTO EINHEITEN_ALIAS VALUES (10,32,'Kilo');
+INSERT INTO EINHEITEN_ALIAS VALUES (15,1,'Stueck');
+INSERT INTO EINHEITEN_ALIAS VALUES (14,1,'Stück');
+INSERT INTO EINHEITEN_ALIAS VALUES (13,17,'EL');
 
