@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
   <title>Infos zur Koch-Suite</title>
-  <!-- $Id: infos.raw,v 1.2 2000/11/21 01:57:15 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.3 2000/12/14 17:22:31 michael Exp $ -->
 </head>
 
 <body>
@@ -25,8 +25,10 @@
 
     <h3>Hilfe:</h3>
     <p class="top">
-      Dieses Programmpaket besteht aus zwei wesentlichen Komponenten.
-      Den Kommandozeilen-Tools und dem Web-Frontend.
+      Dieses Programmpaket besteht aus drei wesentlichen Komponenten.
+      Einer großen Bibliothek, die alle Konvertierungs- und
+      Ausgabe-Funktionen bereitstellt und (mehr oder weniger als triviale
+      Wrapper um die Bibliothek) den Kommandozeilen-Tools und dem Web-Frontend.
     <p>
 
     <h4>Kommandozeilen-Tools</h4>
@@ -40,12 +42,29 @@
           Als Parameter wird ein Suchstring übergeben, nachdem in der
           Rezept-Datenbank in den Menu-Titeln gesucht wird.
           Die Ausgabe geschieht auf der Standard-Ausgabe.</dd>
+      <dt><code>rezept2latex</code></dt>
+          <dd><i>LaTeX</i>-Export von Rezepten. Rezepte werden als
+          <i>LaTeX</i>-Source ausgegeben.</dd>
     </dl>
 
     <h4>Web-Frontend</h4>
-    <p>
-      Das Web-Frontend ist eigentlich weitgehend selbsterklärend.
-    </p>
+    <dl>
+      <dt>Such-Interface:</dt>
+        <dd>Die Datenbank kann nach Stichwörtern in
+          <ul>
+            <li>den Men&uuml;-Titeln</li>
+            <li>den Kategorien der Rezepte</li>
+            <li>der Zutatenliste</li>
+          </ul>
+        durchsucht werden. Es wird eine Liste an Rezepten zur Auswahl
+        angezeigt, die den gew&uuml;nschten Suchbegriff beinhalten. Dazu
+        gibt man im Suchinterface den Suchbegriff in das Formular ein, wählt 
+        unter <i>Suchen in</i> das passende Suchfeld und klickt auf
+        <i>Suchen</i>.
+        </dd>
+      <dt>Eingabe-Interface:</dt>
+        <dd>Dieses Interface ist derzeit nicht funktionsfähig.</dd>
+    </dl>
 
     <h3>Voraussetzungen:</h3>
     <p>
@@ -70,16 +89,29 @@
       Standalone-Interpreter notwendig.
     </p>
 
+    <h3>Feedback, Support</h3>
+    <p>
+      Für die User und Entwickler existiert eine Mailingliste,
+      <i>koch-suite@zaphod.rhein-neckar.de</i>. Diese Mailingliste
+      ist &ouml;ffentlich. Es darf aber nur an diese Liste schreiben, wer
+      sie auch aboniert (&quot;subscribe&quot;) hat.
+    </p>
+    <p>
+      Um sich auf der Mailingliste zu subscriben schickt man eine EMail an
+      <i>koch-suite-request@zaphod.rhein-neckar.de</i> mit
+      folgendem Subject/Betreff: &raquo;<code>subscribe</code>&laquo;. Um 
+      eine andere, als die momentan verwendete EMail-Adresse zu subscriben 
+      verwendet man als Subject: 
+      &raquo;<code>subscribe my.other@email.address</code>&laquo;.
+      (Nat&uuml;rlich jeweils jeweils ohne die Quotes davor!)
+    </p>
   </td>
 </tr>
 </table>
 
 <hr noshade>
-&copy; Michael Lestinsky 
-&lt;<a
-href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.
-de</a>&gt; 
-November 2000.
+&copy; 2000 Michael Lestinsky 
+&lt;<a href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.de</a>&gt;.
 
 </body>
 </html>
