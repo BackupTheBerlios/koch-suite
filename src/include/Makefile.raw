@@ -45,4 +45,6 @@ install-lib: build
 	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${ADDITIONAL} ${DESTDIR}/<%%PHP_LIBS%%>
 
 install-etc: build
+	( [ -d "${DESTDIR}/<%%ETC_PREFIX%%>" ] || \
+	<%%INSTALL%%> -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%ETC_PREFIX%%> )
 	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${KS_CONFIG} ${DESTDIR}/<%%ETC_PREFIX%%>
