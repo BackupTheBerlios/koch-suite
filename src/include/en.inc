@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.19 2001/08/16 19:55:33 lestinsky Exp $
+   * $Id: en.inc,v 1.20 2001/09/06 09:37:46 bus Exp $
    *
    * Define English text-constants.
    *
@@ -87,7 +87,7 @@ EOT;
   $Lang['Requirements']['Title']	= 'Requirements';
   $Lang['Requirements']['Text'][0]	= 'Required Software:';
 
-  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 and 3.23 tested) or PostgreSQL (7.0.3 tested)';
+  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 and 3.23 tested) or <A HREF="http://www.postgresql.org/">PostgreSQL</A> (7.0.3 tested)';
   $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version >= 4.0.4), with MySQL- or PostgreSQL-support and a current PEAR,';
   $Lang['Requirements']['Software'][2]	= 'a Webserver which is supported by PHP (i.e. <a href="http://www.apache.org">Apache</a>)';
 

@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.15 2001/08/16 19:55:33 lestinsky Exp $
+   * $Id: de.inc,v 1.16 2001/09/06 09:37:46 bus Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -86,7 +86,7 @@ EOT;
   $Lang['Requirements']['Title']	= 'Voraussetzungen';
   $Lang['Requirements']['Text'][0]	= 'Vorausgesetzte Software:';
 
-  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 und 3.23 getestet) oder PostgreSQL ( 7.0.3 getestet),';
+  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 und 3.23 getestet) oder <A HREF="http://www.postgresql.org/">PostgreSQL</A> ( 7.0.3 getestet),';
   $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version 4), mit MySQL- oder PostgreSQL-Unterst&uuml;tzung und einem aktuellen PEAR,';
   $Lang['Requirements']['Software'][2]	= 'ein Webserver, der von PHP unterst&uuml;tzt wird. (z.B. <a href="http://www.apache.org">Apache</a>)';
 
