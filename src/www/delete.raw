@@ -5,6 +5,7 @@
    */
 
   include "<%%PHP_LIBS%%>/config.inc";
+  include "<%%PHP_LIBS%%>/lang.inc";
   include "<%%PHP_LIBS%%>/functions.inc";
 
   $mid     = $HTTP_GET_VARS["mid"];
@@ -21,7 +22,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.5 2001/06/01 22:44:48 michael Exp $ -->
+  <!-- $Id: delete.raw,v 1.6 2001/06/01 23:00:53 michael Exp $ -->
 </head>
 
 <body>
@@ -37,12 +38,13 @@
     <!-- Rechts: Ausgabe -->
     <?
       if ($confirm != 'y') {
-        echo "<h1>Rezept l&ouml;schen?</h1>\n";
+        echo "<h1>" . $Lang["Recipe"]["Delete"] ."?</h1>\n";
         echo format_recipe_html(get_menu_by_mid($mid));
-        echo "[<a href=\"$PHP_SELF?mid=$mid&confirm=y\">L&ouml;schen</a>]\n";
+        echo "[<a href=\"$PHP_SELF?mid=$mid&confirm=y\">" . 
+                $Lang["Delete"] . "</a>]\n";
       } else {
         delete_menue ($mid);
-        echo "<h1>Rezept gel&ouml;scht.</h1>\n";
+        echo "<h1>" . $Lang["Recipe"]["Deleted"] . "</h1>\n";
       }
     ?>
   </td>

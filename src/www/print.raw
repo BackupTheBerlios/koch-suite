@@ -1,3 +1,16 @@
+<?php
+  /* $Id: print.raw,v 1.5 2001/06/01 23:00:53 michael Exp $
+   *
+   * stripped down html-version of recipe.
+   * (c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+   */
+
+  include "<%%PHP_LIBS%%>/config.inc";
+  include "<%%PHP_LIBS%%>/lang.inc";
+  include "<%%PHP_LIBS%%>/functions.inc";
+
+  $mid     = $HTTP_GET_VARS["mid"];
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
     "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
@@ -8,13 +21,11 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
 
   <title>Koch-Suite</title>
-  <!-- $Id: print.raw,v 1.4 2001/01/25 00:20:12 michael Exp $ -->
+  <!-- $Id: print.raw,v 1.5 2001/06/01 23:00:53 michael Exp $ -->
 </head>
 
 <body>
-<?
-  include "<%%PHP_LIBS%%>/functions.inc";
-
+<?php
   echo format_recipe_html(get_menu_by_mid($mid));
 ?>
 </body>
