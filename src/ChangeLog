@@ -1,3 +1,9 @@
+2003-02-07  Michael Bussmann  <bus@mb-net.net>
+
+  * src/include/es.inc 1.8, src/README 1.58, src/include/de.inc 1.50, src/include/en.inc 1.55:
+  Added Solaris and Debian 3.0 to the list of working platforms
+  Raised supported PostgreSQL version
+
 2003-02-05  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/man/man1/mmimport.1.raw 1.15: Better mdoc
