@@ -1,4 +1,4 @@
-### $Id: README,v 1.58 2003/02/07 16:06:00 bus Exp $
+### $Id: README,v 1.59 2003/05/19 16:04:39 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -70,7 +70,8 @@ and search functions to the database work very well.
 
 At the moment we have:
  - a tool for database import of recipes in Meal-Master or RezKonv format,
- - export functions to LaTeX, plain text, Meal-Master format and HTML,
+ - export functions to LaTeX, plain text, Meal-Master and RezKonv format 
+   and HTML,
  - a few prototype webpages, to implement some fundamental search functions
    to the database and for recipe recording.
  - Internationalization. Show all pages in the language requested by the
@@ -94,8 +95,7 @@ to follow it strictly.
 Planned for later releases or bored weekends:
 
   o  A better system to categorize recipes
-  o  Support RezTransfer (will there ever be a draft?)
-  o  Rezkonv-export
+  o  Support RezTransfer
   o  Annotate recipes
   o  Keep lists of "favorites" (also known as bookmark-list)
   o  Save images with the recipes
