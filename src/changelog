@@ -1,9 +1,15 @@
-### $Id: changelog,v 1.29 2001/05/08 21:43:11 michael Exp $
+### $Id: changelog,v 1.30 2001/05/10 23:57:42 michael Exp $
+
+2001-05-11: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Fix für Probleme bei überlangen 'Wörtern' (z.B. URLs)
+	Makefiles aufgeräumt.
+	configure-Skript überarbeitet.
 
 2001-05.28: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Makefiles wissen nun mit 'DESTDIR=/tmp/foo' was anzufangen.
         Documentation/FAQ.txt
         Erweiterte Suchfuntion: suche nach "Muffin AND Schoko".
+        0.5-pre1
 
 2001-04-23: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Ein Fehler beim Import von MM 8.06-Rezepten ist aufgetaucht. Fixed.
