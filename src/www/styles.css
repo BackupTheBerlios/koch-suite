@@ -1,4 +1,4 @@
-/* $Id: styles.css,v 1.8 2001/10/13 13:45:57 lestinsky Exp $ */
+/* $Id: styles.css,v 1.9 2001/12/24 14:07:57 lestinsky Exp $ */
 body	    { background-color:#ffffff; }
 h1,h2,h3,h4 { font-family:Verdana,Lucida; }
 a,b,dt	    { font-family:Helvetica,Arial; }
@@ -13,3 +13,4 @@ code,i      { color:#000463; }
 .border     { background-color:#9090b0; }
 .prop       { font-family:Courier; }
 .small      { font-size:small; }
+.warn       { color:red; }
