@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.23 2002/08/18 13:56:25 lestinsky Exp $
+  /* $Id: print.raw,v 1.24 2002/08/30 22:06:22 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    *
@@ -68,9 +68,13 @@
   function latex_file ($text) {
     $filename = tempnam($GLOBALS["KS_TMPDIR"], "KOCHSUITE");
     $fp = fopen("$filename.ltx", "w");
-    fputs($fp, latex_header());
-    fputs($fp, $text);
-    fputs($fp, latex_footer());
+
+    $trans = get_html_translation_table (HTML_ENTITIES);
+    $trans = array_flip ($trans);
+      
+    fputs($fp, strtr (latex_header(), $trans));
+    fputs($fp, strtr ($text, $trans));
+    fputs($fp, strtr (latex_footer(), $trans));
     fclose($fp);
     return $filename;
   }
@@ -98,7 +102,7 @@
       <meta http-equiv="Content-Style-Type" content="text/css">
 
       <title>Koch-Suite</title>
-      <!-- $Id: print.raw,v 1.23 2002/08/18 13:56:25 lestinsky Exp $ -->
+      <!-- $Id: print.raw,v 1.24 2002/08/30 22:06:22 lestinsky Exp $ -->
     </head>
     <body>
     <h1>Error</h1>
@@ -132,7 +136,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
 
   <title>Koch-Suite</title>
-  <!-- $Id: print.raw,v 1.23 2002/08/18 13:56:25 lestinsky Exp $ -->
+  <!-- $Id: print.raw,v 1.24 2002/08/30 22:06:22 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -169,7 +173,7 @@
         header("Content-Type: " . MIMETYPE_PS);
         header("Content-Disposition: inline; filename=\"".$filename.".pdf\"");
         readfile ($filename . ".ps");
-      } else error_messate();
+      } else error_message();
 
       break;
     case "pdf":
