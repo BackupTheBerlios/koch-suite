@@ -1,3 +1,37 @@
+2001-10-15  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/auth.raw 1.7:
+  separate the verification of username/password from auth() into verify_authdata()
+
+  * src/include/de.inc 1.21: Typo-fix
+
+  * src/include/loginform.raw 1.3: dynamic target
+
+  * src/www/Makefile.raw 1.25: +login.php
+
+  * src/www/index.raw 1.21: +nocache.inc
+  Align Content vertically at the top of the cell
+
+  * src/www/logout.raw 1.2: +nocache.inc
+  Unset Session-Variables
+
+  * src/www/login.raw 1.1, src/www/menue.raw 1.16:
+  Enable Login.
+
+  * src/www/search.raw 1.12: +nocache.inc
+
+  * src/configure 1.18: better
+
+  * src/genconfig.awk 1.5: Skip Comments.
+
+  * src/config 1.19: Enable Variables.
+
+  * src/configure 1.17:
+  test for exitcode of awk and fail if != 0
+
+  * src/genconfig.awk 1.4:
+  this works with nawk and gawk, too.
+
 2001-10-13  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/genconfig.awk 1.3:
