@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: lang.raw,v 1.11 2002/01/05 11:49:19 lestinsky Exp $
+   * $Id: lang.raw,v 1.12 2002/02/12 18:38:04 lestinsky Exp $
    * Guess prefered language for the web-interface.
    *
    * Copyright (c) 2001
@@ -46,7 +46,8 @@
       /* If this doesn't exist:
        * cut away the "_DE"-part and try again
        */
-      $L = preg_replace("/(([a-zA-Z]{2})([_\-][a-zA-Z]{2}))/", "\\2", $L);
+      $L = strtr($L, "-", "_");
+      $L = preg_replace("/(([a-zA-Z]{2})(_[a-zA-Z]{2}))/", "\\2", $L);
 
       if (!read_lang_file($L)) {
         /* Sorry, no such language */
@@ -92,9 +93,9 @@
     $accept_langs = explode(",", $tmp);
     reset($accept_langs);
     while(list($key,$lang)=each($accept_langs)) {
-      if (eregi("([-a-z]+) *; *qs=([0-9.]*)",$lang,$regs)) {
+      if (eregi("([-a-z]+) *; *qs=([0-9.]*)", $lang, $regs)) {
         $accepted_langs[$regs[1]]=$regs[2];
-      } else if (eregi("([-a-z]+)",$lang,$regs)) {
+      } else if (eregi("([-a-z]+)", $lang, $regs)) {
         $accepted_langs[$regs[1]]="1.0";
       }
     }
