@@ -4,9 +4,31 @@
 </table>
 <?php } ?>
 
-<address>
-  <?php echo $SITE_CONTACT_NAME ?> &lt;<?php echo $SITE_CONTACT_MAIL ?>&gt;
-</address>
+<table width="100%" class="menu_item">
+  <tr>
+    <td><?php 
+          printf("%s: %s &lt;%s&gt;\n", $Lang['Contact'], 
+                                        $GLOBALS['SITE_CONTACT_NAME'], 
+                                        $GLOBALS['SITE_CONTACT_MAIL']); ?>
+    </td>
+    <td style="text-align:right;">
+       <?php 
+         if ($GLOBALS['ENABLE_PROFILING']) 
+           printf('Page execution took %.3f seconds', 
+                    getmicrotime() - $GLOBALS['profiling_start']); 
+       ?>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align:right;">
+      <?php
+        if (!$authorname) $authorname =& $GLOBALS['authorname'];
+          printf("&copy 2003 %s, all rights reserved.<br />\n", 
+                                        $authorname);
+        ?>
+    </td>
+  </tr>
+</table>
 </body>
 </html>
 <?php db_disconnect(); ?>
