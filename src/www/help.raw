@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.1 2001/03/17 16:25:39 michael Exp $ -->
+  <!-- $Id: help.raw,v 1.2 2001/03/17 17:45:15 michael Exp $ -->
 </head>
 
 <body>
@@ -23,11 +23,9 @@
     ?>
   </td>
   <td width="90%">
-    <h2>Informationen zur Koch-Suite</h2>
+    <!-- Installierte Version: $Name:  $ $Revision: 1.2 $ -->
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.1 $ -->
-
-    <h3>Hilfe:</h3>
+    <h2>Hilfe:</h2>
     <p class="top">
       Dieses Programmpaket besteht aus drei wesentlichen Komponenten:
       einer großen Bibliothek, die alle Konvertierungs- und
@@ -35,7 +33,7 @@
       Wrapper um die Bibliothek) den Kommandozeilen-Tools und dem Web-Frontend.
     <p>
 
-    <h4>Kommandozeilen-Tools</h4>
+    <h3>Kommandozeilen-Tools</h3>
     <dl>
       <dt><code>mmimport</code></dt>
           <dd><i>Import von Rezepten.</i> Der Input wird auf dem
@@ -54,7 +52,7 @@
           Siehe <code>rk2mm(1)</code>.
     </dl>
 
-    <h4>Web-Frontend</h4>
+    <h3>Web-Frontend</h3>
     <dl>
       <dt>Such-Interface:</dt>
         <dd>Die Datenbank kann nach Stichwörtern in
@@ -67,17 +65,32 @@
         angezeigt, die den gew&uuml;nschten Suchbegriff beinhalten. Dazu
         gibt man im Suchinterface den Suchbegriff in das Formular ein, wählt 
         unter <i>Suchen in</i> das passende Suchfeld und klickt auf
-        <i>Suchen</i>.
+        <i>Suche starten</i>.
         </dd>
       <dt>Eingabe- und Editier-Interface:</dt>
         <dd>Rezepte k&ouml;nnen mit diesem Interface erfasst und editiert
         werden. Zahlenangaben in der Zutatenliste muessen mit 
-        &quot;<code>.</code>&quot
+        &quot;<code>.</code>&quot (Punkt)
         als Dezimaltrenner angegeben werden. Die Einheiten-Angaben haben
-        g&uuml;ltige Mealmaster-Einheiten zu sein und m&uuml;ssen durch
-        ein Leerzeichen von der Mengenangabe getrennt werden. 
+        g&uuml;ltige Mealmaster-, RezKonv-Einheiten oder ein dazu
+        definierter Alias zu sein und m&uuml;ssen durch
+        ein Leerzeichen von der Mengenangabe getrennt werden.
         </dd>
     </dl>
+
+    <h3>Feedback, Support</h3>
+    <p>
+      Für die User und Entwickler existiert eine Mailingliste,
+      <i>koch-suite@zaphod.rhein-neckar.de</i>. Diese Mailingliste
+      ist &ouml;ffentlich. Es darf aber nur an diese Liste schreiben, wer
+      sie auch aboniert (&quot;subscribe&quot;) hat.
+    </p>
+    <p>
+      Um sich auf der Mailingliste zu subscriben schickt man eine EMail an
+      <i>koch-suite-request@zaphod.rhein-neckar.de</i> mit
+      folgendem Subject/Betreff: &raquo;<code>subscribe</code>&laquo;.
+      (Nat&uuml;rlich ohne die Quotes darum!)
+    </p>
   </td>
 </tr>
 </table>
