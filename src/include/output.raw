@@ -1,13 +1,13 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.22 2001/05/22 00:13:54 michael Exp $
+   * $Id: output.raw,v 1.23 2001/05/30 19:51:54 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
 
 
-  function format_recipe($rezept) {
+  function format_recipe(&$rezept) {
     /* return a String, which contains the plain-text-formatted recipe */
 
     $str  = "     Titel: " . $rezept["title"] . "\n".
@@ -18,7 +18,7 @@
     /* Zutaten: */
 
     foreach ($rezept["zutaten"] as $z) {
-      $str .= $z["title"] . "\n";
+      if (!empty($z["title"])) $str .= $z["title"] . "\n";
       foreach ($z["ingredients"] as $j) {
         $quant = nice_quant($j["quant"]);
         $rline = pad_left ($quant , " ", 7) . " " .
@@ -37,7 +37,7 @@
   }
 
 
-  function format_recipe_html ($rezept) {
+  function format_recipe_html (&$rezept) {
     /* return a string, which contains the html-formatted recipe */
     global $Lang;
 
@@ -139,7 +139,7 @@
   }
 
 
-  function latex_export ($rezept) {
+  function latex_export (&$rezept) {
     /* Export a recipe in LaTeX-format */
 
     $c = 0;
@@ -272,7 +272,7 @@
   }
 
 
-  function mmexport ($rezept) {
+  function mmexport (&$rezept) {
     /* return a Meal-Master-formatted string. */
     global $kochsuite_ver, $tool;
     $i = 0;
@@ -372,7 +372,7 @@
     $i = 0;
     foreach ($r as $z) {
       /* Print a mealmaster-Subheader for subrecipes: */
-      if ($z["title"] != "Zutaten:") {
+      if ($z["title"] != "Zutaten:" and $z["title"] != "") {
         $str .= "\n" . mmrezept_header($z["title"]) . "\n";
       } else {
         $str .= "\n";
