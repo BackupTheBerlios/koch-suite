@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.57 2003/08/11 20:11:32 lestinsky Exp $
+   * $Id: en.inc,v 1.58 2004/03/31 19:26:39 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -14,6 +14,7 @@
   $Lang['Info']			= "Info";
 
   $Lang['Title']		= "Title";
+  $Lang['OrigTitle']		= "O-title";
   $Lang['Yield']		= "Servings";
   $Lang['Cat'] 			= "Categories";
   $Lang['Ingred']		= "Ingredients";

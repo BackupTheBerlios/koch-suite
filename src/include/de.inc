@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.52 2003/08/11 20:11:32 lestinsky Exp $
+   * $Id: de.inc,v 1.53 2004/03/31 19:26:39 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -13,6 +13,7 @@
   $Lang['Info']			= "Infos";
 
   $Lang['Title']		= "Titel";
+  $Lang['OrigTitle']		= "O-Titel";
   $Lang['Yield']		= "Portionen";
   $Lang['Cat'] 			= "Kategorien";
   $Lang['Ingred']		= "Zutaten";
