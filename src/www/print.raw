@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.27 2002/11/27 18:27:26 lestinsky Exp $
+  /* $Id: print.raw,v 1.28 2002/12/26 23:59:13 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    *
@@ -219,6 +219,8 @@
       error_message ("Configuration-Error: Unsupported format.\n");
   }
 
-  cleanup($filename);
+  if ($format !== "html") {
+    cleanup($filename);
+  }
   db_disconnect();
 ?>
