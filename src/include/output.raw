@@ -1,14 +1,24 @@
 <?
-  /*
+  /**
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.28 2001/06/23 00:38:59 michael Exp $
+   *
+   * $Id: output.raw,v 1.29 2001/06/26 22:14:13 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
+   * @package Lib
+   * @modulegroup Output
+   * @module output
+   * @copyrigth Michael Lestinsky <michael@lestinsky.de>
    */
 
 
+  /**
+   * return a String, which contains the plain-text-formatted recipe 
+   *
+   * @param array
+   * @return string
+   */
   function format_recipe(&$rezept) {
-    /* return a String, which contains the plain-text-formatted recipe */
 
     global $Lang;
 
@@ -41,8 +51,13 @@
   }
 
 
+  /**
+   * return a string, which contains the html-formatted recipe
+   *
+   * @param array
+   * @return string
+   */
   function format_recipe_html (&$rezept) {
-    /* return a string, which contains the html-formatted recipe */
     global $Lang;
 
     $str = "<h2>" . htmlentities($rezept["title"]) . "</h2>\n";
@@ -98,6 +113,11 @@
   }
 
 
+  /**
+   * Generate LaTeX-Footer
+   *
+   * @return string
+   */
   function latex_footer () {
     /* write Latex-Footers */
     $str .= "\\end{document}\n";
@@ -105,6 +125,11 @@
   }
 
 
+  /**
+   * Print LaTeX Headers
+   *
+   * @return string
+   */
   function latex_header () {
     /* write the Latex-headers... */
     $str  = "\\documentclass[a4paper,10pt]{article}\n\n";
@@ -127,10 +152,15 @@
   }
 
 
+  /**
+   * Convert characters to LaTeX entities
+   *
+   * Translate all those "special" characters in the input
+   * into proper Latex-substitutes.
+   * @param string
+   * @return string
+   */
   function ltx_string ($str) {
-    /* Translate all those "special" characters in the input
-     * into proper Latex-substitutes.
-     */
 
     /* Replace some characters with special meanings in latex. */
     $str = strtr($str, array(
@@ -147,13 +177,6 @@
                                "~"  => "\\textasciitilde "
                             )
                 );
-
-    /* Old:
-    #$str = preg_replace("/\\\/", "\\textbackslash ", $str);
-    $str = preg_replace("/\^/", "\\textasciicircum ", $str);
-    $str = preg_replace("/~/", "\\textasciitilde ", $str);
-    $str = preg_replace("/\|/", "\\textbar ", $str);
-    */
 
     return $str;
   }
@@ -221,10 +244,14 @@
   }
 
 
+  /**
+   * Adjust the String-Length. 
+   * return an array containing all individual lines. 
+   * @param string $str String
+   * @param int    $len Max Length
+   * @return array
+   */
   function length_adjust ($str, $len) {
-    /* Adjust the String-Length. 
-     * return an array containing all individual lines. 
-     */
 
     $bar = array();
     $foo = "";
@@ -288,9 +315,9 @@
 
   function mmexport (&$rezept, $strict = true) {
     /* return a Meal-Master-formatted string. */
-    global $kochsuite_ver, $tool;
+    global $tool;
     $i = 0;
-    $header = "MMMMM-----Koch-Suite ($kochsuite_ver) Export nach Meal-Master-----\n";
+    $header = "MMMMM-----Koch-Suite (" . KOCHSUITE_VER . ") Export nach Meal-Master-----\n";
     $footer = "MMMMM";
 
     $str  = "$header\n";
@@ -343,7 +370,7 @@
 
   function nice_unit ($unit) {
     /* Lookup a beautified name for a unit */
-    if (DB_MYSQL) {
+    if ($DB_STYLE == DB_MYSQL) {
       $req = "select text from EINHEITEN where STRCMP(ABBREV, '$unit') = 0";
     } else {
       $req = "select text from EINHEITEN where ABBREV = '$unit'";

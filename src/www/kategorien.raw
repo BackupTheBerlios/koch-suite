@@ -1,9 +1,13 @@
 <?php
-  /*
+  /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.7 2001/06/23 00:22:48 michael Exp $
-   * Michael Lestinsky
+   * $Id: kategorien.raw,v 1.8 2001/06/26 22:11:59 michael Exp $
+   * Michael Lestinsky <michael@lestinsky.de>
+   *
+   * @package WWW
+   * @modulegroup UI
+   * @module kategorien
    */
 
     require_once "<%%PHP_LIBS%%>/config.inc";

@@ -1,4 +1,13 @@
 <?
+  /**
+   * WWW-Frontend Index-Seite
+   *
+   * @copyright Michael Lestinsky <michael@lestinsky.de>
+   * @package WWW
+   * @modulegroup UI
+   * @module index
+   */
+
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
@@ -13,7 +22,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: index.raw,v 1.15 2001/06/20 18:33:29 michael Exp $ -->
+  <!-- $Id: index.raw,v 1.16 2001/06/26 22:13:13 michael Exp $ -->
 </head>
 
 <body>

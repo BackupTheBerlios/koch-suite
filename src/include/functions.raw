@@ -1,17 +1,30 @@
 <?
-  /* Functions for the "Koch-Suite" by
-   * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.45 2001/06/21 21:54:59 michael Exp $
+  /**
+   * Functions for the "Koch-Suite"
    *
+   * $Id: functions.raw,v 1.46 2001/06/26 22:14:33 michael Exp $
+   * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * See ../LICENSE for the license of this code.
-   *
    * Editors: Please sort new functions alphabetically.
+   *
+   * @author Michael Lestinsky <michael@lestinsky.de>
+   * @package Lib
+   * @modulegroup General
+   * @module functions.inc
+   * @copyright Michael Lestinsky <michael@lestinsky.de>
    */
 
   require "<%%PHP_LIBS%%>/output.inc";
 
   /* --- Functions --- */
 
+  /**
+   * Perform SQL-Query
+   *
+   * @author Michael Bussmann <bus@mb-net.net>
+   * @param  string $query  SQL-Query String
+   * @return int    $result Result-Identifier
+   */
   function DB_query($query) {
     global $db;
 
@@ -24,6 +37,13 @@
     return($result);
   }
 
+  /**
+   * Read a Line from File identified by Filehandle $fh
+   *
+   * @author Michael Lestinsky <michael@lestinsky.de>
+   * @param  integer $fh   Filehandle
+   * @return string  $line Line
+   */
   function get_line ($fh) {
     if ($line = fgets($fh, 1024)) {
       return preg_replace("/\r/", "", $line);
@@ -32,8 +52,13 @@
     }
   }
 
+  /**
+   * Delete a recipe from the database 
+   *
+   * @param  int  $mid Menu-ID
+   * @return void
+   */
   function delete_menue ($mid) {
-    /* delete a recipe from the database */
     $req = "select id from REZEPT where MENUE_ID = " . $mid;
     $result = DB_query($req);
 
@@ -57,12 +82,17 @@
   }
 
 
+  /**
+   * Delete all Aliases for a given Unit. 
+   *
+   * @param string $unit MM-unitname
+   * @return void
+   */
   function delete_unit_alias ($unit) {
-    /* Delete all Aliases for a given Unit. */
 
     /* What's the unit id to be deleted? */
 
-    if (DB_MYSQL) {
+    if ($DB_STYLE == DB_MYSQL) {
       $req = "select id from EINHEITEN " .
              " where STRCMP(EINHEITEN.ABBREV, '" . addslashes($unit) . "') = 0";
     } else {
@@ -170,7 +200,7 @@
       return $alias;
     } else {
       $str = addslashes($str);
-      if (DB_MYSQL) {
+      if ($DB_STYLE == DB_MYSQL) {
         $req = "select abbrev from EINHEITEN " .
                " where STRCMP(ABBREV, '$str') = 0 " .
                "    or RK_ABBREV = '$str' ".
@@ -235,7 +265,7 @@
   function get_unit_aliases ($id) {
     /* Get a List of defined aliases of unit-id $id */
     $a = array();
-    if (DB_MYSQL) {
+    if ($DB_STYLE == DB_MYSQL) {
       $req_alias = "select EINHEITEN_ALIAS.text " .
                    "  from EINHEITEN_ALIAS, EINHEITEN " .
                    " where EINHEITEN_ALIAS.EID = EINHEITEN.ID " .
@@ -280,7 +310,7 @@
       /* Alias is undefined. That's fine, lets proceed. */
 
       /* What's the ID of the unit? */
-      if (DB_MYSQL) {
+      if ($DB_STYLE == DB_MYSQL) {
         $req = "select id from EINHEITEN where STRCMP('$unit', ABBREV) = 0";
       } else {
         $req = "select id from EINHEITEN where ABBREV='$unit'";
