@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.55 2004/03/31 19:23:01 lestinsky Exp $
+   * $Id: output.raw,v 1.56 2004/04/10 16:41:30 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -193,18 +193,15 @@
    */
   function latex_header () {
     /* write the Latex-headers... */
-    $str  = "\\documentclass[a4paper,10pt]{article}\n\n";
+    $str  = "\\documentclass[". $GLOBALS['LTX_DOCSTYLE_OPTION'] ."]{article}\n\n";
     $str .= "\\usepackage{german}\n";
     $str .= "\\usepackage[latin1]{inputenc}\n";
     $str .= "\\usepackage{here}\n";
     $str .= "\\usepackage{array}\n";
+    $str .= "\\usepackage{anysize}\n";
     $str .= "\\usepackage[lflt]{floatflt}\n";
 
-    $str .= "\\setlength{\\textwidth}{16cm}\n";
-    $str .= "\\setlength{\\textheight}{25cm}\n";
-    $str .= "\\addtolength{\\topmargin}{-2cm}\n";
-    $str .= "\\addtolength{\\oddsidemargin}{-2cm}\n";
-    $str .= "\\setlength{\\columnsep}{1cm}\n";
+    $str .= "\\marginsize{2cm}{2cm}{2cm}{2cm}\n"; // Settings for anysize.sty
     $str .= "\\pagestyle{empty}\n";
     $str .= "\\raggedbottom\n";
     $str .= "\\begin{document}\n";

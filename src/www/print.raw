@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.32 2003/08/11 20:14:13 lestinsky Exp $
+  /* $Id: print.raw,v 1.33 2004/04/10 16:41:30 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    *
@@ -166,7 +166,7 @@
 
       $filename = latex_file($recipe);
       exec("$LATEX $filename.ltx  > /dev/null 2>&1");
-      exec("$DVIPS -o $filename.ps $filename.dvi > /dev/null 2>&1");
+      exec("$DVIPS -t ". $GLOBALS['GS_PAPEROPTION'] ." -o $filename.ps $filename.dvi > /dev/null 2>&1");
 
       if (file_exists("$filename.ps")) {
         header("Content-Type: " . MIMETYPE_PS);
@@ -187,13 +187,15 @@
 
       $filename = latex_file($recipe);
 
-      if (!empty($PDFLATEX)) {
-        exec("$PDFLATEX $filename.ltx > /dev/null 2>&1");
-      } else {
-        exec("$LATEX $filename.ltx > /dev/null 2>&1");
-        exec("$DVIPS -o $filename.ps $filename.dvi > /dev/null 2>&1");
-        exec("$GS -q -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=$filename.pdf $filename.ps > /dev/null 2>&1");
-      }
+      // pdflatex doesn't handle papersizes right!
+      // 
+      // if (!empty($PDFLATEX)) {
+      //   exec("$PDFLATEX $filename.ltx > /dev/null 2>&1");
+      // } else {
+      exec("$LATEX $filename.ltx > /dev/null 2>&1");
+      exec("$DVIPS -t ". $GLOBALS['GS_PAPEROPTION'] ." -o $filename.ps $filename.dvi > /dev/null 2>&1");
+      exec("$GS -sPAPERSIZE=". $GLOBALS['GS_PAPEROPTION'] ." -q -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=$filename.pdf $filename.ps > /dev/null 2>&1");
+      // }
       if (file_exists("$filename.pdf")) {
         header("Content-Type: " . MIMETYPE_PDF);
         header("Content-Disposition: inline; filename=\"".$filename.".pdf\"");

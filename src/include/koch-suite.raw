@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: koch-suite.raw,v 1.24 2004/03/31 19:27:52 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.25 2004/04/10 16:41:30 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) 2004 Michael Lestinsky <michael@lestinsky.de>
@@ -72,7 +72,9 @@
    * We will fall back in this queue from right to left if one of the 
    * required tools is missing.
    */
-  $PRINTABLE_FORMAT = "pdf";
+  $PRINTABLE_FORMAT	= "pdf";
+  $LTX_DOCSTYLE_OPTION	= "a4paper";
+  $GS_PAPEROPTION	= "a4";
 
 
   /* Database: */
