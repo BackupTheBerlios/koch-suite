@@ -1,3 +1,12 @@
+2002-04-08  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/README 1.44: Update todo list
+
+  * src/Documentation/FAQ.txt 1.5:
+  The Koch-Suite is quite good, but I'm missing $FEATURE.
+
+  * src/Documentation/PHP.txt 1.4: Update
+
 2002-04-02  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/config 1.22: clarify comment
