@@ -1,4 +1,8 @@
-### $Id: changelog,v 1.23 2001/03/18 13:58:36 michael Exp $
+### $Id: changelog,v 1.24 2001/03/27 22:12:18 michael Exp $
+
+2001-03-27: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	units.raw: Zeige Informationen zu Einheiten, wie MM-,
+        RK-Abkürzungen, definierte Aliase...
 
 2001-03-18: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	rezept: Erweiterung der Suchmöglichkeiten um Suche nach Zutaten
