@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.49 2002/09/29 20:35:16 lestinsky Exp $
+   * $Id: en.inc,v 1.50 2002/10/13 18:55:03 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -9,7 +9,7 @@
    */
 
   /* Menu */
-  $Lang['Insert']		= "Insert";
+  $Lang['Insert']		= "Add";
   $Lang['Help']			= "Help";
   $Lang['Info']			= "Info";
 
@@ -22,14 +22,14 @@
   $Lang['Text']			= "Text";
   $Lang['Description']		= "Description";
   $Lang['Alias']		= "Alias";
-  $Lang['Recorder']		= 'Recorded by';
+  $Lang['Recorder']		= 'Added by';
   $Lang['Date']			= 'Date';
   $Lang['Source']		= 'Source';
   $Lang['Instructions']		= 'Instructions';
 
   $Lang['FormApply']		= "Apply";
   $Lang['FormMoreIngr']		= "Additional ingredient list";
-  $Lang['FormReset']		= "Reset form";
+  $Lang['FormReset']		= "Clear form";
 
   $Lang['Delete']		= "Delete";
   $Lang['NormalVers']		= "Normal view";
@@ -47,8 +47,7 @@
   $Lang['Untag']['Do']		= 'Untag';
   $Lang['Untag']['All']		= 'Untag all';
 
-
-  $Lang['Mainmenu']['Title']		= "Mainmenu";
+  $Lang['Mainmenu']['Title']		= "Main Menu";
   $Lang['Mainmenu']['PlsChoose']	= "Please choose from the main menu";
   $Lang['Search']['Search']	= "Search";
   $Lang['Search']['For']	= "Search for";
@@ -57,10 +56,10 @@
   $Lang['Search']['Result']	= "Search result";
   $Lang['Search']['Hits']       = "Hits";
 
-  $Lang['Search']['Menutitle']	= "Menutitle";
+  $Lang['Search']['Menutitle']	= "Menu Title";
   $Lang['Search']['Categories']	= "Categories";
   $Lang['Search']['Ingredients']	= "Ingredients";
-  $Lang['Search']['NoResult']	= "Result was empty.";
+  $Lang['Search']['NoResult']	= "Nothing Found";
 
   $Lang['Recipe']['Edit']	= "Edit recipe";
   $Lang['Recipe']['Delete']	= "Delete recipe";
