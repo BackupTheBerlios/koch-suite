@@ -39,7 +39,7 @@
   function  print_count(&$r) {
     global $Lang;
 
-    echo "<tr><td colspan=\"2\">" . count($r) . " " .
+    echo "<tr><td colspan=\"3\">" . count($r) . " " .
                    $Lang['Search']['Hits'] . 
              "</td></tr>\n";
     return true;
@@ -62,13 +62,13 @@
                                        // further operations
   session_register("operate_on");      // Set marker an which buffer we
                                        // are working.
-  $searchresult   =& $_SESSION['searchresult'];
-  $tagged_recipes =& $_SESSION['tagged_recipes'];
+  $SearchResult   =& $_SESSION['searchresult'];
+  $TaggedRecipes =& $_SESSION['tagged_recipes'];
   $_SESSION['operate_on'] = false;
 
   $all_result     = array();
 
-  if (empty($tagged_recipes)) $tagged_recipes = array();
+  if (empty($TaggedRecipes)) $TaggedRecipes = array();
 
   include "<%%WEB_PREFIX%%>/header.inc";
 
@@ -79,29 +79,29 @@
     /* Tag this recipes for further operations */
 
     foreach ($_POST['tag'] as $do_tag) {
-      if ($searchresult[$do_tag]) {
+      if ($SearchResult[$do_tag]) {
         $notag = false;
-        foreach ($tagged_recipes as $cmp) {
-          if ($cmp['id'] == $searchresult[$do_tag]['id'])
+        foreach ($TaggedRecipes as $cmp) {
+          if ($cmp['id'] == $SearchResult[$do_tag]['id'])
             $notag = true;
         }
         if (! $notag) 
-          $tagged_recipes[] = $searchresult[$do_tag];
+          $TaggedRecipes[] = $SearchResult[$do_tag];
       }
     }
   } else if (isset($_POST['untag_submit']) and isset($_POST['tag'])) {
     foreach ($_POST['tag'] as $do_untag) {
-      if (isset($tagged_recipes[$do_untag]))
-        array_splice($tagged_recipes, $do_untag, 1);
+      if (isset($TaggedRecipes[$do_untag]))
+        array_splice($TaggedRecipes, $do_untag, 1);
     }
   } else if (isset($_POST['untag_all'])) {
-    $tagged_recipes = array();
+    $TaggedRecipes = array();
   } else if (isset($_POST['tag_all']) and $EXPENSIVE_OPS) {
-    $tagged_recipes = KS_array_merge($searchresult, $tagged_recipes);
+    $TaggedRecipes = KS_array_merge($SearchResult, $TaggedRecipes);
   }
 
   if (isset($_GET['showresult'])) {
-    // Display the last searchresult again.
+    // Display the last SearchResult again.
 
     $_SESSION['operate_on'] = 'searchresult';
     include "<%%WEB_PREFIX%%>/actions.inc";
@@ -185,7 +185,7 @@
       reset($all_result);
       print_count($all_result);
       print_titles($all_result);
-      $searchresult = $all_result;
+      $SearchResult = $all_result;
       ?>
       </table>
       <input type="submit" class="button" name="tag_submit"
@@ -275,7 +275,7 @@
   <a class="prop" href="<?php echo "$PHP_SELF?all=y"; ?>">Y</a>
   <a class="prop" href="<?php echo "$PHP_SELF?all=z"; ?>">Z</a>
 </p>
-<?php if (!empty($tagged_recipes) and count($tagged_recipes) > 0) { ?>
+<?php if (!empty($TaggedRecipes) and count($TaggedRecipes) > 0) { ?>
 <p>
     [<a href="<?php echo "$PHP_SELF?showtagged=1"; ?>"><?php echo $Lang['Tag']['Show']['Do']; ?></a>]
 </p>
