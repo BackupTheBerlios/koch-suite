@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* $Id: rezept.raw,v 1.7 2001/06/01 21:46:30 michael Exp $
+  /* $Id: rezept.raw,v 1.8 2001/06/07 16:11:01 michael Exp $
    * Export a recipe in different formats.
    */
 
@@ -10,9 +10,14 @@
   $stdout = fopen("php://stdout", "w");
   $stderr = fopen("php://stderr", "w");
 
-  $ver = "0.2";
+  /*
+   * In case register_globals is turned off in php.ini, we need to get
+   * those Variables manually 
+   */
+  if (!isset($argc)) $argc = $HTTP_SERVER_VARS["argc"];
+  if (!isset($argv)) $argv = $HTTP_SERVER_VARS["argv"];
 
-  $helptext  = "rezept $ver (Koch-Suite $kochsuite_ver)\n" ;
+  $helptext  = "rezept (Koch-Suite $kochsuite_ver)\n" ;
   $helptext .= "Invoke as:\n";
   $helptext .= "    rezept -h\n";
   $helptext .= "    rezept".
