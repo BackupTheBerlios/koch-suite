@@ -1,10 +1,10 @@
-### $Id: README,v 1.11 2000/11/29 18:41:55 michael Exp $
+### $Id: README,v 1.12 2000/12/27 17:46:30 michael Exp $
 
 Koch-Suite
 ==========
 
 Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
-Die Datei LICENCE enthält die Lizenz, unter der dieses Paket als ganzes
+Die Datei LICENSE enthält die Lizenz, unter der dieses Paket als ganzes
 oder einzelne Dateien hieraus verwendet werden dürfen.
 
 
@@ -12,7 +12,9 @@ Was ist das hier ueberhaupt?
 ----------------------------
 
 Eine Sammlung von Skripten fuer die Rezeptverwaltung. Angefangen von
-Mealmaster-Importfiltern (http://www.mealmaster.com), bis ...
+Mealmaster-Importfiltern (http://www.mealmaster.com), über
+Kommandozeilen-Tools für den Export in diverse Formate bis zu einem
+Web-Interface zur Datenbank.
 
 
 Voraussetzungen:
@@ -27,8 +29,8 @@ Als Plattformen sind getestet:
 
 Auf alle Fälle ist auch PHP4 mit MySQL-Support notwendig. Diese Skripten 
 sind unter PHP-4.0.3.pl1 geschrieben und getestet worden. PHP4 muss als 
-Stand-Alone-Interpreter vorhanden sein, als Apache-Modul funktionieren
-die Konsolen-Tools nicht.
+Stand-Alone-Interpreter vorhanden sein, nur mit dem Apache-Modul funktio-
+nieren die Konsolen-Tools nicht.
 
 
 Status:
@@ -39,9 +41,9 @@ den zentralen Funktionen statt, damit die Anwendungen später nur noch eine
 triviale Abfolge von Funktionsaufrufen sein können.
 
 Bisher existiert nur:
- - Tool für den Datenbank-Import im Mealmaster-Format,
- - Tool für den Datenbank-Export im Mealmaster-Format.
- - Ein paar Prototyp-Webseiten, die elementare Suchfunktionen in der
+ - ein Tool für den Datenbank-Import im Mealmaster-Format,
+ - Exportfunktionen nach Latex, Plain-Text und Mealmaster-Format,
+ - ein paar Prototyp-Webseiten, die elementare Suchfunktionen in der
    Datenbank implementieren.
 
 An allem anderen wird derzeit noch kräfitg gearbeitet.
@@ -69,7 +71,7 @@ referenz finden sich unter http://www.php.net
 Installation:
 -------------
 
- - tar -xvzf kochsuite-0.1.tar.gz
+ - tar -xvzf kochsuite-0.2.tar.gz
    Dieses Paket auspacken, wenn es nicht bereits geschehen ist.
 
  - vi config
@@ -94,20 +96,21 @@ Updating:
 0.1.* -> 0.2 Das Format der Datenbank hat sich leicht geändert:
              Tabelle MENUE: 
                alter table MENUE change PORTIONEN PORTIONEN varchar(255);
+             Diese Änderung ist vollkommen Transparent.
 
-Todo:
------
+Todo/'Roadmap':
+---------------
 
  - Dokumentation schreiben,
- - Web-Frontends,
- - Suchfunktionen,
-
+ - Ein Datenbank-Import-Interface,
+ - RezKonv-Importfilter,
+ - vorhandene Rezepte kommentieren und editieren,
+ - Zugriffskontrolle für die Datenbank/Authentifizierung des Users
 
 Bugs:
 -----
 
  - Import von Rezepten mit uneigentlichen Brüchen, also Dinge wie "1 1/2"
- - Behandlung der Zeilenumbruch-Formatierung in den importierten Rezepten
  - Deutsch-Englischer Mischmasch in Kommentaren,...
  - Import von Rezepten mit einer alternativen Darstellung der
    Rezept-Header ("      H    Für die Sauce"). Header werden als solche
