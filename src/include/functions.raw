@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.40 2001/06/06 11:07:55 michael Exp $
+   * $Id: functions.raw,v 1.41 2001/06/10 22:16:46 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -72,6 +72,62 @@
         return false;
       }
     }
+  }
+
+
+  function exec_search ($str, $where, $param) {
+    /* Actually parse what and where to search for and then
+     * perform the proper searches.
+     */
+
+    $return          = array();
+    $return_is_empty = true;
+
+    /*
+     * (future) Grammer:
+     * split by 'AND', then split by 'OR' and finally lookout for 'NOT'
+     * 'AND' is higher order then 'OR'.
+     * i.e.: 'Muffins AND Choc OR Strawberry' searches for all Choclate or
+     *       Strawberry-Muffins.
+     *
+     * current status: 'AND' only.
+     */
+
+    $and = split(" AND ", $str);
+    foreach ($and as $this) {
+
+      switch ($where) {
+        case 'title':
+          if ($param == 1) {
+            $result = get_mid_by_name("");
+          } else if (ereg("[a-z]", $param)) {
+            $result = get_mid_by_name("$param", 1);
+          } else {
+            $result = get_mid_by_name("%$this%");
+          }
+          break;
+        case 'cat':
+          $result = get_mid_by_cat($this);
+          break;
+        case 'ingred':
+          $result = get_mid_by_ingred($this);
+          break;
+      }
+
+      /* Intersection with an empty array is empty. So we need to catch
+       * this situation first. 
+       */
+      if (!$return_is_empty) {
+        $return = array_intersect($return, $result);
+      } else {
+        $return = $result;
+        $return_is_empty = false;
+      }
+    }
+
+    /* We are done here, sort and return the result. */
+    uasort($return, "cmp_menu");
+    return $return;
   }
 
 
@@ -578,12 +634,14 @@
     /* Search the database for $name in the menu-title */
     $a = array();
     if ($first_char==1) {
-      $search = "TITEL like '$name%'" ;
+      $search = "$name%" ;
     } else {
-      $search = make_search_string($name, "TITEL");
+      $search = "%$name%";
     }
-    $req = "select * from MENUE where $search order by TITEL asc";
+    $req = "select * from MENUE where TITEL like '$search' order by TITEL asc";
     $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    write_log ($req);
 
     while ($r = @mysql_fetch_array($result)) {
       array_push($a, array("id"    => stripslashes($r["ID"]),
@@ -600,56 +658,22 @@
      * Returns "0" if none found, an array of an associative arrays
      * ("ID", "PORTIONEN", "TITEL") otherwise.
      */
-    $m       = array();
 
-    $single_ingred = split(" AND ", $ingred);
+    $m = array();
 
-    $tables = "";
-    $where  = "";
-    $and    = "";
-    $i      = 0;
+    $req = "select distinct MENUE.ID, MENUE.TITEL " .
+           "  from MENUE, REZEPT, ZUTATEN " .
+           " where MENUE.ID = REZEPT.MENUE_ID " .
+           "   and REZEPT.ID = ZUTATEN.REZEPT_ID " .
+           "   and ZUTATEN.TEXT like '%" . addslashes($ingred) . "%'";
 
-    foreach ($single_ingred as $ingr) {
-      if ($i > 0) {
-        $tables .= ","; // prepend a comma, if needed.
-        $where .= " and ";
-      }
-      $tables .= " ZUTATEN as a". $i;
-      $where .= " a0.REZEPT_ID = a" . $i . ".REZEPT_ID ";
-      $and   .= " and a" . $i . ".TEXT like '%" . $ingr . "%'" ;
-      $i++;
-    }
-
-    $req = "select distinct a0.REZEPT_ID from $tables " .
-               " where $where $and";
-
-    #$req = "select distinct REZEPT_ID from ZUTATEN " .
-    #       " where TEXT like '%". addslashes($ingred) . "%'";
     $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
-
-    write_log($req);
-
     while ($z = mysql_fetch_array($result)) {
-      $req = "select * from REZEPT where ID = '" .
-             addslashes($z["REZEPT_ID"]) . "'";
-
-      $result_rid = mysql_db_query($GLOBALS["DB_NAME"], $req);
-
-      if ($r = @mysql_fetch_array($result_rid)) {
-        $req_mid = "select * from MENUE where ID = '" . $r["MENUE_ID"] . "'"; 
-        $result_mid = mysql_db_query($GLOBALS["DB_NAME"], $req_mid);
-       
-        $j = mysql_fetch_array($result_mid); 
-        array_push ($m, array("id" => $j["ID"], "title" => $j["TITEL"]));
-      }
+      array_push ($m, array("id"    => $z["ID"], 
+                            "title" => $z["TITEL"]) );
     }
 
-    if (count($m) > 0) {
-      uasort($m, "cmp_menu");
-      return array_unique($m);
-    } else {
-      return 0;
-    }
+    return $m;
   }
 
 
@@ -657,61 +681,18 @@
     /* get all menus with category $cat */
 
     $a          = array();
-    $categories = array();
 
-    /* Lets see if we 've got a 'AND' in the requested Query: */
-    $search = "";
-    $c      = split (" AND ", $cat);
-    $i      = 0;
-    while (isset($c[$i])) {
-      if ($i > 0) {
-        $search .= " OR ";
+    $req = "select distinct MENUE.TITEL, MENUE.ID " .
+           "  from MENUE, KAT, KATEGORIE " .
+           " where MENUE.ID = KAT.MENUE_ID " .
+           "   and KAT.KATEGORIE_ID = KATEGORIE.ID " .
+           "   and KATEGORIE.TEXT = '$cat'" ;
+
+    if ($res = mysql_db_query($GLOBALS["DB_NAME"], $req)) {
+      while ($m = mysql_fetch_array($res)) {
+        array_push($a, array("id"    => stripslashes($m["ID"]), 
+                             "title" => stripslashes($m["TITEL"]) ));
       }
-      $search .= " TEXT = '" . $c[$i] . "'";
-      $i++;
-    }
-
-    /* request the ID of the category */
-    $req = "select distinct ID from KATEGORIE where " . $search;
-    $res = mysql_db_query($GLOBALS["DB_NAME"], $req);
-    while ($id = mysql_fetch_array($res))
-      array_push($categories, $id);
-
-    /* Lets construct the next query: what MENUE_IDs are listed for all
-     * the previously selected categories? */
-
-    $tables = "";
-    $where  = "";
-    $and    = "";
-    $i = 0;
-    foreach ($categories as $id) {
-      if ($i > 0) {
-        $tables .= ","; // prepend a comma
-        $where .= " and ";
-      }
-      $where  .= " a0.MENUE_ID = a" . $i . ".MENUE_ID ";
-      $tables .=  " KAT as a" . $i; // prepend no comma
-      $and    .= " and a" . $i . ".KATEGORIE_ID = " . $id["ID"] ;
-      $i++;
-    }
-
-    /* which menues are of the category $id["ID"]? */ 
-    $req_mid = "select distinct a0.MENUE_ID from $tables " .
-               " where $where $and";
-
-    if ($res_mid = mysql_db_query($GLOBALS["DB_NAME"], $req_mid)) {
-      while ($mid = mysql_fetch_row($res_mid)) {
-        /* for each entry: request the id and title and push them into
-         * the result-array */
-        $req_menu = "select * from MENUE where ID = " . $mid[0];
-        $res_menu = mysql_db_query($GLOBALS["DB_NAME"], $req_menu);
-  
-        if ($menu = mysql_fetch_array($res_menu)) {
-          array_push($a, array("id"    => stripslashes($menu["ID"]), 
-                               "title" => stripslashes($menu["TITEL"]) ));
-        }
-      }
-      uasort($a, "cmp_menu");
       return $a;
     } else {
       return false;
@@ -719,31 +700,10 @@
   }
 
 
-  function make_search_string ($str, $column, $sharp = 0) {
-    /* Parse the searchstring from user-input and make it SQLish */
-    /* Ok, we have to define some grammer for requests first:
-     * for the moment AND is the only allowed operator. */
-
-    $a = explode (" AND ", $str);
-
-    $i = 0;
-    while (isset($a[$i])) {
-      if ($sharp == 1) {
-        /* sharp search */
-        $r .= (($i > 0) ? " AND " : "") . "$column = '" . $a[$i] . "'";
-      } else {
-        /* unsharp search */
-        $r .= (($i > 0) ? " AND " : "") . "$column like '%" . $a[$i] . "%'";
-      }
-      $i++;
-    }
-
-    return $r;
-  }
-
-
   function cmp_menu ($a, $b) {
-    /* Custom comparisson-function */
+    /* Custom comparisson-function:
+     * compare two menu-ref's by their title.
+     */
     return strcmp($a["title"], $b["title"]);
   }
 ?>
