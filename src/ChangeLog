@@ -1,3 +1,12 @@
+2002-07-21  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/man/man1/mmimport.1.raw 1.13: Sync
+
+2002-07-21  Eric Vaandering at BerliOS  <vondo@hornet.berlios.de>
+
+  * src/include/en.inc 1.41:
+  Correcting some minor issues with the English translation
+
 2002-07-20  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/INSTALL 1.12:
