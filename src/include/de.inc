@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.25 2001/12/31 15:56:36 lestinsky Exp $
+   * $Id: de.inc,v 1.26 2002/01/07 21:27:42 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -103,16 +103,16 @@ EOT;
   $Lang['Requirements']['Title']	= 'Voraussetzungen';
   $Lang['Requirements']['Text'][0]	= 'Vorausgesetzte Software:';
 
-  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 und 3.23 getestet) oder <A HREF="http://www.postgresql.org/">PostgreSQL</A> ( 7.0.3 getestet),';
+  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.23 getestet) oder <A HREF="http://www.postgresql.org/">PostgreSQL</A> (7.0.3 getestet),';
   $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version 4), mit MySQL- oder PostgreSQL-Unterst&uuml;tzung und einem aktuellen PEAR,';
   $Lang['Requirements']['Software'][2]	= 'ein Webserver, der von PHP unterst&uuml;tzt wird. (z.B. <a href="http://www.apache.org">Apache</a>)';
 
   $Lang['Requirements']['Text'][1]	= 'Getestete Betriebssysteme (alphabet. Reihenfolge):';
 
-  $Lang['Requirements']['OSes'][]	= 'AIX 4.3';
-  $Lang['Requirements']['OSes'][]	= 'FreeBSD 4.3';
-  $Lang['Requirements']['OSes'][]	= 'Linux (Debian 2.2)';
-  $Lang['Requirements']['OSes'][]	= 'OpenBSD 2.9';
+  $Lang['Requirements']['OSes'][0]	= 'AIX 4.3';
+  $Lang['Requirements']['OSes'][1]	= 'FreeBSD 4.3';
+  $Lang['Requirements']['OSes'][2]	= 'Linux (Debian 2.2)';
+  $Lang['Requirements']['OSes'][3]	= 'OpenBSD 2.9';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
       F&uuml;r die Kommandozeilen-Tools ist PHP mit MySQL-/PostgreSQL-
