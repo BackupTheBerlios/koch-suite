@@ -2,7 +2,7 @@
 
   /* Cetral configuration-file for the koch-suite
    * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
-   * $Id: config.raw,v 1.2 2000/11/13 14:03:48 michael Exp $
+   * $Id: config.raw,v 1.3 2001/03/14 12:17:38 michael Exp $
    */
 
   $DB_SERVER   = "<%%DB_SERVER%%>";
@@ -11,6 +11,15 @@
   $DB_NAME     = "<%%DB_NAME%%>";
 
   /* Connect to the Database */
-  mysql_pconnect($DB_SERVER, $DB_USER, $DB_PASSWORD);
+
+  if (get_cfg_var(mysql.allow_persistent) == 1) {
+    if (! @mysql_pconnect($DB_SERVER, $DB_USER, $DB_PASSWORD)) {
+      $mysql_error = mysql_error();
+    }
+  } else {
+    if (! @mysql_connect($DB_SERVER, $DB_USER, $DB_PASSWORD)) {
+      $mysql_error = mysql_error();
+    }
+  }
 
 ?>
