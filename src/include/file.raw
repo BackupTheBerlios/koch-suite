@@ -1,7 +1,7 @@
 <?php
 
   /*
-   * $Id: file.raw,v 1.1 2001/08/06 17:55:13 lestinsky Exp $
+   * $Id: file.raw,v 1.2 2001/08/06 21:30:18 lestinsky Exp $
    */
 
   require_once "<%%PHP_LIBS%%>/debug.inc";
@@ -47,10 +47,11 @@
 
         return $return;
       } else {
-        if ($line = fgets($this->Filehandle, 4096)) {
+        if (!feof($this->Filehandle) and 
+            $line = fgets($this->Filehandle, 4096)) {
           return $line;
         } else {
-          write_log("Can't read from " . $this->Filename);   
+          // write_log("Can't read from " . $this->Filename);   
           return false;
         }
       }
@@ -62,7 +63,10 @@
      * @param string $line String to "un-read"
      */
     function UnReadLine ($line) {
-      $this->buffer = $line;
+      // $this->buffer = $line;
+      // write_log ("UnReadLine: " . $line);
+      $len = strlen($line);
+      fseek($this->Filehandle, -$len, SEEK_CUR);
     }
 
 
