@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.90 2003/02/11 11:20:29 lestinsky Exp $
+   * $Id: functions.raw,v 1.91 2003/02/14 18:54:42 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -615,7 +615,7 @@
         } else $GLOBALS['notice'] .= "$cat unknown, Ignoring.\n";
       }
 
-      if (isset($cid)) {
+      if ($cid) {
         $kid = $db->nextID("KATSEQ");
         $req = "insert into KAT values ($kid,$cid,$mid)";
         $result = DB_query($req);
