@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.81 2002/08/24 09:51:11 lestinsky Exp $
+   * $Id: functions.raw,v 1.82 2002/08/31 17:48:08 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -462,11 +462,15 @@
    * @param  array $rezept Array containing the recipe
    * @return void 
    */
-  function write_db ($rezept, $new_cat_flag) {
+  function write_db ($rezept, $new_mid, $new_cat_flag) {
 
     global $db;
 
-    $mid=$db->nextID("MENUESEQ");
+    if ($new_mid == 0) 
+      $mid=$db->nextID("MENUESEQ");
+    else 
+      $mid=$new_mid;
+
     $req = "insert into MENUE values ( " .
           "  $mid, " .
           "  '" . addslashes($rezept["yield"]) . "', " .
