@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.36 2002/05/17 11:26:04 lestinsky Exp $
+   * $Id: en.inc,v 1.37 2002/05/20 15:04:17 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -22,6 +22,9 @@
   $Lang['Text']			= "Text";
   $Lang['Description']		= "Description";
   $Lang['Alias']		= "Alias";
+  $Lang['Recorder']		= 'Recorded by';
+  $Lang['Date']			= 'Date';
+  $Lang['Source']		= 'Source';
 
   $Lang['FormApply']		= "Apply";
   $Lang['FormMoreIngr']		= "Additional ingredient list";
