@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.24 2002/08/10 22:23:11 lestinsky Exp $
+# $Id: configure,v 1.25 2002/09/26 08:56:15 bus Exp $
 #
 # Copyright (c) 2002
 #      Michael Lestinsky. All rights reserved.
@@ -63,7 +63,7 @@ add_conf () {
 }
 
 check_prereq () {
-    # Check if we can find all neccessary tools:
+    # Check if we can find all necessary tools:
     echo -n "Checking for '$1' ... "
     req=`my_which "$1"`
     if [ -n "${req}" -a $? = 0 ] ; then 

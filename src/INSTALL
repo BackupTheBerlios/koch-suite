@@ -1,4 +1,4 @@
-### $Id: INSTALL,v 1.13 2002/08/03 15:00:11 lestinsky Exp $
+### $Id: INSTALL,v 1.14 2002/09/26 08:56:15 bus Exp $
 
 Koch-Suite Installation Instructions
 ====================================
@@ -108,8 +108,8 @@ function at the moment, so it is equivalent to "Write". "Administration"
 gives access to all administrative functions, such as creating or locking 
 user accounts. Every level inherits the permission of his sublevels.
 
-Please note: the crypt() function used to encrypt the Passwords is
-strongly operating system dependant. Especially the Windows(TM) 
+Please note: the crypt() function used to encrypt the passwords is
+strongly operating system dependent. Especially the Windows(TM) 
 implementation differs from most Un*x crypt(). This means you 
 can't install the Koch-Suite on a Windows AND on Unix System and use
 the _same_ database. This behavior is client independent, using a
@@ -131,7 +131,7 @@ network, all further authentication happens via the session cookie.
 Updating:
 ---------
 
-The process of development made it neccessary to change the database
+The process of development made it necessary to change the database
 format slightly. Therefore the old and the new database formats aren't
 compatible. If you want to preserve all stored recipes it is probably the
 best to dump all the data with (the old!) `rezept'
