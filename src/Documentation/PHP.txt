@@ -1,0 +1,67 @@
+### $Id: PHP.txt,v 1.1 2001/08/31 17:39:48 lestinsky Exp $
+
+Koch-Suite und PHP
+==================
+
+Michael Lestinsky <michael@lestinsky.de>, Juli 2001
+Die Datei ../LICENSE enthält die Lizenz, unter der dieses Paket als ganzes
+oder einzelne Dateien hieraus verwendet werden dürfen.
+
+
+PHP4-Installation:
+------------------
+
+Um PHP4 entsprechend zu kompilieren, packt man die Quellen aus und 
+ruft im PHP-Quell-Verzeichnis "configure" mit folgenden Optionen auf: 
+
+(Stand-Alone Interpreter:)
+
+ $ ./configure  --with-mysql=/path/to/mysql --enable-force-cgi-redirect
+      bzw:      --with-pgsql=/path/to/pgsql
+
+(Apache-Modul:)
+
+ $ ./configure  --with-apxs=/path/to/apxs --with-mysql=/path/to/mysql
+      bzw:                                --with-pgsql=/path/to/pgsql
+
+Danach baut und installiert man PHP mittels:
+
+ $ make && make install
+
+aus dem PHP-Quell-Verzeichnis heraus. In der Regel funktioniert dies
+ohne größere Probleme.
+
+Ausführlichere Informationen zu PHP, der Installation und eine Sprach-
+referenz finden sich unter http://www.php.net
+
+
+PHP4-Konfiguration:
+-------------------
+
+Ok, es ist nicht schön, dies vorauszusetzen. Mir ist es auch erst
+aufgefallen, nachdem ich darüber gestolpert bin. Derzeit ist aber die
+Konfiguration von PHP mit folgenden Werten erforderlich.
+
+  [snip]
+    magic_quotes_runtime  = Off
+    magic_quotes_sybase   = Off
+    register_argc_argv    = On      <-- Wichtig!!
+  [snap]
+
+
+PEAR:
+-----
+
+Ausserdem ist eine aktuelle Version von PEAR notwendig. Bei PHP-4.0.6 ist
+PEAR hinreichend aktuell, wer ein älteres PHP hat muss mindestens sein 
+mindestens PEAR updaten. Dazu:
+
+ - Wechsel in das Verzeichnis, in dem die PEAR-Files landen sollen:
+   # cd /usr/local/lib
+ - Logge dich am CVS-Repository ein (Passwort "phpfi"):
+   # cvs -d :pserver:cvsread@cvs.php.net:/repository login
+ - Erzeuge eine lokale Kopie von PEAR
+   # cvs -d :pserver:cvsread@cvs.php.net:/repository co php4/pear
+ - Erweitere include_path in der php.ini so dass dieser
+   /usr/local/lib/php4/pear beinhaltet.
+

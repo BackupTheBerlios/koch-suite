@@ -1,0 +1,111 @@
+### $Id: INSTALL,v 1.1 2001/08/31 17:39:48 lestinsky Exp $
+
+Koch-Suite Installations-Anleitung
+==================================
+
+Michael Lestinsky <michael@lestinsky.de>, Juli 2001
+Die Datei LICENSE enthält die Lizenz, unter der dieses Paket als ganzes
+oder einzelne Dateien hieraus verwendet werden dürfen.
+
+Falls du ein Update einer aelteren Version machst: Siehe weiter unten
+
+Die Folgende Anleitung geht davon aus, dass alle notwendigen
+Voraussetzungen (siehe README) erfuellt sind.
+
+
+Installation:
+-------------
+
+Folgende Anleitung nimmt an, dass man vollen Shellzugriff auf den Rechner
+hat, auf dem die Koch-Suite installiert werden soll. Siehe gegebenenfalls
+in Documentation/FAQ.txt nach, wenn dies nicht ganz zutrifft.
+
+ $ tar -xvzf kochsuite-*.tar.gz
+   Dieses Paket auspacken, wenn es nicht bereits geschehen ist.
+
+ $ vi config
+   Anpassen der Konfigurationsvariablen, speziell der Pfade und der
+   Parameter fuer den Datenbank-Zugriff.
+
+   DB_TYPE bestimmt das verwendete DBMS.  "mysql" fuer MySQL, "pgsql" fuer
+   PostgreSQL.  Eine Uebersicht der unterstuetzen DBMS findet man im Dokument
+   STATUS im PEAR/DB Verzeichnis (<prefix>/share/php/DB).
+
+ $ make
+
+ $ sudo make install
+   oder:
+   $ su root
+   $ make install
+
+Um die User, Passwort und Datenbank anzulegen:
+
+PostgreSQL:
+  Zum Erzeugen der PostgreSQL-Datenbank bietet sich an:
+
+  Als PostgreSQL-Superuser (oder Benutzer mit CREATE DATABASE Rechten):
+  $ psql -c "CREATE DATABASE dbkoch" template1 bzw.
+  $ psql -U<username> -c "CREATE DATABASE dbkoch" template1
+
+  Dann als normalsterblicher User (bzw. als der Benutzer, von dem spaeter
+  die Requests kommen):
+  $ psql [-U<username>] dbkoch <init_db.pgsql
+
+MySQL:
+  Zum Anlegen der Datenbank und des Users:
+
+  Als MySQL-Superuser (root) eine MySQL-Shell aufrufen::
+  $ mysql -h DBSERVER -u root -p mysql
+
+  und folgende Kommandos ausfuehren lassen:
+  CREATE DATABASE DBkoch;
+  GRANT ALL PRIVILEGES ON DBkoch TO USER@HOST IDENTIFIED BY 'PASSWORD';
+  FLUSH PRIVILEGES;
+
+  Wobei DBSERVER durch den Namen des Datenbank-Servers, USER durch den
+  Namen des zu schaffenden Accounts (etwa 'kochsuite'), PASSWORD dessen
+  Passwort und HOST der Name des Rechners ist, auf dem die PHP-Skripte 
+  dann laufen werden.
+
+  $ mysql -h DBSERVER -u USER -pPASSWORD DBkoch < init_db.mysql 
+
+  alle notwendigen Komandos ausführen lassen (wobei USER, PASSWORD und 
+  DBSERVER mit den jew. Zugangsdaten zur Datenbank ersetzt werden müssen). 
+
+Anlegen der Koch-Suite User:
+
+Weiter hat die Koch-Suite eine eigene Userverwaltung, die mittels der
+Tabelle 'user' gesteuert wird. Um die entsprechenden User darin anzulegen
+rufe das Komando
+
+  $ ks_passwd PASSWORT
+
+auf, wobei du PASSWORT durch ein geeignetes Passwort ersetzt. Dies erzeugt
+das verschluesselte Passwort, das dann in der Datenbank hinterlegt werden
+kann. 
+Ausserdem wird ein Muster-String ausgegeben, der sich per Copy'n'Paste 
+in der SQL-Shell der Datenbank ausfuehren laesst. Auch hier muss nur noch
+der String USERNAME durch den Namen des zu schaffenden Users ersetzt werden.
+
+
+Updating:
+---------
+
+Es gab ein paar Aenderungen, die notwendig waren um den PostgreSQL-Support 
+einzubinden. Am einfachsten ist es von der Datenbank ein Backup zu machen, 
+mittels (dem alten!!!)
+
+ $ rezept -mm "" > all.mm 
+
+oder falls bereits eine Version ab 0.5 installiert ist:
+
+ $ rezept -mm -relaxed "" > all.mm
+
+den gesamten Inhalt im Mealmaster-Format zu speichern, alle Tabellen aus 
+der Datenbank zu loeschen und mit dem Inhalt aus init_db.??sql neu 
+anzulegen. Anschliessend die neue Version der Koch-Suite installieren und 
+mit dem dann neuen 
+
+ $ mmimport < all.mm
+
+die Daten wieder in die Datenbank importieren.
