@@ -1,4 +1,4 @@
-### $Id: README,v 1.59 2003/05/19 16:04:39 lestinsky Exp $
+### $Id: README,v 1.60 2003/07/30 08:00:03 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -40,7 +40,7 @@ The Koch-Suite was tested on:
  - Linux/i386
  - OpenBSD/i386
  - FreeBSD/i386
- - AIX4.3
+ - AIX4.3 (support for this platform was dropped after release 0.7)
  - Solaris 2.x
 
 In any case you will need PHP4 with support for the used DBMS (please see
@@ -78,9 +78,9 @@ At the moment we have:
    client. This affects Browsers (`Accept-Language' header in
    HTTP-requests) and the console tools (`LC_MESSAGE'  and `LANG' -environment
    variables, LC_MESSAGE has the higher priority)
-   The language modules may be easily created and the interfaces can
+   The language modules may be easily created and the interfaces can be
    adapted to other languages very simple.
- - user managment
+ - very basic user managment (for the web-part only)
 
 You can see the changes to older versions in the file `ChangeLog'.
 
@@ -113,7 +113,7 @@ Known Bugs:
    problems with different character sets.
  - Original Meal-Master has a limit of 100 lines per recipe. Which is IMO
    braindead.  The Koch-Suite ignores this limit. You will receive no 
-   warning, when you reach this limit.
+   warning, when you pass this limit.
  - German-English Mischmasch in comments,...
  - Import of recipes with the alternative method to declare
    recipe-headers. (E.g. ("      H    For the sauce"). These headers won't
