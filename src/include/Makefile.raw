@@ -4,21 +4,25 @@
 
 # Space-separated list of all "raw" php-files.
 PHP_FILES_UNCONF=	config functions output
+SUBDIRS=		
 
-SUBDIRS=		""
+CONF_FILE=		../config.sed
 
-all:
+all: build
 	@#make subdir TRGT=all
-	@(for i in ${PHP_FILES_UNCONF}; do\
-	echo "$$i.raw --> $$i.inc"; \
-	cat $$i.raw | sed -f ${CONF_FILE} > $$i.inc;\
-	done)
+
+build: ${PHP_FILES_UNCONF}
+
+${PHP_FILES_UNCONF}: ${PHP_FILES_UNCONF:C,$,.raw}
+	sed -f ${CONF_FILE} ${@}.raw > ${@}.inc
+
+${PHP_FILES_UNCONF:C,$,.raw}:
 
 subdir:
 	@(for i in ${SUBDIRS} ; do\
 	echo "====> ${THISDIR}/$$i";\
 	cd $$i; \
-	${MAKE} ${TRGT} CONF_FILE=${CONF_FILE} THISDIR=${THISDIR}/$$i; \
+	${MAKE} ${TRGT} THISDIR=${THISDIR}/$$i; \
 	echo "<==== ${THISDIR}";\
 	done )
 

@@ -22,7 +22,7 @@ subdir:
 	@(for i in ${DIRS}; do \
 	echo "====> ${THISDIR}/$$i";\
 	cd ${THISDIR}/$$i; \
-	${MAKE} THISDIR=${THISDIR}/$${i} CONF_FILE=../${CONF_FILE} ${TRGT};\
+	${MAKE} THISDIR=${THISDIR}/$${i} ${TRGT};\
 	cd .. ; \
 	echo "<==== ${THISDIR}/$${i}";\
 	done)

@@ -1,16 +1,17 @@
-# $Id: Makefile.raw,v 1.4 2001/02/05 01:08:47 michael Exp $
+# $Id: Makefile.raw,v 1.5 2001/02/15 17:37:11 michael Exp $
 # Space-separated list of all "raw" php-files.
 
 MAN1=	mmexport.1 mmimport.1 rezept2latex.1 rk2mm.1
-
 MAN=	${MAN1}
+
+CONF_FILE=	../config.sed
 
 all: man1
 
 man1:
 	@(cd man1; for i in ${MAN}; do\
 	echo "$$i.raw --> $$i" ;\
-	cat $$i.raw | sed -f ../${CONF_FILE} > $$i;\
+	sed -f ../${CONF_FILE} $$i.raw > $$i;\
 	done)
 
 clean:

@@ -7,6 +7,8 @@ PHP_FILES_UNCONF=	mmimport mmexport rezept2latex rk2mm
 
 SUBDIRS=		""
 
+CONF_FILE=		../config.sed
+
 all: 
 	@#make subdir TRGT=all
 	@(for i in ${PHP_FILES_UNCONF}; do\
@@ -19,7 +21,7 @@ subdir:
 	@(for i in ${SUBDIRS} ; do\
 	echo "====> ${THISDIR}/$$i";\
 	cd $$i; \
-	${MAKE} ${TRGT} CONF_FILE=${CONF_FILE} THISDIR=${THISDIR}/$$i; \
+	${MAKE} ${TRGT} THISDIR=${THISDIR}/$$i; \
 	echo "<==== ${THISDIR}";\
 	done )
 

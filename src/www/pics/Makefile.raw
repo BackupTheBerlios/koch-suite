@@ -2,7 +2,9 @@
 
 # Files to install unmangled (dont forget the filename-suffix here!)
 PICS=			title.gif white.gif
-SUBDIRS=		pics
+SUBDIRS=		
+
+CONF_FILE=		../../config.sed
 
 all:
 	@#make subdir TRGT=all
@@ -11,7 +13,7 @@ subdir:
 	@(for i in ${SUBDIRS} ; do\
 	echo "====> ${THISDIR}/$$i";\
 	cd $$i; \
-	${MAKE} ${TRGT} CONF_FILE=${CONF_FILE} THISDIR=${THISDIR}/$$i; \
+	${MAKE} ${TRGT} THISDIR=${THISDIR}/$$i; \
 	echo "<==== ${THISDIR}";\
 	cd ..; \
 	done )
