@@ -1,4 +1,4 @@
-### $Id: README,v 1.33 2001/06/21 14:11:52 michael Exp $
+### $Id: README,v 1.34 2001/06/23 00:42:29 michael Exp $
 
 Koch-Suite
 ==========
@@ -23,6 +23,9 @@ existiert auch dieses. Dadurch ist der Zugriff auf eine einheitliche
 Datenbank auch in heterogenen Netzen möglich.
 Webinterface und Console-Tools bilden dabei verschiedene Aspekte einer 
 Entität.
+
+Die Aenderungen gegenueber aelteren Versionen sind im changelog
+dokumentiert.
 
 
 Voraussetzungen:
@@ -210,7 +213,8 @@ Wenn dir mein Code nicht gefällt: Ich habe nie behauptet ich hätte Talent.
 Danke an:
 ---------
 
-o  Michael Bussmann fuer die PEARifizierung und den PostgreSQL-Support
+o  Michael Bussmann fuer die PEARifizierung der Datenbank-Abfragen 
+   und den PostgreSQL-Support
 o  Leo Caspari für Feedback, Fehler-Korrekturen und Erweiterungen
 o  Ulli Fetzer und Ilka Spiess für ihre Kommentare und Support beim 
    Erstellen der Meal-Master- und REZKONV-Filter.
