@@ -1,3 +1,8 @@
+2002-08-16  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/admin.raw 1.6, src/www/delete.raw 1.19, src/www/einfuegen.raw 1.40, src/www/help.raw 1.19, src/www/index.raw 1.25, src/www/infos.raw 1.36, src/www/logout.raw 1.5, src/www/pastebox.raw 1.2, src/www/rezept.raw 1.29, src/www/search.raw 1.21, src/www/settings.raw 1.5:
+  expand paths for include()s and require()s for security reasons. We do not on the settings of include_path this way.
+
 2002-08-11  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/de.inc 1.36.2.2: And another fix.
