@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.21 2001/10/25 09:32:41 lestinsky Exp $
+# $Id: configure,v 1.22 2001/12/31 11:53:22 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -183,7 +183,7 @@ fi
 
 ##########
 # Optional tools:
-TOOLS="latex dvips gs"
+TOOLS="pdflatex latex dvips gs"
 for foo in ${TOOLS} ; do
     check_opt ${foo}
 done
