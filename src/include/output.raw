@@ -2,7 +2,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.29 2001/06/26 22:14:13 michael Exp $
+   * $Id: output.raw,v 1.30 2001/06/27 13:17:11 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -370,7 +370,7 @@
 
   function nice_unit ($unit) {
     /* Lookup a beautified name for a unit */
-    if ($DB_STYLE == DB_MYSQL) {
+    if ($GLOBALS["DB_STYLE"] == DB_MYSQL) {
       $req = "select text from EINHEITEN where STRCMP(ABBREV, '$unit') = 0";
     } else {
       $req = "select text from EINHEITEN where ABBREV = '$unit'";
