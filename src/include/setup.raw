@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: setup.raw,v 1.6 2003/01/10 13:07:26 lestinsky Exp $
+   * $Id: setup.raw,v 1.7 2003/01/20 20:26:47 lestinsky Exp $
    * Setup the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -11,10 +11,14 @@
   require_once '<%%PHP_LIBS%%>/defines.inc';
   require_once '<%%ETC_PREFIX%%>/koch-suite.inc';
 
-
   /* =======================
    * What's our environment?
    * ======================= */
+
+  if ($ENABLE_PROFILING) {
+    require_once '<%%PHP_LIBS%%>/profiling.inc';
+    $profiling_start = getmicrotime();
+  }
 
   if (isset($_SERVER['SERVER_PROTOCOL'])) {
     /* We are running as webinterface */
