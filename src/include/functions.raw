@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.85 2002/09/30 17:26:52 lestinsky Exp $
+   * $Id: functions.raw,v 1.86 2002/10/14 20:07:37 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -149,12 +149,41 @@
 
 
   /**
+   * Delete a category. Delete all references in the recipes to this category.
+   *
+   * @param string $cat Category name
+   * @return bool
+   */
+  function delete_category ($cat) {
+    $req = "select id from KATEGORIE ".
+           " where text = '" . addslashes($cat) . "'";
+
+    $result = DB_query($req);
+    if ($fetch = $result->fetchRow()) {
+      $req = "delete from KAT where kategorie_id = ". $fetch['id'];
+      $result = DB_query($req);
+
+      $req = "delete from KATEGORIE where id = ". $fetch['id'];
+      $result = DB_query($req);
+
+      return true;
+    } else return false;
+  }
+
+
+  /**
    * Delete a recipe from the database 
    *
    * @param  int  $mid Menu-ID
    * @return void
    */
   function delete_menue ($mid) {
+    $mid = intval($mid);
+    if (!is_numeric($mid)) {
+      write_log("invalid menu id: " . addslashes($mid) . " " .  gettype($mid));
+      return false;
+    }
+
     $req = "select id from REZEPT where MENUE_ID = " . $mid;
     $result = DB_query($req);
 
@@ -178,6 +207,8 @@
 
     $req = "delete from menu_meta where mid = " . $mid;
     $result = DB_query($req);
+
+    return true;
   }
 
 
@@ -362,6 +393,29 @@
       $result->free();
       return false;
     }
+  }
+
+
+  /**
+   * Select all synonyms for a given category
+   * @param string $cat
+   * @retunr array 
+   */
+  function get_cat_alias($cat) {
+    $return = array();
+
+    $req = "select category_alias.text " .
+           "  from category_alias, KATEGORIE ".
+           " where category_alias.kid = KATEGORIE.id ".
+           "   and KATEGORIE.text = '" . addslashes($cat) . "'";
+
+    if (!$result=DB_query($req))
+      return false;
+
+    while ($alias = $result->fetchRow()) 
+      $return[] = $alias['text'] ;
+
+    return $return;
   }
 
 
@@ -849,6 +903,30 @@
   }
 
 
+  /**
+   * Create an alias for a category
+   *
+   * @param string $cat
+   * @param string $alias
+   * @return bool
+   */
+  function mk_cat_alias($cat, $alias) {
+    if (!is_string($cat) or !is_string($alias)) return false;
+
+    // get the id of a category
+    $req = "select id from KATEGORIE where text = '". addslashes($cat) ."'";
+    if (!$result = DB_query($req)) return false;
+    if (!$fetch = $result->fetchRow()) return false;
+
+    $req = "insert into category_alias values (" .
+              $fetch['id'] .", ".
+              "'". addslashes($alias) ."'" .
+           ") ";
+      
+    if (!$result = DB_query($req)) return false;
+
+    return true;
+  }
 
   /**
    * Which format can we print?
