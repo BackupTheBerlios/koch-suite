@@ -1,7 +1,7 @@
 # Space-separated list of all "raw" php-files.
 
 # Files to install unmangled (dont forget the filename-suffix here!)
-PICS=			title.gif white.gif
+PICS=			title.gif blue_dot.gif white.gif
 SUBDIRS=		
 
 CONF_FILE=		../../config.sed
