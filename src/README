@@ -1,4 +1,4 @@
-### $Id: README,v 1.5 2000/11/04 00:07:09 michael Exp $
+### $Id: README,v 1.6 2000/11/04 01:30:26 michael Exp $
 
 Koch-Suite
 ==========
@@ -21,10 +21,33 @@ Voraussetzungen:
 Wer einen Rezept-Server betreiben will, der wird einen laufenden http-
 Daemon und MySQL benötigen. 
 
-Auf alle Fälle ist aber PHP4 mit MySQL-Support notwendig. Diese Skripten 
-sind unter PHP-4.0.3.pl1 geschrieben und getestet worden. PHP muss als 
+Als Plattformen sind getestet:
+ - Linux/i386
+ - OpenBSD/i386
+
+Auf alle Fälle ist auch PHP4 mit MySQL-Support notwendig. Diese Skripten 
+sind unter PHP-4.0.3.pl1 geschrieben und getestet worden. PHP4 muss als 
 Stand-Alone-Interpreter vorhanden sein, als Apache-Modul funktionieren
 die Konsolen-Tools nicht.
+
+
+PHP-4 Installation:
+-------------------
+
+Um PHP4 entsprechend zu kompilieren, packt man die Quellen aus und 
+ruft im PHP-Quell-Verzeichnis "configure" mit folgenden Optionen auf: 
+
+ $ ./configure  --with-mysql --enable-force-cgi-redirect
+
+Danach baut und installiert man PHP mittels:
+
+ $ make && make install
+
+aus dem PHP-Quell-Verzeichnis heraus. In der Regel funktioniert dies
+ohne größere Probleme.
+
+Ausführlichere Informationen zu PHP, der Installation und eine Sprach-
+referenz finden sich unter http://www.php.net
 
 
 Installation:
@@ -43,7 +66,7 @@ Installation:
 
 Zum Import der Datenstruktur kann mit einem
 
-  mysql DBkoch < init-db.sql 
+ $ mysql DBkoch < init-db.sql 
 
 alle notwendigen Komandos ausführen lassen. init-db.sql liegt im
 Documentation-Verzeichnis.
