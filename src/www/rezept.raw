@@ -2,6 +2,8 @@
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
+
+  $mid = $HTTP_GET_VAR["mid"];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
     "http://www.w3.org/TR/REC-html40/loose.dtd">
@@ -12,7 +14,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.13 2001/05/16 00:21:26 michael Exp $ -->
+  <!-- $Id: rezept.raw,v 1.14 2001/05/23 01:20:48 michael Exp $ -->
 </head>
 
 <body>
