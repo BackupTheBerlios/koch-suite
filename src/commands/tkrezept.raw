@@ -1,5 +1,5 @@
-#!/usr/bin/perl -w
-# $Id: tkrezept.raw,v 1.1 2000/12/27 18:11:21 michael Exp $
+#!<%%PERL%%> <%%PERL_OPTS%%>
+# $Id: tkrezept.raw,v 1.2 2001/01/07 20:18:25 michael Exp $
 #
 # This file may be used under the terms of the license as included in
 # the file 'LICENSE' in the top-level distribution directory.
