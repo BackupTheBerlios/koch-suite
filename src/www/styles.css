@@ -1,11 +1,21 @@
-/* $Id: styles.css,v 1.9 2001/12/24 14:07:57 lestinsky Exp $ */
+/* $Id: styles.css,v 1.10 2002/08/18 13:54:28 lestinsky Exp $ */
 body	    { background-color:#ffffff; }
-h1,h2,h3,h4 { font-family:Verdana,Lucida; }
+h1          { font-family:Verdana,Helvetica,Arial; text-align:left; 
+              background-color:#e9e9f0; padding:3px;
+              border-top-width:thin; border-bottom-width:0px;
+              border-right-width:0px; border-left-width:0px;
+              border-style:solid; border-color:#9090b0; }
+h2,h3,h4    { font-family:Verdana,Lucida; }
 a,b,dt	    { font-family:Helvetica,Arial; }
 a:link      { color:#000463; }
 a:visited   { color:#000463; }
 a:active    { color:#111473; }
 code,i      { color:#000463; }
+address     { background-color:#e9e9f0; padding:3px;
+              border-top-width:0px; border-bottom-width:thin;
+              border-right-width:0px; border-left-width:0px;
+              border-style:solid; border-color:#9090b0; }
+
 .menu	    { font-family:Helvetica,Arial; 
               font-size:small; 
               background-color:#e9e9f0;
