@@ -1,5 +1,5 @@
 <?php
-  /* $Id: mmprint.raw,v 1.26 2003/08/11 20:14:13 lestinsky Exp $
+  /* $Id: mmprint.raw,v 1.27 2004/03/31 19:21:20 lestinsky Exp $
    *
    * Copyright (c) 2003
    *      Michael Lestinsky. All rights reserved.
@@ -75,7 +75,6 @@
         $format = RECIPE_MM;
         $export_function = "mmexport";
     }
-    write_log("Format: $format");
   } else {
     // Undefined, use defaults then.
   }
