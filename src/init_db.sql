@@ -1,6 +1,6 @@
 # MySQL dump 7.1
 #
-# $Id: init_db.sql,v 1.3 2001/02/07 19:06:46 michael Exp $
+# $Id: init_db.sql,v 1.4 2001/02/10 00:32:48 michael Exp $
 #
 # Host: magrathea    Database: DBkoch
 #--------------------------------------------------------
@@ -12,7 +12,23 @@
 CREATE TABLE ANWEISUNG (
   ID int(11) DEFAULT '0' NOT NULL auto_increment,
   TEXT longtext,
-  MENUE_ID int(11),
+  MENUE_ID int(11) DEFAULT '0' NOT NULL,
+  PRIMARY KEY (ID),
+  KEY MENUE_ID (MENUE_ID)
+);
+
+#
+# Table structure for table 'EINHEITEN'
+#
+CREATE TABLE EINHEITEN (
+  ID int(11) DEFAULT '0' NOT NULL auto_increment,
+  ABBREV char(2),
+  TEXT varchar(15),
+  DESCR varchar(255),
+  FAKTOR float(5,3),
+  FAKTOR_ID int(11),
+  RK_ABBREV varchar(11),
+  MMUSE enum('J','N'),
   PRIMARY KEY (ID)
 );
 
@@ -22,8 +38,9 @@ CREATE TABLE ANWEISUNG (
 CREATE TABLE KAT (
   ID int(11) DEFAULT '0' NOT NULL auto_increment,
   KATEGORIE_ID int(11),
-  MENUE_ID int(11),
-  PRIMARY KEY (ID)
+  MENUE_ID int(11) DEFAULT '0' NOT NULL,
+  PRIMARY KEY (ID),
+  KEY MENUE_ID (MENUE_ID)
 );
 
 #
@@ -41,8 +58,9 @@ CREATE TABLE KATEGORIE (
 CREATE TABLE MENUE (
   ID int(11) DEFAULT '0' NOT NULL auto_increment,
   PORTIONEN varchar(255),
-  TITEL varchar(255),
-  PRIMARY KEY (ID)
+  TITEL varchar(255) DEFAULT '' NOT NULL,
+  PRIMARY KEY (ID),
+  KEY TITEL (TITEL(30))
 );
 
 #
@@ -50,9 +68,10 @@ CREATE TABLE MENUE (
 #
 CREATE TABLE REZEPT (
   ID int(11) DEFAULT '0' NOT NULL auto_increment,
-  MENUE_ID int(11),
+  MENUE_ID int(11) DEFAULT '0' NOT NULL,
   TITEL varchar(255),
-  PRIMARY KEY (ID)
+  PRIMARY KEY (ID),
+  KEY MENUE_ID (MENUE_ID)
 );
 
 #
@@ -63,29 +82,9 @@ CREATE TABLE ZUTATEN (
   MENGE float(5,3),
   EINHEIT char(2),
   TEXT varchar(255),
-  REZEPT_ID int(11),
-  PRIMARY KEY (ID)
-);
-
-# MySQL dump 7.1
-#
-# Host: magrathea    Database: DBkoch
-#--------------------------------------------------------
-# Server version	3.22.32
-
-#
-# Table structure for table 'EINHEITEN'
-#
-CREATE TABLE EINHEITEN (
-  ID int(11) DEFAULT '0' NOT NULL auto_increment,
-  ABBREV char(2),
-  TEXT varchar(15),
-  DESCR varchar(255),
-  FAKTOR float(5,3),
-  FAKTOR_ID int(11),
-  RK_ABBREV varchar(11),
-  MMUSE enum('J','N'),
-  PRIMARY KEY (ID)
+  REZEPT_ID int(11) DEFAULT '0' NOT NULL,
+  PRIMARY KEY (ID),
+  KEY REZEPT_ID (REZEPT_ID)
 );
 
 #
