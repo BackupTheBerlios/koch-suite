@@ -1,3 +1,11 @@
+2004-12-07  Michael Lestinsky  <michael@lestinsky.de>
+
+  * www/menue.raw 1.24:
+  Fix unwanted invaldiation of all get-transfered parameters when chosing a
+  different language.
+
+  Bug reportet by Florian Diesch.
+
 2004-12-06  Michael Bussmann  <bus@mb-net.net>
 
   * commands/init_db.raw 1.10: init_db now creates required sequences
