@@ -54,8 +54,10 @@
 
 <form method="post" action="einfuegen.php">
 <textarea name="pasted" cols="80" rows="20" wrap="physical"></textarea>
+<p>
 <input type="submit" class="button" value="<?php echo $Lang['FormApply']; ?>">
 <input type="reset" class="button" value="<?php echo $Lang['FormReset']; ?>">
+</p>
 </form>
 
 <?php
