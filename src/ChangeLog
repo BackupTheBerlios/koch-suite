@@ -1,3 +1,15 @@
+2002-03-31  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/man/man1/rezept.1.raw 1.8: update date
+
+  * src/commands/rezept.raw 1.19, src/include/functions.raw 1.71, src/man/man1/rezept.1.raw 1.7, src/www/delete.raw 1.15, src/www/einfuegen.raw 1.34, src/www/mmprint.raw 1.14, src/www/print.raw 1.16, src/www/rezept.raw 1.24:
+  Allow scaling of recipes
+
+  * src/include/de.inc 1.27, src/include/en.inc 1.31, src/include/es.inc 1.2:
+  update
+
+  * src/www/search.raw 1.16: indent
+
 2002-03-30  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/Makefile.raw 1.23: add es.inc
