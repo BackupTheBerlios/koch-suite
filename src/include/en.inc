@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.21 2001/09/09 14:22:13 lestinsky Exp $
+   * $Id: en.inc,v 1.22 2001/09/24 21:18:47 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -150,13 +150,6 @@ EOT;
           LaTeX-source, in Meal-Master-format or as human readable text
           into a file or standard output.
           See <code>rezept(1)</code>.
-EOT;
-  $Lang['Helptext']['CL']['commands'][2]['Name'] = "rk2mm";
-  $Lang['Helptext']['CL']['commands'][2]['Text'] = <<<EOT
-          Convert REZKONV to Meal-Master-Recipes.
-          <code>rk2mm</code> works as a filter between standard input and
-          standard output.
-          See <code>rk2mm(1)</code>.
 EOT;
 
   $Lang['Helptext']['WWW']['Title']	= "Web-Frontend";

@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.17 2001/09/09 14:22:13 lestinsky Exp $
+   * $Id: de.inc,v 1.18 2001/09/24 21:18:47 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -151,13 +151,6 @@ EOT;
           Latex-Source, im Meal-Master-Format oder als lesbaren Text in
           eine Datei oder auf die Standard-Ausgabe aus.
           Siehe <code>rezept(1)</code>.
-EOT;
-  $Lang['Helptext']['CL']['commands'][2]['Name'] = "rk2mm";
-  $Lang['Helptext']['CL']['commands'][2]['Text'] = <<<EOT
-          Konvertiere REZKONV- in Meal-Master-Rezepte.
-          <code>rk2mm</code> fungiert dabei als Filter zwischen der
-          Standard-Eingabe und der Standard-Ausgabe.
-          Siehe <code>rk2mm(1)</code>.
 EOT;
 
   $Lang['Helptext']['WWW']['Title']	= "Web-Frontend";
