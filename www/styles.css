@@ -1,0 +1,38 @@
+/* Michael Lestinsky, Aug 15th 2002 */
+
+body { color:#000000; background-color:#ffffff; }
+h1       { font-family:Verdana,Helvetica,Arial; text-align:center; }
+h2       { font-family:Helvetica,Arial; text-align:left;
+           background-color:#e9e9f0; padding:3px;
+           border-top-width:thin; border-bottom-width:0px;
+           border-right-width:0px; border-left-width:thin;
+           border-style:solid; border-color:#9090b0; }
+h3,h4,h5,h6,strong,b,a {font-family:Helvetica,Arial}
+
+h2 { margin-top:5mm; }
+h3 { margin-top:3mm; }
+
+p { margin-top:3mm; }
+
+.smalltext { font-family:Helvetica,Arial; font-size:small; }
+
+a:link { color:#040473; }
+a:visited { color:#040464; }
+a:active    { color:#111473; }
+
+.item    { background-color:#e9e9f0; }
+.header  { background-color:#c0c0d5; }
+.table   { background-color:#9090b0; }
+.whitebg { background-color:#ffffff; }
+
+p        { text-align:justify; }
+td       { background-color:#e9e9f0; }
+th       { background-color:#c0c0d5; }
+address  { background-color:#e9e9f0; padding:3px;
+           border-top-width:0px; border-bottom-width:thin;
+           border-right-width:0px; border-left-width:0px;
+           border-style:solid; border-color:#9090b0; }
+
+i,emph   { color:#001144; font-family:Helvetica,Arial; }
+code     { color:#002288; }
+ul       { list-style-image:url(blue_dot.gif); }
