@@ -1,4 +1,4 @@
-.\" $Id: rezept.1.raw,v 1.3 2001/05/22 00:13:34 michael Exp $
+.\" $Id: rezept.1.raw,v 1.4 2001/06/23 00:23:42 michael Exp $
 .Dd Mai 22, 2001
 .Dt rezept 1
 .Os Koch-Suite
@@ -8,9 +8,9 @@
 .Sh SYNOPSIS
 .Nm 
 .Op Fl h
-.Op Fl text | Fl mm | Fl latex
+.Op Fl text | Fl mm Op Fl relaxed | Fl latex
 .Op Fl f Ar filename Op Fl 1
-.Op Fl c | Fl i
+.Op Fl t | Fl c | Fl i
 .Ar pattern
 .Sh DESCRIPTION
 .Nm
@@ -35,42 +35,60 @@ While the searchstrings are case-insensitive, the
 has to be upper case.
 .Pp
 Optional paramters are:
-.Bl -tag -width "ALITTLETOLONGFOO"
+.Bl -tag -width "TOLONG"
 .It Fl f Ar filename Op Fl 1
-Output goes there.
-Defaults to
-.Em STDOUT .
-If 
-.Fl 1
-is specified, output goes into one single file
+Output goes there. By default every recipe is written into a single file
 .Ar filename ,
-otherwise
-.Ar filename 
-is treated as pattern and a 2-digit counter is appended to 
+suffixed by a 2-digit counter.
+.Fl 1
+makes
+.Nm
+write all recipes into one file
 .Ar filename .
+Default output location is
+.Em STDOUT .
 .It Fl h
 Print usage and exit.
 .It Fl latex
 write output as latex-source
-.It Fl mm
-write output in Meal-Master format
+.It Fl mm Op Fl relaxed
+write output in Meal-Master format.
+Using
+.Fl relaxed
+violates the strict definitions of the Meal-Master format slightly.
+Don't use it.
 .It Fl text
 write output as human readable text. 
 This is the default.
+.It Fl t
+Search for 
+.Ar pattern
+in the menu-titles.
 .It Fl c
-Search for recipes matching
+Search for
 .Ar pattern
-in their categories-list.
+in the categories-list.
 .It Fl i
-Search for recipes with
+Search for
 .Ar pattern
-in their ingredient-list.
+in the ingredient-lists.
 .El
-.\" The following requests should be uncommented and used where appropriate.
-.\" This next request is for sections 2 and 3 function return values only.
 .\" .Sh RETURN VALUES
 .\" This next request is for sections 1, 6, 7 & 8 only
-.\" .Sh ENVIRONMENT
+.Sh ENVIRONMENT
+The following environment variables affect the execution of
+.Nm rezept :
+.Bl -tag -width "TOLONG"
+.It Ev LC_MESSAGES
+.It Ev LANG
+If the recipe-format allows localization of the output,
+the values of these environment variables are honored.
+If
+.Ev LC_MESSAGES 
+is set, and the defined language exists use that,
+otherwise try
+.Ev LANG .
+If that fails to, use the default language.
 .\" .Sh FILES
 .\" .Sh EXAMPLES
 .\" This next request is for sections 1, 6, 7 & 8 only
