@@ -28,7 +28,7 @@
    * SUCH DAMAGE.
    */
 
-  /* $Id: rezept.raw,v 1.24 2003/01/10 23:33:59 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.25 2003/03/12 12:41:36 lestinsky Exp $
    * Export a recipe in different formats.
    */
 
@@ -58,12 +58,13 @@
   $helptext  = <<<EOT
 rezept (Koch-Suite $kochsuite_ver)
 Invoke as:
-    rezept [ -mm [ -relaxed ] | -text | -latex ] [-f filename [-1]] [-s X]
-           [ -t | -c | -i ] "string"
+    rezept [ -mm [ -relaxed ] | -rk | -text | -latex ] [-f filename [-1]] 
+           [-s X] [ -t | -c | -i ] "string"
 
        -mm           Export as Meal-Master-recipe
            -relaxed  Violate Meal-Master-format slightly but loose less
                      meta informations.
+       -rk           Export as RezKonv recipe
        -text         Export as plain and humam-readable text
                      [default].
        -latex        Export as LaTeX-Source
@@ -107,6 +108,9 @@ EOT;
           break;
         case '-relaxed':
           $strict_mm = MM_VIOLATE;
+          break;
+        case '-rk':
+          $format = "rk";
           break;
         case '-text':
           $format = "text";
@@ -182,6 +186,10 @@ EOT;
 	case "mm":
           fputs ($fp, mmexport(get_menu_by_mid($menu["id"], $scale), $strict_mm));
 	  break;
+
+        case "rk":
+          fputs ($fp, rkexport(get_menu_by_mid($menu["id"], $scale)));
+          break;
 
 	case "text":
           fputs ($fp, format_recipe(get_menu_by_mid($menu["id"], $scale)));

@@ -1,5 +1,5 @@
 <?php
-  /* $Id: mmprint.raw,v 1.24 2003/02/11 11:21:19 lestinsky Exp $
+  /* $Id: mmprint.raw,v 1.25 2003/03/12 12:42:03 lestinsky Exp $
    *
    * Copyright (c) 2003
    *      Michael Lestinsky. All rights reserved.
@@ -36,7 +36,7 @@
 
   auth(READ);
 
-  $page_title = "Mealmaster Export";
+  $page_title = "Export";
 
   session_register("searchresult");    // Cache search recipes
   session_register("tagged_recipes");  // Enable "tagging" pages for
@@ -44,8 +44,19 @@
   session_register("operate_on");      // Set marker an which buffer we
                                        // are working.
 
-  $bulk = false;
+  $bulk   = false;
+  $format = RECIPE_MM;
+  $export_function = "mmexport";
 
+  if (isset($_GET['format'])) {
+    if ($_GET['format'] == "rk") {
+      $format = RECIPE_RK;
+      $export_function = "rkexport";
+    } else if ($_GET['format'] == "mm") {
+      $format = RECIPE_MM;
+      $export_function = "mmexport";
+    }
+  }
   if (isset($_GET["mid"])) {
     $mid = $_GET["mid"];
     if (is_numeric($mid)) {
@@ -92,10 +103,10 @@
   else {
     if ($bulk) {
       foreach($_SESSION[$_SESSION['operate_on']] as $result) {
-        echo htmlentities(mmexport(get_menu_by_mid($result['id'], 1)));
+        echo htmlentities($export_function(get_menu_by_mid($result['id'], 1)));
       }
     } else {
-      echo htmlentities(mmexport(get_menu_by_mid($mid, $scale)));
+      echo htmlentities($export_function(get_menu_by_mid($mid, $scale)));
     }
   }
 ?>
