@@ -1,3 +1,22 @@
+2003-01-23  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/setup.raw 1.8, src/www/footer.raw 1.5:
+  Sync with changes to the profiler
+
+  * src/www/rezept.raw 1.37: Comments
+
+  * src/www/search.raw 1.36:
+  don't use get_rating() here
+
+  * src/include/functions.raw 1.89:
+  Optimize SQL-statements, this improves perfomance of the sucks_or_rocks_O_meter dramatically
+
+  * src/include/profiling.raw 1.2:
+  A class for profiling
+
+  * src/www/styles_winter.css 1.2:
+  New class: .footer
+
 2003-01-21  Michael Bussmann  <bus@mb-net.net>
 
   * src/commands/init_db.raw 1.5:
