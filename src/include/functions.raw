@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, October 2000
-   * $Id: functions.raw,v 1.5 2000/11/13 19:35:58 michael Exp $
+   * $Id: functions.raw,v 1.6 2000/11/15 18:19:48 michael Exp $
    */
 
   include "<%%PHP_LIBS%%>/config.inc";
@@ -18,7 +18,7 @@
     $bar            = 0;
     $zutaten        = array();
     $instruction    = "";
-    $zutaten_header = "/^(-{5}|M{5})-*([a-z0-9äöüß!\?:\. \*]*)[-=@]*$/i";
+    $zutaten_header = "/^(-{5}|M{5})-*(.*)[-=@]*$/i";
     $rezept_ende    = "/^(-{5}|M{5})[@-]*$/";
 
     while ($line = fgets($fd, 1024)) {
@@ -51,7 +51,9 @@
           # Skip this line
 
         } else if (preg_match($zutaten_header, $line, $foo)) {
-          $j = array("title" => strtoupper($foo[2]), "ingredients" => getingr($fd));
+          preg_match("/^(.*)[-@=]*$/U", $foo[2], $bar);
+          $j = array("title"       => strtoupper($bar[1]), 
+                     "ingredients" => getingr($fd));
           array_push ($zutaten, $j);
           $seen_ingr = 1;
 
