@@ -1,6 +1,6 @@
 #!/bin/sh
-# $Id: configure,v 1.4 2001/05/10 23:51:38 michael Exp $
-# Parse the config-File and create a sed-Script out of it.
+# $Id: configure,v 1.5 2001/05/13 22:48:21 michael Exp $
+# Parse the config-File and create a sed-Script from it.
 
 CONF_RAW=config
 CONF_FILE=config.sed
