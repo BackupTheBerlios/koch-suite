@@ -1,3 +1,188 @@
+<?
+  /* einfuegen.php - Rezepte einfuegen und bearbeiten.
+   * Diese Datei unterliegt der in der Datei LICENSE beigefügten Lizenz
+   * (c) Januar 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+   */
+
+  $target = $PHP_SELF;
+  if (isset($mid)) {
+    $target .= "?mid=$mid";
+  }
+
+  require "<%%PHP_LIBS%%>/functions.inc";
+
+  function make_zutaten ($ingr) {
+    foreach ($ingr as $i) {
+      if ($i["quant"] != '' and $i["quant"] != 0)
+        $str .= round($i["quant"], 3) . " ";
+      if ($i["unit"] != '')
+        $str .= $i["unit"] . " ";
+      if ($i["ingred"] != '')
+        $str .= $i["ingred"];
+      $str .= "\n";
+    }
+    return $str ;
+  }
+
+  function make_form ($rezept) {
+    /* Erzeuge ein HTML-Formular, dass mit den Werten aus $rezept
+     * gefüllt ist.
+     */
+
+    $str  = "<table border=\"0\">\n";
+
+    // Rezept-Titel:
+    $str .= "<tr>\n";
+    $str .= "<td>Titel:</td>\n";
+    $str .= "<td><input type=\"text\" name=\"titel\" value=\"" .
+                   $rezept["title"] . "\" size=\"60\"></td>\n"; 
+    $str .= "</tr>\n";
+ 
+    // Portionen:
+    $str .= "<tr>\n";
+    $str .= "<td>Portionen:</td>\n";
+    $str .= "<td><input type=\"text\" name=\"portionen\" value=\"" .
+                   $rezept["yield"] . "\" size=\"60\"></td>\n";
+    $str .= "</tr>\n";
+
+    // Kategorie:
+    $str .= "<tr>\n";
+    $str .= "<td><a href=\"kategorien.php?target=kategorie&maxsel=5\"" .
+                 "target=\"kat\" on Click=\"kat();\">Kategorien</a>:</td>\n";
+    $str .= "<td><input type=\"text\" name=\"kategorie\" value=\"" .
+                 implode(", ", $rezept["category"]) . 
+                 "\" size=\"60\"></td>\n";
+    $str .= "</tr>\n";
+
+    // Zutaten-Liste:
+    $str .= "<!-- Foo -->\n";
+    foreach($rezept["zutaten"] as $z) {
+      $str .= "<tr>\n";
+      if ($z["title"] == 'Zutaten:') {
+        $str .= "<td>Zutaten:" .
+                "<input type=\"hidden\" name=\"ztitle[0]\"" .
+                       "value=\"" . $z["title"] . "\"></td>\n";
+      } else {
+        $str .= "<td>&nbsp;</td>\n";
+        $str .= "<td><input type=\"text\" " .
+                     "name=\"ztitle[" . $i . "]\" " .
+                     "value=\"" . $z["title"] . "\" " .
+                     "size=\"60\">";
+        $str .= "</tr>\n";
+        $str .= "<tr>\n";
+        $str .= "<td>&nbsp;</td>\n";
+      }
+      $str .= "<td><textarea name=\"zutaten[" . $i . "]\" " . 
+                   "cols=\"60\" rows=\"10\" wrap=\"physical\">" .
+                   make_zutaten(&$z["ingredients"]) . "</textarea></td>\n";
+      $str .= "</tr>\n";
+    }
+    $str .= "<!-- Bar -->\n";
+
+    // Anweisung:
+    $anleitung = htmlentities($rezept["anleitung"]);
+    $anleitung = preg_replace("/\s*(&lt;|<)p(>|&gt;)\s*/", "\n\n", $anleitung);
+    $anleitung = preg_replace("/\s*(&lt;|<)br(>|&gt;)\s*/", "\n", $anleitung);
+
+    $str .= "<tr>\n";
+    $str .= "<td>Zubereitung:</td>\n";
+    $str .= "<td><textarea cols=\"60\" rows=\"10\" " .
+                 "name=\"anweisung\" wrap=\"virtual\">" . 
+                 $anleitung . "</textarea></td>\n";
+    $str .= "</tr>\n";
+
+    $str .= "</table>\n";
+
+    return $str;
+  }
+
+  // Parse den Input, bzw. Wenn der Input leer ist, erzeuge trotzdem ein
+  // passendes Array:
+
+  if (!is_array($zutaten)) {
+    $zutaten = array("");
+  }
+
+  if (!is_array($ztitle)) {
+    $ztitle = array("Zutaten:");
+  }
+
+  if (isset($more_zutaten)) {
+    array_push($zutaten, "");
+    array_push($ztitle, "");
+  }
+
+  $zutat = array();
+  $y = 0;
+
+  foreach ($zutaten as $z) {
+    /* $zutaten ist ein Array, dass aus einzelnen Zutatenlisten
+     * besteht.
+     */
+
+    $ingredients = array();
+
+    foreach (split("[\r]?\n", trim($z)) as $line) {
+      // Jede Zutatenliste wird in ihre einzelnen Zeilen aufgespalten
+
+      $line = stripslashes($line);
+      if ($line != '') { 
+        // Nur nicht-leere Zeilen beachten
+
+        $a = explode(" ", $line, 3); 
+        /* Jede Zeile wird jetzt in ihre einzelnen Wörter zerlegt. */
+
+        $i = 0;
+        if (is_numeric($a[$i])) {
+          $quant = array_shift($a);
+        } 
+        if (is_unit($a[$i])) { 
+          $unit = array_shift($a);
+        }
+        $ingred = implode(" ", $a);
+
+        array_push ($ingredients, array ("quant"  => $quant, 
+                                         "unit"   => $unit,
+                                         "ingred" => $ingred));
+      }
+      $quant  = '';
+      $unit   = '';
+      $ingred = '';
+    }
+
+    // if ($ztitle[$y] != '' and count($ingredients) != 0) {
+      array_push ($zutat, array("title"       => $ztitle[$y], 
+                                "ingredients" => $ingredients));
+    // }
+    $y++;
+  }
+
+  $anweisung = preg_replace("/((\r)?\n\s*){2,}/m", " <p> ", $anweisung);
+  $anweisung = preg_replace("/(\r)?\n:/m", " <br> :", $anweisung);
+  $anweisung = preg_replace("/(\r)?\n/m", " ", $anweisung);
+
+  $r = array ("title" => trim(stripslashes($titel)), 
+              "yield" => trim(stripslashes($portionen)),
+              "category" => split(',[ ]*', $kategorie),
+              "zutaten" => $zutat,
+              "anleitung" => $anweisung);
+
+  if (isset($submit)) {
+    if(isset($mid)) {
+      echo "<p>Altes Rezept gelöscht</p>\n";
+      delete_menue($mid);
+    }
+    echo "<p>Neues Rezept eingefügt</p>\n";
+    write_db(&$r);
+  } elseif (isset($more_zutaten)) {
+    // Do nothing.
+  } else {
+    if (isset($mid)) {
+      $r = get_menu_by_mid($mid);
+    }
+  }
+?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
     "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
@@ -7,7 +192,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <title>Koch-Suite - Rezept einf&uuml;gen</title>
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: einfuegen.raw,v 1.3 2001/01/15 10:06:09 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.4 2001/01/18 00:41:49 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -31,99 +216,19 @@
   <td>
     <!-- Rechts: Ausgabe -->
   <?
-    require "<%%PHP_LIBS%%>/functions.inc";
-
-    if (isset($submit)) {
-      // Titel ist gesetzt -> Formular auswerten
-
-      $zutat = array();
-
-      foreach ($zutaten as $z) {
-        /* $zutaten ist ein Array, dass aus einzelnen Zutatenlisten
-         * besteht.
-         */
-
-        $ingredients = array();
-
-        foreach (split("[\r]?\n", trim($z)) as $line) {
-          // Jede Zutatenliste wird in ihre einzelnen Zeilen aufgespalten
-
-          $line = stripslashes($line);
-          if ($line != '') { 
-            // Nur nicht-leere Zeilen beachten
-
-            $a = explode(" ", $line, 3); 
-            /* Jede Zeile wird jetzt in ihre einzelnen Wörter zerlegt. */
-  
-            $i = 0;
-            if (is_numeric($a[$i])) {
-              $quant = array_shift($a);
-            } 
-            if (is_unit($a[$i])) { 
-              $unit = array_shift($a);
-            }
-            $ingred = implode(" ", $a);
-  
-            array_push ($ingredients, array ("quant"  => $quant, 
-                                             "unit"   => $unit,
-                                             "ingred" => $ingred));
-          }
-          $quant  = '';
-          $unit   = '';
-          $ingred = '';
-        }
-
-        array_push ($zutat, array("title" => "Zutaten:", 
-                                  "ingredients" => $ingredients));
-
-      }
-
-      $r = array ("title" => trim(stripslashes($titel)), 
-                  "yield" => trim(stripslashes($portionen)),
-                  "category" => split(',[ ]*', $kategorie),
-                  "zutaten" => $zutat,
-                  "anleitung" => $anweisung);
-
-      echo "<pre>\n";
-      echo mmexport(&$r);
-      echo "</pre>\n";
-    } else {
-      // Titel ist nicht gesetzt -> Leerformular anzeigen.
   ?>
     <h2>Rezept in die Datenbank aufnehmen</h2>
 
-    <form action="<? echo $PHP_SELF; ?>" method="post">
-    <table border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td>Titel:</td>
-        <td><input type="text" name="titel" value="<? echo $titel ?>"size="60"></td>
-      </tr>
-      <tr>
-        <td>Portionen:</td>
-        <td><input type="text" name="portionen" value="<? echo $portionen ?>"size="60"></td>
-      </tr>
-      <tr>
-        <td><a href="kategorien.php?target=kategorie&maxsel=5" target="kat" onClick="kat();">Kategorien</a>:</td>
-        <td><input type="text" name="kategorie" value="<? echo $kategorie ?>" size="60"></td>
-      </tr>
-      <tr>
-        <td>Zutaten:</td>
-        <td><textarea cols="60" rows="10" name="zutaten[0]" wrap="physical"><? echo $zutaten ?></textarea>
-        </td>
-      </tr>
-      <tr>
-        <td>Zubereitung:</td>
-        <td><textarea cols="60" rows="10" name="anweisung" wrap="virtual"><? echo $anweisung; ?></textarea>
-        </td>
-      </tr>
-    </table>
-    <input type="submit" name="submit" value="Eintragen">
-    <input type="reset" value="Formular L&ouml;schen">
-    </form>
+    <form action="<? echo $target ?>" method="post">
 
   <?
-    }
-  ?>
+      echo make_form(&$r);
+  ?>     
+
+    <input type="submit" name="submit" value="&Auml;nderungen &uuml;bernehmen">
+    <input type="submit" name="more_zutaten" value="Weitere Zutatenliste">
+    <input type="reset" value="Formular L&ouml;schen">
+    </form>
 
   </td>
 </tr>

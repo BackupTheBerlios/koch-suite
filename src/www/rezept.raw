@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.7 2001/01/15 10:04:34 michael Exp $ -->
+  <!-- $Id: rezept.raw,v 1.8 2001/01/18 00:41:49 michael Exp $ -->
 </head>
 
 <body>
@@ -18,7 +18,7 @@
   <td valign="top">
     <? include "./menue.inc"; ?>
   </td>
-  <td style="font-family:Courier;">
+  <td>
     <!-- Rechts: Ausgabe -->
     <?
       include "<%%PHP_LIBS%%>/functions.inc";
@@ -29,11 +29,22 @@
 </tr>
 </table>
 
+<table border="0" width="100%">
+<tr>
+  <td style="text-align:left;">
 <?
       echo "[<a href=\"print.php?mid=$mid\">Druckversion</a>]\n";
       echo "[<a href=\"mmprint.php?mid=$mid\">Meal-Master-Format</a>]\n";
+?>
+  </td>
+  <td style="text-align:right;">
+<?
+      echo "[<a href=\"einfuegen.php?mid=$mid\">Rezept bearbeiten</a>]\n";
       echo "[<a href=\"delete.php?mid=$mid\">Rezept l&ouml;schen</a>]\n";
 ?>
+  </td>
+</tr>
+</table>
 
 <hr noshade>
 &copy; Michael Lestinsky 
