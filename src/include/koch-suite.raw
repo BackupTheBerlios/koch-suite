@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: koch-suite.raw,v 1.8 2002/04/09 14:36:03 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.9 2002/05/11 12:21:53 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
@@ -107,6 +107,7 @@
         $db->getMessage());
   }
 
+  $notice = '';
 
   /* Return associative arrays per default */
   $db->setFetchMode(DB_FETCHMODE_ASSOC);
