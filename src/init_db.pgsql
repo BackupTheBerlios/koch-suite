@@ -1,5 +1,5 @@
 -- 
--- $Id: init_db.pgsql,v 1.15 2002/06/02 09:50:38 bus Exp $
+-- $Id: init_db.pgsql,v 1.16 2002/06/02 10:48:49 lestinsky Exp $
 -- init_db_postgreSQL.sql
 -- 2001-07-25 Michael Bussmann <bus@mb-net.net>
 --
@@ -237,7 +237,8 @@ CREATE TABLE usertable (
   usertype smallint default NULL,
   password varchar(255) default NULL,
   email    varchar(255) default NULL,
-  realname varchar(255) default NULL
+  realname varchar(255) default NULL,
+  free     enum('y','n') NOT NULL default 'y'
 );
 CREATE INDEX user_name on usertable (username);
 
