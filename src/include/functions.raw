@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.19 2001/02/05 01:10:45 michael Exp $
+   * $Id: functions.raw,v 1.20 2001/02/07 18:35:28 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -38,12 +38,14 @@
   function is_unit ($str) {
     // Test, whether a given string is a valid MM-Unit or not
 
-    $req = "select * from EINHEITEN " .
-           " where ABBREV    = '$str' " .
-           "    or RK_ABBREV = '$str'";
+    $req = "select ABBREV from EINHEITEN " .
+           " where STRCMP(ABBREV, '$str') = 0 " .
+           "    or RK_ABBREV = '$str' ".
+           "   and MMUSE     = 'J'";
     $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
     if (mysql_num_rows($result) == 1) {
-      return true;
+      $return = mysql_fetch_array($result);
+      return $return[0];
     } else {
       return false;
     }

@@ -136,8 +136,8 @@
         if (is_numeric($a[$i])) {
           $quant = array_shift($a);
         } 
-        if (is_unit($a[$i])) { 
-          $unit = array_shift($a);
+        if ($unit = is_unit($a[$i])) { 
+          array_shift($a);
         }
         $ingred = implode(" ", $a);
 
@@ -193,7 +193,7 @@
   <title>Koch-Suite - Rezept einf&uuml;gen</title>
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
-  <!-- $Id: einfuegen.raw,v 1.5 2001/01/25 00:17:21 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.6 2001/02/07 18:35:28 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--

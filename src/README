@@ -1,4 +1,4 @@
-### $Id: README,v 1.15 2001/02/05 01:14:20 michael Exp $
+### $Id: README,v 1.16 2001/02/07 18:35:28 michael Exp $
 
 Koch-Suite
 ==========
@@ -114,6 +114,11 @@ Updating:
                alter table MENUE change PORTIONEN PORTIONEN varchar(255);
              Diese Änderung ist vollkommen transparent zu existierenden
              Daten.
+0.2.* -> 0.3 Das Format der Datenbank hat sich leicht geändert:
+             Tabelle EINHEITEN:
+             Am Einfachsten ist es, die Tabelle zu löschen und mit den
+             Kommandos aus init-db.sql neu einzuspielen. Wenn man dies
+             korrekt macht, dann gibt es keine Verluste *g*
 
 
 Todo/'Roadmap':
