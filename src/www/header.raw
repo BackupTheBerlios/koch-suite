@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Koch-Suite::<?php echo $page_title ?></title>
+  <!-- $Id: header.raw,v 1.1 2002/09/23 21:46:20 lestinsky Exp $ -->
+</head>
+
+<body>
+<a name="top"></a>
+<?php if (!isset($no_tabular)) { ?>
+<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
+
+<table border="0" cellpadding="3" cellspacing="0">
+<tr>
+  <td valign="top">
+    <? include "<%%WEB_PREFIX%%>/menue.inc"; ?>
+  </td>
+  <td valign="top">
+<?php } ?>
