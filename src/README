@@ -1,4 +1,4 @@
-### $Id: README,v 1.32 2001/06/20 18:30:04 michael Exp $
+### $Id: README,v 1.33 2001/06/21 14:11:52 michael Exp $
 
 Koch-Suite
 ==========
@@ -79,7 +79,7 @@ Bisher existiert/funktioniert:
 
 
 PHP4-Installation:
--------------------
+------------------
 
 Um PHP4 entsprechend zu kompilieren, packt man die Quellen aus und 
 ruft im PHP-Quell-Verzeichnis "configure" mit folgenden Optionen auf: 
