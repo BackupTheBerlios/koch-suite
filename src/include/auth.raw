@@ -1,5 +1,17 @@
 <?php
-  /* Copyright (c) 2001
+  /**
+   * Base Authentication-Module for the Koch-Suite
+   *
+   * $Id: auth.raw,v 1.15 2002/05/24 22:19:54 lestinsky Exp $
+   * The user is identified by an array $user.
+   *
+   * @author Michael Lestinsky <michael@lestinsky.de>
+   * @package Lib
+   * @modulegroup Authenication
+   * @module auth.inc
+   * @copyright Michael Lestinsky <michael@lestinsky.de>
+   *
+   * Copyright (c) 2001
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -31,43 +43,9 @@
   if (isset($_POST["FORM_USERNAME"])) $FORM_USERNAME = $_POST["FORM_USERNAME"];
   if (isset($_POST["FORM_PASSWORD"])) $FORM_PASSWORD = $_POST["FORM_PASSWORD"];
 
-
   require_once "<%%PHP_LIBS%%>/setup.inc";
   require_once "<%%PHP_LIBS%%>/functions.inc";
   require_once "<%%PHP_LIBS%%>/pwcrypt.inc";
-
-
-  /**
-   * Base Authentication-Module for the Koch-Suite
-   *
-   * $Id: auth.raw,v 1.14 2002/05/20 15:01:38 lestinsky Exp $
-   * The user is identified by an array $user.
-   *
-   * @author Michael Lestinsky <michael@lestinsky.de>
-   * @package Lib
-   * @modulegroup Authenication
-   * @module auth.inc
-   * @copyright Michael Lestinsky <michael@lestinsky.de>
-   */
-
-
-  if (!session_start()) 
-    die ("Cannot start the session.");
-  session_register("user");
-
-  /* create a reference on $_SESSION['user'] */
-  if (isset($_SESSION["user"])) {
-    // PHP 4.1.0 and later...
-    $USER_S =& $_SESSION["user"];
-  } else {
-    if (ini_get("register_globals") != false) {
-      // register_globals is "On".
-      $USER_S =& $user;
-    } else {
-      // register_globals is "Off".
-      $USER_S =& $HTTP_SESSION_VARS["user"];
-    }
-  }
 
 
   /**
