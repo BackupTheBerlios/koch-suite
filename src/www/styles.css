@@ -1,4 +1,4 @@
-/* $Id: styles.css,v 1.7 2001/03/27 21:40:32 michael Exp $ */
+/* $Id: styles.css,v 1.8 2001/10/13 13:45:57 lestinsky Exp $ */
 body	    { background-color:#ffffff; }
 h1,h2,h3,h4 { font-family:Verdana,Lucida; }
 a,b,dt	    { font-family:Helvetica,Arial; }
@@ -6,6 +6,10 @@ a:link      { color:#000463; }
 a:visited   { color:#000463; }
 a:active    { color:#111473; }
 code,i      { color:#000463; }
-.menu	    { font-family:Helvetica,Arial; }
+.menu	    { font-family:Helvetica,Arial; 
+              font-size:small; 
+              background-color:#e9e9f0;
+              white-space:nowrap; }
+.border     { background-color:#9090b0; }
 .prop       { font-family:Courier; }
 .small      { font-size:small; }
