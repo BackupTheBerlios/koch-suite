@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.10 2001/01/07 20:14:22 michael Exp $
+   * $Id: output.raw,v 1.11 2001/01/12 01:08:23 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -50,19 +50,19 @@
     $str = "<h2>" . htmlentities($rezept["title"]) . "</h2>\n";
     $str .= "<table border=\"0\">\n";
 
-    $str .= "<tr><td><b>Kategorie</b>:</td><td width=\"90%\">";
+    $str .= "  <tr><td><b>Kategorie</b>:</td><td width=\"90%\">";
     foreach($rezept["category"] as $cat) {
       $str .= htmlentities($cat) . " " ;
     }
     $str .= "</td></tr>\n";
 
-    $str .= "<tr><td><b>Portionen</b>:</td><td>" . $rezept["yield"] . "</td></tr>\n";
+    $str .= "  <tr><td><b>Portionen</b>:</td><td>" . $rezept["yield"] . "</td></tr>\n";
 
-    $str .= "<tr><td colspan=2>\n";
+    $str .= "  <tr><td colspan=2>\n";
 
-    $str .= "<table border=\"0\" width=\"100%\">\n";
+    $str .= "    <table border=\"0\" width=\"100%\">\n";
     foreach ($rezept["zutaten"] as $z) {
-      $str .= "<tr><td colspan=3><b>" .
+      $str .= "      <tr><td colspan=3><b>" .
                       htmlentities($z["title"]) .
                       "</b></td></tr>\n";
 
@@ -74,6 +74,7 @@
           $quant = '';
         $unit = nice_unit($j["unit"]);
         $ingred = preg_replace("/^(-*|;*) */", "", $j["ingred"]);
+        $str .= "      ";
         $str .= "<tr><td width=\"10%\" align=\"right\">" . $quant . "</td>" .
                     "<td width=\"10%\">" . $unit . "</td>" .
                     "<td>" . htmlentities($ingred) . "</td>" .
@@ -81,14 +82,16 @@
       }
 
     }
-    $str .= "</table>\n";
-    $str .= "</td></tr>\n";
+    $str .= "    </table>\n";
+    $str .= "  </td></tr>\n";
  
-    $str .= "<tr><td colspan=2 style=\"font-family:Helvetica\">\n";
+    $str .= "  <tr><td colspan=2 style=\"font-family:Helvetica\">\n";
     $instr = preg_replace("/(\r)?\n(\r)?\n?/", "<br>\n", htmlentities($rezept["anleitung"]));
-    $instr = preg_replace("/&lt;(p|br)&gt;/", "\n<\\1>\n", $instr);
-    $str .= $instr;
-    $str .= "</td></tr>\n";
+    foreach (length_adjust($instr, 65) as $line) {
+      $line = preg_replace("/&lt;(p|br)&gt;/", "<\\1>", $line);
+      $str .= "    " . $line . "\n";
+    }
+    $str .= "  </td></tr>\n";
     $str .= "</table>\n";
 
     return $str;
@@ -96,12 +99,12 @@
 
 
   function latex_export ($rezept) {
-    /* Export a recipe as LaTeX-file */
+    /* Export a recipe in LaTeX-format */
 
     $c = 0;
 
     /* write the Latex-headers... */
-    $str  = "\\documentclass[a4paper,11pt]{article}\n\n";
+    $str  = "\\documentclass[a4paper,10pt]{article}\n\n";
     $str .= "\\usepackage{german}\n";
     $str .= "\\usepackage[latin1]{inputenc}\n";
     $str .= "\\usepackage{here}\n";
@@ -110,16 +113,16 @@
    
     $str .= "\\setlength{\\textwidth}{16cm}\n";
     $str .= "\\setlength{\\textheight}{25cm}\n";
-    $str .= "\\addtolength{\\topmargin}{-2.5cm}\n"; 
+    $str .= "\\addtolength{\\topmargin}{-2cm}\n"; 
     $str .= "\\addtolength{\\oddsidemargin}{-2cm}\n";
     $str .= "\\pagestyle{empty}\n";
     /* ... some meta-data, ... */
     $str .= "\n\\title{\\textsf{" . $rezept["title"] . "}}\n\n";
-    $str .= "\\author{rezept2latex}\n";
+    #$str .= "\\author{rezept2latex}\n";
     $str .= "\\begin{document}\n";
     #$str .= "\\maketitle\n";
 
-    $str .= "\\section*{" . $rezept["title"] . "}\n";
+    $str .= "\\section*{\\slshape " . $rezept["title"] . "}\n";
 
     /* ... the content... */
 
@@ -150,7 +153,7 @@
         $ingred = preg_replace("/^(-*|;*) */", "", $i["ingred"]);
         $ingred = preg_replace("/(&)/", "\\\\1", $ingred);
         $c = 0;
-        $ingred = length_adjust($ingred, 30);
+        $ingred = length_adjust($ingred, 28);
         while ($line = $ingred[$c]) {
           if ($c == 0) { 
             $ingred_ = $line . "\\\\\n"; 
