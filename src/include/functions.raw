@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.49 2001/07/01 20:01:03 michael Exp $
+   * $Id: functions.raw,v 1.50 2001/07/04 21:05:02 michael Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * See ../LICENSE for the license of this code.
    * Editors: Please sort new functions alphabetically.
@@ -67,21 +67,6 @@
       return true;
     } else {
       return($result);
-    }
-  }
-
-  /**
-   * Read a Line from File identified by Filehandle $fh
-   *
-   * @author Michael Lestinsky <michael@lestinsky.de>
-   * @param  integer $fh   Filehandle
-   * @return string  $line Line
-   */
-  function get_line ($fh) {
-    if ($line = fgets($fh, 1024)) {
-      return preg_replace("/\r/", "", $line);
-    } else {
-      return false;
     }
   }
 
@@ -205,6 +190,22 @@
     /* We are done here, sort and return the result. */
     uasort($return, "cmp_menu");
     return $return;
+  }
+
+
+  /**
+   * Read a Line from File identified by Filehandle $fh
+   *
+   * @author Michael Lestinsky <michael@lestinsky.de>
+   * @param  integer $fh   Filehandle
+   * @return string  $line Line
+   */
+  function get_line ($fh) {
+    if ($line = fgets($fh, 1024)) {
+      return preg_replace("/\r/", "", $line);
+    } else {
+      return false;
+    }
   }
 
 
