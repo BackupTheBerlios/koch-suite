@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2001
    *      Michael Lestinsky. All rights reserved.
    *
@@ -93,7 +93,8 @@
                        addslashes($_POST['usertype']) . " , " .
                  "'" . addslashes($passwd_crypted)    . "', " .
                  "'" . addslashes($_POST['email'])    . "', " .
-                 "'" . addslashes($_POST['realname']) . "' )";
+                 "'" . addslashes($_POST['realname']) . "', " .
+                 "'y' )";
           DB_query ($req);
         }
 
@@ -102,6 +103,30 @@
       // Missing informations
       $msg = $Lang['Admin']['ErrMsg']['EmptyFields'];
     }
+  }
+
+  /* Lock an account */
+  if (isset($_POST['lockuser_submit'])) {
+    if (!empty($_POST['username'])) {
+
+      // does this username exist?      
+      $req = "select free from usertable where username = '" .
+                addslashes($_POST['username']) . "'";
+      if ($result = DB_query($req) and $result->numRows() > 0) {
+
+        $row = $result->fetchRow();
+        if ($row['free'] != 'y') {
+
+          $req = "update usertable set free = 'n' where username = '" .
+                  addslashes($_POST['username']) . "'";
+
+          $result = DB_query($req);
+
+        } else $msg = $Lang['Admin']['ErrMsg']['UserLocked'];
+
+      } else $msg = $Lang['Admin']['ErrMsg']['UserDoesntExist'];
+
+    } else $msg = $Lang['Admin']['ErrMsg']['EmptyFields'];
   }
 
 ?>
@@ -115,7 +140,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: admin.raw,v 1.1 2002/04/14 18:25:13 lestinsky Exp $ -->
+  <!-- $Id: admin.raw,v 1.2 2002/05/12 11:31:31 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -162,6 +187,17 @@
       </tr>
       </table>
       <input type="submit" name="newuser_submit" value="<? echo $Lang['FormApply']; ?>">
+    </form>
+
+    <h3><?php echo $Lang['Admin']['LockAccount']['Title']; ?></h3>
+    <form name="lockuser_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+      <table border="0">
+      <tr>
+        <td><?php echo $Lang['Admin']['LockAccount']['Username']; ?></td>
+        <td><input type="text" name="username"></td>
+      </tr>
+      </table>
+      <input type="submit" name="lockuser_submit" value="<? echo $Lang['Admin']['LockAccount']['Lock']; ?>">
     </form>
   </td>
 </tr>

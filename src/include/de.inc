@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.29 2002/04/14 18:25:13 lestinsky Exp $
+   * $Id: de.inc,v 1.30 2002/05/12 11:31:31 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -70,10 +70,15 @@
   $Lang['Admin']['ErrMsg']['EmptyFields']	= 'Bitte alle Felder ausf&uuml;llen';
   $Lang['Admin']['ErrMsg']['InvalidMail']	= 'Die angegebene EMail-Adresse ist ung&uuml;ltig.';
   $Lang['Admin']['ErrMsg']['UserExists']	= 'Dieser Username existiert bereits';
+  $Lang['Admin']['ErrMsg']['UserLocked']        = 'Dieser Benutzername ist bereits gesperrt.';
+  $Lang['Admin']['ErrMsg']['UserDoesntExist']   = 'Dieser Benutzername ist ung&uuml;ltig/unbekannt.';
   $Lang['Admin']['UserClass']['Read']	= 'Nur Lesen';
-  $Lang['Admin']['UserClass']['Write']   = 'Lesen und Schreiben';
-  $Lang['Admin']['UserClass']['Moderate']   = 'Moderator';
-  $Lang['Admin']['UserClass']['Admin']   = 'Administrator';
+  $Lang['Admin']['UserClass']['Write']	= 'Lesen und Schreiben';
+  $Lang['Admin']['UserClass']['Moderate']	= 'Moderator';
+  $Lang['Admin']['UserClass']['Admin']		= 'Administrator';
+  $Lang['Admin']['LockAccount']['Title']	= 'Useraccount sperren';
+  $Lang['Admin']['LockAccount']['Username']	= 'Benutzerkennung';
+  $Lang['Admin']['LockAccount']['Lock']	= 'Sperren';
 
   $Lang['Settings']['Title']    = "Einstellungen";
   $Lang['Settings']['Password']['Title']        = "Passwort &auml;ndern";

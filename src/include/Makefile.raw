@@ -4,7 +4,8 @@
 KS_CONFIG=		koch-suite.inc
 PHP_FILES_UNCONF=	functions.inc lang.inc output.inc \
 			debug.inc defines.inc file.inc nocache.inc \
-			auth.inc access_denied.inc loginform.inc pwcrypt.inc
+			auth.inc access_denied.inc loginform.inc pwcrypt.inc \
+			accountlocked.inc
 ADDITIONAL=		de.inc en.inc es.inc
 SUBDIRS=		
 

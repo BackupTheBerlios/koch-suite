@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.33 2002/04/14 18:25:13 lestinsky Exp $
+   * $Id: en.inc,v 1.34 2002/05/12 11:31:31 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -70,11 +70,15 @@
   $Lang['Admin']['ErrMsg']['EmptyFields']       = 'Please fill out all fields';
   $Lang['Admin']['ErrMsg']['InvalidMail']       = 'The email address is invalid.';
   $Lang['Admin']['ErrMsg']['UserExists']        = 'This username does already exist.';
-  $Lang['Admin']['UserClass']['Read']   = 'Read Only';
-  $Lang['Admin']['UserClass']['Write']   = 'Read/Write';
-  $Lang['Admin']['UserClass']['Moderate']   = 'Moderator';
-  $Lang['Admin']['UserClass']['Admin']   = 'Administrator';
-
+  $Lang['Admin']['ErrMsg']['UserLocked']	= 'The account is already locked.';
+  $Lang['Admin']['ErrMsg']['UserDoesntExist']	= 'This username is invalid/unknown.';
+  $Lang['Admin']['UserClass']['Read']	= 'Read Only';
+  $Lang['Admin']['UserClass']['Write']	= 'Read/Write';
+  $Lang['Admin']['UserClass']['Moderate']	= 'Moderator';
+  $Lang['Admin']['UserClass']['Admin']	= 'Administrator';
+  $Lang['Admin']['LockAccount']['Title']	= 'Lock An Account';
+  $Lang['Admin']['LockAccount']['Username']	= 'Username';
+  $Lang['Admin']['LockAccount']['Lock']	= 'Lock Account';
 
   $Lang['Settings']['Title']	= "Your Settings";
   $Lang['Settings']['Password']['Title']	= "Change your password";

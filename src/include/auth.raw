@@ -40,7 +40,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.10 2002/04/14 18:25:13 lestinsky Exp $
+   * $Id: auth.raw,v 1.11 2002/05/12 11:31:31 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -144,7 +144,7 @@
   function verify_authdata ($username, $password) {
     if (!empty($username) and !empty($password)) {
 
-      $req = "select password, usertype, email, realname from usertable " .
+      $req = "select password, usertype, email, realname, free from usertable " .
              " where username = '$username' ";
 
       if (($result = DB_query($req)) and ($result->numRows() == 1)) {
@@ -161,7 +161,8 @@
             $return = array("username" => $username, 
                             "usertype" => $row['usertype'],
                             "email"    => $row['email'],
-                            "realname" => $row['realname']);
+                            "realname" => $row['realname'],
+                            "free"     => $row['free']);
           } else {
             // Go away.
             $return = false;
@@ -178,10 +179,15 @@
             $return = array("username" => $username, 
                             "usertype" => $row['usertype'],
                             "email"    => $row['email'],  
-                            "realname" => $row['realname']);
+                            "realname" => $row['realname'],
+                            "free"     => $row['free']);
           } else {
             $return = false;
           }
+        }
+
+        if ($return['free'] != 'y') {
+          include "<%%PHP_LIBS%%>/accountlocked.inc";
         }
 
         if ($return != false) {
