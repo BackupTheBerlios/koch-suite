@@ -48,23 +48,23 @@
 </form>
 
 <center>
-<table border="0" cellspacing="0" cellpadding="1">
+<table border="0" cellspacing="0" cellpadding="2" class="border">
   <tr>
-    <td style="background-color:#9090b0;">
-      <table border="0" cellspacing="1" cellpadding="3">
+    <td>
+      <table border="0" cellspacing="0" cellpadding="2">
 <?php
   $units = get_units();
 
   function td ($str) {
     if ($str != "") {
-      return "<td class=\"menu\">" . $str . "</td>";
+      return "<td class=\"menu_item\">" . $str . "</td>";
     } else {
-      return "<td class=\"menu\">&nbsp;</td>";
+      return "<td class=\"menu_item\">&nbsp;</td>";
     }
   }
 
   function th ($str) {
-    return "<td style=\"background-color:#c0c0d5\">" . $str . "</td>";
+    return "<td>" . $str . "</td>";
   }
 
   function edit_alias ($unit) {
@@ -76,7 +76,7 @@
   }
 
 
-  echo "<tr>" .
+  echo "<tr class=\"menu_title\">" .
 	 th("MM") .
 	 th("RK") .
          th($Lang['Text']) . 
@@ -88,7 +88,7 @@
     $vals = $u["unit"];
     $aliases = $u["aliases"];
 
-    echo "<tr>" . 
+    echo "<tr class='menu_item'>" . 
 	   td(htmlentities($vals["abbrev"])) .
 	   td(htmlentities($vals["rk_abbrev"])) .
 	   td(htmlentities($vals["text"])) . 
