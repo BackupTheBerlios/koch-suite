@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.30 2003/02/11 11:21:19 lestinsky Exp $
+  /* $Id: print.raw,v 1.31 2003/07/30 07:54:57 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    *
@@ -142,7 +142,7 @@
       $authorname = "Michael Lestinsky";
       $authormail = "michael@lestinsky.de";
       include "<%%WEB_PREFIX%%>/footer.inc";
-      break;
+      exit;
 
     case "latex":
       if ($bulk) {
