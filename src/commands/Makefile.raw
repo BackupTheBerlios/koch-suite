@@ -3,7 +3,7 @@
 # This file contains the substitution-rules for "sed"
 
 # Space-separated list of all "raw" php-/perl-files.
-PHP_FILES_UNCONF=	mmimport mmexport rezept2latex rk2mm
+PHP_FILES=		mmimport mmexport rezept rk2mm
 
 SUBDIRS=		""
 
@@ -12,9 +12,9 @@ CONF_FILE=		../config.sed
 all: build
 	@#make subdir TRGT=all
 
-build: ${PHP_FILES_UNCONF}
+build: ${PHP_FILES}
 
-${PHP_FILES_UNCONF}: ${PHP_FILES_UNCONF:C,$,.raw,}
+${PHP_FILES}: ${PHP_FILES:%=%.raw}
 	sed -f ${CONF_FILE} ${@}.raw > ${@}
 
 subdir:
@@ -27,13 +27,13 @@ subdir:
 
 clean:
 	@#make subdir TRGT=clean
-	rm -f ${PHP_FILES_UNCONF}
+	rm -f ${PHP_FILES}
 
 distclean:
 
 install: build
 	( [ -d "<%%SCRIPT_PREFIX%%>" ] || \
 	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%SCRIPT_PREFIX%%> )
-	install -c -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${PHP_FILES_UNCONF} <%%SCRIPT_PREFIX%%>
+	install -c -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${PHP_FILES} <%%SCRIPT_PREFIX%%>
 
-.PHONY: all subdir clean distclean install 
+.PHONY: all subdir clean distclean install
