@@ -1,4 +1,4 @@
-### $Id: README,v 1.14 2001/01/18 00:39:24 michael Exp $
+### $Id: README,v 1.15 2001/02/05 01:14:20 michael Exp $
 
 Koch-Suite
 ==========
@@ -21,7 +21,7 @@ Voraussetzungen:
 ----------------
 
 Wer einen Rezept-Server betreiben will, der wird einen laufenden http-
-Daemon und MySQL benötigen. 
+Daemon (z.B. Apache) und MySQL benötigen. 
 
 Als Plattformen sind getestet:
  - Linux/i386
@@ -41,10 +41,10 @@ den zentralen Funktionen statt, damit die Anwendungen später nur noch eine
 triviale Abfolge von Funktionsaufrufen sein können.
 
 Bisher existiert nur:
- - ein Tool für den Datenbank-Import im Mealmaster-Format,
+ - ein Tool für den Datenbank-Import im Mealmaster- oder REZKONV-Format,
  - Exportfunktionen nach Latex, Plain-Text und Mealmaster-Format,
  - ein paar Prototyp-Webseiten, die elementare Suchfunktionen in der
-   Datenbank implementieren.
+   Datenbank und ein Rezept-Erfassungsinterface implementieren.
 
 An allem anderen wird derzeit noch kräfitg gearbeitet.
 
@@ -112,7 +112,8 @@ Updating:
 0.1.* -> 0.2 Das Format der Datenbank hat sich leicht geändert:
              Tabelle MENUE: 
                alter table MENUE change PORTIONEN PORTIONEN varchar(255);
-             Diese Änderung ist vollkommen transparent.
+             Diese Änderung ist vollkommen transparent zu existierenden
+             Daten.
 
 
 Todo/'Roadmap':
@@ -124,10 +125,9 @@ Todo/'Roadmap':
  - RezKonv-Importfilter,
 
 
-Bugs:
------
+Bekannte Bugs:
+--------------
 
- - Import von Rezepten mit uneigentlichen Brüchen, also Dinge wie "1 1/2"
  - Deutsch-Englischer Mischmasch in Kommentaren,...
  - Import von Rezepten mit einer alternativen Darstellung der
    Rezept-Header ("      H    Für die Sauce"). Header werden als solche
@@ -139,5 +139,13 @@ Feedback:
 ---------
 
 Bitte schickt mir Feedback. Am besten per EMail an meine oben angegebene
-Adresse. Ich nehme gerne auch Patches oder Wünsche für Features an.
+Adresse. Ich nehme gerne auch Bugreports, Patches oder Wünsche für Features 
+an.
+
+
+Danke an:
+---------
+
+Ulli Fetzer für seine Kommentare und Support beim Erstellen der
+       Meal-Master- und REZKONV-Filter.
 
