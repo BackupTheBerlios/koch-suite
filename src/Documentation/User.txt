@@ -1,4 +1,4 @@
-### $Id: User.txt,v 1.5 2001/02/07 19:03:14 michael Exp $
+### $Id: User.txt,v 1.6 2001/03/11 15:12:04 michael Exp $
 
 User-Dokumentation
 ==================
@@ -16,25 +16,20 @@ mmimport
   mmimport um Usenet-Artikel (z.B. der Gruppe de.rec.mampf) aus z.B. slrn 
   heraus einzulesen.
 
-mmexport
---------
-  mmexport wird mit einem Suchstring als Parameter aufgerufen. Es
-  durchsucht die Datenbank nach einem Menue, dass im Titel den String
-  enthaelt. Bei der Suche wird die Gross- und Kleinschreibung nicht
-  berücksichtigt.
-  Die Ausgabe geschieht auf die Standard-Ausgabe.
-  Das Rezept wird in einem Meal-Master-kompatibeln Format ausgegeben.
-
 rezept2latex
 ------------
-  rezept2latex gibt Rezepte als LaTeX-Source aus.
+  rezept2latex gibt Rezepte in diversen Formaten aus.
   Kommandozeile:
     rezept2latex [-h] [-f Dateiname] "Suchbegriff"
+	-1	Ausgabe in eine einzlene Datei anstatt einer Datei/Treffer.
         -h      Drucke einen Filfetext.
         -f      Definiert den Dateinamen der Augabedatei. Standard-Wert
                 ist die Standard-Ausgabe. Wenn es mehrere Rezepte gibt,
                 auf die "Suchbegriff" zutrifft, dann wird an den
                 Dateinamen noch ein 2-stelliger Zähler angehängt.
+	-latex	Ausgabe als LaTeX-Source
+	-mm	Ausgabe im Mealmaster-Format
+	-text	Ausgabe als lesbarer Text.
         "Suchbegriff"
                 Durchsuche die Titel der Menüs nach diesem Begriff.
 
@@ -43,4 +38,4 @@ rk2mm
   rk2mm konvertiert Rezepte aus dem REZKONV-Format in das
   Mealmaster-Format und ließt dabei von STDIN und schreibt nach STDOUT.
 
-(c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, November 2000
+(c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, März 2001

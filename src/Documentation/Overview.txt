@@ -1,4 +1,4 @@
-### $Id: Overview.txt,v 1.7 2001/02/07 19:03:14 michael Exp $
+### $Id: Overview.txt,v 1.8 2001/03/11 15:12:04 michael Exp $
 
 Uebersicht
 ==========
@@ -7,8 +7,7 @@ Koch-Suite besteht aus folgenden Bestandteilen:
 
  - eine Reihe von Kommandozeilen-Tools:
    - mmimport: Import von Meal-Master-formatierten Rezepten
-   - mmexport: Export von        ---       "      ----
-   - rezept2latex: Ausgabe von Rezepten als LaTeX-Source.
+   - rezept: Ausgabe von Rezepten in diversen Formaten
    - rk2mm: Konvertiere REZKONV- in Meal-Master-Rezepte
 
  - ein paar WWW-Seiten
