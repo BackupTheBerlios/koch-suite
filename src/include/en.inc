@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.37 2002/05/20 15:04:17 lestinsky Exp $
+   * $Id: en.inc,v 1.38 2002/05/26 22:11:48 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -233,5 +233,10 @@ EOT;
       <a href="http://lists.berlios.de/mailman/listinfo/koch-suite-devel">this page</a> 
       for details.
 EOT;
+
+  $Lang['ingr_source_pattern']	= "/(Source|Reference)/";
+  $Lang['pattern']['Source']    = "(Source|Reference)";
+  $Lang['pattern']['Recorder']  = "(Recorded by)";
+  $Lang['pattern']['Date']      = "(Date|Recorded on)";
 
 ?>
