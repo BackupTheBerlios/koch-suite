@@ -1,4 +1,4 @@
-### $Id: Programmers.txt,v 1.4 2001/06/23 00:41:18 michael Exp $
+### $Id: Programmers.txt,v 1.5 2001/06/26 22:16:57 michael Exp $
 
 Programmierer-Dokumentation
 ===========================
@@ -41,6 +41,8 @@ Programmierer-Dokumentation
   * Nutze die Macht des Zeilenumbruchs wenn Zeilen sehr lang werden.
     Funktionsparameter sollen dann untereinander in der gleichen Spalte
     einsortiert werden.
+
+  * Verwende PHPDoc-Style Kommentare (http://www.phpdoc.de) oder:
 
   * Verwende C-Style-Kommentare. C++-Style ist auch Ok.
     Ok:
