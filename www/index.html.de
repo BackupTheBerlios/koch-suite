@@ -162,7 +162,7 @@ eintragen oder austragen.
 <ul>
   <li><a href="http://trident.mcs.kent.edu/~dwatson/cookbook.html">Cookbook</a>,
       eine Rezeptverwaltung f&uuml;r KDE.</li>
-  <li><a hreh="http://home.CameloT.de/thomas/">Mampf</a>, eine etwas 
+  <li><a href="http://home.CameloT.de/thomas/">Mampf</a>, eine etwas 
       &auml;ltere Rezeptverwaltung f&uuml;r Unix. Geschrieben in Tcl/Tk, 
       verwendet mSQL.</li>
   <li><a href="http://mango.sourceforge.net">Mango</a>. Geschrieben in C++, 
@@ -179,7 +179,7 @@ eintragen oder austragen.
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.de,v 1.11 2002/10/22 11:45:25 lestinsky Exp $
+$Id: index.html.de,v 1.12 2002/10/23 09:08:06 lestinsky Exp $
 </address>
 </body>
 </html>
