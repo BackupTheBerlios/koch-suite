@@ -7,7 +7,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.11 2001/03/15 13:24:47 michael Exp $ -->
+  <!-- $Id: rezept.raw,v 1.12 2001/03/17 17:44:05 michael Exp $ -->
 </head>
 
 <body>
@@ -21,29 +21,35 @@
   </td>
   <td width="90%">
     <!-- Rechts: Ausgabe -->
+
+    <table border="0" width="100%">
+    <tr>
+      <td style="text-align:left;">
+      <div class="small">
+      <?
+        echo "[<a href=\"print.php?mid=$mid\">Druckversion</a>]\n";
+        echo "[<a href=\"mmprint.php?mid=$mid\">Meal-Master-Format</a>]\n";
+      ?> 
+      </div>
+      </td>
+      <td style="text-align:right;">
+      <div class="small">
+      <?
+        echo "[<a class=\"small\" href=\"einfuegen.php?mid=$mid\">Rezept bearbeiten</a>]\n";
+        echo "[<a class=\"small\" href=\"delete.php?mid=$mid\">Rezept l&ouml;schen</a>]\n";
+      ?>
+      </div>
+      </td>
+    </tr>
+    </table>
+
     <?
       include "<%%PHP_LIBS%%>/functions.inc";
 
       echo format_recipe_html(get_menu_by_mid($mid));
     ?>
-
-  <table border="0" width="100%">
-  <tr>
-    <td style="text-align:left;">
-    <?
-      echo "[<a href=\"print.php?mid=$mid\">Druckversion</a>]\n";
-      echo "[<a href=\"mmprint.php?mid=$mid\">Meal-Master-Format</a>]\n";
-    ?>
-    </td>
-    <td style="text-align:right;">
-    <?
-      echo "[<a href=\"einfuegen.php?mid=$mid\">Rezept bearbeiten</a>]\n";
-      echo "[<a href=\"delete.php?mid=$mid\">Rezept l&ouml;schen</a>]\n";
-    ?>
-    </td>
-  </tr>
-  </table>
-</td></tr>
+  </td>
+</tr>
 </table>
 
 
