@@ -1,5 +1,5 @@
 <?php
-  /* $Id: rezept.raw,v 1.30 2002/08/18 13:56:25 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.31 2002/08/19 18:11:51 lestinsky Exp $
    * Copyright (c) 2002
    *      Michael Lestinsky. All rights reserved.
    *
@@ -36,6 +36,10 @@
   auth(READ);
 
   session_register("searchresult");
+  session_register('marked_recipes');
+  session_register("operate_on");      // Set marker an which buffer we
+                                       // are working.
+
 
   if (isset($_GET["new_yield"])) $new_yield = $_GET["new_yield"];
 
@@ -59,6 +63,8 @@
     }
   } elseif (isset($_GET["result_id"])) {
     $result_id = $_GET["result_id"];
+    while (($result_id+1) > count($_SESSION['searchresult']))
+      $result_id--;
     if (is_numeric($result_id)) {
       $mid = $_SESSION["searchresult"][$result_id]["id"];
       $ok = true;
@@ -93,6 +99,9 @@
       $recipe = get_menu_by_mid($mid, $scale);
     }
   }
+
+  if (isset($_POST['mark_submit']) and isset($result_id))
+    $_SESSION['marked_recipes'][] = $_SESSION['searchresult'][$result_id];
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -104,7 +113,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.30 2002/08/18 13:56:25 lestinsky Exp $ -->
+  <!-- $Id: rezept.raw,v 1.31 2002/08/19 18:11:51 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -117,7 +126,7 @@
     <?php include "<%%WEB_PREFIX%%>/menue.inc"; ?>
   </td>
   <td>
-    <form method="get" action="<?php echo $_SERVER['REQUEST_URI'] ?>">
+    <form method="get"  action="<?php echo $_SERVER['REQUEST_URI'] ?>">
     <?php if (isset($result_id)) { ?>
       <input type="hidden" name="result_id" value="<?php echo $result_id ?>">
     <?php } elseif (isset($mid)) { ?>
@@ -129,7 +138,8 @@
          echo $error;
        } else {
          include "<%%WEB_PREFIX%%>/actions.inc";
-
+         ?>
+         <?php
          echo format_recipe_html($recipe);
 
          echo $Lang['Scale']['Title'] . ':';
@@ -139,12 +149,17 @@
            ?>
              <input type="text" size="4" name="new_yield" value="<?php echo $yield ?>">
              <?php if (isset($post_str)) echo $post_str . '. '; ?>
-             <input type="submit" value="<?php echo $Lang['Apply'] ?>">
+             <input type="submit" name="new_yield_submit" value="<?php echo $Lang['Apply'] ?>">
            <?php
          }
        }
     ?>
     </form>
+    <?php if ($_SESSION['operate_on'] != "marked_recipes") { ?>
+    <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>">
+      <input type="submit" name="mark_submit" value="<?php echo $Lang['Mark']['Do'] ?>">
+    </form>
+    <?php } ?>
   </td>
 </tr>
 </table>
