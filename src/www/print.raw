@@ -1,5 +1,5 @@
 <?php
-  /* $Id: print.raw,v 1.9 2001/08/11 07:31:08 lestinsky Exp $
+  /* $Id: print.raw,v 1.10 2001/08/11 22:33:01 lestinsky Exp $
    *
    * stripped down html-version of recipe.
    * (c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -60,7 +60,7 @@
       <meta http-equiv="Content-Style-Type" content="text/css">
 
       <title>Koch-Suite</title>
-      <!-- $Id: print.raw,v 1.9 2001/08/11 07:31:08 lestinsky Exp $ -->
+      <!-- $Id: print.raw,v 1.10 2001/08/11 22:33:01 lestinsky Exp $ -->
     </head>
     <body>
     <h1>Error</h1>
@@ -93,7 +93,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
 
   <title>Koch-Suite</title>
-  <!-- $Id: print.raw,v 1.9 2001/08/11 07:31:08 lestinsky Exp $ -->
+  <!-- $Id: print.raw,v 1.10 2001/08/11 22:33:01 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -114,7 +114,7 @@
       if (file_exists("$filename.dvi")) {
         header("Content-Type: " . MIMETYPE_DVI);
         header("Content-Disposition: inline; filename=\"".$filename.".dvi\"");
-        passthru("$CAT $filename.dvi");
+        readfile ($filename . ".dvi");
       } else error_message();
 
       break;
@@ -127,7 +127,7 @@
       if (file_exists("$filename.ps")) {
         header("Content-Type: " . MIMETYPE_PS);
         header("Content-Disposition: inline; filename=\"".$filename.".pdf\"");
-        passthru("$CAT $filename.ps");
+        readfile ($filename . ".ps");
       } else error_messate();
 
       break;
@@ -142,7 +142,7 @@
       if (file_exists("$filename.pdf")) {
         header("Content-Type: " . MIMETYPE_PDF);
         header("Content-Disposition: inline; filename=\"".$filename.".pdf\"");
-        passthru("$CAT $filename.pdf");
+        readfile ($filename . ".pdf");
       } else error_message();
 
       break;

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.11 2001/08/11 07:32:46 lestinsky Exp $
+# $Id: configure,v 1.12 2001/08/11 22:33:01 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -98,7 +98,7 @@ grep -Ev "^#" ${CONF_RAW} | grep -Ev "^$" | \
 echo "Done."
 
 # Let's check for some 'nice-to-have' tools
-TOOLS="latex dvips gs cat"
+TOOLS="latex dvips gs"
 for foo in ${TOOLS} ; do
   check_opt ${foo}
 done
