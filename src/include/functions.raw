@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.73 2002/05/20 15:07:35 lestinsky Exp $
+   * $Id: functions.raw,v 1.74 2002/05/20 16:27:56 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -175,6 +175,9 @@
     $result = DB_query($req);
 
     $req = "delete from MENUE where ID = " . $mid;
+    $result = DB_query($req);
+
+    $req = "delete from menu_meta where mid = " . $mid;
     $result = DB_query($req);
   }
 
