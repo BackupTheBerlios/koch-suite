@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.25 2001/03/03 13:40:08 michael Exp $
+   * $Id: functions.raw,v 1.26 2001/03/11 15:08:13 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -240,7 +240,7 @@
       /* Ok, wir haben eine gueltige Zeile gelesen. */
       if ($quant != '') {
         /* Rechne Brueche in dezimalzahlen um. */
-        $quant = preg_replace("/\s+/", "+", $quant);
+        $quant = preg_replace("/\s+\s/", "+", $quant);
         $quant = eval("return $quant;");
       }
       return array("quant"  => $quant,

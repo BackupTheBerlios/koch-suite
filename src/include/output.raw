@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.18 2001/02/21 11:34:57 michael Exp $
+   * $Id: output.raw,v 1.19 2001/03/11 15:08:13 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -20,7 +20,8 @@
     foreach ($rezept["zutaten"] as $z) {
       $str .= $z["title"] . "\n";
       foreach ($z["ingredients"] as $j) {
-        $rline = pad_left ($j["quant"] , " ", 7) . " " .
+        $quant = nice_quant($j["quant"]);
+        $rline = pad_left ($quant , " ", 7) . " " .
                  pad_right(nice_unit($j["unit"])  , " ", 11) . " " .
                  pad_right($j["ingred"], " ", 28) . "\n";
         $str .= $rline;
@@ -59,10 +60,7 @@
 
       foreach ($z["ingredients"] as $j) {
 
-        $quant = $j["quant"];
-        $quant = round($quant,3);
-        if ($quant == 0)
-          $quant = '';
+        $quant = nice_quant($j["quant"]);
         $unit = nice_unit($j["unit"]);
         $ingred = preg_replace("/^(-*|;*) */", "", $j["ingred"]);
         $str .= "      ";
@@ -89,11 +87,14 @@
   }
 
 
-  function latex_export ($rezept) {
-    /* Export a recipe in LaTeX-format */
+  function latex_footer () {
+    /* write Latex-Footers */
+    $str .= "\\end{document}\n";
+    return $str;
+  }
 
-    $c = 0;
 
+  function latex_header () {
     /* write the Latex-headers... */
     $str  = "\\documentclass[a4paper,10pt]{article}\n\n";
     $str .= "\\usepackage{german}\n";
@@ -101,28 +102,51 @@
     $str .= "\\usepackage{here}\n";
     $str .= "\\usepackage{array}\n";
     $str .= "\\usepackage[lflt]{floatflt}\n";
-   
+
     $str .= "\\setlength{\\textwidth}{16cm}\n";
     $str .= "\\setlength{\\textheight}{25cm}\n";
-    $str .= "\\addtolength{\\topmargin}{-2cm}\n"; 
+    $str .= "\\addtolength{\\topmargin}{-2cm}\n";
     $str .= "\\addtolength{\\oddsidemargin}{-2cm}\n";
     $str .= "\\pagestyle{empty}\n";
-    /* ... some meta-data, ... */
-    $str .= "\n\\title{\\textsf{" . $rezept["title"] . "}}\n\n";
-    #$str .= "\\author{rezept2latex}\n";
     $str .= "\\begin{document}\n";
-    #$str .= "\\maketitle\n";
+    $str .= "\\setlength{\\parindent}{0pt}\n";
+    $str .= "\\setlength{\\parskip}{1ex plus 0pt minus 0pt}\n";
 
-    $str .= "\\section*{\\slshape " . $rezept["title"] . "}\n";
+    return $str;
+  }
+
+
+  function ltx_string ($str) {
+    /* Translate all those "special" characters in the input
+     * into proper Latex-substitutes.
+     */
+
+    #$str = preg_replace("/\\\/", "\\textbackslash ", $str);
+    $str = preg_replace("/[\"]/", "\\dq ", $str);
+    $str = preg_replace("/([_\&%#\{\}\$])/", "\\\\1", $str);
+    $str = preg_replace("/\^/", "\\textasciicircum ", $str);
+    $str = preg_replace("/~/", "\\textasciitilde ", $str);
+    $str = preg_replace("/\|/", "\\textbar ", $str);
+
+    return $str;
+  }
+
+
+  function latex_export ($rezept) {
+    /* Export a recipe in LaTeX-format */
+
+    $c = 0;
+
+    $str .= "\\section*{\\textsf{" . ltx_string($rezept["title"]) . "}}\n";
 
     /* ... the content... */
 
     $str .= "\\begin{table}[H]\n";
     $str .= "\\begin{tabular}{rl}\n";
-    $str .= "\\textbf{Portionen:} & " . $rezept["yield"] . "\\\\\n";
+    $str .= "\\textbf{Portionen:} & " . ltx_string($rezept["yield"]) . "\\\\\n";
     $str .= "\\textbf{Kategorie:} & ";
     foreach ($rezept["category"] as $cat) {
-      $str .= "$cat ";
+      $str .= ltx_string($cat) . " ";
     }
     $str .= "\\\\\n";
     $str .= "\\end{tabular}\\\\\n";
@@ -134,42 +158,37 @@
     foreach($rezept["zutaten"] as $z) {
       $str .= "\\hline\n";
       $str .= "\\multicolumn{3}{l}{\\textbf{" . 
-              preg_replace("/:/", "", $z["title"]) . "}}\\\\\n";
+              preg_replace("/:/", "", ltx_string($z["title"])) . "}}\\\\\n";
       $str .= "\\hline\n";
 
       foreach ($z["ingredients"] as $i) {
-        if (($quant = round($i["quant"], 3)) == 0) {
-          $quant = "";
-        }
         $ingred = preg_replace("/^(-*|;*) */", "", $i["ingred"]);
-        $ingred = preg_replace("/(&)/", "\\\\1", $ingred);
         $c = 0;
         $ingred = length_adjust($ingred, 28);
         while ($line = $ingred[$c]) {
           if ($c == 0) { 
-            $ingred_ = $line . "\\\\\n"; 
+            $ingred_ = ltx_string($line) . "\\\\\n"; 
           } else {
-            $ingred_ .= " & & \\hspace{4mm} " . $line . "\\\\\n";
+            $ingred_ .= " & & \\hspace{4mm} " . ltx_string($line) . "\\\\\n";
           }
           $c++;
         }
-        $str .= $quant . " & " . 
+        $str .= nice_quant($i["quant"]) . " & " . 
                 nice_unit($i["unit"]) . " & " . 
                 $ingred_;
       }
     }
-    $str .= "\\hline\\\\\n";
-    $str .= "\\end{tabular}\\\\\n";
-    $str .= "}\\end{floatingtable}\n";
+    $str .= "\\hline\n";
+    $str .= "\\end{tabular}}\n";
+    $str .= "\\end{floatingtable}\n";
 
     foreach (length_adjust($rezept["anleitung"], 74) as $line) {
       $line = stripslashes($line);
-      $line = preg_replace ('/("|\')/', "\dq ", $line);
+      $line = ltx_string($line);
       $line = preg_replace ('/^:/', "\n:", $line);
       $str .= $line . "\n";
     }
-    /* ... and the footers */
-    $str .= "\\end{document}\n";
+    $str .= "\\newpage\n";
     return $str;
   }
 
@@ -273,6 +292,17 @@
   }
 
 
+  function nice_quant ($quant) {
+    /* Return a beautified $qunat-string */
+
+    if (($quant = round($quant, 3)) == 0) {
+      $quant = "";              // suppress "0" values.
+    }
+
+    return $quant;
+  }
+
+
   function nice_unit ($unit) {
     /* Lookup a beautified name for a unit */
     $req = "select * from EINHEITEN where ABBREV = '$unit'";
@@ -327,9 +357,8 @@
       foreach ($z["ingredients"] as $j) {
         $u = 0;
 
-        if (($quant = round($j["quant"], 3)) == 0) {
-          $quant = "";              // suppress "0" values.
-        }
+        $quant = nice_quant($j["quant"]);
+
         $a = length_adjust($j["ingred"], 28);
         $rline = pad_left($quant," ", 7) . " " .
                  pad_right($j["unit"]  , " ", 2) . " " .
