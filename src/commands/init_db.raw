@@ -29,7 +29,7 @@
    */
 
   /**
-   * $Id: init_db.raw,v 1.4 2003/01/11 17:02:25 bus Exp $
+   * $Id: init_db.raw,v 1.5 2003/01/21 20:43:22 bus Exp $
    * Initializes database, creates necessary tables and fills them with
    * default contents
    *
@@ -227,7 +227,10 @@
    *
    */
   function create_tables_pgsql() {
+
+    /* Start transaction */
     exec_or_die('BEGIN');
+
     $sql = "
 	CREATE TABLE ANWEISUNG (
 	  TEXT text, MENUE_ID integer DEFAULT '0' NOT NULL
@@ -241,7 +244,7 @@
 	  FAKTOR real,
 	  FAKTOR_ID integer,
 	  RK_ABBREV varchar(11),
-	  MMUSE char(1)
+	  MMUSE char(1) constraint yesno check (MMUSE in ('J','N')) default NULL
 	);";
     exec_or_die($sql);
 
@@ -273,7 +276,7 @@
 	  PORTIONEN varchar(255),
 	  TITEL varchar(255) DEFAULT '' NOT NULL,
  	  HASH varchar(255),
-	  RATING int(1) default 0
+	  RATING integer default '0'
 	);";
     exec_or_die($sql);
 
@@ -310,7 +313,7 @@
 	  password varchar(255) default NULL,
 	  email    varchar(255) default NULL,
 	  realname varchar(255) default NULL,
-	  free     char(1) NOT NULL default 'y'
+	  free     char(1) constraint yesno check (free in ('y','n')) NOT NULL default 'y'
 	);";
     exec_or_die($sql);
 
@@ -326,15 +329,18 @@
     $sql = "
         CREATE TABLE category_alias (
           kid integer NOT NULL default '0',
-          text varchar(255) default NULL,
+          text varchar(255) default NULL
         );";
     exec_or_die($sql);
 
     $sql = "
         CREATE TABLE rating (
           menu_id integer NOT NULL default '0',
-          vote integer default NULL,
+          vote integer default NULL
         )";
+    exec_or_die($sql);
+
+    /* End transaction */
     exec_or_die("END");
   }
 
