@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: koch-suite.raw,v 1.22 2003/02/09 18:26:37 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.23 2003/08/04 22:35:33 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) 2002 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -40,7 +40,7 @@
   error_reporting(E_ALL);
 
 
-  /* Theme. Right now there is a 'default' and a 'winter' theme. */
+  /* Theme. Right now there are 'default', 'winter' and 'summer' themes. */
 
   $THEME	 = 'default';
 
