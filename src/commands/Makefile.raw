@@ -1,7 +1,7 @@
 # This file contains the substitution-rules for "sed"
 
 # Space-separated list of all "raw" php-/perl-files.
-PHP_FILES=		mmimport rezept rk2mm
+PHP_FILES=		mmimport rezept rk2mm ks_passwd
 
 SUBDIRS=		""
 
