@@ -3,7 +3,7 @@
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.15 2001/06/26 22:16:00 michael Exp $
+   * $Id: config.raw,v 1.16 2001/06/26 23:47:24 michael Exp $
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
@@ -33,6 +33,9 @@
 
   define("MM_STRICT", true);
   define("MM_VIOLATE", false);
+
+  define("RECIPE_MM", 0);
+  define("RECIPE_RK", 1);
 
   /*
    * What about the Database?

@@ -2,7 +2,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.46 2001/06/26 22:14:33 michael Exp $
+   * $Id: functions.raw,v 1.47 2001/06/26 23:47:24 michael Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * See ../LICENSE for the license of this code.
    * Editors: Please sort new functions alphabetically.
@@ -341,22 +341,26 @@
   }
 
 
-  function &parse_recipe($fd, $flavor="MM") {
-    /* Versuche aus dem Filehandle $fd ein Rezept 
-     * im Format $flavor ("MM" oder "RK") 
-     * zu extrahieren.
-     * Gib eine Referenz auf das Ergebnis zurück.
-     */
+  /**
+   * Versuche aus dem Filehandle $fd ein Rezept zu lesen
+   *
+   * Das Format kann MM-Style oder RK-Style sein.
+   * Gib eine Referenz auf das Ergebnis zurück.
+   * @param int $fd Filehandle
+   * @param int $flavor Rezept-Format
+   * @return 
+   */
+  function &parse_recipe($fd, $flavor=RECIPE_MM) {
     $zutaten        = array();
     $bar            = 0;
     $instruction    = "";
-    if ($flavor == "MM") {
+    if ($flavor == RECIPE_MM) {
       $zutaten_header = "/^(-{5}|M{5})-*(.*)[-=@]*$/i";
       $rezept_ende    = "/^(-{5}|M{5})[@-]*$/";
       $title_pattern  = "Title:";
       $cat_pattern    = "Categories:";
       $yield_pattern  = "(Yield|Servings):";
-    } else if ($flavor == "RK") {
+    } else if ($flavor == RECIPE_RK) {
       $zutaten_header = "/^={6,}.*=*$/";
       $rezept_ende    = "/^={5}$/";
       $title_pattern  = "Titel:";
@@ -468,15 +472,15 @@
   }
 
 
-  function parse_ingredient($line, $flavor="MM") {
-    if ($flavor == "MM") {
+  function parse_ingredient($line, $flavor=RECIPE_MM) {
+    if ($flavor == RECIPE_MM) {
       /* Lese eine MM-Rezeptzeile */
       if (ereg("([ 0-9\.\/]{7}) (..) (.*)", $line, $foo)) {
         $quant = trim($foo[1]);
         $unit = trim($foo[2]);
         $text = trim($foo[3]);
       }
-    } elseif ($flavor == "RK") {
+    } elseif ($flavor == RECIPE_RK) {
       /* Lese eine RK-Rezept-Zeile */
 
       if (ereg("([ 0-9\.\/]{7}) (.{8}) (.*)", $line, $foo)) {
@@ -528,7 +532,7 @@
   }
 
 
-  function getingr ($fd, $flavor="MM") {
+  function getingr ($fd, $flavor=RECIPE_MM) {
     /* read the ingredients 
      * return a 2-dim Array $a[count][ingr-spec]
      * where count is a plain integer-counter, specifying more or less
