@@ -205,7 +205,7 @@
   <!--
     function kat() {
       foo = "kategorien.php?target=begriff&maxsel=1";
-      window.open(foo, 'kat', 'width=300,height=400,screenX=700,screenY=300, scrollbars=yes');
+      window.open(foo, 'kat', 'width=400,height=500,screenX=600,screenY=300, scrollbars=yes');
       document.searchform.elements[2].checked = true;
     }
   //-->
