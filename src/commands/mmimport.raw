@@ -2,7 +2,7 @@
 <?
 
   /*
-   * $Id: mmimport.raw,v 1.12 2001/03/14 12:30:55 michael Exp $
+   * $Id: mmimport.raw,v 1.13 2001/05/23 13:38:45 michael Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
@@ -10,8 +10,6 @@
    */
 
   require "<%%PHP_LIBS%%>/functions.inc";
-
-  echo "$mysql_error\n";
 
   $opt_test = 0;
   $opt_test_printmm = 0;
@@ -93,9 +91,9 @@ EOD;
     /* Is the line the start of a new recipe? */
     if (eregi("(-{5}|M{5}).*Meal-Master.*", $line)) { 
       /* parse the recipe */
-      $rezept = parse_recipe($fd, "MM");
+      $rezept =& parse_recipe($fd, "MM");
     } else if (eregi("(={10}).*REZKONV.*", $line)) {
-      $rezept = parse_recipe($fd, "RK");
+      $rezept =& parse_recipe($fd, "RK");
     }
 
     if (isset($rezept)) {
