@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.89 2003/01/23 15:44:11 lestinsky Exp $
+   * $Id: functions.raw,v 1.90 2003/02/11 11:20:29 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -602,12 +602,8 @@
     if (! $result) return -1;
 
     foreach ($rezept["category"] as $cat) {
-      $req = "select id,text from KATEGORIE where TEXT = '$cat'";
-      $result = DB_query($req);
 
-      if ($r = $result->fetchRow()) {
-        $cid = $r["id"];
-      } else {
+      if (!($cid = get_category_id($cat))) {
         if ($new_cat_flag === true) {
           $cid = $db->nextID("KATEGORIESEQ");
           $req = "insert into KATEGORIE values ( " .
@@ -758,6 +754,38 @@
       $result->free();
     }
     return $a;
+  }
+
+
+  /**
+   * Get the numeric ID of a category entry.
+   * @param string $cat Category name
+   * @return int
+   */
+  function get_category_id ($cat) {
+    if (!is_string($cat)) return false;
+    $req = "select id from KATEGORIE ".
+           " where text = '" . addslashes($cat) . "'";
+
+    $result = DB_query($req);
+    if ($r = $result->fetchRow()) {
+      return intval($r['id']);
+
+    } else {
+      // Is this category an alias for some other category?
+
+      $req = "select k.id ".
+             "  from KATEGORIE k, category_alias l ".
+             " where k.id = l.kid and l.text = '". addslashes($cat) ."'";
+
+      $result = DB_query($req);
+      if ($r = $result->fetchRow()) {
+        return intval($r['id']);
+      } else {
+        // Not found.
+        return false;
+      }
+    }
   }
 
 
