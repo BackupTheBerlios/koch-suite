@@ -1,17 +1,17 @@
-<!-- $Id: menue.raw,v 1.6 2000/12/20 14:30:53 michael Exp $ -->
+<!-- $Id: menue.raw,v 1.7 2001/01/25 00:19:37 michael Exp $ -->
 <!-- Links: Programm-Menue -->
 <table border=0 cellspacing=0 cellpadding=1>
   <tr style="background-color:#b0b0b0;" align="top">
     <td>
       <table border="0" cellspacing="0" cellpadding="3">
-        <tr>
+        <tr style="font-size:small;">
           <td style="background-color:#dddddd" class="menu">Hauptmen&uuml;</td>
         </tr>
         <tr>
-          <td style="background-color:#f0f0f0" class="menu">
-            <img src="pics/white.gif" align="top" alt=""><a href="index.php?suchen=1">Suchen</a><br>
-            <img src="pics/white.gif" align="top" alt=""><a href="einfuegen.php">Einf&uuml;gen</a><br>
-            <img src="pics/white.gif" align="top" alt=""><a href="infos.php">Infos</a><br>
+          <td style="background-color:#f0f0f0; font-size:small;" class="menu">
+            <a href="index.php?suchen=1"><img src="pics/white.gif" align="top" alt="" border=0>Suchen</a><br>
+            <a href="einfuegen.php"><img src="pics/white.gif" align="top" alt="" border=0>Einf&uuml;gen</a><br>
+            <a href="infos.php"><img src="pics/white.gif" align="top" alt="" border=0>Infos</a><br>
           </td>
         </tr>
       </table>
