@@ -40,6 +40,10 @@
   require "<%%PHP_LIBS%%>/config.inc";
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
+  include "<%%PHP_LIBS%%>/auth.inc";
+
+  auth(ALL);
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
     "http://www.w3.org/TR/REC-html40/loose.dtd">
@@ -51,7 +55,7 @@
   <title><? echo $Lang['Info']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.30 2001/08/16 19:49:34 lestinsky Exp $ -->
+  <!-- $Id: infos.raw,v 1.31 2001/08/31 12:41:58 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -66,7 +70,7 @@
   <td width="90%">
     <h2><?php echo $Lang['Infos']['Title']; ?></h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.30 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.31 $ -->
 
     <h3><?php echo $Lang["Version"]["Title"]; ?></h3>
     <p>

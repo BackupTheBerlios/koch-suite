@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.11 2001/08/16 19:49:34 lestinsky Exp $
+   * $Id: kategorien.raw,v 1.12 2001/08/31 12:41:58 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW
@@ -38,15 +38,19 @@
    * @module kategorien
    */
 
-    require_once "<%%PHP_LIBS%%>/config.inc";
-    require_once "<%%PHP_LIBS%%>/functions.inc";
-    require_once "<%%PHP_LIBS%%>/lang.inc";
+  require_once "<%%PHP_LIBS%%>/config.inc";
+  require_once "<%%PHP_LIBS%%>/functions.inc";
+  require_once "<%%PHP_LIBS%%>/lang.inc";
+  include "<%%PHP_LIBS%%>/auth.inc";
 
-    if (isset($HTTP_GET_VARS["target"]))    $target = $HTTP_GET_VARS["target"];
-    if (isset($HTTP_GET_VARS["kategorie"])) $kategorie = $HTTP_GET_VARS["kategorie"];
-    if (isset($HTTP_GET_VARS["maxsel"]))    $maxsel    = $HTTP_GET_VARS["maxsel"];
-    if (isset($HTTP_SERVER_VARS["PHP_SELF"])) 
-      $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
+  auth(READ);
+
+
+  if (isset($HTTP_GET_VARS["target"]))    $target = $HTTP_GET_VARS["target"];
+  if (isset($HTTP_GET_VARS["kategorie"])) $kategorie = $HTTP_GET_VARS["kategorie"];
+  if (isset($HTTP_GET_VARS["maxsel"]))    $maxsel    = $HTTP_GET_VARS["maxsel"];
+  if (isset($HTTP_SERVER_VARS["PHP_SELF"])) 
+    $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
     "http://www.w3.org/TR/REC-html40/loose.dtd">

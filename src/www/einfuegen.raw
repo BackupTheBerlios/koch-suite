@@ -43,6 +43,9 @@
   require_once "<%%PHP_LIBS%%>/functions.inc";
   require_once "<%%PHP_LIBS%%>/lang.inc";
   require_once "<%%PHP_LIBS%%>/nocache.inc";
+  require_once "<%%PHP_LIBS%%>/auth.inc";
+
+  auth(WRITE);
 
   /*
    * read the proper values submitted via form
@@ -285,7 +288,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.26 2001/08/16 19:51:37 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.27 2001/08/31 12:41:58 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--

@@ -40,6 +40,9 @@
   include "<%%PHP_LIBS%%>/config.inc";
   include "<%%PHP_LIBS%%>/lang.inc";
   include "<%%PHP_LIBS%%>/functions.inc";
+  include "<%%PHP_LIBS%%>/auth.inc";
+
+  auth(WRITE);
 
   if (isset($HTTP_GET_VARS["mid"]))     $mid     = $HTTP_GET_VARS["mid"];
   if (isset($HTTP_GET_VARS["confirm"])) $confirm = $HTTP_GET_VARS["confirm"];
@@ -57,7 +60,7 @@
   <title>Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: delete.raw,v 1.11 2001/08/16 19:51:37 lestinsky Exp $ -->
+  <!-- $Id: delete.raw,v 1.12 2001/08/31 12:41:58 lestinsky Exp $ -->
 </head>
 
 <body>
