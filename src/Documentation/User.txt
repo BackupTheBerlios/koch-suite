@@ -1,4 +1,4 @@
-### $Id: User.txt,v 1.1 2000/11/13 20:11:05 michael Exp $
+### $Id: User.txt,v 1.2 2000/11/16 13:37:04 michael Exp $
 
 User-Dokumentation
 ==================
@@ -15,5 +15,15 @@ mmimport
   die durch Pipes bequem verwendet werden kann. Speziell eignet sich 
   mmimport um Usenet-Artikel (z.B. der Gruppe de.rec.mampf) aus z.B. slrn 
   heraus einzulesen.
+
+mmexport
+--------
+  mmexport wird mit einem Suchstring als Parameter aufgerufen. Es
+  durchsucht die Datenbank nach einem Menue, dass im Titel den String
+  enthaelt. Bei der Suche wird die Gross- und Kleinschreibung nicht
+  berücksichtigt.
+  Die Ausgabe geschieht auf die Standard-Ausgabe.
+  Das Rezept wird in einem Meal-Master-kompatibeln Format ausgegeben.
+
 
 (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, November 2000
