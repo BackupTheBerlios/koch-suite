@@ -1,4 +1,8 @@
-### $Id: changelog,v 1.36 2001/06/10 22:34:00 michael Exp $
+### $Id: changelog,v 1.37 2001/06/20 18:32:12 michael Exp $
+
+2001-06-20: Michael Bussmann <bus@fgan.de>
+	Verwende PEAR anstatt mysql_*().
+	PostgreSQL-Unterstützung
 
 2001-06-10: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Die ganzen Suchfunktionen wurden deutlich optimiert.
