@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
+  <title>Koch-Suite - Rezept einf&uuml;gen</title>
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <!-- $Id: einfuegen.raw,v 1.1 2000/12/06 18:02:26 michael Exp $ -->
+
+  <script language="JavaScript1.2">
+  <!--
+    function kat() {
+      foo = "kategorien.php";
+      window.open(foo, 'kat', 'width=300,height=400,scrollbars=yes');
+    }
+  //-->
+  </script>
+</head>
+
+<body>
+<a name="top"></a>
+<h1><img src="pics/title.gif" alt="WWW-Kochbuch"></h1>
+
+<table border=0 cellpadding=3 cellspacing=1>
+<tr>
+  <td valign="top">
+    <? include "./menue.inc"; ?>
+  </td>
+  <td>
+    <!-- Rechts: Ausgabe -->
+    <h2>Rezept in die Datenbank aufnehmen</h2>
+
+    <form action="<? echo $PHP_SELF; ?>" method="post">
+    <table border="0" cellpadding="0" cellspacing="2">
+      <tr>
+        <td>Titel:</td>
+        <td><input type="text" name="titel" value="<? echo $titel ?>"size="60"></td>
+      </tr>
+      <tr>
+        <td>Portionen:</td>
+        <td><input type="text" name="portionen" value="<? echo $portionen ?>"size="40"></td>
+      </tr>
+      <tr>
+        <td><a href="kategorien.php" target="kat" onClick="kat();">Kategorien</a>:</td>
+        <td><input type="text" name="kategorie" value="<? echo $kat ?>" size="40"></td>
+      </tr>
+      <tr>
+        <td>Zutaten:</td>
+        <td><textarea cols="40" rows="10" name="zutaten" wrap="physical"><? echo $zutaten ?></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>Zubereitung:</td>
+        <td><textarea cols="60" rows="10" name="anweisung" wrap="virtual"><? echo $anweisung; ?></textarea>
+        </td>
+      </tr>
+    </table>
+    <input type="submit" value="Eintragen">
+    <input type="reset" value="Formular L&ouml;schen">
+    </form>
+  </td>
+</tr>
+</table>
+
+<hr noshade>
+&copy; Michael Lestinsky 
+&lt;<a href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.de</a>&gt; 
+November 2000.
+
+</body>
+</html>

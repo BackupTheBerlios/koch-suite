@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
+
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+  <title>Definierte Kategorien</title>
+  <!-- $Id: kategorien.raw,v 1.1 2000/12/06 18:02:26 michael Exp $ -->
+
+  <script language="JavaScript1.2">
+  <!--
+    function eintragen ( name ) {
+      if ( opener.document.forms[0].kategorie.value == '' ) {
+        opener.document.forms[0].kategorie.value += name;
+      } else {
+        opener.document.forms[0].kategorie.value += ', ' + name;
+      }
+    }
+  //-->
+  </script>
+
+</head>
+
+<body>
+<a name="top"><h2>Kategorien</h2></a>
+
+<p>
+Geben sie bis zu 5 Kategorien an. Klicken sie auf die gewünschte
+Kategorie, um den Wert in das Formularfeld zu übertragen.
+</p>
+<table border="0" cellspacing="2" cellpadding="0">
+  <?
+    include("<%%PHP_LIBS%%>/functions.inc");
+
+    $kat = get_categories();
+
+    foreach ($kat as $kategorie) {
+      echo "<tr><td><a href=\"" . $PHP_SELF . "\" onclick=\"eintragen('" .
+$kategorie . "');\">$kategorie</a></td></tr>\n";
+    }
+  ?>
+
+</table>
+
+<form>
+  <input type="button" value="Schlie&szlig;en" onClick="window.close()">
+</form>
+
+</body>
+</html>
