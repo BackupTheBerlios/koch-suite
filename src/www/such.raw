@@ -1,4 +1,4 @@
-<!-- $Id: such.raw,v 1.4 2000/11/24 23:23:30 michael Exp $ -->
+<!-- $Id: such.raw,v 1.5 2000/11/29 01:20:54 michael Exp $ -->
 <?
   if (empty($begriff) and empty($all)) {
 ?>
@@ -7,8 +7,8 @@
     <form action="<? echo "$PHP_SELF?suchen=1"; ?>" method="post">
     <input type="text" name="begriff">
     <select name="where">
-      <option>Name</option>
-      <option>Zutat</option>
+      <option value="title">Name</option>
+      <option value="ingred">Zutat</option>
     </select>
     <br>
     <input type="submit" value="Suchen">
@@ -52,21 +52,33 @@
 
     <table border=0>
 <?
-    if ($begriff != "") {
-      $r = get_mid_by_name("%$begriff%");
-    } else {
-      if ($all == 1) {
-        $all = "";
-      }
-      $r = get_mid_by_name("$all%");
-    }
-    $count = 0;
 
-    foreach ($r as $foo) {
-      $count++;
-      echo "<tr><td>$count</td>" .
-               "<td><a href=\"rezept.php?mid=" . $foo["id"] . "\">" . 
-               htmlentities($foo["title"]) . "</a></td></tr>\n";
+    function print_titles($r) {
+      $count = 0;
+      foreach ($r as $foo) {
+        $count++;
+        echo "<tr><td>$count</td>" .
+                 "<td><a href=\"rezept.php?mid=" . $foo["id"] . "\">" . 
+                 htmlentities($foo["title"]) . "</a></td></tr>\n";
+      }
+    }
+
+
+    if ($where == 'title' or $where == '') {
+      if ($begriff != "") {
+        $r = get_mid_by_name("%$begriff%");
+      } else {
+        if ($all == 1) {
+          $all = "";
+        }
+        $r = get_mid_by_name("$all%");
+      }
+      print_titles($r);
+
+    } else if ($where == 'ingred') {
+      if (($m = get_mid_by_ingred($begriff)) != 0) {
+        print_titles($m);
+      }
     }
 ?>
     </table>
