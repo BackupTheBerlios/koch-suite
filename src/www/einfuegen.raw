@@ -133,7 +133,7 @@
                        "value=\"" . $z["title"] . "\">" .
                 "<br><a href=\"units.php\" target=\"units\" ".
                      " onClick=\"units();\" style=\"font-size:small;\">" .
-$Lang['Units'] . "</a></td>\n";
+                     $Lang['Units'] . "</a></td>\n";
       } else {
         $str .= "<td>&nbsp;</td>\n";
         $str .= "<td><input type=\"text\" " .
@@ -253,6 +253,8 @@ $Lang['Units'] . "</a></td>\n";
               "zutaten" => $zutat,
               "anleitung" => $anweisung);
 
+  $r["hash"] = recipe_hash($r);
+
   if (isset($submit)) {
     if(isset($mid) and $mid != 0) {
       echo "<p>" . $Lang['Recipe']['Deleted'] . "</p>\n";
@@ -281,7 +283,7 @@ $Lang['Units'] . "</a></td>\n";
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.24 2001/07/01 20:47:33 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.25 2001/07/24 19:49:28 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
