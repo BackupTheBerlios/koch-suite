@@ -1,27 +1,31 @@
-### $Id: changelog,v 1.5 2000/12/08 23:54:58 michael Exp $
+### $Id: changelog,v 1.6 2000/12/13 15:07:19 michael Exp $
 
-2000-12-09: michael@zaphod.rhein-neckar.de
+2000-12-13: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+        Suche im Webinterface jetzt auch nach der Kategorie möglich.
+        www/infos.raw: Sync mit der Realität.
+
+2000-12-09: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
         Makefile korrigiert. Aufteilen der Installtargets, so dass nicht
         zwingend die ganze Suite installiert werden muss.
 
-2000-11-26: michael@zaphod.rhein-neckar.de
+2000-11-26: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
         WWW-Interface: Suche innerhalb der Zutatenliste funktioniert
         Kommandozeile: Neues Kommando "rezept2latex" exportiere Rezepte als
         Latex-Source.
 
-2000-11-20: michael@zaphod.rhein-neckar.de
+2000-11-20: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	CVS-Tag "koch-suite_0_1_3"
 
-2000-11-19: michael@zaphod.rhein-neckar.de
+2000-11-19: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	mmexport war fehlerhaft. Zutaten-Zeilen wurden ohne Längenprüfung
 	ausgegeben.
 
-2000-11-04: michael@zaphod.rhein-neckar.de
+2000-11-04: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Added "install"-Target to Makefile.
 	Tested Plattforms: Linux/i386, OpenBSD/i386.
 
-2000-11-04: michael@zaphod.rhein-neckar.de
+2000-11-04: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Makefile-Mechanismus funktioniert.
 
-2000-11-02: michael@zaphod.rhein-neckar.de
+2000-11-02: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Erstmalig funktionierender Import.
