@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.62 2001/08/31 17:36:09 lestinsky Exp $
+   * $Id: functions.raw,v 1.63 2001/09/23 11:10:04 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -257,12 +257,7 @@
        * this situation first. 
        */
       if (!$return_is_empty) {
-        /* array_intersection seems to be broken in 4.0.5 !? */
-        if ($GLOBALS["BROKEN_ARRAY_INTERSECT"]) {
-          $return = KS_array_intersect($return, $result);
-        } else {
-          $return = array_intersect($return, $result);
-        }
+        $return = KS_array_intersect($return, $result);
       } else {
         $return = $result;
         $return_is_empty = false;
@@ -655,10 +650,13 @@
   }
 
 
+  /**
+   * Write a recipe into the database. 
+   * For the layout of the database see Documentation/init_db.sql
+   * @param  array $rezept Array containing the recipe
+   * @return void 
+   */
   function write_db ($rezept) {
-    /* Write a recipe into the database. For the layout of the database
-     * see Documentation/init_db.sql
-     */
 
     global $db;
 
@@ -720,8 +718,12 @@
   }
 
 
+  /**
+   * Contruct the menu-array 
+   * @param  int   $mid Menu-ID
+   * @return array
+   */
   function get_menu_by_mid ($mid) {
-    /* Contruct the menu-array */
 
     $req = "select id,portionen,titel from MENUE where ID = '$mid'";
     if ($result=DB_query($req)) {
@@ -738,8 +740,12 @@
   }
 
 
+  /**
+   * Fetch an sub-recipe from the database by it's Menu-ID
+   * @param  int   $mid Menu-ID
+   * @return array
+   */
   function get_recipe_by_mid ($mid) {
-    /* */
     $a = array();
 
     $req = "select id,titel from REZEPT where MENUE_ID = '$mid' order by ID asc" ;
@@ -914,6 +920,8 @@
 
   /**
    * Which format can we print?
+   * @param  string $wish  preferred format
+   * @return string
    */
   function printable_format($wish) {
     global $LATEX, $DVIPS, $GS;
