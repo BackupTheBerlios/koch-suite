@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
   <title>Infos zur Koch-Suite</title>
-  <!-- $Id: infos.raw,v 1.5 2000/12/20 13:44:12 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.6 2001/01/07 22:07:26 michael Exp $ -->
 </head>
 
 <body>
@@ -35,7 +35,7 @@
     <dl>
       <dt><code>mmexport</code></dt>
           <dd><i>Export von Rezepten aus der Datenbank</i> im
-          <a href="http://www.mealmaster.com">Meal-Master</a>-Format.
+          <a href="http://home1.gte.net/welliver/">Meal-Master</a>-Format.
           Als Parameter wird ein Suchstring übergeben, nachdem in der
           Rezept-Datenbank in den Menu-Titeln gesucht wird.
           Die Ausgabe geschieht auf der Standard-Ausgabe.</dd>
