@@ -1,5 +1,9 @@
 <?
-  /* Copyright (c) 2001
+  /*
+   * $Id: lang.raw,v 1.8 2001/08/31 17:35:33 lestinsky Exp $
+   * Guess prefered language for the web-interface.
+   *
+   * Copyright (c) 2001
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -25,15 +29,6 @@
    * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANYWAY
    * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
    * SUCH DAMAGE.
-   */
-
-  /*
-   * $Id: lang.raw,v 1.7 2001/08/16 19:54:10 lestinsky Exp $
-   *
-   * Guess prefered language for the web-interface.
-   *
-   * This file is subject to the license as included in ../LICENSE
-   * (C) 2001 Michael Lestinsky. 
    */
 
 
@@ -95,7 +90,7 @@
   if ($tmp = getenv("HTTP_ACCEPT_LANGUAGE")) {
     $accept_langs = explode(",", $tmp);
   }
-  if (!isset($accep_langs) or count($accept_langs) == 0) {
+  if (!isset($accept_langs) or count($accept_langs) == 0) {
     /* Seems we are running from the commandline. 
      * therefore read environment-variables.
      */
