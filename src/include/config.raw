@@ -3,7 +3,7 @@
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.18 2001/07/10 23:04:07 michael Exp $
+   * $Id: config.raw,v 1.19 2001/07/10 23:05:20 michael Exp $
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
@@ -59,12 +59,4 @@
       $BROKEN_ARRAY_INTERSECT = false;
       break;
   }
-
-  /*
-  if (phpversion() == "4.0.5" or phpversion() == "4.0.6") {
-    $BROKEN_ARRAY_INTERSECT = true;
-  } else {
-    $BROKEN_ARRAY_INTERSECT = false;
-  }
-  */
 ?>
