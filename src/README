@@ -1,4 +1,4 @@
-### $Id: README,v 1.16 2001/02/07 18:35:28 michael Exp $
+### $Id: README,v 1.17 2001/02/07 20:41:02 michael Exp $
 
 Koch-Suite
 ==========
@@ -40,13 +40,11 @@ Momentan ist das Projekt noch nicht allzuweit. Die meiste Arbeit findet an
 den zentralen Funktionen statt, damit die Anwendungen später nur noch eine
 triviale Abfolge von Funktionsaufrufen sein können.
 
-Bisher existiert nur:
+Bisher existiert/funktioniert:
  - ein Tool für den Datenbank-Import im Mealmaster- oder REZKONV-Format,
- - Exportfunktionen nach Latex, Plain-Text und Mealmaster-Format,
+ - Exportfunktionen nach Latex, Plain-Text und Mealmaster-Format, und HTML
  - ein paar Prototyp-Webseiten, die elementare Suchfunktionen in der
    Datenbank und ein Rezept-Erfassungsinterface implementieren.
-
-An allem anderen wird derzeit noch kräfitg gearbeitet.
 
 
 PHP4-Installation:
