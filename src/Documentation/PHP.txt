@@ -1,9 +1,9 @@
-### $Id: PHP.txt,v 1.6 2002/07/22 11:28:47 lestinsky Exp $
+### $Id: PHP.txt,v 1.7 2003/07/30 07:58:24 lestinsky Exp $
 
 Koch-Suite and PHP
 ==================
 
-(c) 2002 Michael Lestinsky <michael@lestinsky.de>
+(c) 2003 Michael Lestinsky <michael@lestinsky.de>
 Please see the file `LICENSE' for the license terms, under which you may
 use, modify and distribute this package or single parts of it.
 
@@ -11,30 +11,25 @@ use, modify and distribute this package or single parts of it.
 PHP4 Installation:
 ------------------
 
+(This instructions assume, you are using a post 4.3.0-version of PHP)
+
 To compile PHP4, unpack the source and execute "configure" with the 
 following opions:
 
 for use with MySQL: 
-  (Standalone interpreter:)
-  $ ./configure --with-mysql=/path/to/mysql --enable-force-cgi-redirect
-
-  (Apache module:)
   $ ./configure --with-apxs=/path/to/apxs --with-mysql=/path/to/mysql
 
 for use with PostgreSQL:
-  (Standalone interpreter:)
-  $ ./configure --with-pgsql=/path/to/pgsql --enable-force-cgi-redirect
-
-  (Apache module:)
   $ ./configure --with-apxs=/path/to/apxs --with-pgsql=/path/to/pgsql
 
 Then execute
 
   $ make && make install
 
-from the src directory to compile and install PHP. This should work
-without major problems. (Remember: depending on your configuration, 
-the `install'-step might require `root'-permissions.)
+from the src directory to compile both, the CLI and the Apache module
+version of PHP and install them, as well as the required parts of PEAR. 
+This should work without major problems. (Remember: depending on your 
+configuration, the `install'-step might require `root'-permissions.)
 
 Further information on PHP, the installation procedure and a language
 reference can be found at http://www.php.net.
@@ -49,19 +44,3 @@ At the moment, Koch-Suite needs the following PHP setup:
   magic_quotes_sybase   = Off
   register_argc_argv    = On	<-- Very important!
   [cut]
-
-PEAR:
------
-
-You also need an fairly recent verion of PEAR. PHP-4.1.2's PEAR is 
-sufficient. If you do not have a recent version of PHP installed, you 
-have to update at least PEAR. To update PEAR, do:
-
- - change to the directory where the PEAR-files are to be installed:
-   # cd /usr/local/lib (or wherever you would like)
- - log into the CVS-repository (password "phpfi"):
-   # cvs -d :pserver:cvsread@cvs.php.net:/repository login
- - fetch a local copy of PEAR:
-   # cvs -d :pserver:cvsread@cvs.php.net:/repository co php4/pear
- - adjust the path to PEAR-directory in ../config or in your
-   koch-suite.inc, if you have the koch-suite already installed.
