@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.17 2001/02/05 01:11:27 michael Exp $
+   * $Id: output.raw,v 1.18 2001/02/21 11:34:57 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -231,12 +231,11 @@
   function mmexport ($rezept) {
     /* return a Meal-Master-formatted string. */
     global $ver, $tool;
-    $str = "";
     $i = 0;
-    $header = "MMMMM-----mmexport (v0.2.5) Export nach Meal-Master-----\n";
+    $header = "MMMMM-----mmexport (v0.2.6) Export nach Meal-Master-----\n";
     $footer = "MMMMM";
 
-    $str .= "$header\n";
+    $str  = "$header\n";
     $str .= "     Title: " . $rezept["title"] . "\n"; 
 
     $cat_a = $rezept["category"];
@@ -252,7 +251,7 @@
 
     $str .= "     Yield: " . $rezept["yield"] . "\n"; 
 
-    $str .= print_ingred($rezept["zutaten"]);
+    $str .= print_ingred($rezept["zutaten"]) . "\n";
     $a = length_adjust($rezept["anleitung"], 72); 
     foreach ($a as $line) {
       $str .= stripslashes($line) . "\n";
@@ -266,9 +265,9 @@
   function mmrezept_header ($str) {
     /* return a valid Mealmaster-subheader */
     $len = strlen($str);
-    $fill = "--------------------";
+    $fill = pad_left("", "-", 23 - $len/2);
     $fill_l = "MMMMM" . $fill;
-    $fill_r = "-----" . $fill;
+    $fill_r = $fill . "-----";
     $str = $fill_l . $str . $fill_r;
     return "$str";
   }
@@ -320,7 +319,7 @@
     foreach ($r as $z) {
       /* Print a mealmaster-Subheader for subrecipes: */
       if ($z["title"] != "Zutaten:") {
-        $str .= mmrezept_header($z["title"]) . "\n";
+        $str .= "\n" . mmrezept_header($z["title"]) . "\n";
       } else {
         $str .= "\n";
       }
@@ -340,7 +339,7 @@
           $str .= "           -- " . $a[$u++] . "\n";
         }
       }
-      $str .= "\n";
+      # $str .= "\n";
     }
     return $str;
   }
