@@ -1,3 +1,8 @@
+2001-12-23  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/commands/mmimport.raw 1.24, src/commands/rezept.raw 1.17:
+  Disable timelimits. We have a controlling tty, so this is safe here.
+
 2001-12-22  Michael Bussmann  <bus@mb-net.net>
 
   * src/init_db.pgsql 1.10: Oops, missed one
