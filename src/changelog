@@ -1,4 +1,7 @@
-### $Id: changelog,v 1.25 2001/04/05 11:21:18 michael Exp $
+### $Id: changelog,v 1.26 2001/04/17 11:10:02 michael Exp $
+
+2001-04-17: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	Ok, Betatesting ist abgeschlossen. -> 0.4
 
 2001-04-05: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Böser Bug im Einfüge-Interface gefixt.
