@@ -1,7 +1,10 @@
 <?
-  /* Configuration-file for the koch-suite
-   * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Oktober 2000
-   * $Id: config.raw,v 1.7 2001/05/30 19:43:35 michael Exp $
+  /* Configuration-file for the Koch-Suite
+   * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
+   * $Id: config.raw,v 1.8 2001/06/01 22:34:22 michael Exp $
+   *
+   * See LICENSE in the top-level directory of the Koch-Suite distribution
+   * for the License of this file.
    */
 
   include "<%%PHP_LIBS%%>/debug.inc";
@@ -15,7 +18,7 @@
 
   $DEFAULT_LANG = "de";
 
-  $kochsuite_ver = "0.5-pre1";
+  $kochsuite_ver = "0.5-pre3";
 
   /* Connect to the Database */
   if (get_cfg_var(mysql.allow_persistent) == 1) {
