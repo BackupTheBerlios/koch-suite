@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2001
    *      Michael Lestinsky. All rights reserved.
    *
@@ -36,12 +36,13 @@
 
   require_once "<%%ETC_PREFIX%%>/koch-suite.inc";
   require_once "<%%PHP_LIBS%%>/functions.inc";
+  require_once "<%%PHP_LIBS%%>/pwcrypt.inc";
 
 
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.7 2001/10/15 11:49:42 lestinsky Exp $
+   * $Id: auth.raw,v 1.8 2001/12/24 14:10:25 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -63,12 +64,17 @@
    * register_globals in your php.ini.
    * So catch this difference here. Verified to work on 4.0.7RC3
    */
-  if (ini_get("register_globals") != false) {
-    // register_globals is "On".
-    $USER_S =& $user;
+  if (isset($_SESSION["user"])) {
+    // PHP 4.1.0 and later...
+    $USER_S =& $_SESSION["user"];
   } else {
-    // register_globals is "Off".
-    $USER_S =& $HTTP_SESSION_VARS["user"];
+    if (ini_get("register_globals") != false) {
+      // register_globals is "On".
+      $USER_S =& $user;
+    } else {
+      // register_globals is "Off".
+      $USER_S =& $HTTP_SESSION_VARS["user"];
+    }
   }
 
 
@@ -100,7 +106,7 @@
         /* What kind of authentication?
          * At the moment we support auth_by_db only.
          */
-        return verify_authdata();
+        return verify_authdata($FORM_USERNAME, $FORM_PASSWORD);
 
       }
     } else {
@@ -108,7 +114,7 @@
        * but perform it anyways, if requested by user 
        */
       if (isset($FORM_USERNAME) and isset($FORM_PASSWORD)) {
-        verify_authdata();
+        verify_authdata($FORM_USERNAME, $FORM_PASSWORD);
       } else {
         return true;
       }
@@ -193,15 +199,46 @@
   }
 
 
-  function verify_authdata() {
-    global $USER_S, $FORM_USERNAME, $FORM_PASSWORD;
+  /**
+   * Invoke the proper update_passwd_*-function
+   * @param string $username
+   * @param string $opasswd  Old password
+   * @param string $passwd   New password
+   */
+  function update_passwd($username, $opasswd, $passwd) {
+
+    $update_func = "update_passwd_" . $GLOBALS["AUTH_STYLE"];
+
+    if (function_exists($update_func))
+      return $update_func($username, $opasswd, $passwd);
+    else
+      return false;
+  }
+
+
+  /**
+   * Change the passwords in the database.
+   */
+  function update_passwd_auth_by_db ($username, $opasswd, $passwd) {
+    $cpwd = mk_crypted_pw($passwd);
+    $req = "update usertable set password = '$cpwd' " .
+           " where username = '$username' ";
+
+    $result = DB_query($req);
+  }
+
+
+  /**
+   * Is the user authenticated?
+   */
+  function verify_authdata($username, $password) {
+    global $USER_S;
     /* What kind of authentication?
      * At the moment we support auth_by_db only.
      */
     if (function_exists($GLOBALS["AUTH_STYLE"])) {
 
-      if ($USER_S = $GLOBALS["AUTH_STYLE"]($FORM_USERNAME, $FORM_PASSWORD)) {
-
+      if ($USER_S = $GLOBALS["AUTH_STYLE"]($username, $password)) {
         // everything is fine here. :-)
         return true;
 
@@ -219,4 +256,24 @@
     }
   }
 
+
+  /**
+   * Do password/username match?
+   * This function differs from verify_authdata in
+   *   - it doesn't change $USER_S
+   *   - it returns a bool value.
+   */
+  function verify_passwd($username, $password) {
+    if (function_exists($GLOBALS["AUTH_STYLE"])) {
+      if ($GLOBALS["AUTH_STYLE"]($username, $password))
+        return true;
+      else 
+        return false;
+    } else {
+      // This code shouldn't be ever executed in normal operation.
+      session_destroy();
+      die("Either someone is screwing up your configuration" . 
+          " or you've just found a new bug.");
+    }
+  }
 ?>

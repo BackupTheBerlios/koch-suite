@@ -1,4 +1,4 @@
-<?
+<?php
   /* Copyright (c) 2001
    *      Michael Lestinsky. All rights reserved.
    *
@@ -28,56 +28,65 @@
    */
 
   /**
-   * WWW-Frontend Index-Seite
+   * Password-functions for the "Koch-Suite"
    *
+   * $Id: pwcrypt.raw,v 1.1 2001/12/24 14:10:25 lestinsky Exp $
+   * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
+   * Editors: Please sort new functions alphabetically.
+   *
+   * @author Michael Lestinsky <michael@lestinsky.de>
+   * @package Lib
+   * @modulegroup General
+   * @module pwcrypt.inc
    * @copyright Michael Lestinsky <michael@lestinsky.de>
-   * @package WWW
-   * @modulegroup UI
-   * @module index
    */
 
-  require "<%%ETC_PREFIX%%>/koch-suite.inc";
-  require "<%%PHP_LIBS%%>/functions.inc";
-  require "<%%PHP_LIBS%%>/lang.inc";
-  require "<%%PHP_LIBS%%>/nocache.inc";
-  include "<%%PHP_LIBS%%>/auth.inc";
 
-  auth(ALL);
+  /**
+   * mk_crypted_pw () - create the encrypted password.
+   * @param string $pw unencrypted password
+   * @return string
+   */
+  function mk_crypted_pw ($pw) {
+    if (test_md5_crypt() === true) {
+      $salt = "\$1\$" . mk_rndstring(8);
+    } else {
+      // fallback to DES
+      $salt = mk_rndstring(2);
+    }
+
+    return crypt($pw, $salt);
+  }
+
+
+  /**
+   * Generate a custom-length random string.
+   * @param int $len Stringlength of random string
+   * @return string
+   */
+  function mk_rndstring ($len) {
+    // Generiere einen zufaelligen String.
+    $str = '';
+    $randstr = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    srand ((double) microtime () * 1000000);
+    for ($i = 0; $i < $len; $i++) {
+      $str .= substr ($randstr, rand(0,61), 1);
+    }
+    return $str;
+  }
+
+
+  /**     
+   * Test if out crypt() is mp5-capable     
+   * @return bool     
+   */     
+  function test_md5_crypt () {     
+    $md5_check = '$1$Pi314$8NdgmoWHvMPgQOGw0BCCe0';     
+
+    if (crypt('Passwort', '$1$Pi314') == $md5_check)     
+      return true;     
+    else     
+      return false;     
+  }     
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-    "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
-
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
-  <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Koch-Suite</title>
-  <!-- $Id: index.raw,v 1.22 2001/12/24 14:10:25 lestinsky Exp $ -->
-</head>
-
-<body>
-<a name="top"></a>
-<h1><img src="pics/title.gif" alt="Koch-Suite"></h1>
-
-<table border="0" cellpadding="3" cellspacing="0">
-<tr>
-  <td valign="top">
-    <? include "./menue.inc"; ?>
-  </td>
-  <td valign="top">
-    <h2><? echo $Lang['Mainmenu']['Title']; ?></h2>
-
-    <p><? echo $Lang['Mainmenu']['PlsChoose']; ?></p>
-  </td>
-</tr>
-</table>
-
-<hr noshade>
-&copy; 2001 Michael Lestinsky 
-&lt;<a href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.de</a>&gt;.
-
-</body>
-</html>
-<?db_disconnect();?>

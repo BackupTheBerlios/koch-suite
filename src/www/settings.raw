@@ -42,7 +42,34 @@
   require "<%%PHP_LIBS%%>/nocache.inc";
   include "<%%PHP_LIBS%%>/auth.inc";
 
+  $msg = '';
+
   auth(ALL);
+
+  if (isset($_POST["passwd_submit"])) {
+    if (!empty($_POST["opass"]) and 
+        !empty($_POST["pass1"]) and 
+        !empty($_POST["pass2"])) {
+      // Change Passwords.
+
+      if ($_POST["pass1"] != $_POST["pass2"]) {
+        $msg .= $Lang['Settings']['Password']['nomatch'];
+      } else {
+        // Apply changes.
+
+        if (verify_passwd($USER_S["username"], $_POST["opass"])) {      
+
+          update_passwd($USER_S["username"], $_POST["opass"], $_POST["pass1"]);
+          $msg .= $Lang['Settings']['Password']['changed'];
+          
+        } else {
+          // Old password is wrong.
+          $msg .= $Lang['Settings']['Password']['nomatch'];
+        }
+      }
+    }
+  }
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
     "http://www.w3.org/TR/REC-html40/loose.dtd">
@@ -54,7 +81,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: index.raw,v 1.22 2001/12/24 14:10:25 lestinsky Exp $ -->
+  <!-- $Id: settings.raw,v 1.1 2001/12/24 14:10:25 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -67,9 +94,31 @@
     <? include "./menue.inc"; ?>
   </td>
   <td valign="top">
-    <h2><? echo $Lang['Mainmenu']['Title']; ?></h2>
+    <h2><?php echo $Lang['Settings']['Title']; ?></h2>
+    <?php 
+      if (!empty($msg)) { 
+        echo "<p><div class=\"warn\">$msg</div></p>";
+      }
+    ?>
 
-    <p><? echo $Lang['Mainmenu']['PlsChoose']; ?></p>
+    <h3><?php echo $Lang['Settings']['Password']['Title']; ?></h3>
+    <form name="passform" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+      <table border="0">
+      <tr>
+        <td><?php echo $Lang['Settings']['Password']['Old']; ?></td>
+        <td><input type="password" name="opass"></td>
+      </tr>
+      <tr>
+        <td><?php echo $Lang['Settings']['Password']['New']; ?></td>
+        <td><input type="password" name="pass1"></td>
+      </tr>
+      <tr>
+        <td><?php echo $Lang['Settings']['Password']['Retype']; ?></td>
+        <td><input type="password" name="pass2"></td>
+      </tr>
+      </table>
+      <input type="submit" name="passwd_submit" value="<? echo $Lang['FormApply']; ?>">
+    </form>
   </td>
 </tr>
 </table>

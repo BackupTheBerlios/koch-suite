@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.23 2001/10/31 18:26:02 lestinsky Exp $
+   * $Id: de.inc,v 1.24 2001/12/24 14:10:25 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -55,6 +55,14 @@
   $Lang['Auth']['LoggedInAs']   = "Angemeldet als";
   $Lang['Auth']['Logout']       = "Abmelden";
   $Lang['Auth']['NoLogin']      = "Nicht angemeldet";
+
+  $Lang['Settings']['Title']    = "Einstellungen";
+  $Lang['Settings']['Password']['Title']        = "Passwort &auml;ndern";
+  $Lang['Settings']['Password']['Old']          = "Altes Passwort";
+  $Lang['Settings']['Password']['New']          = "Neues Passwort";
+  $Lang['Settings']['Password']['Retype']       = "Neues Passwort best&auml;tigen";
+  $Lang['Settings']['Password']['nomatch']      = "Passw&ouml;rter stimmen nicht &uuml;berein.";
+  $Lang['Settings']['Password']['changed']      = "Passwort ge&auml;ndert.";
 
   $Lang['AllRecipes']		= "Alle Rezepte";
   $Lang['CatChoose']		= "Kategorie-Auswahl";

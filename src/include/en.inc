@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.26 2001/10/31 18:26:02 lestinsky Exp $
+   * $Id: en.inc,v 1.27 2001/12/24 14:10:25 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -56,6 +56,14 @@
   $Lang['Auth']['LoggedInAs']   = "Logged in as";
   $Lang['Auth']['Logout']       = "Logout";
   $Lang['Auth']['NoLogin']      = "Not logged in";
+
+  $Lang['Settings']['Title']	= "Your Settings";
+  $Lang['Settings']['Password']['Title']	= "Change your password";
+  $Lang['Settings']['Password']['Old']		= "Old password";
+  $Lang['Settings']['Password']['New']		= "New password";
+  $Lang['Settings']['Password']['Retype']	= "Confirm new password";
+  $Lang['Settings']['Password']['nomatch']	= "Passwords don't match.";
+  $Lang['Settings']['Password']['changed']      = "Password changed.";
 
   $Lang['AllRecipes']		= "All recipes";
   $Lang['CatChoose']		= "Category-chooser";
