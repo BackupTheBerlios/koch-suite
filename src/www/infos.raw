@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.18 2001/03/18 13:58:04 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.19 2001/03/27 21:39:51 michael Exp $ -->
 </head>
 
 <body>
@@ -25,7 +25,14 @@
   <td width="90%">
     <h2>Informationen zur Koch-Suite</h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.18 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.19 $ -->
+
+    <h3>Homepage</h3>
+    <p>
+      <a href="http://milliways.ma.choin.net/~michael/koch-suite/">http://milliways.ma.choin.net/~michael/koch-suite/</a>:
+      Aktuelle Informationen und Versionen rund um dieses Projekt finden
+      sich dort.
+    </p>
 
     <h3>Voraussetzungen:</h3>
     <p>
