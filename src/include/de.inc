@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.45 2002/09/29 20:35:38 lestinsky Exp $
+   * $Id: de.inc,v 1.46 2002/10/14 20:05:31 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -48,7 +48,7 @@
 
 
   $Lang['Mainmenu']['Title']		= "Hauptmen&uuml;";
-  $Lang['Mainmenu']['PlsChoose']	= "Bitte W&auml;hlen Sie im Hauptmen&uuml;";
+  $Lang['Mainmenu']['PlsChoose']	= "Bitte w&auml;hlen Sie im Hauptmen&uuml;";
   $Lang['Search']['Search']	= "Suchen";
   $Lang['Search']['For']	= "Suchen nach";
   $Lang['Search']['In']		= "Suchen in";
@@ -117,6 +117,10 @@ EOT;
       Geben sie bis zu 5 Kategorien an. Klicken sie auf die gew&uuml;nschte
       Kategorie, um den Wert in das Formularfeld zu &uuml;bertragen.
 EOT;
+  $Lang['Category']['Edit']	= 'Kategorien bearbeiten';
+  $Lang['Category']['EditAlias']= 'Aliase bearbeiten';
+  $Lang['Category']['MakeAlias']= 'In Alias umwandeln';
+  $Lang['Category']['Delete']	= 'Kategorie l&ouml;schen';
 
   $Lang['UnitInfo']['Title']    = "Einheiten-Infos";
   $Lang['UnitInfo']['MMText']   = "Einheit im Meal-Master-Format.";

@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.50 2002/10/13 18:55:03 lestinsky Exp $
+   * $Id: en.inc,v 1.51 2002/10/14 20:05:31 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -116,6 +116,11 @@ EOT;
       Please select 5 different categories max. Click onto the category
       to insert the value into the form.
 EOT;
+  $Lang['Category']['Edit']     = 'Edit categories';
+  $Lang['Category']['EditAlias']= 'Edit aliases';
+  $Lang['Category']['MakeAlias']= 'Convert into alias';
+  $Lang['Category']['Delete']   = 'Delete category';
+
 
   $Lang['UnitInfo']['Title']    = "Unit Infomation";
   $Lang['UnitInfo']['MMText']   = "Units in Meal-Master format.";
