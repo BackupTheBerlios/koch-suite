@@ -6,7 +6,9 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <title>Koch-Suite</title>
-  <!-- $Id: delete.raw,v 1.1 2001/01/12 17:29:08 michael Exp $ -->
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <!-- $Id: delete.raw,v 1.2 2001/01/25 00:16:49 michael Exp $ -->
 </head>
 
 <body>
@@ -18,7 +20,7 @@
   <td valign="top">
     <? include "./menue.inc"; ?>
   </td>
-  <td style="font-family:Courier;">
+  <td>
     <!-- Rechts: Ausgabe -->
     <?
       include "<%%PHP_LIBS%%>/functions.inc";

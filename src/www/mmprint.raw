@@ -5,8 +5,10 @@
 <head>
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
   <title>Koch-Suite</title>
-  <!-- $Id: mmprint.raw,v 1.6 2001/01/12 00:59:44 michael Exp $ -->
+  <!-- $Id: mmprint.raw,v 1.7 2001/01/25 00:19:55 michael Exp $ -->
 </head>
 
 <body>

@@ -6,8 +6,9 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: index.raw,v 1.7 2001/01/18 00:47:12 michael Exp $ -->
+  <!-- $Id: index.raw,v 1.8 2001/01/25 00:17:43 michael Exp $ -->
 </head>
 
 <body>
