@@ -41,7 +41,7 @@ nur nicht getestet.
 <ul>
   <li>30.7.2002: <a href="http://download.berlios.de/koch-suite/koch-suite-0.7.tar.gz">Version 0.7</a> (<a href="http://developer.berlios.de/cvs/?group_id=144">Siehe unser CVS</a>)
     <ul>
-      <li>Weitere Bugfixes, Aufräumarbeiten und Code-Audit.</li>
+      <li>Bugfixes, Aufräumarbeiten und Code-Audit.</li>
       <li>Aktiviere Suche nach Metadaten.</li>
       <li>Erlaube PHPs safemode Umgebungen.</li>
       <li>Extrahiere Metainformationen wie Erfasser oder Quelle.</li>
@@ -56,35 +56,6 @@ nur nicht getestet.
           (incl. einer vorl&auml;ufigen Spanischen &Uuml;bersetzung)</li>
     </ul>
   </li>
-  <li>25.10.2001: <a href="http://download.berlios.de/koch-suite/koch-suite-0.6.tar.gz">Version 0.6</a> (Aktuelle Stabile Version).
-    <ul>
-      <li>Webclient: Weitere Ausgabe-Formate (PDF, PS, DVI) f&uuml;r die
-          Druck-Version</li>
-      <li>Webclient: Authentfizierung von Usern.</li>
-      <li>Rezept-Import: Dublikat-Pr&uuml;fung</li>
-      <li>Portabilit&auml;t: AIX 4.3 (mit Gnu-Make)</li>
-    </ul>
-  </li>
-  <li>07.08.2001: <a href="http://download.berlios.de/koch-suite/koch-suite-0.5.1.tar.gz">Version 0.5.1</a>
-    <ul>
-      <li>Bugfix-Release</li>
-    </ul>
-  </li>
-  <li>03.07.2001: <a href="koch-suite-0.5.tar.gz">Version 0.5</a>
-    <ul>
-      <li>Multilingalization via eines einfachen und erweiterbaren
-          Frameworks.</li>
-      <li>PostgreSQL-Support. (Vielen Dank an Michael Bussmann f&uuml;r 
-          seinen gro&szlig;artigen Patch der dies erm&ouml;glicht.)</li>
-      <li>Deutlich verbesserte Suche: jetzt k&ouml;nnen mehrere
-          Suchbegriffe durch <code>AND</code> miteinander verkn&uuml;pft 
-          werden (z.B.: <code>Muffins AND Schoko</code>).</li>
-      <li>Zahlreiche Bugfixes und Code-Bereinigungen (und neue Fehler
-          <code>;-)</code>)</li>
-      <li>Ein einfacher Editor f&uuml;r die Einheiten-Aliase.</li>
-    </ul>
-  </li>
-</ul>
 
 <h2>Features</h2>
 <p>
@@ -118,7 +89,8 @@ Siehe auch unsere <a href="todo.txt">Todo-Liste/Roadmap</a>.
 <h3>Voraussetzungen</h3>
 <ul>
   <li><a href="http://www.php.net/">PHP4</a> als Standalone-Interpreter 
-      und als <a href="http://www.apache.org">Apache</a>-Modul</li>
+      (f&uuml;r die CLI-Tools) und als 
+      <a href="http://www.apache.org">Apache</a>-Modul</li>
   <li>Datenbank-D&aelig;mon:
     <ul>
       <li>Entweder <a href="http://www.mysql.com">MySQL</a> 
@@ -130,7 +102,7 @@ Siehe auch unsere <a href="todo.txt">Todo-Liste/Roadmap</a>.
   </li>
 </ul>
 
-<h3>Export nach</h3>
+<h3>Vorhandene Exportfilter</h3>
 
 <ul>
   <li>Plain Text</li>
@@ -140,6 +112,7 @@ Siehe auch unsere <a href="todo.txt">Todo-Liste/Roadmap</a>.
 </ul>
 
 <h3>Import von Rezepten im</h3>
+
 <ul>
   <li><a href="http://home1.gte.net/welliver/">Mealmaster</a>-Format</li>
   <li><a href="http://home.t-online.de/home/ufetzer/">REZKONV</a>-Format.
@@ -156,8 +129,8 @@ Sprachmodule lassen sich sehr einfach erzeugen.
 
 <h2>Download</h2>
 <dl>
-  <dt><a href="http://download.berlios.de/koch-suite/koch-suite-0.6.tar.gz">koch-suite-0.6.tar.gz</a></dt>
-      <dd>(2001-10-25) Aktuell stabile Version.</dd>
+  <dt><a href="http://download.berlios.de/koch-suite/koch-suite-0.7.tar.gz">koch-suite-0.7.tar.gz</a></dt>
+      <dd>(2002-07-30) letztes stabiles Release.</dd>
 </dl>
 
 <h2>Weiteres</h2>
@@ -180,7 +153,7 @@ eintragen oder austragen.
 <h2>Links</h2>
 <ul>
   <li><a href="http://mango.sourceforge.net">Mango</a>, eine andere
-Rezeptverwaltung f&uuml;r Unix-artige Betriebssysteme</li>
+      Rezeptverwaltung f&uuml;r Unix-artige Betriebssysteme</li>
 </ul>
 
 <address>
@@ -193,7 +166,7 @@ Rezeptverwaltung f&uuml;r Unix-artige Betriebssysteme</li>
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.de,v 1.2 2002/08/16 10:23:19 lestinsky Exp $
+$Id: index.html.de,v 1.3 2002/08/16 10:30:33 lestinsky Exp $
 </address>
 </body>
 </html>
