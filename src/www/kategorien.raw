@@ -30,7 +30,7 @@
   /**
    * Category-chooser
    *
-   * $Id: kategorien.raw,v 1.16 2002/06/11 18:43:47 lestinsky Exp $
+   * $Id: kategorien.raw,v 1.17 2002/07/03 16:28:12 lestinsky Exp $
    * Michael Lestinsky <michael@lestinsky.de>
    *
    * @package WWW
@@ -48,11 +48,10 @@
   $target    = false;
   $maxsel    = false;
   $kategorie = false;
-  if (isset($HTTP_GET_VARS["target"]))    $target = $HTTP_GET_VARS["target"];
-  if (isset($HTTP_GET_VARS["kategorie"])) $kategorie = $HTTP_GET_VARS["kategorie"];
-  if (isset($HTTP_GET_VARS["maxsel"]))    $maxsel = $HTTP_GET_VARS["maxsel"];
-  if (isset($HTTP_SERVER_VARS["PHP_SELF"])) 
-    $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
+  if (isset($_GET["target"]))    $target = $_GET["target"];
+  if (isset($_GET["kategorie"])) $kategorie = $_GET["kategorie"];
+  if (isset($_GET["maxsel"]))    $maxsel = $_GET["maxsel"];
+  if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
     "http://www.w3.org/TR/REC-html40/loose.dtd">
@@ -103,7 +102,7 @@
 
     foreach ($kat as $kategorie) {
       if ($maxsel == 1) {
-        echo "<tr><td><a href=\"index.php?suchen=1&target=$target&begr=$kategorie\" onClick=\"eintragen('" . $kategorie . "');\">$kategorie</a></td></tr>\n";
+        echo "<tr><td><a href=\"search.php?suchen=1&target=$target&begriff=$kategorie\" onClick=\"eintragen('" . $kategorie . "');\">$kategorie</a></td></tr>\n";
       } else {
         echo "<tr><td><a name=\"$kategorie\" href=\"$PHP_SELF?target=$target#$kategorie\" onClick=\"eintragen('" . $kategorie . "');\">$kategorie</a></td></tr>\n";
       }

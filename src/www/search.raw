@@ -48,7 +48,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: search.raw,v 1.19 2002/06/11 18:43:47 lestinsky Exp $ -->
+  <!-- $Id: search.raw,v 1.20 2002/07/03 16:28:12 lestinsky Exp $ -->
 </head>
 
 <body>
@@ -63,12 +63,8 @@
   <td>
 
     <?
-      if (isset($HTTP_POST_VARS["where"]))
-        $where = $HTTP_POST_VARS["where"];
-
-      if (isset($HTTP_SERVER_VARS["PHP_SELF"]))
-        $PHP_SELF = $HTTP_SERVER_VARS["PHP_SELF"];
-
+      if (isset($_POST["where"]))      $where = $_POST["where"];
+      if (isset($_SERVER["PHP_SELF"])) $PHP_SELF = $_SERVER["PHP_SELF"];
       if (!empty($_POST["begriff"]) or !empty($_GET["all"])) {
 
         /* We have something to do, let's go: */
@@ -80,7 +76,7 @@
              } 
           ?> 
         </h2>
-    
+
         <table border=0>
         <?
 
@@ -108,6 +104,7 @@
         if ($m = exec_search((isset($_POST["begriff"]) ? $_POST['begriff'] : ''), 
                              $where, 
                              (isset($_GET["all"]) ? $_GET["all"] : ''))) {
+          reset($m);
           print_count($m);
           print_titles($m);
           $_SESSION["searchresult"] = $m;
@@ -118,6 +115,7 @@
         ?>
         </table>
         <?
+
       }
     ?>
     <h2><? echo $Lang['Search']['Search']; ?></h2>
@@ -135,7 +133,7 @@
       <table border=0>
         <tr>
           <td><? echo $Lang['Search']['For']; ?></td>
-          <td><input type="text" name="begriff">
+          <td><input type="text" name="begriff" <? if (isset($_GET['begriff'])) echo "value=\"" . $_GET['begriff'] ."\""; ?>>
         </tr>
         <tr>
           <td><? echo $Lang['Search']['In']; ?></td>
