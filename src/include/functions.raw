@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.57 2001/08/06 17:57:08 lestinsky Exp $
+   * $Id: functions.raw,v 1.58 2001/08/06 23:32:06 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -437,7 +437,7 @@
    * @param int $flavor Rezept-Format
    * @return 
    */
-  function &parse_recipe($file, $flavor=RECIPE_MM) {
+  function &parse_recipe(&$file, $flavor=RECIPE_MM) {
     $zutaten        = array();
     $bar            = 0;
     $instruction    = "";
@@ -626,7 +626,7 @@
   }
 
 
-  function getingr ($file, $flavor=RECIPE_MM) {
+  function getingr (&$file, $flavor=RECIPE_MM) {
     /* read the ingredients 
      * return a 2-dim Array $a[count][ingr-spec]
      * where count is a plain integer-counter, specifying more or less
