@@ -1,3 +1,14 @@
+2002-04-01  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/actions.raw 1.3, src/www/rezept.raw 1.25:
+  Enable the scaling of recipes in the web frontend.
+  Type the absolut value for the yield you want.
+
+  * src/www/print.raw 1.17: Cleanup
+
+  * src/include/de.inc 1.28, src/include/en.inc 1.32:
+  More
+
 2002-03-31  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/man/man1/rezept.1.raw 1.8: update date
