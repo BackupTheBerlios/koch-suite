@@ -64,7 +64,7 @@
       } else {
 
         // are there any obvious errors in the email address?
-        if (!eregi("^[_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3}$", $_POST['email'])) {
+        if (!eregi("^[_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,4}$", $_POST['email'])) {
           $msg = $Lang['Admin']['ErrMsg']['InvalidMail'];
 
         } else { 
