@@ -1,4 +1,4 @@
-# $Id: config,v 1.5 2000/12/08 23:54:58 michael Exp $
+# $Id: config,v 1.6 2000/12/09 00:13:09 michael Exp $
 # Central Configuration-File for the "Koch-Suite"
 # Lines starting with a "#" are comments, empty lines are omitted.
 
@@ -13,16 +13,17 @@ PHP_LIBS 	=/usr/local/lib/koch-suite
 SCRIPT_PREFIX   =/usr/local/bin
 
 # Where to place the "Web"-Documents for this Interface:
-WEB_PREFIX	=/var/www/htdocs/koch-suite
+WEB_PREFIX	=/var/www/koch-suite
 
 # And the Documentation goes there:
 DOC_PREFIX      =/usr/local/share/doc/koch-suite
 
 # User and Group, who will own the files, typically something like "root"
-# or "wheel";
+# or "wheel"; consult your local /etc/passwd and /etc group for more info.
+# Remember: Only Root can chown/chgrp to users/groups he isn't a member of!
 
 OWNER		=root
-GROUP		=wheel
+GROUP		=0
 
 # -- DB-Definitions --
 DB_SERVER	=magrathea
