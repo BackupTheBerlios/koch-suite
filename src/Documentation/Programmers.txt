@@ -1,4 +1,4 @@
-### $Id: Programmers.txt,v 1.10 2001/10/06 09:56:15 lestinsky Exp $
+### $Id: Programmers.txt,v 1.11 2001/10/13 13:47:21 lestinsky Exp $
 
 Programmers Documentation
 =========================
@@ -15,6 +15,7 @@ Programmers Documentation
   3. Datastructure
   4. "config"
      4.1. Substitutions
+  5. Authentication
 
 
 
@@ -164,6 +165,38 @@ And in the `config' file
 
 `make' will then perform this substitutions.
 
+
+
+5. Authentication
+-----------------
+
+(Please note: this isn't fully implemented yet.)
+
+The Authentication-scheme is designed as hierarchical structure, with
+different kinds of authentication-levels. The users should be classified
+in this way:
+
+ +-----------------------------------------------+
+ |       Admin:                                  |
+ | +------------------------------------------+  |
+ | |     Moderator:                           |  |
+ | | +---------------------------------+      |  |
+ | | |   Writer:                       |      |  |
+ | | | +-------------------------+     |      |  |
+ | | | | Reader:                 |     |      |  |
+ | | | |  * may read recipes     |     |      |  |
+ | | | +-------------------------+     |      |  |
+ | | |    * may edit and write recipes |      |  |
+ | | +---------------------------------+      |  |
+ | |      * accept or reject recipe sumission |  |
+ | |      * you can turn off moderation,      |  |
+ | |        so each recipes goes into the db  |  |
+ | |        without a review                  |  |
+ | +------------------------------------------+  |
+ |        * controls access and creates accounts |
+ +-----------------------------------------------+
+
+Every level inherits all the permissions of its sub-levels, of course.
 
 -- 
 (c) 2000 Michael Lestinsky <michael@lestinsky.de>
