@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta name="Author" content="Michael Lestinsky" />
+  <meta name="keywords" lang="de" content="Kochen, Kochbuch, Rezept, Rezeptverwaltung, Unix, Linux" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <title>Koch-Suite</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1><img src="title.gif" alt="Koch-Suite" border="0" align="right" />Links</h1>
+
+<p class="buttonbar">
+[<a href="index.html">Intro</a>]
+[<a href="features.html">Features</a>]
+[<a href="requirements.html">Voraussetzungen</a>]
+[Links]
+</p>
+
+<h2>Alternative Rezeptverwaltungen f&uuml;r Un*x</h2>
+<ul>
+  <li><a
+href="http://trident.mcs.kent.edu/~dwatson/cookbook.html">Cookbook</a>,
+      eine Rezeptverwaltung f&uuml;r KDE.</li>
+  <li><a href="http://home.CameloT.de/thomas/">Mampf</a>, eine etwas
+      &auml;ltere Rezeptverwaltung f&uuml;r Unix. Geschrieben in Tcl/Tk,
+      verwendet mSQL.</li>
+  <li><a href="http://mango.sourceforge.net">Mango</a>. Geschrieben in
+C++,
+      verwendet Qt.</li>
+  <li>Eine vollst&auml;ndigere <a href="http://www.lestinsky.de/mampfwiki/index.php/Rezeptverwaltungssoftware">Liste</a> ist etwa im <a href="http://www.lestinsky.de/mampfwiki/">MampfWiki</a> zusammengestellt.</li>
+</ul>
+
+<h2>Sonstiges</h2>
+<ul>
+  <li><a href="http://developer.berlios.de/projects/koch-suite/">Koch-Suite at Berlios</a></li>
+  <li>Details zum <a href="http://developer.berlios.de/cvs/?group_id=144">CVS-Repository</a></li>
+  <li><a href="http://developer.berlios.de/survey/survey.php?group_id=144&amp;survey_id=4">Umfrage: Welches Interface?</a></l
+i>
+  <li>Dir gef&auml;llt die Koch-Suite? Sag <a href="http://www.amazon.de/exec/obidos/wishlist/38UW4J3AT8UMH/ref=wl_em_to">Danke</a>. :-)</li>
+  <li><a href="http://www.lestinsky.de/mampfwiki/">MampfWiki</a>, ein Wiki
+      rund um's Essen und Trinken.</li>
+</ul>
+
+<address>
+<a href="http://validator.w3.org/check/referer"><img
+        src="http://www.w3.org/Icons/valid-xhtml10"
+        alt="Valid XHTML 1.0!" height="31" width="88" align="right"
+        border="0" /></a>
+<a href="http://www.berlios.de/"><img
+        src="http://developer.berlios.de/sflogo.php?group_id=144&amp;type=1"
+        border="0" height="31" width="88"
+        align="right" alt="BerliOS"/></a>
+&copy; 2003 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
+$Id: links.html.de,v 1.1 2003/05/14 18:39:15 lestinsky Exp $
+</address>
+</body>
+</html>

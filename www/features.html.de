@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta name="Author" content="Michael Lestinsky" />
+  <meta name="keywords" lang="de" content="Kochen, Kochbuch, Rezept, Rezeptverwaltung, Unix, Linux" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <title>Koch-Suite</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1><img src="title.gif" alt="Koch-Suite" border="0" align="right" />Features</h1>
+
+<p class="buttonbar">
+[<a href="index.html">Intro</a>]
+[Features]
+[<a href="requirements.html">Voraussetzungen</a>]
+[<a href="links.html">Links</a>]
+</p>
+
+<h2>Feature-Liste</h2>
+
+<ul>
+  <li>Importformate f&uuml;r MealMaster, RezKonv.</li>
+  <li>Exportformate nach Plain Text, MealMaster, LaTeX, HTML, PDF.</li>
+  <li>Ein bequemes Webinterface, mit dem sich Rezepte einfach
+      ausw&auml;hlen, suchen oder bearbeiten lassen.</li>
+  <li>Frei definierbare Einheiten-Aliase (etwa EL, Essl.,...).</li>
+  <li>Multi-User-f&auml;hig, hierarchische Userverwaltung.</li>
+  <li>Ein vielsprachiges Interface, derzeit vorhanden sind Sprachmodule f&uuml;r
+      Englisch, Spanisch und Deutsch, weitere k&ouml;nnen leicht erstellt
+      werden.</li>
+  <li>Rezept-Rating (Entwickler-Version)</li>
+</ul>
+
+
+<h2>Aufbau der Koch-Suite</h2>
+
+<p>
+Diese Suite besteht aus mehreren einzelnen Komponenten. Die zentrale
+Rolle spielt die Funktionenbibliothek, um die die einzelnen Anwendungen
+nur noch triviale Wrapper sind.
+
+Die Komponenten sind im einzelnen:
+</p>
+
+<dl>
+  <dt>Bibliothek</dt>
+    <dd>Stellt alle Funktionen zum Import/Export, der Konvertierung und
+        der Datenbank-Schnittstelle bereit.</dd>
+  <dt>WWW-Interface</dt>
+    <dd>Das WWW-Interface ist eine sehr einfache M&ouml;glichkeit dezentral
+        auf die Datenbank zuzugreifen, zu suchen und neue Rezepte zu erfassen.
+        [<a href="http://www.lestinsky.de/koch-suite/">Demoversion</a>]</dd>
+  <dt>Kommandozeilen-Tools</dt>
+    <dd>Mit den Kommandozeilen-Tools <code>rezept(1)</code> und
+        <code>mmimport(1)</code> kann man sehr bequem Shellskripte,
+        Newsreader-Plugins... realisieren. Ein Demo-Makro f&uuml;r
+        den einfachen Rezept-Import aus
+        <a href="http://www.slrn.org">Slrn</a> heraus ist beigelegt.</dd>
+</dl>
+<p>
+Siehe auch unsere <a href="todo.txt">Todo-Liste/Roadmap</a>.
+</p>
+
+<address>
+<a href="http://validator.w3.org/check/referer"><img
+        src="http://www.w3.org/Icons/valid-xhtml10"
+        alt="Valid XHTML 1.0!" height="31" width="88" align="right"
+        border="0" /></a>
+<a href="http://www.berlios.de/"><img
+        src="http://developer.berlios.de/sflogo.php?group_id=144&amp;type=1"
+        border="0" height="31" width="88"
+        align="right" alt="BerliOS"/></a>
+&copy; 2003 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
+$Id: features.html.de,v 1.1 2003/05/14 18:39:15 lestinsky Exp $
+</address>
+</body>
+</html>

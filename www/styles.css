@@ -1,19 +1,15 @@
-/* $Id: styles.css,v 1.4 2002/08/16 11:00:36 lestinsky Exp $
+/* $Id: styles.css,v 1.5 2003/05/14 18:39:15 lestinsky Exp $
  * Michael Lestinsky, Aug 15th 2002 
  */
 
 body { color:#000000; background-color:#ffffff; }
-h1       { font-family:Verdana,Helvetica,Arial; text-align:center; 
+h1       { font-family:Verdana,Helvetica,Arial; text-align:left; 
            background-color:#e9e9f0; padding:3px;
            border-top-width:thin; border-bottom-width:0px;
            border-right-width:0px; border-left-width:0px;
            border-style:solid; border-color:#9090b0; }
-h2       { font-family:Helvetica,Arial; text-align:left;
-           background-color:#f9f9ff; padding:3px;
-           border-top-width:thin; border-bottom-width:0px;
-           border-right-width:0px; border-left-width:0px;
-           border-style:solid; border-color:#d0d0e0; }
-h3,h4,h5,h6,strong,b,a {font-family:Helvetica,Arial}
+h2       { font-family:Helvetica,Arial; text-align:left; }
+h3,h4,h5,h6,strong,b {font-family:Helvetica,Arial}
 
 h2 { margin-top:5mm; }
 h3 { margin-top:3mm; }
@@ -21,6 +17,11 @@ h3 { margin-top:3mm; }
 p { margin-top:3mm; }
 
 .smalltext { font-family:Helvetica,Arial; font-size:small; }
+.buttonbar { font-family:Courier; text-align:left; font-size:small;
+             background-color:#f8f8ff; padding:0px;
+             border-top-width:thin; border-bottom-width:thin;
+             border-right-width:0px; border-left-width:0px;
+             border-style:solid; border-color:#f0f0f8; }
 
 a:link { color:#040473; }
 a:visited { color:#040464; }
@@ -30,9 +31,6 @@ a:active    { color:#111473; }
 .header  { background-color:#c0c0d5; }
 .table   { background-color:#9090b0; }
 .whitebg { background-color:#ffffff; }
-
-ul       { list-style-image:url(blue_dot.gif); }
-.lightbluedot { list-style-image:url(lightblue_dot.gif); }
 
 p        { text-align:justify; }
 td       { background-color:#e9e9f0; }
