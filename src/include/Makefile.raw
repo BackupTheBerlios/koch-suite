@@ -40,9 +40,9 @@ install: install-lib install-etc
 
 install-lib: build
 	( [ -d "${DESTDIR}/<%%PHP_LIBS%%>" ] || \
-	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%PHP_LIBS%%> )
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${PHP_FILES_UNCONF} ${DESTDIR}/<%%PHP_LIBS%%>
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${ADDITIONAL} ${DESTDIR}/<%%PHP_LIBS%%>
+	<%%INSTALL%%> -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%PHP_LIBS%%> )
+	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${PHP_FILES_UNCONF} ${DESTDIR}/<%%PHP_LIBS%%>
+	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${ADDITIONAL} ${DESTDIR}/<%%PHP_LIBS%%>
 
 install-etc: build
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${KS_CONFIG} ${DESTDIR}/<%%ETC_PREFIX%%>
+	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${KS_CONFIG} ${DESTDIR}/<%%ETC_PREFIX%%>

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.18 2001/10/15 11:44:36 lestinsky Exp $
+# $Id: configure,v 1.19 2001/10/18 10:05:03 lestinsky Exp $
 #
 # Copyright (c) 2001
 #      Michael Lestinsky. All rights reserved.
@@ -35,19 +35,27 @@ CONF_RAW_MY=config.my
 CONF_FILE=config.sed
 AWKSCRIPT=genconfig.awk
 
+# config.my overrides config
 if [ -f ${CONF_RAW_MY} ] ; then 
   CONF_RAW=${CONF_RAW_MY}
 fi
 
 THISDIR=$(pwd)
 
+add_conf () {
+    # Add a line to ${CONF_FILE}
+    # $1 = Name, $2 = Value
+    echo "s:<%%$1%%>:$2:g" >> ${CONF_FILE}
+}
+
 check_prereq () {
     # Check if we can find all neccessary tools:
-    echo -n "Checking for '$1': ... "
+    echo -n "Checking for '$1' ... "
     req=$(which "$1")
     if [ -n "${req}" -a $? = 0 ] ; then 
         # Found.
         echo "Found - $req"
+        add_conf $1 ${req}
     else
         echo "Not Found!"
         exit 2
@@ -55,16 +63,16 @@ check_prereq () {
 }
 
 check_opt () {
-    # Check for optional tools an add their path to the config.sed
+    # Check for optional tools and add their path to the config.sed
     echo -n "Probing for optional '$1': ... "
     req=$(which "$1")
     if [ -n "${req}" -a $? = 0 ] ; then
         # Found.
         echo "Found - $req"
-        echo "s:<%%$1%%>:${req}:" >> ${CONF_FILE}
+        add_conf $1 ${req}
     else 
         echo "Not Found!"
-        echo "s:<%%$1%%>:none:" >> ${CONF_FILE}
+        add_conf $1 "none"
     fi
 }
 
@@ -82,6 +90,12 @@ translate_raw () {
     # Translate Raw files
     sed -f ${THISDIR}/${CONF_FILE} $1.raw > $1
 }
+
+
+##########
+# Lets start with an empty ${CONF_FILE}
+rm -f ${CONF_FILE}
+
 
 ##########
 # Build-Depends: 'awk' and 'sed'
@@ -101,16 +115,50 @@ if [ -z "${awk}" ] ; then
 else
     echo "Found - ${awk}"
     if [ "${warn_awk}" = "1" ] ; then
-        echo "*** Warning: using an unknown awk."
+        echo "*** Warning: using an untested awk. This may yield errors."
     fi
 fi
 
 check_prereq sed
+check_prereq mkdir
+check_prereq chmod
+check_prereq chown
+
+##########
+# Probe for a good install or use the one we provide as fallback
+echo -n "Checking for a BSD compatible install ... "
+for i in ginstall installbsd install ; do
+    install=$(which $i)
+    if [ -n "${install}" -a $? = 0 ] ; then
+        # Got one. Is it sufficient enough?
+
+        # Is this install capable to create directories?
+        ${install} -d /tmp/KS_TESTDIR 2>&1 > /dev/null
+
+        if [ $? != 0 ] ; then
+            # No
+            stupid_install=1
+            break;
+        else
+            break;
+        fi
+    else
+        unset install
+    fi
+done
+if [ -n "${install}" -a "${stupid_install}" != "1" ] ; then
+    echo "Found - ${install}"
+    add_conf "INSTALL" ${install}
+elif [ "${stupid_install}" = 1 ]; then
+    add_conf "INSTALL" "${THISDIR}/install.sh"
+    echo "Using ./install.sh"
+fi
+
 
 ##########
 # Generate the sed-file:
 echo -n "Generating config.sed ... "
-${awk} -f ${AWKSCRIPT} ${CONF_RAW} > ${CONF_FILE}
+${awk} -f ${AWKSCRIPT} ${CONF_RAW} >> ${CONF_FILE}
 if [ $? = 0 ] ; then 
     echo "Done."
 else 

@@ -31,7 +31,7 @@ distclean:
 
 install: build
 	( [ -d "${DESTDIR}/<%%SCRIPT_PREFIX%%>" ] || \
-	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%SCRIPT_PREFIX%%> )
-	install -c -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${PHP_FILES} ${DESTDIR}/<%%SCRIPT_PREFIX%%>
+	<%%INSTALL%%> -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%SCRIPT_PREFIX%%> )
+	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${PHP_FILES} ${DESTDIR}/<%%SCRIPT_PREFIX%%>
 
 .PHONY: all subdir clean distclean install

@@ -1,9 +1,9 @@
-# $Id: Makefile.raw,v 1.25 2001/10/15 11:47:49 lestinsky Exp $
+# $Id: Makefile.raw,v 1.26 2001/10/18 10:05:04 lestinsky Exp $
 # Space-separated list of all "raw" php-files.
 PHP_FILES=		delete.php einfuegen.php index.php infos.php \
 			rezept.php print.php mmprint.php kategorien.php \
 			help.php units.php search.php edit_alias.php \
-			login.php logout.php
+			login.php logout.php state.php
 INC_FILES=		menue.inc
 
 # Files to install unmangled (dont forget the filename-suffix here!)
@@ -46,9 +46,9 @@ distclean:
 install: build
 	@${MAKE} subdir TRGT=install DESTDIR=${DESTDIR}
 	@( test -d "${DESTDIR}/<%%WEB_PREFIX%%>" || \
-	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%WEB_PREFIX%%> )
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${PHP_FILES} ${DESTDIR}/<%%WEB_PREFIX%%>
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${INC_FILES} ${DESTDIR}/<%%WEB_PREFIX%%>
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${ADDITIONAL} ${DESTDIR}/<%%WEB_PREFIX%%>
+	<%%INSTALL%%> -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> ${DESTDIR}/<%%WEB_PREFIX%%> )
+	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${PHP_FILES} ${DESTDIR}/<%%WEB_PREFIX%%>
+	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${INC_FILES} ${DESTDIR}/<%%WEB_PREFIX%%>
+	<%%INSTALL%%> -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> ${ADDITIONAL} ${DESTDIR}/<%%WEB_PREFIX%%>
 
 .PHONY: all subdir clean distclean install

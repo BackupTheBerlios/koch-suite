@@ -1,0 +1,177 @@
+#!/bin/sh
+# $Id: install.sh,v 1.1 2001/10/18 10:05:03 lestinsky Exp $
+#
+# This install-script tries to be as BSD-install compatible as possible
+# And is used, if your operating-system doesn't support a suitable one.
+#
+# Copyright (c) 2001
+#      Michael Lestinsky. All rights reserved.
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions
+#  are met:
+#  1. Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+#  2. Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#  3. All advertising materials mentioning features or use of this software
+#     must display the following acknowledgement:
+#       This product includes software developed by Michael Lestinsky.
+# 
+#  THIS SOFTWARE IS PROVIDED BY MICHAEL LESTINSKY ``AS IS'' AND
+#  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+#  ARE DISCLAIMED.  IN NO EVENT SHALL MICHAEL LESTINSKY BE LIABLE
+#  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+#  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+#  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+#  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+#  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+#  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+#  SUCH DAMAGE.
+
+MV="${MV:-mv}"
+CP="${CP:-cp}"
+RM="${RM:-rm}"
+CHMOD="${CHMOD:-chmod}"
+CHOWN="${CHOWN:-chown}"
+CHGRP="${CHGRP:-chgrp}"
+MKDIR="${MKDIR:-mkdir}"
+
+save_old=0
+old_suffix=".old"
+dir=0
+group=""
+mode=""
+owner=""
+src=""
+dst=""
+
+chmod_cmd=""
+chgrp_cmd=""
+chown_cmd=""
+
+# Parse the commandline
+while [ "$1" != "" ] ; do
+    case $1 in
+        -b) save_old=1
+            shift
+            continue;;
+
+        -B) old_suffix=$2
+            shift
+            shift
+            continue;;
+
+        -c) shift   # Copy, of course.
+            continue;;
+
+        -d) dir=1
+            shift
+            continue;;
+
+        -g) chgrp_cmd="${CHGRP} $2"
+            shift
+            shift
+            continue;;
+
+        -m) chmod_cmd="${CHMOD} $2"
+            shift
+            shift
+            continue;;
+
+        -o) chown_cmd="${CHOWN} $2"
+            shift
+            shift
+            continue;;
+
+        -s) shift # Stripping doesn't make sense for PHP-Files,
+                  # but accept it for compatibility.
+            continue;;
+
+        *)  if [ "$2" != "" ] ; then
+                if [ "${src}" != "" ] ; then
+                    src="${src} $1"
+                else
+                    src="$1"
+                fi
+            else 
+                dst="$1"
+            fi
+            shift
+            continue;;
+    esac
+done
+
+
+if [ ${dir} = 0 -a "${src}" = "" ] ; then
+    echo "$0: error in parameter list"
+    exit 1
+
+elif [ "${dst}" = "" ] ; then
+    echo "$0: no target specified"
+    exit 1
+
+elif [ ${dir} = 1 ] ; then
+    # Create a directory
+
+    if [ "${dst}" != "" ] ; then
+        if [ -d ${dst} ] ; then
+            # The directory does already exist
+            true
+        else
+            ${MKDIR} -p ${dst}
+        fi
+
+        if [ -n "${chown_cmd}" ] ; then
+            ${chown_cmd} ${dst}
+        fi
+
+        if [ -n "${chgrp_cmd}" ] ; then
+            ${chgrp_cmd} ${dst}
+        fi
+
+        if [ -n "${chmod_cmd}" ] ; then
+            ${chmod_cmd} ${dst}
+        fi
+    fi
+
+else
+    # Create a file
+
+    for i in ${src} ; do
+        if [ -f $i ] ; then
+
+            if [ -d ${dst} ] ; then
+                target="${dst}/$i"
+            else
+                target="${dst}" 
+            fi
+
+            if [ -f ${target} -a ${save_old} = 1 ] ; then
+                ${MV} "${target}" "${target}${old_suffix}"
+            fi
+
+            ${CP} $i ${target}
+
+            if [ -n "${chown_cmd}" ] ; then
+                ${chown_cmd} ${target}
+            fi
+
+            if [ -n "${chgrp_cmd}" ] ; then
+                ${chgrp_cmd} ${target}
+            fi
+
+            if [ -n "${chmod_cmd}" ] ; then
+                ${chmod_cmd} ${target}
+            fi
+
+        else
+            echo "$0: ${src} is not a file or does not exist"
+            exit 1
+        fi
+    done 
+fi
+
+exit 0
