@@ -1,471 +1,420 @@
 2001-10-01  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/commands/mmimport.raw 1.23:
-  Who the fuck wrote this?
+  * commands/mmimport.raw 1.23: Who the fuck wrote this?
 
-  * src/include/file.raw 1.4: Add Destructor.
+  * include/file.raw 1.4: Add Destructor.
   Organize $this->buffer as unlimited LIFO.
 
-  * src/include/functions.raw 1.64:
-  better readability
+  * include/functions.raw 1.64: better readability
 
-  * src/include/output.raw 1.37: better
+  * include/output.raw 1.37: better
 
-  * src/include/koch-suite.raw 1.2:
+  * include/koch-suite.raw 1.2:
   Of Course, DB.php cannot find PEAR.php if include_path is empty.
   Therefore extend include_path to match <%%PEAR%%> to.
 
-  * src/man/man1/mmimport.1.raw 1.9, src/man/man1/rezept.1.raw 1.6:
+  * man/man1/mmimport.1.raw 1.9, man/man1/rezept.1.raw 1.6:
   Update, language,...
 
-  * src/man/Makefile.raw 1.10, src/man/man1/rk2mm.1.raw 1.4:
+  * man/Makefile.raw 1.10, man/man1/rk2mm.1.raw 1.4:
   rk2mm has gone, so wipe the manpage, too.
 
 2001-09-30  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.47:
-  replaced by automatically generated ChangeLog
+  * changelog 1.47: replaced by automatically generated ChangeLog
 
-  * src/ChangeLog 1.2: Regen
+  * ChangeLog 1.2: Regen
 
-  * src/Makefile 1.19: Beautify output.
+  * Makefile 1.19: Beautify output.
 
 2001-09-30  Michael Bussmann  <bus@mb-net.net>
 
-  * src/Makefile 1.18:
+  * Makefile 1.18:
   rcs2log now uses our correct e-mail addresses.  Yes, it's an ugly hack...
 
-  * src/ChangeLog 1.1, src/Makefile 1.17:
-  Added preliminary ChangeLog hack
+  * ChangeLog 1.1, Makefile 1.17: Added preliminary ChangeLog hack
 
 2001-09-30  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/config.raw 1.25: byebye
+  * include/config.raw 1.25: byebye
 
 2001-09-30  Michael Bussmann  <bus@mb-net.net>
 
-  * src/include/koch-suite.raw 1.1:
+  * include/koch-suite.raw 1.1:
   Added koch-suite.raw to CVS repo (former config.raw)
 
 2001-09-30  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/auth.raw 1.5:
-  Workaroung to close Bug-ID 48.
+  * include/auth.raw 1.5: Workaroung to close Bug-ID 48.
 
   Please note, that this is not a Koch-Suite bug but an PHP-Bug. Verified to
   work on PHP 4.0.7RC3
 
 2001-09-24  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/configure 1.14, src/include/auth.raw 1.4:
+  * configure 1.14, include/auth.raw 1.4:
   Fix a problem, which arises on FreeBSDs /bin/sh.
 
-  * src/changelog 1.46, src/commands/mmimport.raw 1.22, src/commands/rezept.raw 1.16, src/config 1.18, src/include/auth.raw 1.3, src/include/Makefile.raw 1.19, src/www/delete.raw 1.13, src/www/edit_alias.raw 1.8, src/www/einfuegen.raw 1.29, src/www/help.raw 1.15, src/www/index.raw 1.19, src/www/infos.raw 1.32, src/www/kategorien.raw 1.13, src/www/mmprint.raw 1.13, src/www/print.raw 1.13, src/www/rezept.raw 1.19, src/www/search.raw 1.10, src/www/units.raw 1.8:
+  * changelog 1.46, commands/mmimport.raw 1.22, commands/rezept.raw 1.16, config 1.18, include/Makefile.raw 1.19, include/auth.raw 1.3, www/delete.raw 1.13, www/edit_alias.raw 1.8, www/einfuegen.raw 1.29, www/help.raw 1.15, www/index.raw 1.19, www/infos.raw 1.32, www/kategorien.raw 1.13, www/mmprint.raw 1.13, www/print.raw 1.13, www/rezept.raw 1.19, www/search.raw 1.10, www/units.raw 1.8:
   Renamed include/config.inc to koch-suite.inc and placed it into
   <%%ETC_PREFIX%%> instead of <%%PHP_LIBS%%>.
 
-  * src/include/de.inc 1.18, src/include/en.inc 1.22:
-  rk2mm has gone away.
+  * include/de.inc 1.18, include/en.inc 1.22: rk2mm has gone away.
 
 2001-09-23  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/output.raw 1.36:
-  formating PHPDoc-Headers.
+  * include/output.raw 1.36: formating PHPDoc-Headers.
 
-  * src/changelog 1.45: sync
+  * changelog 1.45: sync
 
-  * src/config 1.17: where is PEAR?
+  * config 1.17: where is PEAR?
 
-  * src/Documentation/PHP.txt 1.2, src/README 1.40, src/Documentation/Programmers.txt 1.7:
+  * Documentation/PHP.txt 1.2, README 1.40, Documentation/Programmers.txt 1.7:
   Blabla
 
-  * src/commands/rk2mm.raw 1.12: byebye
+  * commands/rk2mm.raw 1.12: byebye
 
-  * src/commands/Makefile.raw 1.21:
-  rk2mm -> /dev/null.
+  * commands/Makefile.raw 1.21: rk2mm -> /dev/null.
 
-  * src/include/config.raw 1.24:
-  Set the path to PEAR.
+  * include/config.raw 1.24: Set the path to PEAR.
   array_intersect must not be used, as we thought. See  #11893 in the
   PHP bug-database
 
-  * src/include/functions.raw 1.63:
+  * include/functions.raw 1.63:
   PHP-Guys say, I cannot use array_intersect this way. See Bug-ID  #11893
   in the PHP bugtracking system
 
 2001-09-16  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/defines.raw 1.5: Beta.
+  * include/defines.raw 1.5: Beta.
 
 2001-09-09  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.44: update
+  * changelog 1.44: update
 
-  * src/include/de.inc 1.17, src/include/en.inc 1.21, src/www/search.raw 1.9:
+  * include/de.inc 1.17, include/en.inc 1.21, www/search.raw 1.9:
   Display the total number of Hits.
 
 2001-09-06  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.43: Update.
+  * changelog 1.43: Update.
 
 2001-09-06  Michael Bussmann  <bus@mb-net.net>
 
-  * src/include/auth.raw 1.2, src/commands/ks_passwd.raw 1.2, src/init_db.mysql 1.5, src/init_db.pgsql 1.7, src/INSTALL 1.2:
+  * include/auth.raw 1.2, INSTALL 1.2, commands/ks_passwd.raw 1.2, init_db.mysql 1.5, init_db.pgsql 1.7:
   Table "user" renamed to "usertable"
 
-  * src/include/de.inc 1.16, src/include/en.inc 1.20:
+  * include/de.inc 1.16, include/en.inc 1.20:
   Added link to PostgreSQL site
 
 2001-09-03  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/einfuegen.raw 1.28:
+  * www/einfuegen.raw 1.28:
   Refer to these variables only if they are set.
 
-  * src/configure 1.13: Make this work on OpenBSD
+  * configure 1.13: Make this work on OpenBSD
 
 2001-08-31  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/Documentation/PHP.txt 1.1, src/INSTALL 1.1:
-  Formerly known as README
+  * Documentation/PHP.txt 1.1, INSTALL 1.1: Formerly known as README
 
-  * src/README 1.39:
-  split this into several documents
+  * README 1.39: split this into several documents
 
-  * src/init_db.mysql 1.4, src/init_db.pgsql 1.6:
-  Sync
+  * init_db.mysql 1.4, init_db.pgsql 1.6: Sync
 
-  * src/Documentation/Programmers.txt 1.6: Update
+  * Documentation/Programmers.txt 1.6: Update
 
-  * src/commands/Makefile.raw 1.20: +ks_passwd
+  * commands/Makefile.raw 1.20: +ks_passwd
 
-  * src/commands/ks_passwd.raw 1.1:
-  generate encrypted passwords
+  * commands/ks_passwd.raw 1.1: generate encrypted passwords
 
-  * src/include/functions.raw 1.62: Style
+  * include/functions.raw 1.62: Style
 
-  * src/include/lang.raw 1.8: typo
+  * include/lang.raw 1.8: typo
 
-  * src/include/loginform.raw 1.2:
-  say the same in english
+  * include/loginform.raw 1.2: say the same in english
 
-  * src/www/menue.raw 1.14: no-wrap
+  * www/menue.raw 1.14: no-wrap
 
-  * src/include/Makefile.raw 1.18:
-  +auth.inc +loginform.inc
+  * include/Makefile.raw 1.18: +auth.inc +loginform.inc
 
-  * src/commands/mmimport.raw 1.21: cleanup
+  * commands/mmimport.raw 1.21: cleanup
 
-  * src/include/config.raw 1.23, src/include/defines.raw 1.4:
+  * include/config.raw 1.23, include/defines.raw 1.4:
   Add some Auth-related constants
 
-  * src/www/delete.raw 1.12, src/www/edit_alias.raw 1.7, src/www/einfuegen.raw 1.27, src/www/help.raw 1.14, src/www/index.raw 1.18, src/www/infos.raw 1.31, src/www/kategorien.raw 1.12, src/www/mmprint.raw 1.12, src/www/print.raw 1.12, src/www/rezept.raw 1.18, src/www/search.raw 1.8, src/www/units.raw 1.7:
+  * www/delete.raw 1.12, www/edit_alias.raw 1.7, www/einfuegen.raw 1.27, www/help.raw 1.14, www/index.raw 1.18, www/infos.raw 1.31, www/kategorien.raw 1.12, www/mmprint.raw 1.12, www/print.raw 1.12, www/rezept.raw 1.18, www/search.raw 1.8, www/units.raw 1.7:
   Use auth
 
-  * src/include/auth.raw 1.1, src/include/loginform.raw 1.1:
+  * include/auth.raw 1.1, include/loginform.raw 1.1:
   Add some framework for user-authentication.
 
 2001-08-16  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/Makefile.raw 1.17: +nocache.raw
+  * include/Makefile.raw 1.17: +nocache.raw
 
-  * src/include/nocache.raw 1.1:
+  * include/nocache.raw 1.1:
   deactivate the browser-cache, for it is evil.
 
-  * src/commands/rezept.raw 1.15, src/commands/rk2mm.raw 1.11:
-  Cleanup
+  * commands/rezept.raw 1.15, commands/rk2mm.raw 1.11: Cleanup
 
-  * src/include/config.raw 1.22:
-  raise error_reporting; Set
+  * include/config.raw 1.22: raise error_reporting; Set
 
-  * src/include/debug.raw 1.8: Fix
+  * include/debug.raw 1.8: Fix
 
-  * src/include/de.inc 1.15, src/include/en.inc 1.19, src/include/functions.raw 1.61, src/include/lang.raw 1.7, src/include/output.raw 1.35, src/www/delete.raw 1.11, src/www/edit_alias.raw 1.6, src/www/einfuegen.raw 1.26, src/www/infos.raw 1.30, src/www/kategorien.raw 1.11, src/www/print.raw 1.11, src/www/search.raw 1.7:
+  * include/de.inc 1.15, include/en.inc 1.19, include/functions.raw 1.61, include/lang.raw 1.7, include/output.raw 1.35, www/delete.raw 1.11, www/edit_alias.raw 1.6, www/einfuegen.raw 1.26, www/infos.raw 1.30, www/kategorien.raw 1.11, www/print.raw 1.11, www/search.raw 1.7:
   Cleanup
 
 2001-08-12  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/en.inc 1.18: Typo
+  * include/en.inc 1.18: Typo
 
-  * src/include/functions.raw 1.60:
-  compare case-insensitive
+  * include/functions.raw 1.60: compare case-insensitive
 
-  * src/include/output.raw 1.34:
-  LaTeX: be '\sloppy'.
+  * include/output.raw 1.34: LaTeX: be '\sloppy'.
 
 2001-08-11  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/output.raw 1.33:
+  * include/output.raw 1.33:
   replace "<" and ">" by proper Latex-Entities
   Replace empty ingredient-list-titles by $Lang["Ingred"]
 
-  * src/configure 1.12, src/www/print.raw 1.10, src/include/config.raw 1.21:
+  * configure 1.12, www/print.raw 1.10, include/config.raw 1.21:
   Don't use 'cat'.
 
-  * src/configure 1.11: check for latex, dvips, gs
+  * configure 1.11: check for latex, dvips, gs
 
-  * src/include/debug.raw 1.7:
+  * include/debug.raw 1.7:
   create the file with proper permissions, if it doesn't exist.
 
-  * src/www/print.raw 1.9:
-  support other "printable" types than html only.
+  * www/print.raw 1.9: support other "printable" types than html only.
 
-  * src/include/config.raw 1.20:
-  set the default 'printable' format
+  * include/config.raw 1.20: set the default 'printable' format
 
-  * src/include/functions.raw 1.59:
-  Which format is
+  * include/functions.raw 1.59: Which format is
    a) wished
    b) all required tools to create this format are available
 
-  * src/include/defines.raw 1.3:
+  * include/defines.raw 1.3:
   Define some constants for different mime-types
 
 2001-08-07  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.39.2.3: sync
+  * changelog 1.39.2.3: sync
 
-  * src/include/functions.raw 1.49.2.1:
+  * include/functions.raw 1.49.2.1:
   Pull in fix from -current: Don't sort empty results.
 
 2001-08-06  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/file.raw 1.3: PHPDoc'ify
+  * include/file.raw 1.3: PHPDoc'ify
   Use $this->buffer after fixing functions.raw
 
-  * src/include/functions.raw 1.58:
-  pass $file by reference
+  * include/functions.raw 1.58: pass $file by reference
 
-  * src/changelog 1.42: sync
+  * changelog 1.42: sync
 
-  * src/include/file.raw 1.2: sigh. :-\
+  * include/file.raw 1.2: sigh. :-\
 
-  * src/README 1.38: updating from >= 0.5
+  * README 1.38: updating from >= 0.5
 
-  * src/include/en.inc 1.14.2.2:
-  pull in translation-fix from current
+  * include/en.inc 1.14.2.2: pull in translation-fix from current
 
-  * src/changelog 1.39.2.2: sync
+  * changelog 1.39.2.2: sync
 
-  * src/commands/rk2mm.raw 1.8.2.1:
-  Pull in fix from -current
+  * commands/rk2mm.raw 1.8.2.1: Pull in fix from -current
 
-  * src/configure 1.10:
-  Use config.my instead of config when exists
+  * configure 1.10: Use config.my instead of config when exists
 
-  * src/commands/mmimport.raw 1.20, src/commands/rk2mm.raw 1.10:
+  * commands/mmimport.raw 1.20, commands/rk2mm.raw 1.10:
   Use class "File"
 
-  * src/include/Makefile.raw 1.16: +file.inc
+  * include/Makefile.raw 1.16: +file.inc
 
-  * src/include/de.inc 1.14, src/include/en.inc 1.17:
-  better
+  * include/de.inc 1.14, include/en.inc 1.17: better
 
-  * src/include/functions.raw 1.57: Use Class File
+  * include/functions.raw 1.57: Use Class File
 
-  * src/include/file.raw 1.1:
-  Class for TempFile-Creation
+  * include/file.raw 1.1: Class for TempFile-Creation
 
 2001-08-01  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.raw 1.56:
-  DB_ilike() von Michael Bussmann
+  * include/functions.raw 1.56: DB_ilike() von Michael Bussmann
 
 2001-07-26  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.raw 1.55, src/init_db.pgsql 1.5, src/init_db.mysql 1.3:
+  * include/functions.raw 1.55, init_db.pgsql 1.5, init_db.mysql 1.3:
   Changes by MB
 
 2001-07-25  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/en.inc 1.16:
-  Wrong. Reported by Michael Bussmann.
+  * include/en.inc 1.16: Wrong. Reported by Michael Bussmann.
 
-  * src/config 1.16: again.
+  * config 1.16: again.
 
-  * src/changelog 1.41: sync
+  * changelog 1.41: sync
 
-  * src/init_db.pgsql 1.4: oops. Comma.
+  * init_db.pgsql 1.4: oops. Comma.
 
-  * src/init_db.pgsql 1.3: +HASH in table MENUE
+  * init_db.pgsql 1.3: +HASH in table MENUE
 
-  * src/README 1.37: better language
+  * README 1.37: better language
 
-  * src/include/functions.raw 1.54: better comment
+  * include/functions.raw 1.54: better comment
 
 2001-07-24  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/init_db.mysql 1.2: +HASH
+  * init_db.mysql 1.2: +HASH
 
-  * src/commands/mmimport.raw 1.19:
+  * commands/mmimport.raw 1.19:
   read_normalize() the recipes and recipe_dupe()-check them.
   Accept only unique hashes.
 
-  * src/commands/rk2mm.raw 1.9:
+  * commands/rk2mm.raw 1.9:
   rather use "read_normalize()" to preparse the recipe.
 
-  * src/include/functions.raw 1.53:
+  * include/functions.raw 1.53:
   provide functions for dupe-detection and hash-generation
 
-  * src/www/einfuegen.raw 1.25:
-  calculate the hash.
+  * www/einfuegen.raw 1.25: calculate the hash.
 
 2001-07-17  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.raw 1.52:
-  Sort functions a little alphabetically
+  * include/functions.raw 1.52: Sort functions a little alphabetically
   new function: read_normalize
     reads input from a filehandle, normalizes it and returns a filehandle onto
     a temporary file.
 
-  * src/commands/mmimport.raw 1.18:
-  s/<TAB>/<Space>/g
+  * commands/mmimport.raw 1.18: s/<TAB>/<Space>/g
 
 2001-07-10  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/config.raw 1.19:
-  Oops. remove unused code.
+  * include/config.raw 1.19: Oops. remove unused code.
 
-  * src/config 1.15, src/include/config.raw 1.18, src/include/functions.raw 1.51, src/include/output.raw 1.32:
+  * config 1.15, include/config.raw 1.18, include/functions.raw 1.51, include/output.raw 1.32:
   rather use DB_casecomp()
 
-  * src/Documentation/FAQ.txt 1.3: PEAR-Problems?
+  * Documentation/FAQ.txt 1.3: PEAR-Problems?
 
-  * src/README 1.36:
-  better. From Michael Bussmann <bus@fgan.de>
+  * README 1.36: better. From Michael Bussmann <bus@fgan.de>
 
 2001-07-04  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.raw 1.50:
-  Sort alphabetically
+  * include/functions.raw 1.50: Sort alphabetically
 
 2001-07-03  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/en.inc 1.14.2.1: merge from 1.15
+  * include/en.inc 1.14.2.1: merge from 1.15
 
-  * src/include/en.inc 1.15: Typo
+  * include/en.inc 1.15: Typo
 
 2001-07-02  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/defines.raw 1.2: 0.5 -> 0.6-alpha
+  * include/defines.raw 1.2: 0.5 -> 0.6-alpha
 
-  * src/changelog 1.40: merge from 0.5.0
+  * changelog 1.40: merge from 0.5.0
 
-  * src/changelog 1.39.2.1, src/include/defines.raw 1.1.2.1:
-  0.5-Release
+  * changelog 1.39.2.1, include/defines.raw 1.1.2.1: 0.5-Release
 
 2001-07-01  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/defines.raw 1.1:
-  define global constants here.
+  * include/defines.raw 1.1: define global constants here.
 
-  * src/configure 1.9, src/commands/mmimport.raw 1.17, src/commands/rk2mm.raw 1.8, src/commands/rezept.raw 1.14:
+  * configure 1.9, commands/mmimport.raw 1.17, commands/rk2mm.raw 1.8, commands/rezept.raw 1.14:
   Add License
 
-  * src/include/Makefile.raw 1.15: +defines.inc
+  * include/Makefile.raw 1.15: +defines.inc
 
-  * src/include/config.raw 1.17:
-  move constants to include/defines.inc
+  * include/config.raw 1.17: move constants to include/defines.inc
 
-  * src/include/debug.raw 1.6:
-  +require_once "<%%PHP_LIBS%%>/defines.inc";
+  * include/debug.raw 1.6: +require_once "<%%PHP_LIBS%%>/defines.inc";
 
-  * src/man/man1/mmimport.1.raw 1.8, src/man/man1/rezept.1.raw 1.5, src/man/man1/rk2mm.1.raw 1.3, src/www/delete.raw 1.10, src/www/edit_alias.raw 1.5, src/www/einfuegen.raw 1.24, src/www/help.raw 1.13, src/www/index.raw 1.17, src/www/infos.raw 1.29, src/www/kategorien.raw 1.10, src/www/mmprint.raw 1.11, src/www/print.raw 1.8, src/www/rezept.raw 1.17, src/www/search.raw 1.6, src/www/units.raw 1.6:
+  * man/man1/mmimport.1.raw 1.8, man/man1/rezept.1.raw 1.5, man/man1/rk2mm.1.raw 1.3, www/delete.raw 1.10, www/edit_alias.raw 1.5, www/einfuegen.raw 1.24, www/help.raw 1.13, www/index.raw 1.17, www/infos.raw 1.29, www/kategorien.raw 1.10, www/mmprint.raw 1.11, www/print.raw 1.8, www/rezept.raw 1.17, www/search.raw 1.6, www/units.raw 1.6:
   Add License
 
-  * src/include/debug.raw 1.5: +License-text
+  * include/debug.raw 1.5: +License-text
 
-  * src/include/de.inc 1.13, src/include/en.inc 1.14:
-  Better
+  * include/de.inc 1.13, include/en.inc 1.14: Better
 
-  * src/include/functions.raw 1.49, src/include/lang.raw 1.6, src/include/output.raw 1.31:
+  * include/functions.raw 1.49, include/lang.raw 1.6, include/output.raw 1.31:
   +License-text
 
-  * src/include/en.inc 1.13: typo
+  * include/en.inc 1.13: typo
 
 2001-06-27  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.39: Update.
+  * changelog 1.39: Update.
 
-  * src/config 1.14: lang.
+  * config 1.14: lang.
 
-  * src/configure 1.8:
-  sed is not necessary here. awk knows what do do.
+  * configure 1.8: sed is not necessary here. awk knows what do do.
 
-  * src/init_db.pgsql 1.2: $Id$-Tag
+  * init_db.pgsql 1.2: $Id$-Tag
 
-  * src/include/functions.raw 1.48:
+  * include/functions.raw 1.48:
    is global not Local. DB_OK is 0 and therefore false, return true rather.
 
-  * src/include/output.raw 1.30:
-   is global not Local.
+  * include/output.raw 1.30:  is global not Local.
 
-  * src/www/delete.raw 1.9, src/www/edit_alias.raw 1.4, src/www/einfuegen.raw 1.23:
+  * www/delete.raw 1.9, www/edit_alias.raw 1.4, www/einfuegen.raw 1.23:
   Oops
 
-  * src/www/kategorien.raw 1.9: Oops.
+  * www/kategorien.raw 1.9: Oops.
 
 2001-06-26  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/commands/mmimport.raw 1.16:
-  use RECIPE_MM/RECIPE_RK rather.
+  * commands/mmimport.raw 1.16: use RECIPE_MM/RECIPE_RK rather.
 
-  * src/include/config.raw 1.16, src/include/functions.raw 1.47:
+  * include/config.raw 1.16, include/functions.raw 1.47:
   2 new Constants:
      * RECIPE_MM
      * RECIPE_RK
   to identify the format internally, while parsing recipes.
 
-  * src/www/search.raw 1.5: Forgot thisone.
+  * www/search.raw 1.5: Forgot thisone.
 
-  * src/Documentation/Programmers.txt 1.5: PHPDoc
+  * Documentation/Programmers.txt 1.5: PHPDoc
 
-  * src/commands/rezept.raw 1.13:
-  dirty workaround. Yes I am lazy.
+  * commands/rezept.raw 1.13: dirty workaround. Yes I am lazy.
 
-  * src/include/config.raw 1.15:
-  Cleanup, better Code
+  * include/config.raw 1.15: Cleanup, better Code
 
-  * src/include/debug.raw 1.4: PHPDoc'ify
+  * include/debug.raw 1.4: PHPDoc'ify
 
-  * src/include/de.inc 1.12, src/include/en.inc 1.12:
-  more
+  * include/de.inc 1.12, include/en.inc 1.12: more
 
-  * src/include/functions.raw 1.46, src/include/output.raw 1.29, src/www/delete.raw 1.8, src/www/edit_alias.raw 1.3, src/www/einfuegen.raw 1.22, src/www/help.raw 1.12, src/www/index.raw 1.16:
+  * include/functions.raw 1.46, include/output.raw 1.29, www/delete.raw 1.8, www/edit_alias.raw 1.3, www/einfuegen.raw 1.22, www/help.raw 1.12, www/index.raw 1.16:
   PHPDoc'ify
 
-  * src/www/infos.raw 1.28: PHPDoc'ify, M17N
+  * www/infos.raw 1.28: PHPDoc'ify, M17N
 
-  * src/www/kategorien.raw 1.8: PHPDoc'ify
+  * www/kategorien.raw 1.8: PHPDoc'ify
 
-  * src/www/units.raw 1.5: M17N
+  * www/units.raw 1.5: M17N
 
-  * src/include/de.inc 1.11, src/include/en.inc 1.11:
-  s/zaphod/magrathea/
+  * include/de.inc 1.11, include/en.inc 1.11: s/zaphod/magrathea/
 
-  * src/include/debug.raw 1.3: PHPDoc'ify
+  * include/debug.raw 1.3: PHPDoc'ify
 
 2001-06-25  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/README 1.35: How to create the databases
+  * README 1.35: How to create the databases
 
-  * src/configure 1.7:
-  call translate_raw() instead of sed.
+  * configure 1.7: call translate_raw() instead of sed.
 
-  * src/config 1.13: s:space:tab:
+  * config 1.13: s:space:tab:
 
-  * src/include/de.inc 1.10, src/include/en.inc 1.10:
-  new Homepage.
+  * include/de.inc 1.10, include/en.inc 1.10: new Homepage.
 
 2001-06-23  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/README 1.34: update.
+  * README 1.34: update.
 
-  * src/changelog 1.38: update
+  * changelog 1.38: update
 
-  * src/Documentation/Programmers.txt 1.4: more.
+  * Documentation/Programmers.txt 1.4: more.
 
-  * src/commands/rezept.raw 1.12:
-  $helptext = <<<EOT
+  * commands/rezept.raw 1.12: $helptext = <<<EOT
   ...
   EOT;
 
@@ -473,1106 +422,1010 @@
    -t for Consistency with -c and -i
    -relaxed in -mm-Queries
 
-  * src/include/config.raw 1.14: defines.
+  * include/config.raw 1.14: defines.
 
-  * src/include/output.raw 1.28:
-  Style, Comments, Braces.
+  * include/output.raw 1.28: Style, Comments, Braces.
 
-  * src/include/de.inc 1.9, src/include/en.inc 1.9:
-  new.
+  * include/de.inc 1.9, include/en.inc 1.9: new.
 
-  * src/include/lang.raw 1.5: oops
+  * include/lang.raw 1.5: oops
 
-  * src/include/output.raw 1.27: Code-Cleanup
+  * include/output.raw 1.27: Code-Cleanup
   M17N
   mmexport: new opt. parameter "strict"
 
-  * src/man/man1/rezept.1.raw 1.4: language.
+  * man/man1/rezept.1.raw 1.4: language.
 
-  * src/www/einfuegen.raw 1.21: better.
+  * www/einfuegen.raw 1.21: better.
 
-  * src/www/kategorien.raw 1.7: M17N
+  * www/kategorien.raw 1.7: M17N
 
-  * src/www/print.raw 1.7: style
+  * www/print.raw 1.7: style
 
 2001-06-21  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.raw 1.45: fix.
+  * include/functions.raw 1.45: fix.
 
-  * src/README 1.33: nicer.
+  * README 1.33: nicer.
 
-  * src/include/debug.raw 1.2, src/include/lang.raw 1.4:
-  sync with config.raw
+  * include/debug.raw 1.2, include/lang.raw 1.4: sync with config.raw
 
-  * src/include/config.raw 1.13:
+  * include/config.raw 1.13:
   define() sth., require_once instead of include, require_once DB.php (PEAR)
 
-  * src/include/functions.raw 1.44, src/include/output.raw 1.26:
-  Fuck MySQL
+  * include/functions.raw 1.44, include/output.raw 1.26: Fuck MySQL
 
-  * src/Documentation/Overview.txt 1.9: better.
+  * Documentation/Overview.txt 1.9: better.
 
-  * src/Documentation/User.txt 1.7: Read Manpages.
+  * Documentation/User.txt 1.7: Read Manpages.
 
-  * src/Documentation/Programmers.txt 1.3: More.
+  * Documentation/Programmers.txt 1.3: More.
 
 2001-06-20  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/config 1.12, src/include/config.raw 1.12:
+  * config 1.12, include/config.raw 1.12:
   Leichter zu verstehen fuer die User.
   DB::parseDSN muss so die DSN nicht als String selbst zerpfluecken,
   sondern bekomt ihn schon fertig vorgekaut.
 
-  * src/include/config.raw 1.11, src/include/functions.raw 1.43, src/include/output.raw 1.25, src/www/delete.raw 1.7, src/www/edit_alias.raw 1.2, src/www/einfuegen.raw 1.20, src/www/help.raw 1.11, src/www/index.raw 1.15, src/www/infos.raw 1.27, src/www/kategorien.raw 1.6, src/www/mmprint.raw 1.10, src/www/print.raw 1.6, src/www/rezept.raw 1.16, src/www/search.raw 1.4, src/www/units.raw 1.4, src/config 1.11, src/configure 1.6, src/init_db.mysql 1.1, src/init_db.pgsql 1.1, src/init_db.sql 1.8:
+  * include/config.raw 1.11, include/functions.raw 1.43, include/output.raw 1.25, www/delete.raw 1.7, www/edit_alias.raw 1.2, www/einfuegen.raw 1.20, www/help.raw 1.11, www/index.raw 1.15, www/infos.raw 1.27, www/kategorien.raw 1.6, www/mmprint.raw 1.10, www/print.raw 1.6, www/rezept.raw 1.16, www/search.raw 1.4, www/units.raw 1.4, config 1.11, configure 1.6, init_db.mysql 1.1, init_db.pgsql 1.1, init_db.sql 1.8:
   Michael Bussmann <bus@fgan.de> hat mir einen gewaltigen Patch geschickt.
   Verwende PEAR statt mysql_*()
   PostgreSQL-Support.
 
-  * src/changelog 1.37:
-  sync, Michael Bussmann's Patch.
+  * changelog 1.37: sync, Michael Bussmann's Patch.
 
-  * src/README 1.32: Updating, MB-Patches,...
+  * README 1.32: Updating, MB-Patches,...
 
 2001-06-13  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/commands/rezept.raw 1.11:
-  undo broken commit.
+  * commands/rezept.raw 1.11: undo broken commit.
 
-  * src/commands/rezept.raw 1.10, src/include/en.inc 1.8, src/include/de.inc 1.8, src/include/lang.raw 1.3, src/include/output.raw 1.24, src/www/einfuegen.raw 1.19:
+  * commands/rezept.raw 1.10, include/en.inc 1.8, include/de.inc 1.8, include/lang.raw 1.3, include/output.raw 1.24, www/einfuegen.raw 1.19:
   m17n
 
 2001-06-10  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.36: update.
+  * changelog 1.36: update.
 
-  * src/commands/rezept.raw 1.9:
-  sync mit include/functions.raw
+  * commands/rezept.raw 1.9: sync mit include/functions.raw
 
-  * src/include/functions.raw 1.42: no '%' here.
+  * include/functions.raw 1.42: no '%' here.
 
-  * src/include/config.raw 1.10: 0.5-pre5
+  * include/config.raw 1.10: 0.5-pre5
 
-  * src/init_db.sql 1.7: New keys.
+  * init_db.sql 1.7: New keys.
 
-  * src/www/search.raw 1.3:
-  sync with include/functions.raw
+  * www/search.raw 1.3: sync with include/functions.raw
 
-  * src/include/functions.raw 1.41:
-  This is better now.
+  * include/functions.raw 1.41: This is better now.
   Strongly reduce SQL-Query-numbers,
   new function: exec_search: split searchstring, call the proper
   search-functions, merge the results according to the grammer.
 
 2001-06-07  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/README 1.31:
-  No more register_globals-Reqirements.
+  * README 1.31: No more register_globals-Reqirements.
 
-  * src/README 1.30: update.
+  * README 1.30: update.
 
-  * src/commands/mmimport.raw 1.15, src/commands/rezept.raw 1.8, src/commands/rk2mm.raw 1.7:
+  * commands/mmimport.raw 1.15, commands/rezept.raw 1.8, commands/rk2mm.raw 1.7:
   retrieve $argv and $argc manually if unset.
 
 2001-06-06  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/output.raw 1.20.2.1:
-  Fix long word bug.
+  * include/output.raw 1.20.2.1: Fix long word bug.
 
-  * src/changelog 1.35: update
+  * changelog 1.35: update
 
-  * src/www/edit_alias.raw 1.1:
-  Initial Alias-Editor.
+  * www/edit_alias.raw 1.1: Initial Alias-Editor.
 
-  * src/include/config.raw 1.9: 0.5-pre4
+  * include/config.raw 1.9: 0.5-pre4
 
-  * src/include/de.inc 1.7, src/include/en.inc 1.7:
-  More.
+  * include/de.inc 1.7, include/en.inc 1.7: More.
 
-  * src/include/functions.raw 1.40:
+  * include/functions.raw 1.40:
   Ooph, to much to list it all. Main part:
   create, edit and delete unit-aliases.
 
-  * src/www/Makefile.raw 1.23: +edit_alias.php
+  * www/Makefile.raw 1.23: +edit_alias.php
 
-  * src/www/einfuegen.raw 1.18:
-  Oops, we need thisone, too.
+  * www/einfuegen.raw 1.18: Oops, we need thisone, too.
 
-  * src/www/infos.raw 1.26: Print Version.
+  * www/infos.raw 1.26: Print Version.
 
-  * src/www/units.raw 1.3:
-  Style, invoke alias-editor.
+  * www/units.raw 1.3: Style, invoke alias-editor.
 
-  * src/Documentation/FAQ.txt 1.2: noauth.
+  * Documentation/FAQ.txt 1.2: noauth.
 
 2001-06-01  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.34: sync
+  * changelog 1.34: sync
 
-  * src/www/delete.raw 1.6, src/www/mmprint.raw 1.9, src/www/print.raw 1.5:
+  * www/delete.raw 1.6, www/mmprint.raw 1.9, www/print.raw 1.5:
   +config.inc
   +$HTTP_*_VARS
 
-  * src/include/de.inc 1.6, src/include/en.inc 1.6:
+  * include/de.inc 1.6, include/en.inc 1.6:
   + $Lang['Recipe']['Deleted']
 
-  * src/www/delete.raw 1.5: +config.inc
+  * www/delete.raw 1.5: +config.inc
 
-  * src/www/delete.raw 1.4: HTTP_*_VARS
+  * www/delete.raw 1.4: HTTP_*_VARS
 
-  * src/README 1.29: comment recent work.
+  * README 1.29: comment recent work.
 
-  * src/include/config.raw 1.8: 0.5-pre3
+  * include/config.raw 1.8: 0.5-pre3
 
-  * src/config 1.10:
-  Setze Default-DB-User auf "kochsuite".
+  * config 1.10: Setze Default-DB-User auf "kochsuite".
 
-  * src/include/de.inc 1.5: Sprache
+  * include/de.inc 1.5: Sprache
 
-  * src/include/en.inc 1.5: more translation
+  * include/en.inc 1.5: more translation
 
-  * src/www/einfuegen.raw 1.17:
-  read variables from $HTTP_*_VARS
+  * www/einfuegen.raw 1.17: read variables from $HTTP_*_VARS
 
-  * src/www/help.raw 1.10:
+  * www/help.raw 1.10:
   s/<?/<?php/. Will do this in all other files, too, in future.
   Language-Settings.
 
-  * src/www/infos.raw 1.25:
-  Language-Settings -> help.raw.
+  * www/infos.raw 1.25: Language-Settings -> help.raw.
 
-  * src/commands/mmimport.raw 1.14, src/commands/rezept.raw 1.7, src/commands/rk2mm.raw 1.6:
+  * commands/mmimport.raw 1.14, commands/rezept.raw 1.7, commands/rk2mm.raw 1.6:
   require config.inc, da dies nun nicht mehr automatisch aus functions.inc
   heraus geschieht.
 
-  * src/www/index.raw 1.14:
-  Suchfunktion nicht mehr via require einbinden.
+  * www/index.raw 1.14: Suchfunktion nicht mehr via require einbinden.
 
-  * src/www/search.raw 1.2:
-  s/suchen=1//, da dies nun offensichtlich ist.
+  * www/search.raw 1.2: s/suchen=1//, da dies nun offensichtlich ist.
 
-  * src/www/kategorien.raw 1.5:
-  Extract values from HTTP_*_VARS,
+  * www/kategorien.raw 1.5: Extract values from HTTP_*_VARS,
   include/require reorganized.
 
 2001-05-30  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/menue.raw 1.13:
-  s/suchen.php/search.php/
+  * www/menue.raw 1.13: s/suchen.php/search.php/
 
-  * src/www/Makefile.raw 1.22, src/www/search.raw 1.1, src/www/such.raw 1.14:
+  * www/Makefile.raw 1.22, www/search.raw 1.1, www/such.raw 1.14:
   This way is better.
 
-  * src/include/de.inc 1.4, src/include/en.inc 1.4:
-  Better.
+  * include/de.inc 1.4, include/en.inc 1.4: Better.
 
-  * src/include/lang.raw 1.2: Fix regexp.
+  * include/lang.raw 1.2: Fix regexp.
 
-  * src/include/output.raw 1.23: Pass by reference
+  * include/output.raw 1.23: Pass by reference
 
-  * src/include/functions.raw 1.39, src/commands/rk2mm.raw 1.5:
+  * include/functions.raw 1.39, commands/rk2mm.raw 1.5:
   Pass by Reference.
 
-  * src/commands/rezept.raw 1.6:
+  * commands/rezept.raw 1.6:
   Hole $PWD per getenv() aus dem Environment.
 
-  * src/include/Makefile.raw 1.14: Typo
+  * include/Makefile.raw 1.14: Typo
 
-  * src/include/functions.raw 1.38:
+  * include/functions.raw 1.38:
   functions.inc depends on config.inc, but other scripts do so, too.
   Therefore read config.inc from the script instead and not from here.
 
-  * src/www/mmprint.raw 1.8:
-  werte HTTP_GET_VARS aus
+  * www/mmprint.raw 1.8: werte HTTP_GET_VARS aus
 
-  * src/www/rezept.raw 1.15: Typo
+  * www/rezept.raw 1.15: Typo
 
-  * src/www/such.raw 1.13:
-  werte lieber HTTP_(POST|GET)_VAR
+  * www/such.raw 1.13: werte lieber HTTP_(POST|GET)_VAR
 
-  * src/include/config.raw 1.7: +Debugging.
+  * include/config.raw 1.7: +Debugging.
 
-  * src/include/functions.raw 1.37:
-  write_log -> debug.inc
+  * include/functions.raw 1.37: write_log -> debug.inc
 
-  * src/include/debug.raw 1.1, src/include/Makefile.raw 1.13:
-  Debugging.
+  * include/Makefile.raw 1.13, include/debug.raw 1.1: Debugging.
 
-  * src/README 1.28:
+  * README 1.28:
   Scheisse, warum ist mir das nicht frueher eingefallen.
 
 2001-05-23  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/commands/mmimport.raw 1.13:
+  * commands/mmimport.raw 1.13:
   Pass Varibale by Reference (for speed's and size's sake ;-)
   Don't print an unset variable.
 
-  * src/www/einfuegen.raw 1.16: Reference-Fix
+  * www/einfuegen.raw 1.16: Reference-Fix
 
-  * src/www/rezept.raw 1.14:
-  retrieve $mid from $HTTP_GET_VARS
+  * www/rezept.raw 1.14: retrieve $mid from $HTTP_GET_VARS
 
-  * src/www/such.raw 1.12: use HTTP_POST_VARS.
+  * www/such.raw 1.12: use HTTP_POST_VARS.
 
-  * src/www/index.raw 1.13:
-  rather use $HTTP_GET_VARS
+  * www/index.raw 1.13: rather use $HTTP_GET_VARS
 
 2001-05-22  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.raw 1.36:
+  * include/functions.raw 1.36:
   Erzwinge nicht "Zutaten" als Zutatenlisten-Überschrift. Lasse statt dessen
   den Titel leer.
 
-  * src/changelog 1.33: Sync
+  * changelog 1.33: Sync
 
-  * src/include/de.inc 1.3, src/include/en.inc 1.3:
-  Improved m17n
+  * include/de.inc 1.3, include/en.inc 1.3: Improved m17n
 
-  * src/include/functions.raw 1.35:
-  Sort searchresult alphabetically.
+  * include/functions.raw 1.35: Sort searchresult alphabetically.
 
-  * src/include/output.raw 1.22: m17n
+  * include/output.raw 1.22: m17n
 
-  * src/man/man1/rezept.1.raw 1.3: update.
+  * man/man1/rezept.1.raw 1.3: update.
 
 2001-05-21  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/help.raw 1.9, src/www/infos.raw 1.24:
-  Verbessertes m17n
+  * www/help.raw 1.9, www/infos.raw 1.24: Verbessertes m17n
 
-  * src/www/einfuegen.raw 1.15:
+  * www/einfuegen.raw 1.15:
   Behandle die einzelnen Zutatenlisten etwas intelligenter.
 
 2001-05-16  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/de.inc 1.2, src/include/en.inc 1.2:
-  Typos.
+  * include/de.inc 1.2, include/en.inc 1.2: Typos.
 
-  * src/README 1.27: Hinweis auf M17N
+  * README 1.27: Hinweis auf M17N
 
-  * src/changelog 1.32: update
+  * changelog 1.32: update
 
-  * src/include/config.raw 1.6, src/include/de.inc 1.1, src/include/en.inc 1.1, src/include/lang.raw 1.1, src/include/Makefile.raw 1.12, src/www/einfuegen.raw 1.14, src/www/help.raw 1.8, src/www/index.raw 1.12, src/www/infos.raw 1.23, src/www/menue.raw 1.12, src/www/rezept.raw 1.13, src/www/such.raw 1.11, src/www/units.raw 1.2:
+  * include/Makefile.raw 1.12, include/config.raw 1.6, include/de.inc 1.1, include/en.inc 1.1, include/lang.raw 1.1, www/einfuegen.raw 1.14, www/help.raw 1.8, www/index.raw 1.12, www/infos.raw 1.23, www/menue.raw 1.12, www/rezept.raw 1.13, www/such.raw 1.11, www/units.raw 1.2:
   m17n
 
 2001-05-15  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.31: update
+  * changelog 1.31: update
 
-  * src/include/functions.raw 1.34: - Bugfixing.
+  * include/functions.raw 1.34: - Bugfixing.
   - Neue Debugging-Funktion write_log($str): Schreibe $str formatiert und mit
     Datumsstempel nach $DEBUG_FILE
 
-  * src/include/config.raw 1.5: $DEBUG_FILE
+  * include/config.raw 1.5: $DEBUG_FILE
 
 2001-05-13  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/configure 1.5: Language.
+  * configure 1.5: Language.
 
 2001-05-10  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.30: update
+  * changelog 1.30: update
 
-  * src/Makefile 1.16: s/make/${MAKE}/
+  * Makefile 1.16: s/make/${MAKE}/
 
-  * src/commands/rezept.raw 1.5:
-  Werte Versionsnummer der Koch-Suite aus.
+  * commands/rezept.raw 1.5: Werte Versionsnummer der Koch-Suite aus.
 
-  * src/include/config.raw 1.4: Versionsnummer.
+  * include/config.raw 1.4: Versionsnummer.
 
-  * src/include/output.raw 1.21: Kommentare,
+  * include/output.raw 1.21: Kommentare,
   Fix für Long-word-bug: Wörter die länger als die erlaubte Zeilenlänge
   waren haben eine Endlosschleife verursacht.
 
-  * src/www/index.raw 1.11: Tabellen-Optionen
+  * www/index.raw 1.11: Tabellen-Optionen
 
-  * src/www/infos.raw 1.22: Tabellen-Optionen.
+  * www/infos.raw 1.22: Tabellen-Optionen.
 
-  * src/www/menue.raw 1.11: s/ /&nbsp;/
+  * www/menue.raw 1.11: s/ /&nbsp;/
 
-  * src/commands/Makefile.raw 1.19, src/include/Makefile.raw 1.11, src/man/Makefile.raw 1.9, src/www/Makefile.raw 1.21, src/www/pics/Makefile.raw 1.5:
+  * commands/Makefile.raw 1.19, include/Makefile.raw 1.11, man/Makefile.raw 1.9, www/Makefile.raw 1.21, www/pics/Makefile.raw 1.5:
   s/make/${MAKE}/
 
-  * src/configure 1.4: Improved dependecy-checks.
+  * configure 1.4: Improved dependecy-checks.
   Cleanup
 
 2001-05-08  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.29: sync
+  * changelog 1.29: sync
 
-  * src/www/help.raw 1.7, src/www/such.raw 1.10, src/include/functions.raw 1.33:
+  * www/help.raw 1.7, www/such.raw 1.10, include/functions.raw 1.33:
   Erweiterte Suche. Suche ist nun nach mehreren Begriffen moeglich,
   Verknuepfung durch "AND".
 
-  * src/README 1.26: s/du/man/
+  * README 1.26: s/du/man/
 
-  * src/Makefile 1.15:
-  Oops, falsches File commited.
+  * Makefile 1.15: Oops, falsches File commited.
 
-  * src/README 1.25:
-  Hinweis auf FAQ und esoterische Situationen.
+  * README 1.25: Hinweis auf FAQ und esoterische Situationen.
 
-  * src/changelog 1.28: sync
+  * changelog 1.28: sync
 
-  * src/man/Makefile.raw 1.8, src/commands/Makefile.raw 1.18, src/include/Makefile.raw 1.10, src/www/Makefile.raw 1.20, src/www/pics/Makefile.raw 1.4, src/Makefile 1.14:
+  * man/Makefile.raw 1.8, commands/Makefile.raw 1.18, include/Makefile.raw 1.10, www/Makefile.raw 1.20, www/pics/Makefile.raw 1.4, Makefile 1.14:
   +DESTDIR-Handling.
 
-  * src/Documentation/FAQ.txt 1.1: FAQ.
+  * Documentation/FAQ.txt 1.1: FAQ.
 
 2001-04-23  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.27: sync
+  * changelog 1.27: sync
 
-  * src/www/infos.raw 1.21:
+  * www/infos.raw 1.21:
   Content-Negotiation als Ansatz für Mehrsprachige Seiten.
 
-  * src/www/help.raw 1.6: rk2mm ist ein Filter.
+  * www/help.raw 1.6: rk2mm ist ein Filter.
 
-  * src/include/functions.raw 1.32:
+  * include/functions.raw 1.32:
   Fix Problems importing Mealmaster 8.06-recipes.
 
 2001-04-20  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/help.raw 1.5:
-  Kommasetzung, HTML-Tags korrigiert
+  * www/help.raw 1.5: Kommasetzung, HTML-Tags korrigiert
   Standard-Eingabe-Kanal = STDIN
 
 2001-04-17  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.26: update
+  * changelog 1.26: update
 
-  * src/init_db.sql 1.6: Spur != Schuss
+  * init_db.sql 1.6: Spur != Schuss
 
-  * src/README 1.24: Sync, 0.4, Kommentare.
+  * README 1.24: Sync, 0.4, Kommentare.
 
 2001-04-05  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.25: sync
+  * changelog 1.25: sync
 
-  * src/www/einfuegen.raw 1.13:
+  * www/einfuegen.raw 1.13:
   Üblen Bug gefixt: bei Zutaten-Zeilen nach diesem Muster:
   Rum oder Whisky
   wurde immmer das erste Wort abgeschnitten. PCRE war kaputt.
 
 2001-03-30  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/README 1.23, src/www/infos.raw 1.20:
-  Fix grammer.
+  * README 1.23, www/infos.raw 1.20: Fix grammer.
 
 2001-03-27  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.24: update.
+  * changelog 1.24: update.
 
-  * src/include/functions.raw 1.31:
+  * include/functions.raw 1.31:
   Extrahiere Einheiten und Informationen dazu aus der Datenbank
 
-  * src/www/styles.css 1.7: Style-Modifikationen.
+  * www/styles.css 1.7: Style-Modifikationen.
 
-  * src/www/Makefile.raw 1.19: +units.php
+  * www/Makefile.raw 1.19: +units.php
 
-  * src/www/infos.raw 1.19: Link auf die Homepage
+  * www/infos.raw 1.19: Link auf die Homepage
 
-  * src/www/units.raw 1.1:
-  Gebe Einheiten und Infos dazu aus
+  * www/units.raw 1.1: Gebe Einheiten und Infos dazu aus
 
-  * src/www/help.raw 1.4, src/www/einfuegen.raw 1.12:
-  Link auf units.php
+  * www/help.raw 1.4, www/einfuegen.raw 1.12: Link auf units.php
 
 2001-03-18  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.23, src/include/functions.raw 1.30:
+  * changelog 1.23, include/functions.raw 1.30:
   Ersetze "-- bla" und "-bla" durch "-- bla"
 
-  * src/www/help.raw 1.3, src/www/infos.raw 1.18:
-  Minor fixes.
+  * www/help.raw 1.3, www/infos.raw 1.18: Minor fixes.
 
-  * src/man/man1/rezept.1.raw 1.2:
-  Suche nach Zutaten und Kategorien
+  * man/man1/rezept.1.raw 1.2: Suche nach Zutaten und Kategorien
 
-  * src/commands/rezept.raw 1.4:
-  Suche nach Zutaten oder Kategorien
+  * commands/rezept.raw 1.4: Suche nach Zutaten oder Kategorien
 
 2001-03-17  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.22: update
+  * changelog 1.22: update
 
-  * src/include/functions.raw 1.29:
+  * include/functions.raw 1.29:
   Funktion zum zerlegen und umrechnen von Brüchen in Realzahlen.
 
-  * src/www/Makefile.raw 1.18: +LICENSE
+  * www/Makefile.raw 1.18: +LICENSE
 
-  * src/www/einfuegen.raw 1.11:
+  * www/einfuegen.raw 1.11:
   Neue Funktion zum zerlegen der Mengenangaben. Nun werden auch Brüche
   korrekt dargestellt.
 
-  * src/www/help.raw 1.2: Style,
+  * www/help.raw 1.2: Style,
   +Feedback
 
-  * src/www/infos.raw 1.17: +Lizenz,
+  * www/infos.raw 1.17: +Lizenz,
   +Note to teh english readers.
 
-  * src/www/rezept.raw 1.12:
+  * www/rezept.raw 1.12:
   "Untermenue" nach oben. Sieht man dann besser.
 
-  * src/www/styles.css 1.6: style
+  * www/styles.css 1.6: style
 
-  * src/www/such.raw 1.9: style.
+  * www/such.raw 1.9: style.
 
-  * src/www/help.raw 1.1, src/www/infos.raw 1.16, src/www/menue.raw 1.10, src/www/Makefile.raw 1.17:
+  * www/help.raw 1.1, www/infos.raw 1.16, www/menue.raw 1.10, www/Makefile.raw 1.17:
   Separate Help from Infos.
 
 2001-03-15  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/delete.raw 1.3, src/www/einfuegen.raw 1.10, src/www/index.raw 1.10, src/www/rezept.raw 1.11:
+  * www/delete.raw 1.3, www/einfuegen.raw 1.10, www/index.raw 1.10, www/rezept.raw 1.11:
   WWW-Kochbuch -> Koch-Suite
 
-  * src/README 1.22: Credits to Leo Caspari
+  * README 1.22: Credits to Leo Caspari
 
-  * src/www/infos.raw 1.15: $Revision $
+  * www/infos.raw 1.15: $Revision $
 
-  * src/www/infos.raw 1.14: Versions-Info
+  * www/infos.raw 1.14: Versions-Info
 
-  * src/www/menue.raw 1.9:
+  * www/menue.raw 1.9:
   Leerzeichen zwischen blue_dot.fig und nebenstehendem Text.
   Blauer Punkt ausserhalb des Anchors.
 
-  * src/www/menue.raw 1.8: Neue Farben.
+  * www/menue.raw 1.8: Neue Farben.
 
-  * src/www/rezept.raw 1.10:
+  * www/rezept.raw 1.10:
   Stelle NAV-Elemente in der selben Tebellen-Zelle dar, wie das Rezept
   selbst.
 
-  * src/www/styles.css 1.5:
+  * www/styles.css 1.5:
   a:link, a:visited, a:active Farben an title.gif angepasst.
 
-  * src/www/pics/Makefile.raw 1.3: blue_dot.gif
+  * www/pics/Makefile.raw 1.3: blue_dot.gif
 
-  * src/www/pics/blue_dot.gif 1.2: Etwas kleiner.
+  * www/pics/blue_dot.gif 1.2: Etwas kleiner.
 
-  * src/www/index.raw 1.9: Copyright 2001
+  * www/index.raw 1.9: Copyright 2001
 
-  * src/www/pics/blue_dot.gif 1.1: Blauer Punkt.
+  * www/pics/blue_dot.gif 1.1: Blauer Punkt.
 
-  * src/www/pics/title.gif 1.3:
-  Mir gefällt der Titel so besser.
+  * www/pics/title.gif 1.3: Mir gefällt der Titel so besser.
 
 2001-03-14  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/man/man1/mmimport.1.raw 1.7:
-  Dokumentiere Leo's Patch.
+  * man/man1/mmimport.1.raw 1.7: Dokumentiere Leo's Patch.
 
-  * src/include/functions.raw 1.28, src/changelog 1.21, src/commands/mmimport.raw 1.12, src/commands/rezept.raw 1.3, src/README 1.21:
+  * include/functions.raw 1.28, README 1.21, changelog 1.21, commands/mmimport.raw 1.12, commands/rezept.raw 1.3:
   Pull in Leo Caspari's <lcc@gmx.net> patches and some fixes to them.
 
-  * src/include/config.raw 1.3:
-  Ist mysql_pconnect erlaubt?
+  * include/config.raw 1.3: Ist mysql_pconnect erlaubt?
 
 2001-03-12  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.20, src/include/functions.raw 1.27, src/include/output.raw 1.20:
+  * changelog 1.20, include/functions.raw 1.27, include/output.raw 1.20:
   "\r" -> ""
   Rezept-Listen-Titel: "\n" -> ""
 
 2001-03-11  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.19: Update.
+  * changelog 1.19: Update.
 
-  * src/LICENSE 1.2: Copyright-Update.
+  * LICENSE 1.2: Copyright-Update.
 
-  * src/Documentation/Overview.txt 1.8, src/Documentation/User.txt 1.6:
+  * Documentation/Overview.txt 1.8, Documentation/User.txt 1.6:
   Update. rezept2latex + mmexport -> rezept.
 
-  * src/README 1.20: Update.
+  * README 1.20: Update.
 
-  * src/include/functions.raw 1.26, src/include/output.raw 1.19:
+  * include/functions.raw 1.26, include/output.raw 1.19:
   Improve Latex-Export.
 
-  * src/commands/rezept.raw 1.2:
-  Helptext incomplete.
+  * commands/rezept.raw 1.2: Helptext incomplete.
 
-  * src/commands/Makefile.raw 1.17:
-  mmexport -> /dev/null
+  * commands/Makefile.raw 1.17: mmexport -> /dev/null
 
-  * src/www/infos.raw 1.13:
-  rezept2latex + mmexport -> rezept.
+  * www/infos.raw 1.13: rezept2latex + mmexport -> rezept.
 
-  * src/commands/mmexport.raw 1.8: byebye.
+  * commands/mmexport.raw 1.8: byebye.
 
-  * src/man/Makefile.raw 1.7, src/man/man1/mmexport.1.raw 1.3, src/man/man1/mmimport.1.raw 1.6, src/man/man1/rezept.1.raw 1.1, src/man/man1/rezept2latex.1.raw 1.3, src/man/man1/rk2mm.1.raw 1.2:
+  * man/Makefile.raw 1.7, man/man1/mmexport.1.raw 1.3, man/man1/mmimport.1.raw 1.6, man/man1/rezept.1.raw 1.1, man/man1/rezept2latex.1.raw 1.3, man/man1/rk2mm.1.raw 1.2:
   rezept2latex -> /dev/null
   mmexport -> /dev/null
   Instead use rezept.
 
-  * src/commands/rezept2latex.raw 1.7: Byebye.
+  * commands/rezept2latex.raw 1.7: Byebye.
     substituted by rezept.raw
 
-  * src/commands/Makefile.raw 1.16: rezept.raw
+  * commands/Makefile.raw 1.16: rezept.raw
 
-  * src/commands/rezept.raw 1.1:
-  New interface for recipe-queries.
+  * commands/rezept.raw 1.1: New interface for recipe-queries.
 
 2001-03-03  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.raw 1.25, src/commands/mmimport.raw 1.11, src/commands/rk2mm.raw 1.4:
+  * include/functions.raw 1.25, commands/mmimport.raw 1.11, commands/rk2mm.raw 1.4:
   unified Parser-Konstruct for MM- and RK-recipes.
 
-  * src/www/infos.raw 1.12: Grammer
+  * www/infos.raw 1.12: Grammer
 
-  * src/www/infos.raw 1.11: Add FreeBSD.
+  * www/infos.raw 1.11: Add FreeBSD.
 
-  * src/README 1.19: Hint: -> CTAN wegen floatflt
+  * README 1.19: Hint: -> CTAN wegen floatflt
   Formatierung.
 
 2001-02-21  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.18: update.
+  * changelog 1.18: update.
 
-  * src/commands/mmimport.raw 1.10, src/commands/rezept2latex.raw 1.6, src/commands/rk2mm.raw 1.3:
+  * commands/mmimport.raw 1.10, commands/rezept2latex.raw 1.6, commands/rk2mm.raw 1.3:
   comments.
 
-  * src/commands/mmexport.raw 1.7: Comment,
+  * commands/mmexport.raw 1.7: Comment,
   Ver++
 
-  * src/www/einfuegen.raw 1.9:
-  Catch Config-settings (magic_quotes_gpc).
+  * www/einfuegen.raw 1.9: Catch Config-settings (magic_quotes_gpc).
 
-  * src/include/functions.raw 1.24: addslashes.
+  * include/functions.raw 1.24: addslashes.
 
-  * src/include/output.raw 1.18:
+  * include/output.raw 1.18:
   Verschoenere die Formatierung der Rezept-Header: Konstante Laenge.
 
 2001-02-17  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.17: update
+  * changelog 1.17: update
 
-  * src/Makefile 1.13: .PHONY geändert.
+  * Makefile 1.13: .PHONY geändert.
 
-  * src/init_db.sql 1.5: Aliasliste für Einheiten.
+  * init_db.sql 1.5: Aliasliste für Einheiten.
 
-  * src/include/functions.raw 1.23:
-  Check Alias-List for units.
+  * include/functions.raw 1.23: Check Alias-List for units.
 
 2001-02-16  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/man/Makefile.raw 1.6, src/www/Makefile.raw 1.16, src/commands/Makefile.raw 1.15, src/include/Makefile.raw 1.9, src/Makefile 1.12:
+  * man/Makefile.raw 1.6, www/Makefile.raw 1.16, Makefile 1.12, commands/Makefile.raw 1.15, include/Makefile.raw 1.9:
   Makefile-tuning.
 
-  * src/www/einfuegen.raw 1.8:
-  Force a little bit more.
+  * www/einfuegen.raw 1.8: Force a little bit more.
 
 2001-02-15  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/Makefile 1.11: foo
+  * Makefile 1.11: foo
 
-  * src/commands/Makefile.raw 1.14, src/include/Makefile.raw 1.8, src/www/Makefile.raw 1.15:
+  * commands/Makefile.raw 1.14, include/Makefile.raw 1.8, www/Makefile.raw 1.15:
   More makefile improvemnts
 
-  * src/include/Makefile.raw 1.7:
-  Makefile Improvement.
+  * include/Makefile.raw 1.7: Makefile Improvement.
 
-  * src/commands/Makefile.raw 1.13, src/man/Makefile.raw 1.5, src/www/Makefile.raw 1.14, src/www/pics/Makefile.raw 1.2:
+  * commands/Makefile.raw 1.13, man/Makefile.raw 1.5, www/Makefile.raw 1.14, www/pics/Makefile.raw 1.2:
   Makefile-Improvement.
 
-  * src/www/einfuegen.raw 1.7:
+  * www/einfuegen.raw 1.7:
   Force reload. But this doesn't work properly. Why? Dunno.
 
-  * src/include/Makefile.raw 1.6, src/Makefile 1.10:
-  Makefile-Improvement.
+  * include/Makefile.raw 1.6, Makefile 1.10: Makefile-Improvement.
 
 2001-02-10  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/init_db.sql 1.4:
+  * init_db.sql 1.4:
   Add suitable keys to the tables and thus increase search- and
   read-operations.
 
 2001-02-08  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.16: pre3.
+  * changelog 1.16: pre3.
 
-  * src/changelog 1.15, src/README 1.18:
-  Sync mit dem Code
+  * README 1.18, changelog 1.15: Sync mit dem Code
 
-  * src/commands/mmimport.raw 1.9, src/commands/rk2mm.raw 1.2:
-  s/\r//
+  * commands/mmimport.raw 1.9, commands/rk2mm.raw 1.2: s/\r//
   Damit koennen jetzt DOS-Files gelesen werde, ohne dass der Parser einem um
   die Ohren fliegt.
 
-  * src/include/functions.raw 1.22:
+  * include/functions.raw 1.22:
   Prügel ein bischen 'brain' in den Parser.
 
 2001-02-07  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/README 1.17: Update
+  * README 1.17: Update
 
-  * src/www/Makefile.raw 1.13, src/include/Makefile.raw 1.5:
-  rm -rf -> rm -f
+  * www/Makefile.raw 1.13, include/Makefile.raw 1.5: rm -rf -> rm -f
 
-  * src/www/Makefile.raw 1.12, src/commands/Makefile.raw 1.12, src/include/functions.raw 1.21, src/Makefile 1.9:
+  * www/Makefile.raw 1.12, Makefile 1.9, commands/Makefile.raw 1.12, include/functions.raw 1.21:
   rm * -> rm -f *
   Um Fehlermeldungen zu unterdrücken wenn das File nicht existiert.
 
-  * src/Documentation/init_db.sql 1.7, src/init_db.sql 1.3:
+  * Documentation/init_db.sql 1.7, init_db.sql 1.3:
   ./Documentation/init_db.sql -> ./init_db.sql
 
-  * src/Documentation/Overview.txt 1.7, src/Documentation/User.txt 1.5:
+  * Documentation/Overview.txt 1.7, Documentation/User.txt 1.5:
   Sync mit dem Code.
 
-  * src/changelog 1.14: update
+  * changelog 1.14: update
 
-  * src/include/functions.raw 1.20, src/README 1.16, src/www/einfuegen.raw 1.6:
+  * README 1.16, include/functions.raw 1.20, www/einfuegen.raw 1.6:
   Fixing a few bugs.
 
 2001-02-05  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/Documentation/init_db.sql 1.6:
-  Ooops, RK auf MM falsch abgebildet.
+  * Documentation/init_db.sql 1.6: Ooops, RK auf MM falsch abgebildet.
 
-  * src/Documentation/init_db.sql 1.5:
-  Neues DB-Format.
+  * Documentation/init_db.sql 1.5: Neues DB-Format.
 
-  * src/www/infos.raw 1.10: Update.
+  * www/infos.raw 1.10: Update.
 
-  * src/README 1.15: update
+  * README 1.15: update
 
-  * src/commands/mmimport.raw 1.8:
-  Parse also REZKONV-recipes.
+  * commands/mmimport.raw 1.8: Parse also REZKONV-recipes.
 
-  * src/include/output.raw 1.17:
-  use the power of implode()
+  * include/output.raw 1.17: use the power of implode()
 
-  * src/include/functions.raw 1.19:
-  Parse REZKONV-Recipes.
+  * include/functions.raw 1.19: Parse REZKONV-Recipes.
 
-  * src/commands/Makefile.raw 1.11, src/commands/rk2mm.raw 1.1, src/man/Makefile.raw 1.4, src/man/man1/mmimport.1.raw 1.5, src/man/man1/rk2mm.1.raw 1.1:
+  * commands/Makefile.raw 1.11, commands/rk2mm.raw 1.1, man/Makefile.raw 1.4, man/man1/mmimport.1.raw 1.5, man/man1/rk2mm.1.raw 1.1:
   Add rk2mm(1)
 
-  * src/man/man1/mmimport.1.raw 1.4: Update.
+  * man/man1/mmimport.1.raw 1.4: Update.
 
 2001-01-31  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/output.raw 1.16:
-  Strip slashes and replace "'" by "\dq".
+  * include/output.raw 1.16: Strip slashes and replace "'" by "\dq".
 
-  * src/include/output.raw 1.15: Strip slashes.
+  * include/output.raw 1.15: Strip slashes.
 
 2001-01-25  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/output.raw 1.14:
+  * include/output.raw 1.14:
   preg_match statt strcmp. Warum auch immer, es schien nicht zu
   funktionieren.
 
-  * src/man/man1/tkrezept.1.raw 1.3, src/man/Makefile.raw 1.3, src/man/man1/mmimport.1.raw 1.3:
+  * man/man1/tkrezept.1.raw 1.3, man/Makefile.raw 1.3, man/man1/mmimport.1.raw 1.3:
   tkrezept is obsolete -> kill it.
 
-  * src/www/rezept.raw 1.9: <meta .*>
+  * www/rezept.raw 1.9: <meta .*>
   Style
 
-  * src/www/print.raw 1.4, src/www/mmprint.raw 1.7:
-  <meta .*>
+  * www/print.raw 1.4, www/mmprint.raw 1.7: <meta .*>
 
-  * src/www/menue.raw 1.7: HTML-Style
+  * www/menue.raw 1.7: HTML-Style
 
-  * src/www/kategorien.raw 1.4: <meta .*>
+  * www/kategorien.raw 1.4: <meta .*>
   Add an anchor for in-file-links.
 
-  * src/www/infos.raw 1.9: <meta .*>
+  * www/infos.raw 1.9: <meta .*>
   Style
 
-  * src/www/index.raw 1.8: <meta .*>
+  * www/index.raw 1.8: <meta .*>
 
-  * src/www/einfuegen.raw 1.5: typo in Handler.
+  * www/einfuegen.raw 1.5: typo in Handler.
 
-  * src/www/delete.raw 1.2: <meta .*>
+  * www/delete.raw 1.2: <meta .*>
 
-  * src/include/output.raw 1.13:
-  do a strcmp rather then a "==".
+  * include/output.raw 1.13: do a strcmp rather then a "==".
 
-  * src/include/functions.raw 1.18:
-  Strip slashes when reading from DB.
+  * include/functions.raw 1.18: Strip slashes when reading from DB.
 
 2001-01-18  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.13: Sync mit der Realität.
+  * changelog 1.13: Sync mit der Realität.
 
-  * src/www/infos.raw 1.8:
-  Interface einfuegen.php funktioniert nun.
+  * www/infos.raw 1.8: Interface einfuegen.php funktioniert nun.
 
-  * src/www/index.raw 1.7: Formatierung
+  * www/index.raw 1.7: Formatierung
 
-  * src/config 1.9: tkrezept -> /dev/null
+  * config 1.9: tkrezept -> /dev/null
 
-  * src/commands/Makefile.raw 1.10, src/commands/tkrezept.raw 1.3:
+  * commands/Makefile.raw 1.10, commands/tkrezept.raw 1.3:
   tkrezept was no good.
 
-  * src/include/output.raw 1.12: HTML-Formatierung
+  * include/output.raw 1.12: HTML-Formatierung
 
-  * src/include/functions.raw 1.17:
+  * include/functions.raw 1.17:
   Rueckgabewert der Suchfunktion -> false wenn kein Hit.
 
-  * src/Documentation/Overview.txt 1.6: Foo
+  * Documentation/Overview.txt 1.6: Foo
 
-  * src/www/einfuegen.raw 1.4, src/www/rezept.raw 1.8:
+  * www/einfuegen.raw 1.4, www/rezept.raw 1.8:
   Einfuege- und Editier-Interface
 
-  * src/www/such.raw 1.8:
-  Aenderung des Rueckgabewertes.
+  * www/such.raw 1.8: Aenderung des Rueckgabewertes.
 
-  * src/README 1.14: Einfuege-Interface
+  * README 1.14: Einfuege-Interface
 
 2001-01-15  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.raw 1.16, src/www/einfuegen.raw 1.3, src/changelog 1.12:
+  * include/functions.raw 1.16, www/einfuegen.raw 1.3, changelog 1.12:
   Einfüge-Interface.
 
-  * src/www/Makefile.raw 1.11:
-  Loeschfunktion, Alphabet. Sortierung
+  * www/Makefile.raw 1.11: Loeschfunktion, Alphabet. Sortierung
 
-  * src/www/rezept.raw 1.7:
-  Lösch-funktion eingebunden
+  * www/rezept.raw 1.7: Lösch-funktion eingebunden
 
-  * src/README 1.13: PHP-Conf
+  * README 1.13: PHP-Conf
 
-  * src/www/such.raw 1.7: Lynxification
+  * www/such.raw 1.7: Lynxification
 
 2001-01-13  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/kategorien.raw 1.3: Lynxification
+  * www/kategorien.raw 1.3: Lynxification
 
 2001-01-12  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.11, src/include/functions.raw 1.15, src/www/delete.raw 1.1:
+  * changelog 1.11, include/functions.raw 1.15, www/delete.raw 1.1:
   Löschfunktion.
 
-  * src/www/rezept.raw 1.6: HTML-Cleanup
+  * www/rezept.raw 1.6: HTML-Cleanup
 
-  * src/www/index.raw 1.6: html-cleanup
+  * www/index.raw 1.6: html-cleanup
 
-  * src/include/output.raw 1.11:
-  Latex an HTML Code-Cleanup
+  * include/output.raw 1.11: Latex an HTML Code-Cleanup
 
-  * src/changelog 1.10: Updates
+  * changelog 1.10: Updates
 
-  * src/commands/rezept2latex.raw 1.5:
+  * commands/rezept2latex.raw 1.5:
   Bugfix: Wenn es nur ein einziges Rezept auf die QUery gab, dann wurde es
   nicht korrekt angezeigt.
 
-  * src/www/mmprint.raw 1.6: Keyword-Fix
+  * www/mmprint.raw 1.6: Keyword-Fix
 
 2001-01-09  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/commands/mmimport.raw 1.7: Ignore case
+  * commands/mmimport.raw 1.7: Ignore case
 
 2001-01-08  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/infos.raw 1.7: s/davor/darum/
+  * www/infos.raw 1.7: s/davor/darum/
 
 2001-01-07  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/infos.raw 1.6: MM-Homepage-Update.
+  * www/infos.raw 1.6: MM-Homepage-Update.
 
-  * src/commands/tkrezept.raw 1.2:
-  Perl + Optionen als Config-Option
+  * commands/tkrezept.raw 1.2: Perl + Optionen als Config-Option
 
-  * src/man/man1/mmexport.1.raw 1.2, src/man/man1/mmimport.1.raw 1.2, src/man/man1/rezept2latex.1.raw 1.2, src/man/man1/tkrezept.1.raw 1.2:
+  * man/man1/mmexport.1.raw 1.2, man/man1/mmimport.1.raw 1.2, man/man1/rezept2latex.1.raw 1.2, man/man1/tkrezept.1.raw 1.2:
   Style
 
-  * src/config 1.8: Perl
+  * config 1.8: Perl
 
-  * src/include/output.raw 1.10:
+  * include/output.raw 1.10:
   Diesmal scheint es auch wirklich zu funktionieren.
 
-  * src/include/functions.raw 1.14:
-  catch whitespaces in Regexp
+  * include/functions.raw 1.14: catch whitespaces in Regexp
 
-  * src/include/output.raw 1.9:
+  * include/output.raw 1.9:
   Sieht so aus, als sei endlich der Doppel-Newline-Bug gefixt.
 
 2000-12-27  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/man/Makefile.raw 1.2, src/man/man1/tkrezept.1.raw 1.1:
+  * man/Makefile.raw 1.2, man/man1/tkrezept.1.raw 1.1:
   Manpage für tkrezept
 
-  * src/changelog 1.9: tkrezept
+  * changelog 1.9: tkrezept
 
-  * src/commands/Makefile.raw 1.9, src/commands/tkrezept.raw 1.1:
+  * commands/Makefile.raw 1.9, commands/tkrezept.raw 1.1:
   Include tkrezept
 
-  * src/README 1.12: todo
+  * README 1.12: todo
 
 2000-12-20  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/menue.raw 1.6: Schoeneres Menue.
+  * www/menue.raw 1.6: Schoeneres Menue.
 
-  * src/configure 1.3:
-  Oops missed that one. Generate Makefile in ./man
+  * configure 1.3: Oops missed that one. Generate Makefile in ./man
 
-  * src/config 1.7, src/Makefile 1.8, src/man/Makefile.raw 1.1:
+  * Makefile 1.8, config 1.7, man/Makefile.raw 1.1:
   Generate and install Manpages.
 
-  * src/man/man1/mmexport.1 1.2, src/man/man1/mmexport.1.raw 1.1, src/man/man1/mmimport.1 1.2, src/man/man1/mmimport.1.raw 1.1, src/man/man1/rezept2latex.1 1.2, src/man/man1/rezept2latex.1.raw 1.1:
+  * man/man1/mmexport.1 1.2, man/man1/mmexport.1.raw 1.1, man/man1/mmimport.1 1.2, man/man1/mmimport.1.raw 1.1, man/man1/rezept2latex.1 1.2, man/man1/rezept2latex.1.raw 1.1:
   $i -> $i.raw
 
-  * src/www/infos.raw 1.5:
-  Alphabetische Reihenfolge.
+  * www/infos.raw 1.5: Alphabetische Reihenfolge.
 
-  * src/commands/rezept2latex.raw 1.4:
+  * commands/rezept2latex.raw 1.4:
   Fix Bug: wenn kein Dateiname angegeben wurde, wurden leere Files erzeugt.
 
-  * src/man/man1/mmexport.1 1.1, src/man/man1/mmimport.1 1.1, src/man/man1/rezept2latex.1 1.1:
+  * man/man1/mmexport.1 1.1, man/man1/mmimport.1 1.1, man/man1/rezept2latex.1 1.1:
   System-Dokumentation.
 
 2000-12-18  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/pics/title.gif 1.2: Schönerer Titel.
+  * www/pics/title.gif 1.2: Schönerer Titel.
 
 2000-12-16  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/output.raw 1.8, src/www/mmprint.raw 1.5, src/changelog 1.8, src/include/functions.raw 1.13:
+  * include/output.raw 1.8, www/mmprint.raw 1.5, changelog 1.8, include/functions.raw 1.13:
   Verändertes Datenbankformat. Rückwärstkompatibel. Entferne "\n", ersetze
   Leerzeilen durch Platzhalter.
 
-  * src/commands/mmexport.raw 1.6:
-  Versionsincrement
+  * commands/mmexport.raw 1.6: Versionsincrement
 
-  * src/commands/mmimport.raw 1.6: Comment
+  * commands/mmimport.raw 1.6: Comment
 
 2000-12-15  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.7: Release 0.2
+  * changelog 1.7: Release 0.2
 
-  * src/LICENCE 1.3: LICENCE -> LICENSE
+  * LICENCE 1.3: LICENCE -> LICENSE
 
-  * src/www/einfuegen.raw 1.2:
+  * www/einfuegen.raw 1.2:
   kategorie.php nun von mehreren Quellen aus benutzbar, daher weitere
   Parameter-Übergabe an das Skript.
   HTML-Formatierung.
 
-  * src/LICENSE 1.1: LICENCE -> LICENSE
+  * LICENSE 1.1: LICENCE -> LICENSE
 
-  * src/www/infos.raw 1.4:
-  Oops, das war eine Lüge.
+  * www/infos.raw 1.4: Oops, das war eine Lüge.
 
-  * src/Documentation/Programmers.txt 1.2:
-  verbose++
+  * Documentation/Programmers.txt 1.2: verbose++
 
-  * src/Documentation/User.txt 1.4: rezept2latex
+  * Documentation/User.txt 1.4: rezept2latex
 
-  * src/Documentation/init_db.sql 1.4:
+  * Documentation/init_db.sql 1.4:
   Leicht geändertes Datenbankformat. Änderung ist rückwärts kompatibel
   zu älteren Versionen
 
-  * src/Documentation/Overview.txt 1.5:
+  * Documentation/Overview.txt 1.5:
   Hinzugef.: Beschreibung von include/
 
 2000-12-14  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.raw 1.12:
-  Neue Funktion: get_mid_by_cat ($cat)
+  * include/functions.raw 1.12: Neue Funktion: get_mid_by_cat ($cat)
   Suche nach Menues mit Kategorie $cat und liefere ein Array a =
   array(array("id" => $mid, "title" => $title))
 
-  * src/www/such.raw 1.6:
-  Suche innerhalb der Kategorien.
+  * www/such.raw 1.6: Suche innerhalb der Kategorien.
 
-  * src/www/kategorien.raw 1.2:
+  * www/kategorien.raw 1.2:
   Erwarte als Parameter das den Feldnamen, in den geschrieben werden
   soll. Wenn Maximal-Anzahl der Einträge = 1, dann schließe Fenster nach
   Auswahl.
 
-  * src/www/index.raw 1.5:
-  Intrinsic Script-Language
+  * www/index.raw 1.5: Intrinsic Script-Language
 
-  * src/commands/rezept2latex.raw 1.3:
-  Versionsnummer 0.1 -> 0.1.1
+  * commands/rezept2latex.raw 1.3: Versionsnummer 0.1 -> 0.1.1
 
-  * src/www/infos.raw 1.3: Mailingliste.
+  * www/infos.raw 1.3: Mailingliste.
 
 2000-12-13  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/changelog 1.6: Update
+  * changelog 1.6: Update
 
-  * src/commands/rezept2latex.raw 1.2:
+  * commands/rezept2latex.raw 1.2:
   Hilfetext bei fehlenden Kommandozeilen-Parametern optimiert.
 
 2000-12-09  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/config 1.6: Add some comments
+  * config 1.6: Add some comments
 
-  * src/commands/Makefile.raw 1.8:
+  * commands/Makefile.raw 1.8:
   Breche nicht ab, wenn die Dateien bereits geloescht sind.
 
 2000-12-08  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/Makefile 1.7: ??
+  * Makefile 1.7: ??
 
-  * src/www/Makefile.raw 1.10, src/commands/Makefile.raw 1.7:
-  .PHONY
+  * www/Makefile.raw 1.10, commands/Makefile.raw 1.7: .PHONY
 
-  * src/changelog 1.5, src/config 1.5, src/Makefile 1.6:
+  * Makefile 1.6, changelog 1.5, config 1.5:
   Aufteilen der Installtargets in install-command, install-includes und
   install-www. 'make install' führt alle 3 separaten Targets aus.
 
 2000-12-06  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.raw 1.11:
+  * include/functions.raw 1.11:
   Suche Rezepte auch anhand ihrer Kategorie
 
-  * src/www/einfuegen.raw 1.1, src/www/kategorien.raw 1.1, src/www/menue.raw 1.5:
+  * www/einfuegen.raw 1.1, www/kategorien.raw 1.1, www/menue.raw 1.5:
   Einbau eines vorerst noch non-op Rezept-Einfüge-Interface.
 
-  * src/www/Makefile.raw 1.9:
-  Korrektur des Outputs durch "echo".
+  * www/Makefile.raw 1.9: Korrektur des Outputs durch "echo".
 
-  * src/Makefile 1.5:
+  * Makefile 1.5:
   Teile das install-Target auf in install-command, install-includes und
   install-www. So muss nicht auf jedem Rechner der ganze Satz
   installiert werden.
 
 2000-11-29  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/output.raw 1.7:
+  * include/output.raw 1.7:
   Breite des Anweisungs-Textes auf 74 reduziert
 
-  * src/commands/mmimport.raw 1.5:
+  * commands/mmimport.raw 1.5:
   Commandline-Flag '-t' oder '--test' schaltet in einen
   Test-Only-Mode. Das Rezept wird geparst aber nicht in die Datenbank
   übertragen.
 
-  * src/commands/mmexport.raw 1.5, src/include/functions.raw 1.10, src/include/output.raw 1.6, src/www/mmprint.raw 1.4:
+  * commands/mmexport.raw 1.5, include/functions.raw 1.10, include/output.raw 1.6, www/mmprint.raw 1.4:
   Versions-Ausgabe Modifiziert.
 
-  * src/README 1.11: Sektion Updating
+  * README 1.11: Sektion Updating
 
-  * src/commands/mmexport.raw 1.4:
+  * commands/mmexport.raw 1.4:
   Berücksichtige den Code-Cleanup der Include-Dateien.
 
-  * src/commands/Makefile.raw 1.6:
-  rezept2latex hinzugefügt.
+  * commands/Makefile.raw 1.6: rezept2latex hinzugefügt.
 
-  * src/commands/rezept2latex.raw 1.1:
+  * commands/rezept2latex.raw 1.1:
   Export von Rezepten im Latex-Source.
 
-  * src/Documentation/Overview.txt 1.4:
-  neues Kommando: rezept2latex
+  * Documentation/Overview.txt 1.4: neues Kommando: rezept2latex
 
-  * src/Documentation/User.txt 1.3:
-  Neues Kommando: rezept2latex
+  * Documentation/User.txt 1.3: Neues Kommando: rezept2latex
 
-  * src/changelog 1.4: Foo
+  * changelog 1.4: Foo
 
-  * src/README 1.10: Ergänzung der Bug-Liste.
+  * README 1.10: Ergänzung der Bug-Liste.
 
-  * src/include/output.raw 1.5:
+  * include/output.raw 1.5:
   Code-Cleanup: Ausgabe-Funtionen von functions.raw hierher verschoben.
   mmexport: Leerzeilen bleiben Leerzeilen bei der Ausgabe.
 
-  * src/include/functions.raw 1.9:
+  * include/functions.raw 1.9:
   Code-Cleanup: Ausgabe-Funktionen nach output.raw verschoben
 
-  * src/www/print.raw 1.3, src/www/rezept.raw 1.5, src/www/such.raw 1.5, src/www/mmprint.raw 1.3:
+  * www/print.raw 1.3, www/rezept.raw 1.5, www/such.raw 1.5, www/mmprint.raw 1.3:
   u != o
 
 2000-11-24  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/such.raw 1.4, src/www/menue.raw 1.4, src/include/output.raw 1.4, src/include/functions.raw 1.8:
+  * www/such.raw 1.4, www/menue.raw 1.4, include/output.raw 1.4, include/functions.raw 1.8:
   Improved mmexport-functions.
   Convert special characters to their html-entities.
 
 2000-11-22  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/index.raw 1.4: Typo
+  * www/index.raw 1.4: Typo
 
 2000-11-21  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/www/menue.raw 1.3, src/www/mmprint.raw 1.2, src/www/print.raw 1.2, src/www/rezept.raw 1.4, src/www/styles.css 1.4, src/www/such.raw 1.3, src/changelog 1.3, src/commands/mmexport.raw 1.3, src/Documentation/init_db.sql 1.3, src/Documentation/Overview.txt 1.3, src/README 1.9, src/www/index.raw 1.3, src/www/infos.raw 1.2, src/www/Makefile.raw 1.8:
+  * www/menue.raw 1.3, www/mmprint.raw 1.2, www/print.raw 1.2, www/rezept.raw 1.4, www/styles.css 1.4, www/such.raw 1.3, Documentation/Overview.txt 1.3, Documentation/init_db.sql 1.3, README 1.9, changelog 1.3, commands/mmexport.raw 1.3, www/Makefile.raw 1.8, www/index.raw 1.3, www/infos.raw 1.2:
   Added several Comments, missing cvs-keywords.
   Sync'd Documentation
 
 2000-11-19  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/output.raw 1.3:
-  Fehler im Export-Format gefixt.
+  * include/output.raw 1.3: Fehler im Export-Format gefixt.
 
 2000-11-16  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/commands/mmexport.raw 1.2:
+  * commands/mmexport.raw 1.2:
   Print an error, if no searchstring is specified.
 
-  * src/Documentation/User.txt 1.2:
-  Doku zu mmexport
+  * Documentation/User.txt 1.2: Doku zu mmexport
 
-  * src/include/output.raw 1.2, src/www/infos.raw 1.1, src/www/Makefile.raw 1.7, src/www/menue.raw 1.2, src/www/rezept.raw 1.3, src/www/styles.css 1.3:
+  * include/output.raw 1.2, www/Makefile.raw 1.7, www/infos.raw 1.1, www/menue.raw 1.2, www/rezept.raw 1.3, www/styles.css 1.3:
   Info-Seite himnzugefügt.
   Stylesheet-Änderungen
 
 2000-11-15  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/commands/Makefile.raw 1.5, src/commands/mmexport.raw 1.1, src/include/functions.raw 1.7, src/include/Makefile.raw 1.4, src/include/output.raw 1.1, src/www/Makefile.raw 1.6, src/www/mmprint.raw 1.1, src/www/rezept.raw 1.2:
+  * commands/Makefile.raw 1.5, commands/mmexport.raw 1.1, include/Makefile.raw 1.4, include/functions.raw 1.7, include/output.raw 1.1, www/Makefile.raw 1.6, www/mmprint.raw 1.1, www/rezept.raw 1.2:
   Mealmaster-Export-Funktion hinzugefügt.
   Schönheitskorrekturen.
 
-  * src/include/functions.raw 1.6:
+  * include/functions.raw 1.6:
   Bug beseitigt: Subrezept-Header die ein "-" im Namen haben, werden nun
   korrekt geparst.
 
 2000-11-13  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/Documentation/User.txt 1.1:
-  User-Dokumentation
+  * Documentation/User.txt 1.1: User-Dokumentation
 
-  * src/Documentation/Overview.txt 1.2:
-  *** empty log message ***
+  * Documentation/Overview.txt 1.2: *** empty log message ***
 
-  * src/Documentation/init_db.sql 1.2:
-  Einheiten berücksichtigen
+  * Documentation/init_db.sql 1.2: Einheiten berücksichtigen
 
-  * src/www/such.raw 1.2, src/include/functions.raw 1.5:
-  Improving the output.
+  * www/such.raw 1.2, include/functions.raw 1.5: Improving the output.
 
-  * src/commands/mmimport.raw 1.4, src/include/config.raw 1.2, src/include/functions.raw 1.4, src/www/index.raw 1.2, src/www/Makefile.raw 1.5, src/www/menue.inc 1.2, src/www/menue.raw 1.1, src/www/print.raw 1.1, src/www/rezept.raw 1.1, src/www/styles.css 1.2, src/www/such.inc 1.2, src/www/such.raw 1.1, src/README 1.8:
+  * commands/mmimport.raw 1.4, include/config.raw 1.2, include/functions.raw 1.4, www/Makefile.raw 1.5, www/index.raw 1.2, www/menue.inc 1.2, www/menue.raw 1.1, www/print.raw 1.1, www/rezept.raw 1.1, www/styles.css 1.2, www/such.inc 1.2, www/such.raw 1.1, README 1.8:
   Ausgabe-funktionen erweitert.
 
 2000-11-12  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/Documentation/examples/slrn.sl 1.1:
-  Example-Usage: Slrn
+  * Documentation/examples/slrn.sl 1.1: Example-Usage: Slrn
 
-  * src/README 1.7: bla
+  * README 1.7: bla
 
-  * src/configure 1.2, src/Makefile 1.4, src/www/index.raw 1.1, src/www/Makefile.raw 1.4, src/www/menue.inc 1.1, src/www/pics/Makefile.raw 1.1, src/www/pics/title.gif 1.1, src/www/pics/white.gif 1.1, src/www/styles.css 1.1, src/www/such.inc 1.1:
+  * Makefile 1.4, configure 1.2, www/Makefile.raw 1.4, www/index.raw 1.1, www/menue.inc 1.1, www/pics/Makefile.raw 1.1, www/pics/title.gif 1.1, www/pics/white.gif 1.1, www/styles.css 1.1, www/such.inc 1.1:
   Next step towards a more complete version
 
-  * src/include/functions.raw 1.3:
+  * include/functions.raw 1.3:
   Funktionen um Rezepte aus der Datenbank wieder auszulesen.
 
-  * src/Documentation/Programmers.txt 1.1:
-  Programmierer-Dokumentation,
+  * Documentation/Programmers.txt 1.1: Programmierer-Dokumentation,
    -> verwendete Datentypen
    -> more to come.
 
 2000-11-04  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/README 1.6:
+  * README 1.6:
   Instructions for building PHP as needed for this Project added.
 
-  * src/commands/Makefile.raw 1.4, src/commands/mmimport.raw 1.3, src/include/functions.raw 1.2, src/config 1.4:
+  * commands/Makefile.raw 1.4, commands/mmimport.raw 1.3, include/functions.raw 1.2, config 1.4:
   Finally the installed mmimport does work also.
 
-  * src/commands/Makefile.raw 1.3, src/include/Makefile.raw 1.3, src/www/Makefile.raw 1.3:
+  * commands/Makefile.raw 1.3, include/Makefile.raw 1.3, www/Makefile.raw 1.3:
   The Quotes were wrong.
 
-  * src/commands/Makefile.raw 1.2, src/config 1.3, src/include/Makefile.raw 1.2, src/www/Makefile.raw 1.2:
+  * commands/Makefile.raw 1.2, config 1.3, include/Makefile.raw 1.2, www/Makefile.raw 1.2:
   Some Bugs in the "make install" fixed.
 
-  * src/commands/mmimport.raw 1.2, src/changelog 1.2, src/config 1.2, src/Makefile 1.3:
+  * commands/mmimport.raw 1.2, Makefile 1.3, changelog 1.2, config 1.2:
   Added Install-Target
   Minor changes for portability. Tested on OpenBSD and Linux.
 
-  * src/Makefile 1.2: foo
+  * Makefile 1.2: foo
 
-  * src/include/Makefile.raw 1.1:
+  * include/Makefile.raw 1.1:
   Oops, forgot that one to add to the Repository.
 
-  * src/commands/Makefile.raw 1.1, src/commands/mmimport.raw 1.1, src/include/config.inc 1.2, src/include/config.raw 1.1, src/include/functions.inc 1.7, src/include/functions.raw 1.1, src/www/Makefile.raw 1.1, src/changelog 1.1, src/config 1.1, src/configure 1.1, src/Documentation/Overview.txt 1.1, src/Makefile 1.1, src/mmimport 1.3, src/README 1.5:
+  * commands/Makefile.raw 1.1, commands/mmimport.raw 1.1, include/config.inc 1.2, include/config.raw 1.1, include/functions.inc 1.7, include/functions.raw 1.1, www/Makefile.raw 1.1, Documentation/Overview.txt 1.1, Makefile 1.1, README 1.5, changelog 1.1, config 1.1, configure 1.1, mmimport 1.3:
   Created a Makefile for convenience
 
   Added a file named "config". configure parses it and creates Makefiles
@@ -1591,39 +1444,35 @@
 
 2000-11-01  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.inc 1.6: Foo
+  * include/functions.inc 1.6: Foo
 
-  * src/include/functions.inc 1.5, src/README 1.4:
-  bla
+  * include/functions.inc 1.5, README 1.4: bla
 
-  * src/Documentation/init_db.sql 1.1, src/init_db.sql 1.2:
+  * Documentation/init_db.sql 1.1, init_db.sql 1.2:
   Created a "Documentation"-directory for the documentation of this
   suite and some notes about the database-layout.
 
-  * src/include/functions.inc 1.4, src/mmimport 1.2:
+  * include/functions.inc 1.4, mmimport 1.2:
   fixed a problem with importing Recipes, that have no empty line
   between a ingredient-line and a header for additional ingredients.
 
 2000-10-31  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.inc 1.3: Regex-Changes
+  * include/functions.inc 1.3: Regex-Changes
 
 2000-10-26  Michael Lestinsky  <michael@lestinsky.de>
 
-  * src/include/functions.inc 1.2:
-  Einige Import-Fehler wurden gefixt.
+  * include/functions.inc 1.2: Einige Import-Fehler wurden gefixt.
 
-  * src/README 1.3:
-  SQL-Infos zu den Installationsanweisungen.
+  * README 1.3: SQL-Infos zu den Installationsanweisungen.
 
-  * src/LICENCE 1.2: foo
+  * LICENCE 1.2: foo
 
-  * src/README 1.2:
-  Update der Installations-Anweisungen
+  * README 1.2: Update der Installations-Anweisungen
 
-  * src/include/config.inc 1.1.1.1, src/include/functions.inc 1.1.1.1, src/init_db.sql 1.1.1.1, src/LICENCE 1.1.1.1, src/mmimport 1.1.1.1, src/README 1.1.1.1:
+  * LICENCE 1.1.1.1, README 1.1.1.1, include/config.inc 1.1.1.1, include/functions.inc 1.1.1.1, init_db.sql 1.1.1.1, mmimport 1.1.1.1:
   Alpha-Version der Koch-Suite, einem einfachen Rezeptverwaltungs-System.
 
-  * src/include/config.inc 1.1, src/include/functions.inc 1.1, src/init_db.sql 1.1, src/LICENCE 1.1, src/mmimport 1.1, src/README 1.1:
+  * LICENCE 1.1, README 1.1, include/config.inc 1.1, include/functions.inc 1.1, init_db.sql 1.1, mmimport 1.1:
   New file.
 
