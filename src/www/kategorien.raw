@@ -1,6 +1,14 @@
-<?
-    include("<%%PHP_LIBS%%>/config.inc");
-    include("<%%PHP_LIBS%%>/functions.inc");
+<?php
+  /*
+   * Category-chooser
+   *
+   * $Id: kategorien.raw,v 1.7 2001/06/23 00:22:48 michael Exp $
+   * Michael Lestinsky
+   */
+
+    require_once "<%%PHP_LIBS%%>/config.inc";
+    require_once "<%%PHP_LIBS%%>/functions.inc";
+    require_once "<%%PHP_LIBS%%>/lang.inc";
 
     $target = $HTTP_GET_VARS["target"];
     $kategorie = $HTTP_GET_VARS["kategorie"];
@@ -17,8 +25,7 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
 
-  <title>Definierte Kategorien</title>
-  <!-- $Id: kategorien.raw,v 1.6 2001/06/20 18:33:29 michael Exp $ -->
+  <title><?php echo $Lang['Category']['Title']; ?></title>
 
   <script language="JavaScript1.2">
   <!--
@@ -40,19 +47,18 @@
 </head>
 
 <body>
-<a name="top"><h2>Kategorien</h2></a>
+<a name="top"><h2><?php echo $Lang['CatChoose']; ?></h2></a>
 
 <p>
-Geben sie bis zu 5 Kategorien an. Klicken sie auf die gewünschte
-Kategorie, um den Wert in das Formularfeld zu übertragen.
+<?php echo $Lang['Category']['Help']; ?>
 </p>
 
 <form>
-  <input type="button" value="Schlie&szlig;en" onClick="window.close()">
+  <input type="button" value="<?php echo $Lang['Close']; ?>" onClick="window.close()">
 </form>
 
 <table border="0" cellspacing="2" cellpadding="0">
-  <?
+  <?php
     $kat = get_categories();
 
     foreach ($kat as $kategorie) {
@@ -67,7 +73,7 @@ Kategorie, um den Wert in das Formularfeld zu übertragen.
 </table>
 
 <form>
-  <input type="button" value="Schlie&szlig;en" onClick="window.close()">
+  <input type="button" value="<?php echo $Lang['Close']; ?>" onClick="window.close()">
 </form>
 
 </body>
