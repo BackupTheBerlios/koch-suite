@@ -2,7 +2,7 @@
 <?
 
   /*
-   * $Id: rk2mm.raw,v 1.1 2001/02/05 01:09:29 michael Exp $
+   * $Id: rk2mm.raw,v 1.2 2001/02/08 01:40:15 michael Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Translate REZKONV-formated recipes to Mealmaster-formated recipes.
    *
@@ -28,7 +28,7 @@
   $temp_fd = fopen($temp, "w");
 
   while ($line = fgets($stdin, 1024)) {
-    fputs ($temp_fd, $line);
+    fputs ($temp_fd, preg_replace("/\r/", "", $line));
   }
   fclose ($temp_fd);
 
