@@ -1,4 +1,4 @@
-### $Id: README,v 1.55 2002/11/06 17:46:27 lestinsky Exp $
+### $Id: README,v 1.56 2002/12/27 00:00:03 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -142,3 +142,4 @@ o  Michael Bussmann for the PEARification of the database requests
 o  Leo Caspari for feedback, error corrections and extensions,
 o  Ulli Fetzer and Ilka Spiess their comments and support while creating
    the Meal-Master and RezKonv filters.
+o  Joel Swartz for sending me a StarTrek VI DVD.
