@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: de.inc,v 1.9 2001/06/23 00:25:49 michael Exp $
+   * $Id: de.inc,v 1.10 2001/06/25 23:30:35 michael Exp $
    *
    * Define German text-constants.
    *
@@ -70,7 +70,7 @@ EOT;
 
   $Lang['Homepage']['Title']	= 'Homepage';
   $Lang['Homepage']['Text'][0]	= <<<EOT
-      <a href="http://milliways.ma.choin.net/~michael/koch-suite/">http://milliways.ma.choin.net/~michael/koch-suite/</a>:
+      <a href="http://www.lestinsky.de/michael/koch-suite//">http://www.lestinsky.de/michael/koch-suite/</a>:
       Aktuelle Informationen rund um dieses Projekt und die jeweils
       neusten Versionen der $kochsuite finden sich dort.
 EOT;
