@@ -1,34 +1,36 @@
-# MySQL dump 7.1
+# MySQL dump 8.13
 #
-# $Id: init_db.mysql,v 1.3 2001/07/26 10:45:19 michael Exp $
+# $Id: init_db.mysql,v 1.4 2001/08/31 17:38:34 lestinsky Exp $
 #
-# Host: magrathea    Database: DBkoch
+# Host: localhost    Database: DBkoch
 #--------------------------------------------------------
 # Server version	3.23.36
 
 #
 # Table structure for table 'ANWEISUNG'
 #
+
 CREATE TABLE ANWEISUNG (
   TEXT longtext,
-  MENUE_ID int(11) DEFAULT '0' NOT NULL,
+  MENUE_ID int(11) NOT NULL default '0',
   KEY MENUE_ID (MENUE_ID)
-);
+) TYPE=MyISAM;
 
 #
 # Table structure for table 'EINHEITEN'
 #
+
 CREATE TABLE EINHEITEN (
-  ID int(11) NOT NULL,
-  ABBREV char(2),
-  TEXT varchar(15),
-  DESCR varchar(255),
-  FAKTOR float(5,3),
-  FAKTOR_ID int(11),
-  RK_ABBREV varchar(11),
-  MMUSE enum('J','N'),
-  PRIMARY KEY (ID)
-);
+  ID int(11) NOT NULL default '0',
+  ABBREV char(2) default NULL,
+  TEXT varchar(15) default NULL,
+  DESCR varchar(255) default NULL,
+  FAKTOR float(5,3) default NULL,
+  FAKTOR_ID int(11) default NULL,
+  RK_ABBREV varchar(11) default NULL,
+  MMUSE enum('J','N') default NULL,
+  PRIMARY KEY  (ID)
+) TYPE=MyISAM;
 
 #
 # Dumping data for table 'EINHEITEN'
@@ -72,11 +74,12 @@ INSERT INTO EINHEITEN VALUES (34,'','','',0.000,0,'','J');
 #
 # Table structure for table 'EINHEITEN_ALIAS'
 #
+
 CREATE TABLE EINHEITEN_ALIAS (
-  EID int(11) DEFAULT '0' NOT NULL,
-  TEXT varchar(15) DEFAULT '' NOT NULL,
+  EID int(11) NOT NULL default '0',
+  TEXT varchar(15) NOT NULL default '',
   KEY TEXT (TEXT)
-);
+) TYPE=MyISAM;
 
 #
 # Dumping data for table 'EINHEITEN_ALIAS'
@@ -100,60 +103,76 @@ INSERT INTO EINHEITEN_ALIAS VALUES (29,'Deziliter');
 #
 # Table structure for table 'KAT'
 #
+
 CREATE TABLE KAT (
-  ID int(11) NOT NULL,
-  KATEGORIE_ID int(11),
-  MENUE_ID int(11) DEFAULT '0' NOT NULL,
-  PRIMARY KEY (ID),
+  ID int(11) NOT NULL default '0',
+  KATEGORIE_ID int(11) default NULL,
+  MENUE_ID int(11) NOT NULL default '0',
+  PRIMARY KEY  (ID),
   KEY MENUE_ID (MENUE_ID),
   KEY KATEGORIE_ID (KATEGORIE_ID)
-);
+) TYPE=MyISAM;
 
 #
 # Table structure for table 'KATEGORIE'
 #
+
 CREATE TABLE KATEGORIE (
-  ID int(11) NOT NULL,
-  TEXT varchar(255),
-  PRIMARY KEY (ID),
+  ID int(11) NOT NULL default '0',
+  TEXT varchar(255) default NULL,
+  PRIMARY KEY  (ID),
   KEY TEXT (TEXT)
-);
+) TYPE=MyISAM;
 
 #
 # Table structure for table 'MENUE'
 #
+
 CREATE TABLE MENUE (
-  ID int(11) NOT NULL,
-  PORTIONEN varchar(255),
-  TITEL varchar(255) DEFAULT '' NOT NULL,
-  HASH varchar(255),
-  PRIMARY KEY (ID),
+  ID int(11) NOT NULL default '0',
+  PORTIONEN varchar(255) default NULL,
+  TITEL varchar(255) NOT NULL default '',
+  HASH varchar(255) default NULL,
+  PRIMARY KEY  (ID),
   KEY TITEL (TITEL(50)),
   KEY HASH (HASH(50))
-);
+) TYPE=MyISAM;
 
 #
 # Table structure for table 'REZEPT'
 #
+
 CREATE TABLE REZEPT (
-  ID int(11) NOT NULL,
-  MENUE_ID int(11) DEFAULT '0' NOT NULL,
-  TITEL varchar(255),
-  PRIMARY KEY (ID),
+  ID int(11) NOT NULL default '0',
+  MENUE_ID int(11) NOT NULL default '0',
+  TITEL varchar(255) default NULL,
+  PRIMARY KEY  (ID),
   KEY MENUE_ID (MENUE_ID)
-);
+) TYPE=MyISAM;
 
 #
 # Table structure for table 'ZUTATEN'
 #
+
 CREATE TABLE ZUTATEN (
-  ID int(11) NOT NULL,
-  MENGE float(5,3),
-  EINHEIT char(2),
-  TEXT varchar(255),
-  REZEPT_ID int(11) DEFAULT '0' NOT NULL,
-  PRIMARY KEY (ID),
+  ID int(11) NOT NULL default '0',
+  MENGE float(5,3) default NULL,
+  EINHEIT char(2) default NULL,
+  TEXT varchar(255) default NULL,
+  REZEPT_ID int(11) NOT NULL default '0',
+  PRIMARY KEY  (ID),
   KEY TEXT (TEXT),
   KEY REZEPT_ID (REZEPT_ID)
-);
+) TYPE=MyISAM;
+
+#
+# Table structure for table 'user'
+#
+
+CREATE TABLE user (
+  username varchar(20) NOT NULL default '',
+  usertype varchar(20) default NULL,
+  password varchar(255) default NULL,
+  PRIMARY KEY  (username)
+) TYPE=MyISAM;
 

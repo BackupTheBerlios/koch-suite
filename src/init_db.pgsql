@@ -1,5 +1,5 @@
 -- 
--- $Id: init_db.pgsql,v 1.5 2001/07/26 10:45:20 michael Exp $
+-- $Id: init_db.pgsql,v 1.6 2001/08/31 17:38:34 lestinsky Exp $
 -- init_db_postgreSQL.sql
 -- 2001-07-25 Michael Bussmann <bus@mb-net.net>
 --
@@ -148,3 +148,15 @@ CREATE TABLE ZUTATEN (
   REZEPT_ID smallint DEFAULT '0' NOT NULL
 );
 CREATE INDEX zutaten_rid ON zutaten (REZEPT_ID);
+
+--
+-- Table structure for table 'user'
+--
+
+CREATE TABLE user (
+  username varchar(20) NOT NULL default '',
+  usertype varchar(20) default NULL,
+  password varchar(255) default NULL,
+);
+CREATE INDEX user_name on user (username);
+
