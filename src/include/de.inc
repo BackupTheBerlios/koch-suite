@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.48 2003/01/10 23:31:53 lestinsky Exp $
+   * $Id: de.inc,v 1.49 2003/01/20 20:29:01 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -27,6 +27,8 @@
   $Lang['Instructions']		= 'Anweisungen';
   $Lang['Rating']		= 'Bewertung';
   $Lang['Vote']['Submit']	= 'Rezept bewerten';
+  $Lang['TotalRecipes']		= 'Verf&uuml;gbare Rezeptes';
+  $Lang['Contact']		= 'Kontakt';
 
   $Lang['FormApply']		= "Eintragen";
   $Lang['FormMoreIngr']		= "Weitere Zutatenliste";
@@ -105,7 +107,7 @@
 
   $Lang['Pastebox']['Title']		= 'Pastebox';
   $Lang['Pastebox']['Text']		= <<<EOT
-     Eingabefeld f&uuml;r einzelne vorvormatierte Rezepte im Meal-Master- oder 
+     Eingabefeld f&uuml;r einzelne vorformatierte Rezepte im Meal-Master- oder 
      RezKonv-Format.
 EOT;
 
