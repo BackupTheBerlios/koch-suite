@@ -1,9 +1,9 @@
-### $Id: README,v 1.56 2002/12/27 00:00:03 lestinsky Exp $
+### $Id: README,v 1.57 2003/01/10 23:41:27 lestinsky Exp $
 
 Koch-Suite
 ==========
 
-Copyright (c) 2002 Michael Lestinsky <michael@lestinsky.de>
+Copyright (c) 2003 Michael Lestinsky <michael@lestinsky.de>
 Please see the file `LICENSE' for the license terms, under which you may
 use, modify and distribute this package or single parts of it.
 
@@ -95,7 +95,6 @@ Planned for later releases or bored weekends:
   o  A better system to categorize recipes
   o  Support RezTransfer (will there ever be a draft?)
   o  Rezkonv-export
-  o  Recipe rating
   o  Annotate recipes
   o  Keep lists of "favorites" (also known as bookmark-list)
   o  Save images with the recipes
