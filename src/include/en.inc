@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.14 2001/07/01 20:01:21 michael Exp $
+   * $Id: en.inc,v 1.15 2001/07/03 00:11:29 michael Exp $
    *
    * Define English text-constants.
    *
@@ -78,7 +78,7 @@ EOT;
       Up-to-date informations about this project and the currently newest
       releases of the 
 EOT;
-  $Lang['Homepage']['Text'][0] .= KOCHSUITE . " may be found here".
+  $Lang['Homepage']['Text'][0] .= KOCHSUITE . " may be found here";
 
   $Lang['Version']['Title']             = 'Version';
   $Lang['Version']['Text']['Pre']       = "Installed is " . KOCHSUITE;
