@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.14 2001/01/25 12:46:38 michael Exp $
+   * $Id: output.raw,v 1.15 2001/01/31 10:34:21 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -241,7 +241,7 @@
     global $ver, $tool;
     $str = "";
     $i = 0;
-    $header = "MMMMM-----mmexport (v0.2.4) Export nach Meal-Master-----\n";
+    $header = "MMMMM-----mmexport (v0.2.5) Export nach Meal-Master-----\n";
     $footer = "MMMMM";
 
     $str .= "$header\n";
@@ -263,7 +263,7 @@
     $str .= print_ingred($rezept["zutaten"]);
     $a = length_adjust($rezept["anleitung"], 72); 
     foreach ($a as $line) {
-      $str .= $line . "\n";
+      $str .= stripslashes($line) . "\n";
     }
     $str .= "\n$footer\n";
 
