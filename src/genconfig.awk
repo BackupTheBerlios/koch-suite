@@ -1,4 +1,4 @@
-# $Id: genconfig.awk,v 1.4 2001/10/15 07:28:06 lestinsky Exp $
+# $Id: genconfig.awk,v 1.5 2001/10/15 11:44:24 lestinsky Exp $
 # Parse 'config' and generate the sedscript which performs the
 # replacements.
 
@@ -6,7 +6,7 @@
 # Name = Value
 BEGIN { FS = "[ \t]*=[ \t]*" }
 
-/#/ { next }
+/#/ { gsub(/#.*$/, "") }
 
 { # For every non-empty line
   if ($1 != "") {
