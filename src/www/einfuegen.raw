@@ -44,6 +44,7 @@
   auth(WRITE);
 
   $scale = 1;
+  $new_cat = true;
 
   /*
    * read the proper values submitted via form
@@ -270,7 +271,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.34 2002/03/31 23:13:58 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.35 2002/05/11 12:21:33 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -306,7 +307,7 @@
         delete_menue($mid);
       }
       echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
-      $mid = write_db($r);
+      $mid = write_db($r, $new_cat);
     } elseif (isset($more_zutaten)) {
       // Do nothing.
     } else {
