@@ -1,9 +1,9 @@
-<!-- $Id: menue.raw,v 1.9 2001/03/15 13:04:32 michael Exp $ -->
+<!-- $Id: menue.raw,v 1.10 2001/03/17 16:25:39 michael Exp $ -->
 <!-- Links: Programm-Menue -->
-<table border=0 cellspacing=0 cellpadding=1>
-  <tr style="background-color:#b0b0b0;" align="top">
+<table border=0 cellspacing=0 cellpadding=0>
+  <tr style="background-color:#9090b0;" align="top">
     <td>
-      <table border="0" cellspacing="0" cellpadding="3">
+      <table border="0" cellspacing="2" cellpadding="3">
         <tr style="font-size:small;">
           <td style="background-color:#c0c0d5" class="menu">Hauptmen&uuml;</td>
         </tr>
@@ -11,6 +11,7 @@
           <td style="background-color:#e9e9f0; font-size:small;" class="menu">
             <img src="pics/blue_dot.gif" align="bottom" alt="" border=0> <a href="index.php?suchen=1">Suchen</a><br>
             <img src="pics/blue_dot.gif" align="bottom" alt="" border=0> <a href="einfuegen.php">Einf&uuml;gen</a><br>
+            <img src="pics/blue_dot.gif" align="bottom" alt="" border=0> <a href="help.php">Hilfe</a><br>
             <img src="pics/blue_dot.gif" align="bottom" alt="" border=0> <a href="infos.php">Infos</a><br>
           </td>
         </tr>
