@@ -1,3 +1,8 @@
+2003-02-14  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/functions.raw 1.91:
+  Maybe I should stop sniffing glue
+
 2003-02-11  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/units.raw 1.18: fix style
