@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.8 2001/06/13 14:44:08 michael Exp $
+   * $Id: en.inc,v 1.9 2001/06/23 00:25:49 michael Exp $
    *
    * Define English text-constants.
    *
@@ -57,6 +57,12 @@
 
   $Lang['Aliases']['DefDescr']  = "enter space-separated alias-list.";
 
+  $Lang['Category']['Title']    = "Defined Categories";
+  $Lang['Category']['Help']     = <<<EOT
+      Please select 5 different categories max. Click onto the category
+      to insert the value into the form.
+EOT;
+
   /*
    * Infos:
    */
@@ -68,10 +74,6 @@
       releases of the $kochsuite may be found here.
 EOT;
 
-  /* 
-   * Infos: 
-   */
-
   $Lang['Version']['Title']             = 'Version';
   $Lang['Version']['Text']['Pre']       = "Installed is $kochsuite";
   $Lang['Version']['Text']['Post']      = "";
@@ -79,7 +81,7 @@ EOT;
   $Lang['Requirements']['Title']	= 'Requirements';
   $Lang['Requirements']['Text'][0]	= 'Required Software:';
 
-  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 and 3.23 tested),';
+  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 and 3.23 tested), or PostgreSQL';
   $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version 4), with MySQL-support,';
   $Lang['Requirements']['Software'][2]	= 'a Webserver, which supports PHP (i.e. <a href="http://www.apache.org">Apache</a>)';
 

@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: de.inc,v 1.8 2001/06/13 14:44:07 michael Exp $
+   * $Id: de.inc,v 1.9 2001/06/23 00:25:49 michael Exp $
    *
    * Define German text-constants.
    *
@@ -57,6 +57,13 @@
 
   $Lang['Aliases']['DefDescr']  = "Alias-Liste durch Leerzeichen getrennt angeben.";
 
+  $Lang['Category']['Title']    = "Definierte Kategorien";
+  $Lang['Category']['Help']     = <<<EOT
+      Geben sie bis zu 5 Kategorien an. Klicken sie auf die gewünschte
+      Kategorie, um den Wert in das Formularfeld zu übertragen.
+EOT;
+
+
   /* 
    * Infos: 
    */
@@ -75,7 +82,7 @@ EOT;
   $Lang['Requirements']['Title']	= 'Voraussetzungen';
   $Lang['Requirements']['Text'][0]	= 'Vorausgesetzte Software:';
 
-  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 und 3.23 getestet),';
+  $Lang['Requirements']['Software'][0]	= '<a href="http://www.mysql.org">MySQL</a> (3.22 und 3.23 getestet) oder PostgreSQL,';
   $Lang['Requirements']['Software'][1]	= '<a href="http://www.php.net">PHP</a> (Version 4), mit MySQL-Unterstützung,';
   $Lang['Requirements']['Software'][2]	= 'ein Webserver, der PHP unterstützt. (z.B. <a href="http://www.apache.org">Apache</a>)';
 
