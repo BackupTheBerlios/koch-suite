@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.17 2001/03/17 17:44:39 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.18 2001/03/18 13:58:04 michael Exp $ -->
 </head>
 
 <body>
@@ -25,15 +25,17 @@
   <td width="90%">
     <h2>Informationen zur Koch-Suite</h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.17 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.18 $ -->
 
     <h3>Voraussetzungen:</h3>
     <p>
       Vorausgesetzte Software:
     </p>
     <ol>
-      <li><a href="http://www.mysql.org">MySQL</a>,</li>
-      <li><a href="http://www.php.net">PHP</a>, mit MySQL-Unterstützung,</li>
+      <li><a href="http://www.mysql.org">MySQL</a> (3.22 und 3.23
+          getestet),</li>
+      <li><a href="http://www.php.net">PHP</a> (Version 4), mit 
+          MySQL-Unterstützung,</li>
       <li>ein Webserver, der PHP unterstützt. (z.B. <a
           href="http://www.apache.org">Apache</a>)</li>
     </ol>
