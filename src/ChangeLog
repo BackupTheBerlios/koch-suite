@@ -1,3 +1,8 @@
+2002-01-07  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/de.inc 1.26, src/include/en.inc 1.30:
+  Hmm. Didn't work that way.
+
 2002-01-05  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/lang.raw 1.11:
