@@ -3,10 +3,10 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.5 2000/11/29 01:20:54 michael Exp $ -->
+  <!-- $Id: rezept.raw,v 1.6 2001/01/12 01:09:33 michael Exp $ -->
 </head>
 
 <body>
@@ -25,6 +25,7 @@
 
       echo format_recipe_html(get_menu_by_mid($mid));
     ?>
+  </td>
 </tr>
 </table>
 
