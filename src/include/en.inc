@@ -1,8 +1,8 @@
 <?
   /*
-   * $Id: en.inc,v 1.1 2001/05/16 00:21:26 michael Exp $
+   * $Id: en.inc,v 1.2 2001/05/16 00:26:04 michael Exp $
    *
-   * Define English text-constanst.
+   * Define English text-constants.
    *
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
