@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* $Id: rezept.raw,v 1.1 2001/03/11 14:28:33 michael Exp $
+  /* $Id: rezept.raw,v 1.2 2001/03/11 15:03:18 michael Exp $
    * Export a recipe in different formats.
    */
 
@@ -24,6 +24,8 @@
   $helptext .= "\t-f\tSpecify a filename for the output, otherwise\n";
   $helptext .= "\t\tto STDOUT. On multiple matches append an 2-digit\n";
   $helptext .= "\t\tcounter to filename\n";
+  $helptext .= "\t-1\tOutput goes into one single file, instead of one\n";
+  $helptext .= "\t\tfile per match.\n";
   $helptext .= "\t\"searchstring\"\tSearch for this string in the database.\n";
 
   if ($argc == 1) {
