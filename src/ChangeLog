@@ -1,3 +1,10 @@
+2003-02-05  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/man/man1/mmimport.1.raw 1.15: Better mdoc
+
+  * src/www/search.raw 1.38:
+  Fix warning in PHP 4.3
+
 2003-01-28  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/www/search.raw 1.37: Fix Typo
