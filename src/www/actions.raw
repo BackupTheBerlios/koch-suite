@@ -4,9 +4,9 @@
   <td style="text-align:left;">
   <div class="small">
   <?php
-    echo "[<a href=\"print.php?mid=$mid\">" . $Lang['PrintVers'] . "</a>]\n";
-    echo "[<a href=\"mmprint.php?mid=$mid\">Meal-Master-Format</a>]\n";
-    echo "[<a href=\"rezept.php?mid=$mid\">" . $Lang['NormalVers'] .  "</a>]\n";
+    echo "[<a href=\"print.php?mid=$mid&scale=$scale\">" . $Lang['PrintVers'] . "</a>]\n";
+    echo "[<a href=\"mmprint.php?mid=$mid&scale=$scale\">Meal-Master-Format</a>]\n";
+    echo "[<a href=\"rezept.php?mid=$mid&scale=$scale\">" . $Lang['NormalVers'] .  "</a>]\n";
   ?>
   </div>
   </td>
