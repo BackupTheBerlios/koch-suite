@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
   <title>Infos zur Koch-Suite</title>
-  <!-- $Id: infos.raw,v 1.6 2001/01/07 22:07:26 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.7 2001/01/08 00:02:23 michael Exp $ -->
 </head>
 
 <body>
@@ -100,7 +100,7 @@
       Um sich auf der Mailingliste zu subscriben schickt man eine EMail an
       <i>koch-suite-request@zaphod.rhein-neckar.de</i> mit
       folgendem Subject/Betreff: &raquo;<code>subscribe</code>&laquo;. 
-      (Nat&uuml;rlich ohne die Quotes davor!)
+      (Nat&uuml;rlich ohne die Quotes darum!)
     </p>
   </td>
 </tr>
