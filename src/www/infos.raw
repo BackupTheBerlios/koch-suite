@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: infos.raw,v 1.16 2001/03/17 16:25:39 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.17 2001/03/17 17:44:39 michael Exp $ -->
 </head>
 
 <body>
@@ -25,7 +25,7 @@
   <td width="90%">
     <h2>Informationen zur Koch-Suite</h2>
 
-    <!-- Installierte Version: $Name:  $ $Revision: 1.16 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.17 $ -->
 
     <h3>Voraussetzungen:</h3>
     <p>
@@ -52,18 +52,20 @@
       CGI oder als Apache-Modul installiert sein.
     </p>
 
-    <h3>Feedback, Support</h3>
+    <h3>A note to the English readers:</h3>
     <p>
-      Für die User und Entwickler existiert eine Mailingliste,
-      <i>koch-suite@zaphod.rhein-neckar.de</i>. Diese Mailingliste
-      ist &ouml;ffentlich. Es darf aber nur an diese Liste schreiben, wer
-      sie auch aboniert (&quot;subscribe&quot;) hat.
+      Sorry, at the moment the web-frontend to the Koch-Suite is available 
+      in german only. If you would like to translate this documents, 
+      contact me at <i>michael@zaphod.rhein-neckar.de</i>.
     </p>
+
+    <h3>Lizenz:</h3>
     <p>
-      Um sich auf der Mailingliste zu subscriben schickt man eine EMail an
-      <i>koch-suite-request@zaphod.rhein-neckar.de</i> mit
-      folgendem Subject/Betreff: &raquo;<code>subscribe</code>&laquo;. 
-      (Nat&uuml;rlich ohne die Quotes darum!)
+      Das gesamte Paket der Koch-Suite steht unter einer BSD-artigen
+      Lizenz:
+        <pre>
+<? require LICENSE ?>
+        </pre>
     </p>
   </td>
 </tr>
