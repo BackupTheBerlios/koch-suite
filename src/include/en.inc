@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.44 2002/08/18 13:51:38 lestinsky Exp $
+   * $Id: en.inc,v 1.45 2002/08/19 18:13:11 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -41,6 +41,8 @@
   $Lang['Mark']['Do']		= 'Remember';
   $Lang['Mark']['Show']['Do']	= 'Show remembered recipes';
   $Lang['Mark']['Show']['Title']= 'Remembered recipes';
+  $Lang['Unmark']['Do']         = 'Remove from remembered';
+
 
   $Lang['Mainmenu']['Title']		= "Mainmenu";
   $Lang['Mainmenu']['PlsChoose']	= "Please choose from the main menu";

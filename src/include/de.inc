@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.40 2002/08/18 13:51:38 lestinsky Exp $
+   * $Id: de.inc,v 1.41 2002/08/19 18:13:11 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -40,6 +40,7 @@
   $Lang['Mark']['Do']		= 'Vormerken';
   $Lang['Mark']['Show']['Do']	= 'Vorgemerkte Rezepte anzeigen';
   $Lang['Mark']['Show']['Title']= 'Vorgemerkte Rezepte';
+  $Lang['Unmark']['Do']		= 'Von Vorgemerkten streichen';
 
 
   $Lang['Mainmenu']['Title']		= "Hauptmen&uuml;";
