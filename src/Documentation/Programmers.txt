@@ -1,4 +1,4 @@
-### $Id: Programmers.txt,v 1.5 2001/06/26 22:16:57 michael Exp $
+### $Id: Programmers.txt,v 1.6 2001/08/31 17:38:00 lestinsky Exp $
 
 Programmierer-Dokumentation
 ===========================
@@ -66,28 +66,31 @@ Programmierer-Dokumentation
 Sortiere neue Funktionen in alphabetischer Reihenfolge ein.
 
 Kommentiere deine Funtionen. Was tut die Funktion, welches sind Uebergabe
-und Rueckgabeparameter. Grob sollte dies in etwa so aussehen:
+und Rueckgabeparameter. Halte dich dabei an die PHPDoc-Konventionen
+(http://www.phpdoc.de). Grob sollte dies in etwa so aussehen:
 
+  /**
+   * Short description ...
+   *
+   * Long description ...
+   * @param  string $var1 The first Value
+   * @param  float  $var2 The amount of Money to transfer to the programmer
+   * @param  string $var3 The Bankname
+   * @return int    $return
+   */
   function foobar ($var1, $var2, $var3 = 'Default') {
-    /* This function does ...
-     * Parameters are
-     *   $var1:   The first Value
-     *   $var2:   The amount of Money to transfer to the programmer
-     *   $var3:   The Bankname
-     * Return-value:
-     *   $return = 42
-     */
 
-     // Do something ...
+    // Do something ...
+    return 42;
   }
 
 
 1.3 HTML
 
   * Die resultierende HTML-Seite muss gueltig sein. Der HTML-Code muss
-    fehlerfrei im Sinne der DTD sein (http://validator.w3.org).
+    fehlerfrei im Sinne der DTD sein (Siehe http://validator.w3.org).
 
-  * HTML-Standard: 4.0
+  * Mindestens HTML-Standard: 4.0, besser XHTML1.0
 
 
 
