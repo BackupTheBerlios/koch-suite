@@ -134,7 +134,7 @@
 
     $_SESSION['operate_on'] = 'tagged_recipes';
     include "<%%WEB_PREFIX%%>/actions.inc";
-    echo "<h2>". $Lang['Tag']['Show']['Title'] ."</h2>n";
+    echo "<h2>". $Lang['Tag']['Show']['Title'] ."</h2>\n";
     if (count($$_SESSION['operate_on'])) {
       ?>
       <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
