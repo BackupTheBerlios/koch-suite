@@ -1,3 +1,8 @@
+2002-10-09  Michael Bussmann  <bus@mb-net.net>
+
+  * src/INSTALL 1.15, src/init_db.mysql 1.14, src/init_db.pgsql 1.21:
+  Got rid of the two separate database initialization files
+
 2002-10-02  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/commands/rezept.raw 1.22:
