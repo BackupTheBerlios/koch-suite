@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.28 2001/03/14 12:30:56 michael Exp $
+   * $Id: functions.raw,v 1.29 2001/03/17 17:47:27 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -241,9 +241,7 @@
     if (isset($quant) and isset($unit) and isset($text)) {
       /* Ok, wir haben eine gueltige Zeile gelesen. */
       if ($quant != '') {
-        /* Rechne Brueche in dezimalzahlen um. */
-        $quant = preg_replace("/(\d+\/\d+)/", "+\\1", $quant);
-        $quant = eval("return $quant;");
+        $quant = fraction_to_real($quant);
       }
       return array("quant"  => $quant,
                    "unit"   => $unit,
@@ -252,6 +250,17 @@
       /* Sorry, keine gültige Zeile */
       return false;
     }
+  }
+
+
+  function fraction_to_real ($quant) {
+    /* Convert fractions to real numbers. */
+
+    $quant = preg_replace("/,/", ".", $quant);
+    $quant = preg_replace("/(\d+\/\d+)/", "+\\1", $quant);
+    $quant = eval("return $quant;");
+
+    return $quant;
   }
 
 
