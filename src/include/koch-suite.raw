@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: koch-suite.raw,v 1.9 2002/05/11 12:21:53 lestinsky Exp $
+   * $Id: koch-suite.raw,v 1.10 2002/05/12 11:25:05 lestinsky Exp $
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
@@ -40,11 +40,6 @@
 
 
   /* Authentication: */
-
-  // What to authenticate the user against? 
-  // At the moment "auth_by_db" is the only supported mechanism. 
-  // But this might be extendet to LDAP, file,... easily.
-  $AUTH_STYLE = "auth_by_db";
 
   // What level of authentication do we want? ALL, READ, WRITE or NONE?
   // Operations of this level or a higher level will require 
