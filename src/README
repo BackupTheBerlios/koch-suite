@@ -1,4 +1,4 @@
-### $Id: README,v 1.31 2001/06/07 16:15:27 michael Exp $
+### $Id: README,v 1.32 2001/06/20 18:30:04 michael Exp $
 
 Koch-Suite
 ==========
@@ -28,20 +28,37 @@ Entität.
 Voraussetzungen:
 ----------------
 
-Wer einen Rezept-Server betreiben will, der wird einen laufenden http-
-Daemon (z.B. Apache) benötigen.
+Wer eine Rezept-Ecke auf seinem Webserver betreiben will, der wird einen 
+laufenden http-Daemon (z.B. Apache) benötigen.
 
 Als Plattformen sind getestet:
  - Linux/i386
  - OpenBSD/i386
  - FreeBSD/i386
 
-Auf alle Fälle ist auch PHP4 mit MySQL-Support notwendig. Diese Skripten 
-sind unter PHP-4.0.4.pl1 geschrieben und getestet worden. PHP4 muss als 
-Stand-Alone-Interpreter vorhanden sein, nur mit dem Apache-Modul funktio-
-nieren die Konsolen-Tools nicht.
-Der LaTeX-Export greift auf das Paket floatflt zurück. Bei Bedarf siehe
+Neu in der Version 0.5 ist der Support fuer PostgreSQL-Datenbanken.
+Auf alle Fälle ist auch PHP4 mit Support fuer die verwendete Datenbank
+notwendig. 
+Diese Skripten sind unter PHP-4.0.5 geschrieben und getestet worden, 
+Versionen, aelter als 4.0.4 funktionieren definitiv nicht. 
+Fuer die Console-Tools muss PHP ausserdem als Standalone-Version (Alias
+CGI-Version) vorhanden sein.
+
+Der LaTeX-Export greift auf das Paket 'floatflt' zurück. Bei Bedarf siehe
 bitte im CTAN-Archiv nach.
+
+Ausserdem ist eine aktuelle Version von PEAR notwendig. Bei PHP-4.0.6 ist
+PEAR hinreichend aktuell, wer ein älteres PHP hat muss mindestens sein 
+PEAR updaten. Dazu:
+
+ - Wechsel in das Verzeichnis, in dem die PEAR-Files landen sollen:
+   # cd /usr/local/lib
+ - Logge dich am CVS-Repository ein (Passwort "phpfi"):
+   # cvs -d :pserver:cvsread@cvs.php.net:/repository login
+ - Erzeuge eine lokale Kopie von PEAR
+   # cvs -d :pserver:cvsread@cvs.php.net:/repository co php4/pear
+ - Erweitere include_path in der php.ini so dass dieser
+   /usr/local/lib/php4/pear beinhaltet.
 
 
 Status:
@@ -70,10 +87,12 @@ ruft im PHP-Quell-Verzeichnis "configure" mit folgenden Optionen auf:
 (Stand-Alone Interpreter:)
 
  $ ./configure  --with-mysql=/path/to/mysql --enable-force-cgi-redirect
+      bzw:      --with-pgsql=/path/to/pgsql
 
 (Apache-Modul:)
 
  $ ./configure  --with-apxs=/path/to/apxs --with-mysql=/path/to/mysql
+      bzw:                                --with-pgsql=/path/to/pgsql
 
 Danach baut und installiert man PHP mittels:
 
@@ -111,17 +130,24 @@ in Documentation/FAQ.txt nach, wenn dies nicht ganz zutrifft.
  $ tar -xvzf kochsuite-*.tar.gz
    Dieses Paket auspacken, wenn es nicht bereits geschehen ist.
 
- - edit config
-   Anpassen der Konfigurationsvariablen, speziell der Pfade
+ $ vi config
+   Anpassen der Konfigurationsvariablen, speziell der Pfade und der
+   Parameter fuer den Datenbank-Zugriff.
 
  $ make
 
- $ make install
-   als Root.
+ $ sudo make install
+   oder:
+   $ su root
+   $ make install
+
+Um die User, Passwort und Datenbank anzulegen:
+
+  -== FIXME ==-
 
 Zum Import der Datenstruktur kann mit einem
 
- $ mysql -uUSER -pPASSWORD -hHOST DBkoch < init_db.sql 
+ $ mysql -uUSER -pPASSWORD -hHOST DBkoch < init_db.??sql 
 
 alle notwendigen Komandos ausführen lassen (wobei USER, PASSWORD und HOST mit
 den jew. Zugangsdaten zur Datenbank ersetzt werden müssen). Wie die
@@ -132,19 +158,20 @@ MySQL-Manual unter http://www.mysql.com sehr gut beschrieben.
 Updating:
 ---------
 
-0.1.* -> 0.2 Das Format der Datenbank hat sich leicht geändert:
-             Tabelle MENUE: 
-               alter table MENUE change PORTIONEN PORTIONEN varchar(255);
-             Diese Änderung ist vollkommen transparent zu existierenden
-             Daten.
-0.2.* -> 0.3, 0.3pre* -> 0.3 
-             Das Format der Datenbank hat sich leicht geändert:
-             Tabelle EINHEITEN, EINHEITEN_ALIAS:
-             Am Einfachsten ist es, die Tabelle zu löschen und mit den
-             Kommandos aus init_db.sql neu einzuspielen. Wenn man dies
-             korrekt macht, dann gibt es keine Verluste *eg*
-0.3 -> 0.4   Es gab keine Veränderungen an der Datenbank-Struktur.
-0.4 -> 0.5   dito.
+Es gab ein paar Aenderungen, die notwendig waren um den PostgreSQL-Support 
+einzubinden. Am einfachsten ist es von der Datenbank ein Backup zu machen, 
+mittels (dem alten!!!)
+
+ $ rezept -mm "" > all.mm 
+
+den gesamten Inhalt im Mealmaster-Format zu speichern, alle Tabellen aus 
+der Datenbank zu loeschen und mit dem Inhalt aus init_db.??sql neu 
+anzulegen. Anschliessend die neue Version der Koch-Suite installieren und 
+mit dem dann neuen 
+
+ $ mmimport < all.mm
+
+die Daten wieder in die Datenbank importieren.
 
 
 Todo/'Roadmap':
@@ -153,8 +180,7 @@ Todo/'Roadmap':
  - Dokumentation schreiben,
  - vorhandene Rezepte kommentieren,
  - Zugriffskontrolle für die Datenbank/Authentifizierung des Users
- - RezKonv-Exportfilter,
- - Multilingualization (m17n)
+ - RezKonv-Exportfilter.
 
 
 Bekannte Bugs:
@@ -184,6 +210,7 @@ Wenn dir mein Code nicht gefällt: Ich habe nie behauptet ich hätte Talent.
 Danke an:
 ---------
 
+o  Michael Bussmann fuer die PEARifizierung und den PostgreSQL-Support
 o  Leo Caspari für Feedback, Fehler-Korrekturen und Erweiterungen
 o  Ulli Fetzer und Ilka Spiess für ihre Kommentare und Support beim 
    Erstellen der Meal-Master- und REZKONV-Filter.
