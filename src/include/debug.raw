@@ -1,14 +1,26 @@
 <?
-  /* 
+  /**
    * Some debugging functions
+   *
+   * $Id: debug.raw,v 1.3 2001/06/26 20:37:12 michael Exp $
+   * @package Lib
+   * @modulegroup Debug
+   * @module debug
    */
 
+  /**
+   * Write Debugging-Output.
+   *
+   * Write $str to DEBUG_FILE if $DEBUG != 'no'
+   * @author Michael Lestinsky <michael@lestinsky.de>
+   * @param  string $str Write this to DEBUG_FILE
+   * @return void
+   */
   function write_log ($str) {
-    /* write Debugging-Output. */
-
-    $fp   = fopen (DEBUG_FILE, "a");
-   
-    fputs($fp, date("U") . ": $str\n");
-    fclose($fp);
+    if ($DEBUG != "no") {
+      $fp   = fopen (DEBUG_FILE, "a");
+      fputs($fp, date("U") . ": $str\n");
+      fclose($fp);
+    }
   }
 ?>
