@@ -1,4 +1,4 @@
-### $Id: README,v 1.27 2001/05/16 00:25:16 michael Exp $
+### $Id: README,v 1.28 2001/05/30 18:54:35 michael Exp $
 
 Koch-Suite
 ==========
@@ -80,9 +80,11 @@ aufgefallen, nachdem ich darüber gestolpert bin. Derzeit ist aber die
 Konfiguration von PHP mit folgenden Werten erforderlich.
 
   [snip]
-    magic_quotes_gpc 	= On   ;
-    magic_quotes_runtime= Off  ;
-    magic_quotes_sybase	= Off  ;
+    magic_quotes_gpc      = On
+    magic_quotes_runtime  = Off
+    magic_quotes_sybase   = Off
+    register_argc_argv    = On
+    register_globals      = On
   [snap]
 
 
