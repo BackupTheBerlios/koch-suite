@@ -3,13 +3,15 @@
   require "<%%PHP_LIBS%%>/functions.inc";
   require "<%%PHP_LIBS%%>/lang.inc";
 
+  $mid = doubleval($HTTP_GET_VARS["mid"]);
+
   /* einfuegen.php - Rezepte einfuegen und bearbeiten.
    * Diese Datei unterliegt der in der Datei LICENSE beigefügten Lizenz
    * (c) Januar 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
    */
 
   $target = $PHP_SELF;
-  if (isset($mid)) {
+  if (isset($mid) and $mid != 0) {
     $target .= "?mid=$mid";
   }
 
@@ -81,7 +83,7 @@ $Lang['Units'] . "</a></td>\n";
       }
       $str .= "<td><textarea name=\"zutaten[" . $i . "]\" " . 
                    "cols=\"60\" rows=\"10\" wrap=\"physical\">" .
-                   make_zutaten(&$z["ingredients"]) . "</textarea></td>\n";
+                   make_zutaten($z["ingredients"]) . "</textarea></td>\n";
       $str .= "</tr>\n";
     }
     $str .= "<!-- Bar -->\n";
@@ -107,11 +109,11 @@ $Lang['Units'] . "</a></td>\n";
   // passendes, leeres Array:
 
   if (!is_array($zutaten)) {
-    $zutaten = array();
+    $zutaten[] = "";
   }
 
   if (!is_array($ztitle)) {
-    $ztitle = array();
+    $ztitle[] = "";
   }
 
   if (isset($more_zutaten)) {
@@ -189,16 +191,16 @@ $Lang['Units'] . "</a></td>\n";
               "anleitung" => $anweisung);
 
   if (isset($submit)) {
-    if(isset($mid)) {
+    if(isset($mid) and $mid != 0) {
       echo "<p>Altes Rezept gelöscht</p>\n";
       delete_menue($mid);
     }
     echo "<p>Neues Rezept eingefügt</p>\n";
-    write_db(&$r);
+    write_db($r);
   } elseif (isset($more_zutaten)) {
     // Do nothing.
   } else {
-    if (isset($mid)) {
+    if (isset($mid) and $mid != 0) {
       $r = get_menu_by_mid($mid);
     }
   }
@@ -216,7 +218,7 @@ $Lang['Units'] . "</a></td>\n";
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.15 2001/05/21 23:59:18 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.16 2001/05/23 01:22:00 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -252,7 +254,7 @@ $Lang['Units'] . "</a></td>\n";
     <form action="<? echo $target ?>" method="post">
 
   <?
-      echo make_form(&$r);
+      echo make_form($r);
   ?>     
 
     <input type="submit" name="submit" value="<? echo $Lang['FormApply']; ?>">
