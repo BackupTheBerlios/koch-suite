@@ -1,3 +1,11 @@
+2002-09-30  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/einfuegen.raw 1.45, src/www/search.raw 1.31:
+  Fix Javascript
+
+  * src/include/functions.raw 1.85:
+  (Nearly) fix 'AND' when searching through multiple fields
+
 2002-09-29  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/parser.raw 1.2.2.2:
