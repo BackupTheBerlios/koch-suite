@@ -18,7 +18,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
 
   <title>Definierte Kategorien</title>
-  <!-- $Id: kategorien.raw,v 1.5 2001/06/01 21:43:06 michael Exp $ -->
+  <!-- $Id: kategorien.raw,v 1.6 2001/06/20 18:33:29 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -72,3 +72,4 @@ Kategorie, um den Wert in das Formularfeld zu übertragen.
 
 </body>
 </html>
+<?db_disconnect();?>

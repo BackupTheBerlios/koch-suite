@@ -1,6 +1,6 @@
 <?php
 
-  /* $Id: edit_alias.raw,v 1.1 2001/06/06 11:09:13 michael Exp $
+  /* $Id: edit_alias.raw,v 1.2 2001/06/20 18:33:29 michael Exp $
    * Edit the alias-list for a given unit.
    */
 
@@ -41,7 +41,7 @@
   <?php echo $fwd; ?>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: edit_alias.raw,v 1.1 2001/06/06 11:09:13 michael Exp $ -->
+  <!-- $Id: edit_alias.raw,v 1.2 2001/06/20 18:33:29 michael Exp $ -->
   <style class="text/css">
   <!--
     .dark  { background-color:#c0c0d5; font-family:Helvetica,Arial; }
@@ -69,3 +69,5 @@
 
 </body>
 </html>
+
+<?db_disconnect();?>

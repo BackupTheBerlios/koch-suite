@@ -1,5 +1,5 @@
 <?php
-  /* $Id: mmprint.raw,v 1.9 2001/06/01 23:00:53 michael Exp $
+  /* $Id: mmprint.raw,v 1.10 2001/06/20 18:33:29 michael Exp $
    *
    * stripped down html-version of recipe.
    * (c) 2001 Michael Lestinsky <michael@zaphod.rhein-neckar.de>
@@ -22,7 +22,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
 
   <title>Koch-Suite</title>
-  <!-- $Id: mmprint.raw,v 1.9 2001/06/01 23:00:53 michael Exp $ -->
+  <!-- $Id: mmprint.raw,v 1.10 2001/06/20 18:33:29 michael Exp $ -->
 </head>
 
 <body>
@@ -34,3 +34,4 @@
 </body>
 </html>
 
+<?db_disconnect();?>

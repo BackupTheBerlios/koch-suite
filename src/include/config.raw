@@ -1,36 +1,33 @@
 <?
   /* Configuration-file for the Koch-Suite
    * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.10 2001/06/10 22:24:31 michael Exp $
+   * $Id: config.raw,v 1.11 2001/06/20 18:33:29 michael Exp $
    *
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
 
+  require_once 'DB.php';
+
   include "<%%PHP_LIBS%%>/debug.inc";
 
-  $DB_SERVER   = "<%%DB_SERVER%%>";
-  $DB_USER     = "<%%DB_USER%%>";
-  $DB_PASSWORD = "<%%DB_PASSWORD%%>";
-  $DB_NAME     = "<%%DB_NAME%%>";
+  $DB_DSN      = "<%%DB_DSN%%>";
 
   $DEBUG_FILE  = "/tmp/koch-suite-debug";
 
   $DEFAULT_LANG = "de";
 
   $kochsuite     = "<i>Koch-Suite</i>";
-  $kochsuite_ver = "0.5-pre5";
+  $kochsuite_ver = "0.5-pre6";
 
-  /* Connect to the Database */
-  if (get_cfg_var(mysql.allow_persistent) == 1) {
-    if (! $link = @mysql_pconnect("$DB_SERVER", "$DB_USER", "$DB_PASSWORD")) {
-      write_log("Can't connect to the MySQL-Server:");
-      write_log(mysql_error());
-    }
-  } else {
-    if (! $link = @mysql_connect("$DB_SERVER", "$DB_USER", "$DB_PASSWORD")) {
-      write_log("Can't connect to the MySQL-Server (Link = $link): ");
-      write_log(mysql_error());
-    }
+  write_log("Connecting to $DB_DSN");
+  $db=DB::connect($DB_DSN);
+
+  if (DB::isError($db)) {
+    write_log("Can't connect to $DB_DSN: " . $db->getMessage());
+    die("Can't connect to $DB_DSN: " . $db->getMessage());
   }
+
+  /* Return associative arrays */
+  $db->setFetchMode(DB_FETCHMODE_ASSOC);
 ?>

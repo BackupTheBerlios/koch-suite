@@ -234,7 +234,7 @@ $Lang['Units'] . "</a></td>\n";
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.19 2001/06/13 14:43:27 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.20 2001/06/20 18:33:29 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -288,3 +288,5 @@ $Lang['Units'] . "</a></td>\n";
 
 </body>
 </html>
+
+<?db_disconnect();?>

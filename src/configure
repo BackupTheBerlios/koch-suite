@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.5 2001/05/13 22:48:21 michael Exp $
+# $Id: configure,v 1.6 2001/06/20 18:33:28 michael Exp $
 # Parse the config-File and create a sed-Script from it.
 
 CONF_RAW=config
@@ -38,7 +38,7 @@ done
 
 # Generate the sed-file
 grep -Ev "^#" ${CONF_RAW} | grep -Ev "^$" | \
-  sed -e "s/{\t| }//g"  | tr '=' ' ' | sed "s|:|\\\:|" |\
+  sed -e "s/{\t| }//g"  | tr '=' ' ' | sed "s|:|\\\:|g" |\
   awk '{print "s:<%%"$1"%%>:"$2":" }' > ${CONF_FILE}
 
 # Create the Makefiles

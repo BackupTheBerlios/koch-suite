@@ -13,7 +13,7 @@
   <title><?php echo $Lang['Help']; ?></title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.10 2001/06/01 22:31:36 michael Exp $ -->
+  <!-- $Id: help.raw,v 1.11 2001/06/20 18:33:29 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -37,7 +37,7 @@
     ?>
   </td>
   <td width="90%">
-    <!-- Installierte Version: $Name:  $ $Revision: 1.10 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.11 $ -->
 
     <h2><?php echo $Lang['Help']; ?></h2>
     
@@ -89,3 +89,4 @@
 
 </body>
 </html>
+<?db_disconnect();?>

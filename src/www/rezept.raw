@@ -14,7 +14,7 @@
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Koch-Suite</title>
-  <!-- $Id: rezept.raw,v 1.15 2001/05/30 19:45:38 michael Exp $ -->
+  <!-- $Id: rezept.raw,v 1.16 2001/06/20 18:33:29 michael Exp $ -->
 </head>
 
 <body>
@@ -67,3 +67,4 @@ de</a>&gt;
 </body>
 </html>
 
+<?db_disconnect();?>
