@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.4 2001/05/30 19:52:43 michael Exp $
+   * $Id: en.inc,v 1.5 2001/06/01 22:32:49 michael Exp $
    *
    * Define English text-constants.
    *
@@ -81,22 +81,6 @@ EOT;
       PHP installed as CGI or Apache-module.
 EOT;
 
-  $Lang['Language']['Title']	= "Language Setting";
-  $Lang['Language']['Text'][0]	= <<<EOT
-      The Koch-Suite is multilingual starting with release 0.5.
-      To choose another lanuage, adjust your browser (i.e. Mozilla: Edit
-      -> Preferences -> Navigator -> Languages).
-      If the language you specified does exist you will see all following
-      pages in the requested language. Otherwise the default language
-      (German "de") will be used.
-EOT;
-
-  $Lang['License']['Title']	= "Lizenz";
-  $Lang['License']['Pre'][0]	= <<<EOT
-      The entire Koch-Suite-package is released unter the terms under the
-      terms of a BSD-style license.
-EOT;
-
   $Lang['License']['Post'][0]	= "";
 
   /* 
@@ -105,37 +89,54 @@ EOT;
 
   $Lang['Helptext']['General']	= <<<EOT
     <p class="top">
-      Dieses Programmpaket besteht aus drei wesentlichen Komponenten:
-      einer groﬂen Bibliothek, die alle Konvertierungs- und
-      Ausgabe-Funktionen bereitstellt, (mehr oder weniger als triviale
-      Wrapper um die Bibliothek) den Kommandozeilen-Tools und dem
-      Web-Frontend.
+      This program package consists of those three major parts: 
+      a big library containing all the converting- and output-functions,
+      (more or less as trivial wrappers to this library) a few 
+      command-line tools and the webfrontend.
     <p>
 EOT;
 
-  $Lang['Helptext']['CL']['Title']	= "Kommandozeilen-Tools";
+  $Lang['Language']['Title']	= "Language Setting";
+  $Lang['Language']['Text'][0]	= <<<EOT
+      The Koch-Suite is multilingual starting with release 0.5.
+      To choose another lanuage, adjust your browser (i.e. Mozilla: Edit
+      -> Preferences -> Navigator -> Languages).
+      If the language you specified does exist you will see all following
+      pages in the requested language. Otherwise the default language
+      (German "de") will be used.
+      Of course we will not translate the recipes themself. This selection
+      affects the interface-language only.
+EOT;
+
+  $Lang['License']['Title']	= "License";
+  $Lang['License']['Pre'][0]	= <<<EOT
+      The entire Koch-Suite-package is released under the
+      terms of the following BSD-style license.
+EOT;
+
+  $Lang['Helptext']['CL']['Title']	= "Command-Line-Tools";
   $Lang['Helptext']['CL']['commands'][0]['Name'] = "mmimport";
   $Lang['Helptext']['CL']['commands'][0]['Text'] = <<<EOT
-          <i>Import von Rezepten.</i> Der Input wird auf dem
-          Standard-Eingabe-Kanal (<code>STDIN</code>) erwartet.
-          Die Rezepte werden dabei aus umgebendem Text extrahiert
-          und k&ouml;nnen sowohl im Meal-Master- als auch im
-          <a href="http://home.t-online.de/home/ufetzer/">REZKONV</a>-Format
-          sein. Siehe auch <code>mmimport(1)</code>
+          Import recipes. The input will be expected from standard input
+          (STDIN).
+          The recipes will be extracted from surrounding text and may be
+          in Meal-Master- or 
+          <a href="http://home.t-online.de/home/ufetzer/">REZKONV</a>-format.
+          See also <code>mmimport(1)</code>
 EOT;
   $Lang['Helptext']['CL']['commands'][1]['Name'] = "rezept";
   $Lang['Helptext']['CL']['commands'][1]['Text'] = <<<EOT
-          Suche Rezepte in der Datenbank und gebe sie als
-          Latex-Source, im Meal-Master-Format oder als lesbaren Text in
-          eine Datei oder auf die Standard-Ausgabe aus.
-          Siehe <code>rezept(1)</code>.
+          Search for recipes in the database and print them as
+          LaTeX-source, in Meal-Master-format or as human readable text i
+          into a file or standard output.
+          See <code>rezept(1)</code>.
 EOT;
   $Lang['Helptext']['CL']['commands'][2]['Name'] = "rk2mm";
   $Lang['Helptext']['CL']['commands'][2]['Text'] = <<<EOT
-          Konvertiere REZKONV- in Meal-Master-Rezepte.
-          <code>rk2mm</code> fungiert dabei als Filter zwischen der
-          Standard-Eingabe und der Standard-Ausgabe.
-          Siehe <code>rk2mm(1)</code>.
+          Convert REZKONV to Meal-Master-Recipes.
+          <code>rk2mm</code> works as a filter between standard input and
+          standard output.
+          See <code>rk2mm(1)</code>.
 EOT;
 
   $Lang['Helptext']['WWW']['Title']	= "Web-Frontend";
@@ -159,10 +160,10 @@ EOT;
   $Lang['Helptext']['WWW']['part'][1]['Title']  = "Recording- and Editing-Interface";
   $Lang['Helptext']['WWW']['part'][1]['Text']   = <<<EOT
         This interface allows you to edit saved recipes or record new
-        ones. Numbers must use <code>.</code> (dot) as decimal seperator.
+        ones. Numbers must use &raquo;<code>.</code>&laquo; (dot) as decimal seperator.
         Units should be valid 
         <a href="units.php" target="units" onclick="units();">Mealmaster-,
-        RezKonv-units or defined aliases and must be seperated by a space
+        RezKonv-units or defined aliases</a> and must be seperated by a space
         character from the quantity.
 EOT;
 
@@ -170,7 +171,8 @@ EOT;
   $Lang['Helptext']['Feedback']['Text'][0]	= <<<EOT
       We have a mailinglist for users and developers,
       <i>koch-suite@zaphod.rhein-neckar.de</i>. This mailinglist is
-      public. Only subscribed addresses are alowed to write there.
+      public, but only subscribed addresses are allowed to write there (to
+      suppress spam).
 EOT;
   $Lang['Helptext']['Feedback']['Text'][1]      = <<<EOT
       To subscribe to this mailinglist send a mail to
