@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.17 2001/08/06 17:57:47 lestinsky Exp $
+   * $Id: en.inc,v 1.18 2001/08/12 21:53:50 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -146,7 +146,7 @@ EOT;
   $Lang['Helptext']['CL']['commands'][1]['Name'] = "rezept";
   $Lang['Helptext']['CL']['commands'][1]['Text'] = <<<EOT
           Search for recipes in the database and print them as
-          LaTeX-source, in Meal-Master-format or as human readable text i
+          LaTeX-source, in Meal-Master-format or as human readable text
           into a file or standard output.
           See <code>rezept(1)</code>.
 EOT;
