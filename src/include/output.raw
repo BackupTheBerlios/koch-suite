@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.31 2001/07/01 20:00:46 michael Exp $
+   * $Id: output.raw,v 1.32 2001/07/10 23:03:20 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -38,7 +38,6 @@
    * @module output
    * @copyrigth Michael Lestinsky <michael@lestinsky.de>
    */
-
 
   /**
    * return a String, which contains the plain-text-formatted recipe 
@@ -398,11 +397,7 @@
 
   function nice_unit ($unit) {
     /* Lookup a beautified name for a unit */
-    if ($GLOBALS["DB_STYLE"] == DB_MYSQL) {
-      $req = "select text from EINHEITEN where STRCMP(ABBREV, '$unit') = 0";
-    } else {
-      $req = "select text from EINHEITEN where ABBREV = '$unit'";
-    }
+    $req = "select text from EINHEITEN where " . DB_casecomp("ABBREV", $unit);
     $result = DB_query($req);
 
     $r = $result->fetchRow();

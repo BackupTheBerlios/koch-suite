@@ -3,7 +3,7 @@
    * Configuration-file for the Koch-Suite
    *
    * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.17 2001/07/01 20:49:19 michael Exp $
+   * $Id: config.raw,v 1.18 2001/07/10 23:04:07 michael Exp $
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
    */
@@ -44,6 +44,27 @@
     die("Can't connect to $DB_DSN: " . $db->getMessage());
   }
 
+
   /* Return associative arrays per default */
   $db->setFetchMode(DB_FETCHMODE_ASSOC);
+
+
+  /* Catch "special" Bugs in some PHP-versions */
+  switch (phpversion()) {
+    case "4.0.6":
+    case "4.0.5":
+      $BROKEN_ARRAY_INTERSECT = true;
+      break;
+    default:
+      $BROKEN_ARRAY_INTERSECT = false;
+      break;
+  }
+
+  /*
+  if (phpversion() == "4.0.5" or phpversion() == "4.0.6") {
+    $BROKEN_ARRAY_INTERSECT = true;
+  } else {
+    $BROKEN_ARRAY_INTERSECT = false;
+  }
+  */
 ?>

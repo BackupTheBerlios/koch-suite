@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.50 2001/07/04 21:05:02 michael Exp $
+   * $Id: functions.raw,v 1.51 2001/07/10 23:04:07 michael Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * See ../LICENSE for the license of this code.
    * Editors: Please sort new functions alphabetically.
@@ -45,6 +45,32 @@
   require "<%%PHP_LIBS%%>/output.inc";
 
   /* --- Functions --- */
+
+
+  /**
+   * Return an valid SQL-string to perform an case-sensitive stringcomparison.
+   *
+   * @param  string $str1 column-title
+   * @param  string $str2 value
+   * @return string $return SQL-substring
+   */
+  function DB_casecomp ($str1, $str2) {
+    global $DB_STYLE;
+
+    $str2 = addslashes($str2);
+
+    switch ($DB_STYLE) {
+      case DB_MYSQL:
+        $return = " STRCMP($str1, '$str2') = 0 ";
+        break;
+      case DB_PGSQL:
+      default:
+        $return = " $str1 = '$str2' ";
+        break;
+    }
+    return $return;
+  }
+
 
   /**
    * Perform SQL-Query
@@ -111,13 +137,8 @@
 
     /* What's the unit id to be deleted? */
 
-    if ($GLOBALS["DB_STYLE"] == DB_MYSQL) {
-      $req = "select id from EINHEITEN " .
-             " where STRCMP(EINHEITEN.ABBREV, '" . addslashes($unit) . "') = 0";
-    } else {
-      $req = "select id from EINHEITEN " .
-             " where EINHEITEN.ABBREV='" . addslashes($unit) . "'";
-    }
+    $req = "select id from EINHEITEN " .
+           " where " . DB_casecomp("EINHEITEN.ABBREV", $unit);
 
     if (! $result = DB_query($req)) {
       return false;
@@ -180,7 +201,11 @@
        */
       if (!$return_is_empty) {
         /* array_intersection seems to be broken in 4.0.5 !? */
-        $return = intersection($return, $result);
+        if ($GLOBALS["BROKEN_ARRAY_INTERSECT"]) {
+          $return = KS_array_intersect($return, $result);
+        } else {
+          $return = array_intersect($return, $result);
+        }
       } else {
         $return = $result;
         $return_is_empty = false;
@@ -209,7 +234,7 @@
   }
 
 
-  function intersection ($a, $b) {
+  function KS_array_intersect ($a, $b) {
     /* Compute the intersection on two arrays containing the
      * get_mid_by_*() results.
      */
@@ -232,17 +257,10 @@
       return $alias;
     } else {
       $str = addslashes($str);
-      if ($GLOBALS["DB_STYLE"] == DB_MYSQL) {
-        $req = "select abbrev from EINHEITEN " .
-               " where STRCMP(ABBREV, '$str') = 0 " .
-               "    or RK_ABBREV = '$str' ".
-               "   and MMUSE     = 'J'";
-      } else {
-        $req = "select abbrev from EINHEITEN " .
-               " where ABBREV='$str' " .
-               "    or RK_ABBREV = '$str' ".
-               "   and MMUSE     = 'J'";
-      }
+      $req = "select abbrev from EINHEITEN " .
+             " where " . DB_casecomp("ABBREV", $str);
+             "    or RK_ABBREV = '$str' ".
+             "   and MMUSE     = 'J'";
       if (($result=DB_query($req)) and ($result->numRows() == 1)) {
         $return = $result->fetchRow(DB_FETCHMODE_ORDERED);
         $result->free();
@@ -297,19 +315,12 @@
   function get_unit_aliases ($id) {
     /* Get a List of defined aliases of unit-id $id */
     $a = array();
-    if ($GLOBALS["DB_STYLE"] == DB_MYSQL) {
-      $req_alias = "select EINHEITEN_ALIAS.text " .
-                   "  from EINHEITEN_ALIAS, EINHEITEN " .
-                   " where EINHEITEN_ALIAS.EID = EINHEITEN.ID " .
-                   "   and STRCMP(EINHEITEN.ABBREV, '$id') = 0 " .
-                   " order by TEXT";
-    } else {
-      $req_alias = "select EINHEITEN_ALIAS.text " .
-                   "  from EINHEITEN_ALIAS, EINHEITEN " .
-                   " where EINHEITEN_ALIAS.EID = EINHEITEN.ID " .
-                   "   and EINHEITEN.ABBREV='$id' " .
-                   " order by TEXT";
-    }
+    $req_alias = "select EINHEITEN_ALIAS.text " .
+                 "  from EINHEITEN_ALIAS, EINHEITEN " .
+                 " where EINHEITEN_ALIAS.EID = EINHEITEN.ID " .
+                 "   and " . DB_casecomp("EINHEITEN.ABBREV", $id) .
+                 " order by TEXT ";
+
     if (!$result_alias=DB_query($req_alias)) {
       return false;
     } else {
@@ -345,11 +356,8 @@
       /* Alias is undefined. That's fine, lets proceed. */
 
       /* What's the ID of the unit? */
-      if ($GLOBALS["DB_STYLE"] == DB_MYSQL) {
-        $req = "select id from EINHEITEN where STRCMP('$unit', ABBREV) = 0";
-      } else {
-        $req = "select id from EINHEITEN where ABBREV='$unit'";
-      }
+      $req = "select id from EINHEITEN " .
+             " where " . DB_casecomp("ABBREV", $unit);
       if ($result = DB_query($req)) {
 
         /* we have the ID, do the insert: */
