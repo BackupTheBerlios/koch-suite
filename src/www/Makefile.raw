@@ -1,4 +1,4 @@
-# $Id: Makefile.raw,v 1.17 2001/03/17 16:25:38 michael Exp $
+# $Id: Makefile.raw,v 1.18 2001/03/17 17:46:39 michael Exp $
 # Space-separated list of all "raw" php-files.
 PHP_FILES=		delete.php einfuegen.php index.php infos.php \
 			rezept.php print.php mmprint.php kategorien.php \
@@ -6,7 +6,7 @@ PHP_FILES=		delete.php einfuegen.php index.php infos.php \
 INC_FILES=		menue.inc such.inc
 
 # Files to install unmangled (dont forget the filename-suffix here!)
-ADDITIONAL=		styles.css
+ADDITIONAL=		styles.css ../LICENSE
 SUBDIRS=		pics
 
 CONF_FILE=		../config.sed
