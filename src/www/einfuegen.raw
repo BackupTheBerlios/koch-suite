@@ -211,6 +211,7 @@
         $line = stripslashes($line);
       }
       if ($line != '') {
+        $line = trim($line); // Remove whitespaces
         if (preg_match("/^((\d* ){0,1}[\d\/\.,]*) (.*)$/", $line, $bar)) {
           // Wenn die Zeile mit einer Mengenangabe beginnt...
 	  if ($bar[1] != 0) {
@@ -259,21 +260,6 @@
               "anleitung" => (isset($anweisung) ? $anweisung : '') );
 
   $r["hash"] = recipe_hash($r);
-
-  if (isset($submit)) {
-    if(isset($mid) and $mid != 0) {
-      echo "<p>" . $Lang['Recipe']['Deleted'] . "</p>\n";
-      delete_menue($mid);
-    }
-    echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
-    write_db($r);
-  } elseif (isset($more_zutaten)) {
-    // Do nothing.
-  } else {
-    if (isset($mid) and $mid != 0) {
-      $r = get_menu_by_mid($mid);
-    }
-  }
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -288,7 +274,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.30 2001/10/03 21:10:31 lestinsky Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.31 2001/10/31 18:23:27 lestinsky Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -317,8 +303,25 @@
   </td>
   <td>
     <!-- Rechts: Ausgabe -->
-  <?
-  ?>
+    <?
+    if (isset($submit)) {
+      if(isset($mid) and $mid != 0) {
+        echo "<p>" . $Lang['Recipe']['Deleted'] . "</p>\n";
+        delete_menue($mid);
+      }
+      echo "<p>" . $Lang['Recipe']['Inserted'] . "</p>\n";
+      $mid = write_db($r);
+    } elseif (isset($more_zutaten)) {
+      // Do nothing.
+    } else {
+      if (isset($mid) and $mid != 0) {
+        $r = get_menu_by_mid($mid);
+      }
+    }
+
+    include "./actions.inc";
+    ?>
+
     <h2><?php echo $Lang['Recipe']['Insert']; ?></h2>
 
     <form action="<? echo $target ?>" method="post">
