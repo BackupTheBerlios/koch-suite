@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.37 2002/07/31 20:50:54 lestinsky Exp $
+   * $Id: de.inc,v 1.38 2002/08/11 20:58:34 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -245,7 +245,7 @@ EOT;
       <a href="http://lists.berlios.de/mailman/listinfo/koch-suite-devel">hier</a>.
 EOT;
 
-  $Lang['ingr_source_pattern']  = "/(Quelle|Erfass(t|er))/i";
+  $Lang['pattern']['Source_ingr'] = "/(Quelle|Ref(erenz)?|Erfass(t|er))/i";
   $Lang['pattern']['Source']	= "(Quelle|Ref)";
   $Lang['pattern']['Recorder']	= "(Erfasser)";
   $Lang['pattern']['Date']	= "(Datum|Erfasst am)";
