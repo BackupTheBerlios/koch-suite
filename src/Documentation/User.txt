@@ -1,4 +1,4 @@
-### $Id: User.txt,v 1.2 2000/11/16 13:37:04 michael Exp $
+### $Id: User.txt,v 1.3 2000/11/29 18:33:14 michael Exp $
 
 User-Dokumentation
 ==================
@@ -25,5 +25,9 @@ mmexport
   Die Ausgabe geschieht auf die Standard-Ausgabe.
   Das Rezept wird in einem Meal-Master-kompatibeln Format ausgegeben.
 
+rezept2latex
+------------
+  rezept2latex gibt Rezepte als LaTeX-Source aus. Als Aufruf-Parameter 
+  wird ein Suchstring übergeben.
 
 (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, November 2000
