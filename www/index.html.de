@@ -99,16 +99,18 @@ Siehe auch unsere <a href="todo.txt">Todo-Liste/Roadmap</a>.
         (Getestet unter 7.0.3) ab 0.5(-pre6)</li>
       <li>Andere <em>k&ouml;nnen</em> funktionieren.</li>
     </ul>
+A
   </li>
 </ul>
 
 <h3>Vorhandene Exportfilter</h3>
 
 <ul>
-  <li>Plain Text</li>
   <li>HTML</li>
   <li>LaTeX-Source</li> 
   <li><a href="http://home1.gte.net/welliver/">Mealmaster</a></li>
+  <li>PDF</li>
+  <li>Plain Text</li>
 </ul>
 
 <h3>Import von Rezepten im</h3>
@@ -123,8 +125,9 @@ Siehe auch unsere <a href="todo.txt">Todo-Liste/Roadmap</a>.
 <p>
 Seit der Version 0.5 h&auml;lt die Koch-Suite ein einfaches und
 erweiterbares Framework bereit, um mehrsprachige Versionen anzubieten.
-Als Sprachmodule sind bisher Deutsch und Englisch verf&uuml;gbar, andere
-Sprachmodule lassen sich sehr einfach erzeugen.
+Als Sprachmodule sind bisher Deutsch, Englisch und (ein unfertiges) 
+Spanisch-Modul verf&uuml;gbar, andere Sprachmodule lassen sich sehr 
+einfach erzeugen.
 </p>
 
 <h2>Download</h2>
@@ -166,7 +169,7 @@ eintragen oder austragen.
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.de,v 1.6 2002/08/19 10:41:38 lestinsky Exp $
+$Id: index.html.de,v 1.7 2002/08/19 10:48:16 lestinsky Exp $
 </address>
 </body>
 </html>

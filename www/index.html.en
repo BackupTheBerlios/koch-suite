@@ -21,7 +21,7 @@
 <p>
 The <i>Koch-Suite</i> is an <i>PHP</i>-based
 <i>recipe management system</i> for Unix-like Operatingsystems.
-It uses MySQL or (since version 0.5) PostgreSQL as database-backend.
+It uses MySQL or PostgreSQL as database-backend.
 
 The License is BSD-style (three-clause) and therefore
 <a href="http://www.opensource.org">Opensource</a>.
@@ -101,10 +101,11 @@ See our <a href="todo.txt">todo-list/roadmap</a>.
 <h3>Export to</h3>
 
 <ul>
-  <li>Plain Text</li>
   <li>HTML</li>
   <li>LaTeX-Source</li> 
   <li><a href="http://home1.gte.net/welliver/">Mealmaster</a></li>
+  <li>Plain Text</li>
+  <li>PDF</li>
 </ul>
 
 <h3>Import of Recipes in</h3>
@@ -117,8 +118,8 @@ See our <a href="todo.txt">todo-list/roadmap</a>.
 <h3>M17N (Multilingualization)</h3>
 <p>
 Starting with the 0.5-Release the Koch-Suite uses an easy and extensible
-M17N-framework. German and English language modules are included. Other
-languages may be created easily.
+M17N-framework. A German, English and a preliminary Spanish language module 
+is included. Modules for other languages may be easily created. 
 </p>
 
 <h2>Download</h2>
@@ -159,7 +160,7 @@ recipe management system for Unix-like operating systems</li>
         border="0" height="31" width="88"
         align="right" alt="BerliOS"/></a>
 &copy; 2002 <a href="mailto:michael@lestinsky.de">Michael Lestinsky</a><br />
-$Id: index.html.en,v 1.4 2002/08/16 10:48:46 lestinsky Exp $
+$Id: index.html.en,v 1.5 2002/08/19 10:48:16 lestinsky Exp $
 </address>
 </body>
 </html>
