@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.25 2001/06/20 18:33:29 michael Exp $
+   * $Id: output.raw,v 1.26 2001/06/21 14:08:28 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -333,7 +333,11 @@
 
   function nice_unit ($unit) {
     /* Lookup a beautified name for a unit */
-    $req = "select text from EINHEITEN where ABBREV = '$unit'";
+    if (DB_MYSQL) {
+      $req = "select text from EINHEITEN where STRCMP(ABBREV, '$unit') = 0";
+    } else {
+      $req = "select text from EINHEITEN where ABBREV = '$unit'";
+    }
     $result = DB_query($req);
 
     $r = $result->fetchRow();

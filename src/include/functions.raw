@@ -1,9 +1,11 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.43 2001/06/20 18:33:29 michael Exp $
+   * $Id: functions.raw,v 1.44 2001/06/21 14:09:05 michael Exp $
    *
    * See ../LICENSE for the license of this code.
+   *
+   * Editors: Please sort new functions alphabetically.
    */
 
   require "<%%PHP_LIBS%%>/output.inc";
@@ -60,8 +62,13 @@
 
     /* What's the unit id to be deleted? */
 
-    $req = "select id from EINHEITEN " .
-           " where EINHEITEN.ABBREV='" . addslashes($unit) . "'";
+    if (DB_MYSQL) {
+      $req = "select id from EINHEITEN " .
+             " where STRCMP(EINHEITEN.ABBREV, '" . addslashes($unit) . "') = 0";
+    } else {
+      $req = "select id from EINHEITEN " .
+             " where EINHEITEN.ABBREV='" . addslashes($unit) . "'";
+    }
 
     if (! $result = DB_query($req)) {
       return false;
@@ -126,7 +133,7 @@
        * this situation first. 
        */
       if (!$return_is_empty) {
-        $return = array_intersect($return, $result);
+        $return = intersection($return, $result);
       } else {
         $return = $result;
         $return_is_empty = false;
@@ -139,16 +146,40 @@
   }
 
 
+  function intersection ($a, $b) {
+    /* Compute the intersection on two arrays containing the
+     * get_mid_by_*() results.
+     */
+
+    foreach ($a as $item) {
+      foreach ($b as $other) {
+        if ($item == $other) {
+          $r[] = $item;
+        }
+      }
+      array_shift($a)
+    }
+    return $r;
+  }
+
+
   function is_unit ($str) {
     // Test, whether a given string is a valid MM-Unit or not
     if ($alias = is_unit_alias($str)) {
       return $alias;
     } else {
       $str = addslashes($str);
-      $req = "select abbrev from EINHEITEN " .
-             " where ABBREV='$str' " .
-             "    or RK_ABBREV = '$str' ".
-             "   and MMUSE     = 'J'";
+      if (DB_MYSQL) {
+        $req = "select abbrev from EINHEITEN " .
+               " where STRCMP(ABBREV, '$str') = 0 " .
+               "    or RK_ABBREV = '$str' ".
+               "   and MMUSE     = 'J'";
+      } else {
+        $req = "select abbrev from EINHEITEN " .
+               " where ABBREV='$str' " .
+               "    or RK_ABBREV = '$str' ".
+               "   and MMUSE     = 'J'";
+      }
       if (($result=DB_query($req)) and ($result->numRows() == 1)) {
         $return = $result->fetchRow(DB_FETCHMODE_ORDERED);
         $result->free();
@@ -203,11 +234,19 @@
   function get_unit_aliases ($id) {
     /* Get a List of defined aliases of unit-id $id */
     $a = array();
-    $req_alias = "select EINHEITEN_ALIAS.text " .
-                 "  from EINHEITEN_ALIAS, EINHEITEN " .
-                 " where EINHEITEN_ALIAS.EID = EINHEITEN.ID " .
-                 "   and EINHEITEN.ABBREV='$id' " .
-                 " order by TEXT";
+    if (DB_MYSQL) {
+      $req_alias = "select EINHEITEN_ALIAS.text " .
+                   "  from EINHEITEN_ALIAS, EINHEITEN " .
+                   " where EINHEITEN_ALIAS.EID = EINHEITEN.ID " .
+                   "   and STRCMP(EINHEITEN.ABBREV, '$id') = 0 " .
+                   " order by TEXT";
+    } else {
+      $req_alias = "select EINHEITEN_ALIAS.text " .
+                   "  from EINHEITEN_ALIAS, EINHEITEN " .
+                   " where EINHEITEN_ALIAS.EID = EINHEITEN.ID " .
+                   "   and EINHEITEN.ABBREV='$id' " .
+                   " order by TEXT";
+    }
     if (!$result_alias=DB_query($req_alias)) {
       return false;
     } else {
@@ -240,8 +279,11 @@
       /* Alias is undefined. That's fine, lets proceed. */
 
       /* What's the ID of the unit? */
-      $req = "select id from EINHEITEN where ABBREV='$unit'";
-      # $req = "select ID from EINHEITEN where STRCMP('$unit', ABBREV) = 0";
+      if (DB_MYSQL) {
+        $req = "select id from EINHEITEN where STRCMP('$unit', ABBREV) = 0";
+      } else {
+        $req = "select id from EINHEITEN where ABBREV='$unit'";
+      }
       if ($result = DB_query($req)) {
 
         /* we have the ID, do the insert: */
@@ -657,7 +699,9 @@
     } else {
       $search = "%$name%";
     }
-    $req = "select id,titel from MENUE where TITEL like '$search' order by TITEL asc";
+    $req = "select id, titel from MENUE " .
+           " where TITEL like '$search' " .
+           " order by TITEL asc";
     $result = DB_query($req);
 
     while ($r = $result->fetchRow()) {
