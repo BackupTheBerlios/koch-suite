@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* $Id: rezept.raw,v 1.11 2001/06/13 14:45:13 michael Exp $
+  /* $Id: rezept.raw,v 1.12 2001/06/23 00:41:00 michael Exp $
    * Export a recipe in different formats.
    */
 
@@ -18,26 +18,32 @@
   if (!isset($argc)) $argc = $HTTP_SERVER_VARS["argc"];
   if (!isset($argv)) $argv = $HTTP_SERVER_VARS["argv"];
 
-  $helptext  = "rezept (Koch-Suite $kochsuite_ver)\n" ;
-  $helptext .= "Invoke as:\n";
-  $helptext .= "    rezept -h\n";
-  $helptext .= "    rezept".
-               " [ -mm | -text | -latex ] [-f filename [-1]]" .
-               " [ -c | -i ] \"search\"\n";
-  $helptext .= "\t-mm\tExport as Meal-Master-recipe\n";
-  $helptext .= "\t-text\tExport as plain and humam-readable text\n";
-  $helptext .= "\t\tThis is the default.\n";
-  $helptext .= "\t-latex\tExport as LaTeX-Source\n";
-  $helptext .= "\t-h\tPrint this help-text and exit\n";
-  $helptext .= "\t-f\tSpecify a filename for the output, otherwise\n";
-  $helptext .= "\t\tto STDOUT. On multiple matches append an 2-digit\n";
-  $helptext .= "\t\tcounter to filename\n";
-  $helptext .= "\t-1\tOutput goes into one single file, instead of one\n";
-  $helptext .= "\t\tfile per match.\n";
-  $helptext .= "\t-c\tSearch for category\n";
-  $helptext .= "\t-i\tSearch for ingredient\n";
-  $helptext .= "\t\"search\"\tSearch for this string in the database.\n";
-  $helptext .= "\t\tBy default search in the menu-titles.\n";
+  $helptext  = <<<EOT
+rezept (Koch-Suite $kochsuite_ver)
+Invoke as:
+    rezept [ -mm [ -relaxed ] | -text | -latex ] [-f filename [-1]] 
+           [ -t | -c | -i ] "string"
+
+       -mm           Export as Meal-Master-recipe
+           -relaxed  Violate Meal-Master-format slightly but loose less
+                     meta informations.
+       -text         Export as plain and humam-readable text
+                     [default].
+       -latex        Export as LaTeX-Source
+
+       -f            Specify a filename for the output, otherwise
+                     to STDOUT. On multiple matches append an 2-digit
+                     counter to filename
+           -1        Output goes into one single file, instead of one
+                     file per match.
+
+       -t            Search for "string" in the menu titles [default]
+       -c            Search in category
+       -i            Search in ingredient
+
+       "search"      Search for this string
+
+EOT;
 
   if ($argc == 1) {
     /* No search-string, empty command-line arguments */
@@ -50,12 +56,18 @@
     $format = "text";
     $where  = "title";
 
+    /* Default is not to violate MM-Rules. */
+    $strict_mm = MM_STRICT;
+
     for ($i=1 ; $i < count($argv) ; $i++) {
       /* parse the command-line */
 
       switch ($argv[$i]) {
         case '-mm':
           $format = "mm";
+          break;
+        case '-relaxed':
+          $strict_mm = MM_VIOLATE;
           break;
         case '-text':
           $format = "text";
@@ -74,6 +86,9 @@
         case '-1':
           $one_file = 1;
           $break;
+        case '-t':
+          $where = 'title';
+          break;
         case '-c':
           $where = 'cat';
           break;
@@ -123,7 +138,7 @@
       switch ($format) {
 
 	case "mm":
-          fputs ($fp, mmexport(get_menu_by_mid($menu["id"])));
+          fputs ($fp, mmexport(get_menu_by_mid($menu["id"]), $strict_mm));
 	  break;
 
 	case "text":
