@@ -3,10 +3,11 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
   <title>Koch-Suite</title>
-  <!-- $Id: index.raw,v 1.4 2000/11/22 00:32:29 michael Exp $ -->
+  <!-- $Id: index.raw,v 1.5 2000/12/14 17:25:32 michael Exp $ -->
 </head>
 
 <body>
@@ -38,9 +39,8 @@
 </table>
 
 <hr noshade>
-&copy; Michael Lestinsky 
-&lt;<a href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.de</a>&gt; 
-November 2000.
+&copy; 2000 Michael Lestinsky 
+&lt;<a href="mailto:michael@zaphod.rhein-neckar.de">michael@zaphod.rhein-neckar.de</a>&gt;.
 
 </body>
 </html>
