@@ -1,0 +1,14 @@
+<?
+  /* 
+   * Some debugging functions
+   */
+
+  function write_log ($str) {
+    /* write Debugging-Output. */
+
+    $fp   = fopen ($GLOBALS["DEBUG_FILE"], "a");
+   
+    fputs($fp, date("U") . ": $str\n");
+    fclose($fp);
+  }
+?>

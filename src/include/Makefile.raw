@@ -2,6 +2,7 @@
 
 # Space-separated list of all "raw" php-files.
 PHP_FILES_UNCONF=	config.inc functions.inc lang.inc output.inc
+			debug.raw
 ADDITIONAL=		de.inc en.inc
 SUBDIRS=		
 
