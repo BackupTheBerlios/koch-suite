@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.88 2003/01/10 23:31:53 lestinsky Exp $
+   * $Id: functions.raw,v 1.89 2003/01/23 15:44:11 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -133,6 +133,7 @@
     global $db;
 
     write_log("SQL: $query");
+
     $result=$db->query($query);
 
     if (DB::isError($result)) {
@@ -799,16 +800,19 @@
   function get_mid_by_cat ($cat) {
     $a          = array();
 
-    $req = "select distinct MENUE.titel, MENUE.id " .
-           "  from MENUE, KAT, KATEGORIE " .
-           " where MENUE.ID = KAT.MENUE_ID " .
-           "   and KAT.KATEGORIE_ID = KATEGORIE.ID " .
-           "   and KATEGORIE.TEXT = '$cat'" ;
+    $req = "select distinct m.titel, m.id, avg(r.vote) as vote " .
+           "  from MENUE m left join rating r on m.id = r.menu_id, ".
+           "       KAT k, KATEGORIE l" .
+           " where m.ID = k.menue_id " .
+           "   and k.kategorie_id = l.id " .
+           "   and l.text = '$cat'" .
+           " group by m.id, m.titel";
 
     $result=DB_query($req);
     while ($m = $result->fetchRow()) {
-      array_push($a, array("id"    => stripslashes($m["id"]), 
-                           "title" => stripslashes($m["titel"]) ));
+      array_push($a, array("id"     => stripslashes($m["id"]), 
+                           "title"  => stripslashes($m["titel"]),
+                           "rating" => $m['vote'])); 
     }
     $result->free();
     return $a;
@@ -824,16 +828,19 @@
   function get_mid_by_ingred($ingred) {
     $m = array();
 
-    $req = "select distinct MENUE.id, MENUE.titel " .
-           "  from MENUE, REZEPT, ZUTATEN " .
-           " where MENUE.ID = REZEPT.MENUE_ID " .
-           "   and REZEPT.ID = ZUTATEN.REZEPT_ID " .
-           "   and " . DB_ilike("ZUTATEN.TEXT", "%" . "$ingred" ."%");
+    $req = "select distinct m.id, m.titel, avg(r.vote) as vote " .
+           "  from MENUE m left join rating r on m.id = r.menu_id, ".
+           "       REZEPT s, ZUTATEN z" .
+           " where m.id = s.menue_id " .
+           "   and s.ID = z.rezept_id " .
+           "   and " . DB_ilike("z.text", "%" . "$ingred" ."%") .
+           " group by m.id, m.titel ";
 
     $result = DB_query($req);
     while ($z = $result->fetchRow()) {
       array_push ($m, array("id"    => stripslashes($z["id"]),
-                            "title" => stripslashes($z["titel"])) );
+                           "title"  => stripslashes($z["titel"]),
+                           "rating" => $z['vote'])); 
     }
     $result->free();
     return $m;
@@ -849,15 +856,18 @@
   function get_mid_by_instruction ($search) {
     $m = array();
 
-    $req = "select distinct MENUE.id, MENUE.titel " .
-           "  from MENUE, ANWEISUNG " .
-           " where MENUE.ID = ANWEISUNG.MENUE_ID " .
-           "   and " . DB_ilike("ANWEISUNG.text", "%$search%");
+    $req = "select distinct m.id, m.titel, avg(r.vote) as vote " .
+           "  from MENUE m left join rating r on m.id = r.menu_id, " .
+           "       ANWEISUNG a " .
+           " where m.id = a.menue_id " .
+           "   and " . DB_ilike("a.text", "%$search%").
+           " group by m.id, m.titel ";
 
     $result = DB_query($req);
     while ($z = $result->fetchRow()) {
       $m[] = array('id'    => stripslashes($z['id']),
-                   'title' => stripslashes($z['titel']));
+                   'title' => stripslashes($z['titel']),
+		   'rating'=> $z['vote']);
     }
 
     $result->free();
@@ -880,14 +890,17 @@
     } else {
       $search = "%$name%";
     }
-    $req = "select id, titel from MENUE " .
-           " where " . DB_ilike("TITEL","$search")  .
-           " order by TITEL asc";
+    $req = "select m.id, m.titel, avg(r.vote) as vote " .
+           "  from MENUE m left join rating r on m.id = r.menu_id " .
+           " where " . DB_ilike("m.titel","$search")  .
+           " group by m.id, m.titel " .
+           " order by titel asc";
     $result = DB_query($req);
 
     while ($r = $result->fetchRow()) {
       array_push($a, array("id"    => stripslashes($r["id"]),
-                           "title" => stripslashes($r["titel"])));
+                           "title" => stripslashes($r["titel"]),
+			   'rating'=> $r['vote']));
     }
     $result->free();
     return $a;
@@ -906,16 +919,20 @@
     $a = array();
     $search = "%$fieldvalue%";
 
-    $req = "select MENUE.id, MENUE.titel from MENUE, menu_meta " .
-           " where MENUE.id = menu_meta.mid " .
-           "   and menu_meta.fieldname = '$fieldname' " .
-           "   and " . DB_ilike("menu_meta.fieldvalue", "$search")  .
-           " order by TITEL asc";
+    $req = "select m.id, m.titel, avg(r.vote) as vote " .
+           "  from MENUE m left join rating r on m.id = r.menu_id, " .
+           "       menu_meta n" .
+           " where m.id = n.mid " .
+           "   and n.fieldname = '$fieldname' " .
+           "   and " . DB_ilike("n.fieldvalue", "$search")  .
+           " group by m.id, m.titel " .
+           " order by m.titel asc";
     $result = DB_query($req);
 
     while ($r = $result->fetchRow()) {
       array_push($a, array("id"    => stripslashes($r["id"]),
-                           "title" => stripslashes($r["titel"])));
+                           "title" => stripslashes($r["titel"]),
+			   'rating'=> $r['vote']));
     }
     $result->free();
     return $a;
@@ -935,6 +952,15 @@
       $r = $result->fetchRow();
       return $r['rating'];
     } else return false;
+  }
+
+
+  function get_total_number_of_recipes () {
+    $req = "select count(id) as count from MENUE";
+    if ($result=DB_query($req)) {
+      $r = $result->fetchRow();
+      return $r['count'];
+    } else return 0;
   }
 
 
@@ -1096,5 +1122,4 @@
 
     return $ret;
   }
-
 ?>
