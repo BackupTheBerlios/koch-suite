@@ -5,13 +5,29 @@
   require "<%%PHP_LIBS%%>/output.inc";
 
   $stdout = fopen("php://stdout", "w");
+  $stderr = fopen("php://stderr", "w");
 
-  $name = "%" . $argv[1] . "%";
+  $ver = 0.2;
 
-  foreach (get_mid_by_name($name) as $menu) {
-    fputs($stdout, mmexport(get_menu_by_mid($menu["id"])));
+  $helptext  = "mmexport $ver\n" ;
+  $helptext .= "Invoke as:\n";
+  $helptext .= "\tmmexport \"searchstring\"\n";
+
+  if ($argc == 1) {
+    /* No search-string */
+
+    fputs ($stderr, $helptext);
+  } else {
+
+    $name = "%" . $argv[1] . "%";
+
+    foreach (get_mid_by_name($name) as $menu) {
+      fputs($stdout, mmexport(get_menu_by_mid($menu["id"])));
+    }
   }
 
+  fclose ($stdout);
+  fclose ($stderr);
 
 ?>
 
