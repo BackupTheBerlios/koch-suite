@@ -1,4 +1,4 @@
-### $Id: INSTALL,v 1.1 2001/08/31 17:39:48 lestinsky Exp $
+### $Id: INSTALL,v 1.2 2001/09/06 13:05:13 bus Exp $
 
 Koch-Suite Installations-Anleitung
 ==================================
@@ -75,8 +75,8 @@ MySQL:
 Anlegen der Koch-Suite User:
 
 Weiter hat die Koch-Suite eine eigene Userverwaltung, die mittels der
-Tabelle 'user' gesteuert wird. Um die entsprechenden User darin anzulegen
-rufe das Komando
+Tabelle 'usertable' gesteuert wird. Um die entsprechenden User darin
+anzulegen, rufe das Komando
 
   $ ks_passwd PASSWORT
 

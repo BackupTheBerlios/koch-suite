@@ -41,7 +41,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.1 2001/08/31 12:41:10 lestinsky Exp $
+   * $Id: auth.raw,v 1.2 2001/09/06 13:05:14 bus Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -115,8 +115,8 @@
   /**
    * Do Database-based authentication.
    *
-   * That means: we need a table 'user':
-   * CREATE TABLE user (
+   * That means: we need a table 'usertable':
+   * CREATE TABLE usertable (
    *   username varchar(20) NOT NULL default '',
    *   usertype varchar(20) default NULL,
    *   password varchar(255) default NULL,
@@ -130,7 +130,7 @@
   function auth_by_table ($username, $password) {
     if (!empty($username) and !empty($password)) {
 
-      $req = "select password, usertype from user " .
+      $req = "select password, usertype from usertable " .
              " where username = '$username' ";
 
       if (($result = DB_query($req)) and ($result->numRows() == 1)) {

@@ -1,6 +1,6 @@
 # MySQL dump 8.13
 #
-# $Id: init_db.mysql,v 1.4 2001/08/31 17:38:34 lestinsky Exp $
+# $Id: init_db.mysql,v 1.5 2001/09/06 13:05:13 bus Exp $
 #
 # Host: localhost    Database: DBkoch
 #--------------------------------------------------------
@@ -166,10 +166,10 @@ CREATE TABLE ZUTATEN (
 ) TYPE=MyISAM;
 
 #
-# Table structure for table 'user'
+# Table structure for table 'usertable'
 #
 
-CREATE TABLE user (
+CREATE TABLE usertable (
   username varchar(20) NOT NULL default '',
   usertype varchar(20) default NULL,
   password varchar(255) default NULL,
