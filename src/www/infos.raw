@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <link rev="made" href="mailto:michael@zaphod.rhein-neckar.de" />
   <title>Infos zur Koch-Suite</title>
-  <!-- $Id: infos.raw,v 1.3 2000/12/14 17:22:31 michael Exp $ -->
+  <!-- $Id: infos.raw,v 1.4 2000/12/15 01:17:59 michael Exp $ -->
 </head>
 
 <body>
@@ -99,11 +99,8 @@
     <p>
       Um sich auf der Mailingliste zu subscriben schickt man eine EMail an
       <i>koch-suite-request@zaphod.rhein-neckar.de</i> mit
-      folgendem Subject/Betreff: &raquo;<code>subscribe</code>&laquo;. Um 
-      eine andere, als die momentan verwendete EMail-Adresse zu subscriben 
-      verwendet man als Subject: 
-      &raquo;<code>subscribe my.other@email.address</code>&laquo;.
-      (Nat&uuml;rlich jeweils jeweils ohne die Quotes davor!)
+      folgendem Subject/Betreff: &raquo;<code>subscribe</code>&laquo;. 
+      (Nat&uuml;rlich ohne die Quotes davor!)
     </p>
   </td>
 </tr>
