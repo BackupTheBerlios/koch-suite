@@ -8,7 +8,7 @@
   <title>Infos zur Koch-Suite</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
-  <!-- $Id: help.raw,v 1.6 2001/04/23 09:22:57 michael Exp $ -->
+  <!-- $Id: help.raw,v 1.7 2001/05/08 21:29:10 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
@@ -32,7 +32,7 @@
     ?>
   </td>
   <td width="90%">
-    <!-- Installierte Version: $Name:  $ $Revision: 1.6 $ -->
+    <!-- Installierte Version: $Name:  $ $Revision: 1.7 $ -->
 
     <h2>Hilfe:</h2>
     <p class="top">
@@ -77,7 +77,11 @@
         angezeigt, die den gew&uuml;nschten Suchbegriff beinhalten. Dazu
         gibt man im Suchinterface den Suchbegriff in das Formular ein, wählt 
         unter <i>Suchen in</i> das passende Suchfeld und klickt auf
-        <i>Suche starten</i>.
+        <i>Suche starten</i>. <br>
+        Seit Version <i>0.5</i> ist auch die Verknüpfung von mehreren 
+        Suchbegriffen durch <code>AND</code> möglich. 
+        Damit lässt sich jetzt z.B. nach <code>Schoko AND Muffins</code> 
+        suchen.
         </dd>
       <dt>Eingabe- und Editier-Interface:</dt>
         <dd>Rezepte k&ouml;nnen mit diesem Interface erfasst und editiert

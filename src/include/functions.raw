@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.32 2001/04/23 09:22:12 michael Exp $
+   * $Id: functions.raw,v 1.33 2001/05/08 21:29:09 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -39,6 +39,15 @@
 
     $req = "delete from MENUE where ID = " . $mid;
     $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+  }
+
+
+  function errorlog ($str) {
+    /* Write some debugging-Output. */
+
+    $fp = fopen("/tmp/koch-suite.err", "a");
+    fputs($fp, "$str\n");
+    fclose($fp);
   }
 
 
@@ -475,13 +484,16 @@
   }
 
 
-  function get_mid_by_name($name) {
+  function get_mid_by_name($name, $first_char=0) {
     /* Search the database for $name in the menu-title */
-    global $DB_NAME;
     $a = array();
-
-    $req = "select * from MENUE where TITEL like '$name' order by TITEL asc";
-    $result = mysql_db_query($DB_NAME, $req);
+    if ($first_char==1) {
+      $search = "TITEL like '$name%'" ;
+    } else {
+      $search = make_search_string($name, "TITEL");
+    }
+    $req = "select * from MENUE where $search order by TITEL asc";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
 
     while ($r = @mysql_fetch_array($result)) {
       array_push($a, array("id"    => stripslashes($r["ID"]),
@@ -495,13 +507,38 @@
   function get_mid_by_ingred($ingred) {
     /* Search the database for a menu containing a special ingredient
      * "ingred". 
-     * Returns "0" if noone found, an array of an associative arrays
+     * Returns "0" if none found, an array of an associative arrays
      * ("ID", "PORTIONEN", "TITEL") otherwise.
      */
-    $m = array();
+    $m       = array();
 
-    $req = "select * from ZUTATEN where TEXT like '%". addslashes($ingred) . "%'";
+    $single_ingred = split(" AND ", $ingred);
+
+    $tables = "";
+    $where  = "";
+    $and    = "";
+    $i      = 0;
+
+    foreach ($single_ingred as $ingr) {
+      if ($i > 0)
+        $tables .= ","; // prepend a comma, if needed.
+      $tables .= " ZUTATEN as a". $i;
+      if ($i > 0) {
+        $where .= " and ";
+      }
+      $where .= " a0.REZEPT_ID = a" . $i . ".REZEPT_ID ";
+      $and   .= " and a" . $i . ".TEXT like '%" . $ingr . "%'" ;
+      $i++;
+    }
+
+    $req = "select distinct a0.REZEPT_ID from $tables " .
+               " where $where $and";
+
+    #$req = "select distinct REZEPT_ID from ZUTATEN " .
+    #       " where TEXT like '%". addslashes($ingred) . "%'";
     $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    errorlog($req);
 
     while ($z = mysql_fetch_array($result)) {
       $req = "select * from REZEPT where ID = '" .
@@ -527,16 +564,51 @@
 
   function get_mid_by_cat ($cat) {
     /* get all menus with category $cat */
-    $a = array();
+
+    $a          = array();
+    $categories = array();
+
+    /* Lets see if we 've got a 'AND' in the requested Query: */
+    $search = "";
+    $c      = split (" AND ", $cat);
+    $i      = 0;
+    while (isset($c[$i])) {
+      if ($i > 0) {
+        $search .= " OR ";
+      }
+      $search .= " TEXT = '" . $c[$i] . "'";
+      $i++;
+    }
 
     /* request the ID of the category */
-    $req = "select distinct ID from KATEGORIE where TEXT = '$cat'";
+    $req = "select distinct ID from KATEGORIE where " . $search;
     $res = mysql_db_query($GLOBALS["DB_NAME"], $req);
-    $id  = mysql_fetch_array($res);
-  
+    while ($id = mysql_fetch_array($res))
+      array_push($categories, $id);
+
+    /* Lets construct the next query: what MENUE_IDs are listed for all
+     * the previously selected categories? */
+
+    $tables = "";
+    $where  = "";
+    $and    = "";
+    $i = 0;
+    foreach ($categories as $id) {
+      if ($i > 0) {
+        $tables .= ", KAT as a" . $i; // prepend a comma
+        if ($i > 1) 
+          $where .= " and ";
+        $where  .= " a0.MENUE_ID = a" . $i . ".MENUE_ID ";
+      } else {
+        $tables .=  " KAT as a" . $i; // prepend no comma
+      }
+      $and    .= " and a" . $i . ".KATEGORIE_ID = " . $id["ID"] ;
+      $i++;
+    }
+
     /* which menues are of the category $id["ID"]? */ 
-    $req_mid = "select distinct MENUE_ID from KAT " .
-               " where KATEGORIE_ID = " . $id["ID"] ;
+    $req_mid = "select distinct a0.MENUE_ID from $tables " .
+               " where $where $and";
     if ($res_mid = mysql_db_query($GLOBALS["DB_NAME"], $req_mid)) {
       while ($mid = mysql_fetch_row($res_mid)) {
         /* for each entry: request the id and title and push them into
@@ -552,7 +624,30 @@
       return $a;
     } else {
       return false;
+      // return $req_mid;
     }
   }
 
+
+  function make_search_string ($str, $column, $sharp = 0) {
+    /* Parse the searchstring from user-input and make it SQLish */
+    /* Ok, we have to define some grammer for requests first:
+     * for the moment AND is the only allowed operator. */
+
+    $a = explode (" AND ", $str);
+
+    $i = 0;
+    while (isset($a[$i])) {
+      if ($sharp == 1) {
+        /* sharp search */
+        $r .= (($i > 0) ? " AND " : "") . "$column = '" . $a[$i] . "'";
+      } else {
+        /* unsharp search */
+        $r .= (($i > 0) ? " AND " : "") . "$column like '%" . $a[$i] . "%'";
+      }
+      $i++;
+    }
+
+    return $r;
+  }
 ?>
