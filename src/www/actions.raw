@@ -15,7 +15,10 @@
   <?php
     if ($USER_S['usertype'] >= WRITE) {
       echo "[<a class=\"small\" href=\"einfuegen.php?mid=$mid\">" . $Lang['Recipe']['Edit'] . "</a>]\n";
-      echo "[<a class=\"small\" href=\"delete.php?mid=$mid\">" . $Lang['Recipe']['Delete'] . "</a>]\n";
+      if (isset($result_id))
+        echo "[<a class=\"small\" href=\"delete.php?result_id=$result_id\">" . $Lang['Recipe']['Delete'] . "</a>]\n";
+      else
+        echo "[<a class=\"small\" href=\"delete.php?mid=$mid\">" . $Lang['Recipe']['Delete'] . "</a>]\n";
     }
   ?>
 
