@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.56 2003/02/11 11:17:40 lestinsky Exp $
+   * $Id: en.inc,v 1.57 2003/08/11 20:11:32 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -160,10 +160,10 @@ EOT;
 
   $Lang['Requirements']['Text'][1]	= 'Tested Operating Systems (alphabetical Order):';
 
-  $Lang['Requirements']['OSes'][0]	= 'AIX 4.3';
-  $Lang['Requirements']['OSes'][1]	= 'FreeBSD 4.*';
+//  $Lang['Requirements']['OSes'][0]	= 'AIX 4.3';
+  $Lang['Requirements']['OSes'][1]	= 'FreeBSD';
   $Lang['Requirements']['OSes'][2]	= 'Linux (Debian 2.2, 3.0)';
-  $Lang['Requirements']['OSes'][3]	= 'OpenBSD 3.1';
+  $Lang['Requirements']['OSes'][3]	= 'OpenBSD';
   $Lang['Requirements']['OSes'][4]	= 'Solaris 2.[5-9]';
 
   $Lang['Requirements']['Text'][2]	= <<<EOT
