@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.39 2002/08/11 21:11:48 lestinsky Exp $
+   * $Id: de.inc,v 1.40 2002/08/18 13:51:38 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -37,6 +37,9 @@
   $Lang['Next']                 = "N&auml;chstes";
   $Lang['Previous']             = "Vorheriges";
   $Lang['Apply']		= '&Uuml;bernehmen';
+  $Lang['Mark']['Do']		= 'Vormerken';
+  $Lang['Mark']['Show']['Do']	= 'Vorgemerkte Rezepte anzeigen';
+  $Lang['Mark']['Show']['Title']= 'Vorgemerkte Rezepte';
 
 
   $Lang['Mainmenu']['Title']		= "Hauptmen&uuml;";

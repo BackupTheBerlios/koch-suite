@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.43 2002/08/11 20:57:56 lestinsky Exp $
+   * $Id: en.inc,v 1.44 2002/08/18 13:51:38 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -37,7 +37,10 @@
   $Lang['Edit']                 = "Edit";
   $Lang['Next']			= "Next";
   $Lang['Previous']		= "Previous";
-  $Lang['Apply']               = 'Apply';
+  $Lang['Apply']		= 'Apply';
+  $Lang['Mark']['Do']		= 'Remember';
+  $Lang['Mark']['Show']['Do']	= 'Show remembered recipes';
+  $Lang['Mark']['Show']['Title']= 'Remembered recipes';
 
   $Lang['Mainmenu']['Title']		= "Mainmenu";
   $Lang['Mainmenu']['PlsChoose']	= "Please choose from the main menu";
