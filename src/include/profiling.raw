@@ -1,0 +1,14 @@
+<?php
+  /**
+   * Profiling functions
+   */
+
+  /**
+   * getmicrotime() - get the current time in microseconds
+   * stolen from the PHP manual.
+   */
+  function getmicrotime(){ 
+    list($usec, $sec) = explode(" ",microtime()); 
+    return ((float)$usec + (float)$sec); 
+  } 
+?>
