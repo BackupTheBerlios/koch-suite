@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: de.inc,v 1.6 2001/06/01 22:52:07 michael Exp $
+   * $Id: de.inc,v 1.7 2001/06/06 11:08:23 michael Exp $
    *
    * Define German text-constants.
    *
@@ -31,6 +31,7 @@
   $Lang['Delete']		= "L&ouml;schen";
   $Lang['PrintVers']		= "Druckversion";
   $Lang['Close']		= "Schlie&szlig;en";
+  $Lang['Edit']                 = "Bearbeiten";
 
   $Lang['Mainmenu']['Title']		= "Hauptmen&uuml;";
   $Lang['Mainmenu']['PlsChoose']	= "Bitte W&auml;hlen Sie im Hauptmen&uuml;";
@@ -52,16 +53,22 @@
   $Lang['AllRecipes']		= "Alle Rezepte";
   $Lang['CatChoose']		= "Kategorie-Auswahl";
 
-  $Lang['Homepage']['Title']	= 'Homepage';
-  $Lang['Homepage']['Text'][0]	= <<<EOT
-      <a href="http://milliways.ma.choin.net/~michael/koch-suite/">http://milliways.ma.choin.net/~michael/koch-suite/</a>:
-      Aktuelle Informationen rund um dieses Projekt und die jeweils
-      neusten Versionen der <i>Koch-Suite</i> finden sich dort.
-EOT;
+  $Lang['Aliases']['DefDescr']  = "Alias-Liste durch Leerzeichen getrennt angeben.";
 
   /* 
    * Infos: 
    */
+
+  $Lang['Homepage']['Title']	= 'Homepage';
+  $Lang['Homepage']['Text'][0]	= <<<EOT
+      <a href="http://milliways.ma.choin.net/~michael/koch-suite/">http://milliways.ma.choin.net/~michael/koch-suite/</a>:
+      Aktuelle Informationen rund um dieses Projekt und die jeweils
+      neusten Versionen der $kochsuite finden sich dort.
+EOT;
+
+  $Lang['Version']['Title']             = 'Version';
+  $Lang['Version']['Text']['Pre']       = "Installiert ist $kochsuite";
+  $Lang['Version']['Text']['Post']      = "";
 
   $Lang['Requirements']['Title']	= 'Voraussetzungen';
   $Lang['Requirements']['Text'][0]	= 'Vorausgesetzte Software:';
@@ -84,7 +91,7 @@ EOT;
 
   $Lang['Language']['Title']	= "Spracheinstellung";
   $Lang['Language']['Text'][0]	= <<<EOT
-      Seit Version 0.5 ist die Koch-Suite mehrsprachig. Um eine andere
+      Seit Version 0.5 ist die $kochsuite mehrsprachig. Um eine andere
       Sprache auszuw&auml;hlen, stellt man im Browser einfach die
       gew&uuml;nschte Sprache ein (z.B. Mozilla: Edit -> Preferences ->
       Navigator -> Languages). Wenn die gew&uuml;nschte Sprache existiert,
@@ -96,7 +103,7 @@ EOT;
 
   $Lang['License']['Title']	= "Lizenz";
   $Lang['License']['Pre'][0]	= <<<EOT
-      Das gesamte Paket der Koch-Suite steht unter folgender BSD-artigen
+      Das gesamte Paket der $kochsuite steht unter folgender BSD-artigen
       Lizenz.
 EOT;
 

@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.6 2001/06/01 22:52:07 michael Exp $
+   * $Id: en.inc,v 1.7 2001/06/06 11:08:23 michael Exp $
    *
    * Define English text-constants.
    *
@@ -56,12 +56,16 @@
   $Lang['Homepage']['Text'][0]	= <<<EOT
       <a href="http://milliways.ma.choin.net/~michael/koch-suite/">http://milliways.ma.choin.net/~michael/koch-suite/</a>:
       Up-to-date informations about this project an the currently newest
-      releases of the <i>Koch-Suite</i> may be found here.
+      releases of the $kochsuite may be found here.
 EOT;
 
   /* 
    * Infos: 
    */
+
+  $Lang['Version']['Title']             = 'Version';
+  $Lang['Version']['Text']['Pre']       = "Installed is $kochsuite";
+  $Lang['Version']['Text']['Post']      = "";
 
   $Lang['Requirements']['Title']	= 'Requirements';
   $Lang['Requirements']['Text'][0]	= 'Required Software:';
@@ -99,7 +103,7 @@ EOT;
 
   $Lang['Language']['Title']	= "Language Setting";
   $Lang['Language']['Text'][0]	= <<<EOT
-      The Koch-Suite is multilingual starting with release 0.5.
+      The $kochsuite is multilingual starting with release 0.5.
       To choose another lanuage, adjust your browser (i.e. Mozilla: Edit
       -> Preferences -> Navigator -> Languages).
       If the language you specified does exist you will see all following
@@ -111,7 +115,7 @@ EOT;
 
   $Lang['License']['Title']	= "License";
   $Lang['License']['Pre'][0]	= <<<EOT
-      The entire Koch-Suite-package is released under the
+      The entire $kochsuite-package is released under the
       terms of the following BSD-style license.
 EOT;
 
