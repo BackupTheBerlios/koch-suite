@@ -1,19 +1,44 @@
 <?
-  /* Configuration-file for the Koch-Suite
-   * by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
-   * $Id: config.raw,v 1.14 2001/06/23 00:39:48 michael Exp $
+  /*
+   * Configuration-file for the Koch-Suite
    *
+   * (c) by Michael Lestinsky <michael@zaphod.rhein-neckar.de>, May 2001
+   * $Id: config.raw,v 1.15 2001/06/26 22:16:00 michael Exp $
    * See LICENSE in the top-level directory of the Koch-Suite distribution
    * for the License of this file.
-   */
-
-  /*
-   * Include PEARs Database abstraction-layer
    */
 
   require_once 'DB.php';
   require_once '<%%PHP_LIBS%%>/debug.inc';
 
+  /*
+   * Shall we debug? Answer "yes" or "no".
+   */
+
+  $DEBUG = "yes";
+
+  /*
+   * Some Constants:
+   */
+
+  define("KOCHSUITE", "<i>Koch-Suite</i>");
+  define("KOCHSUITE_VER", "0.5-pre7");
+
+  define("DB_MYSQL", "mysql");
+  define("DB_PGSQL", "pgsql");
+
+  define("DEBUG_FILE", "/tmp/koch-suite-debug");
+
+  define("DEFAULT_LANG", "de");
+
+  define("MM_STRICT", true);
+  define("MM_VIOLATE", false);
+
+  /*
+   * What about the Database?
+   */
+
+  /* DSN */
   $DB_DSN      = array('phptype'  => "<%%DB_TYPE%%>",
                        'dbsyntax' => false,
                        'protocol' => false,
@@ -22,24 +47,9 @@
                        'username' => "<%%DB_USER%%>",
                        'password' => "<%%DB_PASSWORD%%>" );
 
-  /*
-   * Define some constants.
-   */
+  $DB_STYLE    = $DB_DSN["phptype"];
 
-  define("DB_MYSQL", ($DB_DSN["phptype"] == "mysql") ? true : false);
-  define("DEBUG_FILE", "/tmp/koch-suite-debug");
-  define("DEFAULT_LANG", "de");
-
-  define("MM_STRICT", true);
-  define("MM_VIOLATE", false);
-
-  $kochsuite     = "<i>Koch-Suite</i>";
-  $kochsuite_ver = "0.5-pre6";
-
-  /*
-   * Connect to the database
-   */
-
+  /* Do the connect */
   write_log("Connecting to " . serialize($DB_DSN));
   $db=DB::connect($DB_DSN);
 
@@ -48,6 +58,6 @@
     die("Can't connect to $DB_DSN: " . $db->getMessage());
   }
 
-  /* Return associative arrays */
+  /* Return associative arrays per default */
   $db->setFetchMode(DB_FETCHMODE_ASSOC);
 ?>
