@@ -1,4 +1,4 @@
-### $Id: README,v 1.18 2001/02/08 01:45:00 michael Exp $
+### $Id: README,v 1.19 2001/03/03 11:58:16 michael Exp $
 
 Koch-Suite
 ==========
@@ -31,6 +31,8 @@ Auf alle Fälle ist auch PHP4 mit MySQL-Support notwendig. Diese Skripten
 sind unter PHP-4.0.3.pl1 geschrieben und getestet worden. PHP4 muss als 
 Stand-Alone-Interpreter vorhanden sein, nur mit dem Apache-Modul funktio-
 nieren die Konsolen-Tools nicht.
+Der LaTeX-Export greift auf das Paket floatflt zurück. Bei Bedarf siehe
+bitte im CTAN-Archiv nach.
 
 
 Status:
@@ -112,8 +114,9 @@ Updating:
                alter table MENUE change PORTIONEN PORTIONEN varchar(255);
              Diese Änderung ist vollkommen transparent zu existierenden
              Daten.
-0.2.* -> 0.3 Das Format der Datenbank hat sich leicht geändert:
-             Tabelle EINHEITEN:
+0.2.* -> 0.3, 0.3pre* -> 0.3 
+             Das Format der Datenbank hat sich leicht geändert:
+             Tabelle EINHEITEN, EINHEITEN_ALIAS:
              Am Einfachsten ist es, die Tabelle zu löschen und mit den
              Kommandos aus init-db.sql neu einzuspielen. Wenn man dies
              korrekt macht, dann gibt es keine Verluste *g*
@@ -135,7 +138,7 @@ Bekannte Bugs:
  - Import von Rezepten mit einer alternativen Darstellung der
    Rezept-Header ("      H    Für die Sauce"). Header werden als solche
    nicht erkannt und landen daher im Anweisungs-Text. Allerdings sind
-   diese Header sehr selten.
+   diese Header mittlerweile sehr selten.
 
 
 Feedback:
