@@ -1,3 +1,14 @@
+2002-10-13  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/include/en.inc 1.50:
+  English language tweaking. Submitted by Glen Stewart <root@associate.com>
+
+  * src/include/lang.raw 1.18: Comments
+
+  * src/www/einfuegen.raw 1.46: Fix JavaScript
+
+  * src/www/index.raw 1.29: Better
+
 2002-10-10  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/Makefile 1.26:
