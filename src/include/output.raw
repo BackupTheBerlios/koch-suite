@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.15 2001/01/31 10:34:21 michael Exp $
+   * $Id: output.raw,v 1.16 2001/01/31 13:11:14 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -172,7 +172,8 @@
     $str .= "}\\end{floatingtable}\n";
 
     foreach (length_adjust($rezept["anleitung"], 74) as $line) {
-      $line = preg_replace ('/(")/', "\\dq ", $line);
+      $line = stripslashes($line);
+      $line = preg_replace ('/("|\')/', "\dq ", $line);
       $line = preg_replace ('/^:/', "\n:", $line);
       $str .= $line . "\n";
     }
