@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.61 2001/08/16 19:55:33 lestinsky Exp $
+   * $Id: functions.raw,v 1.62 2001/08/31 17:36:09 lestinsky Exp $
    * (c) Michael Lestinsky <michael@lestinsky.de>, January 2001
    * Editors: Please sort new functions alphabetically.
    *
@@ -135,6 +135,7 @@
 
     write_log("SQL: $query");
     $result=$db->query($query);
+
     if (DB::isError($result)) {
       write_log("SQL error: " . $result->getMessage());
       die("SQL error: " . $result->getMessage());
