@@ -1,5 +1,5 @@
 -- 
--- $Id: init_db.pgsql,v 1.9 2001/12/22 09:04:57 bus Exp $
+-- $Id: init_db.pgsql,v 1.10 2001/12/22 10:42:32 bus Exp $
 -- init_db_postgreSQL.sql
 -- 2001-07-25 Michael Bussmann <bus@mb-net.net>
 --
@@ -151,7 +151,7 @@ CREATE INDEX zutaten_rid ON zutaten (REZEPT_ID);
 --
 
 CREATE TABLE unit_langs (
-  id int(11) default NULL,
+  id smallint default NULL,
   lang varchar(5) default NULL,
   text varchar(30) default NULL
 );
