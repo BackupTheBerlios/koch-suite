@@ -1,5 +1,25 @@
-### $Id: changelog,v 1.20 2001/03/12 09:53:52 michael Exp $
+### $Id: changelog,v 1.21 2001/03/14 12:30:55 michael Exp $
 
+2001-03-14: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	mmimport: "-m" -> "-mm", um innerhalb der Koch-Suite konsistent zu
+	sein.
+	Fix: functions.inc: Mengenangaben auch bei RK-Rezepten.
+
+2001-03-13: Leo Caspari <lcc@gmx.net>
+	Fix: functions.inc: erfasse leere Rezeptlisten nicht,
+	Fix: functions.inc: Dezimalisieren von uneigentlichen Brüchen
+
+2001-03-12: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
+	config.inc: Frage ab, ob mysql_pconnect erlaubt sind und verwende
+        andernfalls mysql_connect.
+
+2001-03-12: Leo Caspari <lcc@gmx.net>
+	mmimport: Weitere Flags,
+	functions.inc: erfasse leere Rezeptlisten nicht, anstatt sie leer
+        zu importieren.
+	Fix: rezept: beende Skript nach der Ausgabe des Hilfetextes
+        Fix: functions.inc: Mengen-Angaben 
+	
 2001-03-12: Michael Lestinsky <michael@zaphod.rhein-neckar.de>
 	Oops, bei Rezept-Listen-Titeln wurde dass "\n" nicht
 	abgeschnitten. Fixed.

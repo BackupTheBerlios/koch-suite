@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.27 2001/03/12 09:53:52 michael Exp $
+   * $Id: functions.raw,v 1.28 2001/03/14 12:30:56 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -101,7 +101,7 @@
       $rezept_ende    = "/^={5}$/";
       $title_pattern  = "Titel:";
       $cat_pattern    = "Kategorien:";
-      $yield_pattern  = "Menge:";
+      $yield_pattern  = "(Menge):";
     } else {
       /* wrong flavor. */
       return false;
@@ -138,7 +138,7 @@
                    ereg("$yield_pattern (.*)", $line, $foo)) {
           // Menge:
 
-          $yield = trim($foo[1]);
+          $yield = trim($foo[2]);
           $seen_yield = 1;
 
         } else if (preg_match("/^ *$/", $line) and $seen_ingr == 0) {
@@ -165,9 +165,11 @@
 
           $len = strlen($line);
           fseek($fd, -$len, SEEK_CUR);
-          array_push ($zutaten,
+          if (($x = getingr($fd, $flavor)) > 0) {
+            array_push ($zutaten,
                       array("title" => "Zutaten:", 
-                            "ingredients" => getingr($fd, $flavor)));
+                            "ingredients" => $x));
+          }
           $seen_ingr = 1;
 
         } else {
@@ -240,7 +242,7 @@
       /* Ok, wir haben eine gueltige Zeile gelesen. */
       if ($quant != '') {
         /* Rechne Brueche in dezimalzahlen um. */
-        $quant = preg_replace("/\s+\s/", "+", $quant);
+        $quant = preg_replace("/(\d+\/\d+)/", "+\\1", $quant);
         $quant = eval("return $quant;");
       }
       return array("quant"  => $quant,

@@ -1,4 +1,4 @@
-### $Id: README,v 1.20 2001/03/11 15:08:26 michael Exp $
+### $Id: README,v 1.21 2001/03/14 12:30:55 michael Exp $
 
 Koch-Suite
 ==========
@@ -98,7 +98,7 @@ Installation:
 
 Zum Import der Datenstruktur kann mit einem
 
- $ mysql DBkoch < init-db.sql 
+ $ mysql DBkoch < init_db.sql 
 
 alle notwendigen Komandos ausführen lassen.
 
@@ -115,7 +115,7 @@ Updating:
              Das Format der Datenbank hat sich leicht geändert:
              Tabelle EINHEITEN, EINHEITEN_ALIAS:
              Am Einfachsten ist es, die Tabelle zu löschen und mit den
-             Kommandos aus init-db.sql neu einzuspielen. Wenn man dies
+             Kommandos aus init_db.sql neu einzuspielen. Wenn man dies
              korrekt macht, dann gibt es keine Verluste *g*
 
 

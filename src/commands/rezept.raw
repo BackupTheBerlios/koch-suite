@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?
-  /* $Id: rezept.raw,v 1.2 2001/03/11 15:03:18 michael Exp $
+  /* $Id: rezept.raw,v 1.3 2001/03/14 12:30:55 michael Exp $
    * Export a recipe in different formats.
    */
 
@@ -55,6 +55,7 @@
           break;
         case '-h':
           fputs ($stderr, $helptext);
+          exit();
           break;
         case '-1':
           $one_file = 1;

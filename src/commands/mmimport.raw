@@ -2,7 +2,7 @@
 <?
 
   /*
-   * $Id: mmimport.raw,v 1.11 2001/03/03 13:40:07 michael Exp $
+   * $Id: mmimport.raw,v 1.12 2001/03/14 12:30:55 michael Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
@@ -11,10 +11,62 @@
 
   require "<%%PHP_LIBS%%>/functions.inc";
 
+  echo "$mysql_error\n";
+
+  $opt_test = 0;
+  $opt_test_printmm = 0;
+  
+  $help = <<<EOD
+Usage: $argv[0] [-t|--test [-mm]] [-c category,[cat...]]] [-h|--help]
+
+     -t --test     Test the parser.  Do not import the recipe, but rather re­
+                   format it into plain ascii.  Output goes to STDOUT.
+
+     -mm           Reformat parser output to Meal-Master format. 
+     
+     -c cat,...	   Add comma separated categories to the recipe.
+
+     --help        display this help and exit
+
+EOD;
+  
+  
   /* Open filedescriptors for the STD-channels */
   $stdin  = fopen("php://stdin", "r");
   $stdout = fopen("php://stdout", "w");
   $stderr = fopen("php://stderr", "w");
+
+  /* parse arguments */
+  for ($i = 1; $i < $argc; $i++) {
+    switch ($argv[$i]) {
+	case "-t":
+	case "--test":
+              $opt_test++;
+              break;
+	case "-mm":
+              $opt_test_printmm++;
+              break;
+	      
+	case "-c":
+	      if (++$i < $argc) {
+	        $opt_cat = split(",", $argv[$i]);
+	      } else {
+                fputs($stderr, "$argv[0]: invalid option -- " . preg_replace("/^-*/", "", $argv[$i]) . "\n");
+		exit();
+	      }
+	      break;
+
+        default:
+	      fputs($stderr, "$argv[0]: invalid option -- " . preg_replace("/^-*/", "", $argv[$i]) . "\n");
+	      
+        case "--help":
+	case "-h":
+	      fputs($stderr, $help);
+	      exit();
+    }
+  }
+
+
 
   /* Create a temporary file, write $stdin to it and close the
    * temporary file. 
@@ -47,12 +99,20 @@
     }
 
     if (isset($rezept)) {
-      if ($argv[1] == '-t' or $argv[1] == '--test') {
+      
+      if (sizeof($opt_cat) > 0)
+        $rezept["category"] = array_merge($opt_cat, $rezept["category"]) ;
+      
+      if ($opt_test) {
         /* Parse the recipe, but don't write it to the database.
          * Main purpose: parser-testing
          */
-        fputs($stdout, format_recipe($rezept));
-        fputs($stdout, "==========\n");
+        if ($opt_test_printmm) {
+          fputs($stdout, mmexport($rezept));
+        } else {
+          fputs($stdout, format_recipe($rezept));
+          fputs($stdout, "==========\n");
+	}
       } else {
         write_db($rezept);
       }
