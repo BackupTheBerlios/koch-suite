@@ -1,4 +1,4 @@
-### $Id: README,v 1.13 2001/01/15 10:03:15 michael Exp $
+### $Id: README,v 1.14 2001/01/18 00:39:24 michael Exp $
 
 Koch-Suite
 ==========
@@ -119,10 +119,9 @@ Todo/'Roadmap':
 ---------------
 
  - Dokumentation schreiben,
- - Ein Datenbank-Import-Interface,
- - RezKonv-Importfilter,
- - vorhandene Rezepte kommentieren und editieren,
+ - vorhandene Rezepte kommentieren,
  - Zugriffskontrolle für die Datenbank/Authentifizierung des Users
+ - RezKonv-Importfilter,
 
 
 Bugs:
