@@ -22,6 +22,9 @@
   if (isset($HTTP_POST_VARS["more_zutaten"])) {
     $more_zutaten = $HTTP_POST_VARS["more_zutaten"];
   }
+  if (isset($HTTP_POST_VARS["submit"])) {
+    $submit = $HTTP_POST_VARS["submit"];
+  }
 
   $target = $PHP_SELF;
   if (isset($mid) and $mid != 0) {
@@ -231,7 +234,7 @@ $Lang['Units'] . "</a></td>\n";
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="-1">
-  <!-- $Id: einfuegen.raw,v 1.17 2001/06/01 22:32:26 michael Exp $ -->
+  <!-- $Id: einfuegen.raw,v 1.18 2001/06/06 11:06:22 michael Exp $ -->
 
   <script language="JavaScript1.2">
   <!--
