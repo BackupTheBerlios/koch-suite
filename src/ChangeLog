@@ -1,3 +1,8 @@
+2005-04-02  Michael Bussmann  <bus@mb-net.net>
+
+  * include/en.inc 1.61, include/es.inc 1.13, include/fr.inc 1.3:
+  Added missing lang hashes (thanks to Wouter)
+
 2005-03-15  Michael Lestinsky  <michael@lestinsky.de>
 
   * www/rezept.raw 1.40:
