@@ -1,7 +1,7 @@
-# $Id: Makefile.raw,v 1.1 2000/12/20 14:28:55 michael Exp $
+# $Id: Makefile.raw,v 1.2 2000/12/27 18:22:29 michael Exp $
 # Space-separated list of all "raw" php-files.
 
-MAN1=	mmexport.1 mmimport.1 rezept2latex.1 
+MAN1=	mmexport.1 mmimport.1 rezept2latex.1 tkrezept.1
 
 MAN=	${MAN1}
 
