@@ -1,3 +1,32 @@
+2003-01-20  Michael Lestinsky  <michael@lestinsky.de>
+
+  * src/www/footer.raw 1.4:
+  Display profiling statistics
+
+  * src/www/search.raw 1.35, src/www/actions.raw 1.11:
+  it's EXPENSIVE_OPS now.
+
+  * src/include/Makefile.raw 1.30: +profiling.inc
+
+  * src/include/auth.raw 1.22:
+  Remove some entries from global and use the $GLOBALS-array instead
+
+  * src/include/en.inc 1.54: More
+
+  * src/include/de.inc 1.49: Fix Typo and some new
+
+  * src/include/setup.raw 1.7: use profiling
+
+  * src/include/profiling.raw 1.1:
+  Collect profiling related functions here
+
+  * src/include/output.raw 1.50:
+  Be nice to lynx, use alt tags
+
+  * src/include/koch-suite.raw 1.21:
+  Rename GLOBAL_OPS to EXPENSIVE_OPS
+  enable PROFILING
+
 2003-01-11  Michael Bussmann  <bus@mb-net.net>
 
   * src/commands/init_db.raw 1.4:
