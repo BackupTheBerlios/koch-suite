@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: es.inc,v 1.12 2005/01/02 02:43:31 lestinsky Exp $
+   * $Id: es.inc,v 1.13 2005/04/02 08:36:51 bus Exp $
    *
    * Define Spanish text-constants.
    *
@@ -39,6 +39,8 @@
   $Lang['Delete']		= "Borrar";
   $Lang['NormalVers']		= "Vista normal";
   $Lang['PrintVers']		= "Versi&oacute;n imprimible";
+  $Lang['TypeMealMaster']       = 'MealMaster';
+  $Lang['TypeRezkonv']          = 'Rezkonv';
   $Lang['Close']		= "Cerrar";
   $Lang['Edit']                 = "Editar";
   $Lang['Next']			= "Siguiente";

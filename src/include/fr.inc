@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: fr.inc,v 1.2 2005/02/10 19:02:33 lestinsky Exp $
+   * $Id: fr.inc,v 1.3 2005/04/02 08:36:51 bus Exp $
    *
    * Define French text-constants.
    * Translation provided by Christian Schill <C.Schill@gmx.net>
@@ -41,6 +41,8 @@
   $Lang['Delete']		= "Supprimer";
   $Lang['NormalVers']		= "Vue normale";
   $Lang['PrintVers']		= "Vue imprimable";
+  $Lang['TypeMealMaster']       = 'MealMaster';
+  $Lang['TypeRezkonv']          = 'Rezkonv';
   $Lang['Close']		= "Fermer";
   $Lang['Edit']                 = "&Eacute;diter";
   $Lang['Next']			= "Suivant";

@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.60 2005/02/10 19:03:13 lestinsky Exp $
+   * $Id: en.inc,v 1.61 2005/04/02 08:36:51 bus Exp $
    *
    * Define English text-constants.
    *
@@ -39,6 +39,8 @@
   $Lang['Delete']		= "Delete";
   $Lang['NormalVers']		= "Normal view";
   $Lang['PrintVers']		= "Printable view";
+  $Lang['TypeMealMaster']       = 'MealMaster';
+  $Lang['TypeRezkonv']          = 'Rezkonv';
   $Lang['Close']		= "Close";
   $Lang['Edit']                 = "Edit";
   $Lang['Next']			= "Next";
