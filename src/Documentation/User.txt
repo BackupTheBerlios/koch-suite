@@ -1,0 +1,19 @@
+### $Id: User.txt,v 1.1 2000/11/13 20:11:05 michael Exp $
+
+User-Dokumentation
+==================
+
+Installations-anleitungen sind im Top-Level-Verzeichnis dieses
+Programmpaketes enthalten. Der Zweck dieses Dokuments ist eine
+Dokumentation der vorhandenen Kommandozeilen-Tools.
+
+mmimport
+--------
+  mmimport lieﬂt von der Standard-Eingabe und parsed die Rezepte.
+  Es ist nicht notwendig, dass die Eingabe nur aus einem Rezept besteht.
+  Der Zweck dieses Tools ist eine einfache Schnittstelle zur Datenbank,
+  die durch Pipes bequem verwendet werden kann. Speziell eignet sich 
+  mmimport um Usenet-Artikel (z.B. der Gruppe de.rec.mampf) aus z.B. slrn 
+  heraus einzulesen.
+
+(c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, November 2000
