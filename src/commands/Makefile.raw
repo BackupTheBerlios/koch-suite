@@ -10,8 +10,9 @@ SUBDIRS=		""
 all:
 	@#make subdir TRGT=all
 	@(for i in ${PHP_FILES_UNCONF}; do\
-	echo "$$i.raw --> $$i"; \
-	cat $$i.raw | sed -f ${CONF_FILE} > $$i;\
+	echo "$${i}.raw --> $$i"; \
+	cat $${i}.raw | sed -f ${CONF_FILE} > $$i;\
+	chmod +x $${i} ; \
 	done)
 
 subdir:
@@ -35,6 +36,6 @@ install:
 	( [ -d "<%%SCRIPT_PREFIX%%>" ] || \
 	install -d -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> <%%SCRIPT_PREFIX%%> )
 	@( for i in ${PHP_FILES_UNCONF} ; do \
-	install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%SCRIPT_PREFIX%%>; \
+	install -c -g <%%GROUP%%> -m 0755 -o <%%OWNER%%> $$i <%%SCRIPT_PREFIX%%>; \
 	echo "install -c -g <%%GROUP%%> -m 0644 -o <%%OWNER%%> $$i <%%SCRIPT_PREFIX%%>" ; \
 	done )
