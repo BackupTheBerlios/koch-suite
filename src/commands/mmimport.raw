@@ -29,7 +29,7 @@
    */
 
   /*
-   * $Id: mmimport.raw,v 1.25 2002/02/18 17:37:40 lestinsky Exp $
+   * $Id: mmimport.raw,v 1.26 2002/05/11 12:23:28 lestinsky Exp $
    * Michael Lestinsky <michael@zaphod.rhein-neckar.de>, Okt. 2000
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
@@ -50,6 +50,8 @@
   $opt_test = 0;
   $opt_test_printmm = 0;
   $opt_cat = false;
+
+  $new_cat = false; // Ignore unknown categories by default.
   
   $help = <<<EOD
 Usage: $argv[0] [-t|--test [-mm]] [-c category,[cat...]]] [-h|--help]
@@ -78,6 +80,7 @@ EOD;
         case '--test':
               $opt_test++;
               break;
+
         case '-mm':
               $opt_test_printmm++;
               break;
@@ -90,6 +93,10 @@ EOD;
                 exit();
               }
               break;
+
+        case '-C':
+	case '--import-new-cat':
+             $new_cat = true;
 
         default:
               fputs($stderr, "$argv[0]: ignoring invalid option -- " . preg_replace('/^-*/', '', $argv[$i]) . "\n");
@@ -143,9 +150,13 @@ EOD;
         }
       } else {
         if (! recipe_dupe($rezept['hash'])) {
-          write_db($rezept);
+          write_db($rezept, $new_cat);
+          if (strlen($notice) > 0) {
+            fputs($stderr, sprintf("mmimport: %s", $notice));
+            $notice = '';
+          }
         } else {
-          fputs($stderr, 'Recipe ' . $rezept["title"] . " is already in database.\n");
+          fputs($stderr, 'mmimport: "' . $rezept["title"] . "\" is already in database.\n");
         }
       }
       unset ($rezept);
