@@ -3,21 +3,47 @@
   /**
    * Erzeuge den verschluesselten Passwort-String.
    *
-   * $Id: ks_passwd.raw,v 1.4 2002/02/18 17:37:40 lestinsky Exp $
+   * $Id: ks_passwd.raw,v 1.5 2002/04/14 18:20:22 lestinsky Exp $
    */
 
   include "<%%PHP_LIBS%%>/pwcrypt.inc";
+  include "<%%PHP_LIBS%%>/defines.inc";
 
-  if ($_SERVER['argc'] == 2) {
+  $username = 'John Doe';
+  $type     = READ; // Create Read-Only-Users by default.
+
+  if ($_SERVER['argc'] >= 2) {
 
     $argv = $_SERVER['argv'];
 
-    $crypted_passwd = mk_crypted_pw($argv[1]);
+    for ($i=1 ; $i < count($argv) ; $i++) {
+      /* parse the command-line */
+   
+      switch ($argv[$i]) {
+        case '-u':  
+          $username = $_SERVER['argv'][++$i];
+          break;
+        case '-a':
+          $type = ADMIN;
+          break;
+        case '-m':
+          $type = MODERATOR;
+          break;
+        case '-w';
+          $type = WRITE;
+          break;
+        default:
+          $pass = $argv[$i];
+      }
+    }
+
+    $crypted_passwd = mk_crypted_pw($pass);
     echo "Encrypted password: " . $crypted_passwd . "\n\n";
-    
+
     echo "Example SQL-command: \n";
     echo "insert into usertable values \n" .
-         "\t('USERNAME', 'Normal', '$crypted_passwd');\n";
+         "\t('$username', $type, '$crypted_passwd');\n";
+
   } else {
     echo "Syntax: " . $_SERVER['PHP_SELF'] . " pwd\n";
     echo "\twhere pwd is the password to encrypt.\n";
