@@ -1,6 +1,6 @@
 <?php
   /*
-   * $Id: en.inc,v 1.55 2003/02/07 16:06:00 bus Exp $
+   * $Id: en.inc,v 1.56 2003/02/11 11:17:40 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -122,7 +122,7 @@ EOT;
 EOT;
   $Lang['Category']['Edit']     = 'Edit categories';
   $Lang['Category']['EditAlias']= 'Edit aliases';
-  $Lang['Category']['MakeAlias']= 'Convert into alias';
+  $Lang['Category']['MakeAlias']= 'Convert into alias for';
   $Lang['Category']['Delete']   = 'Delete category';
 
 
@@ -250,6 +250,28 @@ EOT;
         RezKonv units or defined aliases</a> and must be seperated by a space
         character from the quantity.
 EOT;
+
+  $Lang['Helptext']['WWW']['part'][2]['Title']  = "Some hints for the usage of categories";
+  $Lang['Helptext']['WWW']['part'][2]['Text']   = <<<EOT
+	Recipes may be put into several categories. Actually
+	there is no real limit for this, however the specification of the 
+	mealmaster format allows a maximum of 5 categories.
+	New categories are created on the fly, whenever a new recipe uses
+	them the first time.
+	To keep the categories in order, it is recommended to follow the
+	following scheme for new recipes, when adding new recipes to the
+	database via the web frontend.
+	<ul>
+	  <li>The first category should describe the type of the recipe. Is it
+	      e.g. a "Soup", a "Snack" or a "Cocktail"? </li>
+	  <li>The second category should describe the origin of the recipe.
+	      Use the name of the country of the origin, such as 
+	      <code>Italy</code>, <code>France</code> or <code>China</code>.
+	      Don't use adjectives, such as <code>Italian</code>, 
+	      <code>French</code> or <code>Chinese</code>.</li>
+	</ul> 
+EOT;
+
 
   $Lang['Helptext']['Feedback']['Title']	= "Feedback";
   $Lang['Helptext']['Feedback']['Text'][0]	= <<<EOT

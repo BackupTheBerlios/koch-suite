@@ -2,7 +2,7 @@
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.50 2003/02/07 16:06:00 bus Exp $
+   * $Id: de.inc,v 1.51 2003/02/11 11:17:40 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2002 Michael Lestinsky
    */
@@ -123,7 +123,7 @@ EOT;
 EOT;
   $Lang['Category']['Edit']	= 'Kategorien bearbeiten';
   $Lang['Category']['EditAlias']= 'Aliase bearbeiten';
-  $Lang['Category']['MakeAlias']= 'In Alias umwandeln';
+  $Lang['Category']['MakeAlias']= 'Umwandeln in Alias zu';
   $Lang['Category']['Delete']	= 'Kategorie l&ouml;schen';
 
   $Lang['UnitInfo']['Title']    = "Einheiten-Infos";
@@ -255,6 +255,25 @@ EOT;
         sein und m&uuml;ssen durch ein Leerzeichen von der Mengenangabe
         getrennt werden.
 EOT;
+  $Lang['Helptext']['WWW']['part'][2]['Title']	= "Hinweis zur Verwendung der Kategorien";
+  $Lang['Helptext']['WWW']['part'][2]['Text']	= <<<EOT
+	Rezepte k&ouml;nnen in verschiedene Kategorien eingeordnet werden.
+	Nicht vorhandene Kategorien werden "on the fly" erzeugt, wenn zum
+	ersten Mal ein Rezept in diese Kategorie eingetragen wird.
+	Um die Übersichtlichkeit nicht zu verlieren, wird dabei folgendes
+	Schema für die Auswahl der Kategorien beim Hinzufügen neuer
+	Rezepte über das Webfrontend empfohlen:
+	<ul>
+	  <li>Als erste Kategorie sollte man wählen, um was für eine Speise es
+	      sich handelt, also etwa "Suppe", "Snack" oder "Cocktail".</li>
+	  <li>Als zweite Kategorie sollte, sofern bekannt, die Herkunft des
+	      Rezeptes angegeben werden. Der Ordnung halber sollte man hier 
+	      den Namen des Herkunftslandes angeben, also etwa 
+	      <code>Italien</code>, <code>Frankreich</code> oder
+	      <code>China</code>, anstatt der Adjektive 
+	      <code>italienisch</code>...
+EOT;
+  
 
   $Lang['Helptext']['Feedback']['Title']	= "Feedback";
   $Lang['Helptext']['Feedback']['Text'][0]	= <<<EOT
