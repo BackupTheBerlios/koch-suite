@@ -1,7 +1,7 @@
 <?
   /* Functions for the "Koch-Suite" by
    * (c) Michael Lestinsky <michael@zaphod.rhein-neckar.de>, January 2001
-   * $Id: functions.raw,v 1.30 2001/03/18 13:58:36 michael Exp $
+   * $Id: functions.raw,v 1.31 2001/03/27 21:41:26 michael Exp $
    *
    * See ../LICENSE for the license of this code.
    */
@@ -80,6 +80,32 @@
       return false;
     }
     mysql_free_result($result);
+  }
+
+
+  function get_units () {
+    /* Gib Informationen zu den Einheiten aus. */
+
+    $all = array();
+    $req = "select * from EINHEITEN " .
+           " where MMUSE != 'N' " .
+           " order by ABBREV";
+    $result = mysql_db_query($GLOBALS["DB_NAME"], $req);
+
+    while ($unit = mysql_fetch_array($result)) {
+      $a = array();
+      $req_alias = "select TEXT from EINHEITEN_ALIAS " .
+                   " where EID = " . $unit["ID"] . " order by TEXT";
+      $result_alias = mysql_db_query($GLOBALS["DB_NAME"], $req_alias);
+
+      while ($alias = mysql_fetch_row($result_alias)) {
+        array_push($a, $alias[0]);
+      }
+ 
+      array_push ($all, array("unit"    => $unit,
+                              "aliases" => $a));
+    }
+    return $all;
   }
 
 
