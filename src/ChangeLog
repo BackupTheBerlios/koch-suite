@@ -1,3 +1,7 @@
+2002-06-26  Michael Bussmann  <bus@mb-net.net>
+
+  * src/init_db.pgsql 1.18: Enum is evil(tm)
+
 2002-06-25  Michael Lestinsky  <michael@lestinsky.de>
 
   * src/include/koch-suite.raw 1.14:
