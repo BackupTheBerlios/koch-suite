@@ -1,4 +1,4 @@
-### $Id: README,v 1.37 2001/07/25 10:49:07 michael Exp $
+### $Id: README,v 1.38 2001/08/06 19:07:23 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -191,6 +191,10 @@ einzubinden. Am einfachsten ist es von der Datenbank ein Backup zu machen,
 mittels (dem alten!!!)
 
  $ rezept -mm "" > all.mm 
+
+oder falls bereits eine Version ab 0.5 installiert ist:
+
+ $ rezept -mm -relaxed "" > all.mm
 
 den gesamten Inhalt im Mealmaster-Format zu speichern, alle Tabellen aus 
 der Datenbank zu loeschen und mit dem Inhalt aus init_db.??sql neu 
