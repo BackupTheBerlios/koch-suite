@@ -58,6 +58,36 @@
     }
   }
 
+  if (isset($_POST['AliasFor'])) {
+    $alias_target = urldecode($_POST['AliasFor']);
+    if ($alias_target == $cat) {
+      $error .= "Old category name and alias target must not be the same";
+      $ok = false;
+    } else {
+      if (($old_cat_id = get_category_id($cat)) and 
+          ($new_cat_id = get_category_id($alias_target))) {
+
+        // First step: Create an alias-entry
+        mk_cat_alias ($alias_target, $cat);
+  
+        // Second step: Move all recipes from the old category to the new one.
+        $req = "update KAT set KATEGORIE_ID = $new_cat_id " .
+               " where KATEGORIE_ID = $old_cat_id";
+
+        if (!$result = DB_query($req))
+          $error .= "SQL-Error.";
+   
+        // Thirt step: Delete the old entry
+        delete_category ($cat);
+        $error .= "Category ". htmlentities($cat) . " has been transformed".
+                  " into an alias for ". htmlentities($alias_target) ."!";
+      } else {
+        $ok = false;
+        $error .= "Invalid category";
+      }
+    }
+  }
+
   if ($delete) {
     delete_category($cat);
     $error .= "Category '$cat' has been deleted.";
@@ -79,19 +109,25 @@
   <input type="button" class="button" value="<?php echo $Lang['Close']; ?>" onClick="window.close()">
 </form>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
 <div align="center">
 <table class="border" border="0" cellspacing="0" cellpadding="2">
   <tr>
-    <td style="background-color:#9090b0;">
-      <table class="menu" border="0" cellspacing="0" cellpadding="3">
+    <td>
+      <table class="menu_item" border="0" cellspacing="0" cellpadding="3">
       <?php
         echo "<tr><td>". $Lang['Cat'] .":</td>" .
                  "<td>". $cat ."</td></tr>\n";
         echo "<tr><td>". $Lang['Alias'] . ":</td>".
                  "<td>". implode(', ', get_cat_alias($cat)) ."</td></tr>\n";
         echo "<tr><td colspan=\"2\">[<a href=\"". $_SERVER['PHP_SELF'] ."?cat=". urlencode($cat) ."&amp;delete=1\">". $Lang['Category']['Delete'] ."</a>]</td></tr>\n";
-        echo "<tr><td colspan=\"2\">[". $Lang['Category']['MakeAlias'] ."]</td></tr>\n";
+        echo "<tr><td>". $Lang['Category']['MakeAlias'] .":</td>\n";
+        echo     "<td><select name=\"AliasFor\">\n";
+        $all = get_categories();
+        foreach ($all as $one)
+          echo       "<option>". htmlentities($one) ."</option>\n";
+        echo         "</select>\n";
+        echo     "</td></tr>\n";
         echo "<tr><td colspan=\"2\">[". $Lang['Category']['EditAlias'] ."]</td></tr>\n";
       ?>
       </table>   
