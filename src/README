@@ -1,4 +1,4 @@
-### $Id: README,v 1.47 2002/05/14 11:18:20 lestinsky Exp $
+### $Id: README,v 1.48 2002/05/20 15:08:43 lestinsky Exp $
 
 Koch-Suite
 ==========
@@ -88,7 +88,6 @@ Planned for 0.7:
   o  spool recipe submissins somewhere for acknowledgement by the
      moderator.
   o  A better system to categorize recipes
-  o  Support non-standard-extensions in MM- or Rezkonv-formatted recipes
 
 Planned for later releases or bored weekends:
 
