@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: defines.raw,v 1.6 2001/10/25 09:42:13 lestinsky Exp $
+   * $Id: defines.raw,v 1.7 2002/04/14 18:25:13 lestinsky Exp $
    *
    * Define some constants here:
    */
@@ -37,5 +37,7 @@
   define("ALL", 0);
   define("READ", 10);
   define("WRITE", 100);
+  define("MODERATOR", 200);
+  define("ADMIN", 500);
   define("NONE", 1000);
 ?>

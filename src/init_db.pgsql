@@ -1,5 +1,5 @@
 -- 
--- $Id: init_db.pgsql,v 1.11 2001/12/31 15:53:43 lestinsky Exp $
+-- $Id: init_db.pgsql,v 1.12 2002/04/14 18:25:13 lestinsky Exp $
 -- init_db_postgreSQL.sql
 -- 2001-07-25 Michael Bussmann <bus@mb-net.net>
 --
@@ -234,7 +234,8 @@ INSERT INTO unit_langs VALUES (34,'en','');
 --
 CREATE TABLE usertable (
   username varchar(20) NOT NULL default '',
-  usertype varchar(20) default NULL,
-  password varchar(255) default NULL
+  usertype smallint default NULL,
+  password varchar(255) default NULL,
+  email    varchar(255) default NULL,
 );
 CREATE INDEX user_name on usertable (username);

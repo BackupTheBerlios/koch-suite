@@ -13,8 +13,10 @@
   <td style="text-align:right;">
   <div class="small">
   <?php
-    echo "[<a class=\"small\" href=\"einfuegen.php?mid=$mid\">" . $Lang['Recipe']['Edit'] . "</a>]\n";
-    echo "[<a class=\"small\" href=\"delete.php?mid=$mid\">" . $Lang['Recipe']['Delete'] . "</a>]\n";
+    if ($USER_S['usertype'] >= WRITE) {
+      echo "[<a class=\"small\" href=\"einfuegen.php?mid=$mid\">" . $Lang['Recipe']['Edit'] . "</a>]\n";
+      echo "[<a class=\"small\" href=\"delete.php?mid=$mid\">" . $Lang['Recipe']['Delete'] . "</a>]\n";
+    }
   ?>
 
   </div>

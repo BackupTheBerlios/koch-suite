@@ -28,10 +28,8 @@
    */
 
 
-  if (isset($HTTP_POST_VARS["FORM_USERNAME"])) 
-    $FORM_USERNAME = $HTTP_POST_VARS["FORM_USERNAME"];
-  if (isset($HTTP_POST_VARS["FORM_PASSWORD"]))
-    $FORM_PASSWORD = $HTTP_POST_VARS["FORM_PASSWORD"];
+  if (isset($_POST["FORM_USERNAME"])) $FORM_USERNAME = $_POST["FORM_USERNAME"];
+  if (isset($_POST["FORM_PASSWORD"])) $FORM_PASSWORD = $_POST["FORM_PASSWORD"];
 
 
   require_once "<%%ETC_PREFIX%%>/koch-suite.inc";
@@ -42,7 +40,7 @@
   /**
    * Base Authentication-Module for the Koch-Suite
    *
-   * $Id: auth.raw,v 1.9 2002/02/12 18:40:35 lestinsky Exp $
+   * $Id: auth.raw,v 1.10 2002/04/14 18:25:13 lestinsky Exp $
    * The user is identified by an array $user.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -57,12 +55,7 @@
     die ("Cannot start the session.");
   session_register("user");
 
-
-  /**
-   * PHP 4.0.5/6 are somewhat broken. Since 4.1.0 there is a
-   * better attempt to solve this problem.
-   * So catch this difference here. Verified to work on 4.0.7RC3
-   */
+  /* create a reference on $_SESSION['user'] */
   if (isset($_SESSION["user"])) {
     // PHP 4.1.0 and later...
     $USER_S =& $_SESSION["user"];
@@ -98,8 +91,16 @@
       if (!empty($USER_S)) {
         /* User already authenticated himself. -> go.
          * Trust the values we have saved in the $user-sessionvariable.
+         *
+         * Allow access only to parts, where the User's type is higher 
+         * or equal to $level. 
          */
-        return true;
+        
+        if ($USER_S['usertype'] >= $level) {
+          return true;
+        } else {
+          access_denied();                 
+        }
 
       } else {
 
@@ -143,7 +144,7 @@
   function verify_authdata ($username, $password) {
     if (!empty($username) and !empty($password)) {
 
-      $req = "select password, usertype from usertable " .
+      $req = "select password, usertype, email, realname from usertable " .
              " where username = '$username' ";
 
       if (($result = DB_query($req)) and ($result->numRows() == 1)) {
@@ -158,7 +159,9 @@
           if (crypt($password, $salt) == $crypted_passwd) {
             // Valid
             $return = array("username" => $username, 
-                            "usertype" => $row["usertype"]);
+                            "usertype" => $row['usertype'],
+                            "email"    => $row['email'],
+                            "realname" => $row['realname']);
           } else {
             // Go away.
             $return = false;
@@ -173,7 +176,9 @@
           if (crypt($password, "\$1\$$salt") == $crypted_passwd) {
             // Valid
             $return = array("username" => $username, 
-                            "usertype" => $row["usertype"]);
+                            "usertype" => $row['usertype'],
+                            "email"    => $row['email'],  
+                            "realname" => $row['realname']);
           } else {
             $return = false;
           }
@@ -204,8 +209,18 @@
    * @return void
    */
   function auth_loginform() {
-    global $HTTP_SERVER_VARS, $goto;
+    global $_SERVER, $goto;
     include "<%%PHP_LIBS%%>/loginform.inc";
+  }
+
+
+  /**
+   * Access denied
+   * @return void
+   */
+  function access_denied() {
+    global $Lang;
+    include "<%%PHP_LIBS%%>/access_denied.inc";
   }
 
 

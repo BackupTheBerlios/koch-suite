@@ -1,8 +1,8 @@
-<?
+<?php
   /*
    * Define German text-constants.
    *
-   * $Id: de.inc,v 1.28 2002/04/01 22:40:33 lestinsky Exp $
+   * $Id: de.inc,v 1.29 2002/04/14 18:25:13 lestinsky Exp $
    * This file is subject to the license as included in ../LICENSE
    * (c) 2001 Michael Lestinsky
    */
@@ -59,6 +59,21 @@
   $Lang['Auth']['LoggedInAs']   = "Angemeldet als";
   $Lang['Auth']['Logout']       = "Abmelden";
   $Lang['Auth']['NoLogin']      = "Nicht angemeldet";
+  $Lang['Auth']['AccessDenied'] = 'Sie haben leider keinen Zugriff auf diese Funktion.';
+
+  $Lang['Admin']['Title']       = 'Administration';
+  $Lang['Admin']['NewUser']['Title']	= 'Neuen Benutzer anlegen';
+  $Lang['Admin']['NewUser']['Username']	= 'Benutzerkennung';
+  $Lang['Admin']['NewUser']['Realname']	= 'Realer Name';
+  $Lang['Admin']['NewUser']['EMail']	= 'EMail-Adresse';
+  $Lang['Admin']['NewUser']['Usertype']	= 'Benutzerklasse';
+  $Lang['Admin']['ErrMsg']['EmptyFields']	= 'Bitte alle Felder ausf&uuml;llen';
+  $Lang['Admin']['ErrMsg']['InvalidMail']	= 'Die angegebene EMail-Adresse ist ung&uuml;ltig.';
+  $Lang['Admin']['ErrMsg']['UserExists']	= 'Dieser Username existiert bereits';
+  $Lang['Admin']['UserClass']['Read']	= 'Nur Lesen';
+  $Lang['Admin']['UserClass']['Write']   = 'Lesen und Schreiben';
+  $Lang['Admin']['UserClass']['Moderate']   = 'Moderator';
+  $Lang['Admin']['UserClass']['Admin']   = 'Administrator';
 
   $Lang['Settings']['Title']    = "Einstellungen";
   $Lang['Settings']['Password']['Title']        = "Passwort &auml;ndern";

@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: en.inc,v 1.32 2002/04/01 22:40:33 lestinsky Exp $
+   * $Id: en.inc,v 1.33 2002/04/14 18:25:13 lestinsky Exp $
    *
    * Define English text-constants.
    *
@@ -56,9 +56,25 @@
   $Lang['Recipe']['Insert']     = "Insert recipe into the database";
   $Lang['Recipe']['Inserted']   = "Recipe inserted.";
 
-  $Lang['Auth']['LoggedInAs']   = "Logged in as";
-  $Lang['Auth']['Logout']       = "Logout";
-  $Lang['Auth']['NoLogin']      = "Not logged in";
+  $Lang['Auth']['LoggedInAs']   = 'Logged in as';
+  $Lang['Auth']['Logout']       = 'Logout';
+  $Lang['Auth']['NoLogin']      = 'Not logged in';
+  $Lang['Auth']['AccessDenied'] = 'Sorry, you do not have access to this function.';
+
+  $Lang['Admin']['Title']	= 'Administration';
+  $Lang['Admin']['NewUser']['Title']    = 'Create a new user';
+  $Lang['Admin']['NewUser']['Username'] = 'Username';
+  $Lang['Admin']['NewUser']['Realname'] = 'Real name';
+  $Lang['Admin']['NewUser']['EMail']    = 'EMail address';
+  $Lang['Admin']['NewUser']['Usertype'] = 'Userclass';
+  $Lang['Admin']['ErrMsg']['EmptyFields']       = 'Please fill out all fields';
+  $Lang['Admin']['ErrMsg']['InvalidMail']       = 'The email address is invalid.';
+  $Lang['Admin']['ErrMsg']['UserExists']        = 'This username does already exist.';
+  $Lang['Admin']['UserClass']['Read']   = 'Read Only';
+  $Lang['Admin']['UserClass']['Write']   = 'Read/Write';
+  $Lang['Admin']['UserClass']['Moderate']   = 'Moderator';
+  $Lang['Admin']['UserClass']['Admin']   = 'Administrator';
+
 
   $Lang['Settings']['Title']	= "Your Settings";
   $Lang['Settings']['Password']['Title']	= "Change your password";

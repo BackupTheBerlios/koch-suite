@@ -1,4 +1,4 @@
-<!-- $Id: menue.raw,v 1.17 2001/12/24 14:12:33 lestinsky Exp $ -->
+<!-- $Id: menue.raw,v 1.18 2002/04/14 18:25:13 lestinsky Exp $ -->
 <!-- Links: Programm-Menue -->
 <?php
   $blue_dot = '<img src="pics/blue_dot.gif" align="bottom" alt="" border=0>';
@@ -46,10 +46,15 @@
                 <td><?php echo $blue_dot; ?></td>
                 <td><a href="settings.php"><?php echo $Lang['Settings']['Title'] ?></a></td>
               </tr>
+              <?php if ($USER_S['usertype'] == ADMIN) { ?>
+                <tr>
+                  <td valign="top"><?php echo $blue_dot; ?></td>
+                  <td><a href="admin.php"><?php echo $Lang['Admin']['Title'] ?></a></td>
+                </tr>
+              <?php } ?>
               <tr>
                 <td><?php echo $blue_dot; ?></td>
                 <td><a href="logout.php"><?php echo $Lang['Auth']['Logout'] ?></a></td>
-
               </tr>
             <?php } else { ?>
               <!-- Not Logged in -->
