@@ -1,6 +1,6 @@
 <?
   /*
-   * $Id: lang.raw,v 1.1 2001/05/16 00:21:26 michael Exp $
+   * $Id: lang.raw,v 1.2 2001/05/30 19:52:14 michael Exp $
    *
    * Guess prefered language for the web-interface.
    *
@@ -14,7 +14,7 @@
 
   $i = 0;
   while ($lang = $accept_langs[$i]) {
-    $l = trim(preg_replace("/(.*)(_.*)?(;(.*))/" , "\\1", $lang));
+    $l = trim(preg_replace("/(.*)?(;(.*))/" , "\\1", $lang));
 
     /* we don't need to read it twice: */
     if ($l == $DEFAULT_LANG) {
