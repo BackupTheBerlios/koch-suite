@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.52 2003/05/19 16:08:10 lestinsky Exp $
+   * $Id: output.raw,v 1.53 2003/08/11 20:12:54 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib
@@ -410,7 +410,7 @@
     $footer = "MMMMM";
 
     $str  = "$header\n";
-    $str .= "     Title: " . $rezept["title"] . "\n"; 
+    $str .= "     Title: " . substr($rezept["title"], 0, 65) . "\n"; 
 
     $cat_a = $rezept["category"];
     $str .= "Categories: " . 
@@ -418,7 +418,7 @@
                    ? str_implode_bound (", ", $cat_a, 5, 0, 11)
                    : implode(", ", $cat_a)) . "\n";
 
-    $str .= "     Yield: " . $rezept["yield"] . "\n"; 
+    $str .= "     Yield: " . substr($rezept["yield"], 0, 65) . "\n"; 
 
     $str .= print_ingred($rezept["zutaten"], RECIPE_MM, $strict) . "\n";
     $a = length_adjust($rezept["anleitung"], 72); 
@@ -468,11 +468,11 @@
     $footer = "=====";
 
     $str  = "$header\n";
-    $str .= "     Titel: " . $rezept["title"] . "\n";
+    $str .= "     Titel: " . substr($rezept["title"], 0, 65) . "\n";
 
     $cat_a = $rezept["category"];
     $str .= "Kategorien: " . str_implode_bound (", ", $cat_a, 5, 0, 11) ."\n";
-    $str .= "     Menge: " . $rezept["yield"] . "\n";
+    $str .= "     Menge: " . substr($rezept["yield"], 0, 65) . "\n";
 
     $str .= print_ingred($rezept["zutaten"], RECIPE_RK) . "\n";
     $a = length_adjust($rezept["anleitung"], 72);
