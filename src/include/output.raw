@@ -1,7 +1,7 @@
 <?
   /*
    * Output-Functions for Koch-Suite
-   * $Id: output.raw,v 1.12 2001/01/18 00:43:59 michael Exp $
+   * $Id: output.raw,v 1.13 2001/01/25 00:16:03 michael Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    */
@@ -201,7 +201,7 @@
       $a = explode(" ", $str);
       $i = 0;
       while (isset($a[$i])) {
-        if ($a[$i] == '<p>' or $a[$i] == '<br>') {
+        if (strcmp($a[$i], '<p>') or strcmp($a[$i],'<br>')) {
           $wordlen = 0;
         } else {
           $wordlen = strlen($a[$i]) + 1;
