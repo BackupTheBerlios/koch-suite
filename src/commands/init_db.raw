@@ -29,7 +29,7 @@
    */
 
   /**
-   * $Id: init_db.raw,v 1.12 2005/02/05 13:24:02 bus Exp $
+   * $Id: init_db.raw,v 1.13 2005/04/07 15:48:15 bus Exp $
    * Initializes database, creates necessary tables and fills them with
    * default contents
    *
@@ -163,7 +163,8 @@
     $sql = "
 	CREATE TABLE ZUTATEN (
 	  ID int(11) NOT NULL default '0',
-	  MENGE numeric(7,2) default NULL,
+	  MENGE_LO numeric(8,3) default NULL,
+	  MENGE_HI numeric(8,3) default NULL,
 	  EINHEIT char(2) default NULL,
 	  TEXT varchar(255) default NULL,
 	  REZEPT_ID int(11) NOT NULL default '0',
@@ -289,7 +290,8 @@
     $sql = "
 	CREATE TABLE ZUTATEN (
 	  ID integer NOT NULL PRIMARY KEY,
-	  MENGE numeric(7,2),
+	  MENGE_LO numeric(8,3),
+	  MENGE_HI numeric(8,3),
 	  EINHEIT char(2),
 	  TEXT varchar(255),
 	  REZEPT_ID integer DEFAULT '0' NOT NULL
