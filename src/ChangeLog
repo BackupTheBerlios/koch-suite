@@ -1,3 +1,8 @@
+2005-04-07  Michael Bussmann  <bus@mb-net.net>
+
+  * commands/init_db.raw 1.13:
+  Adapted DB generation script to new schema
+
 2005-04-03  Michael Lestinsky  <michael@lestinsky.de>
 
   * www/einfuegen.raw 1.54, include/output.raw 1.59, include/parser.raw 1.10, include/functions.raw 1.97:
