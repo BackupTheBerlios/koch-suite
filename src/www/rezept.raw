@@ -1,5 +1,5 @@
 <?php
-  /* $Id: rezept.raw,v 1.40 2005/03/15 19:13:55 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.41 2005/04/13 21:55:32 lestinsky Exp $
    * Copyright (c) 2005
    *      Michael Lestinsky. All rights reserved.
    *
@@ -129,8 +129,7 @@
      echo $error;
    } else {
      include "<%%WEB_PREFIX%%>/actions.inc";
-     ?>
-     <?php
+
      echo format_recipe_html($recipe);
 
      echo $Lang['Scale']['Title'] . ':';
