@@ -1,3 +1,11 @@
+2005-04-13  Michael Lestinsky  <michael@lestinsky.de>
+
+  * www/rezept.raw 1.41:
+  Exiting php parser and imediatly entering it again doesn't make a lot of sense
+
+  * www/actions.raw 1.14:
+  Replace a few hardcoded strings by their $Lang counterparts
+
 2005-04-07  Michael Bussmann  <bus@mb-net.net>
 
   * commands/init_db.raw 1.13:
