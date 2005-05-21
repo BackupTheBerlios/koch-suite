@@ -10,7 +10,7 @@ PICS=			blue_dot.gif help_dot.gif info_dot.gif \
 THEME_WINTER=		title_winter.gif bg_winter.png
 THEME_SUMMER=		bg_summer.png
 THEME_DEFAULT=		title.gif 
-THEME_PASSIONFRUIT=	bg_passionfruit.jpg passionfruit_small.png
+THEME_PASSIONFRUIT=	passionfruit_small.png
 
 SUBDIRS=		
 
