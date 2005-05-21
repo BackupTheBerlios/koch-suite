@@ -4,11 +4,13 @@
 PICS=			blue_dot.gif help_dot.gif info_dot.gif \
 			left.gif lupe.gif right.gif walking.gif white.gif \
 			write.gif ok.gif star.png dont.png \
-			${THEME_WINTER} ${THEME_SUMMER} ${THEME_DEFAULT} 
+			${THEME_WINTER} ${THEME_SUMMER} ${THEME_DEFAULT} \
+			${THEME_PASSIONFRUIT}
 
 THEME_WINTER=		title_winter.gif bg_winter.png
 THEME_SUMMER=		bg_summer.png
 THEME_DEFAULT=		title.gif 
+THEME_PASSIONFRUIT=	bg_passionfruit.jpg passionfruit_small.png
 
 SUBDIRS=		
 

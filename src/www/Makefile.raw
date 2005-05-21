@@ -1,4 +1,4 @@
-# $Id: Makefile.raw,v 1.37 2003/08/04 23:02:02 lestinsky Exp $
+# $Id: Makefile.raw,v 1.38 2005/05/21 09:22:40 lestinsky Exp $
 # Space-separated list of all "raw" php-files.
 PHP_FILES=		delete.php einfuegen.php index.php infos.php \
 			rezept.php print.php mmprint.php kategorien.php \
@@ -8,10 +8,12 @@ PHP_FILES=		delete.php einfuegen.php index.php infos.php \
 INC_FILES=		menue.inc actions.inc footer.inc header.inc \
 			${THEME_FILES}
 
-THEME_FILES=		theme_default.inc theme_winter.inc theme_summer.inc
+THEME_FILES=		theme_default.inc theme_winter.inc theme_summer.inc \
+			theme_passionfruit.inc
 
 # Files to install unmangled (dont forget the filename-suffix here!)
 ADDITIONAL=		styles.css styles_summer.css styles_winter.css \
+			styles_passionfruit.css \
 			../LICENSE
 SUBDIRS=		pics
 
