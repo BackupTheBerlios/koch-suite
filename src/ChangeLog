@@ -1,3 +1,18 @@
+2005-05-21  Michael Lestinsky  <michael@lestinsky.de>
+
+  * include/koch-suite.raw 1.27:
+  Enable passionfruit as default theme for this release
+
+  * www/header.raw 1.6: Add a right-aligned image to the title
+
+  * www/Makefile.raw 1.38, www/pics/Makefile.raw 1.13:
+  Enable hooks for passionfruit theme
+
+  * www/pics/passionfruit_small.png 1.1, www/styles_passionfruit.css 1.1, www/theme_passionfruit.raw 1.1:
+  New style: Passionfruit
+
+  * www/styles.css 1.14: Small fixups to default style
+
 2005-04-13  Michael Lestinsky  <michael@lestinsky.de>
 
   * www/rezept.raw 1.41:
