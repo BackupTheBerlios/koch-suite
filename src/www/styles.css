@@ -1,12 +1,11 @@
-/* $Id: styles.css,v 1.13 2005/04/03 14:04:49 lestinsky Exp $ */
+/* $Id: styles.css,v 1.14 2005/05/21 09:19:24 lestinsky Exp $ */
 body	    { background-color:#ffffff; }
-h1          { font-family:Verdana,Helvetica,Arial; text-align:left; 
+h1          { font-family:Verdana,Arial,Helvetica; text-align:left; 
               background-color:#e9e9f0; padding:3px;
-              border-top-width:thin; border-bottom-width:0px;
+              border-top-width:1px; border-bottom-width:0px;
               border-right-width:0px; border-left-width:0px;
               border-style:solid; border-color:#9090b0; }
 h2,h3,h4    { font-family:Verdana,Lucida; }
-a,b,dt	    { font-family:Helvetica,Arial; }
 a:link      { color:#000463; }
 a:visited   { color:#000463; }
 a:active    { color:#111473; }
@@ -22,12 +21,12 @@ textarea, select, .check, .textfield
 .button     { background-color:#c8c8d5; padding:1px;
               border-width:2px; border-style:groove; border-color:#9090b0;}
 
-.menu	    { font-family:Helvetica,Arial; 
+.menu	    { font-family:Arial,Helvetica; 
               font-size:small; 
               background-color:#e9e9f0;
               white-space:nowrap; }
-.menu_title  { font-family:Helvetica,Arial;
-              font-size:small;
+.menu_title  { font-family:Arial,Helvetica; text-align:center;
+              font-size:small; padding:1px;
               background-color:#c0c0d5;
               white-space:nowrap; }
 .menu_item  { font-size:small; }
@@ -35,3 +34,7 @@ textarea, select, .check, .textfield
 .prop       { font-family:Courier; }
 .small      { font-size:small; }
 .warn       { color:red; }
+.footer     { font-family:Arial,Helvetica; font-size:small;
+              background-color:#e9e9f0; border-style:solid;
+              border-width:0px; border-bottom-width:1px; border-color:#9090b0; }
+
