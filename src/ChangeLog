@@ -1,5 +1,8 @@
 2005-05-21  Michael Lestinsky  <michael@lestinsky.de>
 
+  * www/pics/Makefile.raw 1.13.2.1:
+  Oops. Remove entries which were never released
+
   * include/koch-suite.raw 1.27:
   Enable passionfruit as default theme for this release
 
