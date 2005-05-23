@@ -1,3 +1,14 @@
+2005-05-22  Michael Lestinsky  <michael@lestinsky.de>
+
+  * www/header.raw 1.6.2.1:
+  Set the Content-Type header to ISO-8859-15 (as a temporary fix)
+
+  * commands/init_db.raw 1.13.2.1: French units.
+  Submitted by Philippe Bégou <pbegou@tele2.fr>, Thanks.
+
+  * include/fr.inc 1.3.2.1:
+  Replace french special character htmlentities by their 8bit counterparts
+
 2005-05-21  Michael Lestinsky  <michael@lestinsky.de>
 
   * www/pics/Makefile.raw 1.13.2.1:
