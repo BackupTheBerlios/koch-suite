@@ -807,7 +807,7 @@
 
   * man/man1/mmimport.1.raw 1.13: Sync
 
-2002-07-21  Eric Vaandering at BerliOS  <vondo@hornet.berlios.de>
+2002-07-21  vondo at BerliOS  <vondo@hornet.berlios.de>
 
   * include/en.inc 1.41:
   Correcting some minor issues with the English translation
@@ -1139,7 +1139,7 @@
 
   * www/rezept.raw 1.23: fix recent changes.
 
-2002-01-01  Eric Vaandering at BerliOS  <vondo@hornet.berlios.de>
+2002-01-01  vondo at BerliOS  <vondo@hornet.berlios.de>
 
   * include/en.inc 1.29: Minor English nits
 
