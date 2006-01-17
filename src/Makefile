@@ -37,7 +37,7 @@ distclean: clean
 	rm -f config.sed
 
 ChangeLog: CVS/Entries
-	rcs2log -l 70 -i 2 -t 4 -v -r -d'20020101<' \
+	rcs2log -l 70 -i 2 -t 4 -v -r -d'20050101<' \
 	-u "bus	Michael Bussmann	bus@mb-net.net" \
 	-u "lestinsky	Michael Lestinsky	michael@lestinsky.de" \
 	-u "michael	Michael Lestinsky	michael@lestinsky.de" | \
