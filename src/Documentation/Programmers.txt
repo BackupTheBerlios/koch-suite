@@ -1,5 +1,5 @@
-### $Id: Programmers.txt,v 1.15 2005/01/02 02:43:30 lestinsky Exp $
-
+### $Id: Programmers.txt,v 1.16 2006/01/17 17:36:45 lestinsky Exp $
+### Copyright (c) 2000-2006 Michael Lestinsky <michael@lestinsky.de>
 Programmers Documentation
 =========================
 
@@ -193,5 +193,3 @@ in this way:
 
 Every level inherits all the permissions of its sub-levels, of course.
 
--- 
-(c) 2005 Michael Lestinsky <michael@lestinsky.de>

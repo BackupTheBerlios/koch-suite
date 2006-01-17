@@ -1,5 +1,5 @@
 <?php
-  /* Copyright (c) 2005
+  /* Copyright (c) 2000-2006
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@
   /**
    * Output-Functions for Koch-Suite
    *
-   * $Id: output.raw,v 1.59 2005/04/03 14:16:13 lestinsky Exp $
+   * $Id: output.raw,v 1.60 2006/01/17 17:36:45 lestinsky Exp $
    * This file is automatically included when including functins.inc.
    * It contains all functions for output.
    * @package Lib

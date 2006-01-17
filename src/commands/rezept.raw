@@ -1,6 +1,6 @@
 #!<%%PHP%%> <%%PHP_OPTS%%>
 <?php
-  /* Copyright (c) 2005
+  /* Copyright (c) 2001-2006
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,7 @@
    * SUCH DAMAGE.
    */
 
-  /* $Id: rezept.raw,v 1.27 2005/04/03 14:08:51 lestinsky Exp $
+  /* $Id: rezept.raw,v 1.28 2006/01/17 17:36:45 lestinsky Exp $
    * Export a recipe in different formats.
    */
 

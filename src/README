@@ -1,9 +1,9 @@
-### $Id: README,v 1.62 2005/01/02 02:43:29 lestinsky Exp $
+### $Id: README,v 1.63 2006/01/17 17:36:44 lestinsky Exp $
 
 Koch-Suite
 ==========
 
-Copyright (c) 2005 Michael Lestinsky <michael@lestinsky.de>
+Copyright (c) 2000-2006 Michael Lestinsky <michael@lestinsky.de>
 Please see the file `LICENSE' for the license terms, under which you may
 use, modify and distribute this package or single parts of it.
 

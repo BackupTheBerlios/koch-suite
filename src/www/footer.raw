@@ -24,7 +24,7 @@
     <td colspan="2" style="text-align:right;">
       <?php
         if (!$authorname) $authorname =& $GLOBALS['authorname'];
-          printf("<a href=\"LICENSE\">&copy</a> 2005 %s, all rights reserved.<br />\n", 
+          printf("<a href=\"LICENSE\">&copy</a> 2000-2006 %s, all rights reserved.<br />\n", 
                                         $authorname);
         ?>
     </td>

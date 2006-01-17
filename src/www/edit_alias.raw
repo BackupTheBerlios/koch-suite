@@ -1,5 +1,5 @@
 <?php
-  /* Copyright (c) 2005
+  /* Copyright (c) 2001-2006
    *      Michael Lestinsky. All rights reserved.
    *
    * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@
   /**
    * Alias-Editor
    *
-   * $Id: edit_alias.raw,v 1.20 2005/01/02 02:43:32 lestinsky Exp $
+   * $Id: edit_alias.raw,v 1.21 2006/01/17 17:36:45 lestinsky Exp $
    * Edit the alias-list for a given unit.
    * @package WWW
    * @modulegroup Edit
