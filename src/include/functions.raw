@@ -30,7 +30,7 @@
   /**
    * Functions for the "Koch-Suite"
    *
-   * $Id: functions.raw,v 1.98 2006/01/17 17:36:45 lestinsky Exp $
+   * $Id: functions.raw,v 1.99 2006/02/08 17:44:26 lestinsky Exp $
    * Editors: Please sort new functions alphabetically.
    *
    * @author Michael Lestinsky <michael@lestinsky.de>
@@ -276,7 +276,7 @@
     $array_intersect_lock = true;
 
     $and = split(" AND ", $str);
-    foreach ($and as $this) {
+    foreach ($and as $single) {
       foreach ($where as $search_field) {
         switch ((string) $search_field) {
           case 'title':
@@ -285,21 +285,21 @@
             } else if (is_string ($param) and !is_numeric($param) and strlen($param) == 1) {
               $result = get_mid_by_name("$param", 1);
             } else {
-              $result = get_mid_by_name("$this");
+              $result = get_mid_by_name("$single");
             }
             break;
           case 'cat':
-            $result = get_mid_by_cat($this);
+            $result = get_mid_by_cat($single);
             break;
           case 'ingred':
-            $result = get_mid_by_ingred($this);
+            $result = get_mid_by_ingred($single);
             break;
           case 'instructions':
-            $result = get_mid_by_instruction($this);
+            $result = get_mid_by_instruction($single);
             break;
           case 'Source':
           case 'Recorder':
-            $result = get_mid_by_meta($search_field, $this);
+            $result = get_mid_by_meta($search_field, $single);
             break;
           default:
             write_log("$search_field is not an search option");
