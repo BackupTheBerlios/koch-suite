@@ -1,3 +1,8 @@
+2006-02-08  Michael Lestinsky  <michael@lestinsky.de>
+
+  * include/functions.raw 1.99: \$this doesn't work.
+  Fixes problems with php 5.1.2.
+
 2006-01-17  Michael Lestinsky  <michael@lestinsky.de>
 
   * www/rezept.raw 1.42, www/search.raw 1.44, www/settings.raw 1.13, www/theme_default.raw 1.4, www/theme_passionfruit.raw 1.2, www/theme_summer.raw 1.3, www/theme_winter.raw 1.4, www/units.raw 1.20, Documentation/FAQ.txt 1.13, Documentation/Programmers.txt 1.16, commands/init_db.raw 1.14, commands/init_db2.raw 1.4, commands/mmimport.raw 1.36, commands/rezept.raw 1.28, configure 1.28, include/auth.raw 1.24, include/debug.raw 1.13, include/functions.raw 1.98, include/lang.raw 1.22, include/output.raw 1.60, include/parser.raw 1.11, include/profiling.raw 1.4, include/pwcrypt.raw 1.6, include/setup.raw 1.10, install-sh 1.5, man/man1/mmimport.1.raw 1.17, man/man1/rezept.1.raw 1.13, www/admin.raw 1.16, www/delete.raw 1.27, www/edit_alias.raw 1.21, www/edit_cat.raw 1.6, www/einfuegen.raw 1.55, www/footer.raw 1.8, www/help.raw 1.24, www/index.raw 1.33, www/infos.raw 1.42, www/kategorien.raw 1.28, www/login.raw 1.9, www/logout.raw 1.12, www/mmprint.raw 1.29, www/pastebox.raw 1.11, www/print.raw 1.36, INSTALL 1.19, LICENSE 1.6, README 1.63:
