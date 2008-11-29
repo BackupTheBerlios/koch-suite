@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: configure,v 1.28 2006/01/17 17:36:45 lestinsky Exp $
+# $Id: configure,v 1.29 2008/11/29 01:34:58 lestinsky Exp $
 #
 # Copyright (c) 2000-2006
 #      Michael Lestinsky. All rights reserved.
@@ -35,6 +35,8 @@ CONF_RAW_MY=config.my
 CONF_FILE=config.sed
 AWKSCRIPT=genconfig.awk
 
+echo="/bin/echo"
+
 # config.my overrides config
 if [ -f ${CONF_RAW_MY} ] ; then 
   CONF_RAW=${CONF_RAW_MY}
@@ -51,7 +53,7 @@ my_which () {
 		[ -x "$i/$1" ] && result="$i/$1" && break
 	done
 	IFS=$OIFS
-	echo $result
+	$echo $result
 	[ $result ] && return 0
 	return 1
 }
@@ -59,33 +61,33 @@ my_which () {
 add_conf () {
     # Add a line to ${CONF_FILE}
     # $1 = Name, $2 = Value
-    echo "s:<%%$1%%>:$2:g" >> ${CONF_FILE}
+    $echo "s:<%%$1%%>:$2:g" >> ${CONF_FILE}
 }
 
 check_prereq () {
     # Check if we can find all necessary tools:
-    echo -n "Checking for '$1' ... "
+    $echo -n "Checking for '$1' ... "
     req=`my_which "$1"`
     if [ -n "${req}" -a $? = 0 ] ; then 
         # Found.
-        echo "Found - $req"
+        $echo "Found - $req"
         add_conf $1 ${req}
     else
-        echo "Not Found!"
+        $echo "Not Found!"
         exit 2
     fi
 }
 
 check_opt () {
     # Check for optional tools and add their path to the config.sed
-    echo -n "Probing for optional '$1': ... "
+    $echo -n "Probing for optional '$1': ... "
     req=`my_which "$1"`
     if [ -n "${req}" -a $? = 0 ] ; then
         # Found.
-        echo "Found - $req"
+        $echo "Found - $req"
         add_conf $1 ${req}
     else 
-        echo "Not Found!"
+        $echo "Not Found!"
         add_conf $1 "none"
     fi
 }
@@ -93,10 +95,10 @@ check_opt () {
 make_makefiles () {
     # Generate Makefiles in Directory $1
     ( 
-        echo -n "Generating Makefile in ./$1 ... ";
+        $echo -n "Generating Makefile in ./$1 ... ";
         cd "$1";
         translate_raw Makefile
-        echo "Done."
+        $echo "Done."
     )
 }
 
@@ -113,7 +115,7 @@ rm -f ${CONF_FILE}
 
 ##########
 # Build-Depends: 'awk' and 'sed'
-echo -n "Checking for an usable awk ... "
+$echo -n "Checking for an usable awk ... "
 for i in mawk nawk gawk awk; do
     awk=`my_which "$i"`
     if [ -n "${awk}" -a $? = 0 ] ; then
@@ -124,12 +126,12 @@ for i in mawk nawk gawk awk; do
     fi
 done
 if [ -z "${awk}" ] ; then
-    echo "Not Found"
+    $echo "Not Found"
     exit 1
 else
-    echo "Found - ${awk}"
+    $echo "Found - ${awk}"
     if [ "${warn_awk}" = "1" ] ; then
-        echo "*** Warning: using an untested awk. This may yield errors."
+        $echo "*** Warning: using an untested awk. This may yield errors."
     fi
 fi
 
@@ -140,7 +142,7 @@ check_prereq chown
 
 ##########
 # Probe for a good install or use the one we provide as fallback
-echo -n "Checking for a BSD compatible install ... "
+$echo -n "Checking for a BSD compatible install ... "
 for i in ginstall installbsd install ; do
     install=`my_which "$i"`
     if [ -n "${install}" -a $? = 0 ] ; then
@@ -161,23 +163,23 @@ for i in ginstall installbsd install ; do
     fi
 done
 if [ -n "${install}" -a "${stupid_install}" != "1" ] ; then
-    echo "Found - ${install}"
+    $echo "Found - ${install}"
     add_conf "INSTALL" ${install}
 else
     # We could not find a good "install" or it was to stupid.
     add_conf "INSTALL" "${THISDIR}/install-sh"
-    echo "Using ./install-sh"
+    $echo "Using ./install-sh"
 fi
 
 
 ##########
 # Generate the sed-file:
-echo -n "Generating config.sed ... "
+$echo -n "Generating config.sed ... "
 ${awk} -f ${AWKSCRIPT} ${CONF_RAW} >> ${CONF_FILE}
 if [ $? = 0 ] ; then 
-    echo "Done."
+    $echo "Done."
 else 
-    echo "Failed."
+    $echo "Failed."
     exit $?
 fi
 

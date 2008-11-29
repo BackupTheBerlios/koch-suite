@@ -1,4 +1,4 @@
-# $Id: Makefile.raw,v 1.38 2005/05/21 09:22:40 lestinsky Exp $
+# $Id: Makefile.raw,v 1.39 2008/11/29 01:34:59 lestinsky Exp $
 # Space-separated list of all "raw" php-files.
 PHP_FILES=		delete.php einfuegen.php index.php infos.php \
 			rezept.php print.php mmprint.php kategorien.php \
@@ -31,11 +31,11 @@ ${INC_FILES}: ${INC_FILES:%.inc=%.raw} ${CONF_FILE}
 	sed -f ${CONF_FILE} ${@:%.inc=%.raw} > ${@}
 
 subdir:
-	@(for i in ${SUBDIRS} ; do\
+	@(for i in ${SUBDIRS} ; do \
 	echo "====> ${THISDIR}/$${i}";\
 	cd $$i; \
 	${MAKE} ${TRGT} THISDIR=${THISDIR}/$$i; \
-	echo "<==== ${THISDIR}/$${i}";\
+	echo "<==== ${THISDIR}/$${i}"; \
 	cd ..; \
 	done )
 
