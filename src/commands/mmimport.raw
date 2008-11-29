@@ -29,7 +29,7 @@
    */
 
   /*
-   * $Id: mmimport.raw,v 1.36 2006/01/17 17:36:45 lestinsky Exp $
+   * $Id: mmimport.raw,v 1.37 2008/11/29 01:34:04 lestinsky Exp $
    * Import mealmaster-formated recipes into the "Koch-Suite".
    *
    * See the bundled file "LICENCE" for the licence of this script.
@@ -73,7 +73,7 @@ Usage: $argv[0] [-t | --test [-mm]] [-c cat,cat,...] [-C | --import-new-cat]
                  Add these category-entries to the recipe.
 
      -C --import-new-cat
-                 Don"t ignore categories which are unknown to the database.
+                 Don't ignore categories which are unknown to the database.
                  This is disabled by default.
 
      -D --force-dupes
